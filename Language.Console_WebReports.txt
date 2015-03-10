@@ -33,6 +33,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   bes fixlet set
   bes fixlet with multiplicity (derives from  bes fixlet)
   bes ldap directory
+  bes ldap directory server
   bes ldap directory set
   bes ldap directory with multiplicity (derives from  bes ldap directory)
   bes product
@@ -99,6 +100,8 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   ipv4or6 address with multiplicity (derives from  ipv4or6 address)
   ipv6 address (derives from  ipv4or6 address)
   ipv6 address with multiplicity (derives from  ipv6 address)
+  json key
+  json value
   license
   linear projection
   mime field
@@ -184,6 +187,7 @@ Creation techniques & properties of each type:
       database name of <bes action>, database names, Plain, <string>
       date range end of <bes action>, date range ends, Plain, <date>
       date range start of <bes action>, date range starts, Plain, <date>
+      day_of_week constraint of <bes action>, day_of_week constraints, Plain, <day of week>
       domain of <bes action>, domains, Plain, <bes domain>
       end date of <bes action>, end dates, Plain, <date>
       end flag of <bes action>, end flags, Plain, <boolean>
@@ -237,6 +241,7 @@ Creation techniques & properties of each type:
       retry wait for reboot flag of <bes action>, retry wait for reboot flags, Plain, <boolean>
       running message text of <bes action>, running message texts, Plain, <string>
       running message title of <bes action>, running message titles, Plain, <string>
+      secure parameter flag of <bes action>, secure parameter flags, Plain, <boolean>
       selected groups string of <bes action>, selected groups strings, Plain, <string>
       set of <bes action>, sets, Plain, <bes action set>
       settings flag of <bes action>, settings flags, Plain, <boolean>
@@ -788,6 +793,7 @@ Creation techniques & properties of each type:
       name of <bes fixlet>, names, Plain, <string>
       open action count of <bes fixlet>, open action counts, Plain, <integer>
       operator site flag of <bes fixlet>, operator site flags, Plain, <boolean>
+      parent relevance of <bes fixlet>, parent relevances, Plain, <string>
       property <integer> of <bes fixlet>, properties, Numbered, <bes property>
       property of <bes fixlet>, properties, Plain, <bes property>
       relevance clause of <bes fixlet>, relevance clauses, Plain, <string>
@@ -908,11 +914,31 @@ Creation techniques & properties of each type:
     Creation of <bes ldap directory>: { key phrase, plural keyword, form}
       bes ldap directory, bes ldap directories, PlainGlobal
       element of <bes ldap directory set>, elements, Plain
+      ldap directory of <bes user>, ldap directories, Plain
     Properties of <bes ldap directory> { key phrase, plural keyword, form, <result type>}:
       <bes ldap directory set> contains <bes ldap directory>, , BinaryOperator, <boolean>
       <bes ldap directory> = <bes ldap directory>, , BinaryOperator, <boolean>
+      active directory of <bes ldap directory>, active directories, Plain, <boolean>
+      base distinguished name of <bes ldap directory>, base distinguished namse, Plain, <string>
+      global catalog of <bes ldap directory>, global catalogs, Plain, <boolean>
+      group filter of <bes ldap directory>, group filters, Plain, <string>
+      id of <bes ldap directory>, ids, Plain, <integer>
+      login user of <bes ldap directory>, login users, Plain, <string>
+      name of <bes ldap directory>, names, Plain, <string>
+      server of <bes ldap directory>, servers, Plain, <bes ldap directory server>
       set of <bes ldap directory>, sets, Plain, <bes ldap directory set>
+      uid attribute of <bes ldap directory>, uid attributes, Plain, <string>
       unique value of <bes ldap directory>, unique values, Plain, <bes ldap directory with multiplicity>
+      use ssl of <bes ldap directory>, use ssls, Plain, <boolean>
+      user filter of <bes ldap directory>, user filters, Plain, <string>
+
+  Type <bes ldap directory server>
+    Creation of <bes ldap directory server>: { key phrase, plural keyword, form}
+      server of <bes ldap directory>, servers, Plain
+    Properties of <bes ldap directory server> { key phrase, plural keyword, form, <result type>}:
+      host of <bes ldap directory server>, hosts, Plain, <string>
+      port of <bes ldap directory server>, ports, Plain, <integer>
+      priority of <bes ldap directory server>, priorities, Plain, <integer>
 
   Type <bes ldap directory set>
     Creation of <bes ldap directory set>: { key phrase, plural keyword, form}
@@ -947,12 +973,15 @@ Creation techniques & properties of each type:
     Properties of <bes product> { key phrase, plural keyword, form, <result type>}:
       client device count of <bes product>, client device counts, Plain, <integer>
       computer count of <bes product>, computer counts, Plain, <integer>
-      eula accepted of <bes product>, eulas accepted, Plain, <boolean>
       expiration date of <bes product>, expiration dates, Plain, <date>
+      legacy of <bes product>, legacies, Plain, <boolean>
       name of <bes product>, names, Plain, <string>
       non windows server count of <bes product>, non windows server counts, Plain, <integer>
+      perpetual maintenance of <bes product>, perpetual maintenances, Plain, <boolean>
+      perpetual of <bes product>, perpetuals, Plain, <boolean>
       rvu count of <bes product>, rvu counts, Plain, <integer>
       site url of <bes product>, site urls, Plain, <string>
+      term of <bes product>, terms, Plain, <boolean>
       windows server count of <bes product>, windows server counts, Plain, <integer>
       workstation count of <bes product>, workstation counts, Plain, <integer>
 
@@ -1044,6 +1073,7 @@ Creation techniques & properties of each type:
 
   Type <bes role>
     Creation of <bes role>: { key phrase, plural keyword, form}
+      approver role of <bes user>, approver roles, Plain
       bes role, bes roles, PlainGlobal
       element of <bes role set>, elements, Plain
       role of <bes user>, roles, Plain
@@ -1312,8 +1342,10 @@ Creation techniques & properties of each type:
       administered computer of <bes user>, administered computers, Plain, <bes computer>
       administered computer set of <bes user>, administered computer sets, Plain, <bes computer set>
       administrator <bes computer> of <bes user>, administrators, Index<bes computer>, <boolean>
+      approver role of <bes user>, approver roles, Plain, <bes role>
       creation time of <bes user>, creation times, Plain, <time>
       custom content flag of <bes user>, custom content flags, Plain, <boolean>
+      distinguished name of <bes user>, distinguished names, Plain, <string>
       issued action of <bes user>, issued actions, Plain, <bes action>
       issued action set of <bes user>, issued action sets, Plain, <bes action set>
       issued computer group of <bes user>, issued computer groups, Plain, <bes computer group>
@@ -1321,6 +1353,7 @@ Creation techniques & properties of each type:
       issued fixlet of <bes user>, issued fixlets, Plain, <bes fixlet>
       issued fixlet set of <bes user>, issued fixlet sets, Plain, <bes fixlet set>
       last login time of <bes user>, last login times, Plain, <time>
+      ldap directory of <bes user>, ldap directories, Plain, <bes ldap directory>
       link <html> of <bes user>, links, Index<html>, <html>
       link <string> of <bes user>, links, Named, <html>
       link href of <bes user>, link hrefs, Plain, <string>
@@ -1494,6 +1527,7 @@ Creation techniques & properties of each type:
       left shift <integer> of <bit set>, left shifts, Numbered, <bit set>
       most significant one bit of <bit set>, most significant one bits, Plain, <integer>
       one bit of <bit set>, one bits, Plain, <integer>
+      padded string of <bit set>, padded strings, Plain, <string>
       right shift <integer> of <bit set>, right shifts, Numbered, <bit set>
 
   Type <boolean>
@@ -1603,6 +1637,9 @@ Creation techniques & properties of each type:
       <ipv6 address> < <ipv6 address>, , BinaryOperator
       <ipv6 address> <= <ipv6 address>, , BinaryOperator
       <ipv6 address> = <ipv6 address>, , BinaryOperator
+      <json key> = <json key>, , BinaryOperator
+      <json value> = <json value>, , BinaryOperator
+      <json value> as boolean, , Cast
       <month and year> < <month and year>, , BinaryOperator
       <month and year> <= <month and year>, , BinaryOperator
       <month and year> = <month and year>, , BinaryOperator
@@ -1669,6 +1706,7 @@ Creation techniques & properties of each type:
       <year> <= <year>, , BinaryOperator
       <year> = <year>, , BinaryOperator
       action flag of <bes filter>, action flags, Plain
+      active directory of <bes ldap directory>, active directories, Plain
       active flag of <bes activation>, active flags, Plain
       administrator <( bes computer, bes user )>, administrators, Index<( bes computer, bes user )>Global
       administrator <( bes user, bes computer )>, administrators, Index<( bes user, bes computer )>Global
@@ -1707,7 +1745,6 @@ Creation techniques & properties of each type:
       enabled of <bes wakeonlan status>, enableds, Plain
       end flag of <bes action>, end flags, Plain
       error flag of <bes property result>, error flags, Plain
-      eula accepted of <bes product>, eulas accepted, Plain
       evaluation of <license>, evaluations, Plain
       expiration flag of <bes action>, expiration flags, Plain
       external site flag of <bes site>, external site flags, Plain
@@ -1718,6 +1755,7 @@ Creation techniques & properties of each type:
       fips mode of <license>, fips modes, Plain
       fixlet flag of <bes filter>, fixlet flags, Plain
       fixlet flag of <bes fixlet>, fixlet flags, Plain
+      global catalog of <bes ldap directory>, global catalogs, Plain
       globally readable flag of <bes site>, globally readable flags, Plain
       globally visible flag of <bes fixlet>, globally visible flags, Plain
       group flag of <bes filter>, group flags, Plain
@@ -1733,6 +1771,7 @@ Creation techniques & properties of each type:
       join by intersection flag of <bes filter>, join by intersection flags, Plain
       keep statistics flag of <bes property>, keep statistics flags, Plain
       leap of <year>, leaps, Plain
+      legacy of <bes product>, legacies, Plain
       locally visible flag of <bes fixlet>, locally visible flags, Plain
       locked flag of <bes computer>, locked flags, Plain
       management rights flag of <bes action>, management rights flags, Plain
@@ -1754,6 +1793,8 @@ Creation techniques & properties of each type:
       overflow of <floating point>, overflows, Plain
       owner flag <bes user> of <bes site>, owner flags, Index<bes user>
       pending license update, pending license updates, PlainGlobal
+      perpetual maintenance of <bes product>, perpetual maintenances, Plain
+      perpetual of <bes product>, perpetuals, Plain
       plural flag of <bes property result>, plural flags, Plain
       postaction allow cancel flag of <bes action>, postaction allow cancel flags, Plain
       pre60 flag of <bes wizard>, pre60 flags, Plain
@@ -1774,6 +1815,7 @@ Creation techniques & properties of each type:
       restart flag of <bes action>, restart flags, Plain
       retry wait for reboot flag of <bes action>, retry wait for reboot flags, Plain
       root server flag of <bes computer>, root server flags, Plain
+      secure parameter flag of <bes action>, secure parameter flags, Plain
       settings flag of <bes action>, settings flags, Plain
       show message flag of <bes action>, show message flags, Plain
       show running message flag of <bes action>, show running message flags, Plain
@@ -1796,6 +1838,7 @@ Creation techniques & properties of each type:
       targeted by property flag of <bes action>, targeted by property flags, Plain
       task flag of <bes filter>, task flags, Plain
       task flag of <bes fixlet>, task flags, Plain
+      term of <bes product>, terms, Plain
       top level flag of <bes action>, top level flags, Plain
       true, trues, PlainGlobal
       underflow of <floating point>, underflows, Plain
@@ -1808,6 +1851,7 @@ Creation techniques & properties of each type:
       unmanagedasset privilege shownone flag of <bes user>, unmanagedasset privilege shownone flags, Plain
       untargeted flag of <bes action>, untargeted flags, Plain
       urgent flag of <bes action>, urgent flags, Plain
+      use ssl of <bes ldap directory>, use ssls, Plain
       user flag of <bes filter>, user flags, Plain
       utc time flag of <bes action>, utc time flags, Plain
       visible flag of <bes fixlet>, visible flags, Plain
@@ -1968,6 +2012,7 @@ Creation techniques & properties of each type:
       <time interval> + <day of week>, , BinaryOperator
       current day_of_week, current days_of_week, PlainGlobal
       day_of_week <string>, days_of_week, NamedGlobal
+      day_of_week constraint of <bes action>, day_of_week constraints, Plain
       day_of_week of <date>, days_of_week, Plain
       friday, fridays, PlainGlobal
       monday, mondays, PlainGlobal
@@ -2096,6 +2141,7 @@ Creation techniques & properties of each type:
       <integer> - <floating point>, , BinaryOperator
       <integer> / <floating point>, , BinaryOperator
       <integer> as floating point, , Cast
+      <json value> as float, , Cast
       <rate> * <time interval>, , BinaryOperator
       <string> as floating point, , Cast
       <time interval> * <rate>, , BinaryOperator
@@ -2730,6 +2776,7 @@ Creation techniques & properties of each type:
       <integer> / <integer>, , BinaryOperator
       <integer> as integer, , Cast
       <integer> mod <integer>, , BinaryOperator
+      <json value> as integer, , Cast
       <month> as integer, , Cast
       <number of months> / <number of months>, , BinaryOperator
       <string> as integer, , Cast
@@ -2771,6 +2818,7 @@ Creation techniques & properties of each type:
       id of <bes computer>, ids, Plain
       id of <bes filter>, ids, Plain
       id of <bes fixlet>, ids, Plain
+      id of <bes ldap directory>, ids, Plain
       id of <bes site file>, ids, Plain
       id of <bes site>, ids, Plain
       id of <bes unmanagedasset>, ids, Plain
@@ -2837,6 +2885,8 @@ Creation techniques & properties of each type:
       numeric value of <string>, numeric values, Plain
       one bit of <bit set>, one bits, Plain
       open action count of <bes fixlet>, open action counts, Plain
+      port of <bes ldap directory server>, ports, Plain
+      priority of <bes ldap directory server>, priorities, Plain
       product of <integer>, products, Plain
       reapplication limit of <bes action>, reapplication limits, Plain
       registrar number of <license>, registrar numbers, Plain
@@ -3110,6 +3160,36 @@ Creation techniques & properties of each type:
       unique value of <ipv6 address>, unique values, Plain
     Properties of <ipv6 address with multiplicity> { key phrase, plural keyword, form, <result type>}:
       multiplicity of <ipv6 address with multiplicity>, multiplicities, Plain, <integer>
+
+  Type <json key>
+    Creation of <json key>: { key phrase, plural keyword, form}
+      key <string> of <json value>, keys, Named
+      key of <json value>, keys, Plain
+    Properties of <json key> { key phrase, plural keyword, form, <result type>}:
+      <json key> = <json key>, , BinaryOperator, <boolean>
+      <json key> as string, , Cast, <string>
+      name of <json key>, names, Plain, <string>
+      value of <json key>, values, Plain, <json value>
+
+  Type <json value>
+    Creation of <json value>: { key phrase, plural keyword, form}
+      element <integer> of <json value>, elements, Numbered
+      element of <json value>, elements, Plain
+      json of <string>, jsons, Plain
+      path <string> of <json value>, paths, Named
+      value of <json key>, values, Plain
+    Properties of <json value> { key phrase, plural keyword, form, <result type>}:
+      <json value> = <json value>, , BinaryOperator, <boolean>
+      <json value> as boolean, , Cast, <boolean>
+      <json value> as float, , Cast, <floating point>
+      <json value> as integer, , Cast, <integer>
+      <json value> as string, , Cast, <string>
+      element <integer> of <json value>, elements, Numbered, <json value>
+      element of <json value>, elements, Plain, <json value>
+      key <string> of <json value>, keys, Named, <json key>
+      key of <json value>, keys, Plain, <json key>
+      path <string> of <json value>, paths, Named, <json value>
+      type of <json value>, types, Plain, <string>
 
   Type <license>
     Creation of <license>: { key phrase, plural keyword, form}
@@ -3541,6 +3621,8 @@ Creation techniques & properties of each type:
       <ipv6 address> as string with leading zeros, , Cast
       <ipv6 address> as string with zone index, , Cast
       <ipv6 address> as string, , Cast
+      <json key> as string, , Cast
+      <json value> as string, , Cast
       <month and year> as string, , Cast
       <month> as string, , Cast
       <month> as three letters, , Cast
@@ -3578,6 +3660,7 @@ Creation techniques & properties of each type:
       agent type of <bes computer>, agent types, Plain
       agent version of <bes computer>, agent versions, Plain
       applicability relevance of <bes action>, applicability relevances, Plain
+      base distinguished name of <bes ldap directory>, base distinguished namse, Plain
       base64 decode <string>, base64 decodes, NamedGlobal
       base64 encode <string>, base64 encodes, NamedGlobal
       bes brand, bes brands, PlainGlobal
@@ -3624,13 +3707,16 @@ Creation techniques & properties of each type:
       display source of <bes fixlet>, display sources, Plain
       display source severity of <bes fixlet>, display source severities, Plain
       display value of <bes fixlet field value>, display values, Plain
+      distinguished name of <bes user>, distinguished names, Plain
       element of <string set>, elements, Plain
       email address of <license>, email addresses, Plain
       error message of <bes property result>, error messages, Plain
       expiration state of <license>, expiration states, Plain
       fips mode failure message of <cryptography>, fips mode failure messages, Plain
       gather url of <license>, gather urls, Plain
+      group filter of <bes ldap directory>, group filters, Plain
       hexadecimal string <string>, hexadecimal strings, NamedGlobal
+      host of <bes ldap directory server>, hosts, Plain
       hostname of <bes computer>, hostnames, Plain
       id of <bes domain>, ids, Plain
       license type of <bes computer>, license types, Plain
@@ -3641,7 +3727,9 @@ Creation techniques & properties of each type:
       link href of <bes unmanagedasset>, link hrefs, Plain
       link href of <bes user>, link hrefs, Plain
       link href of <bes wizard>, link hrefs, Plain
+      login user of <bes ldap directory>, login users, Plain
       masthead operator name of <bes user>, masthead operator names, Plain
+      md5 of <string>, md5s, Plain
       menu path of <bes wizard>, menu paths, Plain
       message text of <bes action>, message texts, Plain
       message title of <bes action>, message titles, Plain
@@ -3659,6 +3747,7 @@ Creation techniques & properties of each type:
       name of <bes filter>, names, Plain
       name of <bes fixlet field>, names, Plain
       name of <bes fixlet>, names, Plain
+      name of <bes ldap directory>, names, Plain
       name of <bes product>, names, Plain
       name of <bes property>, names, Plain
       name of <bes role>, names, Plain
@@ -3669,6 +3758,7 @@ Creation techniques & properties of each type:
       name of <bes wizard>, names, Plain
       name of <binary operator>, names, Plain
       name of <cast>, names, Plain
+      name of <json key>, names, Plain
       name of <mime field>, names, Plain
       name of <module>, names, Plain
       name of <type>, names, Plain
@@ -3679,7 +3769,9 @@ Creation techniques & properties of each type:
       offer category of <bes action>, offer categories, Plain
       operating system of <bes computer>, operating systems, Plain
       organization of <license>, organizations, Plain
+      padded string of <bit set>, padded strings, Plain
       parameter <string> of <bes action>, parameters, Named
+      parent relevance of <bes fixlet>, parent relevances, Plain
       plural name of <property>, plural names, Plain
       postaction message text of <bes action>, postaction message texts, Plain
       postaction message title of <bes action>, postaction message titles, Plain
@@ -3704,6 +3796,10 @@ Creation techniques & properties of each type:
       selected groups string of <bes action>, selected groups strings, Plain
       sha1 of <string>, sha1s, Plain
       sha1 of <x509 certificate>, sha1s, Plain
+      sha2_224 of <string>, sha2_224s, Plain
+      sha2_256 of <string>, sha2_256s, Plain
+      sha2_384 of <string>, sha2_384s, Plain
+      sha2_512 of <string>, sha2_512s, Plain
       shared variable <( string, string )>, shared variables, Index<( string, string )>Global
       shared variable <string> of <bes wizard>, shared variables, Named
       simple name of <bes property>, simple names, Plain
@@ -3738,10 +3834,13 @@ Creation techniques & properties of each type:
       two digit second of <time of day>, two digit seconds, Plain
       type of <bes fixlet>, types, Plain
       type of <distinguished name component>, types, Plain
+      type of <json value>, types, Plain
       type of <license>, types, Plain
+      uid attribute of <bes ldap directory>, uid attributes, Plain
       url of <bes server>, urls, Plain
       url of <bes site>, urls, Plain
       url of <bes wizard>, urls, Plain
+      user filter of <bes ldap directory>, user filters, Plain
       usual name of <property>, usual names, Plain
       value of <bes action parameter>, values, Plain
       value of <bes client setting>, values, Plain
@@ -3894,6 +3993,7 @@ Creation techniques & properties of each type:
       italic <string> of <string>, italics, Named, <html>
       italic of <string>, italics, Plain, <html>
       javascript array <string> of <string>, javascript arrays, Named, <html>
+      json of <string>, jsons, Plain, <json value>
       kbd <string> of <string>, kbds, Named, <html>
       kbd of <string>, kbds, Plain, <html>
       last <integer> of <string>, lasts, Numbered, <substring>
@@ -3904,6 +4004,7 @@ Creation techniques & properties of each type:
       link <string> of <string>, links, Named, <html>
       link of <string>, links, Plain, <html>
       match <regular expression> of <string>, matches, Index<regular expression>, <regular expression match>
+      md5 of <string>, md5s, Plain, <string>
       meta <string> of <string>, metas, Named, <html>
       meta of <string>, metas, Plain, <html>
       numeric value of <string>, numeric values, Plain, <integer>
@@ -3924,6 +4025,10 @@ Creation techniques & properties of each type:
       samp of <string>, samps, Plain, <html>
       set of <string>, sets, Plain, <string set>
       sha1 of <string>, sha1s, Plain, <string>
+      sha2_224 of <string>, sha2_224s, Plain, <string>
+      sha2_256 of <string>, sha2_256s, Plain, <string>
+      sha2_384 of <string>, sha2_384s, Plain, <string>
+      sha2_512 of <string>, sha2_512s, Plain, <string>
       small <string> of <string>, smalls, Named, <html>
       small of <string>, smalls, Plain, <html>
       span <string> of <string>, spans, Named, <html>
@@ -4833,6 +4938,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       action, actions, <bes fixlet action>, <bes fixlet>, Plain
       activation, activations, <bes activation>, <bes fixlet>, Plain
       active directory path, active directory paths, <distinguished name>, <bes computer>, Plain
+      active directory, active directories, <boolean>, <bes ldap directory>, Plain
       active flag, active flags, <boolean>, <bes activation>, Plain
       address, addresss, <html>, <html>, Named
       address, addresss, <html>, <html>, Plain
@@ -4869,6 +4975,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       applicable computer set, applicable computer sets, <bes computer set>, <bes fixlet>, Plain
       applicable computer, applicable computers, <bes computer>, <bes fixlet>, Plain
       apply count, apply counts, <integer>, <bes action result>, Plain
+      approver role, approver roles, <bes role>, <bes user>, Plain
       april, aprils, <date>, <integer>, Numbered
       april, aprils, <day of year>, world , NumberedGlobal
       april, aprils, <month and year>, <integer>, Plain
@@ -4876,6 +4983,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as bit set, , <bit set>, <integer>, Cast
       as bits, , <bit set>, <integer>, Cast
       as boolean, , <boolean>, <boolean>, Cast
+      as boolean, , <boolean>, <json value>, Cast
       as boolean, , <boolean>, <string>, Cast
       as compressed string with ipv4 with zone index, , <string>, <ipv4or6 address>, Cast
       as compressed string with ipv4 with zone index, , <string>, <ipv6 address>, Cast
@@ -4890,6 +4998,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as day_of_month, , <day of month>, <integer>, Cast
       as day_of_month, , <day of month>, <string>, Cast
       as day_of_week, , <day of week>, <string>, Cast
+      as float, , <floating point>, <json value>, Cast
       as floating point, , <floating point>, <floating point>, Cast
       as floating point, , <floating point>, <integer>, Cast
       as floating point, , <floating point>, <string>, Cast
@@ -4902,6 +5011,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as integer, , <integer>, <day of month>, Cast
       as integer, , <integer>, <floating point>, Cast
       as integer, , <integer>, <integer>, Cast
+      as integer, , <integer>, <json value>, Cast
       as integer, , <integer>, <month>, Cast
       as integer, , <integer>, <string>, Cast
       as integer, , <integer>, <year>, Cast
@@ -4950,6 +5060,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <ipv4 address>, Cast
       as string, , <string>, <ipv4or6 address>, Cast
       as string, , <string>, <ipv6 address>, Cast
+      as string, , <string>, <json key>, Cast
+      as string, , <string>, <json value>, Cast
       as string, , <string>, <month and year>, Cast
       as string, , <string>, <month>, Cast
       as string, , <string>, <number of months>, Cast
@@ -5014,6 +5126,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       b, bs, <html>, <html>, Plain
       b, bs, <html>, <string>, Named
       b, bs, <html>, <string>, Plain
+      base distinguished name, base distinguished namse, <string>, <bes ldap directory>, Plain
       base, bases, <html>, <html>, Named
       base, bases, <html>, <html>, Plain
       base, bases, <html>, <string>, Named
@@ -5261,6 +5374,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       day_of_month, days_of_month, <day of month>, <date>, Plain
       day_of_month, days_of_month, <day of month>, world , NamedGlobal
       day_of_month, days_of_month, <day of month>, world , NumberedGlobal
+      day_of_week constraint, day_of_week constraints, <day of week>, <bes action>, Plain
       day_of_week, days_of_week, <day of week>, <date>, Plain
       day_of_week, days_of_week, <day of week>, world , NamedGlobal
       day_of_year, days_of_year, <day of year>, <date>, Plain
@@ -5313,6 +5427,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       display source, display sources, <string>, <bes fixlet>, Plain
       display value, display values, <string>, <bes fixlet field value>, Plain
       distinguished name, distinguished names, <distinguished name>, world , NamedGlobal
+      distinguished name, distinguished names, <string>, <bes user>, Plain
       div, divs, <html>, <html>, Named
       div, divs, <html>, <html>, Plain
       div, divs, <html>, <string>, Named
@@ -5346,6 +5461,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       element, elements, <bes user>, <bes user set>, Plain
       element, elements, <bes wizard>, <bes wizard set>, Plain
       element, elements, <integer>, <integer set>, Plain
+      element, elements, <json value>, <json value>, Numbered
+      element, elements, <json value>, <json value>, Plain
       element, elements, <string>, <string set>, Plain
       em, ems, <html>, <html>, Named
       em, ems, <html>, <html>, Plain
@@ -5364,7 +5481,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       error flag, error flags, <boolean>, <bes property result>, Plain
       error message, error messages, <string>, <bes property result>, Plain
       error, errors, <undefined>, world , NamedGlobal
-      eula accepted, eulas accepted, <boolean>, <bes product>, Plain
       evaluation period, evaluation periods, <time interval>, <bes property>, Plain
       evaluation, evaluations, <boolean>, <license>, Plain
       expiration date, expiration dates, <date>, <bes product>, Plain
@@ -5447,11 +5563,13 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       gather url, gather urls, <string>, <license>, Plain
       geometric mean, geometric means, <floating point>, <statistical bin>, Plain
       ghz, ghzs, <hertz>, world , PlainGlobal
+      global catalog, global catalogs, <boolean>, <bes ldap directory>, Plain
       globally readable flag, globally readable flags, <boolean>, <bes site>, Plain
       globally visible flag, globally visible flags, <boolean>, <bes fixlet>, Plain
       greatest hz, greatest hzs, <hertz>, world , PlainGlobal
       greatest integer, greatest integers, <integer>, world , PlainGlobal
       greatest time interval, greatest time intervals, <time interval>, world , PlainGlobal
+      group filter, group filters, <string>, <bes ldap directory>, Plain
       group flag, group flags, <boolean>, <bes filter>, Plain
       group flag, group flags, <boolean>, <bes fixlet>, Plain
       group member flag, group member flags, <boolean>, <bes action>, Plain
@@ -5490,6 +5608,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       hidden bes action set, hidden bes action sets, <bes action set>, world , PlainGlobal
       hidden bes action, hidden bes actions, <bes action>, world , PlainGlobal
       hidden flag, hidden flags, <boolean>, <bes action>, Plain
+      host, hosts, <string>, <bes ldap directory server>, Plain
       hostname, hostnames, <string>, <bes computer>, Plain
       hour, hours, <time interval>, world , PlainGlobal
       hour_of_day, hours_of_day, <integer>, <time of day with time zone>, Plain
@@ -5519,6 +5638,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       id, ids, <integer>, <bes computer>, Plain
       id, ids, <integer>, <bes filter>, Plain
       id, ids, <integer>, <bes fixlet>, Plain
+      id, ids, <integer>, <bes ldap directory>, Plain
       id, ids, <integer>, <bes site file>, Plain
       id, ids, <integer>, <bes site>, Plain
       id, ids, <integer>, <bes unmanagedasset>, Plain
@@ -5592,6 +5712,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       javascript array, javascript arrays, <html>, <statistical bin>, Named
       javascript array, javascript arrays, <html>, <string>, Named
       join by intersection flag, join by intersection flags, <boolean>, <bes filter>, Plain
+      json, jsons, <json value>, <string>, Plain
       july, julys, <date>, <integer>, Numbered
       july, julys, <day of year>, world , NumberedGlobal
       july, julys, <month and year>, <integer>, Plain
@@ -5605,6 +5726,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       kbd, kbds, <html>, <string>, Named
       kbd, kbds, <html>, <string>, Plain
       keep statistics flag, keep statistics flags, <boolean>, <bes property>, Plain
+      key, keys, <json key>, <json value>, Named
+      key, keys, <json key>, <json value>, Plain
       khz, khzs, <hertz>, world , PlainGlobal
       kurtosis, kurtoses, <floating point>, <statistical bin>, Plain
       last became nonrelevant, last became nonrelevants, <time>, <bes fixlet result>, Plain
@@ -5614,6 +5737,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       last report time, last report times, <time>, <bes computer>, Plain
       last, lasts, <substring>, <string>, Named
       last, lasts, <substring>, <string>, Numbered
+      ldap directory, ldap directories, <bes ldap directory>, <bes user>, Plain
       leap, leaps, <boolean>, <year>, Plain
       least hz, least hzs, <hertz>, world , PlainGlobal
       least integer, least integers, <integer>, world , PlainGlobal
@@ -5621,6 +5745,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       least time interval, least time intervals, <time interval>, world , PlainGlobal
       left operand type, left operand types, <type>, <binary operator>, Plain
       left shift, left shifts, <bit set>, <bit set>, Numbered
+      legacy, legacies, <boolean>, <bes product>, Plain
       length, lengths, <integer>, <rope>, Plain
       length, lengths, <integer>, <string>, Plain
       length, lengths, <time interval>, <month and year>, Plain
@@ -5675,6 +5800,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       logarithm skewness, logarithm skewnesses, <floating point>, <statistical bin>, Plain
       logarithm standard deviation, logarithm standard deviations, <floating point>, <statistical bin>, Plain
       logarithm variance, logarithm variances, <floating point>, <statistical bin>, Plain
+      login user, login users, <string>, <bes ldap directory>, Plain
       lower bound, lower bounds, <integer>, <integer range>, Plain
       management rights flag, management rights flags, <boolean>, <bes action>, Plain
       manual flag, manual flags, <boolean>, <bes computer group>, Plain
@@ -5714,6 +5840,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       may, mays, <day of year>, world , NumberedGlobal
       may, mays, <month and year>, <integer>, Plain
       may, mays, <month>, world , PlainGlobal
+      md5, md5s, <string>, <string>, Plain
       mean computer count, mean computer counts, <floating point>, <statistical bin>, Plain
       mean failing computer count, mean failing computer counts, <floating point>, <statistical bin>, Plain
       mean logarithm, mean logarithms, <floating point>, <statistical bin>, Plain
@@ -5842,6 +5969,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       name, names, <string>, <bes filter>, Plain
       name, names, <string>, <bes fixlet field>, Plain
       name, names, <string>, <bes fixlet>, Plain
+      name, names, <string>, <bes ldap directory>, Plain
       name, names, <string>, <bes product>, Plain
       name, names, <string>, <bes property>, Plain
       name, names, <string>, <bes role>, Plain
@@ -5852,6 +5980,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       name, names, <string>, <bes wizard>, Plain
       name, names, <string>, <binary operator>, Plain
       name, names, <string>, <cast>, Plain
+      name, names, <string>, <json key>, Plain
       name, names, <string>, <mime field>, Plain
       name, names, <string>, <module>, Plain
       name, names, <string>, <type>, Plain
@@ -5909,18 +6038,24 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       p, ps, <html>, <string>, Named
       p, ps, <html>, <string>, Plain
       pad, pads, <version>, <version>, Plain
+      padded string, padded strings, <string>, <bit set>, Plain
       parameter, parameters, <bes action parameter>, <bes action>, Plain
       parameter, parameters, <string>, <bes action>, Named
       parent group, parent groups, <bes action>, <bes action>, Plain
       parent node, parent nodes, <xml dom node>, <xml dom node>, Plain
+      parent relevance, parent relevances, <string>, <bes fixlet>, Plain
       parent, parents, <type>, <type>, Plain
       parenthesized part, parenthesized parts, <substring>, <regular expression match>, Numbered
       parenthesized part, parenthesized parts, <substring>, <regular expression match>, Plain
+      path, paths, <json value>, <json value>, Named
       pending license update, pending license updates, <boolean>, world , PlainGlobal
+      perpetual maintenance, perpetual maintenances, <boolean>, <bes product>, Plain
+      perpetual, perpetuals, <boolean>, <bes product>, Plain
       plain bes fixlet set, plain bes fixlet sets, <bes fixlet set>, world , PlainGlobal
       plain bes fixlet, plain bes fixlets, <bes fixlet>, world , PlainGlobal
       plural flag, plural flags, <boolean>, <bes property result>, Plain
       plural name, plural names, <string>, <property>, Plain
+      port, ports, <integer>, <bes ldap directory server>, Plain
       position, positions, <string position>, <string>, Numbered
       position, positions, <string position>, <string>, Plain
       postaction allow cancel flag, postaction allow cancel flags, <boolean>, <bes action>, Plain
@@ -5938,6 +6073,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       preceding text, preceding texts, <substring>, <substring>, Plain
       preferred bes language, preferred bes languages, <string>, world , PlainGlobal
       previous sibling, previous siblings, <xml dom node>, <xml dom node>, Plain
+      priority, priorities, <integer>, <bes ldap directory server>, Plain
       private flag, private flags, <boolean>, <bes filter>, Plain
       private flag, private flags, <boolean>, <bes wizard variable>, Plain
       private variable, private variables, <bes wizard variable>, <bes wizard>, Plain
@@ -6047,12 +6183,14 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       second, seconds, <time interval>, world , PlainGlobal
       second_of_minute, seconds_of_minute, <integer>, <time of day with time zone>, Plain
       second_of_minute, seconds_of_minute, <integer>, <time of day>, Plain
+      secure parameter flag, secure parameter flags, <boolean>, <bes action>, Plain
       select, selects, <xml dom node>, <xml dom node>, Named
       selected groups string, selected groups strings, <string>, <bes action>, Plain
       september, septembers, <date>, <integer>, Numbered
       september, septembers, <day of year>, world , NumberedGlobal
       september, septembers, <month and year>, <integer>, Plain
       september, septembers, <month>, world , PlainGlobal
+      server, servers, <bes ldap directory server>, <bes ldap directory>, Plain
       set, sets, <bes action set>, <bes action>, Plain
       set, sets, <bes computer group set>, <bes computer group>, Plain
       set, sets, <bes computer set>, <bes computer>, Plain
@@ -6072,6 +6210,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       settings flag, settings flags, <boolean>, <bes action>, Plain
       sha1, sha1s, <string>, <string>, Plain
       sha1, sha1s, <string>, <x509 certificate>, Plain
+      sha2_224, sha2_224s, <string>, <string>, Plain
+      sha2_256, sha2_256s, <string>, <string>, Plain
+      sha2_384, sha2_384s, <string>, <string>, Plain
+      sha2_512, sha2_512s, <string>, <string>, Plain
       shared variable, shared variables, <bes wizard variable>, <bes wizard>, Plain
       shared variable, shared variables, <string>, <bes wizard>, Named
       shared variable, shared variables, <string>, world , Index<( string, string )>Global
@@ -6219,6 +6361,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       td, tds, <html>, <string>, Named
       td, tds, <html>, <string>, Plain
       temporal distribution, temporal distributions, <time interval>, <bes action>, Plain
+      term, terms, <boolean>, <bes product>, Plain
       text, texts, <string>, <bes comment>, Plain
       tfoot, tfoots, <html>, <html>, Named
       tfoot, tfoots, <html>, <html>, Plain
@@ -6277,9 +6420,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       two digit second, two digit seconds, <string>, <time of day>, Plain
       type, types, <string>, <bes fixlet>, Plain
       type, types, <string>, <distinguished name component>, Plain
+      type, types, <string>, <json value>, Plain
       type, types, <string>, <license>, Plain
       type, types, <type>, world , NamedGlobal
       type, types, <type>, world , PlainGlobal
+      uid attribute, uid attributes, <string>, <bes ldap directory>, Plain
       ul, uls, <html>, <html>, Named
       ul, uls, <html>, <html>, Plain
       ul, uls, <html>, <string>, Named
@@ -6364,6 +6509,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       url, urls, <string>, <bes server>, Plain
       url, urls, <string>, <bes site>, Plain
       url, urls, <string>, <bes wizard>, Plain
+      use ssl, use ssls, <boolean>, <bes ldap directory>, Plain
+      user filter, user filters, <string>, <bes ldap directory>, Plain
       user flag, user flags, <boolean>, <bes filter>, Plain
       user set, user sets, <bes user set>, <bes filter>, Plain
       user set, user sets, <bes user set>, <bes role>, Plain
@@ -6372,6 +6519,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       utc time flag, utc time flags, <boolean>, <bes action>, Plain
       value count, value counts, <integer>, <bes property result>, Plain
       value, values, <bes fixlet field value>, <bes fixlet field>, Plain
+      value, values, <json value>, <json key>, Plain
       value, values, <string>, <bes action parameter>, Plain
       value, values, <string>, <bes client setting>, Plain
       value, values, <string>, <bes deployment option>, Plain
