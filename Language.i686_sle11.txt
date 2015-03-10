@@ -91,6 +91,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   floating point
   floating point with multiplicity (derives from  floating point)
   folder (derives from  filesystem object)
+  format
   grub block list
   grub bootable image
   grub color
@@ -808,6 +809,7 @@ Creation techniques & properties of each type:
       <date> <= <date>, , BinaryOperator, <boolean>
       <date> = <date>, , BinaryOperator, <boolean>
       <date> as string, , Cast, <string>
+      <format> + <date>, , BinaryOperator, <format>
       <number of months> + <date>, , BinaryOperator, <date>
       <time interval> + <date>, , BinaryOperator, <date>
       <time of day with time zone> & <date>, , BinaryOperator, <time>
@@ -891,6 +893,7 @@ Creation techniques & properties of each type:
       <day of week> = <day of week>, , BinaryOperator, <boolean>
       <day of week> as string, , Cast, <string>
       <day of week> as three letters, , Cast, <string>
+      <format> + <day of week>, , BinaryOperator, <format>
       <time interval> + <day of week>, , BinaryOperator, <day of week>
       unique value of <day of week>, unique values, Plain, <day of week with multiplicity>
 
@@ -1893,6 +1896,8 @@ Creation techniques & properties of each type:
       gather percent of <evaluation cycle>, gather percents, Plain
       less significance <integer> of <floating point>, less significances, Numbered
       maximum of <floating point>, maxima, Plain
+      mean of <floating point>, means, Plain
+      mean of <integer>, means, Plain
       minimum of <floating point>, minima, Plain
       more significance <integer> of <floating point>, more significances, Numbered
       other percent of <evaluation cycle>, other percents, Plain
@@ -1908,6 +1913,8 @@ Creation techniques & properties of each type:
       significance place of <floating point>, significance places, Plain
       significance threshold of <floating point>, significance thresholds, Plain
       sleep percent of <evaluation cycle>, sleep percents, Plain
+      standard deviation of <floating point>, standard deviations, Plain
+      standard deviation of <integer>, standard deviations, Plain
       sum of <floating point>, sums, Plain
     Properties of <floating point> { key phrase, plural keyword, form, <result type>}:
       - <floating point>, , UnaryOperatorfloating point
@@ -1947,6 +1954,7 @@ Creation techniques & properties of each type:
       invalid of <floating point>, invalids, Plain, <boolean>
       less significance <integer> of <floating point>, less significances, Numbered, <floating point>
       maximum of <floating point>, maxima, Plain, <floating point>
+      mean of <floating point>, means, Plain, <floating point>
       minimum of <floating point>, minima, Plain, <floating point>
       more significance <integer> of <floating point>, more significances, Numbered, <floating point>
       nan of <floating point>, nans, Plain, <boolean>
@@ -1958,6 +1966,7 @@ Creation techniques & properties of each type:
       significance place <integer> of <floating point>, significance places, Numbered, <floating point>
       significance place of <floating point>, significance places, Plain, <floating point>
       significance threshold of <floating point>, significance thresholds, Plain, <floating point>
+      standard deviation of <floating point>, standard deviations, Plain, <floating point>
       sum of <floating point>, sums, Plain, <floating point>
       underflow of <floating point>, underflows, Plain, <boolean>
       unique value of <floating point>, unique values, Plain, <floating point with multiplicity>
@@ -2008,6 +2017,28 @@ Creation techniques & properties of each type:
       socket file of <folder>, socket files, Plain, <socket file>
       symlink <string> of <folder>, symlinks, Named, <symlink>
       symlink of <folder>, symlinks, Plain, <symlink>
+
+  Type <format>
+    Creation of <format>: { key phrase, plural keyword, form}
+      <format> + <date>, , BinaryOperator
+      <format> + <day of week>, , BinaryOperator
+      <format> + <format>, , BinaryOperator
+      <format> + <integer>, , BinaryOperator
+      <format> + <string>, , BinaryOperator
+      <format> + <time interval>, , BinaryOperator
+      <format> + <time of day>, , BinaryOperator
+      <format> + <time>, , BinaryOperator
+      format <string>, formats, NamedGlobal
+    Properties of <format> { key phrase, plural keyword, form, <result type>}:
+      <format> + <date>, , BinaryOperator, <format>
+      <format> + <day of week>, , BinaryOperator, <format>
+      <format> + <format>, , BinaryOperator, <format>
+      <format> + <integer>, , BinaryOperator, <format>
+      <format> + <string>, , BinaryOperator, <format>
+      <format> + <time interval>, , BinaryOperator, <format>
+      <format> + <time of day>, , BinaryOperator, <format>
+      <format> + <time>, , BinaryOperator, <format>
+      <format> as string, , Cast, <string>
 
   Type <grub block list>
     Creation of <grub block list>: { key phrase, plural keyword, form}
@@ -3008,6 +3039,7 @@ Creation techniques & properties of each type:
       <floating point> < <integer>, , BinaryOperator, <boolean>
       <floating point> <= <integer>, , BinaryOperator, <boolean>
       <floating point> = <integer>, , BinaryOperator, <boolean>
+      <format> + <integer>, , BinaryOperator, <format>
       <hertz> * <integer>, , BinaryOperator, <hertz>
       <hertz> / <integer>, , BinaryOperator, <hertz>
       <integer set> contains <integer>, , BinaryOperator, <boolean>
@@ -3066,6 +3098,7 @@ Creation techniques & properties of each type:
       maximum of <integer>, maxima, Plain, <integer>
       may <integer> of <integer>, mays, Numbered, <date>
       may of <integer>, mays, Plain, <month and year>
+      mean of <integer>, means, Plain, <floating point>
       minimum of <integer>, minima, Plain, <integer>
       november <integer> of <integer>, novembers, Numbered, <date>
       november of <integer>, novembers, Plain, <month and year>
@@ -3076,6 +3109,7 @@ Creation techniques & properties of each type:
       september of <integer>, septembers, Plain, <month and year>
       set of <integer>, sets, Plain, <integer set>
       significant digits <integer> of <integer>, significant digitss, Numbered, <integer>
+      standard deviation of <integer>, standard deviations, Plain, <floating point>
       sum of <integer>, sums, Plain, <integer>
       unique value of <integer>, unique values, Plain, <integer with multiplicity>
 
@@ -4244,6 +4278,7 @@ Creation techniques & properties of each type:
       <floating point> as scientific notation, , Cast
       <floating point> as standard notation, , Cast
       <floating point> as string, , Cast
+      <format> as string, , Cast
       <grub block list> as string, , Cast
       <grub bootable image> as string, , Cast
       <grub color pair> as string, , Cast
@@ -4583,6 +4618,7 @@ Creation techniques & properties of each type:
       wake on lan subnet cidr string, wake on lan subnet cidr strings, PlainGlobal
     Properties of <string> { key phrase, plural keyword, form, <result type>}:
       <file content> contains <string>, , BinaryOperator, <boolean>
+      <format> + <string>, , BinaryOperator, <format>
       <html> & <string>, , BinaryOperator, <html>
       <ipv4 address> < <string>, , BinaryOperator, <boolean>
       <ipv4 address> <= <string>, , BinaryOperator, <boolean>
@@ -5003,6 +5039,7 @@ Creation techniques & properties of each type:
       time of <execution>, times, Plain
       universal time <string>, universal times, NamedGlobal
     Properties of <time> { key phrase, plural keyword, form, <result type>}:
+      <format> + <time>, , BinaryOperator, <format>
       <time interval> & <time>, , BinaryOperator, <time range>
       <time interval> + <time>, , BinaryOperator, <time>
       <time range> & <time>, , BinaryOperator, <time range>
@@ -5089,6 +5126,7 @@ Creation techniques & properties of each type:
       <day of week> - <time interval>, , BinaryOperator, <day of week>
       <day of year> + <time interval>, , BinaryOperator, <day of year>
       <day of year> - <time interval>, , BinaryOperator, <day of year>
+      <format> + <time interval>, , BinaryOperator, <format>
       <integer> * <time interval>, , BinaryOperator, <time interval>
       <time interval> & <time>, , BinaryOperator, <time range>
       <time interval> * <integer>, , BinaryOperator, <time interval>
@@ -5144,6 +5182,7 @@ Creation techniques & properties of each type:
       time of <time of day with time zone>, times, Plain
       time_of_day <string>, times_of_day, NamedGlobal
     Properties of <time of day> { key phrase, plural keyword, form, <result type>}:
+      <format> + <time of day>, , BinaryOperator, <format>
       <time interval> + <time of day>, , BinaryOperator, <time of day>
       <time of day> & <time zone>, , BinaryOperator, <time of day with time zone>
       <time of day> + <time interval>, , BinaryOperator, <time of day>
@@ -5541,6 +5580,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   floating point <string>, floating points, NamedGlobal, <floating point>
   folder <string>, folders, NamedGlobal, <folder>
   folder <symlink>, folders, Index<symlink>Global, <folder>
+  format <string>, formats, NamedGlobal, <format>
   friday, fridays, PlainGlobal, <day of week>
   ghz, ghzs, PlainGlobal, <hertz>
   greatest hz, greatest hzs, PlainGlobal, <hertz>
@@ -5874,6 +5914,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <environment variable>, Cast
       as string, , <string>, <filesystem object>, Cast
       as string, , <string>, <floating point>, Cast
+      as string, , <string>, <format>, Cast
       as string, , <string>, <grub block list>, Cast
       as string, , <string>, <grub bootable image>, Cast
       as string, , <string>, <grub color pair>, Cast
@@ -6431,6 +6472,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       following text, following texts, <substring>, <substring>, Plain
       foreground, foregrounds, <grub color>, <grub color pair>, Plain
       form_factor, form_factors, <integer>, <dmi memory_device>, Plain
+      format, formats, <format>, world , NamedGlobal
       fpu exception, fpu exceptions, <boolean>, <processor>, Plain
       fpu, fpus, <boolean>, <processor>, Plain
       free amount, free amounts, <integer>, <ram>, Plain
@@ -6832,6 +6874,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       may, mays, <month>, world , PlainGlobal
       md5, md5s, <string>, <file>, Plain
       md5, md5s, <string>, <string>, Plain
+      mean, means, <floating point>, <floating point>, Plain
+      mean, means, <floating point>, <integer>, Plain
       member, members, <boolean>, <site group>, Plain
       memory_array_error_address, memory_array_error_addresss, <integer>, <dmi b32_bit_memory_error_information>, Plain
       memory_array_error_address, memory_array_error_addresss, <integer>, <dmi b64_bit_memory_error_information>, Plain
@@ -7366,6 +7410,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       speed, speeds, <integer>, <dmi memory_device>, Plain
       splashimage, splashimages, <grub file location>, <grub config file>, Plain
       sqlite database, sqlite databases, <sqlite database>, <file>, Plain
+      standard deviation, standard deviations, <floating point>, <floating point>, Plain
+      standard deviation, standard deviations, <floating point>, <integer>, Plain
       start date, start dates, <time>, <license>, Plain
       start, starts, <string position>, <substring>, Plain
       start, starts, <time>, <time range>, Plain

@@ -276,6 +276,10 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   version with multiplicity (derives from  version)
   weekly task trigger (derives from  task trigger)
   wifi
+  winrt enumeration
+  winrt package
+  winrt package id
+  winrt package user information
   wmi
   wmi object
   wmi select
@@ -2920,6 +2924,7 @@ Creation techniques & properties of each type:
       folder of <folder>, folders, Plain
       folder of <site>, folders, Plain
       install folder <integer>, install folders, NumberedGlobal
+      installed path of <winrt package>, installed paths, Plain
       native program files folder, native program files folders, PlainGlobal
       native system folder, native system folders, PlainGlobal
       parent folder of <filesystem object>, parent folders, Plain
@@ -3896,6 +3901,7 @@ Creation techniques & properties of each type:
       used amount of <ram>, used amounts, Plain
       user id of <user>, user ids, Plain
       user object count of <process>, user object counts, Plain
+      value of <winrt enumeration>, values, Plain
       vendor_syndrome of <dmi b32_bit_memory_error_information>, vendor_syndromes, Plain
       vendor_syndrome of <dmi b64_bit_memory_error_information>, vendor_syndromes, Plain
       version of <site>, versions, Plain
@@ -5246,6 +5252,7 @@ Creation techniques & properties of each type:
       sid of <logged on user>, sids, Plain
       sid of <security account>, sids, Plain
       sid of <user>, sids, Plain
+      sid of <winrt package user information>, sids, Plain
       trustee of <access control entry>, trustees, Plain
       user of <process>, users, Plain
       user sid of <event log record>, user sids, Plain
@@ -5638,6 +5645,9 @@ Creation techniques & properties of each type:
       <unary operator> as string, , Cast
       <undefined> as string, , Cast
       <version> as string, , Cast
+      <winrt enumeration> as string, , Cast
+      <winrt package user information> as string, , Cast
+      <winrt package> as string, , Cast
       <wmi object> as string, , Cast
       <wmi select> as string, , Cast
       <xml dom node> as text, , Cast
@@ -5750,6 +5760,7 @@ Creation techniques & properties of each type:
       expiration state of <license>, expiration states, Plain
       external_reference_designator of <dmi port_connector_information>, external_reference_designators, Plain
       family name of <processor>, family names, Plain
+      family name of <winrt package id>, family names, Plain
       family of <dmi system_information>, familys, Plain
       file system type of <drive>, file system types, Plain
       fips mode failure message of <cryptography>, fips mode failure messages, Plain
@@ -5757,6 +5768,7 @@ Creation techniques & properties of each type:
       friendly name of <network adapter>, friendly names, Plain
       from of <email task action>, froms, Plain
       full name of <user>, full names, Plain
+      full name of <winrt package id>, full names, Plain
       gather schedule authority of <site>, gather schedule authoritys, Plain
       gather url of <license>, gather urls, Plain
       group id of <task principal>, group ids, Plain
@@ -5869,6 +5881,8 @@ Creation techniques & properties of each type:
       name of <type>, names, Plain
       name of <unary operator>, names, Plain
       name of <user>, names, Plain
+      name of <winrt enumeration>, names, Plain
+      name of <winrt package id>, names, Plain
       name of <wmi select>, names, Plain
       netbios domainname of <active directory local computer>, netbios domainnames, Plain
       netbios domainname of <active directory local user>, netbios domainnames, Plain
@@ -5903,6 +5917,8 @@ Creation techniques & properties of each type:
       product_name of <dmi system_information>, product_names, Plain
       profile folder of <user>, profile folders, Plain
       protocol of <port mapping>, protocols, Plain
+      publisher id of <winrt package id>, publisher ids, Plain
+      publisher of <winrt package id>, publishers, Plain
       regex escape of <string>, regex escapes, Plain
       registration cidr address of <client>, registration cidr addresses, Plain
       registration mac address of <client>, registration mac addresses, Plain
@@ -7053,6 +7069,7 @@ Creation techniques & properties of each type:
       user comment of <user>, user comments, Plain, <string>
       user id of <user>, user ids, Plain, <integer>
       user privilege of <user>, user privileges, Plain, <boolean>
+      winrt package of <user>, winrt packages, Plain, <winrt package>
       workstation trust account flag of <user>, workstation trust account flags, Plain, <boolean>
 
   Type <utf8 string>
@@ -7079,6 +7096,7 @@ Creation techniques & properties of each type:
       version of <operating system>, versions, Plain
       version of <registration server>, versions, Plain
       version of <service>, versions, Plain
+      version of <winrt package id>, versions, Plain
     Properties of <version> { key phrase, plural keyword, form, <result type>}:
       <string> < <version>, , BinaryOperator, <boolean>
       <string> <= <version>, , BinaryOperator, <boolean>
@@ -7118,6 +7136,46 @@ Creation techniques & properties of each type:
       encryption of <wifi>, encryptions, Plain, <string>
       secured of <wifi>, secureds, Plain, <boolean>
       ssid of <wifi>, ssids, Plain, <string>
+
+  Type <winrt enumeration>
+    Creation of <winrt enumeration>: { key phrase, plural keyword, form}
+      architecture of <winrt package id>, architectures, Plain
+      install state of <winrt package user information>, install states, Plain
+    Properties of <winrt enumeration> { key phrase, plural keyword, form, <result type>}:
+      <winrt enumeration> as string, , Cast, <string>
+      name of <winrt enumeration>, names, Plain, <string>
+      value of <winrt enumeration>, values, Plain, <integer>
+
+  Type <winrt package>
+    Creation of <winrt package>: { key phrase, plural keyword, form}
+      winrt package <string>, winrt packages, NamedGlobal
+      winrt package of <user>, winrt packages, Plain
+      winrt package, winrt packages, PlainGlobal
+    Properties of <winrt package> { key phrase, plural keyword, form, <result type>}:
+      <winrt package> as string, , Cast, <string>
+      id of <winrt package>, ids, Plain, <winrt package id>
+      installed path of <winrt package>, installed paths, Plain, <folder>
+      winrt package user of <winrt package>, winrt package users, Plain, <winrt package user information>
+
+  Type <winrt package id>
+    Creation of <winrt package id>: { key phrase, plural keyword, form}
+      id of <winrt package>, ids, Plain
+    Properties of <winrt package id> { key phrase, plural keyword, form, <result type>}:
+      architecture of <winrt package id>, architectures, Plain, <winrt enumeration>
+      family name of <winrt package id>, family names, Plain, <string>
+      full name of <winrt package id>, full names, Plain, <string>
+      name of <winrt package id>, names, Plain, <string>
+      publisher id of <winrt package id>, publisher ids, Plain, <string>
+      publisher of <winrt package id>, publishers, Plain, <string>
+      version of <winrt package id>, versions, Plain, <version>
+
+  Type <winrt package user information>
+    Creation of <winrt package user information>: { key phrase, plural keyword, form}
+      winrt package user of <winrt package>, winrt package users, Plain
+    Properties of <winrt package user information> { key phrase, plural keyword, form, <result type>}:
+      <winrt package user information> as string, , Cast, <string>
+      install state of <winrt package user information>, install states, Plain, <winrt enumeration>
+      sid of <winrt package user information>, sids, Plain, <security identifier>
 
   Type <wmi>
     Creation of <wmi>: { key phrase, plural keyword, form}
@@ -7675,6 +7733,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   windows display time <string>, windows display times, NamedGlobal, <time>
   windows file <string>, windows files, NamedGlobal, <file>
   windows folder, windows folders, PlainGlobal, <folder>
+  winrt package <string>, winrt packages, NamedGlobal, <winrt package>
+  winrt package, winrt packages, PlainGlobal, <winrt package>
   wmi <string>, wmis, NamedGlobal, <wmi>
   wmi, wmis, PlainGlobal, <wmi>
   x32 application <string>, x32 applications, NamedGlobal, <application>
@@ -7814,6 +7874,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       april, aprils, <month and year>, <integer>, Plain
       april, aprils, <month>, world , PlainGlobal
       architecture, architectures, <string>, <operating system>, Plain
+      architecture, architectures, <winrt enumeration>, <winrt package id>, Plain
       archive duration, archive durations, <time interval>, <evaluation cycle>, Plain
       archive percent, archive percents, <floating point>, <evaluation cycle>, Plain
       archive, archives, <boolean>, <filesystem object>, Plain
@@ -7970,6 +8031,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <unary operator>, Cast
       as string, , <string>, <undefined>, Cast
       as string, , <string>, <version>, Cast
+      as string, , <string>, <winrt enumeration>, Cast
+      as string, , <string>, <winrt package user information>, Cast
+      as string, , <string>, <winrt package>, Cast
       as string, , <string>, <wmi object>, Cast
       as string, , <string>, <wmi select>, Cast
       as string, , <string>, <year>, Cast
@@ -8643,6 +8707,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       extrema, extremas, <( year, year )>, <year>, Plain
       false, falses, <boolean>, world , PlainGlobal
       family name, family names, <string>, <processor>, Plain
+      family name, family names, <string>, <winrt package id>, Plain
       family, families, <integer>, <network interface>, Plain
       family, families, <integer>, <processor>, Plain
       family, familys, <string>, <dmi system_information>, Plain
@@ -8730,6 +8795,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       fs_vol_is_compressed, fs_vol_is_compresseds, <boolean>, <drive>, Plain
       full gateway address, full gateway addresses, <ipv4or6 address>, <selected server>, Plain
       full name, full names, <string>, <user>, Plain
+      full name, full names, <string>, <winrt package id>, Plain
       full wmi, full wmis, <wmi>, world , NamedGlobal
       full, fulls, <boolean>, <power level>, Plain
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Numbered
@@ -8864,6 +8930,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       id, ids, <string>, <task network settings>, Plain
       id, ids, <string>, <task principal>, Plain
       id, ids, <string>, <task trigger>, Plain
+      id, ids, <winrt package id>, <winrt package>, Plain
       identifier, identifiers, <metabase identifier>, <metabase value>, Plain
       identity, identites, <string>, <execution>, Plain
       idle duration, idle durations, <time interval>, <task idle settings>, Plain
@@ -8900,7 +8967,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       insert path attribute, insert path attributes, <boolean>, <metabase value>, Plain
       inspectability, inspectabilities, <boolean>, <application>, Plain
       install folder, install folders, <folder>, world , NumberedGlobal
+      install state, install states, <winrt enumeration>, <winrt package user information>, Plain
       installable_languages, installable_languagess, <integer>, <dmi bios_language_information>, Plain
+      installed path, installed paths, <folder>, <winrt package>, Plain
       installed_size, installed_sizes, <integer>, <dmi cache_information>, Plain
       installed_size, installed_sizes, <integer>, <dmi memory_module_information>, Plain
       instance guid, instance guids, <string>, <running task>, Plain
@@ -9428,6 +9497,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       name, names, <string>, <type>, Plain
       name, names, <string>, <unary operator>, Plain
       name, names, <string>, <user>, Plain
+      name, names, <string>, <winrt enumeration>, Plain
+      name, names, <string>, <winrt package id>, Plain
       name, names, <string>, <wmi select>, Plain
       nan, nans, <boolean>, <floating point>, Plain
       native program files folder, native program files folders, <folder>, world , PlainGlobal
@@ -9698,6 +9769,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       proxy agent service, proxy agent services, <service>, world , PlainGlobal
       public firewall profile type, public firewall profile types, <firewall profile type>, world , PlainGlobal
       public profile, public profiles, <firewall profile>, <firewall policy>, Plain
+      publisher id, publisher ids, <string>, <winrt package id>, Plain
+      publisher, publishers, <string>, <winrt package id>, Plain
       q, qs, <html>, <html>, Named
       q, qs, <html>, <html>, Plain
       q, qs, <html>, <string>, Named
@@ -9943,6 +10016,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sid, sids, <security identifier>, <logged on user>, Plain
       sid, sids, <security identifier>, <security account>, Plain
       sid, sids, <security identifier>, <user>, Plain
+      sid, sids, <security identifier>, <winrt package user information>, Plain
       sid, sids, <security identifier>, world , NamedGlobal
       significance place, significance places, <floating point>, <floating point>, Numbered
       significance place, significance places, <floating point>, <floating point>, Plain
@@ -10345,6 +10419,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       v1 compatibility, v1 compatibilities, <boolean>, <task settings>, Plain
       v2 compatibility, v2 compatibilities, <boolean>, <task settings>, Plain
       value query, value queries, <task named value pair>, <event task trigger>, Plain
+      value, values, <integer>, <winrt enumeration>, Plain
       value, values, <json value>, <json key>, Plain
       value, values, <metabase value>, <metabase key>, Plain
       value, values, <registry key value>, <registry key>, Named
@@ -10390,6 +10465,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       version, versions, <version>, <operating system>, Plain
       version, versions, <version>, <registration server>, Plain
       version, versions, <version>, <service>, Plain
+      version, versions, <version>, <winrt package id>, Plain
       version, versions, <version>, world , NamedGlobal
       virtualizer, virtualizers, <string>, <application>, Plain
       volatile attribute, volatile attributes, <boolean>, <metabase value>, Plain
@@ -10420,6 +10496,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       windows folder, windows folders, <folder>, world , PlainGlobal
       windows server count, windows server counts, <integer>, <bes product>, Plain
       windows, windowses, <boolean>, <operating system>, Plain
+      winrt package user, winrt package users, <winrt package user information>, <winrt package>, Plain
+      winrt package, winrt packages, <winrt package>, <user>, Plain
+      winrt package, winrt packages, <winrt package>, world , NamedGlobal
+      winrt package, winrt packages, <winrt package>, world , PlainGlobal
       wins enabled, wins enableds, <boolean>, <network adapter>, Plain
       winsock2 supported, winsock2 supporteds, <boolean>, <network>, Plain
       wmi, wmis, <wmi>, world , NamedGlobal
