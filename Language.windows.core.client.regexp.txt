@@ -1302,9 +1302,11 @@ Creation techniques & properties of each type:
       administrator <string> of <client>, administrators, Named, <setting>
       administrator of <client>, administrators, Plain, <setting>
       authenticating of <client>, authenticatings, Plain, <boolean>
+      banned prefetch plugin of <client>, banned prefetch plugins, Plain, <string>
       brand of <client>, brands, Plain, <string>
       build target of <client>, build targets, Plain, <string>
       certificate of <client>, certificates, Plain, <x509 certificate>
+      character set of <client>, character sets, Plain, <string>
       data folder of <client>, data folders, Plain, <folder>
       deployment character set of <client>, deployment character sets, Plain, <string>
       evaluationcycle of <client>, evaluationcycles, Plain, <evaluation cycle>
@@ -5741,7 +5743,7 @@ Creation techniques & properties of each type:
       attachment of <email task action>, attachments, Plain
       author of <task registration info>, authors, Plain
       bank_locator of <dmi memory_device>, bank_locators, Plain
-      banned prefetch plugin <client>, banned prefetch plugins, Index<client>Global
+      banned prefetch plugin of <client>, banned prefetch plugins, Plain
       base64 decode <string>, base64 decodes, NamedGlobal
       base64 encode <string>, base64 encodes, NamedGlobal
       bcc of <email task action>, bccs, Plain
@@ -5754,7 +5756,7 @@ Creation techniques & properties of each type:
       build target of <client>, build targets, Plain
       cc of <email task action>, ccs, Plain
       character <integer>, characters, NumberedGlobal
-      character set <client>, character sets, Index<client>Global
+      character set of <client>, character sets, Plain
       cidr address of <network adapter interface>, cidr addresses, Plain
       cidr address of <network adapter>, cidr addresses, Plain
       cidr address of <network address list>, cidr addresses, Plain
@@ -7435,7 +7437,6 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   august, augusts, PlainGlobal, <month>
   authenticated users group, authenticated users groups, PlainGlobal, <security account>
   backoffice bit <operating system suite mask>, backoffice bits, Index<operating system suite mask>Global, <boolean>
-  banned prefetch plugin <client>, banned prefetch plugins, Index<client>Global, <string>
   base64 decode <string>, base64 decodes, NamedGlobal, <string>
   base64 encode <string>, base64 encodes, NamedGlobal, <string>
   batch group, batch groups, PlainGlobal, <security account>
@@ -7467,7 +7468,6 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   cast returning <type>, casts returning, Index<type>Global, <cast>
   cast, casts, PlainGlobal, <cast>
   character <integer>, characters, NumberedGlobal, <string>
-  character set <client>, character sets, Index<client>Global, <string>
   client cryptography, client cryptographies, PlainGlobal, <client_cryptography>
   client license, client licenses, PlainGlobal, <license>
   client, clients, PlainGlobal, <client>
@@ -8211,7 +8211,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       bad password count, bad password counts, <integer>, <user>, Plain
       bank_connections, bank_connectionss, <integer>, <dmi memory_module_information>, Plain
       bank_locator, bank_locators, <string>, <dmi memory_device>, Plain
-      banned prefetch plugin, banned prefetch plugins, <string>, world , Index<client>Global
+      banned prefetch plugin, banned prefetch plugins, <string>, <client>, Plain
       base priority, base priorities, <priority class>, <process>, Plain
       base, bases, <html>, <html>, Named
       base, bases, <html>, <html>, Plain
@@ -8317,7 +8317,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       certificate, certificates, <x509 certificate>, <client>, Plain
       change notification permission, change notification permissions, <boolean>, <access control entry>, Plain
       channel_type, channel_types, <integer>, <dmi memory_channel>, Plain
-      character set, character sets, <string>, world , Index<client>Global
+      character set, character sets, <string>, <client>, Plain
       character, characters, <string>, world , NumberedGlobal
       character, characters, <substring>, <string>, Numbered
       character, characters, <substring>, <string>, Plain

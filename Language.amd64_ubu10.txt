@@ -720,9 +720,11 @@ Creation techniques & properties of each type:
       administrator <string> of <client>, administrators, Named, <setting>
       administrator of <client>, administrators, Plain, <setting>
       authenticating of <client>, authenticatings, Plain, <boolean>
+      banned prefetch plugin of <client>, banned prefetch plugins, Plain, <string>
       brand of <client>, brands, Plain, <string>
       build target of <client>, build targets, Plain, <string>
       certificate of <client>, certificates, Plain, <x509 certificate>
+      character set of <client>, character sets, Plain, <string>
       data folder of <client>, data folders, Plain, <folder>
       deployment character set of <client>, deployment character sets, Plain, <string>
       evaluationcycle of <client>, evaluationcycles, Plain, <evaluation cycle>
@@ -4462,7 +4464,7 @@ Creation techniques & properties of each type:
       asset_tag_number of <dmi system_enclosure_or_chassis>, asset_tag_numbers, Plain
       asset_tag_number of <dmi system_power_supply>, asset_tag_numbers, Plain
       bank_locator of <dmi memory_device>, bank_locators, Plain
-      banned prefetch plugin <client>, banned prefetch plugins, Index<client>Global
+      banned prefetch plugin of <client>, banned prefetch plugins, Plain
       base64 decode <string>, base64 decodes, NamedGlobal
       base64 encode <string>, base64 encodes, NamedGlobal
       bios_release_date of <dmi bios_information>, bios_release_dates, Plain
@@ -4474,7 +4476,7 @@ Creation techniques & properties of each type:
       build of <operating system>, builds, Plain
       build target of <client>, build targets, Plain
       character <integer>, characters, NumberedGlobal
-      character set <client>, character sets, Index<client>Global
+      character set of <client>, character sets, Plain
       cidr address of <network adapter interface>, cidr addresses, Plain
       cidr address of <network adapter>, cidr addresses, Plain
       cidr address of <network ip interface>, cidr addresses, Plain
@@ -5632,7 +5634,6 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   april, aprils, PlainGlobal, <month>
   august <integer>, augusts, NumberedGlobal, <day of year>
   august, augusts, PlainGlobal, <month>
-  banned prefetch plugin <client>, banned prefetch plugins, Index<client>Global, <string>
   base64 decode <string>, base64 decodes, NamedGlobal, <string>
   base64 encode <string>, base64 encodes, NamedGlobal, <string>
   bes license, bes licenses, PlainGlobal, <license>
@@ -5651,7 +5652,6 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   cast returning <type>, casts returning, Index<type>Global, <cast>
   cast, casts, PlainGlobal, <cast>
   character <integer>, characters, NumberedGlobal, <string>
-  character set <client>, character sets, Index<client>Global, <string>
   client cryptography, client cryptographies, PlainGlobal, <client_cryptography>
   client license, client licenses, PlainGlobal, <license>
   client, clients, PlainGlobal, <client>
@@ -6163,7 +6163,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       background, backgrounds, <grub color>, <grub color pair>, Plain
       bank_connections, bank_connectionss, <integer>, <dmi memory_module_information>, Plain
       bank_locator, bank_locators, <string>, <dmi memory_device>, Plain
-      banned prefetch plugin, banned prefetch plugins, <string>, world , Index<client>Global
+      banned prefetch plugin, banned prefetch plugins, <string>, <client>, Plain
       base package, base packages, <debian base package>, <debianpackagecache>, Named
       base package, base packages, <debian base package>, <debianpackagecache>, Plain
       base package, base packages, <debian base package>, <debianpkg version>, Plain
@@ -6259,7 +6259,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       change time, change times, <time>, <filesystem object>, Plain
       change time, change times, <time>, <symlink>, Plain
       channel_type, channel_types, <integer>, <dmi memory_channel>, Plain
-      character set, character sets, <string>, world , Index<client>Global
+      character set, character sets, <string>, <client>, Plain
       character, characters, <string>, world , NumberedGlobal
       character, characters, <substring>, <string>, Numbered
       character, characters, <substring>, <string>, Plain

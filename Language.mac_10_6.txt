@@ -719,9 +719,11 @@ Creation techniques & properties of each type:
       administrator <string> of <client>, administrators, Named, <setting>
       administrator of <client>, administrators, Plain, <setting>
       authenticating of <client>, authenticatings, Plain, <boolean>
+      banned prefetch plugin of <client>, banned prefetch plugins, Plain, <string>
       brand of <client>, brands, Plain, <string>
       build target of <client>, build targets, Plain, <string>
       certificate of <client>, certificates, Plain, <x509 certificate>
+      character set of <client>, character sets, Plain, <string>
       data folder of <client>, data folders, Plain, <folder>
       deployment character set of <client>, deployment character sets, Plain, <string>
       evaluationcycle of <client>, evaluationcycles, Plain, <evaluation cycle>
@@ -3646,7 +3648,7 @@ Creation techniques & properties of each type:
       <version> as string, , Cast
       <year> as string, , Cast
       architecture of <operating system>, architectures, Plain
-      banned prefetch plugin <client>, banned prefetch plugins, Index<client>Global
+      banned prefetch plugin of <client>, banned prefetch plugins, Plain
       base64 decode <string>, base64 decodes, NamedGlobal
       base64 encode <string>, base64 encodes, NamedGlobal
       brand of <client>, brands, Plain
@@ -3654,7 +3656,7 @@ Creation techniques & properties of each type:
       build of <operating system>, builds, Plain
       build target of <client>, build targets, Plain
       character <integer>, characters, NumberedGlobal
-      character set <client>, character sets, Index<client>Global
+      character set of <client>, character sets, Plain
       cidr address of <network adapter interface>, cidr addresses, Plain
       cidr address of <network adapter>, cidr addresses, Plain
       cidr address of <network ip interface>, cidr addresses, Plain
@@ -4771,7 +4773,6 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   audio folder, audio folders, PlainGlobal, <folder>
   august <integer>, augusts, NumberedGlobal, <day of year>
   august, augusts, PlainGlobal, <month>
-  banned prefetch plugin <client>, banned prefetch plugins, Index<client>Global, <string>
   base64 decode <string>, base64 decodes, NamedGlobal, <string>
   base64 encode <string>, base64 encodes, NamedGlobal, <string>
   bes license, bes licenses, PlainGlobal, <license>
@@ -4793,7 +4794,6 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   cast returning <type>, casts returning, Index<type>Global, <cast>
   cast, casts, PlainGlobal, <cast>
   character <integer>, characters, NumberedGlobal, <string>
-  character set <client>, character sets, Index<client>Global, <string>
   chewable items folder, chewable items folders, PlainGlobal, <folder>
   classic domain, classic domains, PlainGlobal, <domain>
   classic folder, classic folders, PlainGlobal, <folder>
@@ -5367,7 +5367,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       b, bs, <html>, <string>, Named
       b, bs, <html>, <string>, Plain
       backup time, backup times, <time>, <filesystem object>, Plain
-      banned prefetch plugin, banned prefetch plugins, <string>, world , Index<client>Global
+      banned prefetch plugin, banned prefetch plugins, <string>, <client>, Plain
       base, bases, <html>, <html>, Named
       base, bases, <html>, <html>, Plain
       base, bases, <html>, <string>, Named
@@ -5444,7 +5444,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       cast, casts, <cast>, world , NamedGlobal
       cast, casts, <cast>, world , PlainGlobal
       certificate, certificates, <x509 certificate>, <client>, Plain
-      character set, character sets, <string>, world , Index<client>Global
+      character set, character sets, <string>, <client>, Plain
       character, characters, <string>, world , NumberedGlobal
       character, characters, <substring>, <string>, Numbered
       character, characters, <substring>, <string>, Plain
