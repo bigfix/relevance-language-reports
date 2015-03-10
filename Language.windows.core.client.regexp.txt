@@ -1310,6 +1310,7 @@ Creation techniques & properties of each type:
       data folder of <client>, data folders, Plain, <folder>
       deployment character set of <client>, deployment character sets, Plain, <string>
       evaluationcycle of <client>, evaluationcycles, Plain, <evaluation cycle>
+      fxf character set of <client>, fxf character sets, Plain, <string>
       last command time of <client>, last command times, Plain, <time>
       last report time of <client>, last report times, Plain, <time>
       local character set of <client>, local character sets, Plain, <string>
@@ -1319,6 +1320,7 @@ Creation techniques & properties of each type:
       registration cidr address of <client>, registration cidr addresses, Plain, <string>
       registration mac address of <client>, registration mac addresses, Plain, <string>
       registration subnet address of <client>, registration subnet addresses, Plain, <ipv4or6 address>
+      report character set of <client>, report character sets, Plain, <string>
       setting <string> of <client>, settings, Named, <setting>
       setting of <client>, settings, Plain, <setting>
       storage folder of <client>, storage folders, Plain, <folder>
@@ -5413,6 +5415,7 @@ Creation techniques & properties of each type:
       effective date of <setting>, effective dates, Plain, <time>
       enabled of <setting>, enableds, Plain, <boolean>
       name of <setting>, names, Plain, <string>
+      sha256 of <setting>, sha256s, Plain, <string>
       value of <setting>, values, Plain, <string>
 
   Type <show message task action> (derives from task action)
@@ -5846,6 +5849,7 @@ Creation techniques & properties of each type:
       from of <email task action>, froms, Plain
       full name of <user>, full names, Plain
       full name of <winrt package id>, full names, Plain
+      fxf character set of <client>, fxf character sets, Plain
       gather schedule authority of <site>, gather schedule authoritys, Plain
       gather url of <license>, gather urls, Plain
       group id of <task principal>, group ids, Plain
@@ -6008,6 +6012,7 @@ Creation techniques & properties of each type:
       remote addresses string of <firewall rule>, remote addresses strings, Plain
       remote ports string of <firewall rule>, remote ports strings, Plain
       replyto of <email task action>, replytos, Plain
+      report character set of <client>, report character sets, Plain
       reserved of <dmi bios_language_information>, reserveds, Plain
       reserved of <dmi system_boot_information>, reserveds, Plain
       revision_level of <dmi system_power_supply>, revision_levels, Plain
@@ -6032,6 +6037,7 @@ Creation techniques & properties of each type:
       sha224 of <file>, sha224s, Plain
       sha224 of <string>, sha224s, Plain
       sha256 of <file>, sha256s, Plain
+      sha256 of <setting>, sha256s, Plain
       sha256 of <string>, sha256s, Plain
       sha2_224 of <file>, sha2_224s, Plain
       sha2_224 of <string>, sha2_224s, Plain
@@ -8905,6 +8911,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       full name, full names, <string>, <winrt package id>, Plain
       full wmi, full wmis, <wmi>, world , NamedGlobal
       full, fulls, <boolean>, <power level>, Plain
+      fxf character set, fxf character sets, <string>, <client>, Plain
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Numbered
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Plain
       gateway list, gateway lists, <network address list>, <network adapter>, Plain
@@ -9984,6 +9991,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       remote, remotes, <boolean>, <logged on user>, Plain
       repetition, repetitions, <task repetition pattern>, <task trigger>, Plain
       replyto, replytos, <string>, <email task action>, Plain
+      report character set, report character sets, <string>, <client>, Plain
       report duration, report durations, <time interval>, <evaluation cycle>, Plain
       report percent, report percents, <floating point>, <evaluation cycle>, Plain
       reserved, reserveds, <string>, <dmi bios_language_information>, Plain
@@ -10132,6 +10140,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sha224, sha224s, <string>, <string>, Plain
       sha256 download, sha256 downloads, <boolean>, <license>, Plain
       sha256, sha256s, <string>, <file>, Plain
+      sha256, sha256s, <string>, <setting>, Plain
       sha256, sha256s, <string>, <string>, Plain
       sha2_224, sha2_224s, <string>, <file>, Plain
       sha2_224, sha2_224s, <string>, <string>, Plain

@@ -1352,6 +1352,9 @@ Creation techniques & properties of each type:
       administered computer set of <bes user>, administered computer sets, Plain, <bes computer set>
       administrator <bes computer> of <bes user>, administrators, Index<bes computer>, <boolean>
       approver role of <bes user>, approver roles, Plain, <bes role>
+      can create actions flag of <bes user>, can create actions flags, Plain, <boolean>
+      can lock flag of <bes user>, can lock flags, Plain, <boolean>
+      can send multiple refresh flag of <bes user>, can send multiple refresh flags, Plain, <boolean>
       creation time of <bes user>, creation times, Plain, <time>
       custom content flag of <bes user>, custom content flags, Plain, <boolean>
       distinguished name of <bes user>, distinguished names, Plain, <string>
@@ -1371,6 +1374,12 @@ Creation techniques & properties of each type:
       masthead operator name of <bes user>, masthead operator names, Plain, <string>
       name of <bes user>, names, Plain, <string>
       operator site of <bes user>, operator sites, Plain, <bes site>
+      restartandshutdown actionscript privilege allowboth flag of <bes user>, restartandshutdown actionscript privilege allowboth flags, Plain, <boolean>
+      restartandshutdown actionscript privilege allowrestartonly flag of <bes user>, restartandshutdown actionscript privilege allowrestartonly flags, Plain, <boolean>
+      restartandshutdown actionscript privilege none flag of <bes user>, restartandshutdown actionscript privilege none flags, Plain, <boolean>
+      restartandshutdown postaction privilege allowboth flag of <bes user>, restartandshutdown postaction privilege allowboth flags, Plain, <boolean>
+      restartandshutdown postaction privilege allowrestartonly flag of <bes user>, restartandshutdown postaction privilege allowrestartonly flags, Plain, <boolean>
+      restartandshutdown postaction privilege none flag of <bes user>, restartandshutdown postaction privilege none flags, Plain, <boolean>
       role of <bes user>, roles, Plain, <bes role>
       role set of <bes user>, role sets, Plain, <bes role set>
       set of <bes user>, sets, Plain, <bes user set>
@@ -1734,6 +1743,9 @@ Creation techniques & properties of each type:
       bit <integer> of <bit set>, bits, Numbered
       bit <integer> of <integer>, bits, Numbered
       boolean <string>, booleans, NamedGlobal
+      can create actions flag of <bes user>, can create actions flags, Plain
+      can lock flag of <bes user>, can lock flags, Plain
+      can send multiple refresh flag of <bes user>, can send multiple refresh flags, Plain
       client evaluated flag of <bes computer group>, client evaluated flags, Plain
       client installed flag of <bes unmanagedasset>, client installed flags, Plain
       computer flag of <bes filter>, computer flags, Plain
@@ -1827,6 +1839,12 @@ Creation techniques & properties of each type:
       requires authoring flag of <bes wizard>, requires authoring flags, Plain
       reserved flag of <bes property>, reserved flags, Plain
       restart flag of <bes action>, restart flags, Plain
+      restartandshutdown actionscript privilege allowboth flag of <bes user>, restartandshutdown actionscript privilege allowboth flags, Plain
+      restartandshutdown actionscript privilege allowrestartonly flag of <bes user>, restartandshutdown actionscript privilege allowrestartonly flags, Plain
+      restartandshutdown actionscript privilege none flag of <bes user>, restartandshutdown actionscript privilege none flags, Plain
+      restartandshutdown postaction privilege allowboth flag of <bes user>, restartandshutdown postaction privilege allowboth flags, Plain
+      restartandshutdown postaction privilege allowrestartonly flag of <bes user>, restartandshutdown postaction privilege allowrestartonly flags, Plain
+      restartandshutdown postaction privilege none flag of <bes user>, restartandshutdown postaction privilege none flags, Plain
       retry wait for reboot flag of <bes action>, retry wait for reboot flags, Plain
       root server flag of <bes computer>, root server flags, Plain
       secure parameter flag of <bes action>, secure parameter flags, Plain
@@ -5278,6 +5296,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       boolean, booleans, <boolean>, world , NamedGlobal
       br, brs, <html>, world , NamedGlobal
       br, brs, <html>, world , PlainGlobal
+      can create actions flag, can create actions flags, <boolean>, <bes user>, Plain
+      can lock flag, can lock flags, <boolean>, <bes user>, Plain
+      can send multiple refresh flag, can send multiple refresh flags, <boolean>, <bes user>, Plain
       caption, captions, <html>, <html>, Named
       caption, captions, <html>, <html>, Plain
       caption, captions, <html>, <string>, Named
@@ -6197,6 +6218,12 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       requires authoring flag, requires authoring flags, <boolean>, <bes wizard>, Plain
       reserved flag, reserved flags, <boolean>, <bes property>, Plain
       restart flag, restart flags, <boolean>, <bes action>, Plain
+      restartandshutdown actionscript privilege allowboth flag, restartandshutdown actionscript privilege allowboth flags, <boolean>, <bes user>, Plain
+      restartandshutdown actionscript privilege allowrestartonly flag, restartandshutdown actionscript privilege allowrestartonly flags, <boolean>, <bes user>, Plain
+      restartandshutdown actionscript privilege none flag, restartandshutdown actionscript privilege none flags, <boolean>, <bes user>, Plain
+      restartandshutdown postaction privilege allowboth flag, restartandshutdown postaction privilege allowboth flags, <boolean>, <bes user>, Plain
+      restartandshutdown postaction privilege allowrestartonly flag, restartandshutdown postaction privilege allowrestartonly flags, <boolean>, <bes user>, Plain
+      restartandshutdown postaction privilege none flag, restartandshutdown postaction privilege none flags, <boolean>, <bes user>, Plain
       result from, results from, <bes action result>, <bes action>, Index<bes computer>
       result from, results from, <bes action result>, <bes computer>, Index<bes action>
       result from, results from, <bes fixlet result>, <bes computer>, Index<bes fixlet>

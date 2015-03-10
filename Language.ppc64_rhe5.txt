@@ -741,6 +741,7 @@ Creation techniques & properties of each type:
       data folder of <client>, data folders, Plain, <folder>
       deployment character set of <client>, deployment character sets, Plain, <string>
       evaluationcycle of <client>, evaluationcycles, Plain, <evaluation cycle>
+      fxf character set of <client>, fxf character sets, Plain, <string>
       last command time of <client>, last command times, Plain, <time>
       last report time of <client>, last report times, Plain, <time>
       local character set of <client>, local character sets, Plain, <string>
@@ -750,6 +751,7 @@ Creation techniques & properties of each type:
       registration cidr address of <client>, registration cidr addresses, Plain, <string>
       registration mac address of <client>, registration mac addresses, Plain, <string>
       registration subnet address of <client>, registration subnet addresses, Plain, <ipv4or6 address>
+      report character set of <client>, report character sets, Plain, <string>
       setting <string> of <client>, settings, Named, <setting>
       setting of <client>, settings, Plain, <setting>
       storage folder of <client>, storage folders, Plain, <folder>
@@ -3792,6 +3794,7 @@ Creation techniques & properties of each type:
       pid of <process>, pids, Plain, <integer>
       ppid of <process>, ppids, Plain, <integer>
       process id of <process>, process ids, Plain, <integer>
+      selinux context of <process>, selinux contexts, Plain, <string>
       user of <process>, users, Plain, <user>
 
   Type <processor>
@@ -4089,8 +4092,10 @@ Creation techniques & properties of each type:
       relay service, relay services, PlainGlobal
       running service <string>, running services, NamedGlobal
       service <string>, services, NamedGlobal
+      service, services, PlainGlobal
     Properties of <service> { key phrase, plural keyword, form, <result type>}:
       <service> as string, , Cast, <string>
+      runlevel of <service>, runlevels, Plain, <string>
       running of <service>, runnings, Plain, <boolean>
       state of <service>, states, Plain, <string>
       version of <service>, versions, Plain, <version>
@@ -4109,6 +4114,7 @@ Creation techniques & properties of each type:
       effective date of <setting>, effective dates, Plain, <time>
       enabled of <setting>, enableds, Plain, <boolean>
       name of <setting>, names, Plain, <string>
+      sha256 of <setting>, sha256s, Plain, <string>
       value of <setting>, values, Plain, <string>
 
   Type <short rpm package version record>
@@ -4515,6 +4521,7 @@ Creation techniques & properties of each type:
       fips mode failure message of <cryptography>, fips mode failure messages, Plain
       flag list of <processor>, flag lists, Plain
       friendly name of <network adapter>, friendly names, Plain
+      fxf character set of <client>, fxf character sets, Plain
       gather schedule authority of <site>, gather schedule authoritys, Plain
       gather url of <license>, gather urls, Plain
       group name of <filesystem object>, group names, Plain
@@ -4617,15 +4624,18 @@ Creation techniques & properties of each type:
       registration mac address of <client>, registration mac addresses, Plain
       relation of <capability>, relations, Plain
       release of <operating system>, releases, Plain
+      report character set of <client>, report character sets, Plain
       reserved of <dmi bios_language_information>, reserveds, Plain
       reserved of <dmi system_boot_information>, reserveds, Plain
       revision of <processor>, revisions, Plain
       revision_level of <dmi system_power_supply>, revision_levels, Plain
       run mode of <processor>, run modes, Plain
+      runlevel of <service>, runlevels, Plain
       sbds_device_chemistry of <dmi portable_battery>, sbds_device_chemistrys, Plain
       sbds_version_number of <dmi portable_battery>, sbds_version_numbers, Plain
       schema of <sqlite table>, schemas, Plain
       seat count state of <license>, seat count states, Plain
+      selinux context of <process>, selinux contexts, Plain
       serial_number of <dmi base_board_information>, serial_numbers, Plain
       serial_number of <dmi memory_device>, serial_numbers, Plain
       serial_number of <dmi portable_battery>, serial_numbers, Plain
@@ -4639,6 +4649,7 @@ Creation techniques & properties of each type:
       sha224 of <file>, sha224s, Plain
       sha224 of <string>, sha224s, Plain
       sha256 of <file>, sha256s, Plain
+      sha256 of <setting>, sha256s, Plain
       sha256 of <string>, sha256s, Plain
       sha2_224 of <file>, sha2_224s, Plain
       sha2_224 of <string>, sha2_224s, Plain
@@ -5826,6 +5837,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   september <integer>, septembers, NumberedGlobal, <day of year>
   september, septembers, PlainGlobal, <month>
   service <string>, services, NamedGlobal, <service>
+  service, services, PlainGlobal, <service>
   short rpm package version record <rpm package version record>, short rpm package version records, Index<rpm package version record>Global, <short rpm package version record>
   short rpm package version record <short rpm package version record>, short rpm package version records, Index<short rpm package version record>Global, <short rpm package version record>
   site <string>, sites, NamedGlobal, <site>
@@ -6618,6 +6630,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       friendly name, friendly names, <string>, <network adapter>, Plain
       full gateway address, full gateway addresses, <ipv4or6 address>, <selected server>, Plain
       full, fulls, <boolean>, <power level>, Plain
+      fxf character set, fxf character sets, <string>, <client>, Plain
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Numbered
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Plain
       gateway flag, gateway flags, <boolean>, <route>, Plain
@@ -7403,6 +7416,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       remote address, remote addresses, <ipv4or6 address>, <socket>, Plain
       remote port, remote ports, <integer>, <socket>, Plain
       remote, remotes, <boolean>, <logged on user>, Plain
+      report character set, report character sets, <string>, <client>, Plain
       report duration, report durations, <time interval>, <evaluation cycle>, Plain
       report percent, report percents, <floating point>, <evaluation cycle>, Plain
       require, requires, <capability>, <package>, Plain
@@ -7441,6 +7455,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       rpm, rpms, <rpmdatabase>, world , PlainGlobal
       run mode, run modes, <string>, <processor>, Plain
       runlevel, runlevels, <runlevel>, world , PlainGlobal
+      runlevel, runlevels, <string>, <service>, Plain
       running application, running applications, <application>, world , NamedGlobal
       running application, running applications, <application>, world , PlainGlobal
       running service, running services, <service>, world , NamedGlobal
@@ -7468,6 +7483,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       segment_group_number, segment_group_numbers, <integer>, <dmi onboard_devices_extended_information>, Plain
       segment_group_number, segment_group_numbers, <integer>, <dmi system_slots>, Plain
       selected server, selected servers, <selected server>, world , PlainGlobal
+      selinux context, selinux contexts, <string>, <process>, Plain
       september, septembers, <date>, <integer>, Numbered
       september, septembers, <day of year>, world , NumberedGlobal
       september, septembers, <month and year>, <integer>, Plain
@@ -7480,6 +7496,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       serial_number, serial_numbers, <string>, <dmi system_information>, Plain
       serial_number, serial_numbers, <string>, <dmi system_power_supply>, Plain
       service, services, <service>, world , NamedGlobal
+      service, services, <service>, world , PlainGlobal
       set, sets, <integer set>, <integer>, Plain
       set, sets, <string set>, <string>, Plain
       setgid, setgids, <boolean>, <filesystem object>, Plain
@@ -7498,6 +7515,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sha224, sha224s, <string>, <string>, Plain
       sha256 download, sha256 downloads, <boolean>, <license>, Plain
       sha256, sha256s, <string>, <file>, Plain
+      sha256, sha256s, <string>, <setting>, Plain
       sha256, sha256s, <string>, <string>, Plain
       sha2_224, sha2_224s, <string>, <file>, Plain
       sha2_224, sha2_224s, <string>, <string>, Plain

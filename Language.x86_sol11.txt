@@ -68,6 +68,17 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   integer set
   integer with multiplicity (derives from  integer)
   ip version
+  ips authority info
+  ips branch version
+  ips build version
+  ips component version
+  ips fmri
+  ips image
+  ips package
+  ips partial matching fmri
+  ips repo
+  ips setting pieces
+  ips version dependency
   ipv4 address (derives from  ipv4or6 address)
   ipv4 address with multiplicity (derives from  ipv4 address)
   ipv4 route
@@ -164,6 +175,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   uuid with multiplicity (derives from  uuid)
   version
   version with multiplicity (derives from  version)
+  version with time
   x509 certificate
   year
   year with multiplicity (derives from  year)
@@ -374,6 +386,21 @@ Creation techniques & properties of each type:
       <integer> = <floating point>, , BinaryOperator
       <integer> = <integer>, , BinaryOperator
       <ip version> = <ip version>, , BinaryOperator
+      <ips branch version> < <string>, , BinaryOperator
+      <ips branch version> <= <string>, , BinaryOperator
+      <ips branch version> = <string>, , BinaryOperator
+      <ips build version> < <string>, , BinaryOperator
+      <ips build version> <= <string>, , BinaryOperator
+      <ips build version> = <string>, , BinaryOperator
+      <ips component version> < <string>, , BinaryOperator
+      <ips component version> <= <string>, , BinaryOperator
+      <ips component version> = <string>, , BinaryOperator
+      <ips fmri> < <string>, , BinaryOperator
+      <ips fmri> <= <string>, , BinaryOperator
+      <ips fmri> = <string>, , BinaryOperator
+      <ips partial matching fmri> < <string>, , BinaryOperator
+      <ips partial matching fmri> <= <string>, , BinaryOperator
+      <ips partial matching fmri> = <string>, , BinaryOperator
       <ipv4 address> < <ipv4 address>, , BinaryOperator
       <ipv4 address> < <string>, , BinaryOperator
       <ipv4 address> <= <ipv4 address>, , BinaryOperator
@@ -411,21 +438,39 @@ Creation techniques & properties of each type:
       <string set> = <string set>, , BinaryOperator
       <string set> contains <string set>, , BinaryOperator
       <string set> contains <string>, , BinaryOperator
+      <string> < <ips branch version>, , BinaryOperator
+      <string> < <ips build version>, , BinaryOperator
+      <string> < <ips component version>, , BinaryOperator
+      <string> < <ips fmri>, , BinaryOperator
+      <string> < <ips partial matching fmri>, , BinaryOperator
       <string> < <ipv4 address>, , BinaryOperator
       <string> < <ipv4or6 address>, , BinaryOperator
       <string> < <string>, , BinaryOperator
       <string> < <uuid>, , BinaryOperator
+      <string> < <version with time>, , BinaryOperator
       <string> < <version>, , BinaryOperator
+      <string> <= <ips branch version>, , BinaryOperator
+      <string> <= <ips build version>, , BinaryOperator
+      <string> <= <ips component version>, , BinaryOperator
+      <string> <= <ips fmri>, , BinaryOperator
+      <string> <= <ips partial matching fmri>, , BinaryOperator
       <string> <= <ipv4 address>, , BinaryOperator
       <string> <= <ipv4or6 address>, , BinaryOperator
       <string> <= <string>, , BinaryOperator
       <string> <= <uuid>, , BinaryOperator
+      <string> <= <version with time>, , BinaryOperator
       <string> <= <version>, , BinaryOperator
+      <string> = <ips branch version>, , BinaryOperator
+      <string> = <ips build version>, , BinaryOperator
+      <string> = <ips component version>, , BinaryOperator
+      <string> = <ips fmri>, , BinaryOperator
+      <string> = <ips partial matching fmri>, , BinaryOperator
       <string> = <ipv4 address>, , BinaryOperator
       <string> = <ipv4or6 address>, , BinaryOperator
       <string> = <regular expression>, , BinaryOperator
       <string> = <string>, , BinaryOperator
       <string> = <uuid>, , BinaryOperator
+      <string> = <version with time>, , BinaryOperator
       <string> = <version>, , BinaryOperator
       <string> as boolean, , Cast
       <string> contains <regular expression>, , BinaryOperator
@@ -457,6 +502,9 @@ Creation techniques & properties of each type:
       <uuid> <= <uuid>, , BinaryOperator
       <uuid> = <string>, , BinaryOperator
       <uuid> = <uuid>, , BinaryOperator
+      <version with time> < <string>, , BinaryOperator
+      <version with time> <= <string>, , BinaryOperator
+      <version with time> = <string>, , BinaryOperator
       <version> < <string>, , BinaryOperator
       <version> < <version>, , BinaryOperator
       <version> <= <string>, , BinaryOperator
@@ -470,6 +518,7 @@ Creation techniques & properties of each type:
       active of <logged on user>, actives, Plain
       alias of <network ip interface>, aliases, Plain
       allow unmentioned site of <license>, allow unmentioned sites, Plain
+      alt source of <ips package>, alt sources, Plain
       android of <operating system>, androids, Plain
       authenticating of <client>, authenticatings, Plain
       authenticating of <current relay>, authenticatings, Plain
@@ -490,6 +539,7 @@ Creation techniques & properties of each type:
       dependency known of <property>, dependencies known, Plain
       desired encrypt report of <client_cryptography>, desired encrypt reports, Plain
       desired fips mode of <cryptography>, desired fips modes, Plain
+      disabled of <ips authority info>, disableds, Plain
       disjunction of <boolean>, disjunctions, Plain
       divided by zero of <floating point>, divided by zeroes, Plain
       dynamic flag of <ipv4 route>, dynamic flags, Plain
@@ -507,6 +557,7 @@ Creation techniques & properties of each type:
       fips mode of <cryptography>, fips modes, Plain
       fips mode of <license>, fips modes, Plain
       float of <sqlite column type>, floats, Plain
+      frozen of <ips package>, frozens, Plain
       full of <power level>, fulls, Plain
       gateway flag of <ipv4 route>, gateway flags, Plain
       group execute of <filesystem object>, group executes, Plain
@@ -519,8 +570,10 @@ Creation techniques & properties of each type:
       in proxy agent context, in proxy agent contexts, PlainGlobal
       inexact of <floating point>, inexacts, Plain
       infinite of <floating point>, infinites, Plain
+      installed of <ips package>, installeds, Plain
       integer of <sqlite column type>, integers, Plain
       invalid of <floating point>, invalids, Plain
+      known of <ips package>, knowns, Plain
       leap of <year>, leaps, Plain
       legacy of <bes product>, legacies, Plain
       little endian of <operating system>, little endians, Plain
@@ -546,6 +599,8 @@ Creation techniques & properties of each type:
       normal of <power level>, normals, Plain
       nounzip of <grub module>, nounzips, Plain
       null of <sqlite column type>, nulls, Plain
+      obsolete of <ips package>, obsoletes, Plain
+      obsolete pkg of <ips package>, obsolete pkgs, Plain
       offer accepted of <action>, offer accepteds, Plain
       offer of <action>, offers, Plain
       other execute of <filesystem object>, other executes, Plain
@@ -570,6 +625,9 @@ Creation techniques & properties of each type:
       reject flag of <ipv4 route>, reject flags, Plain
       relevance of <fixlet>, relevances, Plain
       remote of <logged on user>, remotes, Plain
+      renamed of <ips package>, renameds, Plain
+      renamed pkg of <ips package>, renamed pkgs, Plain
+      repo registered of <ips authority info>, repo registereds, Plain
       running of <application usage summary>, runnings, Plain
       running of <service>, runnings, Plain
       savedefault of <grub bootable image>, savedefaults, Plain
@@ -582,20 +640,27 @@ Creation techniques & properties of each type:
       smt capable of <cpupackage>, smt capables, Plain
       smt enabled of <cpupackage>, smt enableds, Plain
       static flag of <ipv4 route>, static flags, Plain
+      sticky of <ips authority info>, stickies, Plain
       sticky of <mode>, stickies, Plain
       term of <bes product>, terms, Plain
       text of <sqlite column type>, texts, Plain
       true, trues, PlainGlobal
       underflow of <floating point>, underflows, Plain
+      uninstalled of <ips package>, uninstalleds, Plain
       unix of <operating system>, unixes, Plain
+      unknown of <ips package>, unknowns, Plain
+      unsupported of <ips package>, unsupporteds, Plain
       up flag of <ipv4 route>, up flags, Plain
       up of <network adapter interface>, ups, Plain
       up of <network adapter>, ups, Plain
       up of <network ip interface>, ups, Plain
+      upgradable of <ips package>, upgradables, Plain
       ups of <power level>, upss, Plain
       user execute of <filesystem object>, user executes, Plain
       user read of <filesystem object>, user reads, Plain
       user write of <filesystem object>, user writes, Plain
+      v0 of <ips package>, v0s, Plain
+      v1 of <ips package>, v1s, Plain
       value accessible of <symlink>, values accessible, Plain
       waiting for download of <action>, waiting for downloads, Plain
       windows of <operating system>, windowses, Plain
@@ -637,6 +702,7 @@ Creation techniques & properties of each type:
       data folder of <client>, data folders, Plain, <folder>
       deployment character set of <client>, deployment character sets, Plain, <string>
       evaluationcycle of <client>, evaluationcycles, Plain, <evaluation cycle>
+      fxf character set of <client>, fxf character sets, Plain, <string>
       last command time of <client>, last command times, Plain, <time>
       last report time of <client>, last report times, Plain, <time>
       local character set of <client>, local character sets, Plain, <string>
@@ -646,6 +712,7 @@ Creation techniques & properties of each type:
       registration cidr address of <client>, registration cidr addresses, Plain, <string>
       registration mac address of <client>, registration mac addresses, Plain, <string>
       registration subnet address of <client>, registration subnet addresses, Plain, <ipv4or6 address>
+      report character set of <client>, report character sets, Plain, <string>
       setting <string> of <client>, settings, Named, <setting>
       setting of <client>, settings, Plain, <setting>
       storage folder of <client>, storage folders, Plain, <folder>
@@ -2045,7 +2112,9 @@ Creation techniques & properties of each type:
       used percent of <filesystem>, used percents, Plain
       used space of <filesystem>, used spaces, Plain
       user mask of <filesystem object>, user masks, Plain
+      version count of <ips package>, version counts, Plain
       version of <site>, versions, Plain
+      version ordinal of <ips package>, version ordinals, Plain
       weight of <selected server>, weights, Plain
       windows server count of <bes product>, windows server counts, Plain
       workstation count of <bes product>, workstation counts, Plain
@@ -2176,6 +2245,269 @@ Creation techniques & properties of each type:
     Properties of <ip version> { key phrase, plural keyword, form, <result type>}:
       <ip version> = <ip version>, , BinaryOperator, <boolean>
       <ip version> as string, , Cast, <string>
+
+  Type <ips authority info>
+    Creation of <ips authority info>: { key phrase, plural keyword, form}
+      authority <string> of <ips image>, authorities, Named
+      authority of <ips image>, authorities, Plain
+    Properties of <ips authority info> { key phrase, plural keyword, form, <result type>}:
+      <ips authority info> as string, , Cast, <string>
+      alias of <ips authority info>, aliases, Plain, <string>
+      approved ca cert of <ips authority info>, approved ca certs, Plain, <string>
+      disabled of <ips authority info>, disableds, Plain, <boolean>
+      intermediate certs of <ips authority info>, intermediate certss, Plain, <string>
+      mirrors of <ips authority info>, mirrorses, Plain, <string>
+      name of <ips authority info>, names, Plain, <string>
+      origin of <ips authority info>, origins, Plain, <string>
+      prefix of <ips authority info>, prefixs, Plain, <string>
+      proxied urls of <ips authority info>, proxied urlses, Plain, <string>
+      repo collection type of <ips authority info>, repo collection types, Plain, <string>
+      repo description of <ips authority info>, repo descriptions, Plain, <string>
+      repo legal uris of <ips authority info>, repo legal urises, Plain, <string>
+      repo name of <ips authority info>, repo names, Plain, <string>
+      repo refresh seconds of <ips authority info>, repo refresh secondses, Plain, <string>
+      repo registered of <ips authority info>, repo registereds, Plain, <boolean>
+      repo registration uri of <ips authority info>, repo registration uris, Plain, <string>
+      repo related uris of <ips authority info>, repo related urises, Plain, <string>
+      repo sort policy of <ips authority info>, repo sort policies, Plain, <string>
+      revoked ca certs of <ips authority info>, revoked ca certses, Plain, <string>
+      signature required names of <ips authority info>, signature required nameses, Plain, <string>
+      signing ca certs of <ips authority info>, signing ca certses, Plain, <string>
+      ssl cert of <ips authority info>, ssl certs, Plain, <string>
+      ssl key of <ips authority info>, ssl keys, Plain, <string>
+      sticky of <ips authority info>, stickies, Plain, <boolean>
+      uuid of <ips authority info>, uuids, Plain, <string>
+
+  Type <ips branch version>
+    Creation of <ips branch version>: { key phrase, plural keyword, form}
+      branch version of <ips fmri>, branch versions, Plain
+      branch version of <ips package>, branch versions, Plain
+      branch version of <ips partial matching fmri>, branch versions, Plain
+      branch version of <ips version dependency>, branch versions, Plain
+    Properties of <ips branch version> { key phrase, plural keyword, form, <result type>}:
+      <ips branch version> < <string>, , BinaryOperator, <boolean>
+      <ips branch version> <= <string>, , BinaryOperator, <boolean>
+      <ips branch version> = <string>, , BinaryOperator, <boolean>
+      <ips branch version> as string, , Cast, <string>
+      <string> < <ips branch version>, , BinaryOperator, <boolean>
+      <string> <= <ips branch version>, , BinaryOperator, <boolean>
+      <string> = <ips branch version>, , BinaryOperator, <boolean>
+
+  Type <ips build version>
+    Creation of <ips build version>: { key phrase, plural keyword, form}
+      build version of <ips fmri>, build versions, Plain
+      build version of <ips package>, build versions, Plain
+      build version of <ips partial matching fmri>, build versions, Plain
+      build version of <ips version dependency>, build versions, Plain
+    Properties of <ips build version> { key phrase, plural keyword, form, <result type>}:
+      <ips build version> < <string>, , BinaryOperator, <boolean>
+      <ips build version> <= <string>, , BinaryOperator, <boolean>
+      <ips build version> = <string>, , BinaryOperator, <boolean>
+      <ips build version> as string, , Cast, <string>
+      <string> < <ips build version>, , BinaryOperator, <boolean>
+      <string> <= <ips build version>, , BinaryOperator, <boolean>
+      <string> = <ips build version>, , BinaryOperator, <boolean>
+
+  Type <ips component version>
+    Creation of <ips component version>: { key phrase, plural keyword, form}
+      component version of <ips fmri>, component versions, Plain
+      component version of <ips package>, component versions, Plain
+      component version of <ips partial matching fmri>, component versions, Plain
+      component version of <ips version dependency>, component versions, Plain
+    Properties of <ips component version> { key phrase, plural keyword, form, <result type>}:
+      <ips component version> < <string>, , BinaryOperator, <boolean>
+      <ips component version> <= <string>, , BinaryOperator, <boolean>
+      <ips component version> = <string>, , BinaryOperator, <boolean>
+      <ips component version> as string, , Cast, <string>
+      <string> < <ips component version>, , BinaryOperator, <boolean>
+      <string> <= <ips component version>, , BinaryOperator, <boolean>
+      <string> = <ips component version>, , BinaryOperator, <boolean>
+
+  Type <ips fmri>
+    Creation of <ips fmri>: { key phrase, plural keyword, form}
+    Properties of <ips fmri> { key phrase, plural keyword, form, <result type>}:
+      <ips fmri> < <string>, , BinaryOperator, <boolean>
+      <ips fmri> <= <string>, , BinaryOperator, <boolean>
+      <ips fmri> = <string>, , BinaryOperator, <boolean>
+      <string> < <ips fmri>, , BinaryOperator, <boolean>
+      <string> <= <ips fmri>, , BinaryOperator, <boolean>
+      <string> = <ips fmri>, , BinaryOperator, <boolean>
+      branch version of <ips fmri>, branch versions, Plain, <ips branch version>
+      build version of <ips fmri>, build versions, Plain, <ips build version>
+      category of <ips fmri>, categories, Plain, <string>
+      component version of <ips fmri>, component versions, Plain, <ips component version>
+      fmri of <ips fmri>, fmris, Plain, <string>
+      full name of <ips fmri>, full names, Plain, <string>
+      name of <ips fmri>, names, Plain, <string>
+      publisher of <ips fmri>, publishers, Plain, <string>
+      time stamp of <ips fmri>, time stamps, Plain, <string>
+      version of <ips fmri>, versions, Plain, <string>
+      version with time of <ips fmri>, versions with times, Plain, <version with time>
+
+  Type <ips image>
+    Creation of <ips image>: { key phrase, plural keyword, form}
+      ips image, ips images, PlainGlobal
+    Properties of <ips image> { key phrase, plural keyword, form, <result type>}:
+      authority <string> of <ips image>, authorities, Named, <ips authority info>
+      authority of <ips image>, authorities, Plain, <ips authority info>
+      configuration version of <ips image>, configuration versions, Plain, <string>
+      earliest installed package <string> of <ips image>, earliest installed packages, Named, <ips package>
+      earliest installed package of <ips image>, earliest installed packages, Plain, <ips package>
+      earliest package <string> of <ips image>, earliest packages, Named, <ips package>
+      earliest package of <ips image>, earliest packages, Plain, <ips package>
+      facet of <ips image>, facets, Plain, <ips setting pieces>
+      image version of <ips image>, image versions, Plain, <string>
+      installed package <string> of <ips image>, installed packages, Named, <ips package>
+      installed package of <ips image>, installed packages, Plain, <ips package>
+      latest installed package <string> of <ips image>, latest installed packages, Named, <ips package>
+      latest installed package of <ips image>, latest installed packages, Plain, <ips package>
+      latest package <string> of <ips image>, latest packages, Named, <ips package>
+      latest package of <ips image>, latest packages, Plain, <ips package>
+      ordered catalog of <ips image>, ordered catalogs, Plain, <string>
+      package <string> of <ips image>, packages, Named, <ips package>
+      package of <ips image>, packages, Plain, <ips package>
+      property of <ips image>, properties, Plain, <ips setting pieces>
+      setting of <ips image>, settings, Plain, <ips setting pieces>
+      variant of <ips image>, variants, Plain, <ips setting pieces>
+
+  Type <ips package>
+    Creation of <ips package>: { key phrase, plural keyword, form}
+      earliest installed package <string> of <ips image>, earliest installed packages, Named
+      earliest installed package of <ips image>, earliest installed packages, Plain
+      earliest package <string> of <ips image>, earliest packages, Named
+      earliest package <string> of <ips repo>, earliest packages, Named
+      earliest package of <ips image>, earliest packages, Plain
+      earliest package of <ips repo>, earliest packages, Plain
+      installed package <string> of <ips image>, installed packages, Named
+      installed package of <ips image>, installed packages, Plain
+      latest installed package <string> of <ips image>, latest installed packages, Named
+      latest installed package of <ips image>, latest installed packages, Plain
+      latest package <string> of <ips image>, latest packages, Named
+      latest package <string> of <ips repo>, latest packages, Named
+      latest package of <ips image>, latest packages, Plain
+      latest package of <ips repo>, latest packages, Plain
+      package <string> of <ips image>, packages, Named
+      package <string> of <ips repo>, packages, Named
+      package of <ips image>, packages, Plain
+      package of <ips repo>, packages, Plain
+    Properties of <ips package> { key phrase, plural keyword, form, <result type>}:
+      <ips package> as string, , Cast, <string>
+      alt source of <ips package>, alt sources, Plain, <boolean>
+      branch version of <ips package>, branch versions, Plain, <ips branch version>
+      build version of <ips package>, build versions, Plain, <ips build version>
+      category of <ips package>, categories, Plain, <string>
+      component version of <ips package>, component versions, Plain, <ips component version>
+      conditional dependency of <ips package>, conditional dependencies, Plain, <ips version dependency>
+      dependency of <ips package>, dependencies, Plain, <ips version dependency>
+      description of <ips package>, descriptions, Plain, <string>
+      exclude dependency of <ips package>, exclude dependencies, Plain, <ips version dependency>
+      fmri of <ips package>, fmris, Plain, <string>
+      frozen of <ips package>, frozens, Plain, <boolean>
+      full name of <ips package>, full names, Plain, <string>
+      group dependency of <ips package>, group dependencies, Plain, <ips version dependency>
+      incorporate dependency of <ips package>, incorporate dependencies, Plain, <ips version dependency>
+      installed of <ips package>, installeds, Plain, <boolean>
+      known of <ips package>, knowns, Plain, <boolean>
+      name of <ips package>, names, Plain, <string>
+      obsolete of <ips package>, obsoletes, Plain, <boolean>
+      obsolete pkg of <ips package>, obsolete pkgs, Plain, <boolean>
+      optional dependency of <ips package>, optional dependencies, Plain, <ips version dependency>
+      parent dependency of <ips package>, parent dependencies, Plain, <ips version dependency>
+      publisher of <ips package>, publishers, Plain, <string>
+      renamed of <ips package>, renameds, Plain, <boolean>
+      renamed pkg of <ips package>, renamed pkgs, Plain, <boolean>
+      require dependency of <ips package>, require dependencies, Plain, <ips version dependency>
+      setting of <ips package>, settings, Plain, <ips setting pieces>
+      summary of <ips package>, summaries, Plain, <string>
+      time stamp of <ips package>, time stamps, Plain, <string>
+      uninstalled of <ips package>, uninstalleds, Plain, <boolean>
+      unknown of <ips package>, unknowns, Plain, <boolean>
+      unsupported of <ips package>, unsupporteds, Plain, <boolean>
+      upgradable of <ips package>, upgradables, Plain, <boolean>
+      v0 of <ips package>, v0s, Plain, <boolean>
+      v1 of <ips package>, v1s, Plain, <boolean>
+      variant of <ips package>, variants, Plain, <ips setting pieces>
+      version count of <ips package>, version counts, Plain, <integer>
+      version of <ips package>, versions, Plain, <string>
+      version ordinal of <ips package>, version ordinals, Plain, <integer>
+      version with time of <ips package>, versions with times, Plain, <version with time>
+
+  Type <ips partial matching fmri>
+    Creation of <ips partial matching fmri>: { key phrase, plural keyword, form}
+    Properties of <ips partial matching fmri> { key phrase, plural keyword, form, <result type>}:
+      <ips partial matching fmri> < <string>, , BinaryOperator, <boolean>
+      <ips partial matching fmri> <= <string>, , BinaryOperator, <boolean>
+      <ips partial matching fmri> = <string>, , BinaryOperator, <boolean>
+      <string> < <ips partial matching fmri>, , BinaryOperator, <boolean>
+      <string> <= <ips partial matching fmri>, , BinaryOperator, <boolean>
+      <string> = <ips partial matching fmri>, , BinaryOperator, <boolean>
+      branch version of <ips partial matching fmri>, branch versions, Plain, <ips branch version>
+      build version of <ips partial matching fmri>, build versions, Plain, <ips build version>
+      category of <ips partial matching fmri>, categories, Plain, <string>
+      component version of <ips partial matching fmri>, component versions, Plain, <ips component version>
+      fmri of <ips partial matching fmri>, fmris, Plain, <string>
+      full name of <ips partial matching fmri>, full names, Plain, <string>
+      name of <ips partial matching fmri>, names, Plain, <string>
+      publisher of <ips partial matching fmri>, publishers, Plain, <string>
+      time stamp of <ips partial matching fmri>, time stamps, Plain, <string>
+      version of <ips partial matching fmri>, versions, Plain, <string>
+      version with time of <ips partial matching fmri>, versions with times, Plain, <version with time>
+
+  Type <ips repo>
+    Creation of <ips repo>: { key phrase, plural keyword, form}
+      ips repo <string>, ips repos, NamedGlobal
+    Properties of <ips repo> { key phrase, plural keyword, form, <result type>}:
+      configuration version of <ips repo>, configuration versions, Plain, <string>
+      description of <ips repo>, descriptions, Plain, <string>
+      earliest package <string> of <ips repo>, earliest packages, Named, <ips package>
+      earliest package of <ips repo>, earliest packages, Plain, <ips package>
+      latest package <string> of <ips repo>, latest packages, Named, <ips package>
+      latest package of <ips repo>, latest packages, Plain, <ips package>
+      name of <ips repo>, names, Plain, <string>
+      ordered catalog of <ips repo>, ordered catalogs, Plain, <string>
+      package <string> of <ips repo>, packages, Named, <ips package>
+      package of <ips repo>, packages, Plain, <ips package>
+      version of <ips repo>, versions, Plain, <string>
+
+  Type <ips setting pieces>
+    Creation of <ips setting pieces>: { key phrase, plural keyword, form}
+      facet of <ips image>, facets, Plain
+      property of <ips image>, properties, Plain
+      setting of <ips image>, settings, Plain
+      setting of <ips package>, settings, Plain
+      variant of <ips image>, variants, Plain
+      variant of <ips package>, variants, Plain
+    Properties of <ips setting pieces> { key phrase, plural keyword, form, <result type>}:
+      <ips setting pieces> as string, , Cast, <string>
+      fullsetting of <ips setting pieces>, fullsettings, Plain, <string>
+      name of <ips setting pieces>, names, Plain, <string>
+      section of <ips setting pieces>, sections, Plain, <string>
+      value of <ips setting pieces>, values, Plain, <string>
+
+  Type <ips version dependency>
+    Creation of <ips version dependency>: { key phrase, plural keyword, form}
+      conditional dependency of <ips package>, conditional dependencies, Plain
+      dependency of <ips package>, dependencies, Plain
+      exclude dependency of <ips package>, exclude dependencies, Plain
+      group dependency of <ips package>, group dependencies, Plain
+      incorporate dependency of <ips package>, incorporate dependencies, Plain
+      optional dependency of <ips package>, optional dependencies, Plain
+      parent dependency of <ips package>, parent dependencies, Plain
+      require dependency of <ips package>, require dependencies, Plain
+    Properties of <ips version dependency> { key phrase, plural keyword, form, <result type>}:
+      <ips version dependency> as string, , Cast, <string>
+      branch version of <ips version dependency>, branch versions, Plain, <ips branch version>
+      build version of <ips version dependency>, build versions, Plain, <ips build version>
+      category of <ips version dependency>, categories, Plain, <string>
+      component version of <ips version dependency>, component versions, Plain, <ips component version>
+      fmri of <ips version dependency>, fmris, Plain, <string>
+      full name of <ips version dependency>, full names, Plain, <string>
+      name of <ips version dependency>, names, Plain, <string>
+      publisher of <ips version dependency>, publishers, Plain, <string>
+      time stamp of <ips version dependency>, time stamps, Plain, <string>
+      type of <ips version dependency>, types, Plain, <string>
+      version of <ips version dependency>, versions, Plain, <string>
+      version with time of <ips version dependency>, versions with times, Plain, <version with time>
 
   Type <ipv4 address> (derives from ipv4or6 address)
     Creation of <ipv4 address>: { key phrase, plural keyword, form}
@@ -2976,6 +3308,7 @@ Creation techniques & properties of each type:
       effective date of <setting>, effective dates, Plain, <time>
       enabled of <setting>, enableds, Plain, <boolean>
       name of <setting>, names, Plain, <string>
+      sha256 of <setting>, sha256s, Plain, <string>
       value of <setting>, values, Plain, <string>
 
   Type <site>
@@ -3269,6 +3602,13 @@ Creation techniques & properties of each type:
       <integer> as hexadecimal, , Cast
       <integer> as string, , Cast
       <ip version> as string, , Cast
+      <ips authority info> as string, , Cast
+      <ips branch version> as string, , Cast
+      <ips build version> as string, , Cast
+      <ips component version> as string, , Cast
+      <ips package> as string, , Cast
+      <ips setting pieces> as string, , Cast
+      <ips version dependency> as string, , Cast
       <ipv4 address> as string, , Cast
       <ipv4or6 address> as compressed string with ipv4 with zone index, , Cast
       <ipv4or6 address> as compressed string with ipv4, , Cast
@@ -3346,11 +3686,14 @@ Creation techniques & properties of each type:
       <unary operator> as string, , Cast
       <undefined> as string, , Cast
       <uuid> as string, , Cast
+      <version with time> as string, , Cast
       <version> as string, , Cast
       <year> as string, , Cast
       <zone network interface> as string, , Cast
       <zone> as string, , Cast
       address of <zone network interface>, addresses, Plain
+      alias of <ips authority info>, aliases, Plain
+      approved ca cert of <ips authority info>, approved ca certs, Plain
       arch of <pkginfo>, archs, Plain
       architecture of <operating system>, architectures, Plain
       banned prefetch plugin of <client>, banned prefetch plugins, Plain
@@ -3366,6 +3709,10 @@ Creation techniques & properties of each type:
       brand string of <processor>, brand strings, Plain
       build of <operating system>, builds, Plain
       build target of <client>, build targets, Plain
+      category of <ips fmri>, categories, Plain
+      category of <ips package>, categories, Plain
+      category of <ips partial matching fmri>, categories, Plain
+      category of <ips version dependency>, categories, Plain
       category of <pkginfo>, categories, Plain
       character <integer>, characters, NumberedGlobal
       character set of <client>, character sets, Plain
@@ -3384,9 +3731,13 @@ Creation techniques & properties of each type:
       concatenation <string> of <string>, concatenations, Named
       concatenation of <string>, concatenations, Plain
       configuration state of <zone>, configuration states, Plain
+      configuration version of <ips image>, configuration versions, Plain
+      configuration version of <ips repo>, configuration versions, Plain
       controller of <action lock state>, controllers, Plain
       date of <bios>, dates, Plain
       deployment character set of <client>, deployment character sets, Plain
+      description of <ips package>, descriptions, Plain
+      description of <ips repo>, descriptions, Plain
       device type of <device file>, device types, Plain
       dns name, dns names, PlainGlobal
       domain name, domain names, PlainGlobal
@@ -3404,8 +3755,18 @@ Creation techniques & properties of each type:
       family name of <processor>, family names, Plain
       family of <processor>, families, Plain
       fips mode failure message of <cryptography>, fips mode failure messages, Plain
+      fmri of <ips fmri>, fmris, Plain
+      fmri of <ips package>, fmris, Plain
+      fmri of <ips partial matching fmri>, fmris, Plain
+      fmri of <ips version dependency>, fmris, Plain
       fputype of <processor>, fputypes, Plain
       friendly name of <network adapter>, friendly names, Plain
+      full name of <ips fmri>, full names, Plain
+      full name of <ips package>, full names, Plain
+      full name of <ips partial matching fmri>, full names, Plain
+      full name of <ips version dependency>, full names, Plain
+      fullsetting of <ips setting pieces>, fullsettings, Plain
+      fxf character set of <client>, fxf character sets, Plain
       gather schedule authority of <site>, gather schedule authoritys, Plain
       gather url of <license>, gather urls, Plain
       greatest revision of <patch>, greatest revisions, Plain
@@ -3416,9 +3777,11 @@ Creation techniques & properties of each type:
       host name, host names, PlainGlobal
       hostname, hostnames, PlainGlobal
       identity of <execution>, identites, Plain
+      image version of <ips image>, image versions, Plain
       index of <sqlite table>, indices, Plain
       inherited package directory of <zone>, inherited package directories, Plain
       interface of <ipv4 route>, interfaces, Plain
+      intermediate certs of <ips authority info>, intermediate certss, Plain
       key <string> of <file section>, keys, Named
       key <string> of <file>, keys, Named
       least revision of <patch>, least revisions, Plain
@@ -3432,6 +3795,7 @@ Creation techniques & properties of each type:
       machine of <operating system>, machines, Plain
       md5 of <file>, md5s, Plain
       md5 of <string>, md5s, Plain
+      mirrors of <ips authority info>, mirrorses, Plain
       model of <processor>, models, Plain
       name of <application usage summary instance>, names, Plain
       name of <application usage summary>, names, Plain
@@ -3443,6 +3807,13 @@ Creation techniques & properties of each type:
       name of <filesystem object>, names, Plain
       name of <filesystem>, names, Plain
       name of <fixlet_header>, names, Plain
+      name of <ips authority info>, names, Plain
+      name of <ips fmri>, names, Plain
+      name of <ips package>, names, Plain
+      name of <ips partial matching fmri>, names, Plain
+      name of <ips repo>, names, Plain
+      name of <ips setting pieces>, names, Plain
+      name of <ips version dependency>, names, Plain
       name of <json key>, names, Plain
       name of <logged on user>, names, Plain
       name of <module>, names, Plain
@@ -3469,7 +3840,10 @@ Creation techniques & properties of each type:
       name of <user>, names, Plain
       name of <zone network interface>, names, Plain
       name of <zone>, names, Plain
+      ordered catalog of <ips image>, ordered catalogs, Plain
+      ordered catalog of <ips repo>, ordered catalogs, Plain
       organization of <license>, organizations, Plain
+      origin of <ips authority info>, origins, Plain
       padded string of <bit set>, padded strings, Plain
       param <string> of <pkginfo>, params, Named
       parameter <string> of <action>, parameters, Named
@@ -3490,24 +3864,42 @@ Creation techniques & properties of each type:
       pkginst of <pkginfo>, pkginsts, Plain
       platform id of <language>, platform ids, Plain
       plural name of <property>, plural names, Plain
+      prefix of <ips authority info>, prefixs, Plain
       primary codeset of <language>, primary codesets, Plain
       primary country of <language>, primary countries, Plain
       product info string of <operating system>, product info strings, Plain
+      proxied urls of <ips authority info>, proxied urlses, Plain
+      publisher of <ips fmri>, publishers, Plain
+      publisher of <ips package>, publishers, Plain
+      publisher of <ips partial matching fmri>, publishers, Plain
+      publisher of <ips version dependency>, publishers, Plain
       regex escape of <string>, regex escapes, Plain
       registration cidr address of <client>, registration cidr addresses, Plain
       registration mac address of <client>, registration mac addresses, Plain
       release of <operating system>, releases, Plain
+      repo collection type of <ips authority info>, repo collection types, Plain
+      repo description of <ips authority info>, repo descriptions, Plain
+      repo legal uris of <ips authority info>, repo legal urises, Plain
+      repo name of <ips authority info>, repo names, Plain
+      repo refresh seconds of <ips authority info>, repo refresh secondses, Plain
+      repo registration uri of <ips authority info>, repo registration uris, Plain
+      repo related uris of <ips authority info>, repo related urises, Plain
+      repo sort policy of <ips authority info>, repo sort policies, Plain
+      report character set of <client>, report character sets, Plain
       revision <string> of <patch>, revisions, Named
       revision of <patch>, revisions, Plain
+      revoked ca certs of <ips authority info>, revoked ca certses, Plain
       scheduling class of <zone>, scheduling classes, Plain
       schema of <sqlite table>, schemas, Plain
       seat count state of <license>, seat count states, Plain
+      section of <ips setting pieces>, sections, Plain
       sha1 of <file>, sha1s, Plain
       sha1 of <string>, sha1s, Plain
       sha1 of <x509 certificate>, sha1s, Plain
       sha224 of <file>, sha224s, Plain
       sha224 of <string>, sha224s, Plain
       sha256 of <file>, sha256s, Plain
+      sha256 of <setting>, sha256s, Plain
       sha256 of <string>, sha256s, Plain
       sha2_224 of <file>, sha2_224s, Plain
       sha2_224 of <string>, sha2_224s, Plain
@@ -3522,17 +3914,26 @@ Creation techniques & properties of each type:
       sha512 of <file>, sha512s, Plain
       sha512 of <string>, sha512s, Plain
       signature hash algorithm of <license>, signature hash algorithms, Plain
+      signature required names of <ips authority info>, signature required nameses, Plain
+      signing ca certs of <ips authority info>, signing ca certses, Plain
       singular name of <property>, singular names, Plain
       site tag of <site>, site tags, Plain
       site url of <bes product>, site urls, Plain
+      ssl cert of <ips authority info>, ssl certs, Plain
+      ssl key of <ips authority info>, ssl keys, Plain
       state of <processor>, states, Plain
       state of <service>, states, Plain
       status of <action>, statuss, Plain
       string <string>, strings, NamedGlobal
       string version of <application usage summary instance>, string versions, Plain
+      summary of <ips package>, summaries, Plain
       symbol of <binary operator>, symbols, Plain
       symbol of <unary operator>, symbols, Plain
       system language, system languages, PlainGlobal
+      time stamp of <ips fmri>, time stamps, Plain
+      time stamp of <ips package>, time stamps, Plain
+      time stamp of <ips partial matching fmri>, time stamps, Plain
+      time stamp of <ips version dependency>, time stamps, Plain
       title of <grub bootable image>, titles, Plain
       track fixlet of <evaluation cycle>, track fixlets, Plain
       tty of <logged on user>, ttys, Plain
@@ -3547,6 +3948,7 @@ Creation techniques & properties of each type:
       two digit second of <time of day>, two digit seconds, Plain
       type of <execution>, types, Plain
       type of <filesystem>, types, Plain
+      type of <ips version dependency>, types, Plain
       type of <json value>, types, Plain
       type of <license>, types, Plain
       type of <processor>, types, Plain
@@ -3560,8 +3962,10 @@ Creation techniques & properties of each type:
       user name of <filesystem object>, user names, Plain
       user name of <symlink>, user names, Plain
       usual name of <property>, usual names, Plain
+      uuid of <ips authority info>, uuids, Plain
       value of <environment variable>, values, Plain
       value of <fixlet_header>, values, Plain
+      value of <ips setting pieces>, values, Plain
       value of <runlevel>, values, Plain
       value of <setting>, values, Plain
       value of <symlink>, values, Plain
@@ -3569,6 +3973,11 @@ Creation techniques & properties of each type:
       vendor of <pkginfo>, vendors, Plain
       version info of <execution>, version infos, Plain
       version of <bios>, versions, Plain
+      version of <ips fmri>, versions, Plain
+      version of <ips package>, versions, Plain
+      version of <ips partial matching fmri>, versions, Plain
+      version of <ips repo>, versions, Plain
+      version of <ips version dependency>, versions, Plain
       version of <pkginfo>, versions, Plain
       version string <string> of <module>, version strings, Named
       volume of <filesystem>, volumes, Plain
@@ -3577,6 +3986,21 @@ Creation techniques & properties of each type:
       <file content> contains <string>, , BinaryOperator, <boolean>
       <format> + <string>, , BinaryOperator, <format>
       <html> & <string>, , BinaryOperator, <html>
+      <ips branch version> < <string>, , BinaryOperator, <boolean>
+      <ips branch version> <= <string>, , BinaryOperator, <boolean>
+      <ips branch version> = <string>, , BinaryOperator, <boolean>
+      <ips build version> < <string>, , BinaryOperator, <boolean>
+      <ips build version> <= <string>, , BinaryOperator, <boolean>
+      <ips build version> = <string>, , BinaryOperator, <boolean>
+      <ips component version> < <string>, , BinaryOperator, <boolean>
+      <ips component version> <= <string>, , BinaryOperator, <boolean>
+      <ips component version> = <string>, , BinaryOperator, <boolean>
+      <ips fmri> < <string>, , BinaryOperator, <boolean>
+      <ips fmri> <= <string>, , BinaryOperator, <boolean>
+      <ips fmri> = <string>, , BinaryOperator, <boolean>
+      <ips partial matching fmri> < <string>, , BinaryOperator, <boolean>
+      <ips partial matching fmri> <= <string>, , BinaryOperator, <boolean>
+      <ips partial matching fmri> = <string>, , BinaryOperator, <boolean>
       <ipv4 address> < <string>, , BinaryOperator, <boolean>
       <ipv4 address> <= <string>, , BinaryOperator, <boolean>
       <ipv4 address> = <string>, , BinaryOperator, <boolean>
@@ -3590,21 +4014,39 @@ Creation techniques & properties of each type:
       <string> & <html>, , BinaryOperator, <html>
       <string> & <rope>, , BinaryOperator, <rope>
       <string> & <string>, , BinaryOperator, <string>
+      <string> < <ips branch version>, , BinaryOperator, <boolean>
+      <string> < <ips build version>, , BinaryOperator, <boolean>
+      <string> < <ips component version>, , BinaryOperator, <boolean>
+      <string> < <ips fmri>, , BinaryOperator, <boolean>
+      <string> < <ips partial matching fmri>, , BinaryOperator, <boolean>
       <string> < <ipv4 address>, , BinaryOperator, <boolean>
       <string> < <ipv4or6 address>, , BinaryOperator, <boolean>
       <string> < <string>, , BinaryOperator, <boolean>
       <string> < <uuid>, , BinaryOperator, <boolean>
+      <string> < <version with time>, , BinaryOperator, <boolean>
       <string> < <version>, , BinaryOperator, <boolean>
+      <string> <= <ips branch version>, , BinaryOperator, <boolean>
+      <string> <= <ips build version>, , BinaryOperator, <boolean>
+      <string> <= <ips component version>, , BinaryOperator, <boolean>
+      <string> <= <ips fmri>, , BinaryOperator, <boolean>
+      <string> <= <ips partial matching fmri>, , BinaryOperator, <boolean>
       <string> <= <ipv4 address>, , BinaryOperator, <boolean>
       <string> <= <ipv4or6 address>, , BinaryOperator, <boolean>
       <string> <= <string>, , BinaryOperator, <boolean>
       <string> <= <uuid>, , BinaryOperator, <boolean>
+      <string> <= <version with time>, , BinaryOperator, <boolean>
       <string> <= <version>, , BinaryOperator, <boolean>
+      <string> = <ips branch version>, , BinaryOperator, <boolean>
+      <string> = <ips build version>, , BinaryOperator, <boolean>
+      <string> = <ips component version>, , BinaryOperator, <boolean>
+      <string> = <ips fmri>, , BinaryOperator, <boolean>
+      <string> = <ips partial matching fmri>, , BinaryOperator, <boolean>
       <string> = <ipv4 address>, , BinaryOperator, <boolean>
       <string> = <ipv4or6 address>, , BinaryOperator, <boolean>
       <string> = <regular expression>, , BinaryOperator, <boolean>
       <string> = <string>, , BinaryOperator, <boolean>
       <string> = <uuid>, , BinaryOperator, <boolean>
+      <string> = <version with time>, , BinaryOperator, <boolean>
       <string> = <version>, , BinaryOperator, <boolean>
       <string> as boolean, , Cast, <boolean>
       <string> as date, , Cast, <date>
@@ -3644,6 +4086,9 @@ Creation techniques & properties of each type:
       <uuid> < <string>, , BinaryOperator, <boolean>
       <uuid> <= <string>, , BinaryOperator, <boolean>
       <uuid> = <string>, , BinaryOperator, <boolean>
+      <version with time> < <string>, , BinaryOperator, <boolean>
+      <version with time> <= <string>, , BinaryOperator, <boolean>
+      <version with time> = <string>, , BinaryOperator, <boolean>
       <version> < <string>, , BinaryOperator, <boolean>
       <version> <= <string>, , BinaryOperator, <boolean>
       <version> = <string>, , BinaryOperator, <boolean>
@@ -4388,6 +4833,21 @@ Creation techniques & properties of each type:
     Properties of <version with multiplicity> { key phrase, plural keyword, form, <result type>}:
       multiplicity of <version with multiplicity>, multiplicities, Plain, <integer>
 
+  Type <version with time>
+    Creation of <version with time>: { key phrase, plural keyword, form}
+      version with time of <ips fmri>, versions with times, Plain
+      version with time of <ips package>, versions with times, Plain
+      version with time of <ips partial matching fmri>, versions with times, Plain
+      version with time of <ips version dependency>, versions with times, Plain
+    Properties of <version with time> { key phrase, plural keyword, form, <result type>}:
+      <string> < <version with time>, , BinaryOperator, <boolean>
+      <string> <= <version with time>, , BinaryOperator, <boolean>
+      <string> = <version with time>, , BinaryOperator, <boolean>
+      <version with time> < <string>, , BinaryOperator, <boolean>
+      <version with time> <= <string>, , BinaryOperator, <boolean>
+      <version with time> = <string>, , BinaryOperator, <boolean>
+      <version with time> as string, , Cast, <string>
+
   Type <x509 certificate>
     Creation of <x509 certificate>: { key phrase, plural keyword, form}
       certificate of <client>, certificates, Plain
@@ -4599,6 +5059,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   integer in <( integer, integer, integer )>, integers in, Index<( integer, integer, integer )>Global, <integer>
   integer to <integer>, integers to, NumberedGlobal, <integer>
   ip version <integer>, ip versions, NumberedGlobal, <ip version>
+  ips image, ips images, PlainGlobal, <ips image>
+  ips repo <string>, ips repos, NamedGlobal, <ips repo>
   ipv4 address <string>, ipv4 addresses, NamedGlobal, <ipv4 address>
   ipv4 routing table, ipv4 routing tables, PlainGlobal, <ipv4 routing table>
   ipv4, ipv4s, PlainGlobal, <ip version>
@@ -4773,8 +5235,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       administrator, administrators, <setting>, <client>, Named
       administrator, administrators, <setting>, <client>, Plain
       alias, aliases, <boolean>, <network ip interface>, Plain
+      alias, aliases, <string>, <ips authority info>, Plain
       all route, all routes, <ipv4 route>, <ipv4 routing table>, Plain
       allow unmentioned site, allow unmentioned sites, <boolean>, <license>, Plain
+      alt source, alt sources, <boolean>, <ips package>, Plain
       analysis, analysiss, <analysis>, world , PlainGlobal
       ancestor, ancestors, <folder>, <filesystem object>, Plain
       ancestor, ancestors, <folder>, <symlink>, Plain
@@ -4793,6 +5257,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       application usage, application usages, <timed( time range, integer )>, world , NamedGlobal
       application, applications, <application>, <folder>, Named
       application, applications, <application>, world , NamedGlobal
+      approved ca cert, approved ca certs, <string>, <ips authority info>, Plain
       april, aprils, <date>, <integer>, Numbered
       april, aprils, <day of year>, world , NumberedGlobal
       april, aprils, <month and year>, <integer>, Plain
@@ -4904,6 +5369,13 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <html>, Cast
       as string, , <string>, <integer>, Cast
       as string, , <string>, <ip version>, Cast
+      as string, , <string>, <ips authority info>, Cast
+      as string, , <string>, <ips branch version>, Cast
+      as string, , <string>, <ips build version>, Cast
+      as string, , <string>, <ips component version>, Cast
+      as string, , <string>, <ips package>, Cast
+      as string, , <string>, <ips setting pieces>, Cast
+      as string, , <string>, <ips version dependency>, Cast
       as string, , <string>, <ipv4 address>, Cast
       as string, , <string>, <ipv4or6 address>, Cast
       as string, , <string>, <ipv6 address>, Cast
@@ -4951,6 +5423,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <unary operator>, Cast
       as string, , <string>, <undefined>, Cast
       as string, , <string>, <uuid>, Cast
+      as string, , <string>, <version with time>, Cast
       as string, , <string>, <version>, Cast
       as string, , <string>, <year>, Cast
       as string, , <string>, <zone network interface>, Cast
@@ -4983,6 +5456,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       august, augusts, <month>, world , PlainGlobal
       authenticating, authenticatings, <boolean>, <client>, Plain
       authenticating, authenticatings, <boolean>, <current relay>, Plain
+      authority, authorities, <ips authority info>, <ips image>, Named
+      authority, authorities, <ips authority info>, <ips image>, Plain
       autoboot value, autoboot values, <boolean>, <zone>, Plain
       average duration, average durations, <time interval>, <evaluation cycle>, Plain
       average, averages, <integer>, <evaluation cycle>, Plain
@@ -5035,6 +5510,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       bootable image, bootable images, <grub bootable image>, <grub config file>, Plain
       br, brs, <html>, world , NamedGlobal
       br, brs, <html>, world , PlainGlobal
+      branch version, branch versions, <ips branch version>, <ips fmri>, Plain
+      branch version, branch versions, <ips branch version>, <ips package>, Plain
+      branch version, branch versions, <ips branch version>, <ips partial matching fmri>, Plain
+      branch version, branch versions, <ips branch version>, <ips version dependency>, Plain
       brand string, brand strings, <string>, <processor>, Plain
       brand, brands, <string>, <client>, Plain
       brand, brands, <string>, <zone>, Plain
@@ -5047,6 +5526,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       build number low, build number lows, <integer>, <operating system>, Plain
       build number, build numbers, <integer>, <operating system>, Plain
       build target, build targets, <string>, <client>, Plain
+      build version, build versions, <ips build version>, <ips fmri>, Plain
+      build version, build versions, <ips build version>, <ips package>, Plain
+      build version, build versions, <ips build version>, <ips partial matching fmri>, Plain
+      build version, build versions, <ips build version>, <ips version dependency>, Plain
       build, builds, <string>, <operating system>, Plain
       byte, bytes, <integer>, <file>, Numbered
       cache flag, cache flags, <boolean>, <ipv4 route>, Plain
@@ -5060,6 +5543,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       cast returning, casts returning, <cast>, world , Index<type>Global
       cast, casts, <cast>, world , NamedGlobal
       cast, casts, <cast>, world , PlainGlobal
+      category, categories, <string>, <ips fmri>, Plain
+      category, categories, <string>, <ips package>, Plain
+      category, categories, <string>, <ips partial matching fmri>, Plain
+      category, categories, <string>, <ips version dependency>, Plain
       category, categories, <string>, <pkginfo>, Plain
       certificate, certificates, <x509 certificate>, <client>, Plain
       chainloader, chainloaders, <grub file location>, <grub bootable image>, Plain
@@ -5110,6 +5597,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       competition size, competition sizes, <integer>, <selected server>, Plain
       competition weight, competition weights, <integer>, <selected server>, Plain
       complete time, complete times, <time>, <action>, Plain
+      component version, component versions, <ips component version>, <ips fmri>, Plain
+      component version, component versions, <ips component version>, <ips package>, Plain
+      component version, component versions, <ips component version>, <ips partial matching fmri>, Plain
+      component version, component versions, <ips component version>, <ips version dependency>, Plain
       component, components, <integer>, <site version list>, Numbered
       computer count, computer counts, <integer>, <bes product>, Plain
       computer id, computer ids, <integer>, world , PlainGlobal
@@ -5120,7 +5611,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       concatenation, concatenations, <html>, <string>, Index<html>
       concatenation, concatenations, <string>, <string>, Named
       concatenation, concatenations, <string>, <string>, Plain
+      conditional dependency, conditional dependencies, <ips version dependency>, <ips package>, Plain
       configuration state, configuration states, <string>, <zone>, Plain
+      configuration version, configuration versions, <string>, <ips image>, Plain
+      configuration version, configuration versions, <string>, <ips repo>, Plain
       conjunction, conjunctions, <boolean>, <boolean>, Plain
       constrained, constraineds, <boolean>, <action>, Plain
       constraint, constraints, <integer>, <action>, Plain
@@ -5176,9 +5670,12 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       del, dels, <html>, <string>, Named
       del, dels, <html>, <string>, Plain
       dependency known, dependencies known, <boolean>, <property>, Plain
+      dependency, dependencies, <ips version dependency>, <ips package>, Plain
       deployment character set, deployment character sets, <string>, <client>, Plain
       descendant folder, descendant folders, <folder>, <folder>, Plain
       descendant, descendants, <file>, <folder>, Plain
+      description, descriptions, <string>, <ips package>, Plain
+      description, descriptions, <string>, <ips repo>, Plain
       desired encrypt report, desired encrypt reports, <boolean>, <client_cryptography>, Plain
       desired fips mode, desired fips modes, <boolean>, <cryptography>, Plain
       destination, destinations, <ipv4 address>, <ipv4 route>, Plain
@@ -5195,6 +5692,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       dfn, dfns, <html>, <string>, Named
       dfn, dfns, <html>, <string>, Plain
       direct object type, direct object types, <type>, <property>, Plain
+      disabled, disableds, <boolean>, <ips authority info>, Plain
       disjunction, disjunctions, <boolean>, <boolean>, Plain
       distance, distances, <integer range>, <selected server>, Plain
       div, divs, <html>, <html>, Named
@@ -5225,6 +5723,12 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       dt, dts, <html>, <string>, Named
       dt, dts, <html>, <string>, Plain
       dynamic flag, dynamic flags, <boolean>, <ipv4 route>, Plain
+      earliest installed package, earliest installed packages, <ips package>, <ips image>, Named
+      earliest installed package, earliest installed packages, <ips package>, <ips image>, Plain
+      earliest package, earliest packages, <ips package>, <ips image>, Named
+      earliest package, earliest packages, <ips package>, <ips image>, Plain
+      earliest package, earliest packages, <ips package>, <ips repo>, Named
+      earliest package, earliest packages, <ips package>, <ips repo>, Plain
       effective date, effective dates, <time>, <action lock state>, Plain
       effective date, effective dates, <time>, <setting>, Plain
       effective download hash algorithm, effective download hash algorithms, <string>, <license>, Plain
@@ -5256,6 +5760,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       evaluated, evaluateds, <boolean>, <site>, Plain
       evaluation, evaluations, <boolean>, <license>, Plain
       evaluationcycle, evaluationcycles, <evaluation cycle>, <client>, Plain
+      exclude dependency, exclude dependencies, <ips version dependency>, <ips package>, Plain
       exclusive ip, exclusive ips, <boolean>, <zone>, Plain
       execute, executes, <boolean>, <mode_mask>, Plain
       execution state, execution states, <string>, <zone>, Plain
@@ -5284,6 +5789,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       extrema, extremas, <( uuid, uuid )>, <uuid>, Plain
       extrema, extremas, <( version, version )>, <version>, Plain
       extrema, extremas, <( year, year )>, <year>, Plain
+      facet, facets, <ips setting pieces>, <ips image>, Plain
       fallback image, fallback images, <grub image choice>, <grub config file>, Numbered
       fallback image, fallback images, <grub image choice>, <grub config file>, Plain
       false, falses, <boolean>, world , PlainGlobal
@@ -5343,6 +5849,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       fmri, fmris, <smf fmri>, <smf property group>, Plain
       fmri, fmris, <smf fmri>, <smf property>, Plain
       fmri, fmris, <smf fmri>, <smf service>, Plain
+      fmri, fmris, <string>, <ips fmri>, Plain
+      fmri, fmris, <string>, <ips package>, Plain
+      fmri, fmris, <string>, <ips partial matching fmri>, Plain
+      fmri, fmris, <string>, <ips version dependency>, Plain
       folder, folders, <folder>, <folder>, Named
       folder, folders, <folder>, <folder>, Plain
       folder, folders, <folder>, <site>, Plain
@@ -5360,8 +5870,15 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       free space, free spaces, <integer>, <filesystem>, Plain
       friday, fridays, <day of week>, world , PlainGlobal
       friendly name, friendly names, <string>, <network adapter>, Plain
+      frozen, frozens, <boolean>, <ips package>, Plain
       full gateway address, full gateway addresses, <ipv4or6 address>, <selected server>, Plain
+      full name, full names, <string>, <ips fmri>, Plain
+      full name, full names, <string>, <ips package>, Plain
+      full name, full names, <string>, <ips partial matching fmri>, Plain
+      full name, full names, <string>, <ips version dependency>, Plain
       full, fulls, <boolean>, <power level>, Plain
+      fullsetting, fullsettings, <string>, <ips setting pieces>, Plain
+      fxf character set, fxf character sets, <string>, <client>, Plain
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Numbered
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Plain
       gateway flag, gateway flags, <boolean>, <ipv4 route>, Plain
@@ -5379,6 +5896,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       greatest integer, greatest integers, <integer>, world , PlainGlobal
       greatest revision, greatest revisions, <string>, <patch>, Plain
       greatest time interval, greatest time intervals, <time interval>, world , PlainGlobal
+      group dependency, group dependencies, <ips version dependency>, <ips package>, Plain
       group execute, group executes, <boolean>, <filesystem object>, Plain
       group leader, group leaders, <boolean>, <action>, Plain
       group mask, group masks, <integer>, <filesystem object>, Plain
@@ -5461,8 +5979,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       id, ids, <integer>, <user>, Plain
       id, ids, <integer>, <zone>, Plain
       identity, identites, <string>, <execution>, Plain
+      image version, image versions, <string>, <ips image>, Plain
       in agent context, in agent contexts, <boolean>, world , PlainGlobal
       in proxy agent context, in proxy agent contexts, <boolean>, world , PlainGlobal
+      incorporate dependency, incorporate dependencies, <ips version dependency>, <ips package>, Plain
       index type, index types, <type>, <property>, Plain
       index, indexes, <integer>, <grub image choice>, Plain
       index, indexes, <integer>, <processor>, Plain
@@ -5477,6 +5997,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       ins, inss, <html>, <html>, Plain
       ins, inss, <html>, <string>, Named
       ins, inss, <html>, <string>, Plain
+      installed package, installed packages, <ips package>, <ips image>, Named
+      installed package, installed packages, <ips package>, <ips image>, Plain
+      installed, installeds, <boolean>, <ips package>, Plain
       instance part, instance parts, <smf snapshot part>, <smf snapshot>, Plain
       instance, instances, <application usage summary instance>, <application usage summary>, Plain
       instance, instances, <smf instance>, <smf service>, Named
@@ -5492,6 +6015,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       interface, interfaces, <network interface>, <network>, Numbered
       interface, interfaces, <network interface>, <network>, Plain
       interface, interfaces, <string>, <ipv4 route>, Plain
+      intermediate certs, intermediate certss, <string>, <ips authority info>, Plain
       intersection, intersections, <integer set>, <integer set>, Plain
       intersection, intersections, <string set>, <string set>, Plain
       invalid before, invalid befores, <time>, <x509 certificate>, Plain
@@ -5501,6 +6025,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       ip interface, ip interfaces, <network ip interface>, <network>, Plain
       ip version, ip versions, <ip version>, <ipv4or6 address>, Plain
       ip version, ip versions, <ip version>, world , NumberedGlobal
+      ips image, ips images, <ips image>, world , PlainGlobal
+      ips repo, ips repos, <ips repo>, world , NamedGlobal
       ipv4 address, ipv4 addresses, <ipv4 address>, world , NamedGlobal
       ipv4 interface, ipv4 interfaces, <network adapter interface>, <network adapter>, Plain
       ipv4 interface, ipv4 interfaces, <network adapter interface>, <network>, Plain
@@ -5543,6 +6069,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       key, keys, <string>, <file section>, Named
       key, keys, <string>, <file>, Named
       khz, khzs, <hertz>, world , PlainGlobal
+      known, knowns, <boolean>, <ips package>, Plain
       last active line number, last active line numbers, <integer>, <action>, Plain
       last active time, last active times, <time>, <action>, Plain
       last change time, last change times, <time>, <action>, Plain
@@ -5557,6 +6084,12 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       last time, last times, <time>, <analysis>, Plain
       last, lasts, <substring>, <string>, Named
       last, lasts, <substring>, <string>, Numbered
+      latest installed package, latest installed packages, <ips package>, <ips image>, Named
+      latest installed package, latest installed packages, <ips package>, <ips image>, Plain
+      latest package, latest packages, <ips package>, <ips image>, Named
+      latest package, latest packages, <ips package>, <ips image>, Plain
+      latest package, latest packages, <ips package>, <ips repo>, Named
+      latest package, latest packages, <ips package>, <ips repo>, Plain
       leap, leaps, <boolean>, <year>, Plain
       least hz, least hzs, <hertz>, world , PlainGlobal
       least integer, least integers, <integer>, world , PlainGlobal
@@ -5687,6 +6220,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       minute, minutes, <time interval>, world , PlainGlobal
       minute_of_hour, minutes_of_hour, <integer>, <time of day with time zone>, Plain
       minute_of_hour, minutes_of_hour, <integer>, <time of day>, Plain
+      mirrors, mirrorses, <string>, <ips authority info>, Plain
       mode, modes, <mode>, <filesystem object>, Plain
       model, models, <string>, <processor>, Plain
       modification time, modification times, <time>, <execution>, Plain
@@ -5747,6 +6281,13 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       name, names, <string>, <filesystem object>, Plain
       name, names, <string>, <filesystem>, Plain
       name, names, <string>, <fixlet_header>, Plain
+      name, names, <string>, <ips authority info>, Plain
+      name, names, <string>, <ips fmri>, Plain
+      name, names, <string>, <ips package>, Plain
+      name, names, <string>, <ips partial matching fmri>, Plain
+      name, names, <string>, <ips repo>, Plain
+      name, names, <string>, <ips setting pieces>, Plain
+      name, names, <string>, <ips version dependency>, Plain
       name, names, <string>, <json key>, Plain
       name, names, <string>, <logged on user>, Plain
       name, names, <string>, <module>, Plain
@@ -5796,6 +6337,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       null, nothing, <undefined>, world , PlainGlobal
       null, nulls, <boolean>, <sqlite column type>, Plain
       numeric value, numeric values, <integer>, <string>, Plain
+      obsolete pkg, obsolete pkgs, <boolean>, <ips package>, Plain
+      obsolete, obsoletes, <boolean>, <ips package>, Plain
       october, octobers, <date>, <integer>, Numbered
       october, octobers, <day of year>, world , NumberedGlobal
       october, octobers, <month and year>, <integer>, Plain
@@ -5810,12 +6353,16 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       operand type, operand types, <type>, <cast>, Plain
       operand type, operand types, <type>, <unary operator>, Plain
       operating system, operating systems, <operating system>, world , PlainGlobal
+      optional dependency, optional dependencies, <ips version dependency>, <ips package>, Plain
+      ordered catalog, ordered catalogs, <string>, <ips image>, Plain
+      ordered catalog, ordered catalogs, <string>, <ips repo>, Plain
       ordered list, ordered lists, <html>, <html>, Named
       ordered list, ordered lists, <html>, <html>, Plain
       ordered list, ordered lists, <html>, <string>, Named
       ordered list, ordered lists, <html>, <string>, Plain
       organization, organizations, <string>, <license>, Plain
       origin fixlet id, origin fixlet ids, <integer>, <action>, Plain
+      origin, origins, <string>, <ips authority info>, Plain
       other duration, other durations, <time interval>, <evaluation cycle>, Plain
       other execute, other executes, <boolean>, <filesystem object>, Plain
       other mask, other masks, <integer>, <filesystem object>, Plain
@@ -5828,10 +6375,15 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       p, ps, <html>, <html>, Plain
       p, ps, <html>, <string>, Named
       p, ps, <html>, <string>, Plain
+      package, packages, <ips package>, <ips image>, Named
+      package, packages, <ips package>, <ips image>, Plain
+      package, packages, <ips package>, <ips repo>, Named
+      package, packages, <ips package>, <ips repo>, Plain
       padded string, padded strings, <string>, <bit set>, Plain
       param, params, <string>, <pkginfo>, Named
       parameter, parameters, <string>, <action>, Named
       parameter, parameters, <string>, world , NamedGlobal
+      parent dependency, parent dependencies, <ips version dependency>, <ips package>, Plain
       parent folder, parent folders, <folder>, <filesystem object>, Plain
       parent folder, parent folders, <folder>, <symlink>, Plain
       parent instance, parent instances, <smf instance>, <smf property group>, Plain
@@ -5895,6 +6447,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       preceding text, preceding texts, <substring>, <string position>, Plain
       preceding text, preceding texts, <substring>, <substring>, Plain
       prefix flag, prefix flags, <boolean>, <ipv4 route>, Plain
+      prefix, prefixs, <string>, <ips authority info>, Plain
       previous line, previous lines, <file line>, <file line>, Plain
       primary codeset, primary codesets, <string>, <language>, Plain
       primary country, primary countries, <string>, <language>, Plain
@@ -5922,13 +6475,19 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       property percent, property percents, <floating point>, <evaluation cycle>, Plain
       property returning, properties returning, <property>, <type>, Index<type>
       property returning, properties returning, <property>, world , Index<type>Global
+      property, properties, <ips setting pieces>, <ips image>, Plain
       property, properties, <property>, <type>, Named
       property, properties, <property>, <type>, Plain
       property, properties, <property>, world , NamedGlobal
       property, properties, <property>, world , PlainGlobal
       property, properties, <smf property>, <smf property group>, Named
       property, properties, <smf property>, <smf property group>, Plain
+      proxied urls, proxied urlses, <string>, <ips authority info>, Plain
       proxy agent service, proxy agent services, <service>, world , PlainGlobal
+      publisher, publishers, <string>, <ips fmri>, Plain
+      publisher, publishers, <string>, <ips package>, Plain
+      publisher, publishers, <string>, <ips partial matching fmri>, Plain
+      publisher, publishers, <string>, <ips version dependency>, Plain
       q, qs, <html>, <html>, Named
       q, qs, <html>, <html>, Plain
       q, qs, <html>, <string>, Named
@@ -5966,14 +6525,28 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       relevant fixlet, relevant fixlets, <fixlet>, <site>, Plain
       relevant offer action, relevant offer actions, <action>, <site>, Plain
       remote, remotes, <boolean>, <logged on user>, Plain
+      renamed pkg, renamed pkgs, <boolean>, <ips package>, Plain
+      renamed, renameds, <boolean>, <ips package>, Plain
+      repo collection type, repo collection types, <string>, <ips authority info>, Plain
+      repo description, repo descriptions, <string>, <ips authority info>, Plain
+      repo legal uris, repo legal urises, <string>, <ips authority info>, Plain
+      repo name, repo names, <string>, <ips authority info>, Plain
+      repo refresh seconds, repo refresh secondses, <string>, <ips authority info>, Plain
+      repo registered, repo registereds, <boolean>, <ips authority info>, Plain
+      repo registration uri, repo registration uris, <string>, <ips authority info>, Plain
+      repo related uris, repo related urises, <string>, <ips authority info>, Plain
+      repo sort policy, repo sort policies, <string>, <ips authority info>, Plain
+      report character set, report character sets, <string>, <client>, Plain
       report duration, report durations, <time interval>, <evaluation cycle>, Plain
       report percent, report percents, <floating point>, <evaluation cycle>, Plain
+      require dependency, require dependencies, <ips version dependency>, <ips package>, Plain
       result type, result types, <type>, <binary operator>, Plain
       result type, result types, <type>, <cast>, Plain
       result type, result types, <type>, <property>, Plain
       result type, result types, <type>, <unary operator>, Plain
       revision, revisions, <string>, <patch>, Named
       revision, revisions, <string>, <patch>, Plain
+      revoked ca certs, revoked ca certses, <string>, <ips authority info>, Plain
       right operand type, right operand types, <type>, <binary operator>, Plain
       right shift, right shifts, <bit set>, <bit set>, Numbered
       root folder, root folders, <folder>, world , PlainGlobal
@@ -6005,6 +6578,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       second_of_minute, seconds_of_minute, <integer>, <time of day>, Plain
       seconds value, seconds values, <integer>, <smf time>, Plain
       section, sections, <file section>, <file>, Named
+      section, sections, <string>, <ips setting pieces>, Plain
       selected server, selected servers, <selected server>, world , PlainGlobal
       september, septembers, <date>, <integer>, Numbered
       september, septembers, <day of year>, world , NumberedGlobal
@@ -6019,6 +6593,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       setgid, setgids, <boolean>, <filesystem object>, Plain
       setgid, setgids, <boolean>, <mode>, Plain
       setsrc flag, setsrc flags, <boolean>, <ipv4 route>, Plain
+      setting, settings, <ips setting pieces>, <ips image>, Plain
+      setting, settings, <ips setting pieces>, <ips package>, Plain
       setting, settings, <setting>, <client>, Named
       setting, settings, <setting>, <client>, Plain
       setting, settings, <setting>, <manual group>, Plain
@@ -6033,6 +6609,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sha224, sha224s, <string>, <string>, Plain
       sha256 download, sha256 downloads, <boolean>, <license>, Plain
       sha256, sha256s, <string>, <file>, Plain
+      sha256, sha256s, <string>, <setting>, Plain
       sha256, sha256s, <string>, <string>, Plain
       sha2_224, sha2_224s, <string>, <file>, Plain
       sha2_224, sha2_224s, <string>, <string>, Plain
@@ -6047,11 +6624,13 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sha512, sha512s, <string>, <file>, Plain
       sha512, sha512s, <string>, <string>, Plain
       signature hash algorithm, signature hash algorithms, <string>, <license>, Plain
+      signature required names, signature required nameses, <string>, <ips authority info>, Plain
       significance place, significance places, <floating point>, <floating point>, Numbered
       significance place, significance places, <floating point>, <floating point>, Plain
       significance threshold, significance thresholds, <floating point>, <floating point>, Plain
       significant digits, significant digitss, <hertz>, <hertz>, Numbered
       significant digits, significant digitss, <integer>, <integer>, Numbered
+      signing ca certs, signing ca certses, <string>, <ips authority info>, Plain
       singular name, singular names, <string>, <property>, Plain
       site number, site numbers, <integer>, <license>, Plain
       site tag, site tags, <string>, <site>, Plain
@@ -6095,6 +6674,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sqlite database, sqlite databases, <sqlite database>, <file>, Plain
       sqrt, sqrts, <floating point>, <floating point>, Plain
       sqrt, sqrts, <floating point>, <integer>, Plain
+      ssl cert, ssl certs, <string>, <ips authority info>, Plain
+      ssl key, ssl keys, <string>, <ips authority info>, Plain
       standard deviation, standard deviations, <floating point>, <floating point>, Plain
       standard deviation, standard deviations, <floating point>, <integer>, Plain
       start date, start dates, <time>, <license>, Plain
@@ -6105,6 +6686,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       statement, statements, <sqlite statement>, <sqlite database>, Named
       static flag, static flags, <boolean>, <ipv4 route>, Plain
       status, statuss, <string>, <action>, Plain
+      sticky, stickies, <boolean>, <ips authority info>, Plain
       sticky, stickies, <boolean>, <mode>, Plain
       storage folder, storage folders, <folder>, <client>, Plain
       string version, string versions, <string>, <application usage summary instance>, Plain
@@ -6133,6 +6715,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sum, sums, <floating point>, <floating point>, Plain
       sum, sums, <integer>, <integer>, Plain
       sum, sums, <time interval>, <time interval>, Plain
+      summary, summaries, <string>, <ips package>, Plain
       sunday, sundays, <day of week>, world , PlainGlobal
       sup, sups, <html>, <html>, Named
       sup, sups, <html>, <html>, Plain
@@ -6182,6 +6765,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       thread, threads, <integer>, <cpupackage>, Plain
       thursday, thursdays, <day of week>, world , PlainGlobal
       time interval, time intervals, <time interval>, world , NamedGlobal
+      time stamp, time stamps, <string>, <ips fmri>, Plain
+      time stamp, time stamps, <string>, <ips package>, Plain
+      time stamp, time stamps, <string>, <ips partial matching fmri>, Plain
+      time stamp, time stamps, <string>, <ips version dependency>, Plain
       time zone, time zones, <time zone>, world , NamedGlobal
       time, times, <time of day with time zone>, <time>, Index<time zone>
       time, times, <time of day>, <time of day with time zone>, Plain
@@ -6227,6 +6814,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       type, types, <sqlite column type>, <sqlite column>, Plain
       type, types, <string>, <execution>, Plain
       type, types, <string>, <filesystem>, Plain
+      type, types, <string>, <ips version dependency>, Plain
       type, types, <string>, <json value>, Plain
       type, types, <string>, <license>, Plain
       type, types, <string>, <processor>, Plain
@@ -6247,6 +6835,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       unary operator, unary operators, <unary operator>, world , NamedGlobal
       unary operator, unary operators, <unary operator>, world , PlainGlobal
       underflow, underflows, <boolean>, <floating point>, Plain
+      uninstalled, uninstalleds, <boolean>, <ips package>, Plain
       union, unions, <integer set>, <integer set>, Plain
       union, unions, <string set>, <string set>, Plain
       unique value, unique values, <date with multiplicity>, <date>, Plain
@@ -6276,15 +6865,18 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       universal time zone, universal time zones, <time zone>, world , PlainGlobal
       universal time, universal times, <time>, world , NamedGlobal
       unix, unixes, <boolean>, <operating system>, Plain
+      unknown, unknowns, <boolean>, <ips package>, Plain
       unordered list, unordered lists, <html>, <html>, Named
       unordered list, unordered lists, <html>, <html>, Plain
       unordered list, unordered lists, <html>, <string>, Named
       unordered list, unordered lists, <html>, <string>, Plain
+      unsupported, unsupporteds, <boolean>, <ips package>, Plain
       up flag, up flags, <boolean>, <ipv4 route>, Plain
       up, ups, <boolean>, <network adapter interface>, Plain
       up, ups, <boolean>, <network adapter>, Plain
       up, ups, <boolean>, <network ip interface>, Plain
       update level, update levels, <integer>, <operating system>, Plain
+      upgradable, upgradables, <boolean>, <ips package>, Plain
       upload progress, upload progresses, <string>, <client>, Plain
       upper bound, upper bounds, <integer>, <integer range>, Plain
       ups, upss, <boolean>, <power level>, Plain
@@ -6308,13 +6900,17 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       user, users, <user>, world , NamedGlobal
       user, users, <user>, world , PlainGlobal
       usual name, usual names, <string>, <property>, Plain
+      uuid, uuids, <string>, <ips authority info>, Plain
       uuid, uuids, <uuid>, <zone>, Plain
       uuid, uuids, <uuid>, world , NamedGlobal
+      v0, v0s, <boolean>, <ips package>, Plain
+      v1, v1s, <boolean>, <ips package>, Plain
       value accessible, values accessible, <boolean>, <symlink>, Plain
       value, values, <json value>, <json key>, Plain
       value, values, <smf value>, <smf property>, Plain
       value, values, <string>, <environment variable>, Plain
       value, values, <string>, <fixlet_header>, Plain
+      value, values, <string>, <ips setting pieces>, Plain
       value, values, <string>, <runlevel>, Plain
       value, values, <string>, <setting>, Plain
       value, values, <string>, <symlink>, Plain
@@ -6325,11 +6921,24 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       variable, variables, <environment variable>, <environment>, Named
       variable, variables, <environment variable>, <environment>, Plain
       variable, variables, <string>, <file>, Plain
+      variant, variants, <ips setting pieces>, <ips image>, Plain
+      variant, variants, <ips setting pieces>, <ips package>, Plain
       vendor, vendors, <string>, <pkginfo>, Plain
+      version count, version counts, <integer>, <ips package>, Plain
       version info, version infos, <string>, <execution>, Plain
+      version ordinal, version ordinals, <integer>, <ips package>, Plain
       version string, version strings, <string>, <module>, Named
+      version with time, versions with times, <version with time>, <ips fmri>, Plain
+      version with time, versions with times, <version with time>, <ips package>, Plain
+      version with time, versions with times, <version with time>, <ips partial matching fmri>, Plain
+      version with time, versions with times, <version with time>, <ips version dependency>, Plain
       version, versions, <integer>, <site>, Plain
       version, versions, <string>, <bios>, Plain
+      version, versions, <string>, <ips fmri>, Plain
+      version, versions, <string>, <ips package>, Plain
+      version, versions, <string>, <ips partial matching fmri>, Plain
+      version, versions, <string>, <ips repo>, Plain
+      version, versions, <string>, <ips version dependency>, Plain
       version, versions, <string>, <pkginfo>, Plain
       version, versions, <version>, <application usage summary instance>, Plain
       version, versions, <version>, <client>, Plain

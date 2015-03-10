@@ -22,6 +22,8 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   cpupackage
   cryptography
   current relay
+  customized_attribute
+  customized_device
   date
   date with multiplicity (derives from  date)
   day of month
@@ -72,12 +74,15 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   ipv6 address with multiplicity (derives from  ipv6 address)
   json key
   json value
+  kernel_extension
   language
   license
   logged on user
   logical volume
   logical volume manager
   manual group
+  message_catalog
+  message_catalog_set
   mode
   mode_mask
   module
@@ -90,12 +95,16 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   network adapter interface
   network interface
   network ip interface (derives from  network interface)
+  network_option
   number of months
   number of months with multiplicity (derives from  number of months)
   object repository
+  odm
   operating system
   package
   power level
+  predefined_attribute
+  predefined_device
   primary language
   process
   processor
@@ -107,6 +116,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   regular expression match (derives from  substring)
   root server
   rope
+  rpc_program
   rpm package release
   rpm package release with multiplicity (derives from  rpm package release)
   rpm package version
@@ -126,6 +136,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   site group
   site version list
   site version list with multiplicity (derives from  site version list)
+  socket
   socket file (derives from  filesystem object)
   sqlite column
   sqlite column type
@@ -140,6 +151,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   substring (derives from  string)
   swap
   symlink
+  tcp state
   technology level
   technology level with multiplicity (derives from  technology level)
   time
@@ -541,8 +553,12 @@ Creation techniques & properties of each type:
       boolean <string>, booleans, NamedGlobal
       broadcast support of <network adapter interface>, broadcast supports, Plain
       broadcast support of <network ip interface>, broadcast supports, Plain
+      close wait of <tcp state>, close waits, Plain
+      closed of <tcp state>, closeds, Plain
+      closing of <tcp state>, closings, Plain
       conjunction of <boolean>, conjunctions, Plain
       constrained of <action>, constraineds, Plain
+      delete tcb of <tcp state>, delete tcbs, Plain
       dependency known of <property>, dependencies known, Plain
       desired encrypt report of <client_cryptography>, desired encrypt reports, Plain
       desired fips mode of <cryptography>, desired fips modes, Plain
@@ -553,10 +569,13 @@ Creation techniques & properties of each type:
       enabled of <setting>, enableds, Plain
       encrypt report of <client_cryptography>, encrypt reports, Plain
       enhanced security of <license>, enhanced securities, Plain
+      established of <tcp state>, establisheds, Plain
       evaluated of <site>, evaluateds, Plain
       evaluation of <license>, evaluations, Plain
       execute of <mode_mask>, executes, Plain
       false, falses, PlainGlobal
+      fin wait one of <tcp state>, fin wait ones, Plain
+      fin wait two of <tcp state>, fin wait twos, Plain
       finite of <floating point>, finites, Plain
       fips mode of <cryptography>, fips modes, Plain
       fips mode of <license>, fips modes, Plain
@@ -573,8 +592,10 @@ Creation techniques & properties of each type:
       installed <string> of <rpmdatabase>, installeds, Named
       integer of <sqlite column type>, integers, Plain
       invalid of <floating point>, invalids, Plain
+      last ack of <tcp state>, last acks, Plain
       leap of <year>, leaps, Plain
       legacy of <bes product>, legacies, Plain
+      listening of <tcp state>, listenings, Plain
       little endian of <operating system>, little endians, Plain
       locked of <action lock state>, lockeds, Plain
       loopback of <network adapter interface>, loopbacks, Plain
@@ -622,9 +643,14 @@ Creation techniques & properties of each type:
       smt capable of <cpupackage>, smt capables, Plain
       smt enabled of <cpupackage>, smt enableds, Plain
       sticky of <mode>, stickies, Plain
+      syn received of <tcp state>, syn receiveds, Plain
+      syn sent of <tcp state>, syn sents, Plain
+      tcp of <socket>, tcps, Plain
       term of <bes product>, terms, Plain
       text of <sqlite column type>, texts, Plain
+      time wait of <tcp state>, time waits, Plain
       true, trues, PlainGlobal
+      udp of <socket>, udps, Plain
       underflow of <floating point>, underflows, Plain
       unix of <operating system>, unixes, Plain
       up of <network adapter interface>, ups, Plain
@@ -691,6 +717,7 @@ Creation techniques & properties of each type:
       data folder of <client>, data folders, Plain, <folder>
       deployment character set of <client>, deployment character sets, Plain, <string>
       evaluationcycle of <client>, evaluationcycles, Plain, <evaluation cycle>
+      fxf character set of <client>, fxf character sets, Plain, <string>
       last command time of <client>, last command times, Plain, <time>
       last report time of <client>, last report times, Plain, <time>
       local character set of <client>, local character sets, Plain, <string>
@@ -700,6 +727,7 @@ Creation techniques & properties of each type:
       registration cidr address of <client>, registration cidr addresses, Plain, <string>
       registration mac address of <client>, registration mac addresses, Plain, <string>
       registration subnet address of <client>, registration subnet addresses, Plain, <ipv4or6 address>
+      report character set of <client>, report character sets, Plain, <string>
       setting <string> of <client>, settings, Named, <setting>
       setting of <client>, settings, Plain, <setting>
       storage folder of <client>, storage folders, Plain, <folder>
@@ -738,6 +766,35 @@ Creation techniques & properties of each type:
     Properties of <current relay> { key phrase, plural keyword, form, <result type>}:
       authenticating of <current relay>, authenticatings, Plain, <boolean>
       version of <current relay>, versions, Plain, <version>
+
+  Type <customized_attribute>
+    Creation of <customized_attribute>: { key phrase, plural keyword, form}
+      customized attribute <string> of <odm>, customized attributes, Named
+      customized attribute of <odm>, customized attributes, Plain
+    Properties of <customized_attribute> { key phrase, plural keyword, form, <result type>}:
+      <customized_attribute> as string, , Cast, <string>
+      attribute name of <customized_attribute>, attribute names, Plain, <string>
+      attribute type of <customized_attribute>, attribute types, Plain, <string>
+      attribute value of <customized_attribute>, attribute values, Plain, <string>
+      device name of <customized_attribute>, device names, Plain, <string>
+      generic flag of <customized_attribute>, generic flags, Plain, <string>
+      nls index of <customized_attribute>, nls indexes, Plain, <string>
+      representation flag of <customized_attribute>, representation flags, Plain, <string>
+
+  Type <customized_device>
+    Creation of <customized_device>: { key phrase, plural keyword, form}
+      customized device <string> of <odm>, customized devices, Named
+      customized device of <odm>, customized devices, Plain
+    Properties of <customized_device> { key phrase, plural keyword, form, <result type>}:
+      <customized_device> as string, , Cast, <string>
+      change status of <customized_device>, change statuses, Plain, <string>
+      connwhere of <customized_device>, connwheres, Plain, <string>
+      device driver instance of <customized_device>, device driver instances, Plain, <string>
+      location of <customized_device>, locations, Plain, <string>
+      name of <customized_device>, names, Plain, <string>
+      parent logical name of <customized_device>, parent logical names, Plain, <string>
+      parent of <customized_device>, parents, Plain, <string>
+      status of <customized_device>, statuses, Plain, <string>
 
   Type <date>
     Creation of <date>: { key phrase, plural keyword, form}
@@ -1992,6 +2049,7 @@ Creation techniques & properties of each type:
       line number of <file line>, line numbers, Plain
       link count of <filesystem object>, link counts, Plain
       link count of <symlink>, link counts, Plain
+      local port of <socket>, local ports, Plain
       lower bound of <integer range>, lower bounds, Plain
       major number of <volume group>, major numbers, Plain
       major of <device file>, majors, Plain
@@ -2057,6 +2115,7 @@ Creation techniques & properties of each type:
       product of <integer>, products, Plain
       registrar number of <license>, registrar numbers, Plain
       rel_part of <fileset version record>, rel_parts, Plain
+      remote port of <socket>, remote ports, Plain
       rvu count of <bes product>, rvu counts, Plain
       seat of <license>, seats, Plain
       second_of_minute of <time of day with time zone>, seconds_of_minute, Plain
@@ -2274,10 +2333,12 @@ Creation techniques & properties of each type:
       gateway address of <selected server>, gateway addresses, Plain
       ip address of <selected server>, ip addresses, Plain
       ipv4or6 address <string>, ipv4or6 addresses, NamedGlobal
+      local address of <socket>, local addresses, Plain
       maximum of <ipv4or6 address>, maxima, Plain
       minimum of <ipv4or6 address>, minima, Plain
       registration address of <client>, registration addresses, Plain
       registration subnet address of <client>, registration subnet addresses, Plain
+      remote address of <socket>, remote addresses, Plain
       subnet address of <network adapter interface>, subnet addresses, Plain
       subnet mask of <network adapter interface>, subnet masks, Plain
     Properties of <ipv4or6 address> { key phrase, plural keyword, form, <result type>}:
@@ -2380,6 +2441,15 @@ Creation techniques & properties of each type:
       path <string> of <json value>, paths, Named, <json value>
       type of <json value>, types, Plain, <string>
 
+  Type <kernel_extension>
+    Creation of <kernel_extension>: { key phrase, plural keyword, form}
+      kernel extension, kernel extensions, PlainGlobal
+    Properties of <kernel_extension> { key phrase, plural keyword, form, <result type>}:
+      <kernel_extension> as string, , Cast, <string>
+      file of <kernel_extension>, files, Plain, <string>
+      size of <kernel_extension>, sizes, Plain, <string>
+      text address of <kernel_extension>, text addresses, Plain, <string>
+
   Type <language>
     Creation of <language>: { key phrase, plural keyword, form}
       system locale, system locales, PlainGlobal
@@ -2463,6 +2533,18 @@ Creation techniques & properties of each type:
       <manual group> as string, , Cast, <string>
       member of <manual group>, members, Plain, <boolean>
       setting of <manual group>, settings, Plain, <setting>
+
+  Type <message_catalog>
+    Creation of <message_catalog>: { key phrase, plural keyword, form}
+      catalog <string>, catalogs, NamedGlobal
+    Properties of <message_catalog> { key phrase, plural keyword, form, <result type>}:
+      set <integer> of <message_catalog>, sets, Numbered, <message_catalog_set>
+
+  Type <message_catalog_set>
+    Creation of <message_catalog_set>: { key phrase, plural keyword, form}
+      set <integer> of <message_catalog>, sets, Numbered
+    Properties of <message_catalog_set> { key phrase, plural keyword, form, <result type>}:
+      message <integer> of <message_catalog_set>, messages, Numbered, <string>
 
   Type <mode>
     Creation of <mode>: { key phrase, plural keyword, form}
@@ -2624,6 +2706,7 @@ Creation techniques & properties of each type:
       ipv4 interface of <network>, ipv4 interfaces, Plain, <network adapter interface>
       ipv4or6 interface of <network>, ipv4or6 interfaces, Plain, <network adapter interface>
       ipv6 interface of <network>, ipv6 interfaces, Plain, <network adapter interface>
+      socket of <network>, sockets, Plain, <socket>
 
   Type <network adapter>
     Creation of <network adapter>: { key phrase, plural keyword, form}
@@ -2697,6 +2780,15 @@ Creation techniques & properties of each type:
       subnet mask of <network ip interface>, subnet masks, Plain, <ipv4 address>
       up of <network ip interface>, ups, Plain, <boolean>
 
+  Type <network_option>
+    Creation of <network_option>: { key phrase, plural keyword, form}
+      network option <string>, network options, NamedGlobal
+      network option, network options, PlainGlobal
+    Properties of <network_option> { key phrase, plural keyword, form, <result type>}:
+      <network_option> as string, , Cast, <string>
+      name of <network_option>, names, Plain, <string>
+      value of <network_option>, values, Plain, <string>
+
   Type <number of months>
     Creation of <number of months>: { key phrase, plural keyword, form}
       - <number of months>, , UnaryOperator
@@ -2763,6 +2855,19 @@ Creation techniques & properties of each type:
       latest fileset <string> of <object repository>, latest filesets, Named, <fileset>
       product <string> of <object repository>, products, Named, <product>
       product of <object repository>, products, Plain, <product>
+
+  Type <odm>
+    Creation of <odm>: { key phrase, plural keyword, form}
+      odm, odms, PlainGlobal
+    Properties of <odm> { key phrase, plural keyword, form, <result type>}:
+      customized attribute <string> of <odm>, customized attributes, Named, <customized_attribute>
+      customized attribute of <odm>, customized attributes, Plain, <customized_attribute>
+      customized device <string> of <odm>, customized devices, Named, <customized_device>
+      customized device of <odm>, customized devices, Plain, <customized_device>
+      predefined attribute <string> of <odm>, predefined attributes, Named, <predefined_attribute>
+      predefined attribute of <odm>, predefined attributes, Plain, <predefined_attribute>
+      predefined device <string> of <odm>, predefined devices, Named, <predefined_device>
+      predefined device of <odm>, predefined devices, Plain, <predefined_device>
 
   Type <operating system>
     Creation of <operating system>: { key phrase, plural keyword, form}
@@ -2833,6 +2938,54 @@ Creation techniques & properties of each type:
       plugged of <power level>, pluggeds, Plain, <boolean>
       ups of <power level>, upss, Plain, <boolean>
 
+  Type <predefined_attribute>
+    Creation of <predefined_attribute>: { key phrase, plural keyword, form}
+      predefined attribute <string> of <odm>, predefined attributes, Named
+      predefined attribute of <odm>, predefined attributes, Plain
+    Properties of <predefined_attribute> { key phrase, plural keyword, form, <result type>}:
+      <predefined_attribute> as string, , Cast, <string>
+      attribute name of <predefined_attribute>, attribute names, Plain, <string>
+      default value of <predefined_attribute>, default values, Plain, <string>
+      generic flag of <predefined_attribute>, generic flags, Plain, <string>
+      nls index of <predefined_attribute>, nls indexes, Plain, <string>
+      possible value of <predefined_attribute>, possible values, Plain, <string>
+      representation flag of <predefined_attribute>, representation flags, Plain, <string>
+      type of <predefined_attribute>, types, Plain, <string>
+      unique type of <predefined_attribute>, unique types, Plain, <string>
+      width of <predefined_attribute>, widths, Plain, <string>
+
+  Type <predefined_device>
+    Creation of <predefined_device>: { key phrase, plural keyword, form}
+      predefined device <string> of <odm>, predefined devices, Named
+      predefined device of <odm>, predefined devices, Plain
+    Properties of <predefined_device> { key phrase, plural keyword, form, <result type>}:
+      <predefined_device> as string, , Cast, <string>
+      base flag of <predefined_device>, base flags, Plain, <string>
+      bus extender flag of <predefined_device>, bus extender flags, Plain, <string>
+      catalog filename of <predefined_device>, catalog filenames, Plain, <string>
+      change method of <predefined_device>, change methods, Plain, <string>
+      change status flag of <predefined_device>, change status flags, Plain, <string>
+      class of <predefined_device>, classes, Plain, <string>
+      configure method of <predefined_device>, configure methods, Plain, <string>
+      define method of <predefined_device>, define methods, Plain, <string>
+      detectable flag of <predefined_device>, detectable flags, Plain, <string>
+      device driver name of <predefined_device>, device driver names, Plain, <string>
+      fru flag of <predefined_device>, fru flags, Plain, <string>
+      id of <predefined_device>, ids, Plain, <string>
+      inventory only flag of <predefined_device>, inventory only flags, Plain, <string>
+      led value of <predefined_device>, led values, Plain, <string>
+      msg number of <predefined_device>, msg numbers, Plain, <string>
+      prefix name of <predefined_device>, prefix names, Plain, <string>
+      set number of <predefined_device>, set numbers, Plain, <string>
+      start method of <predefined_device>, start methods, Plain, <string>
+      stop method of <predefined_device>, stop methods, Plain, <string>
+      subclass of <predefined_device>, subclasses, Plain, <string>
+      type of <predefined_device>, types, Plain, <string>
+      unconfigure method of <predefined_device>, unconfigure methods, Plain, <string>
+      undefine method of <predefined_device>, undefine methods, Plain, <string>
+      unique type of <predefined_device>, unique types, Plain, <string>
+      vpd flag of <predefined_device>, vpd flags, Plain, <string>
+
   Type <primary language>
     Creation of <primary language>: { key phrase, plural keyword, form}
       primary language of <language>, primary languages, Plain
@@ -2843,6 +2996,7 @@ Creation techniques & properties of each type:
     Creation of <process>: { key phrase, plural keyword, form}
       process <integer>, processes, NumberedGlobal
       process <string>, processes, NamedGlobal
+      process of <socket>, processes, Plain
       process, processes, PlainGlobal
     Properties of <process> { key phrase, plural keyword, form, <result type>}:
       command line argument <integer> of <process>, command line arguments, Numbered, <string>
@@ -2958,6 +3112,16 @@ Creation techniques & properties of each type:
       <rope> contains <string>, , BinaryOperator, <boolean>
       <string> & <rope>, , BinaryOperator, <rope>
       length of <rope>, lengths, Plain, <integer>
+
+  Type <rpc_program>
+    Creation of <rpc_program>: { key phrase, plural keyword, form}
+      rpc program, rpc programs, PlainGlobal
+    Properties of <rpc_program> { key phrase, plural keyword, form, <result type>}:
+      <rpc_program> as string, , Cast, <string>
+      port of <rpc_program>, ports, Plain, <string>
+      program of <rpc_program>, programs, Plain, <string>
+      protocol of <rpc_program>, protocols, Plain, <string>
+      version of <rpc_program>, versions, Plain, <string>
 
   Type <rpm package release>
     Creation of <rpm package release>: { key phrase, plural keyword, form}
@@ -3172,6 +3336,7 @@ Creation techniques & properties of each type:
       effective date of <setting>, effective dates, Plain, <time>
       enabled of <setting>, enableds, Plain, <boolean>
       name of <setting>, names, Plain, <string>
+      sha256 of <setting>, sha256s, Plain, <string>
       value of <setting>, values, Plain, <string>
 
   Type <short rpm package version record>
@@ -3273,6 +3438,19 @@ Creation techniques & properties of each type:
     Properties of <site version list with multiplicity> { key phrase, plural keyword, form, <result type>}:
       multiplicity of <site version list with multiplicity>, multiplicities, Plain, <integer>
 
+  Type <socket>
+    Creation of <socket>: { key phrase, plural keyword, form}
+      socket of <network>, sockets, Plain
+    Properties of <socket> { key phrase, plural keyword, form, <result type>}:
+      local address of <socket>, local addresses, Plain, <ipv4or6 address>
+      local port of <socket>, local ports, Plain, <integer>
+      process of <socket>, processes, Plain, <process>
+      remote address of <socket>, remote addresses, Plain, <ipv4or6 address>
+      remote port of <socket>, remote ports, Plain, <integer>
+      tcp of <socket>, tcps, Plain, <boolean>
+      tcp state of <socket>, tcp states, Plain, <tcp state>
+      udp of <socket>, udps, Plain, <boolean>
+
   Type <socket file> (derives from filesystem object)
     Creation of <socket file>: { key phrase, plural keyword, form}
       <filesystem object> as socket file, , Cast
@@ -3361,6 +3539,8 @@ Creation techniques & properties of each type:
       <boolean> as string, , Cast
       <capability> as string, , Cast
       <cast> as string, , Cast
+      <customized_attribute> as string, , Cast
+      <customized_device> as string, , Cast
       <date> as string, , Cast
       <day of month> as string, , Cast
       <day of month> as two digits, , Cast
@@ -3404,6 +3584,7 @@ Creation techniques & properties of each type:
       <ipv6 address> as string, , Cast
       <json key> as string, , Cast
       <json value> as string, , Cast
+      <kernel_extension> as string, , Cast
       <language> as string, , Cast
       <logical volume> as string, , Cast
       <manual group> as string, , Cast
@@ -3414,14 +3595,18 @@ Creation techniques & properties of each type:
       <month> as string, , Cast
       <month> as three letters, , Cast
       <month> as two digits, , Cast
+      <network_option> as string, , Cast
       <number of months> as string, , Cast
       <operating system> as string, , Cast
       <package> as string, , Cast
       <power level> as string, , Cast
+      <predefined_attribute> as string, , Cast
+      <predefined_device> as string, , Cast
       <primary language> as string, , Cast
       <product> as string, , Cast
       <property> as string, , Cast
       <rope> as string, , Cast
+      <rpc_program> as string, , Cast
       <rpm package release> as string, , Cast
       <rpm package version record> as string, , Cast
       <rpm package version> as string, , Cast
@@ -3445,6 +3630,7 @@ Creation techniques & properties of each type:
       <string> as trimmed string, , Cast
       <string> as uppercase, , Cast
       <symlink> as string, , Cast
+      <tcp state> as string, , Cast
       <technology level> as string, , Cast
       <time interval> as string, , Cast
       <time of day with time zone> as string, , Cast
@@ -3465,13 +3651,23 @@ Creation techniques & properties of each type:
       abstract of <technology level>, abstracts, Plain
       architecture of <operating system>, architectures, Plain
       architecture of <package>, architectures, Plain
+      attribute name of <customized_attribute>, attribute names, Plain
+      attribute name of <predefined_attribute>, attribute names, Plain
+      attribute type of <customized_attribute>, attribute types, Plain
+      attribute value of <customized_attribute>, attribute values, Plain
       banned prefetch plugin of <client>, banned prefetch plugins, Plain
+      base flag of <predefined_device>, base flags, Plain
       base64 decode <string>, base64 decodes, NamedGlobal
       base64 encode <string>, base64 encodes, NamedGlobal
       brand of <client>, brands, Plain
       brand string of <processor>, brand strings, Plain
       build of <operating system>, builds, Plain
       build target of <client>, build targets, Plain
+      bus extender flag of <predefined_device>, bus extender flags, Plain
+      catalog filename of <predefined_device>, catalog filenames, Plain
+      change method of <predefined_device>, change methods, Plain
+      change status flag of <predefined_device>, change status flags, Plain
+      change status of <customized_device>, change statuses, Plain
       character <integer>, characters, NumberedGlobal
       character set of <client>, character sets, Plain
       cidr address of <network adapter interface>, cidr addresses, Plain
@@ -3480,6 +3676,7 @@ Creation techniques & properties of each type:
       cidr string of <network adapter interface>, cidr strings, Plain
       cidr string of <network adapter>, cidr strings, Plain
       cidr string of <network ip interface>, cidr strings, Plain
+      class of <predefined_device>, classes, Plain
       codename of <operating system>, codenames, Plain
       command line argument <integer> of <process>, command line arguments, Numbered
       command line argument of <process>, command line arguments, Plain
@@ -3487,10 +3684,18 @@ Creation techniques & properties of each type:
       computer name, computer names, PlainGlobal
       concatenation <string> of <string>, concatenations, Named
       concatenation of <string>, concatenations, Plain
+      configure method of <predefined_device>, configure methods, Plain
+      connwhere of <customized_device>, connwheres, Plain
       controller of <action lock state>, controllers, Plain
       date of <bios>, dates, Plain
+      default value of <predefined_attribute>, default values, Plain
+      define method of <predefined_device>, define methods, Plain
       deployment character set of <client>, deployment character sets, Plain
       description of <fileset>, descriptions, Plain
+      detectable flag of <predefined_device>, detectable flags, Plain
+      device driver instance of <customized_device>, device driver instances, Plain
+      device driver name of <predefined_device>, device driver names, Plain
+      device name of <customized_attribute>, device names, Plain
       device type of <device file>, device types, Plain
       dns name, dns names, PlainGlobal
       domain name, domain names, PlainGlobal
@@ -3506,22 +3711,31 @@ Creation techniques & properties of each type:
       expiration state of <license>, expiration states, Plain
       family name of <processor>, family names, Plain
       family of <processor>, families, Plain
+      file of <kernel_extension>, files, Plain
       fips mode failure message of <cryptography>, fips mode failure messages, Plain
       friendly name of <network adapter>, friendly names, Plain
+      fru flag of <predefined_device>, fru flags, Plain
+      fxf character set of <client>, fxf character sets, Plain
       gather schedule authority of <site>, gather schedule authoritys, Plain
       gather url of <license>, gather urls, Plain
+      generic flag of <customized_attribute>, generic flags, Plain
+      generic flag of <predefined_attribute>, generic flags, Plain
       group name of <filesystem object>, group names, Plain
       group name of <symlink>, group names, Plain
       hexadecimal string <string>, hexadecimal strings, NamedGlobal
       host name of <root server>, host names, Plain
       host name, host names, PlainGlobal
       hostname, hostnames, PlainGlobal
+      id of <predefined_device>, ids, Plain
       identity of <execution>, identites, Plain
       index of <sqlite table>, indices, Plain
+      inventory only flag of <predefined_device>, inventory only flags, Plain
       key <string> of <file section>, keys, Named
       key <string> of <file>, keys, Named
       label of <logical volume>, labels, Plain
+      led value of <predefined_device>, led values, Plain
       local character set of <client>, local character sets, Plain
+      location of <customized_device>, locations, Plain
       location of <filesystem object>, locations, Plain
       location of <symlink>, locations, Plain
       lock string of <action lock state>, lock strings, Plain
@@ -3533,7 +3747,9 @@ Creation techniques & properties of each type:
       machine of <operating system>, machines, Plain
       md5 of <file>, md5s, Plain
       md5 of <string>, md5s, Plain
+      message <integer> of <message_catalog_set>, messages, Numbered
       model of <processor>, models, Plain
+      msg number of <predefined_device>, msg numbers, Plain
       name of <apar>, names, Plain
       name of <application usage summary instance>, names, Plain
       name of <application usage summary>, names, Plain
@@ -3541,6 +3757,7 @@ Creation techniques & properties of each type:
       name of <binary operator>, names, Plain
       name of <capability>, names, Plain
       name of <cast>, names, Plain
+      name of <customized_device>, names, Plain
       name of <download server>, names, Plain
       name of <environment variable>, names, Plain
       name of <filesystem object>, names, Plain
@@ -3552,6 +3769,7 @@ Creation techniques & properties of each type:
       name of <module>, names, Plain
       name of <network adapter>, names, Plain
       name of <network ip interface>, names, Plain
+      name of <network_option>, names, Plain
       name of <operating system>, names, Plain
       name of <package>, names, Plain
       name of <process>, names, Plain
@@ -3570,10 +3788,14 @@ Creation techniques & properties of each type:
       name of <unary operator>, names, Plain
       name of <user>, names, Plain
       name of <volume group>, names, Plain
+      nls index of <customized_attribute>, nls indexes, Plain
+      nls index of <predefined_attribute>, nls indexes, Plain
       organization of <license>, organizations, Plain
       padded string of <bit set>, padded strings, Plain
       parameter <string> of <action>, parameters, Named
       parameter <string>, parameters, NamedGlobal
+      parent logical name of <customized_device>, parent logical names, Plain
+      parent of <customized_device>, parents, Plain
       path of <execution>, paths, Plain
       pathname of <filesystem object>, pathnames, Plain
       pathname of <symlink>, pathnames, Plain
@@ -3582,22 +3804,32 @@ Creation techniques & properties of each type:
       percent encode <string>, percent encodes, NamedGlobal
       platform id of <language>, platform ids, Plain
       plural name of <property>, plural names, Plain
+      port of <rpc_program>, ports, Plain
+      possible value of <predefined_attribute>, possible values, Plain
+      prefix name of <predefined_device>, prefix names, Plain
       primary codeset of <language>, primary codesets, Plain
       primary country of <language>, primary countries, Plain
       product info string of <operating system>, product info strings, Plain
+      program of <rpc_program>, programs, Plain
+      protocol of <rpc_program>, protocols, Plain
       regex escape of <string>, regex escapes, Plain
       registration cidr address of <client>, registration cidr addresses, Plain
       registration mac address of <client>, registration mac addresses, Plain
       relation of <capability>, relations, Plain
       release of <operating system>, releases, Plain
+      report character set of <client>, report character sets, Plain
+      representation flag of <customized_attribute>, representation flags, Plain
+      representation flag of <predefined_attribute>, representation flags, Plain
       schema of <sqlite table>, schemas, Plain
       seat count state of <license>, seat count states, Plain
+      set number of <predefined_device>, set numbers, Plain
       sha1 of <file>, sha1s, Plain
       sha1 of <string>, sha1s, Plain
       sha1 of <x509 certificate>, sha1s, Plain
       sha224 of <file>, sha224s, Plain
       sha224 of <string>, sha224s, Plain
       sha256 of <file>, sha256s, Plain
+      sha256 of <setting>, sha256s, Plain
       sha256 of <string>, sha256s, Plain
       sha2_224 of <file>, sha2_224s, Plain
       sha2_224 of <string>, sha2_224s, Plain
@@ -3615,14 +3847,20 @@ Creation techniques & properties of each type:
       singular name of <property>, singular names, Plain
       site tag of <site>, site tags, Plain
       site url of <bes product>, site urls, Plain
+      size of <kernel_extension>, sizes, Plain
+      start method of <predefined_device>, start methods, Plain
       state of <service>, states, Plain
       status of <action>, statuss, Plain
+      status of <customized_device>, statuses, Plain
+      stop method of <predefined_device>, stop methods, Plain
       string <string>, strings, NamedGlobal
       string version of <application usage summary instance>, string versions, Plain
+      subclass of <predefined_device>, subclasses, Plain
       symbol of <binary operator>, symbols, Plain
       symbol of <unary operator>, symbols, Plain
       symptom of <apar>, symptoms, Plain
       system language, system languages, PlainGlobal
+      text address of <kernel_extension>, text addresses, Plain
       track fixlet of <evaluation cycle>, track fixlets, Plain
       tty of <logged on user>, ttys, Plain
       tty of <user>, ttys, Plain
@@ -3638,10 +3876,16 @@ Creation techniques & properties of each type:
       type of <filesystem>, types, Plain
       type of <json value>, types, Plain
       type of <license>, types, Plain
+      type of <predefined_attribute>, types, Plain
+      type of <predefined_device>, types, Plain
       type of <processor>, types, Plain
       type of <site>, types, Plain
       type of <sqlite column type>, types, Plain
+      unconfigure method of <predefined_device>, unconfigure methods, Plain
+      undefine method of <predefined_device>, undefine methods, Plain
       unique name of <package>, unique names, Plain
+      unique type of <predefined_attribute>, unique types, Plain
+      unique type of <predefined_device>, unique types, Plain
       upload progress of <client>, upload progresses, Plain
       url of <site>, urls, Plain
       user name of <filesystem object>, user names, Plain
@@ -3649,6 +3893,7 @@ Creation techniques & properties of each type:
       usual name of <property>, usual names, Plain
       value of <environment variable>, values, Plain
       value of <fixlet_header>, values, Plain
+      value of <network_option>, values, Plain
       value of <runlevel>, values, Plain
       value of <setting>, values, Plain
       value of <symlink>, values, Plain
@@ -3656,9 +3901,12 @@ Creation techniques & properties of each type:
       version info of <execution>, version infos, Plain
       version of <bios>, versions, Plain
       version of <capability>, versions, Plain
+      version of <rpc_program>, versions, Plain
       version string <string> of <module>, version strings, Named
       volume of <filesystem>, volumes, Plain
+      vpd flag of <predefined_device>, vpd flags, Plain
       wake on lan subnet cidr string, wake on lan subnet cidr strings, PlainGlobal
+      width of <predefined_attribute>, widths, Plain
     Properties of <string> { key phrase, plural keyword, form, <result type>}:
       <file content> contains <string>, , BinaryOperator, <boolean>
       <fileset version record> < <string>, , BinaryOperator, <boolean>
@@ -4026,6 +4274,24 @@ Creation techniques & properties of each type:
       user name of <symlink>, user names, Plain, <string>
       value accessible of <symlink>, values accessible, Plain, <boolean>
       value of <symlink>, values, Plain, <string>
+
+  Type <tcp state>
+    Creation of <tcp state>: { key phrase, plural keyword, form}
+      tcp state of <socket>, tcp states, Plain
+    Properties of <tcp state> { key phrase, plural keyword, form, <result type>}:
+      <tcp state> as string, , Cast, <string>
+      close wait of <tcp state>, close waits, Plain, <boolean>
+      closed of <tcp state>, closeds, Plain, <boolean>
+      closing of <tcp state>, closings, Plain, <boolean>
+      delete tcb of <tcp state>, delete tcbs, Plain, <boolean>
+      established of <tcp state>, establisheds, Plain, <boolean>
+      fin wait one of <tcp state>, fin wait ones, Plain, <boolean>
+      fin wait two of <tcp state>, fin wait twos, Plain, <boolean>
+      last ack of <tcp state>, last acks, Plain, <boolean>
+      listening of <tcp state>, listenings, Plain, <boolean>
+      syn received of <tcp state>, syn receiveds, Plain, <boolean>
+      syn sent of <tcp state>, syn sents, Plain, <boolean>
+      time wait of <tcp state>, time waits, Plain, <boolean>
 
   Type <technology level>
     Creation of <technology level>: { key phrase, plural keyword, form}
@@ -4612,6 +4878,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   cast <string>, casts, NamedGlobal, <cast>
   cast returning <type>, casts returning, Index<type>Global, <cast>
   cast, casts, PlainGlobal, <cast>
+  catalog <string>, catalogs, NamedGlobal, <message_catalog>
   character <integer>, characters, NumberedGlobal, <string>
   client cryptography, client cryptographies, PlainGlobal, <client_cryptography>
   client license, client licenses, PlainGlobal, <license>
@@ -4717,6 +4984,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   july, julys, PlainGlobal, <month>
   june <integer>, junes, NumberedGlobal, <day of year>
   june, junes, PlainGlobal, <month>
+  kernel extension, kernel extensions, PlainGlobal, <kernel_extension>
   khz, khzs, PlainGlobal, <hertz>
   last relay select time, last relay select times, PlainGlobal, <time>
   least hz, least hzs, PlainGlobal, <hertz>
@@ -4744,6 +5012,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   month <integer>, months, NumberedGlobal, <month>
   month <string>, months, NamedGlobal, <month>
   month, months, PlainGlobal, <number of months>
+  network option <string>, network options, NamedGlobal, <network_option>
+  network option, network options, PlainGlobal, <network_option>
   network, networks, PlainGlobal, <network>
   nil, nothings, PlainGlobal, <undefined>
   noon, noons, PlainGlobal, <time of day>
@@ -4754,6 +5024,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   object repository, object repositories, PlainGlobal, <object repository>
   october <integer>, octobers, NumberedGlobal, <day of year>
   october, octobers, PlainGlobal, <month>
+  odm, odms, PlainGlobal, <odm>
   operating system, operating systems, PlainGlobal, <operating system>
   parameter <string>, parameters, NamedGlobal, <string>
   pending login, pending logins, PlainGlobal, <boolean>
@@ -4781,6 +5052,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   root folder, root folders, PlainGlobal, <folder>
   root server, root servers, PlainGlobal, <root server>
   rope <string>, ropes, NamedGlobal, <rope>
+  rpc program, rpc programs, PlainGlobal, <rpc_program>
   rpm <string>, rpms, NamedGlobal, <rpmdatabase>
   rpm package release <rpm package release>, rpm package releases, Index<rpm package release>Global, <rpm package release>
   rpm package release <string>, rpm package releases, NamedGlobal, <rpm package release>
@@ -5002,6 +5274,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <boolean>, Cast
       as string, , <string>, <capability>, Cast
       as string, , <string>, <cast>, Cast
+      as string, , <string>, <customized_attribute>, Cast
+      as string, , <string>, <customized_device>, Cast
       as string, , <string>, <date>, Cast
       as string, , <string>, <day of month>, Cast
       as string, , <string>, <day of week>, Cast
@@ -5022,6 +5296,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <ipv6 address>, Cast
       as string, , <string>, <json key>, Cast
       as string, , <string>, <json value>, Cast
+      as string, , <string>, <kernel_extension>, Cast
       as string, , <string>, <language>, Cast
       as string, , <string>, <logical volume>, Cast
       as string, , <string>, <manual group>, Cast
@@ -5029,14 +5304,18 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <mode_mask>, Cast
       as string, , <string>, <month and year>, Cast
       as string, , <string>, <month>, Cast
+      as string, , <string>, <network_option>, Cast
       as string, , <string>, <number of months>, Cast
       as string, , <string>, <operating system>, Cast
       as string, , <string>, <package>, Cast
       as string, , <string>, <power level>, Cast
+      as string, , <string>, <predefined_attribute>, Cast
+      as string, , <string>, <predefined_device>, Cast
       as string, , <string>, <primary language>, Cast
       as string, , <string>, <product>, Cast
       as string, , <string>, <property>, Cast
       as string, , <string>, <rope>, Cast
+      as string, , <string>, <rpc_program>, Cast
       as string, , <string>, <rpm package release>, Cast
       as string, , <string>, <rpm package version record>, Cast
       as string, , <string>, <rpm package version>, Cast
@@ -5053,6 +5332,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <sqlite table>, Cast
       as string, , <string>, <string>, Cast
       as string, , <string>, <symlink>, Cast
+      as string, , <string>, <tcp state>, Cast
       as string, , <string>, <technology level>, Cast
       as string, , <string>, <time interval>, Cast
       as string, , <string>, <time of day with time zone>, Cast
@@ -5088,6 +5368,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as year, , <year>, <string>, Cast
       as zoned time_of_day, , <time of day with time zone>, <string>, Cast
       attr list, attr lists, <html attribute list>, <( string, string )>, Plain
+      attribute name, attribute names, <string>, <customized_attribute>, Plain
+      attribute name, attribute names, <string>, <predefined_attribute>, Plain
+      attribute type, attribute types, <string>, <customized_attribute>, Plain
+      attribute value, attribute values, <string>, <customized_attribute>, Plain
       august, augusts, <date>, <integer>, Numbered
       august, augusts, <day of year>, world , NumberedGlobal
       august, augusts, <month and year>, <integer>, Plain
@@ -5101,6 +5385,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       b, bs, <html>, <string>, Named
       b, bs, <html>, <string>, Plain
       banned prefetch plugin, banned prefetch plugins, <string>, <client>, Plain
+      base flag, base flags, <string>, <predefined_device>, Plain
       base, bases, <html>, <html>, Named
       base, bases, <html>, <html>, Plain
       base, bases, <html>, <string>, Named
@@ -5145,6 +5430,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       build number, build numbers, <integer>, <operating system>, Plain
       build target, build targets, <string>, <client>, Plain
       build, builds, <string>, <operating system>, Plain
+      bus extender flag, bus extender flags, <string>, <predefined_device>, Plain
       byte, bytes, <integer>, <file>, Numbered
       capability, capabilities, <capability>, <rpmdatabase>, Named
       capability, capabilities, <capability>, world , NamedGlobal
@@ -5158,7 +5444,12 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       cast returning, casts returning, <cast>, world , Index<type>Global
       cast, casts, <cast>, world , NamedGlobal
       cast, casts, <cast>, world , PlainGlobal
+      catalog filename, catalog filenames, <string>, <predefined_device>, Plain
+      catalog, catalogs, <message_catalog>, world , NamedGlobal
       certificate, certificates, <x509 certificate>, <client>, Plain
+      change method, change methods, <string>, <predefined_device>, Plain
+      change status flag, change status flags, <string>, <predefined_device>, Plain
+      change status, change statuses, <string>, <customized_device>, Plain
       change time, change times, <time>, <filesystem object>, Plain
       change time, change times, <time>, <symlink>, Plain
       character set, character sets, <string>, <client>, Plain
@@ -5175,11 +5466,15 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       cite, cites, <html>, <html>, Plain
       cite, cites, <html>, <string>, Named
       cite, cites, <html>, <string>, Plain
+      class, classes, <string>, <predefined_device>, Plain
       client cryptography, client cryptographies, <client_cryptography>, world , PlainGlobal
       client device count, client device counts, <integer>, <bes product>, Plain
       client folder, client folders, <folder>, <site>, Plain
       client license, client licenses, <license>, world , PlainGlobal
       client, clients, <client>, world , PlainGlobal
+      close wait, close waits, <boolean>, <tcp state>, Plain
+      closed, closeds, <boolean>, <tcp state>, Plain
+      closing, closings, <boolean>, <tcp state>, Plain
       code, codes, <html>, <html>, Named
       code, codes, <html>, <html>, Plain
       code, codes, <html>, <string>, Named
@@ -5214,8 +5509,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       concatenation, concatenations, <html>, <string>, Index<html>
       concatenation, concatenations, <string>, <string>, Named
       concatenation, concatenations, <string>, <string>, Plain
+      configure method, configure methods, <string>, <predefined_device>, Plain
       conflict, conflicts, <capability>, <package>, Plain
       conjunction, conjunctions, <boolean>, <boolean>, Plain
+      connwhere, connwheres, <string>, <customized_device>, Plain
       constrained, constraineds, <boolean>, <action>, Plain
       constraint, constraints, <integer>, <action>, Plain
       content, contents, <file content>, <file>, Plain
@@ -5240,6 +5537,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       current user, current users, <logged on user>, world , PlainGlobal
       current year, current years, <year>, world , PlainGlobal
       custom site subscription effective date, custom site subscription effective dates, <time>, world , NamedGlobal
+      customized attribute, customized attributes, <customized_attribute>, <odm>, Named
+      customized attribute, customized attributes, <customized_attribute>, <odm>, Plain
+      customized device, customized devices, <customized_device>, <odm>, Named
+      customized device, customized devices, <customized_device>, <odm>, Plain
       data folder, data folders, <folder>, <client>, Plain
       date, dates, <date>, <time>, Index<time zone>
       date, dates, <date>, world , NamedGlobal
@@ -5260,7 +5561,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       december, decembers, <day of year>, world , NumberedGlobal
       december, decembers, <month and year>, <integer>, Plain
       december, decembers, <month>, world , PlainGlobal
+      default value, default values, <string>, <predefined_attribute>, Plain
       default web browser, default web browsers, <file>, world , PlainGlobal
+      define method, define methods, <string>, <predefined_device>, Plain
       definition list, definition lists, <html>, <html>, Named
       definition list, definition lists, <html>, <html>, Plain
       definition list, definition lists, <html>, <string>, Named
@@ -5269,6 +5572,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       del, dels, <html>, <html>, Plain
       del, dels, <html>, <string>, Named
       del, dels, <html>, <string>, Plain
+      delete tcb, delete tcbs, <boolean>, <tcp state>, Plain
       dependency known, dependencies known, <boolean>, <property>, Plain
       deployment character set, deployment character sets, <string>, <client>, Plain
       descendant folder, descendant folders, <folder>, <folder>, Plain
@@ -5276,12 +5580,16 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       description, descriptions, <string>, <fileset>, Plain
       desired encrypt report, desired encrypt reports, <boolean>, <client_cryptography>, Plain
       desired fips mode, desired fips modes, <boolean>, <cryptography>, Plain
+      detectable flag, detectable flags, <string>, <predefined_device>, Plain
+      device driver instance, device driver instances, <string>, <customized_device>, Plain
+      device driver name, device driver names, <string>, <predefined_device>, Plain
       device file, device files, <device file>, <folder>, Named
       device file, device files, <device file>, <folder>, Plain
       device file, device files, <device file>, world , Index<filesystem object>Global
       device file, device files, <device file>, world , Index<symlink>Global
       device file, device files, <device file>, world , Index<symlink>Global
       device file, device files, <device file>, world , NamedGlobal
+      device name, device names, <string>, <customized_attribute>, Plain
       device type, device types, <string>, <device file>, Plain
       dfn, dfns, <html>, <html>, Named
       dfn, dfns, <html>, <html>, Plain
@@ -5346,6 +5654,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       epoch, epochs, <integer>, <rpm package version record>, Plain
       epoch, epochs, <integer>, <short rpm package version record>, Plain
       error, errors, <undefined>, world , NamedGlobal
+      established, establisheds, <boolean>, <tcp state>, Plain
       evaluated, evaluateds, <boolean>, <site>, Plain
       evaluation, evaluations, <boolean>, <license>, Plain
       evaluationcycle, evaluationcycles, <evaluation cycle>, <client>, Plain
@@ -5400,6 +5709,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       file, files, <file>, <folder>, Plain
       file, files, <file>, world , Index<symlink>Global
       file, files, <file>, world , NamedGlobal
+      file, files, <string>, <kernel_extension>, Plain
       fileset matching, filesets matching, <fileset>, <object repository>, Named
       fileset version record, fileset version records, <fileset version record>, world , Index<fileset version record>Global
       fileset version record, fileset version records, <fileset version record>, world , NamedGlobal
@@ -5423,6 +5733,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       filesystem, filesystems, <filesystem>, <symlink>, Plain
       filesystem, filesystems, <filesystem>, world , NamedGlobal
       filesystem, filesystems, <filesystem>, world , PlainGlobal
+      fin wait one, fin wait ones, <boolean>, <tcp state>, Plain
+      fin wait two, fin wait twos, <boolean>, <tcp state>, Plain
       final part, final parts, <time range>, <time range>, Index<time interval>
       find adapter, find adapters, <network adapter>, <network>, Named
       find file, find files, <file>, <folder>, Named
@@ -5466,8 +5778,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       free space, free spaces, <integer>, <filesystem>, Plain
       friday, fridays, <day of week>, world , PlainGlobal
       friendly name, friendly names, <string>, <network adapter>, Plain
+      fru flag, fru flags, <string>, <predefined_device>, Plain
       full gateway address, full gateway addresses, <ipv4or6 address>, <selected server>, Plain
       full, fulls, <boolean>, <power level>, Plain
+      fxf character set, fxf character sets, <string>, <client>, Plain
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Numbered
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Plain
       gather duration, gather durations, <time interval>, <evaluation cycle>, Plain
@@ -5475,6 +5789,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       gather schedule authority, gather schedule authoritys, <string>, <site>, Plain
       gather schedule time interval, gather schedule time intervals, <time interval>, <site>, Plain
       gather url, gather urls, <string>, <license>, Plain
+      generic flag, generic flags, <string>, <customized_attribute>, Plain
+      generic flag, generic flags, <string>, <predefined_attribute>, Plain
       ghz, ghzs, <hertz>, world , PlainGlobal
       gid, gids, <integer>, <filesystem object>, Plain
       gid, gids, <integer>, <symlink>, Plain
@@ -5556,6 +5872,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       id, ids, <integer>, <root server>, Plain
       id, ids, <integer>, <site group>, Plain
       id, ids, <integer>, <user>, Plain
+      id, ids, <string>, <predefined_device>, Plain
       identity, identites, <string>, <execution>, Plain
       in agent context, in agent contexts, <boolean>, world , PlainGlobal
       in proxy agent context, in proxy agent contexts, <boolean>, world , PlainGlobal
@@ -5592,6 +5909,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       intersection, intersections, <string set>, <string set>, Plain
       invalid before, invalid befores, <time>, <x509 certificate>, Plain
       invalid, invalids, <boolean>, <floating point>, Plain
+      inventory only flag, inventory only flags, <string>, <predefined_device>, Plain
       ip address, ip addresses, <ipv4or6 address>, <selected server>, Plain
       ip interface, ip interfaces, <network ip interface>, <network>, Numbered
       ip interface, ip interfaces, <network ip interface>, <network>, Plain
@@ -5632,12 +5950,14 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       kbd, kbds, <html>, <html>, Plain
       kbd, kbds, <html>, <string>, Named
       kbd, kbds, <html>, <string>, Plain
+      kernel extension, kernel extensions, <kernel_extension>, world , PlainGlobal
       key, keys, <json key>, <json value>, Named
       key, keys, <json key>, <json value>, Plain
       key, keys, <string>, <file section>, Named
       key, keys, <string>, <file>, Named
       khz, khzs, <hertz>, world , PlainGlobal
       label, labels, <string>, <logical volume>, Plain
+      last ack, last acks, <boolean>, <tcp state>, Plain
       last active line number, last active line numbers, <integer>, <action>, Plain
       last active time, last active times, <time>, <action>, Plain
       last change time, last change times, <time>, <action>, Plain
@@ -5659,6 +5979,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       least integer, least integers, <integer>, world , PlainGlobal
       least significant one bit, least significant one bits, <integer>, <bit set>, Plain
       least time interval, least time intervals, <time interval>, world , PlainGlobal
+      led value, led values, <string>, <predefined_device>, Plain
       left operand type, left operand types, <type>, <binary operator>, Plain
       left shift, left shifts, <bit set>, <bit set>, Numbered
       legacy, legacies, <boolean>, <bes product>, Plain
@@ -5683,11 +6004,15 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       link, links, <html>, <html>, Plain
       link, links, <html>, <string>, Named
       link, links, <html>, <string>, Plain
+      listening, listenings, <boolean>, <tcp state>, Plain
       little endian, little endians, <boolean>, <operating system>, Plain
+      local address, local addresses, <ipv4or6 address>, <socket>, Plain
       local character set, local character sets, <string>, <client>, Plain
+      local port, local ports, <integer>, <socket>, Plain
       local time zone, local time zones, <time zone>, world , PlainGlobal
       local time, local times, <time>, world , NamedGlobal
       local user, local users, <user>, world , NamedGlobal
+      location, locations, <string>, <customized_device>, Plain
       location, locations, <string>, <filesystem object>, Plain
       location, locations, <string>, <symlink>, Plain
       lock string, lock strings, <string>, <action lock state>, Plain
@@ -5762,6 +6087,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       mean, means, <floating point>, <integer>, Plain
       member, members, <boolean>, <manual group>, Plain
       member, members, <boolean>, <site group>, Plain
+      message, messages, <string>, <message_catalog_set>, Numbered
       meta, metas, <html>, <html>, Named
       meta, metas, <html>, <html>, Plain
       meta, metas, <html>, <string>, Named
@@ -5820,6 +6146,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       month_and_year, months_and_years, <month and year>, <date>, Plain
       more significance, more significances, <floating point>, <floating point>, Numbered
       most significant one bit, most significant one bits, <integer>, <bit set>, Plain
+      msg number, msg numbers, <string>, <predefined_device>, Plain
       multicast support, multicast supports, <boolean>, <network adapter interface>, Plain
       multicast support, multicast supports, <boolean>, <network adapter>, Plain
       multicast support, multicast supports, <boolean>, <network ip interface>, Plain
@@ -5862,6 +6189,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       name, names, <string>, <binary operator>, Plain
       name, names, <string>, <capability>, Plain
       name, names, <string>, <cast>, Plain
+      name, names, <string>, <customized_device>, Plain
       name, names, <string>, <download server>, Plain
       name, names, <string>, <environment variable>, Plain
       name, names, <string>, <filesystem object>, Plain
@@ -5873,6 +6201,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       name, names, <string>, <module>, Plain
       name, names, <string>, <network adapter>, Plain
       name, names, <string>, <network ip interface>, Plain
+      name, names, <string>, <network_option>, Plain
       name, names, <string>, <operating system>, Plain
       name, names, <string>, <package>, Plain
       name, names, <string>, <process>, Plain
@@ -5892,9 +6221,13 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       name, names, <string>, <user>, Plain
       name, names, <string>, <volume group>, Plain
       nan, nans, <boolean>, <floating point>, Plain
+      network option, network options, <network_option>, world , NamedGlobal
+      network option, network options, <network_option>, world , PlainGlobal
       network, networks, <network>, world , PlainGlobal
       next line, next lines, <file line>, <file line>, Plain
       nil, nothings, <undefined>, world , PlainGlobal
+      nls index, nls indexes, <string>, <customized_attribute>, Plain
+      nls index, nls indexes, <string>, <predefined_attribute>, Plain
       no epoch, no epochs, <rpm package version record>, <rpm package version record>, Plain
       no epoch, no epochs, <short rpm package version record>, <short rpm package version record>, Plain
       non windows server count, non windows server counts, <integer>, <bes product>, Plain
@@ -5916,6 +6249,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       october, octobers, <day of year>, world , NumberedGlobal
       october, octobers, <month and year>, <integer>, Plain
       october, octobers, <month>, world , PlainGlobal
+      odm, odms, <odm>, world , PlainGlobal
       offer accepted, offer accepteds, <boolean>, <action>, Plain
       offer, offers, <boolean>, <action>, Plain
       ol, ols, <html>, <html>, Named
@@ -5955,6 +6289,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       parameter, parameters, <string>, world , NamedGlobal
       parent folder, parent folders, <folder>, <filesystem object>, Plain
       parent folder, parent folders, <folder>, <symlink>, Plain
+      parent logical name, parent logical names, <string>, <customized_device>, Plain
+      parent, parents, <string>, <customized_device>, Plain
       parent, parents, <type>, <type>, Plain
       parenthesized part, parenthesized parts, <substring>, <regular expression match>, Numbered
       parenthesized part, parenthesized parts, <substring>, <regular expression match>, Plain
@@ -5984,8 +6320,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       point to point, point to points, <boolean>, <network adapter interface>, Plain
       point to point, point to points, <boolean>, <network ip interface>, Plain
       port number, port numbers, <integer>, <selected server>, Plain
+      port, ports, <string>, <rpc_program>, Plain
       position, positions, <string position>, <string>, Numbered
       position, positions, <string position>, <string>, Plain
+      possible value, possible values, <string>, <predefined_attribute>, Plain
       power level, power levels, <power level>, world , PlainGlobal
       ppid, ppids, <integer>, <process>, Plain
       pre, pres, <html>, <html>, Named
@@ -5994,6 +6332,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       pre, pres, <html>, <string>, Plain
       preceding text, preceding texts, <substring>, <string position>, Plain
       preceding text, preceding texts, <substring>, <substring>, Plain
+      predefined attribute, predefined attributes, <predefined_attribute>, <odm>, Named
+      predefined attribute, predefined attributes, <predefined_attribute>, <odm>, Plain
+      predefined device, predefined devices, <predefined_device>, <odm>, Named
+      predefined device, predefined devices, <predefined_device>, <odm>, Plain
+      prefix name, prefix names, <string>, <predefined_device>, Plain
       previous line, previous lines, <file line>, <file line>, Plain
       primary codeset, primary codesets, <string>, <language>, Plain
       primary country, primary countries, <string>, <language>, Plain
@@ -6001,6 +6344,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       priority, priorities, <integer>, <selected server>, Plain
       process id, process ids, <integer>, <logged on user>, Plain
       process id, process ids, <integer>, <process>, Plain
+      process, processes, <process>, <socket>, Plain
       process, processes, <process>, world , NamedGlobal
       process, processes, <process>, world , NumberedGlobal
       process, processes, <process>, world , PlainGlobal
@@ -6013,6 +6357,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       product, products, <product>, <fileset>, Plain
       product, products, <product>, <object repository>, Named
       product, products, <product>, <object repository>, Plain
+      program, programs, <string>, <rpc_program>, Plain
       property duration, property durations, <time interval>, <evaluation cycle>, Plain
       property percent, property percents, <floating point>, <evaluation cycle>, Plain
       property returning, properties returning, <property>, <type>, Index<type>
@@ -6021,6 +6366,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       property, properties, <property>, <type>, Plain
       property, properties, <property>, world , NamedGlobal
       property, properties, <property>, world , PlainGlobal
+      protocol, protocols, <string>, <rpc_program>, Plain
       provide, provides, <capability>, <package>, Plain
       proxy agent service, proxy agent services, <service>, world , PlainGlobal
       q, qs, <html>, <html>, Named
@@ -6058,9 +6404,14 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       relevance, relevances, <boolean>, <fixlet>, Plain
       relevant fixlet, relevant fixlets, <fixlet>, <site>, Plain
       relevant offer action, relevant offer actions, <action>, <site>, Plain
+      remote address, remote addresses, <ipv4or6 address>, <socket>, Plain
+      remote port, remote ports, <integer>, <socket>, Plain
       remote, remotes, <boolean>, <logged on user>, Plain
+      report character set, report character sets, <string>, <client>, Plain
       report duration, report durations, <time interval>, <evaluation cycle>, Plain
       report percent, report percents, <floating point>, <evaluation cycle>, Plain
+      representation flag, representation flags, <string>, <customized_attribute>, Plain
+      representation flag, representation flags, <string>, <predefined_attribute>, Plain
       require, requires, <capability>, <package>, Plain
       result type, result types, <type>, <binary operator>, Plain
       result type, result types, <type>, <cast>, Plain
@@ -6073,6 +6424,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       root server, root servers, <root server>, world , PlainGlobal
       rope, ropes, <rope>, world , NamedGlobal
       row, rows, <sqlite row>, <sqlite statement>, Plain
+      rpc program, rpc programs, <rpc_program>, world , PlainGlobal
       rpm package release, rpm package releases, <rpm package release>, world , Index<rpm package release>Global
       rpm package release, rpm package releases, <rpm package release>, world , NamedGlobal
       rpm package version record, rpm package version records, <rpm package version record>, world , Index<rpm package version record>Global
@@ -6109,7 +6461,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       service pack, service packs, <service pack>, <operating system>, Named
       service pack, service packs, <service pack>, <operating system>, Plain
       service, services, <service>, world , NamedGlobal
+      set number, set numbers, <string>, <predefined_device>, Plain
       set, sets, <integer set>, <integer>, Plain
+      set, sets, <message_catalog_set>, <message_catalog>, Numbered
       set, sets, <string set>, <string>, Plain
       setgid, setgids, <boolean>, <filesystem object>, Plain
       setgid, setgids, <boolean>, <mode>, Plain
@@ -6127,6 +6481,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sha224, sha224s, <string>, <string>, Plain
       sha256 download, sha256 downloads, <boolean>, <license>, Plain
       sha256, sha256s, <string>, <file>, Plain
+      sha256, sha256s, <string>, <setting>, Plain
       sha256, sha256s, <string>, <string>, Plain
       sha2_224, sha2_224s, <string>, <file>, Plain
       sha2_224, sha2_224s, <string>, <string>, Plain
@@ -6167,6 +6522,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       size, sizes, <integer>, <string set>, Plain
       size, sizes, <integer>, <swap>, Plain
       size, sizes, <integer>, <type>, Plain
+      size, sizes, <string>, <kernel_extension>, Plain
       sleep duration, sleep durations, <time interval>, <evaluation cycle>, Plain
       sleep percent, sleep percents, <floating point>, <evaluation cycle>, Plain
       small, smalls, <html>, <html>, Named
@@ -6181,6 +6537,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       socket file, socket files, <socket file>, world , Index<symlink>Global
       socket file, socket files, <socket file>, world , Index<symlink>Global
       socket file, socket files, <socket file>, world , NamedGlobal
+      socket, sockets, <socket>, <network>, Plain
       span, spans, <html>, <html>, Named
       span, spans, <html>, <html>, Plain
       span, spans, <html>, <string>, Named
@@ -6192,12 +6549,15 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       standard deviation, standard deviations, <floating point>, <floating point>, Plain
       standard deviation, standard deviations, <floating point>, <integer>, Plain
       start date, start dates, <time>, <license>, Plain
+      start method, start methods, <string>, <predefined_device>, Plain
       start, starts, <string position>, <substring>, Plain
       start, starts, <time>, <time range>, Plain
       state, states, <string>, <service>, Plain
       statement, statements, <sqlite statement>, <sqlite database>, Named
+      status, statuses, <string>, <customized_device>, Plain
       status, statuss, <string>, <action>, Plain
       sticky, stickies, <boolean>, <mode>, Plain
+      stop method, stop methods, <string>, <predefined_device>, Plain
       storage folder, storage folders, <folder>, <client>, Plain
       string version, string versions, <string>, <application usage summary instance>, Plain
       string, strings, <string>, world , NamedGlobal
@@ -6209,6 +6569,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sub, subs, <html>, <html>, Plain
       sub, subs, <html>, <string>, Named
       sub, subs, <html>, <string>, Plain
+      subclass, subclasses, <string>, <predefined_device>, Plain
       subnet address, subnet addresses, <ipv4 address>, <network adapter>, Plain
       subnet address, subnet addresses, <ipv4 address>, <network ip interface>, Plain
       subnet address, subnet addresses, <ipv4or6 address>, <network adapter interface>, Plain
@@ -6239,6 +6600,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       symlink, symlinks, <symlink>, world , Index<symlink>Global
       symlink, symlinks, <symlink>, world , NamedGlobal
       symptom, symptoms, <string>, <apar>, Plain
+      syn received, syn receiveds, <boolean>, <tcp state>, Plain
+      syn sent, syn sents, <boolean>, <tcp state>, Plain
       system constraint, system constraints, <integer>, <action>, Plain
       system folder, system folders, <folder>, world , PlainGlobal
       system language, system languages, <string>, world , PlainGlobal
@@ -6254,6 +6617,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       tbody, tbodys, <html>, <html>, Plain
       tbody, tbodys, <html>, <string>, Named
       tbody, tbodys, <html>, <string>, Plain
+      tcp state, tcp states, <tcp state>, <socket>, Plain
+      tcp, tcps, <boolean>, <socket>, Plain
       td, tds, <html>, <html>, Named
       td, tds, <html>, <html>, Plain
       td, tds, <html>, <string>, Named
@@ -6262,6 +6627,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       technology level, technology levels, <technology level>, <operating system>, Plain
       technology level, technology levels, <technology level>, <service pack>, Plain
       term, terms, <boolean>, <bes product>, Plain
+      text address, text addresses, <string>, <kernel_extension>, Plain
       text, texts, <boolean>, <sqlite column type>, Plain
       tfoot, tfoots, <html>, <html>, Named
       tfoot, tfoots, <html>, <html>, Plain
@@ -6278,6 +6644,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       thread, threads, <integer>, <cpupackage>, Plain
       thursday, thursdays, <day of week>, world , PlainGlobal
       time interval, time intervals, <time interval>, world , NamedGlobal
+      time wait, time waits, <boolean>, <tcp state>, Plain
       time zone, time zones, <time zone>, world , NamedGlobal
       time, times, <time of day with time zone>, <time>, Index<time zone>
       time, times, <time of day>, <time of day with time zone>, Plain
@@ -6323,11 +6690,14 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       type, types, <string>, <filesystem>, Plain
       type, types, <string>, <json value>, Plain
       type, types, <string>, <license>, Plain
+      type, types, <string>, <predefined_attribute>, Plain
+      type, types, <string>, <predefined_device>, Plain
       type, types, <string>, <processor>, Plain
       type, types, <string>, <site>, Plain
       type, types, <string>, <sqlite column type>, Plain
       type, types, <type>, world , NamedGlobal
       type, types, <type>, world , PlainGlobal
+      udp, udps, <boolean>, <socket>, Plain
       uid, uids, <integer>, <filesystem object>, Plain
       uid, uids, <integer>, <symlink>, Plain
       ul, uls, <html>, <html>, Named
@@ -6337,6 +6707,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       unary operator returning, unary operators returning, <unary operator>, world , Index<type>Global
       unary operator, unary operators, <unary operator>, world , NamedGlobal
       unary operator, unary operators, <unary operator>, world , PlainGlobal
+      unconfigure method, unconfigure methods, <string>, <predefined_device>, Plain
+      undefine method, undefine methods, <string>, <predefined_device>, Plain
       underflow, underflows, <boolean>, <floating point>, Plain
       uninstalled fileset version requirement, uninstalled fileset version requirements, <fileset version requirement>, <apar>, Plain
       uninstalled fileset version requirement, uninstalled fileset version requirements, <fileset version requirement>, <service pack>, Plain
@@ -6344,6 +6716,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       union, unions, <integer set>, <integer set>, Plain
       union, unions, <string set>, <string set>, Plain
       unique name, unique names, <string>, <package>, Plain
+      unique type, unique types, <string>, <predefined_attribute>, Plain
+      unique type, unique types, <string>, <predefined_device>, Plain
       unique value, unique values, <date with multiplicity>, <date>, Plain
       unique value, unique values, <day of month with multiplicity>, <day of month>, Plain
       unique value, unique values, <day of week with multiplicity>, <day of week>, Plain
@@ -6413,6 +6787,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       value, values, <json value>, <json key>, Plain
       value, values, <string>, <environment variable>, Plain
       value, values, <string>, <fixlet_header>, Plain
+      value, values, <string>, <network_option>, Plain
       value, values, <string>, <runlevel>, Plain
       value, values, <string>, <setting>, Plain
       value, values, <string>, <symlink>, Plain
@@ -6433,6 +6808,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       version, versions, <rpm package version>, <short rpm package version record>, Plain
       version, versions, <string>, <bios>, Plain
       version, versions, <string>, <capability>, Plain
+      version, versions, <string>, <rpc_program>, Plain
       version, versions, <version>, <application usage summary instance>, Plain
       version, versions, <version>, <client>, Plain
       version, versions, <version>, <current relay>, Plain
@@ -6447,11 +6823,13 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       volume group, volume groups, <volume group>, <logical volume manager>, Plain
       volume group, volume groups, <volume group>, <logical volume>, Plain
       volume, volumes, <string>, <filesystem>, Plain
+      vpd flag, vpd flags, <string>, <predefined_device>, Plain
       waiting for download, waiting for downloads, <boolean>, <action>, Plain
       wake on lan subnet cidr string, wake on lan subnet cidr strings, <string>, world , PlainGlobal
       wednesday, wednesdays, <day of week>, world , PlainGlobal
       week, weeks, <time interval>, world , PlainGlobal
       weight, weights, <integer>, <selected server>, Plain
+      width, widths, <string>, <predefined_attribute>, Plain
       windows server count, windows server counts, <integer>, <bes product>, Plain
       windows, windowses, <boolean>, <operating system>, Plain
       workstation count, workstation counts, <integer>, <bes product>, Plain

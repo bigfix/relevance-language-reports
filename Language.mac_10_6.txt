@@ -131,6 +131,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   site group
   site version list
   site version list with multiplicity (derives from  site version list)
+  socket
   sqlite column
   sqlite column type
   sqlite database
@@ -144,6 +145,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   string with multiplicity (derives from  string)
   substring (derives from  string)
   system power interval
+  tcp state
   time
   time interval
   time interval with multiplicity (derives from  time interval)
@@ -563,11 +565,15 @@ Creation techniques & properties of each type:
       broadcast support of <network ip interface>, broadcast supports, Plain
       cloned of <route>, cloneds, Plain
       cloning flag of <route>, cloning flags, Plain
+      close wait of <tcp state>, close waits, Plain
+      closed of <tcp state>, closeds, Plain
+      closing of <tcp state>, closings, Plain
       condemned flag of <route>, condemned flags, Plain
       conjunction of <boolean>, conjunctions, Plain
       constrained of <action>, constraineds, Plain
       default of <route>, defaults, Plain
       delclone flag of <route>, delclone flags, Plain
+      delete tcb of <tcp state>, delete tcbs, Plain
       dependency known of <property>, dependencies known, Plain
       desired encrypt report of <client_cryptography>, desired encrypt reports, Plain
       desired fips mode of <cryptography>, desired fips modes, Plain
@@ -582,10 +588,13 @@ Creation techniques & properties of each type:
       enabled of <setting>, enableds, Plain
       encrypt report of <client_cryptography>, encrypt reports, Plain
       enhanced security of <license>, enhanced securities, Plain
+      established of <tcp state>, establisheds, Plain
       evaluated of <site>, evaluateds, Plain
       evaluation of <license>, evaluations, Plain
       false, falses, PlainGlobal
       fast scsi of <scsibus>, fast scsis, Plain
+      fin wait one of <tcp state>, fin wait ones, Plain
+      fin wait two of <tcp state>, fin wait twos, Plain
       finite of <floating point>, finites, Plain
       fips mode of <cryptography>, fips modes, Plain
       fips mode of <license>, fips modes, Plain
@@ -603,8 +612,10 @@ Creation techniques & properties of each type:
       integer of <sqlite column type>, integers, Plain
       invalid of <floating point>, invalids, Plain
       isochronous of <usb>, isochronouses, Plain
+      last ack of <tcp state>, last acks, Plain
       leap of <year>, leaps, Plain
       legacy of <bes product>, legacies, Plain
+      listening of <tcp state>, listenings, Plain
       little endian of <operating system>, little endians, Plain
       llinfo flag of <route>, llinfo flags, Plain
       local flag of <route>, local flags, Plain
@@ -659,9 +670,14 @@ Creation techniques & properties of each type:
       smt enabled of <cpupackage>, smt enableds, Plain
       static flag of <route>, static flags, Plain
       stationery of <file>, stationeries, Plain
+      syn received of <tcp state>, syn receiveds, Plain
+      syn sent of <tcp state>, syn sents, Plain
+      tcp of <socket>, tcps, Plain
       term of <bes product>, terms, Plain
       text of <sqlite column type>, texts, Plain
+      time wait of <tcp state>, time waits, Plain
       true, trues, PlainGlobal
+      udp of <socket>, udps, Plain
       underflow of <floating point>, underflows, Plain
       unix of <operating system>, unixes, Plain
       up flag of <route>, up flags, Plain
@@ -727,6 +743,7 @@ Creation techniques & properties of each type:
       data folder of <client>, data folders, Plain, <folder>
       deployment character set of <client>, deployment character sets, Plain, <string>
       evaluationcycle of <client>, evaluationcycles, Plain, <evaluation cycle>
+      fxf character set of <client>, fxf character sets, Plain, <string>
       last command time of <client>, last command times, Plain, <time>
       last report time of <client>, last report times, Plain, <time>
       local character set of <client>, local character sets, Plain, <string>
@@ -737,6 +754,7 @@ Creation techniques & properties of each type:
       registration cidr address of <client>, registration cidr addresses, Plain, <string>
       registration mac address of <client>, registration mac addresses, Plain, <string>
       registration subnet address of <client>, registration subnet addresses, Plain, <ipv4or6 address>
+      report character set of <client>, report character sets, Plain, <string>
       setting <string> of <client>, settings, Named, <setting>
       setting of <client>, settings, Plain, <setting>
       storage folder of <client>, storage folders, Plain, <folder>
@@ -2269,6 +2287,7 @@ Creation techniques & properties of each type:
       length of <rope>, lengths, Plain
       length of <string>, lengths, Plain
       line number of <file line>, line numbers, Plain
+      local port of <socket>, local ports, Plain
       logical ram, logical rams, PlainGlobal
       lower bound of <integer range>, lower bounds, Plain
       machine type, machine types, PlainGlobal
@@ -2324,6 +2343,7 @@ Creation techniques & properties of each type:
       product of <integer>, products, Plain
       reference of <route>, references, Plain
       registrar number of <license>, registrar numbers, Plain
+      remote port of <socket>, remote ports, Plain
       rvu count of <bes product>, rvu counts, Plain
       seat of <license>, seats, Plain
       second_of_minute of <time of day with time zone>, seconds_of_minute, Plain
@@ -2541,11 +2561,13 @@ Creation techniques & properties of each type:
       gateway of <route>, gateways, Plain
       ip address of <selected server>, ip addresses, Plain
       ipv4or6 address <string>, ipv4or6 addresses, NamedGlobal
+      local address of <socket>, local addresses, Plain
       mask of <route>, masks, Plain
       maximum of <ipv4or6 address>, maxima, Plain
       minimum of <ipv4or6 address>, minima, Plain
       registration address of <client>, registration addresses, Plain
       registration subnet address of <client>, registration subnet addresses, Plain
+      remote address of <socket>, remote addresses, Plain
       subnet address of <network adapter interface>, subnet addresses, Plain
       subnet mask of <network adapter interface>, subnet masks, Plain
     Properties of <ipv4or6 address> { key phrase, plural keyword, form, <result type>}:
@@ -2858,6 +2880,7 @@ Creation techniques & properties of each type:
       ipv6 interface of <network>, ipv6 interfaces, Plain, <network adapter interface>
       link interface <integer> of <network>, link interfaces, Numbered, <network link interface>
       link interface of <network>, link interfaces, Plain, <network link interface>
+      socket of <network>, sockets, Plain, <socket>
 
   Type <network adapter>
     Creation of <network adapter>: { key phrase, plural keyword, form}
@@ -3116,6 +3139,7 @@ Creation techniques & properties of each type:
   Type <process>
     Creation of <process>: { key phrase, plural keyword, form}
       process <integer>, processes, NumberedGlobal
+      process of <socket>, processes, Plain
       process, processes, PlainGlobal
     Properties of <process> { key phrase, plural keyword, form, <result type>}:
       id of <process>, ids, Plain, <integer>
@@ -3419,6 +3443,7 @@ Creation techniques & properties of each type:
       effective date of <setting>, effective dates, Plain, <time>
       enabled of <setting>, enableds, Plain, <boolean>
       name of <setting>, names, Plain, <string>
+      sha256 of <setting>, sha256s, Plain, <string>
       value of <setting>, values, Plain, <string>
 
   Type <site>
@@ -3480,6 +3505,19 @@ Creation techniques & properties of each type:
       unique value of <site version list>, unique values, Plain
     Properties of <site version list with multiplicity> { key phrase, plural keyword, form, <result type>}:
       multiplicity of <site version list with multiplicity>, multiplicities, Plain, <integer>
+
+  Type <socket>
+    Creation of <socket>: { key phrase, plural keyword, form}
+      socket of <network>, sockets, Plain
+    Properties of <socket> { key phrase, plural keyword, form, <result type>}:
+      local address of <socket>, local addresses, Plain, <ipv4or6 address>
+      local port of <socket>, local ports, Plain, <integer>
+      process of <socket>, processes, Plain, <process>
+      remote address of <socket>, remote addresses, Plain, <ipv4or6 address>
+      remote port of <socket>, remote ports, Plain, <integer>
+      tcp of <socket>, tcps, Plain, <boolean>
+      tcp state of <socket>, tcp states, Plain, <tcp state>
+      udp of <socket>, udps, Plain, <boolean>
 
   Type <sqlite column>
     Creation of <sqlite column>: { key phrase, plural keyword, form}
@@ -3633,6 +3671,7 @@ Creation techniques & properties of each type:
       <string> as string, , Cast
       <string> as trimmed string, , Cast
       <string> as uppercase, , Cast
+      <tcp state> as string, , Cast
       <time interval> as string, , Cast
       <time of day with time zone> as string, , Cast
       <time of day> as string, , Cast
@@ -3703,6 +3742,7 @@ Creation techniques & properties of each type:
       flags string of <route>, flags strings, Plain
       friendly name of <network adapter>, friendly names, Plain
       full name of <user>, full names, Plain
+      fxf character set of <client>, fxf character sets, Plain
       gateway string of <route>, gateway strings, Plain
       gateway type of <route>, gateways types, Plain
       gather schedule authority of <site>, gather schedule authoritys, Plain
@@ -3789,6 +3829,7 @@ Creation techniques & properties of each type:
       regex escape of <string>, regex escapes, Plain
       registration cidr address of <client>, registration cidr addresses, Plain
       registration mac address of <client>, registration mac addresses, Plain
+      report character set of <client>, report character sets, Plain
       revision of <scsidevice>, revisions, Plain
       schema of <sqlite table>, schemas, Plain
       seat count state of <license>, seat count states, Plain
@@ -3798,6 +3839,7 @@ Creation techniques & properties of each type:
       sha224 of <file>, sha224s, Plain
       sha224 of <string>, sha224s, Plain
       sha256 of <file>, sha256s, Plain
+      sha256 of <setting>, sha256s, Plain
       sha256 of <string>, sha256s, Plain
       sha2_224 of <file>, sha2_224s, Plain
       sha2_224 of <string>, sha2_224s, Plain
@@ -4160,6 +4202,24 @@ Creation techniques & properties of each type:
     Properties of <system power interval> { key phrase, plural keyword, form, <result type>}:
       range of <system power interval>, ranges, Plain, <time range>
       state of <system power interval>, states, Plain, <power state>
+
+  Type <tcp state>
+    Creation of <tcp state>: { key phrase, plural keyword, form}
+      tcp state of <socket>, tcp states, Plain
+    Properties of <tcp state> { key phrase, plural keyword, form, <result type>}:
+      <tcp state> as string, , Cast, <string>
+      close wait of <tcp state>, close waits, Plain, <boolean>
+      closed of <tcp state>, closeds, Plain, <boolean>
+      closing of <tcp state>, closings, Plain, <boolean>
+      delete tcb of <tcp state>, delete tcbs, Plain, <boolean>
+      established of <tcp state>, establisheds, Plain, <boolean>
+      fin wait one of <tcp state>, fin wait ones, Plain, <boolean>
+      fin wait two of <tcp state>, fin wait twos, Plain, <boolean>
+      last ack of <tcp state>, last acks, Plain, <boolean>
+      listening of <tcp state>, listenings, Plain, <boolean>
+      syn received of <tcp state>, syn receiveds, Plain, <boolean>
+      syn sent of <tcp state>, syn sents, Plain, <boolean>
+      time wait of <tcp state>, time waits, Plain, <boolean>
 
   Type <time>
     Creation of <time>: { key phrase, plural keyword, form}
@@ -5315,6 +5375,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <sqlite table>, Cast
       as string, , <string>, <stage>, Cast
       as string, , <string>, <string>, Cast
+      as string, , <string>, <tcp state>, Cast
       as string, , <string>, <time interval>, Cast
       as string, , <string>, <time of day with time zone>, Cast
       as string, , <string>, <time of day>, Cast
@@ -5471,6 +5532,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       client, clients, <client>, world , PlainGlobal
       cloned, cloneds, <boolean>, <route>, Plain
       cloning flag, cloning flags, <boolean>, <route>, Plain
+      close wait, close waits, <boolean>, <tcp state>, Plain
+      closed, closeds, <boolean>, <tcp state>, Plain
+      closing, closings, <boolean>, <tcp state>, Plain
       code, codes, <html>, <html>, Named
       code, codes, <html>, <html>, Plain
       code, codes, <html>, <string>, Named
@@ -5597,6 +5661,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       del, dels, <html>, <string>, Named
       del, dels, <html>, <string>, Plain
       delclone flag, delclone flags, <boolean>, <route>, Plain
+      delete tcb, delete tcbs, <boolean>, <tcp state>, Plain
       dependency known, dependencies known, <boolean>, <property>, Plain
       deployment character set, deployment character sets, <string>, <client>, Plain
       descendant folder, descendant folders, <folder>, <folder>, Plain
@@ -5723,6 +5788,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       entry, entries, <dictionaryentry>, <dictionary>, Plain
       environment, environments, <environment>, world , PlainGlobal
       error, errors, <undefined>, world , NamedGlobal
+      established, establisheds, <boolean>, <tcp state>, Plain
       evaluated, evaluateds, <boolean>, <site>, Plain
       evaluation, evaluations, <boolean>, <license>, Plain
       evaluationcycle, evaluationcycles, <evaluation cycle>, <client>, Plain
@@ -5786,6 +5852,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       filesystem, filesystems, <volume>, world , NamedGlobal
       filesystem, filesystems, <volume>, world , NumberedGlobal
       filesystem, filesystems, <volume>, world , PlainGlobal
+      fin wait one, fin wait ones, <boolean>, <tcp state>, Plain
+      fin wait two, fin wait twos, <boolean>, <tcp state>, Plain
       final part, final parts, <time range>, <time range>, Index<time interval>
       find adapter, find adapters, <network adapter>, <network>, Named
       find file, find files, <file>, <folder>, Named
@@ -5838,6 +5906,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       full gateway address, full gateway addresses, <ipv4or6 address>, <selected server>, Plain
       full name, full names, <string>, <user>, Plain
       full, fulls, <boolean>, <power level>, Plain
+      fxf character set, fxf character sets, <string>, <client>, Plain
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Numbered
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Plain
       gateway flag, gateway flags, <boolean>, <route>, Plain
@@ -6040,6 +6109,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       key, keys, <string>, <user attribute>, Plain
       keyboard type, keyboard types, <integer>, world , PlainGlobal
       khz, khzs, <hertz>, world , PlainGlobal
+      last ack, last acks, <boolean>, <tcp state>, Plain
       last active line number, last active line numbers, <integer>, <action>, Plain
       last active time, last active times, <time>, <action>, Plain
       last change time, last change times, <time>, <action>, Plain
@@ -6096,14 +6166,17 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       link, links, <html>, <html>, Plain
       link, links, <html>, <string>, Named
       link, links, <html>, <string>, Plain
+      listening, listenings, <boolean>, <tcp state>, Plain
       little endian, little endians, <boolean>, <operating system>, Plain
       llinfo flag, llinfo flags, <boolean>, <route>, Plain
+      local address, local addresses, <ipv4or6 address>, <socket>, Plain
       local character set, local character sets, <string>, <client>, Plain
       local computer, local computers, <active directory local computer>, <active directory server>, Plain
       local dictionary, local dictionaries, <dictionary>, <bundle>, Plain
       local domain, local domains, <domain>, world , PlainGlobal
       local flag, local flags, <boolean>, <route>, Plain
       local group, local groups, <active directory group>, <active directory server>, Named
+      local port, local ports, <integer>, <socket>, Plain
       local time zone, local time zones, <time zone>, world , PlainGlobal
       local time, local times, <time>, world , NamedGlobal
       local user, local users, <active directory local user>, <active directory server>, Named
@@ -6436,6 +6509,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       private framework folder, private framework folders, <folder>, world , PlainGlobal
       process id, process ids, <integer>, <process>, Plain
       process owner, process owners, <client process owner>, <client>, Plain
+      process, processes, <process>, <socket>, Plain
       process, processes, <process>, world , NumberedGlobal
       process, processes, <process>, world , PlainGlobal
       processor, processors, <processor>, world , NumberedGlobal
@@ -6508,7 +6582,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       relevance, relevances, <boolean>, <fixlet>, Plain
       relevant fixlet, relevant fixlets, <fixlet>, <site>, Plain
       relevant offer action, relevant offer actions, <action>, <site>, Plain
+      remote address, remote addresses, <ipv4or6 address>, <socket>, Plain
+      remote port, remote ports, <integer>, <socket>, Plain
       remote, remotes, <boolean>, <logged on user>, Plain
+      report character set, report character sets, <string>, <client>, Plain
       report duration, report durations, <time interval>, <evaluation cycle>, Plain
       report percent, report percents, <floating point>, <evaluation cycle>, Plain
       resource fork, resource forks, <resfork>, <file>, Plain
@@ -6575,6 +6652,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sha224, sha224s, <string>, <string>, Plain
       sha256 download, sha256 downloads, <boolean>, <license>, Plain
       sha256, sha256s, <string>, <file>, Plain
+      sha256, sha256s, <string>, <setting>, Plain
       sha256, sha256s, <string>, <string>, Plain
       sha2_224, sha2_224s, <string>, <file>, Plain
       sha2_224, sha2_224s, <string>, <string>, Plain
@@ -6636,6 +6714,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       small, smalls, <html>, <string>, Plain
       smt capable, smt capables, <boolean>, <cpupackage>, Plain
       smt enabled, smt enableds, <boolean>, <cpupackage>, Plain
+      socket, sockets, <socket>, <network>, Plain
       sound folder, sound folders, <folder>, <domain>, Plain
       sound folder, sound folders, <folder>, world , PlainGlobal
       span, spans, <html>, <html>, Named
@@ -6707,6 +6786,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sup, sups, <html>, <string>, Plain
       symbol, symbols, <string>, <binary operator>, Plain
       symbol, symbols, <string>, <unary operator>, Plain
+      syn received, syn receiveds, <boolean>, <tcp state>, Plain
+      syn sent, syn sents, <boolean>, <tcp state>, Plain
       system constraint, system constraints, <integer>, <action>, Plain
       system domain, system domains, <domain>, world , PlainGlobal
       system folder, system folders, <folder>, <domain>, Plain
@@ -6723,6 +6804,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       tbody, tbodys, <html>, <html>, Plain
       tbody, tbodys, <html>, <string>, Named
       tbody, tbodys, <html>, <string>, Plain
+      tcp state, tcp states, <tcp state>, <socket>, Plain
+      tcp, tcps, <boolean>, <socket>, Plain
       td, tds, <html>, <html>, Named
       td, tds, <html>, <html>, Plain
       td, tds, <html>, <string>, Named
@@ -6750,6 +6833,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       thread, threads, <integer>, <cpupackage>, Plain
       thursday, thursdays, <day of week>, world , PlainGlobal
       time interval, time intervals, <time interval>, world , NamedGlobal
+      time wait, time waits, <boolean>, <tcp state>, Plain
       time zone, time zones, <time zone>, world , NamedGlobal
       time, times, <time of day with time zone>, <time>, Index<time zone>
       time, times, <time of day>, <time of day with time zone>, Plain
@@ -6802,6 +6886,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       type, types, <string>, <volume>, Plain
       type, types, <type>, world , NamedGlobal
       type, types, <type>, world , PlainGlobal
+      udp, udps, <boolean>, <socket>, Plain
       ul, uls, <html>, <html>, Named
       ul, uls, <html>, <html>, Plain
       ul, uls, <html>, <string>, Named
