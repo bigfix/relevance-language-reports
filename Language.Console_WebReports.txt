@@ -333,12 +333,15 @@ Creation techniques & properties of each type:
   Type <bes action status>
     Creation of <bes action status>: { key phrase, plural keyword, form}
       bes action status constrained, bes action statuses constrained, PlainGlobal
+      bes action status disk free limited, bes action statuses disk free limited, PlainGlobal
+      bes action status disk limited, bes action statuses disk limited, PlainGlobal
       bes action status download failed, bes action statuses download failed, PlainGlobal
       bes action status error, bes action statuses error, PlainGlobal
       bes action status evaluating, bes action statuses evaluating, PlainGlobal
       bes action status expired, bes action statuses expired, PlainGlobal
       bes action status failed, bes action statuses failed, PlainGlobal
       bes action status fixed, bes action statuses fixed, PlainGlobal
+      bes action status hash mismatch, bes action statuses hash mismatch, PlainGlobal
       bes action status invalid signature, bes action statuses invalid signature, PlainGlobal
       bes action status irrelevant, bes action statuses irrelevant, PlainGlobal
       bes action status locked, bes action statuses locked, PlainGlobal
@@ -819,8 +822,12 @@ Creation techniques & properties of each type:
       default action of <bes fixlet>, default actions, Plain
     Properties of <bes fixlet action> { key phrase, plural keyword, form, <result type>}:
       content id of <bes fixlet action>, content ids, Plain, <string>
+      custom success relevance of <bes fixlet action>, custom success relevances, Plain, <string>
       script of <bes fixlet action>, scripts, Plain, <string>
       script type of <bes fixlet action>, script types, Plain, <string>
+      success on custom relevance of <bes fixlet action>, success on custom relevances, Plain, <boolean>
+      success on original relevance of <bes fixlet action>, success on original relevances, Plain, <boolean>
+      success on run to completion of <bes fixlet action>, success on run to completions, Plain, <boolean>
 
   Type <bes fixlet field>
     Creation of <bes fixlet field>: { key phrase, plural keyword, form}
@@ -1779,8 +1786,11 @@ Creation techniques & properties of each type:
       subscribed <bes site> of <bes computer>, subscribeds, Index<bes site>
       subscription flag of <bes action>, subscription flags, Plain
       success on custom relevance of <bes action>, success on custom relevances, Plain
+      success on custom relevance of <bes fixlet action>, success on custom relevances, Plain
       success on original relevance of <bes action>, success on original relevances, Plain
+      success on original relevance of <bes fixlet action>, success on original relevances, Plain
       success on run to completion of <bes action>, success on run to completions, Plain
+      success on run to completion of <bes fixlet action>, success on run to completions, Plain
       targeted by id flag of <bes action>, targeted by id flags, Plain
       targeted by list flag of <bes action>, targeted by list flags, Plain
       targeted by property flag of <bes action>, targeted by property flags, Plain
@@ -3587,6 +3597,7 @@ Creation techniques & properties of each type:
       content id of <bes fixlet action>, content ids, Plain
       cpu of <bes computer>, cpus, Plain
       custom success relevance of <bes action>, custom success relevances, Plain
+      custom success relevance of <bes fixlet action>, custom success relevances, Plain
       cve id list of <bes fixlet>, cve id lists, Plain
       dashboard id of <bes wizard>, dashboard ids, Plain
       database name of <bes action>, database names, Plain
@@ -4555,12 +4566,15 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   base64 encode <string>, base64 encodes, NamedGlobal, <string>
   bes action set, bes action sets, PlainGlobal, <bes action set>
   bes action status constrained, bes action statuses constrained, PlainGlobal, <bes action status>
+  bes action status disk free limited, bes action statuses disk free limited, PlainGlobal, <bes action status>
+  bes action status disk limited, bes action statuses disk limited, PlainGlobal, <bes action status>
   bes action status download failed, bes action statuses download failed, PlainGlobal, <bes action status>
   bes action status error, bes action statuses error, PlainGlobal, <bes action status>
   bes action status evaluating, bes action statuses evaluating, PlainGlobal, <bes action status>
   bes action status expired, bes action statuses expired, PlainGlobal, <bes action status>
   bes action status failed, bes action statuses failed, PlainGlobal, <bes action status>
   bes action status fixed, bes action statuses fixed, PlainGlobal, <bes action status>
+  bes action status hash mismatch, bes action statuses hash mismatch, PlainGlobal, <bes action status>
   bes action status invalid signature, bes action statuses invalid signature, PlainGlobal, <bes action status>
   bes action status irrelevant, bes action statuses irrelevant, PlainGlobal, <bes action status>
   bes action status locked, bes action statuses locked, PlainGlobal, <bes action status>
@@ -5011,12 +5025,15 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       baseline set, baseline sets, <bes fixlet set>, <bes filter>, Plain
       bes action set, bes action sets, <bes action set>, world , PlainGlobal
       bes action status constrained, bes action statuses constrained, <bes action status>, world , PlainGlobal
+      bes action status disk free limited, bes action statuses disk free limited, <bes action status>, world , PlainGlobal
+      bes action status disk limited, bes action statuses disk limited, <bes action status>, world , PlainGlobal
       bes action status download failed, bes action statuses download failed, <bes action status>, world , PlainGlobal
       bes action status error, bes action statuses error, <bes action status>, world , PlainGlobal
       bes action status evaluating, bes action statuses evaluating, <bes action status>, world , PlainGlobal
       bes action status expired, bes action statuses expired, <bes action status>, world , PlainGlobal
       bes action status failed, bes action statuses failed, <bes action status>, world , PlainGlobal
       bes action status fixed, bes action statuses fixed, <bes action status>, world , PlainGlobal
+      bes action status hash mismatch, bes action statuses hash mismatch, <bes action status>, world , PlainGlobal
       bes action status invalid signature, bes action statuses invalid signature, <bes action status>, world , PlainGlobal
       bes action status irrelevant, bes action statuses irrelevant, <bes action status>, world , PlainGlobal
       bes action status locked, bes action statuses locked, <bes action status>, world , PlainGlobal
@@ -5214,6 +5231,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       custom site, custom sites, <bes site>, <bes domain>, Plain
       custom site, custom sites, <bes site>, <bes fixlet>, Plain
       custom success relevance, custom success relevances, <string>, <bes action>, Plain
+      custom success relevance, custom success relevances, <string>, <bes fixlet action>, Plain
       cve id list, cve id lists, <string>, <bes fixlet>, Plain
       dashboard id, dashboard ids, <string>, <bes wizard>, Plain
       database id, database ids, <integer>, <bes action>, Plain
@@ -6157,8 +6175,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       substring, substrings, <substring>, <string>, Index<( integer, integer )>
       substring, substrings, <substring>, <string>, Named
       success on custom relevance, success on custom relevances, <boolean>, <bes action>, Plain
+      success on custom relevance, success on custom relevances, <boolean>, <bes fixlet action>, Plain
       success on original relevance, success on original relevances, <boolean>, <bes action>, Plain
+      success on original relevance, success on original relevances, <boolean>, <bes fixlet action>, Plain
       success on run to completion, success on run to completions, <boolean>, <bes action>, Plain
+      success on run to completion, success on run to completions, <boolean>, <bes fixlet action>, Plain
       success rate, success rates, <floating point>, <statistical bin>, Plain
       sum, sums, <floating point>, <floating point>, Plain
       sum, sums, <integer>, <integer>, Plain
