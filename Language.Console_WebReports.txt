@@ -32,13 +32,22 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   bes fixlet result
   bes fixlet set
   bes fixlet with multiplicity (derives from  bes fixlet)
+  bes ldap directory
+  bes ldap directory set
+  bes ldap directory with multiplicity (derives from  bes ldap directory)
   bes product
   bes property
   bes property result
   bes property set
   bes property with multiplicity (derives from  bes property)
+  bes role
+  bes role set
+  bes role with multiplicity (derives from  bes role)
   bes server
   bes site
+  bes site file
+  bes site file set
+  bes site file with multiplicity (derives from  bes site file)
   bes site set
   bes site with multiplicity (derives from  bes site)
   bes unmanagedasset
@@ -80,6 +89,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   html
   html attribute list
   integer
+  integer range
   integer set
   integer with multiplicity (derives from  integer)
   ip version
@@ -145,6 +155,7 @@ Creation techniques & properties of each type:
       action dependency of <bes action>, action dependencies, Plain
       action of <bes action result>, actions, Plain
       action of <bes domain>, actions, Plain
+      action of <bes site>, actions, Plain
       bes action, bes actions, PlainGlobal
       element of <bes action set>, elements, Plain
       hidden bes action, hidden bes actions, PlainGlobal
@@ -295,6 +306,7 @@ Creation techniques & properties of each type:
       <bes action set> - <bes action set>, , BinaryOperator
       action set of <bes domain>, action sets, Plain
       action set of <bes filter>, action sets, Plain
+      action set of <bes site>, action sets, Plain
       bes action set, bes action sets, PlainGlobal
       hidden bes action set, hidden bes action sets, PlainGlobal
       intersection of <bes action set>, intersections, Plain
@@ -428,11 +440,14 @@ Creation techniques & properties of each type:
       administrator <bes user> of <bes computer>, administrators, Index<bes user>, <boolean>
       administrator of <bes computer>, administrators, Plain, <bes user>
       administrator set of <bes computer>, administrator sets, Plain, <bes user set>
+      agent type of <bes computer>, agent types, Plain, <string>
+      agent version of <bes computer>, agent versions, Plain, <string>
       client setting of <bes computer>, client settings, Plain, <bes client setting>
       comment of <bes computer>, comments, Plain, <bes comment>
       cpu of <bes computer>, cpus, Plain, <string>
       database id of <bes computer>, database ids, Plain, <integer>
       database name of <bes computer>, database names, Plain, <string>
+      device type of <bes computer>, device types, Plain, <string>
       hostname of <bes computer>, hostnames, Plain, <string>
       id of <bes computer>, ids, Plain, <integer>
       ip address of <bes computer>, ip addresses, Plain, <ipv4or6 address>
@@ -882,14 +897,54 @@ Creation techniques & properties of each type:
     Properties of <bes fixlet with multiplicity> { key phrase, plural keyword, form, <result type>}:
       multiplicity of <bes fixlet with multiplicity>, multiplicities, Plain, <integer>
 
+  Type <bes ldap directory>
+    Creation of <bes ldap directory>: { key phrase, plural keyword, form}
+      bes ldap directory, bes ldap directories, PlainGlobal
+      element of <bes ldap directory set>, elements, Plain
+    Properties of <bes ldap directory> { key phrase, plural keyword, form, <result type>}:
+      <bes ldap directory set> contains <bes ldap directory>, , BinaryOperator, <boolean>
+      <bes ldap directory> = <bes ldap directory>, , BinaryOperator, <boolean>
+      set of <bes ldap directory>, sets, Plain, <bes ldap directory set>
+      unique value of <bes ldap directory>, unique values, Plain, <bes ldap directory with multiplicity>
+
+  Type <bes ldap directory set>
+    Creation of <bes ldap directory set>: { key phrase, plural keyword, form}
+      <bes ldap directory set> * <bes ldap directory set>, , BinaryOperator
+      <bes ldap directory set> + <bes ldap directory set>, , BinaryOperator
+      <bes ldap directory set> - <bes ldap directory set>, , BinaryOperator
+      bes ldap directory set, bes ldap directory sets, PlainGlobal
+      intersection of <bes ldap directory set>, intersections, Plain
+      set of <bes ldap directory>, sets, Plain
+      union of <bes ldap directory set>, unions, Plain
+    Properties of <bes ldap directory set> { key phrase, plural keyword, form, <result type>}:
+      <bes ldap directory set> * <bes ldap directory set>, , BinaryOperator, <bes ldap directory set>
+      <bes ldap directory set> + <bes ldap directory set>, , BinaryOperator, <bes ldap directory set>
+      <bes ldap directory set> - <bes ldap directory set>, , BinaryOperator, <bes ldap directory set>
+      <bes ldap directory set> = <bes ldap directory set>, , BinaryOperator, <boolean>
+      <bes ldap directory set> contains <bes ldap directory set>, , BinaryOperator, <boolean>
+      <bes ldap directory set> contains <bes ldap directory>, , BinaryOperator, <boolean>
+      element of <bes ldap directory set>, elements, Plain, <bes ldap directory>
+      intersection of <bes ldap directory set>, intersections, Plain, <bes ldap directory set>
+      size of <bes ldap directory set>, sizes, Plain, <integer>
+      union of <bes ldap directory set>, unions, Plain, <bes ldap directory set>
+
+  Type <bes ldap directory with multiplicity> (derives from bes ldap directory)
+    Creation of <bes ldap directory with multiplicity>: { key phrase, plural keyword, form}
+      unique value of <bes ldap directory>, unique values, Plain
+    Properties of <bes ldap directory with multiplicity> { key phrase, plural keyword, form, <result type>}:
+      multiplicity of <bes ldap directory with multiplicity>, multiplicities, Plain, <integer>
+
   Type <bes product>
     Creation of <bes product>: { key phrase, plural keyword, form}
       product of <license>, products, Plain
     Properties of <bes product> { key phrase, plural keyword, form, <result type>}:
+      client device count of <bes product>, client device counts, Plain, <integer>
       computer count of <bes product>, computer counts, Plain, <integer>
+      eula accepted of <bes product>, eulas accepted, Plain, <boolean>
       expiration date of <bes product>, expiration dates, Plain, <date>
       name of <bes product>, names, Plain, <string>
       non windows server count of <bes product>, non windows server counts, Plain, <integer>
+      rvu count of <bes product>, rvu counts, Plain, <integer>
       site url of <bes product>, site urls, Plain, <string>
       windows server count of <bes product>, windows server counts, Plain, <integer>
       workstation count of <bes product>, workstation counts, Plain, <integer>
@@ -980,6 +1035,52 @@ Creation techniques & properties of each type:
     Properties of <bes property with multiplicity> { key phrase, plural keyword, form, <result type>}:
       multiplicity of <bes property with multiplicity>, multiplicities, Plain, <integer>
 
+  Type <bes role>
+    Creation of <bes role>: { key phrase, plural keyword, form}
+      bes role, bes roles, PlainGlobal
+      element of <bes role set>, elements, Plain
+      role of <bes user>, roles, Plain
+    Properties of <bes role> { key phrase, plural keyword, form, <result type>}:
+      <bes role set> contains <bes role>, , BinaryOperator, <boolean>
+      <bes role> = <bes role>, , BinaryOperator, <boolean>
+      master flag of <bes role>, master flags, Plain, <boolean>
+      name of <bes role>, names, Plain, <string>
+      set of <bes role>, sets, Plain, <bes role set>
+      unique value of <bes role>, unique values, Plain, <bes role with multiplicity>
+      unmanagedasset privilege scanpoint flag of <bes role>, unmanagedasset privilege scanpoint flags, Plain, <boolean>
+      unmanagedasset privilege showall flag of <bes role>, unmanagedasset privilege showall flags, Plain, <boolean>
+      unmanagedasset privilege shownone flag of <bes role>, unmanagedasset privilege shownone flags, Plain, <boolean>
+      user of <bes role>, users, Plain, <bes user>
+      user set of <bes role>, user sets, Plain, <bes user set>
+
+  Type <bes role set>
+    Creation of <bes role set>: { key phrase, plural keyword, form}
+      <bes role set> * <bes role set>, , BinaryOperator
+      <bes role set> + <bes role set>, , BinaryOperator
+      <bes role set> - <bes role set>, , BinaryOperator
+      bes role set, bes role sets, PlainGlobal
+      intersection of <bes role set>, intersections, Plain
+      role set of <bes user>, role sets, Plain
+      set of <bes role>, sets, Plain
+      union of <bes role set>, unions, Plain
+    Properties of <bes role set> { key phrase, plural keyword, form, <result type>}:
+      <bes role set> * <bes role set>, , BinaryOperator, <bes role set>
+      <bes role set> + <bes role set>, , BinaryOperator, <bes role set>
+      <bes role set> - <bes role set>, , BinaryOperator, <bes role set>
+      <bes role set> = <bes role set>, , BinaryOperator, <boolean>
+      <bes role set> contains <bes role set>, , BinaryOperator, <boolean>
+      <bes role set> contains <bes role>, , BinaryOperator, <boolean>
+      element of <bes role set>, elements, Plain, <bes role>
+      intersection of <bes role set>, intersections, Plain, <bes role set>
+      size of <bes role set>, sizes, Plain, <integer>
+      union of <bes role set>, unions, Plain, <bes role set>
+
+  Type <bes role with multiplicity> (derives from bes role)
+    Creation of <bes role with multiplicity>: { key phrase, plural keyword, form}
+      unique value of <bes role>, unique values, Plain
+    Properties of <bes role with multiplicity> { key phrase, plural keyword, form, <result type>}:
+      multiplicity of <bes role with multiplicity>, multiplicities, Plain, <integer>
+
   Type <bes server>
     Creation of <bes server>: { key phrase, plural keyword, form}
       current bes server, current bes servers, PlainGlobal
@@ -1006,6 +1107,8 @@ Creation techniques & properties of each type:
     Properties of <bes site> { key phrase, plural keyword, form, <result type>}:
       <bes site set> contains <bes site>, , BinaryOperator, <boolean>
       <bes site> = <bes site>, , BinaryOperator, <boolean>
+      action of <bes site>, actions, Plain, <bes action>
+      action set of <bes site>, action sets, Plain, <bes action set>
       creation date of <bes site>, creation dates, Plain, <time>
       creator of <bes site>, creators, Plain, <bes user>
       custom site flag of <bes site>, custom site flags, Plain, <boolean>
@@ -1027,6 +1130,7 @@ Creation techniques & properties of each type:
       id of <bes site>, ids, Plain, <integer>
       master site flag of <bes site>, master site flags, Plain, <boolean>
       name of <bes site>, names, Plain, <string>
+      operator of <bes site>, operators, Plain, <bes user>
       operator site flag of <bes site>, operator site flags, Plain, <boolean>
       owner flag <bes user> of <bes site>, owner flags, Index<bes user>, <boolean>
       owner of <bes site>, owners, Plain, <bes user>
@@ -1034,6 +1138,9 @@ Creation techniques & properties of each type:
       reader of <bes site>, readers, Plain, <bes user>
       reader set of <bes site>, reader sets, Plain, <bes user set>
       set of <bes site>, sets, Plain, <bes site set>
+      site file of <bes site>, site files, Plain, <bes site file>
+      site file set of <bes site>, site files sets, Plain, <bes site file set>
+      site level relevance of <bes site>, site level relevances, Plain, <string>
       subscribed <bes computer> of <bes site>, subscribeds, Index<bes computer>, <boolean>
       subscribed computer of <bes site>, subscribed computers, Plain, <bes computer>
       subscribed computer set of <bes site>, subscribed computer sets, Plain, <bes computer set>
@@ -1046,6 +1153,44 @@ Creation techniques & properties of each type:
       wizard set of <bes site>, wizard sets, Plain, <bes wizard set>
       writer of <bes site>, writers, Plain, <bes user>
       writer set of <bes site>, writer sets, Plain, <bes user set>
+
+  Type <bes site file>
+    Creation of <bes site file>: { key phrase, plural keyword, form}
+      element of <bes site file set>, elements, Plain
+      site file of <bes site>, site files, Plain
+    Properties of <bes site file> { key phrase, plural keyword, form, <result type>}:
+      <bes site file set> contains <bes site file>, , BinaryOperator, <boolean>
+      <bes site file> = <bes site file>, , BinaryOperator, <boolean>
+      id of <bes site file>, ids, Plain, <integer>
+      set of <bes site file>, sets, Plain, <bes site file set>
+      unique value of <bes site file>, unique values, Plain, <bes site file with multiplicity>
+
+  Type <bes site file set>
+    Creation of <bes site file set>: { key phrase, plural keyword, form}
+      <bes site file set> * <bes site file set>, , BinaryOperator
+      <bes site file set> + <bes site file set>, , BinaryOperator
+      <bes site file set> - <bes site file set>, , BinaryOperator
+      intersection of <bes site file set>, intersections, Plain
+      set of <bes site file>, sets, Plain
+      site file set of <bes site>, site files sets, Plain
+      union of <bes site file set>, unions, Plain
+    Properties of <bes site file set> { key phrase, plural keyword, form, <result type>}:
+      <bes site file set> * <bes site file set>, , BinaryOperator, <bes site file set>
+      <bes site file set> + <bes site file set>, , BinaryOperator, <bes site file set>
+      <bes site file set> - <bes site file set>, , BinaryOperator, <bes site file set>
+      <bes site file set> = <bes site file set>, , BinaryOperator, <boolean>
+      <bes site file set> contains <bes site file set>, , BinaryOperator, <boolean>
+      <bes site file set> contains <bes site file>, , BinaryOperator, <boolean>
+      element of <bes site file set>, elements, Plain, <bes site file>
+      intersection of <bes site file set>, intersections, Plain, <bes site file set>
+      size of <bes site file set>, sizes, Plain, <integer>
+      union of <bes site file set>, unions, Plain, <bes site file set>
+
+  Type <bes site file with multiplicity> (derives from bes site file)
+    Creation of <bes site file with multiplicity>: { key phrase, plural keyword, form}
+      unique value of <bes site file>, unique values, Plain
+    Properties of <bes site file with multiplicity> { key phrase, plural keyword, form, <result type>}:
+      multiplicity of <bes site file with multiplicity>, multiplicities, Plain, <integer>
 
   Type <bes site set>
     Creation of <bes site set>: { key phrase, plural keyword, form}
@@ -1147,9 +1292,11 @@ Creation techniques & properties of each type:
       issuer of <bes activation>, issuers, Plain
       issuer of <bes computer group>, issuers, Plain
       issuer of <bes fixlet>, issuers, Plain
+      operator of <bes site>, operators, Plain
       owner of <bes site>, owners, Plain
       reader of <bes site>, readers, Plain
       stopper of <bes action>, stoppers, Plain
+      user of <bes role>, users, Plain
       writer of <bes site>, writers, Plain
     Properties of <bes user> { key phrase, plural keyword, form, <result type>}:
       <bes user set> contains <bes user>, , BinaryOperator, <boolean>
@@ -1172,8 +1319,11 @@ Creation techniques & properties of each type:
       link href of <bes user>, link hrefs, Plain, <string>
       link of <bes user>, links, Plain, <html>
       master flag of <bes user>, master flags, Plain, <boolean>
+      masthead operator name of <bes user>, masthead operator names, Plain, <string>
       name of <bes user>, names, Plain, <string>
       operator site of <bes user>, operator sites, Plain, <bes site>
+      role of <bes user>, roles, Plain, <bes role>
+      role set of <bes user>, role sets, Plain, <bes role set>
       set of <bes user>, sets, Plain, <bes user set>
       unique value of <bes user>, unique values, Plain, <bes user with multiplicity>
       unmanagedasset privilege scanpoint flag of <bes user>, unmanagedasset privilege scanpoint flags, Plain, <boolean>
@@ -1196,6 +1346,7 @@ Creation techniques & properties of each type:
       set of <bes user>, sets, Plain
       union of <bes user set>, unions, Plain
       user set of <bes filter>, user sets, Plain
+      user set of <bes role>, user sets, Plain
       writer set of <bes site>, writer sets, Plain
     Properties of <bes user set> { key phrase, plural keyword, form, <result type>}:
       <bes user set> * <bes user set>, , BinaryOperator, <bes user set>
@@ -1365,10 +1516,22 @@ Creation techniques & properties of each type:
       <bes fixlet set> contains <bes fixlet set>, , BinaryOperator
       <bes fixlet set> contains <bes fixlet>, , BinaryOperator
       <bes fixlet> = <bes fixlet>, , BinaryOperator
+      <bes ldap directory set> = <bes ldap directory set>, , BinaryOperator
+      <bes ldap directory set> contains <bes ldap directory set>, , BinaryOperator
+      <bes ldap directory set> contains <bes ldap directory>, , BinaryOperator
+      <bes ldap directory> = <bes ldap directory>, , BinaryOperator
       <bes property set> = <bes property set>, , BinaryOperator
       <bes property set> contains <bes property set>, , BinaryOperator
       <bes property set> contains <bes property>, , BinaryOperator
       <bes property> = <bes property>, , BinaryOperator
+      <bes role set> = <bes role set>, , BinaryOperator
+      <bes role set> contains <bes role set>, , BinaryOperator
+      <bes role set> contains <bes role>, , BinaryOperator
+      <bes role> = <bes role>, , BinaryOperator
+      <bes site file set> = <bes site file set>, , BinaryOperator
+      <bes site file set> contains <bes site file set>, , BinaryOperator
+      <bes site file set> contains <bes site file>, , BinaryOperator
+      <bes site file> = <bes site file>, , BinaryOperator
       <bes site set> = <bes site set>, , BinaryOperator
       <bes site set> contains <bes site set>, , BinaryOperator
       <bes site set> contains <bes site>, , BinaryOperator
@@ -1537,6 +1700,7 @@ Creation techniques & properties of each type:
       enabled of <bes wakeonlan status>, enableds, Plain
       end flag of <bes action>, end flags, Plain
       error flag of <bes property result>, error flags, Plain
+      eula accepted of <bes product>, eulas accepted, Plain
       evaluation of <license>, evaluations, Plain
       expiration flag of <bes action>, expiration flags, Plain
       external site flag of <bes site>, external site flags, Plain
@@ -1566,6 +1730,7 @@ Creation techniques & properties of each type:
       locked flag of <bes computer>, locked flags, Plain
       management rights flag of <bes action>, management rights flags, Plain
       manual flag of <bes computer group>, manual flags, Plain
+      master flag of <bes role>, master flags, Plain
       master flag of <bes user>, master flags, Plain
       master site flag of <bes fixlet>, master site flags, Plain
       master site flag of <bes site>, master site flags, Plain
@@ -1625,8 +1790,11 @@ Creation techniques & properties of each type:
       true, trues, PlainGlobal
       underflow of <floating point>, underflows, Plain
       unmanagedasset flag of <bes filter>, unmanagedasset flags, Plain
+      unmanagedasset privilege scanpoint flag of <bes role>, unmanagedasset privilege scanpoint flags, Plain
       unmanagedasset privilege scanpoint flag of <bes user>, unmanagedasset privilege scanpoint flags, Plain
+      unmanagedasset privilege showall flag of <bes role>, unmanagedasset privilege showall flags, Plain
       unmanagedasset privilege showall flag of <bes user>, unmanagedasset privilege showall flags, Plain
+      unmanagedasset privilege shownone flag of <bes role>, unmanagedasset privilege shownone flags, Plain
       unmanagedasset privilege shownone flag of <bes user>, unmanagedasset privilege shownone flags, Plain
       untargeted flag of <bes action>, untargeted flags, Plain
       urgent flag of <bes action>, urgent flags, Plain
@@ -2561,6 +2729,7 @@ Creation techniques & properties of each type:
       applicable computer count of <bes baseline component>, applicable computer counts, Plain
       applicable computer count of <bes fixlet>, applicable computer counts, Plain
       apply count of <bes action result>, apply counts, Plain
+      client device count of <bes product>, client device counts, Plain
       component <integer> of <site version list>, components, Numbered
       computer count of <bes product>, computer counts, Plain
       count of <fixlet count pair>, counts, Plain
@@ -2592,6 +2761,7 @@ Creation techniques & properties of each type:
       id of <bes computer>, ids, Plain
       id of <bes filter>, ids, Plain
       id of <bes fixlet>, ids, Plain
+      id of <bes site file>, ids, Plain
       id of <bes site>, ids, Plain
       id of <bes unmanagedasset>, ids, Plain
       integer <integer>, integers, NumberedGlobal
@@ -2606,6 +2776,7 @@ Creation techniques & properties of each type:
       length of <rope>, lengths, Plain
       length of <string>, lengths, Plain
       line number of <bes action result>, line numbers, Plain
+      lower bound of <integer range>, lower bounds, Plain
       maximum of <integer>, maxima, Plain
       maximum seat count of <license>, maximum seat counts, Plain
       memory usage of <bes property>, memory usages, Plain
@@ -2619,7 +2790,10 @@ Creation techniques & properties of each type:
       multiplicity of <bes domain with multiplicity>, multiplicities, Plain
       multiplicity of <bes filter with multiplicity>, multiplicities, Plain
       multiplicity of <bes fixlet with multiplicity>, multiplicities, Plain
+      multiplicity of <bes ldap directory with multiplicity>, multiplicities, Plain
       multiplicity of <bes property with multiplicity>, multiplicities, Plain
+      multiplicity of <bes role with multiplicity>, multiplicities, Plain
+      multiplicity of <bes site file with multiplicity>, multiplicities, Plain
       multiplicity of <bes site with multiplicity>, multiplicities, Plain
       multiplicity of <bes unmanagedasset with multiplicity>, multiplicities, Plain
       multiplicity of <bes user with multiplicity>, multiplicities, Plain
@@ -2659,6 +2833,7 @@ Creation techniques & properties of each type:
       relay distance of <bes computer>, relay distances, Plain
       retry count of <bes action result>, retry counts, Plain
       retry limit of <bes action>, retry limits, Plain
+      rvu count of <bes product>, rvu counts, Plain
       seat of <license>, seats, Plain
       second_of_minute of <time of day with time zone>, seconds_of_minute, Plain
       second_of_minute of <time of day>, seconds_of_minute, Plain
@@ -2670,7 +2845,10 @@ Creation techniques & properties of each type:
       size of <bes domain set>, sizes, Plain
       size of <bes filter set>, sizes, Plain
       size of <bes fixlet set>, sizes, Plain
+      size of <bes ldap directory set>, sizes, Plain
       size of <bes property set>, sizes, Plain
+      size of <bes role set>, sizes, Plain
+      size of <bes site file set>, sizes, Plain
       size of <bes site set>, sizes, Plain
       size of <bes unmanagedasset set>, sizes, Plain
       size of <bes user set>, sizes, Plain
@@ -2682,6 +2860,7 @@ Creation techniques & properties of each type:
       sum of <integer>, sums, Plain
       unknown computer count of <bes baseline component>, unknown computer counts, Plain
       unlocked computer count of <bes fixlet>, unlocked computer counts, Plain
+      upper bound of <integer range>, upper bounds, Plain
       value count of <bes property result>, value counts, Plain
       version of <bes site>, versions, Plain
       windows server count of <bes product>, windows server counts, Plain
@@ -2769,6 +2948,12 @@ Creation techniques & properties of each type:
       standard deviation of <integer>, standard deviations, Plain, <floating point>
       sum of <integer>, sums, Plain, <integer>
       unique value of <integer>, unique values, Plain, <integer with multiplicity>
+
+  Type <integer range>
+    Creation of <integer range>: { key phrase, plural keyword, form}
+    Properties of <integer range> { key phrase, plural keyword, form, <result type>}:
+      lower bound of <integer range>, lower bounds, Plain, <integer>
+      upper bound of <integer range>, upper bounds, Plain, <integer>
 
   Type <integer set>
     Creation of <integer set>: { key phrase, plural keyword, form}
@@ -3380,7 +3565,11 @@ Creation techniques & properties of each type:
       <year> as string, , Cast
       action script of <bes action>, action scripts, Plain
       action script type of <bes action>, action script types, Plain
+      agent type of <bes computer>, agent types, Plain
+      agent version of <bes computer>, agent versions, Plain
       applicability relevance of <bes action>, applicability relevances, Plain
+      base64 decode <string>, base64 decodes, NamedGlobal
+      base64 encode <string>, base64 encodes, NamedGlobal
       bes brand, bes brands, PlainGlobal
       bes language, bes languages, PlainGlobal
       category of <bes fixlet>, categories, Plain
@@ -3410,6 +3599,7 @@ Creation techniques & properties of each type:
       definition of <bes property>, definitions, Plain
       description of <bes site>, descriptions, Plain
       detailed status of <bes action result>, detailed statuses, Plain
+      device type of <bes computer>, device types, Plain
       digest file name of <bes fixlet>, digest file names, Plain
       display category of <bes fixlet>, display categories, Plain
       display category of <bes property>, display categories, Plain
@@ -3440,6 +3630,7 @@ Creation techniques & properties of each type:
       link href of <bes unmanagedasset>, link hrefs, Plain
       link href of <bes user>, link hrefs, Plain
       link href of <bes wizard>, link hrefs, Plain
+      masthead operator name of <bes user>, masthead operator names, Plain
       menu path of <bes wizard>, menu paths, Plain
       message text of <bes action>, message texts, Plain
       message title of <bes action>, message titles, Plain
@@ -3459,6 +3650,7 @@ Creation techniques & properties of each type:
       name of <bes fixlet>, names, Plain
       name of <bes product>, names, Plain
       name of <bes property>, names, Plain
+      name of <bes role>, names, Plain
       name of <bes site>, names, Plain
       name of <bes unmanagedasset field>, names, Plain
       name of <bes user>, names, Plain
@@ -3499,11 +3691,13 @@ Creation techniques & properties of each type:
       script type of <bes fixlet action>, script types, Plain
       seat count state of <license>, seat count states, Plain
       selected groups string of <bes action>, selected groups strings, Plain
+      sha1 of <string>, sha1s, Plain
       sha1 of <x509 certificate>, sha1s, Plain
       shared variable <( string, string )>, shared variables, Index<( string, string )>Global
       shared variable <string> of <bes wizard>, shared variables, Named
       simple name of <bes property>, simple names, Plain
       singular name of <property>, singular names, Plain
+      site level relevance of <bes site>, site level relevances, Plain
       site url of <bes product>, site urls, Plain
       source id of <bes fixlet>, source ids, Plain
       source name of <bes property>, source names, Plain
@@ -3718,6 +3912,7 @@ Creation techniques & properties of each type:
       samp <string> of <string>, samps, Named, <html>
       samp of <string>, samps, Plain, <html>
       set of <string>, sets, Plain, <string set>
+      sha1 of <string>, sha1s, Plain, <string>
       small <string> of <string>, smalls, Named, <html>
       small of <string>, smalls, Plain, <html>
       span <string> of <string>, spans, Named, <html>
@@ -4356,6 +4551,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   april, aprils, PlainGlobal, <month>
   august <integer>, augusts, NumberedGlobal, <day of year>
   august, augusts, PlainGlobal, <month>
+  base64 decode <string>, base64 decodes, NamedGlobal, <string>
+  base64 encode <string>, base64 encodes, NamedGlobal, <string>
   bes action set, bes action sets, PlainGlobal, <bes action set>
   bes action status constrained, bes action statuses constrained, PlainGlobal, <bes action status>
   bes action status download failed, bes action statuses download failed, PlainGlobal, <bes action status>
@@ -4400,10 +4597,14 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   bes fixlet set, bes fixlet sets, PlainGlobal, <bes fixlet set>
   bes fixlet, bes fixlets, PlainGlobal, <bes fixlet>
   bes language, bes languages, PlainGlobal, <string>
+  bes ldap directory set, bes ldap directory sets, PlainGlobal, <bes ldap directory set>
+  bes ldap directory, bes ldap directories, PlainGlobal, <bes ldap directory>
   bes license, bes licenses, PlainGlobal, <license>
   bes property <string>, bes properties, NamedGlobal, <bes property>
   bes property set, bes property sets, PlainGlobal, <bes property set>
   bes property, bes properties, PlainGlobal, <bes property>
+  bes role set, bes role sets, PlainGlobal, <bes role set>
+  bes role, bes roles, PlainGlobal, <bes role>
   bes site, bes sites, PlainGlobal, <bes site>
   bes task set, bes task sets, PlainGlobal, <bes fixlet set>
   bes task, bes tasks, PlainGlobal, <bes fixlet>
@@ -4607,9 +4808,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       action script, action scripts, <string>, <bes action>, Plain
       action set, action sets, <bes action set>, <bes domain>, Plain
       action set, action sets, <bes action set>, <bes filter>, Plain
+      action set, action sets, <bes action set>, <bes site>, Plain
       action site, action sites, <bes site>, <bes user>, Plain
       action, actions, <bes action>, <bes action result>, Plain
       action, actions, <bes action>, <bes domain>, Plain
+      action, actions, <bes action>, <bes site>, Plain
       action, actions, <bes fixlet action>, <bes baseline component>, Plain
       action, actions, <bes fixlet action>, <bes fixlet>, Named
       action, actions, <bes fixlet action>, <bes fixlet>, Numbered
@@ -4629,6 +4832,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       administrator, administrators, <boolean>, <bes user>, Index<bes computer>
       administrator, administrators, <boolean>, world , Index<( bes computer, bes user )>Global
       administrator, administrators, <boolean>, world , Index<( bes user, bes computer )>Global
+      agent type, agent types, <string>, <bes computer>, Plain
+      agent version, agent versions, <string>, <bes computer>, Plain
       all bes site, all bes sites, <bes site>, world , PlainGlobal
       all computer count, all computer counts, <historical computer count>, world , PlainGlobal
       all fixlet count, all fixlet counts, <historical fixlet count>, world , PlainGlobal
@@ -4799,6 +5004,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       base, bases, <html>, <html>, Plain
       base, bases, <html>, <string>, Named
       base, bases, <html>, <string>, Plain
+      base64 decode, base64 decodes, <string>, world , NamedGlobal
+      base64 encode, base64 encodes, <string>, world , NamedGlobal
       baseline flag, baseline flags, <boolean>, <bes filter>, Plain
       baseline flag, baseline flags, <boolean>, <bes fixlet>, Plain
       baseline set, baseline sets, <bes fixlet set>, <bes filter>, Plain
@@ -4846,10 +5053,14 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       bes fixlet set, bes fixlet sets, <bes fixlet set>, world , PlainGlobal
       bes fixlet, bes fixlets, <bes fixlet>, world , PlainGlobal
       bes language, bes languages, <string>, world , PlainGlobal
+      bes ldap directory set, bes ldap directory sets, <bes ldap directory set>, world , PlainGlobal
+      bes ldap directory, bes ldap directories, <bes ldap directory>, world , PlainGlobal
       bes license, bes licenses, <license>, world , PlainGlobal
       bes property set, bes property sets, <bes property set>, world , PlainGlobal
       bes property, bes properties, <bes property>, world , NamedGlobal
       bes property, bes properties, <bes property>, world , PlainGlobal
+      bes role set, bes role sets, <bes role set>, world , PlainGlobal
+      bes role, bes roles, <bes role>, world , PlainGlobal
       bes site, bes sites, <bes site>, world , PlainGlobal
       bes task set, bes task sets, <bes fixlet set>, world , PlainGlobal
       bes task, bes tasks, <bes fixlet>, world , PlainGlobal
@@ -4909,6 +5120,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       cite, cites, <html>, <html>, Plain
       cite, cites, <html>, <string>, Named
       cite, cites, <html>, <string>, Plain
+      client device count, client device counts, <integer>, <bes product>, Plain
       client evaluated flag, client evaluated flags, <boolean>, <bes computer group>, Plain
       client installed flag, client installed flags, <boolean>, <bes unmanagedasset>, Plain
       client license, client licenses, <license>, world , PlainGlobal
@@ -5059,6 +5271,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       description, descriptions, <string>, <bes site>, Plain
       desired fips mode, desired fips modes, <boolean>, <cryptography>, Plain
       detailed status, detailed statuses, <string>, <bes action result>, Plain
+      device type, device types, <string>, <bes computer>, Plain
       dfn, dfns, <html>, <html>, Named
       dfn, dfns, <html>, <html>, Plain
       dfn, dfns, <html>, <string>, Named
@@ -5106,7 +5319,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       element, elements, <bes domain>, <bes domain set>, Plain
       element, elements, <bes filter>, <bes filter set>, Plain
       element, elements, <bes fixlet>, <bes fixlet set>, Plain
+      element, elements, <bes ldap directory>, <bes ldap directory set>, Plain
       element, elements, <bes property>, <bes property set>, Plain
+      element, elements, <bes role>, <bes role set>, Plain
+      element, elements, <bes site file>, <bes site file set>, Plain
       element, elements, <bes site>, <bes site set>, Plain
       element, elements, <bes unmanagedasset>, <bes unmanagedasset set>, Plain
       element, elements, <bes user>, <bes user set>, Plain
@@ -5130,6 +5346,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       error flag, error flags, <boolean>, <bes property result>, Plain
       error message, error messages, <string>, <bes property result>, Plain
       error, errors, <undefined>, world , NamedGlobal
+      eula accepted, eulas accepted, <boolean>, <bes product>, Plain
       evaluation period, evaluation periods, <time interval>, <bes property>, Plain
       evaluation, evaluations, <boolean>, <license>, Plain
       expiration date, expiration dates, <date>, <bes product>, Plain
@@ -5284,6 +5501,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       id, ids, <integer>, <bes computer>, Plain
       id, ids, <integer>, <bes filter>, Plain
       id, ids, <integer>, <bes fixlet>, Plain
+      id, ids, <integer>, <bes site file>, Plain
       id, ids, <integer>, <bes site>, Plain
       id, ids, <integer>, <bes unmanagedasset>, Plain
       id, ids, <string>, <bes domain>, Plain
@@ -5311,7 +5529,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       intersection, intersections, <bes domain set>, <bes domain set>, Plain
       intersection, intersections, <bes filter set>, <bes filter set>, Plain
       intersection, intersections, <bes fixlet set>, <bes fixlet set>, Plain
+      intersection, intersections, <bes ldap directory set>, <bes ldap directory set>, Plain
       intersection, intersections, <bes property set>, <bes property set>, Plain
+      intersection, intersections, <bes role set>, <bes role set>, Plain
+      intersection, intersections, <bes site file set>, <bes site file set>, Plain
       intersection, intersections, <bes site set>, <bes site set>, Plain
       intersection, intersections, <bes unmanagedasset set>, <bes unmanagedasset set>, Plain
       intersection, intersections, <bes user set>, <bes user set>, Plain
@@ -5436,15 +5657,18 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       logarithm skewness, logarithm skewnesses, <floating point>, <statistical bin>, Plain
       logarithm standard deviation, logarithm standard deviations, <floating point>, <statistical bin>, Plain
       logarithm variance, logarithm variances, <floating point>, <statistical bin>, Plain
+      lower bound, lower bounds, <integer>, <integer range>, Plain
       management rights flag, management rights flags, <boolean>, <bes action>, Plain
       manual flag, manual flags, <boolean>, <bes computer group>, Plain
       march, marchs, <date>, <integer>, Numbered
       march, marchs, <day of year>, world , NumberedGlobal
       march, marchs, <month and year>, <integer>, Plain
       march, marchs, <month>, world , PlainGlobal
+      master flag, master flags, <boolean>, <bes role>, Plain
       master flag, master flags, <boolean>, <bes user>, Plain
       master site flag, master site flags, <boolean>, <bes fixlet>, Plain
       master site flag, master site flags, <boolean>, <bes site>, Plain
+      masthead operator name, masthead operator names, <string>, <bes user>, Plain
       match, matches, <regular expression match>, <string>, Index<regular expression>
       maximum seat count, maximum seat counts, <integer>, <license>, Plain
       maximum single computer total, maximum single computer totals, <floating point>, <statistical bin>, Plain
@@ -5554,7 +5778,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       multiplicity, multiplicities, <integer>, <bes domain with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <bes filter with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <bes fixlet with multiplicity>, Plain
+      multiplicity, multiplicities, <integer>, <bes ldap directory with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <bes property with multiplicity>, Plain
+      multiplicity, multiplicities, <integer>, <bes role with multiplicity>, Plain
+      multiplicity, multiplicities, <integer>, <bes site file with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <bes site with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <bes unmanagedasset with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <bes user with multiplicity>, Plain
@@ -5599,6 +5826,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       name, names, <string>, <bes fixlet>, Plain
       name, names, <string>, <bes product>, Plain
       name, names, <string>, <bes property>, Plain
+      name, names, <string>, <bes role>, Plain
       name, names, <string>, <bes site>, Plain
       name, names, <string>, <bes unmanagedasset field>, Plain
       name, names, <string>, <bes user>, Plain
@@ -5647,6 +5875,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       operator site flag, operator site flags, <boolean>, <bes fixlet>, Plain
       operator site flag, operator site flags, <boolean>, <bes site>, Plain
       operator site, operator sites, <bes site>, <bes user>, Plain
+      operator, operators, <bes user>, <bes site>, Plain
       ordered list, ordered lists, <html>, <html>, Named
       ordered list, ordered lists, <html>, <html>, Plain
       ordered list, ordered lists, <html>, <string>, Named
@@ -5778,11 +6007,14 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       retry wait for reboot flag, retry wait for reboot flags, <boolean>, <bes action>, Plain
       right operand type, right operand types, <type>, <binary operator>, Plain
       right shift, right shifts, <bit set>, <bit set>, Numbered
+      role set, role sets, <bes role set>, <bes user>, Plain
+      role, roles, <bes role>, <bes user>, Plain
       root server flag, root server flags, <boolean>, <bes computer>, Plain
       root server, root servers, <string>, <bes computer>, Plain
       rope, ropes, <rope>, world , NamedGlobal
       running message text, running message texts, <string>, <bes action>, Plain
       running message title, running message titles, <string>, <bes action>, Plain
+      rvu count, rvu counts, <integer>, <bes product>, Plain
       samp, samps, <html>, <html>, Named
       samp, samps, <html>, <html>, Plain
       samp, samps, <html>, <string>, Named
@@ -5809,7 +6041,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       set, sets, <bes domain set>, <bes domain>, Plain
       set, sets, <bes filter set>, <bes filter>, Plain
       set, sets, <bes fixlet set>, <bes fixlet>, Plain
+      set, sets, <bes ldap directory set>, <bes ldap directory>, Plain
       set, sets, <bes property set>, <bes property>, Plain
+      set, sets, <bes role set>, <bes role>, Plain
+      set, sets, <bes site file set>, <bes site file>, Plain
       set, sets, <bes site set>, <bes site>, Plain
       set, sets, <bes unmanagedasset set>, <bes unmanagedasset>, Plain
       set, sets, <bes user set>, <bes user>, Plain
@@ -5817,6 +6052,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       set, sets, <integer set>, <integer>, Plain
       set, sets, <string set>, <string>, Plain
       settings flag, settings flags, <boolean>, <bes action>, Plain
+      sha1, sha1s, <string>, <string>, Plain
       sha1, sha1s, <string>, <x509 certificate>, Plain
       shared variable, shared variables, <bes wizard variable>, <bes wizard>, Plain
       shared variable, shared variables, <string>, <bes wizard>, Named
@@ -5832,6 +6068,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       simple name, simple names, <string>, <bes property>, Plain
       single flag, single flags, <boolean>, <bes action>, Plain
       singular name, singular names, <string>, <property>, Plain
+      site file set, site files sets, <bes site file set>, <bes site>, Plain
+      site file, site files, <bes site file>, <bes site>, Plain
+      site level relevance, site level relevances, <string>, <bes site>, Plain
       site number, site numbers, <integer>, <license>, Plain
       site url, site urls, <string>, <bes product>, Plain
       site version list, site version lists, <site version list>, world , NamedGlobal
@@ -5844,7 +6083,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       size, sizes, <integer>, <bes domain set>, Plain
       size, sizes, <integer>, <bes filter set>, Plain
       size, sizes, <integer>, <bes fixlet set>, Plain
+      size, sizes, <integer>, <bes ldap directory set>, Plain
       size, sizes, <integer>, <bes property set>, Plain
+      size, sizes, <integer>, <bes role set>, Plain
+      size, sizes, <integer>, <bes site file set>, Plain
       size, sizes, <integer>, <bes site set>, Plain
       size, sizes, <integer>, <bes unmanagedasset set>, Plain
       size, sizes, <integer>, <bes user set>, Plain
@@ -6031,7 +6273,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       union, unions, <bes domain set>, <bes domain set>, Plain
       union, unions, <bes filter set>, <bes filter set>, Plain
       union, unions, <bes fixlet set>, <bes fixlet set>, Plain
+      union, unions, <bes ldap directory set>, <bes ldap directory set>, Plain
       union, unions, <bes property set>, <bes property set>, Plain
+      union, unions, <bes role set>, <bes role set>, Plain
+      union, unions, <bes site file set>, <bes site file set>, Plain
       union, unions, <bes site set>, <bes site set>, Plain
       union, unions, <bes unmanagedasset set>, <bes unmanagedasset set>, Plain
       union, unions, <bes user set>, <bes user set>, Plain
@@ -6044,7 +6289,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       unique value, unique values, <bes domain with multiplicity>, <bes domain>, Plain
       unique value, unique values, <bes filter with multiplicity>, <bes filter>, Plain
       unique value, unique values, <bes fixlet with multiplicity>, <bes fixlet>, Plain
+      unique value, unique values, <bes ldap directory with multiplicity>, <bes ldap directory>, Plain
       unique value, unique values, <bes property with multiplicity>, <bes property>, Plain
+      unique value, unique values, <bes role with multiplicity>, <bes role>, Plain
+      unique value, unique values, <bes site file with multiplicity>, <bes site file>, Plain
       unique value, unique values, <bes site with multiplicity>, <bes site>, Plain
       unique value, unique values, <bes unmanagedasset with multiplicity>, <bes unmanagedasset>, Plain
       unique value, unique values, <bes user with multiplicity>, <bes user>, Plain
@@ -6079,20 +6327,26 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       unknown computer set, unknown computer sets, <bes computer set>, <bes baseline component>, Plain
       unlocked computer count, unlocked computer counts, <integer>, <bes fixlet>, Plain
       unmanagedasset flag, unmanagedasset flags, <boolean>, <bes filter>, Plain
+      unmanagedasset privilege scanpoint flag, unmanagedasset privilege scanpoint flags, <boolean>, <bes role>, Plain
       unmanagedasset privilege scanpoint flag, unmanagedasset privilege scanpoint flags, <boolean>, <bes user>, Plain
+      unmanagedasset privilege showall flag, unmanagedasset privilege showall flags, <boolean>, <bes role>, Plain
       unmanagedasset privilege showall flag, unmanagedasset privilege showall flags, <boolean>, <bes user>, Plain
+      unmanagedasset privilege shownone flag, unmanagedasset privilege shownone flags, <boolean>, <bes role>, Plain
       unmanagedasset privilege shownone flag, unmanagedasset privilege shownone flags, <boolean>, <bes user>, Plain
       unordered list, unordered lists, <html>, <html>, Named
       unordered list, unordered lists, <html>, <html>, Plain
       unordered list, unordered lists, <html>, <string>, Named
       unordered list, unordered lists, <html>, <string>, Plain
       untargeted flag, untargeted flags, <boolean>, <bes action>, Plain
+      upper bound, upper bounds, <integer>, <integer range>, Plain
       urgent flag, urgent flags, <boolean>, <bes action>, Plain
       url, urls, <string>, <bes server>, Plain
       url, urls, <string>, <bes site>, Plain
       url, urls, <string>, <bes wizard>, Plain
       user flag, user flags, <boolean>, <bes filter>, Plain
       user set, user sets, <bes user set>, <bes filter>, Plain
+      user set, user sets, <bes user set>, <bes role>, Plain
+      user, users, <bes user>, <bes role>, Plain
       usual name, usual names, <string>, <property>, Plain
       utc time flag, utc time flags, <boolean>, <bes action>, Plain
       value count, value counts, <integer>, <bes property result>, Plain
