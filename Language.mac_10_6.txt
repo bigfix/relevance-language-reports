@@ -547,6 +547,7 @@ Creation techniques & properties of each type:
       allow unmentioned site of <license>, allow unmentioned sites, Plain
       authenticating of <client>, authenticatings, Plain
       authenticating of <current relay>, authenticatings, Plain
+      big endian of <operating system>, big endians, Plain
       bit <integer> of <bit set>, bits, Numbered
       bit <integer> of <integer>, bits, Numbered
       blackhole flag of <route>, blackhole flags, Plain
@@ -604,6 +605,7 @@ Creation techniques & properties of each type:
       isochronous of <usb>, isochronouses, Plain
       leap of <year>, leaps, Plain
       legacy of <bes product>, legacies, Plain
+      little endian of <operating system>, little endians, Plain
       llinfo flag of <route>, llinfo flags, Plain
       local flag of <route>, local flags, Plain
       locked of <action lock state>, lockeds, Plain
@@ -3016,12 +3018,14 @@ Creation techniques & properties of each type:
     Properties of <operating system> { key phrase, plural keyword, form, <result type>}:
       <operating system> as string, , Cast, <string>
       architecture of <operating system>, architectures, Plain, <string>
+      big endian of <operating system>, big endians, Plain, <boolean>
       boot time of <operating system>, boot times, Plain, <time>
       build number high of <operating system>, build number highs, Plain, <integer>
       build number low of <operating system>, build number lows, Plain, <integer>
       build number of <operating system>, build numbers, Plain, <integer>
       build of <operating system>, builds, Plain, <string>
       embedded of <operating system>, embeddeds, Plain, <boolean>
+      little endian of <operating system>, little endians, Plain, <boolean>
       mac of <operating system>, macs, Plain, <boolean>
       machine of <operating system>, machines, Plain, <string>
       major version of <operating system>, major versions, Plain, <integer>
@@ -5371,6 +5375,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       base64 decode, base64 decodes, <string>, world , NamedGlobal
       base64 encode, base64 encodes, <string>, world , NamedGlobal
       bes license, bes licenses, <license>, world , PlainGlobal
+      big endian, big endians, <boolean>, <operating system>, Plain
       big, bigs, <html>, <html>, Named
       big, bigs, <html>, <html>, Plain
       big, bigs, <html>, <string>, Named
@@ -6091,6 +6096,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       link, links, <html>, <html>, Plain
       link, links, <html>, <string>, Named
       link, links, <html>, <string>, Plain
+      little endian, little endians, <boolean>, <operating system>, Plain
       llinfo flag, llinfo flags, <boolean>, <route>, Plain
       local character set, local character sets, <string>, <client>, Plain
       local computer, local computers, <active directory local computer>, <active directory server>, Plain

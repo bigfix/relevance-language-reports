@@ -918,6 +918,7 @@ Creation techniques & properties of each type:
       authenticating of <client>, authenticatings, Plain
       authenticating of <current relay>, authenticatings, Plain
       backoffice bit <operating system suite mask>, backoffice bits, Index<operating system suite mask>Global
+      big endian of <operating system>, big endians, Plain
       bit <integer> of <bit set>, bits, Numbered
       bit <integer> of <integer>, bits, Numbered
       blade bit <operating system suite mask>, blade bits, Index<operating system suite mask>Global
@@ -1108,6 +1109,7 @@ Creation techniques & properties of each type:
       legacy of <bes product>, legacies, Plain
       list permission of <access control entry>, list permissions, Plain
       listening of <tcp state>, listenings, Plain
+      little endian of <operating system>, little endians, Plain
       local administrator, local administrators, PlainGlobal
       locked of <action lock state>, lockeds, Plain
       locked out flag of <user>, locked out flags, Plain
@@ -1263,6 +1265,7 @@ Creation techniques & properties of each type:
       write owner permission of <access control entry>, write owner permissions, Plain
       write permission of <access control entry>, write permissions, Plain
       write permission of <network share>, write permissions, Plain
+      x32 of <operating system>, x32s, Plain
       x64 of <operating system>, x64s, Plain
     Properties of <boolean> { key phrase, plural keyword, form, <result type>}:
       <boolean> * <time range>, , BinaryOperator, <timed( time range, boolean )>
@@ -4823,6 +4826,7 @@ Creation techniques & properties of each type:
     Properties of <operating system> { key phrase, plural keyword, form, <result type>}:
       <operating system> as string, , Cast, <string>
       architecture of <operating system>, architectures, Plain, <string>
+      big endian of <operating system>, big endians, Plain, <boolean>
       boot time of <operating system>, boot times, Plain, <time>
       build number high of <operating system>, build number highs, Plain, <integer>
       build number low of <operating system>, build number lows, Plain, <integer>
@@ -4831,6 +4835,7 @@ Creation techniques & properties of each type:
       csd version of <operating system>, csd versions, Plain, <string>
       embedded of <operating system>, embeddeds, Plain, <boolean>
       ia64 of <operating system>, ia64s, Plain, <boolean>
+      little endian of <operating system>, little endians, Plain, <boolean>
       mac of <operating system>, macs, Plain, <boolean>
       machine of <operating system>, machines, Plain, <string>
       major version of <operating system>, major versions, Plain, <integer>
@@ -4851,6 +4856,7 @@ Creation techniques & properties of each type:
       uptime of <operating system>, uptimes, Plain, <time interval>
       version of <operating system>, versions, Plain, <version>
       windows of <operating system>, windowses, Plain, <boolean>
+      x32 of <operating system>, x32s, Plain, <boolean>
       x64 of <operating system>, x64s, Plain, <boolean>
 
   Type <operating system product type>
@@ -8220,6 +8226,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       bcc, bccs, <string>, <email task action>, Plain
       below normal priority, below normal priorities, <priority class>, world , PlainGlobal
       bes license, bes licenses, <license>, world , PlainGlobal
+      big endian, big endians, <boolean>, <operating system>, Plain
       big, bigs, <html>, <html>, Named
       big, bigs, <html>, <html>, Plain
       big, bigs, <html>, <string>, Named
@@ -9294,6 +9301,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       link, links, <html>, <string>, Plain
       list permission, list permissions, <boolean>, <access control entry>, Plain
       listening, listenings, <boolean>, <tcp state>, Plain
+      little endian, little endians, <boolean>, <operating system>, Plain
       local address, local addresses, <ipv4or6 address>, <socket>, Plain
       local addresses string, local addresses strings, <string>, <firewall rule>, Plain
       local administrator, local administrators, <boolean>, world , PlainGlobal
@@ -10651,6 +10659,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       x32 file, x32 files, <file>, world , NamedGlobal
       x32 folder, x32 folders, <folder>, world , NamedGlobal
       x32 registry, x32 registries, <registry>, world , PlainGlobal
+      x32, x32s, <boolean>, <operating system>, Plain
       x64 application, x64 applications, <application>, world , NamedGlobal
       x64 file, x64 files, <file>, world , NamedGlobal
       x64 folder, x64 folders, <folder>, world , NamedGlobal

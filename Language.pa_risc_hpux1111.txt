@@ -434,6 +434,7 @@ Creation techniques & properties of each type:
       android of <operating system>, androids, Plain
       authenticating of <client>, authenticatings, Plain
       authenticating of <current relay>, authenticatings, Plain
+      big endian of <operating system>, big endians, Plain
       bit <integer> of <bit set>, bits, Numbered
       bit <integer> of <integer>, bits, Numbered
       blob of <sqlite column type>, blobs, Plain
@@ -482,6 +483,7 @@ Creation techniques & properties of each type:
       leap of <year>, leaps, Plain
       legacy of <bes product>, legacies, Plain
       listening of <tcp state>, listenings, Plain
+      little endian of <operating system>, little endians, Plain
       locked of <action lock state>, lockeds, Plain
       loopback of <network adapter interface>, loopbacks, Plain
       loopback of <network adapter>, loopbacks, Plain
@@ -2527,6 +2529,7 @@ Creation techniques & properties of each type:
       <operating system> as string, , Cast, <string>
       android of <operating system>, androids, Plain, <boolean>
       architecture of <operating system>, architectures, Plain, <string>
+      big endian of <operating system>, big endians, Plain, <boolean>
       boot time of <operating system>, boot times, Plain, <time>
       build number high of <operating system>, build number highs, Plain, <integer>
       build number low of <operating system>, build number lows, Plain, <integer>
@@ -2534,6 +2537,7 @@ Creation techniques & properties of each type:
       build of <operating system>, builds, Plain, <string>
       codename of <operating system>, codenames, Plain, <string>
       embedded of <operating system>, embeddeds, Plain, <boolean>
+      little endian of <operating system>, little endians, Plain, <boolean>
       mac of <operating system>, macs, Plain, <boolean>
       machine of <operating system>, machines, Plain, <string>
       major version of <operating system>, major versions, Plain, <integer>
@@ -4511,6 +4515,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       base64 decode, base64 decodes, <string>, world , NamedGlobal
       base64 encode, base64 encodes, <string>, world , NamedGlobal
       bes license, bes licenses, <license>, world , PlainGlobal
+      big endian, big endians, <boolean>, <operating system>, Plain
       big, bigs, <html>, <html>, Named
       big, bigs, <html>, <html>, Plain
       big, bigs, <html>, <string>, Named
@@ -5049,6 +5054,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       link, links, <html>, <string>, Named
       link, links, <html>, <string>, Plain
       listening, listenings, <boolean>, <tcp state>, Plain
+      little endian, little endians, <boolean>, <operating system>, Plain
       local address, local addresses, <ipv4or6 address>, <socket>, Plain
       local character set, local character sets, <string>, <client>, Plain
       local port, local ports, <integer>, <socket>, Plain
