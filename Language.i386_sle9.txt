@@ -1,5 +1,5 @@
-Operating System:Linux Red Hat Enterprise AS 4 (2_6_9-34_EL)
-Build Target:x86_64_rhe4
+Operating System:Linux SuSE Enterprise Server 9 (2_6_5-7_97-default)
+Build Target:i386_sle9
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   action

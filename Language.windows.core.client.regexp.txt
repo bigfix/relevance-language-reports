@@ -7,7 +7,9 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   action
   action lock state
   active device
+  active directory group
   active directory local computer
+  active directory local user
   active directory server
   activity history
   administrative rights
@@ -154,7 +156,6 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   local group (derives from  security account)
   local group member (derives from  security account)
   local mssql database
-  local user (derives from  security account)
   logged on user
   logon task trigger (derives from  task trigger)
   media type
@@ -262,6 +263,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   type
   unary operator
   undefined
+  user (derives from  security account)
   utf8 string
   version
   version with multiplicity (derives from  version)
@@ -445,19 +447,55 @@ Creation techniques & properties of each type:
       service key value name of <active device>, service key value names, Plain, <string>
       status of <active device>, statuss, Plain, <integer>
 
+  Type <active directory group>
+    Creation of <active directory group>: { key phrase, plural keyword, form}
+      group <string> of <active directory local computer>, groups, Named
+      group <string> of <active directory local user>, groups, Named
+      group of <active directory local computer>, groups, Plain
+      group of <active directory local user>, groups, Plain
+    Properties of <active directory group> { key phrase, plural keyword, form, <result type>}:
+      distinguished name error message of <active directory group>, distinguished name error messages, Plain, <string>
+      distinguished name of <active directory group>, distinguished names, Plain, <string>
+      name of <active directory group>, names, Plain, <string>
+      sample time of <active directory group>, sample times, Plain, <time>
+      sid of <active directory group>, sids, Plain, <security identifier>
+
   Type <active directory local computer>
     Creation of <active directory local computer>: { key phrase, plural keyword, form}
       local computer of <active directory server>, local computers, Plain
     Properties of <active directory local computer> { key phrase, plural keyword, form, <result type>}:
       distinguished name error message of <active directory local computer>, distinguished name error messages, Plain, <string>
       distinguished name of <active directory local computer>, distinguished names, Plain, <string>
+      group <string> of <active directory local computer>, groups, Named, <active directory group>
+      group of <active directory local computer>, groups, Plain, <active directory group>
+      groups error message of <active directory local computer>, groups error messages, Plain, <string>
       sample time of <active directory local computer>, sample times, Plain, <time>
+
+  Type <active directory local user>
+    Creation of <active directory local user>: { key phrase, plural keyword, form}
+      active directory user of <user>, active directory users, Plain
+      local user <string> of <active directory server>, local users, Named
+      local user of <active directory server>, local users, Plain
+      logged on user <string> of <active directory server>, logged on users, Named
+      logged on user of <active directory server>, logged on users, Plain
+    Properties of <active directory local user> { key phrase, plural keyword, form, <result type>}:
+      distinguished name error message of <active directory local user>, distinguished name error messages, Plain, <string>
+      distinguished name of <active directory local user>, distinguished names, Plain, <string>
+      group <string> of <active directory local user>, groups, Named, <active directory group>
+      group of <active directory local user>, groups, Plain, <active directory group>
+      groups error message of <active directory local user>, groups error messages, Plain, <string>
+      name of <active directory local user>, names, Plain, <string>
+      sample time of <active directory local user>, sample times, Plain, <time>
 
   Type <active directory server>
     Creation of <active directory server>: { key phrase, plural keyword, form}
       active directory, active directories, PlainGlobal
     Properties of <active directory server> { key phrase, plural keyword, form, <result type>}:
       local computer of <active directory server>, local computers, Plain, <active directory local computer>
+      local user <string> of <active directory server>, local users, Named, <active directory local user>
+      local user of <active directory server>, local users, Plain, <active directory local user>
+      logged on user <string> of <active directory server>, logged on users, Named, <active directory local user>
+      logged on user of <active directory server>, logged on users, Plain, <active directory local user>
 
   Type <activity history>
     Creation of <activity history>: { key phrase, plural keyword, form}
@@ -794,11 +832,11 @@ Creation techniques & properties of each type:
       <year> < <year>, , BinaryOperator
       <year> <= <year>, , BinaryOperator
       <year> = <year>, , BinaryOperator
-      account disabled flag of <local user>, account disabled flags, Plain
-      accounts operator flag of <local user>, accounts operator flags, Plain
+      account disabled flag of <user>, account disabled flags, Plain
+      accounts operator flag of <user>, accounts operator flags, Plain
       active of <action>, actives, Plain
       active of <logged on user>, actives, Plain
-      admin privilege of <local user>, admin privileges, Plain
+      admin privilege of <user>, admin privileges, Plain
       allow demand start of <task settings>, allow demand starts, Plain
       allow hard terminate of <task settings>, allow hard terminates, Plain
       allow inbound echo request of <firewall icmp settings>, allow inbound echo requests, Plain
@@ -833,7 +871,7 @@ Creation techniques & properties of each type:
       can interact with desktop of <service>, can interact with desktops, Plain
       change notification permission of <access control entry>, change notification permissions, Plain
       communications bit <operating system suite mask>, communications bits, Index<operating system suite mask>Global
-      communications operator flag of <local user>, communications operator flags, Plain
+      communications operator flag of <user>, communications operator flags, Plain
       compressed of <filesystem object>, compresseds, Plain
       conjunction of <boolean>, conjunctions, Plain
       console connect of <session state change task trigger>, console connects, Plain
@@ -860,6 +898,7 @@ Creation techniques & properties of each type:
       disallow start when on battery of <task settings>, disallow start when on batteries, Plain
       disjunction of <boolean>, disjunctions, Plain
       divided by zero of <floating point>, divided by zeroes, Plain
+      driver type of <service>, driver types, Plain
       edge traversal allowed of <firewall rule>, edge traversal alloweds, Plain
       effective access system security permission for <security account> of <access control list>, effective access system security permissions for, Index<security account>
       effective access system security permission for <string> of <access control list>, effective access system security permissions for, Named
@@ -964,13 +1003,13 @@ Creation techniques & properties of each type:
       generic write permission of <access control entry>, generic write permissions, Plain
       group leader of <action>, group leaders, Plain
       group logon of <task principal>, group logons, Plain
-      guest privilege of <local user>, guest privileges, Plain
+      guest privilege of <user>, guest privileges, Plain
       has blank sa password of <local mssql database>, has blank sa passwords, Plain
       hidden of <filesystem object>, hiddens, Plain
       hidden of <palm application>, hiddens, Plain
       hidden of <task settings>, hiddens, Plain
       highest runlevel of <task principal>, highest runlevels, Plain
-      home directory required flag of <local user>, home directory required flags, Plain
+      home directory required flag of <user>, home directory required flags, Plain
       hotsync in progress of <hotsync manager>, hotsyncs in progress, Plain
       hyperthreading capable, hyperthreading capables, PlainGlobal
       hyperthreading enabled, hyperthreading enableds, PlainGlobal
@@ -984,14 +1023,14 @@ Creation techniques & properties of each type:
       insert path attribute of <metabase value>, insert path attributes, Plain
       interactive token logon of <task principal>, interactive token logons, Plain
       interactive token password logon of <task principal>, interactive token password logons, Plain
-      interdomain trust account flag of <local user>, interdomain trust account flags, Plain
+      interdomain trust account flag of <user>, interdomain trust account flags, Plain
       invalid of <floating point>, invalids, Plain
       launchable of <palm application>, launchables, Plain
       leap of <year>, leaps, Plain
       list permission of <access control entry>, list permissions, Plain
       local administrator, local administrators, PlainGlobal
       locked of <action lock state>, lockeds, Plain
-      locked out flag of <local user>, locked out flags, Plain
+      locked out flag of <user>, locked out flags, Plain
       loopback of <network adapter interface>, loopbacks, Plain
       loopback of <network adapter>, loopbacks, Plain
       loopback of <network ip interface>, loopbacks, Plain
@@ -1005,9 +1044,9 @@ Creation techniques & properties of each type:
       multicast support of <network ip interface>, multicast supports, Plain
       multivalued of <property>, multivalueds, Plain
       nan of <floating point>, nans, Plain
-      no password required flag of <local user>, no password required flags, Plain
+      no password required flag of <user>, no password required flags, Plain
       none logon of <task principal>, none logons, Plain
-      normal account flag of <local user>, normal account flags, Plain
+      normal account flag of <user>, normal account flags, Plain
       normal of <filesystem object>, normals, Plain
       normal of <floating point>, normals, Plain
       normal of <power level>, normals, Plain
@@ -1021,9 +1060,9 @@ Creation techniques & properties of each type:
       outbound of <firewall rule>, outbounds, Plain
       overflow of <floating point>, overflows, Plain
       parallel instance of <task settings>, parallel instances, Plain
-      password change disabled flag of <local user>, password change disabled flags, Plain
-      password expiration disabled flag of <local user>, password expiration disabled flags, Plain
-      password expired of <local user>, passwords expired, Plain
+      password change disabled flag of <user>, password change disabled flags, Plain
+      password expiration disabled flag of <user>, password expiration disabled flags, Plain
+      password expired of <user>, passwords expired, Plain
       password logon of <task principal>, password logons, Plain
       pending login of <action>, pending logins, Plain
       pending login, pending logins, PlainGlobal
@@ -1036,7 +1075,7 @@ Creation techniques & properties of each type:
       plugged of <power level>, pluggeds, Plain
       point to point of <network adapter interface>, point to points, Plain
       point to point of <network ip interface>, point to points, Plain
-      print operator flag of <local user>, print operator flags, Plain
+      print operator flag of <user>, print operator flags, Plain
       profile <firewall profile type> of <firewall rule>, profiles, Index<firewall profile type>
       query value permission of <access control entry>, query value permissions, Plain
       queue instance of <task settings>, queue instances, Plain
@@ -1075,10 +1114,10 @@ Creation techniques & properties of each type:
       running state of <running task>, running states, Plain
       running state of <scheduled task>, running states, Plain
       s4u logon of <task principal>, s4u logons, Plain
-      script flag of <local user>, script flags, Plain
+      script flag of <user>, script flags, Plain
       secure attribute of <metabase value>, secure attributes, Plain
-      server operator flag of <local user>, server operator flags, Plain
-      server trust account flag of <local user>, server trust account flags, Plain
+      server operator flag of <user>, server operator flags, Plain
+      server trust account flag of <user>, server trust account flags, Plain
       service account logon of <task principal>, service account logons, Plain
       service restricted <( string, string )> of <firewall service restriction>, service restricteds, Index<( string, string )>
       session lock of <session state change task trigger>, session locks, Plain
@@ -1095,7 +1134,7 @@ Creation techniques & properties of each type:
       stream of <palm application>, streams, Plain
       synchronize permission of <access control entry>, synchronize permissions, Plain
       system of <filesystem object>, systems, Plain
-      temporary duplicate account flag of <local user>, temporary duplicate account flags, Plain
+      temporary duplicate account flag of <user>, temporary duplicate account flags, Plain
       temporary of <filesystem object>, temporarys, Plain
       terminal bit <operating system suite mask>, terminal bits, Index<operating system suite mask>Global
       traverse permission of <access control entry>, traverse permissions, Plain
@@ -1110,17 +1149,18 @@ Creation techniques & properties of each type:
       up of <network adapter>, ups, Plain
       up of <network ip interface>, ups, Plain
       ups of <power level>, upss, Plain
-      user privilege of <local user>, user privileges, Plain
+      user privilege of <user>, user privileges, Plain
       v1 compatibility of <task settings>, v1 compatibilities, Plain
       v2 compatibility of <task settings>, v2 compatibilities, Plain
       volatile attribute of <metabase value>, volatile attributes, Plain
       waiting for download of <action>, waiting for downloads, Plain
       wake to run of <task settings>, wake to runs, Plain
       wakeonlan enabled of <network adapter>, wakeonlan enableds, Plain
+      win32 type of <service>, win32 types, Plain
       windows of <operating system>, windowses, Plain
       wins enabled of <network adapter>, wins enableds, Plain
       winsock2 supported of <network>, winsock2 supporteds, Plain
-      workstation trust account flag of <local user>, workstation trust account flags, Plain
+      workstation trust account flag of <user>, workstation trust account flags, Plain
       wow64 of <process>, wow64s, Plain
       write attributes permission of <access control entry>, write attributes permissions, Plain
       write dac permission of <access control entry>, write dac permissions, Plain
@@ -1163,6 +1203,7 @@ Creation techniques & properties of each type:
       administrative rights of <client>, administrative rightss, Plain, <administrative rights>
       administrator <string> of <client>, administrators, Named, <setting>
       administrator of <client>, administrators, Plain, <setting>
+      brand of <client>, brands, Plain, <string>
       evaluationcycle of <client>, evaluationcycles, Plain, <evaluation cycle>
       registration address of <client>, registration addresses, Plain, <ipv4or6 address>
       registration cidr address of <client>, registration cidr addresses, Plain, <string>
@@ -2172,11 +2213,15 @@ Creation techniques & properties of each type:
     Properties of <environment> { key phrase, plural keyword, form, <result type>}:
       variable <string> of <environment>, variables, Named, <environment variable>
       variable of <environment>, variables, Plain, <environment variable>
+      x64 variable <string> of <environment>, x64 variables, Named, <environment variable>
+      x64 variable of <environment>, x64 variables, Plain, <environment variable>
 
   Type <environment variable>
     Creation of <environment variable>: { key phrase, plural keyword, form}
       variable <string> of <environment>, variables, Named
       variable of <environment>, variables, Plain
+      x64 variable <string> of <environment>, x64 variables, Named
+      x64 variable of <environment>, x64 variables, Plain
     Properties of <environment variable> { key phrase, plural keyword, form, <result type>}:
       <environment variable> as string, , Cast, <string>
       name of <environment variable>, names, Plain, <string>
@@ -2586,6 +2631,7 @@ Creation techniques & properties of each type:
 
   Type <fixlet>
     Creation of <fixlet>: { key phrase, plural keyword, form}
+      current analysis, current analyses, PlainGlobal
       fixlet of <site>, fixlets, Plain
       relevant fixlet of <site>, relevant fixlets, Plain
     Properties of <fixlet> { key phrase, plural keyword, form, <result type>}:
@@ -2593,6 +2639,7 @@ Creation techniques & properties of each type:
       header of <fixlet>, headers, Plain, <fixlet_header>
       id of <fixlet>, ids, Plain, <integer>
       relevance of <fixlet>, relevances, Plain, <boolean>
+      site of <fixlet>, sites, Plain, <site>
 
   Type <fixlet_header>
     Creation of <fixlet_header>: { key phrase, plural keyword, form}
@@ -3265,7 +3312,7 @@ Creation techniques & properties of each type:
       audit level of <local mssql database>, audit levels, Plain
       average of <evaluation cycle>, averages, Plain
       backlight feature of <palm device>, backlight features, Plain
-      bad password count of <local user>, bad password counts, Plain
+      bad password count of <user>, bad password counts, Plain
       bank_connections of <dmi memory_module_information>, bank_connectionss, Plain
       base_address of <dmi ipmi_device_information>, base_addresss, Plain
       battery percentage of <palm device>, battery percentages, Plain
@@ -3289,7 +3336,7 @@ Creation techniques & properties of each type:
       channel_type of <dmi memory_channel>, channel_types, Plain
       chassis_handle of <dmi base_board_information>, chassis_handles, Plain
       checkpoint of <service>, checkpoints, Plain
-      code page of <local user>, code pages, Plain
+      code page of <user>, code pages, Plain
       competition size of <selected server>, competition sizes, Plain
       competition weight of <selected server>, competition weights, Plain
       component <integer> of <site version list>, components, Numbered
@@ -3306,7 +3353,7 @@ Creation techniques & properties of each type:
       core_count of <dmi processor_information>, core_counts, Plain
       core_enabled of <dmi processor_information>, core_enableds, Plain
       count of <monitor power interval>, counts, Plain
-      country code of <local user>, country codes, Plain
+      country code of <user>, country codes, Plain
       current_interleave of <dmi memory_controller_information>, current_interleaves, Plain
       current_memory_type of <dmi memory_module_information>, current_memory_types, Plain
       current_speed of <dmi memory_module_information>, current_speeds, Plain
@@ -3476,7 +3523,7 @@ Creation techniques & properties of each type:
       location_and_status of <dmi voltage_probe>, location_and_statuss, Plain
       logical processor count, logical processor counts, PlainGlobal
       login mode of <local mssql database>, login modes, Plain
-      logon count of <local user>, logon counts, Plain
+      logon count of <user>, logon counts, Plain
       lower bound of <integer range>, lower bounds, Plain
       lower_threshold_critical of <dmi management_device_threshold_data>, lower_threshold_criticals, Plain
       lower_threshold_non_critical of <dmi management_device_threshold_data>, lower_threshold_non_criticals, Plain
@@ -3488,7 +3535,7 @@ Creation techniques & properties of each type:
       maximum of <evaluation cycle>, maximums, Plain
       maximum of <integer>, maxima, Plain
       maximum seat count of <license>, maximum seat counts, Plain
-      maximum storage of <local user>, maximum storages, Plain
+      maximum storage of <user>, maximum storages, Plain
       maximum transmission unit of <network adapter>, maximum transmission units, Plain
       maximum_cache_size of <dmi cache_information>, maximum_cache_sizes, Plain
       maximum_capacity of <dmi physical_memory_array>, maximum_capacitys, Plain
@@ -3600,7 +3647,7 @@ Creation techniques & properties of each type:
       power_supply_characteristics of <dmi system_power_supply>, power_supply_characteristicss, Plain
       power_supply_state of <dmi system_enclosure_or_chassis>, power_supply_states, Plain
       power_unit_group of <dmi system_power_supply>, power_unit_groups, Plain
-      primary group id of <local user>, primary group ids, Plain
+      primary group id of <user>, primary group ids, Plain
       priority of <selected server>, priorities, Plain
       priority of <task settings>, priorities, Plain
       problem id of <active device>, problem ids, Plain
@@ -3706,7 +3753,7 @@ Creation techniques & properties of each type:
       use limit of <network share>, use limits, Plain
       use of <dmi physical_memory_array>, uses, Plain
       used memory of <palm device>, used memories, Plain
-      user id of <local user>, user ids, Plain
+      user id of <user>, user ids, Plain
       user object count of <process>, user object counts, Plain
       vendor id of <palm device>, vendor ids, Plain
       vendor_syndrome of <dmi b32_bit_memory_error_information>, vendor_syndromes, Plain
@@ -4076,59 +4123,10 @@ Creation techniques & properties of each type:
       login mode of <local mssql database>, login modes, Plain, <integer>
       running of <local mssql database>, runnings, Plain, <boolean>
 
-  Type <local user> (derives from security account)
-    Creation of <local user>: { key phrase, plural keyword, form}
-      domain user <string>, domain users, NamedGlobal
-      domain user, domain users, PlainGlobal
-      local user <string>, local users, NamedGlobal
-      local user, local users, PlainGlobal
-    Properties of <local user> { key phrase, plural keyword, form, <result type>}:
-      account disabled flag of <local user>, account disabled flags, Plain, <boolean>
-      account expiration of <local user>, account expirations, Plain, <time>
-      accounts operator flag of <local user>, accounts operator flags, Plain, <boolean>
-      admin privilege of <local user>, admin privileges, Plain, <boolean>
-      allowed workstations string of <local user>, allowed workstations strings, Plain, <string>
-      application parameter string of <local user>, application parameter strings, Plain, <string>
-      bad password count of <local user>, bad password counts, Plain, <integer>
-      code page of <local user>, code pages, Plain, <integer>
-      comment of <local user>, comments, Plain, <string>
-      communications operator flag of <local user>, communications operator flags, Plain, <boolean>
-      country code of <local user>, country codes, Plain, <integer>
-      full name of <local user>, full names, Plain, <string>
-      guest privilege of <local user>, guest privileges, Plain, <boolean>
-      home directory drive of <local user>, home directory drives, Plain, <string>
-      home directory of <local user>, home directories, Plain, <string>
-      home directory required flag of <local user>, home directory required flags, Plain, <boolean>
-      interdomain trust account flag of <local user>, interdomain trust account flags, Plain, <boolean>
-      last logoff of <local user>, last logoffs, Plain, <time>
-      last logon of <local user>, last logons, Plain, <time>
-      locked out flag of <local user>, locked out flags, Plain, <boolean>
-      logon count of <local user>, logon counts, Plain, <integer>
-      logon script of <local user>, logon scripts, Plain, <string>
-      logon server of <local user>, logon servers, Plain, <string>
-      maximum storage of <local user>, maximum storages, Plain, <integer>
-      name of <local user>, names, Plain, <string>
-      no password required flag of <local user>, no password required flags, Plain, <boolean>
-      normal account flag of <local user>, normal account flags, Plain, <boolean>
-      password age of <local user>, password ages, Plain, <time interval>
-      password change disabled flag of <local user>, password change disabled flags, Plain, <boolean>
-      password expiration disabled flag of <local user>, password expiration disabled flags, Plain, <boolean>
-      password expired of <local user>, passwords expired, Plain, <boolean>
-      primary group id of <local user>, primary group ids, Plain, <integer>
-      print operator flag of <local user>, print operator flags, Plain, <boolean>
-      profile folder of <local user>, profile folders, Plain, <string>
-      script flag of <local user>, script flags, Plain, <boolean>
-      server operator flag of <local user>, server operator flags, Plain, <boolean>
-      server trust account flag of <local user>, server trust account flags, Plain, <boolean>
-      temporary duplicate account flag of <local user>, temporary duplicate account flags, Plain, <boolean>
-      user comment of <local user>, user comments, Plain, <string>
-      user id of <local user>, user ids, Plain, <integer>
-      user privilege of <local user>, user privileges, Plain, <boolean>
-      workstation trust account flag of <local user>, workstation trust account flags, Plain, <boolean>
-
   Type <logged on user>
     Creation of <logged on user>: { key phrase, plural keyword, form}
       current user, current users, PlainGlobal
+      logged on user of <user>, logged on users, Plain
       logged on user, logged on users, PlainGlobal
     Properties of <logged on user> { key phrase, plural keyword, form, <result type>}:
       active of <logged on user>, actives, Plain, <boolean>
@@ -4136,6 +4134,7 @@ Creation techniques & properties of each type:
       name of <logged on user>, names, Plain, <string>
       remote of <logged on user>, remotes, Plain, <boolean>
       sid of <logged on user>, sids, Plain, <security identifier>
+      user of <logged on user>, users, Plain, <user>
 
   Type <logon task trigger> (derives from task trigger)
     Creation of <logon task trigger>: { key phrase, plural keyword, form}
@@ -4230,6 +4229,9 @@ Creation techniques & properties of each type:
   Type <monitor power interval>
     Creation of <monitor power interval>: { key phrase, plural keyword, form}
       current monitor interval of <power history>, current monitor intervals, Plain
+      last monitor interval in <power state> of <power history>, last monitor intervals in, Index<power state>
+      last monitor interval in monitor off state of <power history>, last monitor intervals in monitor off state, Plain
+      last monitor interval in monitor on state of <power history>, last monitor intervals in monitor on state, Plain
       monitor interval of <power history>, monitor intervals, Plain
     Properties of <monitor power interval> { key phrase, plural keyword, form, <result type>}:
       count of <monitor power interval>, counts, Plain, <integer>
@@ -4705,6 +4707,15 @@ Creation techniques & properties of each type:
     Properties of <power history> { key phrase, plural keyword, form, <result type>}:
       current monitor interval of <power history>, current monitor intervals, Plain, <monitor power interval>
       current system interval of <power history>, current system intervals, Plain, <system power interval>
+      last monitor interval in <power state> of <power history>, last monitor intervals in, Index<power state>, <monitor power interval>
+      last monitor interval in monitor off state of <power history>, last monitor intervals in monitor off state, Plain, <monitor power interval>
+      last monitor interval in monitor on state of <power history>, last monitor intervals in monitor on state, Plain, <monitor power interval>
+      last system interval in <power state> of <power history>, last system intervals in, Index<power state>, <system power interval>
+      last system interval in active state of <power history>, last system intervals in active state, Plain, <system power interval>
+      last system interval in idle state of <power history>, last system intervals in idle state, Plain, <system power interval>
+      last system interval in logged off state of <power history>, last system intervals in logged off state, Plain, <system power interval>
+      last system interval in off state of <power history>, last system intervals in off state, Plain, <system power interval>
+      last system interval in standby state of <power history>, last system intervals in standby state, Plain, <system power interval>
       monitor interval of <power history>, monitor intervals, Plain, <monitor power interval>
       system interval of <power history>, system intervals, Plain, <system power interval>
 
@@ -5095,6 +5106,7 @@ Creation techniques & properties of each type:
     Creation of <security identifier>: { key phrase, plural keyword, form}
       group of <security descriptor>, groups, Plain
       owner of <security descriptor>, owners, Plain
+      sid of <active directory group>, sids, Plain
       sid of <logged on user>, sids, Plain
       sid of <security account>, sids, Plain
       trustee of <access control entry>, trustees, Plain
@@ -5125,17 +5137,24 @@ Creation techniques & properties of each type:
 
   Type <service>
     Creation of <service>: { key phrase, plural keyword, form}
+      all running service, all running services, PlainGlobal
+      all service, all services, PlainGlobal
+      driver running service, driver running services, PlainGlobal
+      driver service, driver services, PlainGlobal
       main gather service, main gather services, PlainGlobal
       relay service, relay services, PlainGlobal
       running service <string>, running services, NamedGlobal
       running service, running services, PlainGlobal
       service <string>, services, NamedGlobal
       service, services, PlainGlobal
+      win32 running service, win32 running services, PlainGlobal
+      win32 service, win32 services, PlainGlobal
     Properties of <service> { key phrase, plural keyword, form, <result type>}:
       <service> as string, , Cast, <string>
       can interact with desktop of <service>, can interact with desktops, Plain, <boolean>
       checkpoint of <service>, checkpoints, Plain, <integer>
       display name of <service>, display names, Plain, <string>
+      driver type of <service>, driver types, Plain, <boolean>
       file of <service>, files, Plain, <file>
       image path of <service>, image paths, Plain, <string>
       login account of <service>, login accounts, Plain, <string>
@@ -5146,6 +5165,7 @@ Creation techniques & properties of each type:
       state of <service>, states, Plain, <string>
       version of <service>, versions, Plain, <version>
       win32 exit code of <service>, win32 exit codes, Plain, <integer>
+      win32 type of <service>, win32 types, Plain, <boolean>
 
   Type <session state change task trigger> (derives from task trigger)
     Creation of <session state change task trigger>: { key phrase, plural keyword, form}
@@ -5186,6 +5206,7 @@ Creation techniques & properties of each type:
     Creation of <site>: { key phrase, plural keyword, form}
       current site, current sites, PlainGlobal
       site <string>, sites, NamedGlobal
+      site of <fixlet>, sites, Plain
       site, sites, PlainGlobal
     Properties of <site> { key phrase, plural keyword, form, <result type>}:
       client folder of <site>, client folders, Plain, <folder>
@@ -5399,10 +5420,10 @@ Creation techniques & properties of each type:
       <xml dom node> as xml, , Cast
       <year> as string, , Cast
       account name of <security identifier>, account names, Plain
-      allowed workstations string of <local user>, allowed workstations strings, Plain
+      allowed workstations string of <user>, allowed workstations strings, Plain
       aol error of <file>, aol errors, Plain
       application name of <firewall rule>, application names, Plain
-      application parameter string of <local user>, application parameter strings, Plain
+      application parameter string of <user>, application parameter strings, Plain
       argument string of <exec task action>, argument strings, Plain
       argument string of <file shortcut>, argument strings, Plain
       asset_tag of <dmi base_board_information>, asset_tags, Plain
@@ -5418,6 +5439,7 @@ Creation techniques & properties of each type:
       bios_release_date of <dmi bios_information>, bios_release_dates, Plain
       bios_version of <dmi bios_information>, bios_versions, Plain
       body of <email task action>, bodies, Plain
+      brand of <client>, brands, Plain
       brand string of <processor>, brand strings, Plain
       cc of <email task action>, ccs, Plain
       character <integer>, characters, NumberedGlobal
@@ -5433,8 +5455,8 @@ Creation techniques & properties of each type:
       class of <active device>, classes, Plain
       codepage of <file version block>, codepages, Plain
       comment of <local group>, comments, Plain
-      comment of <local user>, comments, Plain
       comment of <network share>, comments, Plain
+      comment of <user>, comments, Plain
       common name of <license>, common names, Plain
       component string of <security identifier>, component strings, Plain
       computer name, computer names, PlainGlobal
@@ -5470,8 +5492,12 @@ Creation techniques & properties of each type:
       directory of <palm device>, directories, Plain
       display name of <service>, display names, Plain
       display name of <task principal>, display names, Plain
+      distinguished name error message of <active directory group>, distinguished name error messages, Plain
       distinguished name error message of <active directory local computer>, distinguished name error messages, Plain
+      distinguished name error message of <active directory local user>, distinguished name error messages, Plain
+      distinguished name of <active directory group>, distinguished names, Plain
       distinguished name of <active directory local computer>, distinguished names, Plain
+      distinguished name of <active directory local user>, distinguished names, Plain
       dns name, dns names, PlainGlobal
       dns suffix of <network adapter>, dns suffixes, Plain
       documentation of <task registration info>, documentations, Plain
@@ -5485,6 +5511,7 @@ Creation techniques & properties of each type:
       excluded interface of <firewall profile>, excluded interfaces, Plain
       executable file format of <file>, executable file formats, Plain
       expand environment string of <string>, expand environment strings, Plain
+      expand x64 environment string of <string>, expand x64 environment strings, Plain
       expiration state of <license>, expiration states, Plain
       external_reference_designator of <dmi port_connector_information>, external_reference_designators, Plain
       family name of <processor>, family names, Plain
@@ -5494,17 +5521,19 @@ Creation techniques & properties of each type:
       friendly name of <active device>, friendly names, Plain
       friendly name of <network adapter>, friendly names, Plain
       from of <email task action>, froms, Plain
-      full name of <local user>, full names, Plain
+      full name of <user>, full names, Plain
       gather schedule authority of <site>, gather schedule authoritys, Plain
       gather url of <license>, gather urls, Plain
       group id of <task principal>, group ids, Plain
       group_name of <dmi group_associations>, group_names, Plain
       grouping of <firewall rule>, groupings, Plain
+      groups error message of <active directory local computer>, groups error messages, Plain
+      groups error message of <active directory local user>, groups error messages, Plain
       guid of <connection>, guids, Plain
       hardware id of <active device>, hardware ids, Plain
       hexadecimal string <string>, hexadecimal strings, NamedGlobal
-      home directory drive of <local user>, home directory drives, Plain
-      home directory of <local user>, home directories, Plain
+      home directory drive of <user>, home directory drives, Plain
+      home directory of <user>, home directories, Plain
       host name of <root server>, host names, Plain
       hostname, hostnames, PlainGlobal
       icmp types_and_codes string of <firewall rule>, icmp types_and_codes strings, Plain
@@ -5534,8 +5563,8 @@ Creation techniques & properties of each type:
       location_in_chassis of <dmi base_board_information>, location_in_chassiss, Plain
       lock string of <action lock state>, lock strings, Plain
       login account of <service>, login accounts, Plain
-      logon script of <local user>, logon scripts, Plain
-      logon server of <local user>, logon servers, Plain
+      logon script of <user>, logon scripts, Plain
+      logon server of <user>, logon servers, Plain
       mac address of <network adapter interface>, mac addresses, Plain
       mac address of <network adapter>, mac addresses, Plain
       manufacture_date of <dmi portable_battery>, manufacture_dates, Plain
@@ -5549,6 +5578,8 @@ Creation techniques & properties of each type:
       manufacturer_name of <dmi out_of_band_remote_access>, manufacturer_names, Plain
       message body of <show message task action>, message bodies, Plain
       model_part_number of <dmi system_power_supply>, model_part_numbers, Plain
+      name of <active directory group>, names, Plain
+      name of <active directory local user>, names, Plain
       name of <application usage summary instance>, names, Plain
       name of <application usage summary>, names, Plain
       name of <audit policy category>, names, Plain
@@ -5568,7 +5599,6 @@ Creation techniques & properties of each type:
       name of <fixlet_header>, names, Plain
       name of <hotsync user>, names, Plain
       name of <local group>, names, Plain
-      name of <local user>, names, Plain
       name of <logged on user>, names, Plain
       name of <metabase key>, names, Plain
       name of <module>, names, Plain
@@ -5595,6 +5625,7 @@ Creation techniques & properties of each type:
       name of <task network settings>, names, Plain
       name of <type>, names, Plain
       name of <unary operator>, names, Plain
+      name of <user>, names, Plain
       name of <wmi select>, names, Plain
       node name of <xml dom node>, node names, Plain
       node value of <xml dom node>, node values, Plain
@@ -5625,7 +5656,7 @@ Creation techniques & properties of each type:
       product info string of <operating system>, product info strings, Plain
       product of <dmi base_board_information>, products, Plain
       product_name of <dmi system_information>, product_names, Plain
-      profile folder of <local user>, profile folders, Plain
+      profile folder of <user>, profile folders, Plain
       protocol of <port mapping>, protocols, Plain
       regex escape of <string>, regex escapes, Plain
       registration cidr address of <client>, registration cidr addresses, Plain
@@ -5704,7 +5735,7 @@ Creation techniques & properties of each type:
       upload progress of <client>, upload progresses, Plain
       uri of <task registration info>, uris, Plain
       url of <site>, urls, Plain
-      user comment of <local user>, user comments, Plain
+      user comment of <user>, user comments, Plain
       user id of <logon task trigger>, user ids, Plain
       user id of <session state change task trigger>, user ids, Plain
       user id of <task principal>, user ids, Plain
@@ -5866,6 +5897,7 @@ Creation techniques & properties of each type:
       em of <string>, ems, Plain, <html>
       escape of <string>, escapes, Plain, <string>
       expand environment string of <string>, expand environment strings, Plain, <string>
+      expand x64 environment string of <string>, expand x64 environment strings, Plain, <string>
       first <integer> of <string>, firsts, Numbered, <substring>
       first <string> of <string>, firsts, Named, <substring>
       first match <regular expression> of <string>, first matches, Index<regular expression>, <regular expression match>
@@ -6035,6 +6067,12 @@ Creation techniques & properties of each type:
   Type <system power interval>
     Creation of <system power interval>: { key phrase, plural keyword, form}
       current system interval of <power history>, current system intervals, Plain
+      last system interval in <power state> of <power history>, last system intervals in, Index<power state>
+      last system interval in active state of <power history>, last system intervals in active state, Plain
+      last system interval in idle state of <power history>, last system intervals in idle state, Plain
+      last system interval in logged off state of <power history>, last system intervals in logged off state, Plain
+      last system interval in off state of <power history>, last system intervals in off state, Plain
+      last system interval in standby state of <power history>, last system intervals in standby state, Plain
       system interval of <power history>, system intervals, Plain
       user interval of <activity history>, user intervals, Plain
     Properties of <system power interval> { key phrase, plural keyword, form, <result type>}:
@@ -6236,7 +6274,7 @@ Creation techniques & properties of each type:
       <time> + <time interval>, , BinaryOperator
       <time> - <time interval>, , BinaryOperator
       accessed time of <filesystem object>, accessed times, Plain
-      account expiration of <local user>, account expirations, Plain
+      account expiration of <user>, account expirations, Plain
       active start time of <action>, active start times, Plain
       aol error time of <file>, aol error times, Plain
       apparent registration server time, apparent registration server times, PlainGlobal
@@ -6261,8 +6299,8 @@ Creation techniques & properties of each type:
       last active time of <action>, last active times, Plain
       last change time of <action>, last change times, Plain
       last gather time of <site>, last gather times, Plain
-      last logoff of <local user>, last logoffs, Plain
-      last logon of <local user>, last logons, Plain
+      last logoff of <user>, last logoffs, Plain
+      last logon of <user>, last logons, Plain
       last relay select time, last relay select times, PlainGlobal
       last run time of <scheduled task>, last run times, Plain
       last start time of <application usage summary instance>, last start times, Plain
@@ -6282,7 +6320,9 @@ Creation techniques & properties of each type:
       now of <registration server>, nows, Plain
       now, nows, PlainGlobal
       pending time of <action>, pending times, Plain
+      sample time of <active directory group>, sample times, Plain
       sample time of <active directory local computer>, sample times, Plain
+      sample time of <active directory local user>, sample times, Plain
       start boundary of <task trigger>, start boundaries, Plain
       start date of <license>, start dates, Plain
       start of <time range>, starts, Plain
@@ -6370,7 +6410,7 @@ Creation techniques & properties of each type:
       minimum of <time interval>, minima, Plain
       minimum password age of <security database>, minimum password ages, Plain
       minute, minutes, PlainGlobal
-      password age of <local user>, password ages, Plain
+      password age of <user>, password ages, Plain
       random delay of <daily task trigger>, random delays, Plain
       random delay of <monthly task trigger>, random delays, Plain
       random delay of <monthlydow task trigger>, random delays, Plain
@@ -6656,6 +6696,61 @@ Creation techniques & properties of each type:
     Properties of <undefined> { key phrase, plural keyword, form, <result type>}:
       <undefined> as string, , Cast, <string>
 
+  Type <user> (derives from security account)
+    Creation of <user>: { key phrase, plural keyword, form}
+      domain user <string>, domain users, NamedGlobal
+      domain user, domain users, PlainGlobal
+      local user <string>, local users, NamedGlobal
+      local user, local users, PlainGlobal
+      user <string>, users, NamedGlobal
+      user of <logged on user>, users, Plain
+      user, users, PlainGlobal
+    Properties of <user> { key phrase, plural keyword, form, <result type>}:
+      account disabled flag of <user>, account disabled flags, Plain, <boolean>
+      account expiration of <user>, account expirations, Plain, <time>
+      accounts operator flag of <user>, accounts operator flags, Plain, <boolean>
+      active directory user of <user>, active directory users, Plain, <active directory local user>
+      admin privilege of <user>, admin privileges, Plain, <boolean>
+      allowed workstations string of <user>, allowed workstations strings, Plain, <string>
+      application parameter string of <user>, application parameter strings, Plain, <string>
+      bad password count of <user>, bad password counts, Plain, <integer>
+      code page of <user>, code pages, Plain, <integer>
+      comment of <user>, comments, Plain, <string>
+      communications operator flag of <user>, communications operator flags, Plain, <boolean>
+      country code of <user>, country codes, Plain, <integer>
+      full name of <user>, full names, Plain, <string>
+      guest privilege of <user>, guest privileges, Plain, <boolean>
+      home directory drive of <user>, home directory drives, Plain, <string>
+      home directory of <user>, home directories, Plain, <string>
+      home directory required flag of <user>, home directory required flags, Plain, <boolean>
+      interdomain trust account flag of <user>, interdomain trust account flags, Plain, <boolean>
+      last logoff of <user>, last logoffs, Plain, <time>
+      last logon of <user>, last logons, Plain, <time>
+      locked out flag of <user>, locked out flags, Plain, <boolean>
+      logged on user of <user>, logged on users, Plain, <logged on user>
+      logon count of <user>, logon counts, Plain, <integer>
+      logon script of <user>, logon scripts, Plain, <string>
+      logon server of <user>, logon servers, Plain, <string>
+      maximum storage of <user>, maximum storages, Plain, <integer>
+      name of <user>, names, Plain, <string>
+      no password required flag of <user>, no password required flags, Plain, <boolean>
+      normal account flag of <user>, normal account flags, Plain, <boolean>
+      password age of <user>, password ages, Plain, <time interval>
+      password change disabled flag of <user>, password change disabled flags, Plain, <boolean>
+      password expiration disabled flag of <user>, password expiration disabled flags, Plain, <boolean>
+      password expired of <user>, passwords expired, Plain, <boolean>
+      primary group id of <user>, primary group ids, Plain, <integer>
+      print operator flag of <user>, print operator flags, Plain, <boolean>
+      profile folder of <user>, profile folders, Plain, <string>
+      script flag of <user>, script flags, Plain, <boolean>
+      server operator flag of <user>, server operator flags, Plain, <boolean>
+      server trust account flag of <user>, server trust account flags, Plain, <boolean>
+      temporary duplicate account flag of <user>, temporary duplicate account flags, Plain, <boolean>
+      user comment of <user>, user comments, Plain, <string>
+      user id of <user>, user ids, Plain, <integer>
+      user privilege of <user>, user privileges, Plain, <boolean>
+      workstation trust account flag of <user>, workstation trust account flags, Plain, <boolean>
+
   Type <utf8 string>
     Creation of <utf8 string>: { key phrase, plural keyword, form}
     Properties of <utf8 string> { key phrase, plural keyword, form, <result type>}:
@@ -6855,6 +6950,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   active directory, active directories, PlainGlobal, <active directory server>
   active state, active states, PlainGlobal, <power state>
   all firewall scope, all firewall scopes, PlainGlobal, <firewall scope>
+  all running service, all running services, PlainGlobal, <service>
+  all service, all services, PlainGlobal, <service>
   allow firewall action, allow firewall actions, PlainGlobal, <firewall action>
   analysis, analysiss, PlainGlobal, <analysis>
   anonymous logon group, anonymous logon groups, PlainGlobal, <security account>
@@ -6927,6 +7024,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   creator owner group, creator owner groups, PlainGlobal, <security account>
   cryptography, cryptographies, PlainGlobal, <cryptography>
   csidl folder <integer>, csidl folders, NumberedGlobal, <folder>
+  current analysis, current analyses, PlainGlobal, <fixlet>
   current date, current dates, PlainGlobal, <date>
   current day_of_month, current days_of_month, PlainGlobal, <day of month>
   current day_of_week, current days_of_week, PlainGlobal, <day of week>
@@ -6957,8 +7055,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   dmi, dmis, PlainGlobal, <dmi>
   dns name, dns names, PlainGlobal, <string>
   domain firewall profile type, domain firewall profile types, PlainGlobal, <firewall profile type>
-  domain user <string>, domain users, NamedGlobal, <local user>
-  domain user, domain users, PlainGlobal, <local user>
+  domain user <string>, domain users, NamedGlobal, <user>
+  domain user, domain users, PlainGlobal, <user>
   download file <string>, download files, NamedGlobal, <file>
   download folder, download folders, PlainGlobal, <folder>
   download path <string>, download paths, NamedGlobal, <string>
@@ -6966,6 +7064,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   download storage folder, download storage folders, PlainGlobal, <download storage folder>
   drive <string>, drives, NamedGlobal, <drive>
   drive, drives, PlainGlobal, <drive>
+  driver running service, driver running services, PlainGlobal, <service>
+  driver service, driver services, PlainGlobal, <service>
   email task action type, email task action types, PlainGlobal, <task action type>
   embedded nt bit <operating system suite mask>, embedded nt bits, Index<operating system suite mask>Global, <boolean>
   embedded restricted bit <operating system suite mask>, embedded restricted bits, Index<operating system suite mask>Global, <boolean>
@@ -7059,8 +7159,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   local subnet firewall scope, local subnet firewall scopes, PlainGlobal, <firewall scope>
   local time <string>, local times, NamedGlobal, <time>
   local time zone, local time zones, PlainGlobal, <time zone>
-  local user <string>, local users, NamedGlobal, <local user>
-  local user, local users, PlainGlobal, <local user>
+  local user <string>, local users, NamedGlobal, <user>
+  local user, local users, PlainGlobal, <user>
   logged off state, logged off states, PlainGlobal, <power state>
   logged on user, logged on users, PlainGlobal, <logged on user>
   logical processor count, logical processor counts, PlainGlobal, <integer>
@@ -7230,9 +7330,11 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   universal time <string>, universal times, NamedGlobal, <time>
   universal time zone, universal time zones, PlainGlobal, <time zone>
   upnp firewall service type, upnp firewall service types, PlainGlobal, <firewall service type>
+  user <string>, users, NamedGlobal, <user>
   user language, user languages, PlainGlobal, <string>
   user locale, user locales, PlainGlobal, <language>
   user ui language, user ui languages, PlainGlobal, <language>
+  user, users, PlainGlobal, <user>
   version <string>, versions, NamedGlobal, <version>
   wake on lan subnet cidr string, wake on lan subnet cidr strings, PlainGlobal, <string>
   warning event log event type, warning event log event types, PlainGlobal, <event log event type>
@@ -7240,6 +7342,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   week, weeks, PlainGlobal, <time interval>
   weekly task trigger type, weekly task trigger types, PlainGlobal, <task trigger type>
   well known account <integer>, well known accounts, NumberedGlobal, <security account>
+  win32 running service, win32 running services, PlainGlobal, <service>
+  win32 service, win32 services, PlainGlobal, <service>
   windows display time <string>, windows display times, NamedGlobal, <time>
   windows file <string>, windows files, NamedGlobal, <file>
   windows folder, windows folders, PlainGlobal, <folder>
@@ -7269,8 +7373,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       absolute value, absolute values, <time interval>, <time interval>, Plain
       access mode, access modes, <integer>, <access control entry>, Plain
       accessed time, accessed times, <time>, <filesystem object>, Plain
-      account disabled flag, account disabled flags, <boolean>, <local user>, Plain
-      account expiration, account expirations, <time>, <local user>, Plain
+      account disabled flag, account disabled flags, <boolean>, <user>, Plain
+      account expiration, account expirations, <time>, <user>, Plain
       account lockout duration, account lockout durations, <time interval>, <security database>, Plain
       account lockout observation window, account lockout observation windows, <time interval>, <security database>, Plain
       account lockout threshold, account lockout thresholds, <integer>, <security database>, Plain
@@ -7279,7 +7383,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       account name, account names, <string>, <security identifier>, Plain
       account with privilege, accounts with privilege, <security account>, world , NamedGlobal
       account with privileges, accounts with privileges, <security account>, world , PlainGlobal
-      accounts operator flag, accounts operator flags, <boolean>, <local user>, Plain
+      accounts operator flag, accounts operator flags, <boolean>, <user>, Plain
       accuracy, accuracys, <integer>, <dmi electrical_current_probe>, Plain
       accuracy, accuracys, <integer>, <dmi temperature_probe>, Plain
       accuracy, accuracys, <integer>, <dmi voltage_probe>, Plain
@@ -7297,6 +7401,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       active device file, active device files, <file>, world , NamedGlobal
       active device file, active device files, <file>, world , PlainGlobal
       active device, active devices, <active device>, world , PlainGlobal
+      active directory user, active directory users, <active directory local user>, <user>, Plain
       active directory, active directories, <active directory server>, world , PlainGlobal
       active line number, active line numbers, <integer>, <action>, Plain
       active start time, active start times, <time>, <action>, Plain
@@ -7319,11 +7424,13 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       address, addresss, <html>, <string>, Plain
       address, addresss, <integer>, <dmi management_device>, Plain
       address_type, address_types, <integer>, <dmi management_device>, Plain
-      admin privilege, admin privileges, <boolean>, <local user>, Plain
+      admin privilege, admin privileges, <boolean>, <user>, Plain
       administrative rights, administrative rightss, <administrative rights>, <client>, Plain
       administrator, administrators, <setting>, <client>, Named
       administrator, administrators, <setting>, <client>, Plain
       all firewall scope, all firewall scopes, <firewall scope>, world , PlainGlobal
+      all running service, all running services, <service>, world , PlainGlobal
+      all service, all services, <service>, world , PlainGlobal
       allow demand start, allow demand starts, <boolean>, <task settings>, Plain
       allow firewall action, allow firewall actions, <firewall action>, world , PlainGlobal
       allow hard terminate, allow hard terminates, <boolean>, <task settings>, Plain
@@ -7338,7 +7445,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       allow outbound time exceeded, allow outbound time exceededs, <boolean>, <firewall icmp settings>, Plain
       allow redirect, allow redirects, <boolean>, <firewall icmp settings>, Plain
       allow unmentioned site, allow unmentioned sites, <boolean>, <license>, Plain
-      allowed workstations string, allowed workstations strings, <string>, <local user>, Plain
+      allowed workstations string, allowed workstations strings, <string>, <user>, Plain
       analysis, analysiss, <analysis>, world , PlainGlobal
       ancestor, ancestors, <folder>, <filesystem object>, Plain
       anchor, anchors, <html>, <html>, Named
@@ -7359,7 +7466,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       application folder, application folders, <folder>, <registry key>, Plain
       application folder, application folders, <folder>, <registry>, Named
       application name, application names, <string>, <firewall rule>, Plain
-      application parameter string, application parameter strings, <string>, <local user>, Plain
+      application parameter string, application parameter strings, <string>, <user>, Plain
       application usage summary, application usage summaries, <application usage summary>, world , NamedGlobal
       application usage summary, application usage summaries, <application usage summary>, world , PlainGlobal
       application usage, application usages, <timed( time range, integer )>, world , NamedGlobal
@@ -7587,7 +7694,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       backoffice bit, backoffice bits, <boolean>, world , Index<operating system suite mask>Global
       backup folder, backup folders, <folder>, <palm device>, Plain
       backup, backups, <boolean>, <palm application>, Plain
-      bad password count, bad password counts, <integer>, <local user>, Plain
+      bad password count, bad password counts, <integer>, <user>, Plain
       bank_connections, bank_connectionss, <integer>, <dmi memory_module_information>, Plain
       bank_locator, bank_locators, <string>, <dmi memory_device>, Plain
       base priority, base priorities, <priority class>, <process>, Plain
@@ -7648,6 +7755,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       br, brs, <html>, world , PlainGlobal
       brand id, brand ids, <integer>, <processor>, Plain
       brand string, brand strings, <string>, <processor>, Plain
+      brand, brands, <string>, <client>, Plain
       broadcast address, broadcast addresses, <ipv4 address>, <network ip interface>, Plain
       broadcast address, broadcast addresses, <ipv4or6 address>, <network adapter interface>, Plain
       broadcast support, broadcast supports, <boolean>, <network adapter interface>, Plain
@@ -7715,7 +7823,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       client folder, client folders, <folder>, <site>, Plain
       client license, client licenses, <license>, world , PlainGlobal
       client, clients, <client>, world , PlainGlobal
-      code page, code pages, <integer>, <local user>, Plain
+      code page, code pages, <integer>, <user>, Plain
       code, codes, <html>, <html>, Named
       code, codes, <html>, <html>, Plain
       code, codes, <html>, <string>, Named
@@ -7731,11 +7839,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       colgroup, colgroups, <html>, <string>, Plain
       com handler task action type, com handler task action types, <task action type>, world , PlainGlobal
       comment, comments, <string>, <local group>, Plain
-      comment, comments, <string>, <local user>, Plain
       comment, comments, <string>, <network share>, Plain
+      comment, comments, <string>, <user>, Plain
       common name, common names, <string>, <license>, Plain
       communications bit, communications bits, <boolean>, world , Index<operating system suite mask>Global
-      communications operator flag, communications operator flags, <boolean>, <local user>, Plain
+      communications operator flag, communications operator flags, <boolean>, <user>, Plain
       competition size, competition sizes, <integer>, <selected server>, Plain
       competition weight, competition weights, <integer>, <selected server>, Plain
       complete time, complete times, <time>, <action>, Plain
@@ -7787,7 +7895,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       core_count, core_counts, <integer>, <dmi processor_information>, Plain
       core_enabled, core_enableds, <integer>, <dmi processor_information>, Plain
       count, counts, <integer>, <monitor power interval>, Plain
-      country code, country codes, <integer>, <local user>, Plain
+      country code, country codes, <integer>, <user>, Plain
       create file permission, create file permissions, <boolean>, <access control entry>, Plain
       create folder permission, create folder permissions, <boolean>, <access control entry>, Plain
       create link permission, create link permissions, <boolean>, <access control entry>, Plain
@@ -7803,6 +7911,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       csd version, csd versions, <string>, <operating system>, Plain
       csidl folder, csidl folders, <folder>, world , NumberedGlobal
       current action, current actions, <string>, <running task>, Plain
+      current analysis, current analyses, <fixlet>, world , PlainGlobal
       current date, current dates, <date>, world , PlainGlobal
       current day_of_month, current days_of_month, <day of month>, world , PlainGlobal
       current day_of_week, current days_of_week, <day of week>, world , PlainGlobal
@@ -7941,9 +8050,13 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       display name, display names, <string>, <service>, Plain
       display name, display names, <string>, <task principal>, Plain
       distance, distances, <integer range>, <selected server>, Plain
+      distinguished name error message, distinguished name error messages, <string>, <active directory group>, Plain
       distinguished name error message, distinguished name error messages, <string>, <active directory local computer>, Plain
+      distinguished name error message, distinguished name error messages, <string>, <active directory local user>, Plain
       distinguished name, distinguished names, <distinguished name>, world , NamedGlobal
+      distinguished name, distinguished names, <string>, <active directory group>, Plain
       distinguished name, distinguished names, <string>, <active directory local computer>, Plain
+      distinguished name, distinguished names, <string>, <active directory local user>, Plain
       div, divs, <html>, <html>, Named
       div, divs, <html>, <html>, Plain
       div, divs, <html>, <string>, Named
@@ -7958,8 +8071,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       domain firewall profile type, domain firewall profile types, <firewall profile type>, world , PlainGlobal
       domain name, domain names, <string>, <security identifier>, Plain
       domain profile, domain profiles, <firewall profile>, <firewall policy>, Plain
-      domain user, domain users, <local user>, world , NamedGlobal
-      domain user, domain users, <local user>, world , PlainGlobal
+      domain user, domain users, <user>, world , NamedGlobal
+      domain user, domain users, <user>, world , PlainGlobal
       download failure, download failures, <integer>, <action>, Plain
       download file, download files, <file>, world , NamedGlobal
       download folder, download folders, <folder>, world , PlainGlobal
@@ -7972,6 +8085,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       driver key value name, driver key value names, <string>, <active device>, Plain
       driver key, driver keys, <registry key>, <active device>, Plain
       driver key, driver keys, <registry key>, <registry key>, Plain
+      driver running service, driver running services, <service>, world , PlainGlobal
+      driver service, driver services, <service>, world , PlainGlobal
+      driver type, driver types, <boolean>, <service>, Plain
       ds access category, ds access categories, <audit policy category>, <audit policy>, Plain
       dt, dts, <html>, <html>, Named
       dt, dts, <html>, <html>, Plain
@@ -8120,6 +8236,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       execution, executions, <execution>, world , NamedGlobal
       exit code, exit codes, <integer>, <action>, Plain
       expand environment string, expand environment strings, <string>, <string>, Plain
+      expand x64 environment string, expand x64 environment strings, <string>, <string>, Plain
       expiration date, expiration dates, <date>, <bes product>, Plain
       expiration date, expiration dates, <time>, <action lock state>, Plain
       expiration date, expiration dates, <time>, <license>, Plain
@@ -8235,7 +8352,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       fs_unicode_stored_on_disk, fs_unicode_stored_on_disks, <boolean>, <drive>, Plain
       fs_vol_is_compressed, fs_vol_is_compresseds, <boolean>, <drive>, Plain
       full gateway address, full gateway addresses, <ipv4or6 address>, <selected server>, Plain
-      full name, full names, <string>, <local user>, Plain
+      full name, full names, <string>, <user>, Plain
       full wmi, full wmis, <wmi>, world , NamedGlobal
       full, fulls, <boolean>, <power level>, Plain
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Numbered
@@ -8260,13 +8377,19 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       group id, group ids, <string>, <task principal>, Plain
       group leader, group leaders, <boolean>, <action>, Plain
       group logon, group logons, <boolean>, <task principal>, Plain
+      group, groups, <active directory group>, <active directory local computer>, Named
+      group, groups, <active directory group>, <active directory local computer>, Plain
+      group, groups, <active directory group>, <active directory local user>, Named
+      group, groups, <active directory group>, <active directory local user>, Plain
       group, groups, <security identifier>, <security descriptor>, Plain
       group, groups, <site group>, <site>, Numbered
       group_associations, group_associationss, <dmi group_associations>, <dmi>, Numbered
       group_associations, group_associationss, <dmi group_associations>, <dmi>, Plain
       group_name, group_names, <string>, <dmi group_associations>, Plain
       grouping, groupings, <string>, <firewall rule>, Plain
-      guest privilege, guest privileges, <boolean>, <local user>, Plain
+      groups error message, groups error messages, <string>, <active directory local computer>, Plain
+      groups error message, groups error messages, <string>, <active directory local user>, Plain
+      guest privilege, guest privileges, <boolean>, <user>, Plain
       guid, guids, <string>, <connection>, Plain
       h1, h1s, <html>, <html>, Named
       h1, h1s, <html>, <html>, Plain
@@ -8316,9 +8439,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       hidden, hiddens, <boolean>, <task settings>, Plain
       high priority, high priorities, <priority class>, world , PlainGlobal
       highest runlevel, highest runlevels, <boolean>, <task principal>, Plain
-      home directory drive, home directory drives, <string>, <local user>, Plain
-      home directory required flag, home directory required flags, <boolean>, <local user>, Plain
-      home directory, home directories, <string>, <local user>, Plain
+      home directory drive, home directory drives, <string>, <user>, Plain
+      home directory required flag, home directory required flags, <boolean>, <user>, Plain
+      home directory, home directories, <string>, <user>, Plain
       host name, host names, <string>, <root server>, Plain
       hostname, hostnames, <string>, world , PlainGlobal
       hotsync in progress, hotsyncs in progress, <boolean>, <hotsync manager>, Plain
@@ -8414,7 +8537,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       interactive group, interactive groups, <security account>, world , PlainGlobal
       interactive token logon, interactive token logons, <boolean>, <task principal>, Plain
       interactive token password logon, interactive token password logons, <boolean>, <task principal>, Plain
-      interdomain trust account flag, interdomain trust account flags, <boolean>, <local user>, Plain
+      interdomain trust account flag, interdomain trust account flags, <boolean>, <user>, Plain
       interface types string, interface types strings, <string>, <firewall rule>, Plain
       interface, interfaces, <integer>, <dmi built_in_pointing_device>, Plain
       interface, interfaces, <network interface>, <network>, Numbered
@@ -8509,12 +8632,21 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       last change time, last change times, <time>, <action>, Plain
       last child, last children, <xml dom node>, <xml dom node>, Plain
       last gather time, last gather times, <time>, <site>, Plain
-      last logoff, last logoffs, <time>, <local user>, Plain
-      last logon, last logons, <time>, <local user>, Plain
+      last logoff, last logoffs, <time>, <user>, Plain
+      last logon, last logons, <time>, <user>, Plain
+      last monitor interval in monitor off state, last monitor intervals in monitor off state, <monitor power interval>, <power history>, Plain
+      last monitor interval in monitor on state, last monitor intervals in monitor on state, <monitor power interval>, <power history>, Plain
+      last monitor interval in, last monitor intervals in, <monitor power interval>, <power history>, Index<power state>
       last relay select time, last relay select times, <time>, world , PlainGlobal
       last run time, last run times, <time>, <scheduled task>, Plain
       last start time, last start times, <time>, <application usage summary instance>, Plain
       last start time, last start times, <time>, <application usage summary>, Plain
+      last system interval in active state, last system intervals in active state, <system power interval>, <power history>, Plain
+      last system interval in idle state, last system intervals in idle state, <system power interval>, <power history>, Plain
+      last system interval in logged off state, last system intervals in logged off state, <system power interval>, <power history>, Plain
+      last system interval in off state, last system intervals in off state, <system power interval>, <power history>, Plain
+      last system interval in standby state, last system intervals in standby state, <system power interval>, <power history>, Plain
+      last system interval in, last system intervals in, <system power interval>, <power history>, Index<power state>
       last task result, last task results, <integer>, <scheduled task>, Plain
       last time seen, last times seen, <time>, <application usage summary instance>, Plain
       last time seen, last times seen, <time>, <application usage summary>, Plain
@@ -8610,8 +8742,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       local subnet firewall scope, local subnet firewall scopes, <firewall scope>, world , PlainGlobal
       local time zone, local time zones, <time zone>, world , PlainGlobal
       local time, local times, <time>, world , NamedGlobal
-      local user, local users, <local user>, world , NamedGlobal
-      local user, local users, <local user>, world , PlainGlobal
+      local user, local users, <active directory local user>, <active directory server>, Named
+      local user, local users, <active directory local user>, <active directory server>, Plain
+      local user, local users, <user>, world , NamedGlobal
+      local user, local users, <user>, world , PlainGlobal
       location information, location informations, <string>, <active device>, Plain
       location, locations, <integer>, <dmi physical_memory_array>, Plain
       location, locations, <string>, <dmi portable_battery>, Plain
@@ -8622,17 +8756,20 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       location_and_status, location_and_statuss, <integer>, <dmi voltage_probe>, Plain
       location_in_chassis, location_in_chassiss, <string>, <dmi base_board_information>, Plain
       lock string, lock strings, <string>, <action lock state>, Plain
-      locked out flag, locked out flags, <boolean>, <local user>, Plain
+      locked out flag, locked out flags, <boolean>, <user>, Plain
       locked, lockeds, <boolean>, <action lock state>, Plain
       logged off state, logged off states, <power state>, world , PlainGlobal
+      logged on user, logged on users, <active directory local user>, <active directory server>, Named
+      logged on user, logged on users, <active directory local user>, <active directory server>, Plain
+      logged on user, logged on users, <logged on user>, <user>, Plain
       logged on user, logged on users, <logged on user>, world , PlainGlobal
       logical processor count, logical processor counts, <integer>, world , PlainGlobal
       login account, login accounts, <string>, <service>, Plain
       login mode, login modes, <integer>, <local mssql database>, Plain
-      logon count, logon counts, <integer>, <local user>, Plain
+      logon count, logon counts, <integer>, <user>, Plain
       logon logoff category, logon logoff categories, <audit policy category>, <audit policy>, Plain
-      logon script, logon scripts, <string>, <local user>, Plain
-      logon server, logon servers, <string>, <local user>, Plain
+      logon script, logon scripts, <string>, <user>, Plain
+      logon server, logon servers, <string>, <user>, Plain
       logon task trigger type, logon task trigger types, <task trigger type>, world , PlainGlobal
       loopback, loopbacks, <boolean>, <network adapter interface>, Plain
       loopback, loopbacks, <boolean>, <network adapter>, Plain
@@ -8677,7 +8814,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       maximum allowed permission, maximum allowed permissions, <boolean>, <access control entry>, Plain
       maximum password age, maximum password ages, <time interval>, <security database>, Plain
       maximum seat count, maximum seat counts, <integer>, <license>, Plain
-      maximum storage, maximum storages, <integer>, <local user>, Plain
+      maximum storage, maximum storages, <integer>, <user>, Plain
       maximum transmission unit, maximum transmission units, <integer>, <network adapter>, Plain
       maximum, maxima, <date>, <date>, Plain
       maximum, maxima, <day of month>, <day of month>, Plain
@@ -8842,6 +8979,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       multiplicity, multiplicities, <integer>, <version with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <year with multiplicity>, Plain
       multivalued, multivalueds, <boolean>, <property>, Plain
+      name, names, <string>, <active directory group>, Plain
+      name, names, <string>, <active directory local user>, Plain
       name, names, <string>, <application usage summary instance>, Plain
       name, names, <string>, <application usage summary>, Plain
       name, names, <string>, <audit policy category>, Plain
@@ -8861,7 +9000,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       name, names, <string>, <fixlet_header>, Plain
       name, names, <string>, <hotsync user>, Plain
       name, names, <string>, <local group>, Plain
-      name, names, <string>, <local user>, Plain
       name, names, <string>, <logged on user>, Plain
       name, names, <string>, <metabase key>, Plain
       name, names, <string>, <module>, Plain
@@ -8888,6 +9026,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       name, names, <string>, <task network settings>, Plain
       name, names, <string>, <type>, Plain
       name, names, <string>, <unary operator>, Plain
+      name, names, <string>, <user>, Plain
       name, names, <string>, <wmi select>, Plain
       nan, nans, <boolean>, <floating point>, Plain
       native registry, native registries, <registry>, world , PlainGlobal
@@ -8906,7 +9045,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       next_scheduled_power_on_month, next_scheduled_power_on_months, <integer>, <dmi system_power_controls>, Plain
       next_scheduled_power_on_second, next_scheduled_power_on_seconds, <integer>, <dmi system_power_controls>, Plain
       nil, nothings, <undefined>, world , PlainGlobal
-      no password required flag, no password required flags, <boolean>, <local user>, Plain
+      no password required flag, no password required flags, <boolean>, <user>, Plain
       node name, node names, <string>, <xml dom node>, Plain
       node type, node types, <integer>, <xml dom node>, Plain
       node value, node values, <string>, <xml dom node>, Plain
@@ -8918,7 +9057,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       none firewall service type, none firewall service types, <firewall service type>, world , PlainGlobal
       none logon, none logons, <boolean>, <task principal>, Plain
       noon, noons, <time of day>, world , PlainGlobal
-      normal account flag, normal account flags, <boolean>, <local user>, Plain
+      normal account flag, normal account flags, <boolean>, <user>, Plain
       normal priority, normal priorities, <priority class>, world , PlainGlobal
       normal, normals, <boolean>, <filesystem object>, Plain
       normal, normals, <boolean>, <floating point>, Plain
@@ -9023,10 +9162,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       part_number, part_numbers, <string>, <dmi processor_information>, Plain
       partition_row_position, partition_row_positions, <integer>, <dmi memory_device_mapped_address>, Plain
       partition_width, partition_widths, <integer>, <dmi memory_array_mapped_address>, Plain
-      password age, password ages, <time interval>, <local user>, Plain
-      password change disabled flag, password change disabled flags, <boolean>, <local user>, Plain
-      password expiration disabled flag, password expiration disabled flags, <boolean>, <local user>, Plain
-      password expired, passwords expired, <boolean>, <local user>, Plain
+      password age, password ages, <time interval>, <user>, Plain
+      password change disabled flag, password change disabled flags, <boolean>, <user>, Plain
+      password expiration disabled flag, password expiration disabled flags, <boolean>, <user>, Plain
+      password expired, passwords expired, <boolean>, <user>, Plain
       password history length, password history lengths, <integer>, <security database>, Plain
       password logon, password logons, <boolean>, <task principal>, Plain
       password, passwords, <string>, <network share>, Plain
@@ -9087,11 +9226,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       preceding text, preceding texts, <substring>, <substring>, Plain
       previous line, previous lines, <file line>, <file line>, Plain
       previous sibling, previous siblings, <xml dom node>, <xml dom node>, Plain
-      primary group id, primary group ids, <integer>, <local user>, Plain
+      primary group id, primary group ids, <integer>, <user>, Plain
       primary language, primary languages, <primary language>, <language>, Plain
       primary wins server, primary wins servers, <ipv4 address>, <network adapter>, Plain
       principal, principals, <task principal>, <task definition>, Plain
-      print operator flag, print operator flags, <boolean>, <local user>, Plain
+      print operator flag, print operator flags, <boolean>, <user>, Plain
       priority, priorities, <integer>, <selected server>, Plain
       priority, priorities, <integer>, <task settings>, Plain
       private firewall profile type, private firewall profile types, <firewall profile type>, world , PlainGlobal
@@ -9123,7 +9262,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       product, products, <integer>, <integer>, Plain
       product, products, <string>, <dmi base_board_information>, Plain
       product_name, product_names, <string>, <dmi system_information>, Plain
-      profile folder, profile folders, <string>, <local user>, Plain
+      profile folder, profile folders, <string>, <user>, Plain
       profile, profiles, <boolean>, <firewall rule>, Index<firewall profile type>
       profile, profiles, <site profile>, <site>, Plain
       property returning, properties returning, <property>, <type>, Index<type>
@@ -9272,7 +9411,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       samp, samps, <html>, <html>, Plain
       samp, samps, <html>, <string>, Named
       samp, samps, <html>, <string>, Plain
+      sample time, sample times, <time>, <active directory group>, Plain
       sample time, sample times, <time>, <active directory local computer>, Plain
+      sample time, sample times, <time>, <active directory local user>, Plain
       saturday, saturdays, <day of week>, world , PlainGlobal
       sbds_device_chemistry, sbds_device_chemistrys, <string>, <dmi portable_battery>, Plain
       sbds_manufacture_date, sbds_manufacture_dates, <integer>, <dmi portable_battery>, Plain
@@ -9285,7 +9426,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       scope, scopes, <firewall scope>, <firewall authorized application>, Plain
       scope, scopes, <firewall scope>, <firewall open port>, Plain
       scope, scopes, <firewall scope>, <firewall service>, Plain
-      script flag, script flags, <boolean>, <local user>, Plain
+      script flag, script flags, <boolean>, <user>, Plain
       seat count state, seat count states, <string>, <license>, Plain
       seat, seats, <integer>, <license>, Plain
       second, seconds, <time interval>, world , PlainGlobal
@@ -9324,8 +9465,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       serial_number, serial_numbers, <string>, <dmi system_enclosure_or_chassis>, Plain
       serial_number, serial_numbers, <string>, <dmi system_information>, Plain
       serial_number, serial_numbers, <string>, <dmi system_power_supply>, Plain
-      server operator flag, server operator flags, <boolean>, <local user>, Plain
-      server trust account flag, server trust account flags, <boolean>, <local user>, Plain
+      server operator flag, server operator flags, <boolean>, <user>, Plain
+      server trust account flag, server trust account flags, <boolean>, <user>, Plain
       server, servers, <string>, <email task action>, Plain
       service account logon, service account logons, <boolean>, <task principal>, Plain
       service group, service groups, <security account>, world , PlainGlobal
@@ -9356,6 +9497,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sha1, sha1s, <string>, <x509 certificate>, Plain
       shortcut, shortcuts, <file shortcut>, <file>, Plain
       show message task action type, show message task action types, <task action type>, world , PlainGlobal
+      sid, sids, <security identifier>, <active directory group>, Plain
       sid, sids, <security identifier>, <logged on user>, Plain
       sid, sids, <security identifier>, <security account>, Plain
       significance place, significance places, <floating point>, <floating point>, Numbered
@@ -9370,6 +9512,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       site url, site urls, <string>, <bes product>, Plain
       site version list, site version lists, <site version list>, <site>, Plain
       site version list, site version lists, <site version list>, world , NamedGlobal
+      site, sites, <site>, <fixlet>, Plain
       site, sites, <site>, world , NamedGlobal
       site, sites, <site>, world , PlainGlobal
       size, sizes, <integer>, <application usage summary instance>, Plain
@@ -9547,7 +9690,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       temperature_probe, temperature_probes, <dmi temperature_probe>, <dmi>, Plain
       temperature_probe_handle, temperature_probe_handles, <integer>, <dmi cooling_device>, Plain
       template file, template files, <file>, <site profile>, Plain
-      temporary duplicate account flag, temporary duplicate account flags, <boolean>, <local user>, Plain
+      temporary duplicate account flag, temporary duplicate account flags, <boolean>, <user>, Plain
       temporary, temporarys, <boolean>, <filesystem object>, Plain
       terminal bit, terminal bits, <boolean>, world , Index<operating system suite mask>Global
       terminal server user group, terminal server user groups, <security account>, world , PlainGlobal
@@ -9708,8 +9851,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       use limit, use limits, <integer>, <network share>, Plain
       use, uses, <integer>, <dmi physical_memory_array>, Plain
       used memory, used memories, <integer>, <palm device>, Plain
-      user comment, user comments, <string>, <local user>, Plain
-      user id, user ids, <integer>, <local user>, Plain
+      user comment, user comments, <string>, <user>, Plain
+      user id, user ids, <integer>, <user>, Plain
       user id, user ids, <string>, <logon task trigger>, Plain
       user id, user ids, <string>, <session state change task trigger>, Plain
       user id, user ids, <string>, <task principal>, Plain
@@ -9717,7 +9860,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       user language, user languages, <string>, world , PlainGlobal
       user locale, user locales, <language>, world , PlainGlobal
       user object count, user object counts, <integer>, <process>, Plain
-      user privilege, user privileges, <boolean>, <local user>, Plain
+      user privilege, user privileges, <boolean>, <user>, Plain
       user sid, user sids, <security identifier>, <event log record>, Plain
       user time, user times, <time interval>, <process>, Plain
       user type, user types, <metabase user type>, <metabase value>, Plain
@@ -9726,6 +9869,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       user, users, <hotsync user>, <hotsync manager>, Numbered
       user, users, <hotsync user>, <hotsync manager>, Plain
       user, users, <security identifier>, <process>, Plain
+      user, users, <user>, <logged on user>, Plain
+      user, users, <user>, world , NamedGlobal
+      user, users, <user>, world , PlainGlobal
       usual name, usual names, <string>, <property>, Plain
       uuid, uuids, <string>, <dmi system_information>, Plain
       v1 compatibility, v1 compatibilities, <boolean>, <task settings>, Plain
@@ -9796,6 +9942,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       weight, weights, <integer>, <selected server>, Plain
       well known account, well known accounts, <security account>, world , NumberedGlobal
       win32 exit code, win32 exit codes, <integer>, <service>, Plain
+      win32 running service, win32 running services, <service>, world , PlainGlobal
+      win32 service, win32 services, <service>, world , PlainGlobal
+      win32 type, win32 types, <boolean>, <service>, Plain
       windows display time, windows display times, <time>, world , NamedGlobal
       windows file, windows files, <file>, world , NamedGlobal
       windows folder, windows folders, <folder>, world , PlainGlobal
@@ -9808,7 +9957,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       working directory, working directories, <string>, <exec task action>, Plain
       working set size, working set sizes, <integer>, <process>, Plain
       workstation count, workstation counts, <integer>, <bes product>, Plain
-      workstation trust account flag, workstation trust account flags, <boolean>, <local user>, Plain
+      workstation trust account flag, workstation trust account flags, <boolean>, <user>, Plain
       wow64, wow64s, <boolean>, <process>, Plain
       write attributes permission, write attributes permissions, <boolean>, <access control entry>, Plain
       write dac permission, write dac permissions, <boolean>, <access control entry>, Plain
@@ -9824,6 +9973,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       x64 file, x64 files, <file>, world , NamedGlobal
       x64 folder, x64 folders, <folder>, world , NamedGlobal
       x64 registry, x64 registries, <registry>, world , PlainGlobal
+      x64 variable, x64 variables, <environment variable>, <environment>, Named
+      x64 variable, x64 variables, <environment variable>, <environment>, Plain
       x64, x64s, <boolean>, <operating system>, Plain
       xml document, xml documents, <xml dom document>, <file>, Plain
       xml document, xml documents, <xml dom document>, <string>, Plain

@@ -1,5 +1,5 @@
-Operating System:Linux Red Hat Enterprise AS 4 (2_6_9-34_EL)
-Build Target:x86_64_rhe4
+Operating System:Linux Red Hat Enterprise AS 4 (2_6_9-78_EL)
+Build Target:s390x_rhe4
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   action
@@ -87,8 +87,6 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   filesystem object
   fixlet
   fixlet_header
-  floating point
-  floating point with multiplicity (derives from  floating point)
   folder (derives from  filesystem object)
   hertz
   hertz with multiplicity (derives from  hertz)
@@ -362,23 +360,14 @@ Creation techniques & properties of each type:
       <day of year> <= <day of year>, , BinaryOperator
       <day of year> = <day of year>, , BinaryOperator
       <file content> contains <string>, , BinaryOperator
-      <floating point> < <floating point>, , BinaryOperator
-      <floating point> < <integer>, , BinaryOperator
-      <floating point> <= <floating point>, , BinaryOperator
-      <floating point> <= <integer>, , BinaryOperator
-      <floating point> = <floating point>, , BinaryOperator
-      <floating point> = <integer>, , BinaryOperator
       <hertz> < <hertz>, , BinaryOperator
       <hertz> <= <hertz>, , BinaryOperator
       <hertz> = <hertz>, , BinaryOperator
       <integer set> = <integer set>, , BinaryOperator
       <integer set> contains <integer set>, , BinaryOperator
       <integer set> contains <integer>, , BinaryOperator
-      <integer> < <floating point>, , BinaryOperator
       <integer> < <integer>, , BinaryOperator
-      <integer> <= <floating point>, , BinaryOperator
       <integer> <= <integer>, , BinaryOperator
-      <integer> = <floating point>, , BinaryOperator
       <integer> = <integer>, , BinaryOperator
       <ip version> = <ip version>, , BinaryOperator
       <ipv4 address> < <ipv4 address>, , BinaryOperator
@@ -518,7 +507,6 @@ Creation techniques & properties of each type:
       desired encrypt report of <client_cryptography>, desired encrypt reports, Plain
       desired fips mode of <cryptography>, desired fips modes, Plain
       disjunction of <boolean>, disjunctions, Plain
-      divided by zero of <floating point>, divided by zeroes, Plain
       enabled of <administrative rights>, enableds, Plain
       enabled of <setting>, enableds, Plain
       encrypt report of <client_cryptography>, encrypt reports, Plain
@@ -527,7 +515,6 @@ Creation techniques & properties of each type:
       f00f bug of <processor>, f00f bugs, Plain
       false, falses, PlainGlobal
       fdiv bug of <processor>, fdiv bugs, Plain
-      finite of <floating point>, finites, Plain
       fips mode of <cryptography>, fips modes, Plain
       fips mode of <license>, fips modes, Plain
       fpu exception of <processor>, fpu exceptions, Plain
@@ -538,10 +525,7 @@ Creation techniques & properties of each type:
       group read of <filesystem object>, group reads, Plain
       group write of <filesystem object>, group writes, Plain
       hlt bug of <processor>, hlt bugs, Plain
-      inexact of <floating point>, inexacts, Plain
-      infinite of <floating point>, infinites, Plain
       installed <string> of <rpmdatabase>, installeds, Named
-      invalid of <floating point>, invalids, Plain
       leap of <year>, leaps, Plain
       locked of <action lock state>, lockeds, Plain
       loopback of <network adapter interface>, loopbacks, Plain
@@ -554,15 +538,12 @@ Creation techniques & properties of each type:
       multicast support of <network adapter>, multicast supports, Plain
       multicast support of <network ip interface>, multicast supports, Plain
       multivalued of <property>, multivalueds, Plain
-      nan of <floating point>, nans, Plain
-      normal of <floating point>, normals, Plain
       normal of <power level>, normals, Plain
       offer accepted of <action>, offer accepteds, Plain
       offer of <action>, offers, Plain
       other execute of <filesystem object>, other executes, Plain
       other read of <filesystem object>, other reads, Plain
       other write of <filesystem object>, other writes, Plain
-      overflow of <floating point>, overflows, Plain
       pending login of <action>, pending logins, Plain
       pending login, pending logins, PlainGlobal
       pending of <action>, pendings, Plain
@@ -582,7 +563,6 @@ Creation techniques & properties of each type:
       setuid of <mode>, setuids, Plain
       sticky of <mode>, stickies, Plain
       true, trues, PlainGlobal
-      underflow of <floating point>, underflows, Plain
       unix of <operating system>, unixes, Plain
       up of <network adapter interface>, ups, Plain
       up of <network adapter>, ups, Plain
@@ -1747,96 +1727,6 @@ Creation techniques & properties of each type:
       name of <fixlet_header>, names, Plain, <string>
       value of <fixlet_header>, values, Plain, <string>
 
-  Type <floating point>
-    Creation of <floating point>: { key phrase, plural keyword, form}
-      - <floating point>, , UnaryOperator
-      <floating point> * <floating point>, , BinaryOperator
-      <floating point> * <integer>, , BinaryOperator
-      <floating point> + <floating point>, , BinaryOperator
-      <floating point> + <integer>, , BinaryOperator
-      <floating point> - <floating point>, , BinaryOperator
-      <floating point> - <integer>, , BinaryOperator
-      <floating point> / <floating point>, , BinaryOperator
-      <floating point> / <integer>, , BinaryOperator
-      <floating point> as floating point, , Cast
-      <integer> * <floating point>, , BinaryOperator
-      <integer> + <floating point>, , BinaryOperator
-      <integer> - <floating point>, , BinaryOperator
-      <integer> / <floating point>, , BinaryOperator
-      <integer> as floating point, , Cast
-      <string> as floating point, , Cast
-      floating point <floating point>, floating points, Index<floating point>Global
-      floating point <string>, floating points, NamedGlobal
-      less significance <integer> of <floating point>, less significances, Numbered
-      maximum of <floating point>, maxima, Plain
-      minimum of <floating point>, minima, Plain
-      more significance <integer> of <floating point>, more significances, Numbered
-      product of <floating point>, products, Plain
-      relative significance place <integer> of <floating point>, relative significance places, Numbered
-      relative significance place of <floating point>, relative significance places, Plain
-      significance place <integer> of <floating point>, significance places, Numbered
-      significance place of <floating point>, significance places, Plain
-      significance threshold of <floating point>, significance thresholds, Plain
-      sum of <floating point>, sums, Plain
-    Properties of <floating point> { key phrase, plural keyword, form, <result type>}:
-      - <floating point>, , UnaryOperatorfloating point
-      <floating point> * <floating point>, , BinaryOperator, <floating point>
-      <floating point> * <integer>, , BinaryOperator, <floating point>
-      <floating point> + <floating point>, , BinaryOperator, <floating point>
-      <floating point> + <integer>, , BinaryOperator, <floating point>
-      <floating point> - <floating point>, , BinaryOperator, <floating point>
-      <floating point> - <integer>, , BinaryOperator, <floating point>
-      <floating point> / <floating point>, , BinaryOperator, <floating point>
-      <floating point> / <integer>, , BinaryOperator, <floating point>
-      <floating point> < <floating point>, , BinaryOperator, <boolean>
-      <floating point> < <integer>, , BinaryOperator, <boolean>
-      <floating point> <= <floating point>, , BinaryOperator, <boolean>
-      <floating point> <= <integer>, , BinaryOperator, <boolean>
-      <floating point> = <floating point>, , BinaryOperator, <boolean>
-      <floating point> = <integer>, , BinaryOperator, <boolean>
-      <floating point> as floating point, , Cast, <floating point>
-      <floating point> as integer, , Cast, <integer>
-      <floating point> as scientific notation, , Cast, <string>
-      <floating point> as standard notation, , Cast, <string>
-      <floating point> as string, , Cast, <string>
-      <integer> * <floating point>, , BinaryOperator, <floating point>
-      <integer> + <floating point>, , BinaryOperator, <floating point>
-      <integer> - <floating point>, , BinaryOperator, <floating point>
-      <integer> / <floating point>, , BinaryOperator, <floating point>
-      <integer> < <floating point>, , BinaryOperator, <boolean>
-      <integer> <= <floating point>, , BinaryOperator, <boolean>
-      <integer> = <floating point>, , BinaryOperator, <boolean>
-      divided by zero of <floating point>, divided by zeroes, Plain, <boolean>
-      extrema of <floating point>, extremas, Plain, <( floating point, floating point )>
-      finite of <floating point>, finites, Plain, <boolean>
-      inexact of <floating point>, inexacts, Plain, <boolean>
-      infinite of <floating point>, infinites, Plain, <boolean>
-      integer ceiling of <floating point>, integer ceilings, Plain, <integer>
-      integer floor of <floating point>, integer floors, Plain, <integer>
-      invalid of <floating point>, invalids, Plain, <boolean>
-      less significance <integer> of <floating point>, less significances, Numbered, <floating point>
-      maximum of <floating point>, maxima, Plain, <floating point>
-      minimum of <floating point>, minima, Plain, <floating point>
-      more significance <integer> of <floating point>, more significances, Numbered, <floating point>
-      nan of <floating point>, nans, Plain, <boolean>
-      normal of <floating point>, normals, Plain, <boolean>
-      overflow of <floating point>, overflows, Plain, <boolean>
-      product of <floating point>, products, Plain, <floating point>
-      relative significance place <integer> of <floating point>, relative significance places, Numbered, <floating point>
-      relative significance place of <floating point>, relative significance places, Plain, <floating point>
-      significance place <integer> of <floating point>, significance places, Numbered, <floating point>
-      significance place of <floating point>, significance places, Plain, <floating point>
-      significance threshold of <floating point>, significance thresholds, Plain, <floating point>
-      sum of <floating point>, sums, Plain, <floating point>
-      underflow of <floating point>, underflows, Plain, <boolean>
-      unique value of <floating point>, unique values, Plain, <floating point with multiplicity>
-
-  Type <floating point with multiplicity> (derives from floating point)
-    Creation of <floating point with multiplicity>: { key phrase, plural keyword, form}
-      unique value of <floating point>, unique values, Plain
-    Properties of <floating point with multiplicity> { key phrase, plural keyword, form, <result type>}:
-      multiplicity of <floating point with multiplicity>, multiplicities, Plain, <integer>
-
   Type <folder> (derives from filesystem object)
     Creation of <folder>: { key phrase, plural keyword, form}
       <symlink> as folder, , Cast
@@ -2318,7 +2208,6 @@ Creation techniques & properties of each type:
       - <integer>, , UnaryOperator
       <bit set> as integer, , Cast
       <day of month> as integer, , Cast
-      <floating point> as integer, , Cast
       <hertz> / <hertz>, , BinaryOperator
       <integer> * <integer>, , BinaryOperator
       <integer> + <integer>, , BinaryOperator
@@ -2340,6 +2229,7 @@ Creation techniques & properties of each type:
       active line number of <action>, active line numbers, Plain
       address of <dmi management_device>, addresss, Plain
       address_type of <dmi management_device>, address_types, Plain
+      adjustment <integer> of <processor>, adjustments, Numbered
       associativity of <dmi cache_information>, associativitys, Plain
       attributes of <dmi memory_device>, attributess, Plain
       available amount of <ram>, available amounts, Plain
@@ -2360,6 +2250,7 @@ Creation techniques & properties of each type:
       cache_speed of <dmi cache_information>, cache_speeds, Plain
       cached amount of <ram>, cached amounts, Plain
       capabilities of <dmi system_reset>, capabilitiess, Plain
+      capability of <processor>, capabilitys, Plain
       channel_type of <dmi memory_channel>, channel_types, Plain
       chassis_handle of <dmi base_board_information>, chassis_handles, Plain
       competition size of <selected server>, competition sizes, Plain
@@ -2377,6 +2268,10 @@ Creation techniques & properties of each type:
       core_count of <dmi processor_information>, core_counts, Plain
       core_enabled of <dmi processor_information>, core_enableds, Plain
       cpuid level of <processor>, cpuid levels, Plain
+      cpus configured of <processor>, cpus configureds, Plain
+      cpus reserved of <processor>, cpus reserveds, Plain
+      cpus standby of <processor>, cpus standbys, Plain
+      cpus total of <processor>, cpus totals, Plain
       current_interleave of <dmi memory_controller_information>, current_interleaves, Plain
       current_memory_type of <dmi memory_module_information>, current_memory_types, Plain
       current_speed of <dmi memory_module_information>, current_speeds, Plain
@@ -2459,8 +2354,6 @@ Creation techniques & properties of each type:
       integer <integer>, integers, NumberedGlobal
       integer <string> of <smbios structure>, integers, Named
       integer <string>, integers, NamedGlobal
-      integer ceiling of <floating point>, integer ceilings, Plain
-      integer floor of <floating point>, integer floors, Plain
       integer in <( integer, integer )>, integers in, Index<( integer, integer )>Global
       integer in <( integer, integer, integer )>, integers in, Index<( integer, integer, integer )>Global
       integer to <integer>, integers to, NumberedGlobal
@@ -2532,6 +2425,14 @@ Creation techniques & properties of each type:
       lower_threshold_critical of <dmi management_device_threshold_data>, lower_threshold_criticals, Plain
       lower_threshold_non_critical of <dmi management_device_threshold_data>, lower_threshold_non_criticals, Plain
       lower_threshold_non_recoverable of <dmi management_device_threshold_data>, lower_threshold_non_recoverables, Plain
+      lpar adjustment of <processor>, lpar adjustments, Plain
+      lpar cpus configured of <processor>, lpar cpus configureds, Plain
+      lpar cpus dedicated of <processor>, lpar cpus dedicateds, Plain
+      lpar cpus reserved of <processor>, lpar cpus reserveds, Plain
+      lpar cpus shared of <processor>, lpar cpus shareds, Plain
+      lpar cpus standby of <processor>, lpar cpus standbys, Plain
+      lpar cpus total of <processor>, lpar cpus totals, Plain
+      lpar number of <processor>, lpar numbers, Plain
       major of <device file>, majors, Plain
       management_device_handle of <dmi management_device_component>, management_device_handles, Plain
       max_power_capacity of <dmi system_power_supply>, max_power_capacitys, Plain
@@ -2574,7 +2475,6 @@ Creation techniques & properties of each type:
       multiplicity of <day of month with multiplicity>, multiplicities, Plain
       multiplicity of <day of week with multiplicity>, multiplicities, Plain
       multiplicity of <day of year with multiplicity>, multiplicities, Plain
-      multiplicity of <floating point with multiplicity>, multiplicities, Plain
       multiplicity of <hertz with multiplicity>, multiplicities, Plain
       multiplicity of <integer with multiplicity>, multiplicities, Plain
       multiplicity of <ipv4 address with multiplicity>, multiplicities, Plain
@@ -2728,6 +2628,11 @@ Creation techniques & properties of each type:
       vendor_syndrome of <dmi b32_bit_memory_error_information>, vendor_syndromes, Plain
       vendor_syndrome of <dmi b64_bit_memory_error_information>, vendor_syndromes, Plain
       version of <site>, versions, Plain
+      vm adjustment of <processor>, vm adjustments, Plain
+      vm cpus configured of <processor>, vm cpus configureds, Plain
+      vm cpus reserved of <processor>, vm cpus reserveds, Plain
+      vm cpus standby of <processor>, vm cpus standbys, Plain
+      vm cpus total of <processor>, vm cpus totals, Plain
       voltage of <dmi processor_information>, voltages, Plain
       wake_up_type of <dmi system_information>, wake_up_types, Plain
       weight of <selected server>, weights, Plain
@@ -2735,38 +2640,23 @@ Creation techniques & properties of each type:
       workstation count of <bes product>, workstation counts, Plain
     Properties of <integer> { key phrase, plural keyword, form, <result type>}:
       - <integer>, , UnaryOperatorinteger
-      <floating point> * <integer>, , BinaryOperator, <floating point>
-      <floating point> + <integer>, , BinaryOperator, <floating point>
-      <floating point> - <integer>, , BinaryOperator, <floating point>
-      <floating point> / <integer>, , BinaryOperator, <floating point>
-      <floating point> < <integer>, , BinaryOperator, <boolean>
-      <floating point> <= <integer>, , BinaryOperator, <boolean>
-      <floating point> = <integer>, , BinaryOperator, <boolean>
       <hertz> * <integer>, , BinaryOperator, <hertz>
       <hertz> / <integer>, , BinaryOperator, <hertz>
       <integer set> contains <integer>, , BinaryOperator, <boolean>
-      <integer> * <floating point>, , BinaryOperator, <floating point>
       <integer> * <hertz>, , BinaryOperator, <hertz>
       <integer> * <integer>, , BinaryOperator, <integer>
       <integer> * <number of months>, , BinaryOperator, <number of months>
       <integer> * <time interval>, , BinaryOperator, <time interval>
       <integer> * <time range>, , BinaryOperator, <timed( time range, integer )>
-      <integer> + <floating point>, , BinaryOperator, <floating point>
       <integer> + <integer>, , BinaryOperator, <integer>
-      <integer> - <floating point>, , BinaryOperator, <floating point>
       <integer> - <integer>, , BinaryOperator, <integer>
-      <integer> / <floating point>, , BinaryOperator, <floating point>
       <integer> / <integer>, , BinaryOperator, <integer>
-      <integer> < <floating point>, , BinaryOperator, <boolean>
       <integer> < <integer>, , BinaryOperator, <boolean>
-      <integer> <= <floating point>, , BinaryOperator, <boolean>
       <integer> <= <integer>, , BinaryOperator, <boolean>
-      <integer> = <floating point>, , BinaryOperator, <boolean>
       <integer> = <integer>, , BinaryOperator, <boolean>
       <integer> as bit set, , Cast, <bit set>
       <integer> as bits, , Cast, <bit set>
       <integer> as day_of_month, , Cast, <day of month>
-      <integer> as floating point, , Cast, <floating point>
       <integer> as hexadecimal, , Cast, <string>
       <integer> as integer, , Cast, <integer>
       <integer> as month, , Cast, <month>
@@ -3377,9 +3267,15 @@ Creation techniques & properties of each type:
       processor <integer>, processors, NumberedGlobal
       processor, processors, PlainGlobal
     Properties of <processor> { key phrase, plural keyword, form, <result type>}:
+      adjustment <integer> of <processor>, adjustments, Numbered, <integer>
       bogomips of <processor>, bogomipses, Plain, <integer>
+      capability of <processor>, capabilitys, Plain, <integer>
       coma bug of <processor>, coma bugs, Plain, <boolean>
       cpuid level of <processor>, cpuid levels, Plain, <integer>
+      cpus configured of <processor>, cpus configureds, Plain, <integer>
+      cpus reserved of <processor>, cpus reserveds, Plain, <integer>
+      cpus standby of <processor>, cpus standbys, Plain, <integer>
+      cpus total of <processor>, cpus totals, Plain, <integer>
       f00f bug of <processor>, f00f bugs, Plain, <boolean>
       family name of <processor>, family names, Plain, <string>
       family of <processor>, families, Plain, <integer>
@@ -3389,12 +3285,31 @@ Creation techniques & properties of each type:
       fpu of <processor>, fpus, Plain, <boolean>
       hlt bug of <processor>, hlt bugs, Plain, <boolean>
       index of <processor>, indexes, Plain, <integer>
+      lpar adjustment of <processor>, lpar adjustments, Plain, <integer>
+      lpar characteristics of <processor>, lpar characteristicss, Plain, <string>
+      lpar cpus configured of <processor>, lpar cpus configureds, Plain, <integer>
+      lpar cpus dedicated of <processor>, lpar cpus dedicateds, Plain, <integer>
+      lpar cpus reserved of <processor>, lpar cpus reserveds, Plain, <integer>
+      lpar cpus shared of <processor>, lpar cpus shareds, Plain, <integer>
+      lpar cpus standby of <processor>, lpar cpus standbys, Plain, <integer>
+      lpar cpus total of <processor>, lpar cpus totals, Plain, <integer>
+      lpar name of <processor>, lpar names, Plain, <string>
+      lpar number of <processor>, lpar numbers, Plain, <integer>
+      machine serial number of <processor>, machine serial numbers, Plain, <string>
       model name of <processor>, model names, Plain, <string>
       model of <processor>, models, Plain, <integer>
       sep bug of <processor>, sep bugs, Plain, <boolean>
+      sequence code of <processor>, sequence codes, Plain, <string>
       speed of <processor>, speeds, Plain, <hertz>
       stepping of <processor>, steppings, Plain, <integer>
       vendor name of <processor>, vendor names, Plain, <string>
+      vm adjustment of <processor>, vm adjustments, Plain, <integer>
+      vm control program of <processor>, vm control programs, Plain, <string>
+      vm cpus configured of <processor>, vm cpus configureds, Plain, <integer>
+      vm cpus reserved of <processor>, vm cpus reserveds, Plain, <integer>
+      vm cpus standby of <processor>, vm cpus standbys, Plain, <integer>
+      vm cpus total of <processor>, vm cpus totals, Plain, <integer>
+      vm name of <processor>, vm names, Plain, <string>
       wp of <processor>, wps, Plain, <boolean>
 
   Type <property>
@@ -3823,9 +3738,6 @@ Creation techniques & properties of each type:
       <day of year> as string, , Cast
       <environment variable> as string, , Cast
       <filesystem object> as string, , Cast
-      <floating point> as scientific notation, , Cast
-      <floating point> as standard notation, , Cast
-      <floating point> as string, , Cast
       <hertz> as string, , Cast
       <html> as string, , Cast
       <integer> as hexadecimal, , Cast
@@ -3971,9 +3883,12 @@ Creation techniques & properties of each type:
       location of <symlink>, locations, Plain
       location_in_chassis of <dmi base_board_information>, location_in_chassiss, Plain
       lock string of <action lock state>, lock strings, Plain
+      lpar characteristics of <processor>, lpar characteristicss, Plain
+      lpar name of <processor>, lpar names, Plain
       mac address of <network adapter interface>, mac addresses, Plain
       mac address of <network adapter>, mac addresses, Plain
       mac address of <network ip interface>, mac addresses, Plain
+      machine serial number of <processor>, machine serial numbers, Plain
       manufacture_date of <dmi portable_battery>, manufacture_dates, Plain
       manufacturer of <dmi base_board_information>, manufacturers, Plain
       manufacturer of <dmi memory_device>, manufacturers, Plain
@@ -4040,6 +3955,7 @@ Creation techniques & properties of each type:
       sbds_device_chemistry of <dmi portable_battery>, sbds_device_chemistrys, Plain
       sbds_version_number of <dmi portable_battery>, sbds_version_numbers, Plain
       seat count state of <license>, seat count states, Plain
+      sequence code of <processor>, sequence codes, Plain
       serial_number of <dmi base_board_information>, serial_numbers, Plain
       serial_number of <dmi memory_device>, serial_numbers, Plain
       serial_number of <dmi portable_battery>, serial_numbers, Plain
@@ -4103,6 +4019,8 @@ Creation techniques & properties of each type:
       version of <dmi system_enclosure_or_chassis>, versions, Plain
       version of <dmi system_information>, versions, Plain
       version string <string> of <module>, version strings, Named
+      vm control program of <processor>, vm control programs, Plain
+      vm name of <processor>, vm names, Plain
       wake on lan subnet cidr string, wake on lan subnet cidr strings, PlainGlobal
     Properties of <string> { key phrase, plural keyword, form, <result type>}:
       <file content> contains <string>, , BinaryOperator, <boolean>
@@ -4158,7 +4076,6 @@ Creation techniques & properties of each type:
       <string> as date, , Cast, <date>
       <string> as day_of_month, , Cast, <day of month>
       <string> as day_of_week, , Cast, <day of week>
-      <string> as floating point, , Cast, <floating point>
       <string> as hexadecimal, , Cast, <string>
       <string> as html, , Cast, <html>
       <string> as integer, , Cast, <integer>
@@ -5026,8 +4943,6 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   file <symlink>, files, Index<symlink>Global, <file>
   filesystem <string>, filesystems, NamedGlobal, <filesystem>
   filesystem, filesystems, PlainGlobal, <filesystem>
-  floating point <floating point>, floating points, Index<floating point>Global, <floating point>
-  floating point <string>, floating points, NamedGlobal, <floating point>
   folder <string>, folders, NamedGlobal, <folder>
   folder <symlink>, folders, Index<symlink>Global, <folder>
   friday, fridays, PlainGlobal, <day of week>
@@ -5228,6 +5143,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       address, addresss, <html>, <string>, Plain
       address, addresss, <integer>, <dmi management_device>, Plain
       address_type, address_types, <integer>, <dmi management_device>, Plain
+      adjustment, adjustments, <integer>, <processor>, Numbered
       administrative rights, administrative rightss, <administrative rights>, <client>, Plain
       administrator, administrators, <setting>, <client>, Named
       administrator, administrators, <setting>, <client>, Plain
@@ -5277,9 +5193,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as fifo file, , <fifo file>, <symlink>, Cast
       as fifo file, , <fifo file>, <symlink>, Cast
       as file, , <file>, <symlink>, Cast
-      as floating point, , <floating point>, <floating point>, Cast
-      as floating point, , <floating point>, <integer>, Cast
-      as floating point, , <floating point>, <string>, Cast
       as folder, , <folder>, <symlink>, Cast
       as hexadecimal, , <string>, <integer>, Cast
       as hexadecimal, , <string>, <string>, Cast
@@ -5287,7 +5200,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as html, , <html>, <string>, Cast
       as integer, , <integer>, <bit set>, Cast
       as integer, , <integer>, <day of month>, Cast
-      as integer, , <integer>, <floating point>, Cast
       as integer, , <integer>, <integer>, Cast
       as integer, , <integer>, <mode_mask>, Cast
       as integer, , <integer>, <month>, Cast
@@ -5312,14 +5224,12 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as rpm package version record, , <rpm package version record>, <rpm package version record>, Cast
       as rpm package version record, , <rpm package version record>, <short rpm package version record>, Cast
       as rpm package version, , <rpm package version>, <rpm package version>, Cast
-      as scientific notation, , <string>, <floating point>, Cast
       as short rpm package version record, , <short rpm package version record>, <rpm package version record>, Cast
       as short rpm package version record, , <short rpm package version record>, <short rpm package version record>, Cast
       as site version list, , <site version list>, <string>, Cast
       as socket file, , <socket file>, <filesystem object>, Cast
       as socket file, , <socket file>, <symlink>, Cast
       as socket file, , <socket file>, <symlink>, Cast
-      as standard notation, , <string>, <floating point>, Cast
       as string with ipv4 with zone index, , <string>, <ipv4or6 address>, Cast
       as string with ipv4 with zone index, , <string>, <ipv6 address>, Cast
       as string with ipv4, , <string>, <ipv4or6 address>, Cast
@@ -5344,7 +5254,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <day of year>, Cast
       as string, , <string>, <environment variable>, Cast
       as string, , <string>, <filesystem object>, Cast
-      as string, , <string>, <floating point>, Cast
       as string, , <string>, <hertz>, Cast
       as string, , <string>, <html>, Cast
       as string, , <string>, <integer>, Cast
@@ -5495,6 +5404,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       capabilities, capabilitiess, <integer>, <dmi system_reset>, Plain
       capability, capabilities, <capability>, <rpmdatabase>, Named
       capability, capabilities, <capability>, world , NamedGlobal
+      capability, capabilitys, <integer>, <processor>, Plain
       caption, captions, <html>, <html>, Named
       caption, captions, <html>, <html>, Plain
       caption, captions, <html>, <string>, Named
@@ -5573,6 +5483,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       core_count, core_counts, <integer>, <dmi processor_information>, Plain
       core_enabled, core_enableds, <integer>, <dmi processor_information>, Plain
       cpuid level, cpuid levels, <integer>, <processor>, Plain
+      cpus configured, cpus configureds, <integer>, <processor>, Plain
+      cpus reserved, cpus reserveds, <integer>, <processor>, Plain
+      cpus standby, cpus standbys, <integer>, <processor>, Plain
+      cpus total, cpus totals, <integer>, <processor>, Plain
       cryptography, cryptographies, <cryptography>, world , PlainGlobal
       current analysis, current analyses, <fixlet>, world , PlainGlobal
       current date, current dates, <date>, world , PlainGlobal
@@ -5671,7 +5585,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       div, divs, <html>, <html>, Plain
       div, divs, <html>, <string>, Named
       div, divs, <html>, <string>, Plain
-      divided by zero, divided by zeroes, <boolean>, <floating point>, Plain
       dmi, dmis, <dmi>, world , PlainGlobal
       dns name, dns names, <string>, world , PlainGlobal
       domain name, domain names, <string>, world , PlainGlobal
@@ -5752,7 +5665,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       extrema, extremas, <( date, date )>, <date>, Plain
       extrema, extremas, <( day of month, day of month )>, <day of month>, Plain
       extrema, extremas, <( day of year, day of year )>, <day of year>, Plain
-      extrema, extremas, <( floating point, floating point )>, <floating point>, Plain
       extrema, extremas, <( hertz, hertz )>, <hertz>, Plain
       extrema, extremas, <( integer, integer )>, <integer>, Plain
       extrema, extremas, <( ipv4 address, ipv4 address )>, <ipv4 address>, Plain
@@ -5806,7 +5718,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       find adapter, find adapters, <network adapter>, <network>, Named
       find file, find files, <file>, <folder>, Named
       find folder, find folders, <folder>, <folder>, Named
-      finite, finites, <boolean>, <floating point>, Plain
       fips mode failure message, fips mode failure messages, <string>, <cryptography>, Plain
       fips mode, fips modes, <boolean>, <cryptography>, Plain
       fips mode, fips modes, <boolean>, <license>, Plain
@@ -5827,8 +5738,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       fixlet, fixlets, <fixlet>, <site>, Plain
       flag list, flag lists, <string>, <processor>, Plain
       flags, flagss, <integer>, <dmi bios_language_information>, Plain
-      floating point, floating points, <floating point>, world , Index<floating point>Global
-      floating point, floating points, <floating point>, world , NamedGlobal
       folder, folders, <folder>, <folder>, Named
       folder, folders, <folder>, <folder>, Plain
       folder, folders, <folder>, <site>, Plain
@@ -5944,8 +5853,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       inactive, inactives, <dmi inactive>, <dmi>, Plain
       index type, index types, <type>, <property>, Plain
       index, indexes, <integer>, <processor>, Plain
-      inexact, inexacts, <boolean>, <floating point>, Plain
-      infinite, infinites, <boolean>, <floating point>, Plain
       initial part, initial parts, <time range>, <time range>, Index<time interval>
       input_current_probe_handle, input_current_probe_handles, <integer>, <dmi system_power_supply>, Plain
       input_voltage_probe_handle, input_voltage_probe_handles, <integer>, <dmi system_power_supply>, Plain
@@ -5959,8 +5866,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       installed_size, installed_sizes, <integer>, <dmi cache_information>, Plain
       installed_size, installed_sizes, <integer>, <dmi memory_module_information>, Plain
       instance, instances, <application usage summary instance>, <application usage summary>, Plain
-      integer ceiling, integer ceilings, <integer>, <floating point>, Plain
-      integer floor, integer floors, <integer>, <floating point>, Plain
       integer in, integers in, <integer>, world , Index<( integer, integer )>Global
       integer in, integers in, <integer>, world , Index<( integer, integer, integer )>Global
       integer to, integers to, <integer>, world , NumberedGlobal
@@ -5979,7 +5884,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       intersection, intersections, <integer set>, <integer set>, Plain
       intersection, intersections, <string set>, <string set>, Plain
       invalid before, invalid befores, <time>, <x509 certificate>, Plain
-      invalid, invalids, <boolean>, <floating point>, Plain
       ip address, ip addresses, <ipv4or6 address>, <selected server>, Plain
       ip interface, ip interfaces, <network ip interface>, <network>, Numbered
       ip interface, ip interfaces, <network ip interface>, <network>, Plain
@@ -6094,7 +5998,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       length, lengths, <time interval>, <month and year>, Plain
       length, lengths, <time interval>, <time range>, Plain
       length, lengths, <time interval>, <year>, Plain
-      less significance, less significances, <floating point>, <floating point>, Numbered
       li, lis, <html>, <html>, Named
       li, lis, <html>, <html>, Plain
       li, lis, <html>, <string>, Named
@@ -6132,10 +6035,21 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       lower_threshold_critical, lower_threshold_criticals, <integer>, <dmi management_device_threshold_data>, Plain
       lower_threshold_non_critical, lower_threshold_non_criticals, <integer>, <dmi management_device_threshold_data>, Plain
       lower_threshold_non_recoverable, lower_threshold_non_recoverables, <integer>, <dmi management_device_threshold_data>, Plain
+      lpar adjustment, lpar adjustments, <integer>, <processor>, Plain
+      lpar characteristics, lpar characteristicss, <string>, <processor>, Plain
+      lpar cpus configured, lpar cpus configureds, <integer>, <processor>, Plain
+      lpar cpus dedicated, lpar cpus dedicateds, <integer>, <processor>, Plain
+      lpar cpus reserved, lpar cpus reserveds, <integer>, <processor>, Plain
+      lpar cpus shared, lpar cpus shareds, <integer>, <processor>, Plain
+      lpar cpus standby, lpar cpus standbys, <integer>, <processor>, Plain
+      lpar cpus total, lpar cpus totals, <integer>, <processor>, Plain
+      lpar name, lpar names, <string>, <processor>, Plain
+      lpar number, lpar numbers, <integer>, <processor>, Plain
       mac address, mac addresses, <string>, <network adapter interface>, Plain
       mac address, mac addresses, <string>, <network adapter>, Plain
       mac address, mac addresses, <string>, <network ip interface>, Plain
       mac, macs, <boolean>, <operating system>, Plain
+      machine serial number, machine serial numbers, <string>, <processor>, Plain
       main gather service, main gather services, <service>, world , PlainGlobal
       main processor, main processors, <processor>, world , PlainGlobal
       major, majors, <integer>, <device file>, Plain
@@ -6166,7 +6080,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       maximum, maxima, <date>, <date>, Plain
       maximum, maxima, <day of month>, <day of month>, Plain
       maximum, maxima, <day of year>, <day of year>, Plain
-      maximum, maxima, <floating point>, <floating point>, Plain
       maximum, maxima, <hertz>, <hertz>, Plain
       maximum, maxima, <integer>, <integer>, Plain
       maximum, maxima, <ipv4 address>, <ipv4 address>, Plain
@@ -6236,7 +6149,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       minimum, minima, <date>, <date>, Plain
       minimum, minima, <day of month>, <day of month>, Plain
       minimum, minima, <day of year>, <day of year>, Plain
-      minimum, minima, <floating point>, <floating point>, Plain
       minimum, minima, <hertz>, <hertz>, Plain
       minimum, minima, <integer>, <integer>, Plain
       minimum, minima, <ipv4 address>, <ipv4 address>, Plain
@@ -6279,7 +6191,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       month, months, <month>, world , NumberedGlobal
       month, months, <number of months>, world , PlainGlobal
       month_and_year, months_and_years, <month and year>, <date>, Plain
-      more significance, more significances, <floating point>, <floating point>, Numbered
       most significant one bit, most significant one bits, <integer>, <bit set>, Plain
       multicast support, multicast supports, <boolean>, <network adapter interface>, Plain
       multicast support, multicast supports, <boolean>, <network adapter>, Plain
@@ -6288,7 +6199,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       multiplicity, multiplicities, <integer>, <day of month with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <day of week with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <day of year with multiplicity>, Plain
-      multiplicity, multiplicities, <integer>, <floating point with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <hertz with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <integer with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <ipv4 address with multiplicity>, Plain
@@ -6339,7 +6249,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       name, names, <string>, <type>, Plain
       name, names, <string>, <unary operator>, Plain
       name, names, <string>, <user>, Plain
-      nan, nans, <boolean>, <floating point>, Plain
       network, networks, <network>, world , PlainGlobal
       next line, next lines, <file line>, <file line>, Plain
       next_scheduled_power_on_day_of_month, next_scheduled_power_on_day_of_months, <integer>, <dmi system_power_controls>, Plain
@@ -6356,7 +6265,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       nominal_value, nominal_values, <integer>, <dmi voltage_probe>, Plain
       non windows server count, non windows server counts, <integer>, <bes product>, Plain
       noon, noons, <time of day>, world , PlainGlobal
-      normal, normals, <boolean>, <floating point>, Plain
       normal, normals, <boolean>, <power level>, Plain
       november, novembers, <date>, <integer>, Numbered
       november, novembers, <day of year>, world , NumberedGlobal
@@ -6414,7 +6322,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       other write, other writes, <boolean>, <filesystem object>, Plain
       out_of_band_remote_access, out_of_band_remote_accesss, <dmi out_of_band_remote_access>, <dmi>, Numbered
       out_of_band_remote_access, out_of_band_remote_accesss, <dmi out_of_band_remote_access>, <dmi>, Plain
-      overflow, overflows, <boolean>, <floating point>, Plain
       p, ps, <html>, <html>, Named
       p, ps, <html>, <html>, Plain
       p, ps, <html>, <string>, Named
@@ -6495,7 +6402,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       processor_upgrade, processor_upgrades, <integer>, <dmi processor_information>, Plain
       processor_version, processor_versions, <string>, <dmi processor_information>, Plain
       product, products, <bes product>, <license>, Plain
-      product, products, <floating point>, <floating point>, Plain
       product, products, <integer>, <integer>, Plain
       product, products, <string>, <dmi base_board_information>, Plain
       product_name, product_names, <string>, <dmi system_information>, Plain
@@ -6528,8 +6434,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       registration subnet address, registration subnet addresses, <ipv4or6 address>, <client>, Plain
       regular expression, regular expressions, <regular expression>, world , NamedGlobal
       relation, relations, <string>, <capability>, Plain
-      relative significance place, relative significance places, <floating point>, <floating point>, Numbered
-      relative significance place, relative significance places, <floating point>, <floating point>, Plain
       relay service, relay services, <service>, world , PlainGlobal
       release, releases, <rpm package release>, <rpm package version record>, Plain
       release, releases, <rpm package release>, <short rpm package version record>, Plain
@@ -6594,6 +6498,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       september, septembers, <day of year>, world , NumberedGlobal
       september, septembers, <month and year>, <integer>, Plain
       september, septembers, <month>, world , PlainGlobal
+      sequence code, sequence codes, <string>, <processor>, Plain
       serial_number, serial_numbers, <string>, <dmi base_board_information>, Plain
       serial_number, serial_numbers, <string>, <dmi memory_device>, Plain
       serial_number, serial_numbers, <string>, <dmi portable_battery>, Plain
@@ -6618,9 +6523,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       short form, short forms, <short rpm package version record>, <rpm package version record>, Plain
       short rpm package version record, short rpm package version records, <short rpm package version record>, world , Index<rpm package version record>Global
       short rpm package version record, short rpm package version records, <short rpm package version record>, world , Index<short rpm package version record>Global
-      significance place, significance places, <floating point>, <floating point>, Numbered
-      significance place, significance places, <floating point>, <floating point>, Plain
-      significance threshold, significance thresholds, <floating point>, <floating point>, Plain
       significant digits, significant digitss, <hertz>, <hertz>, Numbered
       significant digits, significant digitss, <integer>, <integer>, Numbered
       singular name, singular names, <string>, <property>, Plain
@@ -6708,7 +6610,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       substring separated by, substrings separated by, <substring>, <string>, Named
       substring, substrings, <substring>, <string>, Index<( integer, integer )>
       substring, substrings, <substring>, <string>, Named
-      sum, sums, <floating point>, <floating point>, Plain
       sum, sums, <integer>, <integer>, Plain
       sum, sums, <time interval>, <time interval>, Plain
       sunday, sundays, <day of week>, world , PlainGlobal
@@ -6849,7 +6750,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       unary operator, unary operators, <unary operator>, world , NamedGlobal
       unary operator, unary operators, <unary operator>, world , PlainGlobal
       unavailable amount, unavailable amounts, <integer>, <ram>, Plain
-      underflow, underflows, <boolean>, <floating point>, Plain
       union, unions, <integer set>, <integer set>, Plain
       union, unions, <string set>, <string set>, Plain
       unique name, unique names, <string>, <package>, Plain
@@ -6857,7 +6757,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       unique value, unique values, <day of month with multiplicity>, <day of month>, Plain
       unique value, unique values, <day of week with multiplicity>, <day of week>, Plain
       unique value, unique values, <day of year with multiplicity>, <day of year>, Plain
-      unique value, unique values, <floating point with multiplicity>, <floating point>, Plain
       unique value, unique values, <hertz with multiplicity>, <hertz>, Plain
       unique value, unique values, <integer with multiplicity>, <integer>, Plain
       unique value, unique values, <ipv4 address with multiplicity>, <ipv4 address>, Plain
@@ -6952,6 +6851,13 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       version, versions, <version>, <registration server>, Plain
       version, versions, <version>, <service>, Plain
       version, versions, <version>, world , NamedGlobal
+      vm adjustment, vm adjustments, <integer>, <processor>, Plain
+      vm control program, vm control programs, <string>, <processor>, Plain
+      vm cpus configured, vm cpus configureds, <integer>, <processor>, Plain
+      vm cpus reserved, vm cpus reserveds, <integer>, <processor>, Plain
+      vm cpus standby, vm cpus standbys, <integer>, <processor>, Plain
+      vm cpus total, vm cpus totals, <integer>, <processor>, Plain
+      vm name, vm names, <string>, <processor>, Plain
       voltage, voltages, <integer>, <dmi processor_information>, Plain
       voltage_probe, voltage_probes, <dmi voltage_probe>, <dmi>, Numbered
       voltage_probe, voltage_probes, <dmi voltage_probe>, <dmi>, Plain

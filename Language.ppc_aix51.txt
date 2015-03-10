@@ -493,6 +493,7 @@ Creation techniques & properties of each type:
       administrative rights of <client>, administrative rightss, Plain, <administrative rights>
       administrator <string> of <client>, administrators, Named, <setting>
       administrator of <client>, administrators, Plain, <setting>
+      brand of <client>, brands, Plain, <string>
       evaluationcycle of <client>, evaluationcycles, Plain, <evaluation cycle>
       registration address of <client>, registration addresses, Plain, <ipv4or6 address>
       registration cidr address of <client>, registration cidr addresses, Plain, <string>
@@ -942,6 +943,7 @@ Creation techniques & properties of each type:
 
   Type <fixlet>
     Creation of <fixlet>: { key phrase, plural keyword, form}
+      current analysis, current analyses, PlainGlobal
       fixlet of <site>, fixlets, Plain
       relevant fixlet of <site>, relevant fixlets, Plain
     Properties of <fixlet> { key phrase, plural keyword, form, <result type>}:
@@ -949,6 +951,7 @@ Creation techniques & properties of each type:
       header of <fixlet>, headers, Plain, <fixlet_header>
       id of <fixlet>, ids, Plain, <integer>
       relevance of <fixlet>, relevances, Plain, <boolean>
+      site of <fixlet>, sites, Plain, <site>
 
   Type <fixlet_header>
     Creation of <fixlet_header>: { key phrase, plural keyword, form}
@@ -2182,6 +2185,7 @@ Creation techniques & properties of each type:
       architecture of <operating system>, architectures, Plain, <string>
       boot time of <operating system>, boot times, Plain, <time>
       build of <operating system>, builds, Plain, <string>
+      codename of <operating system>, codenames, Plain, <string>
       mac of <operating system>, macs, Plain, <boolean>
       name of <operating system>, names, Plain, <string>
       release of <operating system>, releases, Plain, <string>
@@ -2375,6 +2379,7 @@ Creation techniques & properties of each type:
     Creation of <site>: { key phrase, plural keyword, form}
       current site, current sites, PlainGlobal
       site <string>, sites, NamedGlobal
+      site of <fixlet>, sites, Plain
       site, sites, PlainGlobal
     Properties of <site> { key phrase, plural keyword, form, <result type>}:
       client folder of <site>, client folders, Plain, <folder>
@@ -2531,6 +2536,7 @@ Creation techniques & properties of each type:
       <volume group> as string, , Cast
       <year> as string, , Cast
       architecture of <operating system>, architectures, Plain
+      brand of <client>, brands, Plain
       build of <operating system>, builds, Plain
       character <integer>, characters, NumberedGlobal
       cidr address of <network adapter interface>, cidr addresses, Plain
@@ -2539,6 +2545,7 @@ Creation techniques & properties of each type:
       cidr string of <network adapter interface>, cidr strings, Plain
       cidr string of <network adapter>, cidr strings, Plain
       cidr string of <network ip interface>, cidr strings, Plain
+      codename of <operating system>, codenames, Plain
       command line argument <integer> of <process>, command line arguments, Numbered
       command line argument of <process>, command line arguments, Plain
       common name of <license>, common names, Plain
@@ -3505,6 +3512,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   computer id, computer ids, PlainGlobal, <integer>
   computer name, computer names, PlainGlobal, <string>
   cryptography, cryptographies, PlainGlobal, <cryptography>
+  current analysis, current analyses, PlainGlobal, <fixlet>
   current date, current dates, PlainGlobal, <date>
   current day_of_month, current days_of_month, PlainGlobal, <day of month>
   current day_of_week, current days_of_week, PlainGlobal, <day of week>
@@ -3932,6 +3940,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       boot time, boot times, <time>, <operating system>, Plain
       br, brs, <html>, world , NamedGlobal
       br, brs, <html>, world , PlainGlobal
+      brand, brands, <string>, <client>, Plain
       broadcast address, broadcast addresses, <ipv4 address>, <network ip interface>, Plain
       broadcast address, broadcast addresses, <ipv4or6 address>, <network adapter interface>, Plain
       broadcast support, broadcast supports, <boolean>, <network adapter interface>, Plain
@@ -3971,6 +3980,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       code, codes, <html>, <html>, Plain
       code, codes, <html>, <string>, Named
       code, codes, <html>, <string>, Plain
+      codename, codenames, <string>, <operating system>, Plain
       col, cols, <html>, <html>, Named
       col, cols, <html>, <html>, Plain
       col, cols, <html>, <string>, Named
@@ -4001,6 +4011,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       content, contents, <file content>, <file>, Plain
       controller, controllers, <string>, <action lock state>, Plain
       cryptography, cryptographies, <cryptography>, world , PlainGlobal
+      current analysis, current analyses, <fixlet>, world , PlainGlobal
       current date, current dates, <date>, world , PlainGlobal
       current day_of_month, current days_of_month, <day of month>, world , PlainGlobal
       current day_of_week, current days_of_week, <day of week>, world , PlainGlobal
@@ -4710,6 +4721,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       site url, site urls, <string>, <bes product>, Plain
       site version list, site version lists, <site version list>, <site>, Plain
       site version list, site version lists, <site version list>, world , NamedGlobal
+      site, sites, <site>, <fixlet>, Plain
       site, sites, <site>, world , NamedGlobal
       site, sites, <site>, world , PlainGlobal
       size, sizes, <integer>, <application usage summary instance>, Plain

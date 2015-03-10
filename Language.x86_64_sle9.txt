@@ -1,5 +1,5 @@
-Operating System:Linux SuSE 8_0 (2_4_18-64GB-SMP)
-Build Target:i386_suse80
+Operating System:Linux SuSE Enterprise Server 9 (2_6_5-7_97-default)
+Build Target:x86_64_sle9
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   action
@@ -96,6 +96,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   html attribute list
   integer
   integer range
+  integer set
   integer with multiplicity (derives from  integer)
   ip version
   ipv4 address (derives from  ipv4or6 address)
@@ -156,6 +157,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   socket file (derives from  filesystem object)
   string
   string position (derives from  integer)
+  string set
   string with multiplicity (derives from  string)
   strverscmp version (derives from  version)
   substring (derives from  string)
@@ -369,6 +371,9 @@ Creation techniques & properties of each type:
       <hertz> < <hertz>, , BinaryOperator
       <hertz> <= <hertz>, , BinaryOperator
       <hertz> = <hertz>, , BinaryOperator
+      <integer set> = <integer set>, , BinaryOperator
+      <integer set> contains <integer set>, , BinaryOperator
+      <integer set> contains <integer>, , BinaryOperator
       <integer> < <floating point>, , BinaryOperator
       <integer> < <integer>, , BinaryOperator
       <integer> <= <floating point>, , BinaryOperator
@@ -433,6 +438,9 @@ Creation techniques & properties of each type:
       <site version list> <= <site version list>, , BinaryOperator
       <site version list> = <site version list>, , BinaryOperator
       <site version list> contains <site version list>, , BinaryOperator
+      <string set> = <string set>, , BinaryOperator
+      <string set> contains <string set>, , BinaryOperator
+      <string set> contains <string>, , BinaryOperator
       <string> < <ipv4 address>, , BinaryOperator
       <string> < <ipv4or6 address>, , BinaryOperator
       <string> < <rpm package release>, , BinaryOperator
@@ -632,6 +640,7 @@ Creation techniques & properties of each type:
       administrative rights of <client>, administrative rightss, Plain, <administrative rights>
       administrator <string> of <client>, administrators, Named, <setting>
       administrator of <client>, administrators, Plain, <setting>
+      brand of <client>, brands, Plain, <string>
       evaluationcycle of <client>, evaluationcycles, Plain, <evaluation cycle>
       registration address of <client>, registration addresses, Plain, <ipv4or6 address>
       registration cidr address of <client>, registration cidr addresses, Plain, <string>
@@ -1720,6 +1729,7 @@ Creation techniques & properties of each type:
 
   Type <fixlet>
     Creation of <fixlet>: { key phrase, plural keyword, form}
+      current analysis, current analyses, PlainGlobal
       fixlet of <site>, fixlets, Plain
       relevant fixlet of <site>, relevant fixlets, Plain
     Properties of <fixlet> { key phrase, plural keyword, form, <result type>}:
@@ -1727,6 +1737,7 @@ Creation techniques & properties of each type:
       header of <fixlet>, headers, Plain, <fixlet_header>
       id of <fixlet>, ids, Plain, <integer>
       relevance of <fixlet>, relevances, Plain, <boolean>
+      site of <fixlet>, sites, Plain, <site>
 
   Type <fixlet_header>
     Creation of <fixlet_header>: { key phrase, plural keyword, form}
@@ -2387,6 +2398,7 @@ Creation techniques & properties of each type:
       device_type_and_status of <dmi cooling_device>, device_type_and_statuss, Plain
       device_type_instance of <dmi onboard_devices_extended_information>, device_type_instances, Plain
       download failure of <action>, download failures, Plain
+      element of <integer set>, elements, Plain
       embedded_controller_firmware_major_release of <dmi bios_information>, embedded_controller_firmware_major_releases, Plain
       embedded_controller_firmware_minor_release of <dmi bios_information>, embedded_controller_firmware_minor_releases, Plain
       enabled_size of <dmi memory_module_information>, enabled_sizes, Plain
@@ -2653,7 +2665,9 @@ Creation techniques & properties of each type:
       size of <dmi memory_device>, sizes, Plain
       size of <file>, sizes, Plain
       size of <filesystem>, sizes, Plain
+      size of <integer set>, sizes, Plain
       size of <ram>, sizes, Plain
+      size of <string set>, sizes, Plain
       size of <swap>, sizes, Plain
       size of <type>, sizes, Plain
       slot_characteristics_1 of <dmi system_slots>, slot_characteristics_1s, Plain
@@ -2730,6 +2744,7 @@ Creation techniques & properties of each type:
       <floating point> = <integer>, , BinaryOperator, <boolean>
       <hertz> * <integer>, , BinaryOperator, <hertz>
       <hertz> / <integer>, , BinaryOperator, <hertz>
+      <integer set> contains <integer>, , BinaryOperator, <boolean>
       <integer> * <floating point>, , BinaryOperator, <floating point>
       <integer> * <hertz>, , BinaryOperator, <hertz>
       <integer> * <integer>, , BinaryOperator, <integer>
@@ -2793,6 +2808,7 @@ Creation techniques & properties of each type:
       product of <integer>, products, Plain, <integer>
       september <integer> of <integer>, septembers, Numbered, <date>
       september of <integer>, septembers, Plain, <month and year>
+      set of <integer>, sets, Plain, <integer set>
       significant digits <integer> of <integer>, significant digitss, Numbered, <integer>
       sum of <integer>, sums, Plain, <integer>
       unique value of <integer>, unique values, Plain, <integer with multiplicity>
@@ -2803,6 +2819,26 @@ Creation techniques & properties of each type:
     Properties of <integer range> { key phrase, plural keyword, form, <result type>}:
       lower bound of <integer range>, lower bounds, Plain, <integer>
       upper bound of <integer range>, upper bounds, Plain, <integer>
+
+  Type <integer set>
+    Creation of <integer set>: { key phrase, plural keyword, form}
+      <integer set> * <integer set>, , BinaryOperator
+      <integer set> + <integer set>, , BinaryOperator
+      <integer set> - <integer set>, , BinaryOperator
+      intersection of <integer set>, intersections, Plain
+      set of <integer>, sets, Plain
+      union of <integer set>, unions, Plain
+    Properties of <integer set> { key phrase, plural keyword, form, <result type>}:
+      <integer set> * <integer set>, , BinaryOperator, <integer set>
+      <integer set> + <integer set>, , BinaryOperator, <integer set>
+      <integer set> - <integer set>, , BinaryOperator, <integer set>
+      <integer set> = <integer set>, , BinaryOperator, <boolean>
+      <integer set> contains <integer set>, , BinaryOperator, <boolean>
+      <integer set> contains <integer>, , BinaryOperator, <boolean>
+      element of <integer set>, elements, Plain, <integer>
+      intersection of <integer set>, intersections, Plain, <integer set>
+      size of <integer set>, sizes, Plain, <integer>
+      union of <integer set>, unions, Plain, <integer set>
 
   Type <integer with multiplicity> (derives from integer)
     Creation of <integer with multiplicity>: { key phrase, plural keyword, form}
@@ -3275,6 +3311,7 @@ Creation techniques & properties of each type:
       architecture of <operating system>, architectures, Plain, <string>
       boot time of <operating system>, boot times, Plain, <time>
       build of <operating system>, builds, Plain, <string>
+      codename of <operating system>, codenames, Plain, <string>
       mac of <operating system>, macs, Plain, <boolean>
       name of <operating system>, names, Plain, <string>
       release of <operating system>, releases, Plain, <string>
@@ -3662,6 +3699,7 @@ Creation techniques & properties of each type:
     Creation of <site>: { key phrase, plural keyword, form}
       current site, current sites, PlainGlobal
       site <string>, sites, NamedGlobal
+      site of <fixlet>, sites, Plain
       site, sites, PlainGlobal
     Properties of <site> { key phrase, plural keyword, form, <result type>}:
       client folder of <site>, client folders, Plain, <folder>
@@ -3869,6 +3907,7 @@ Creation techniques & properties of each type:
       bank_locator of <dmi memory_device>, bank_locators, Plain
       bios_release_date of <dmi bios_information>, bios_release_dates, Plain
       bios_version of <dmi bios_information>, bios_versions, Plain
+      brand of <client>, brands, Plain
       build of <operating system>, builds, Plain
       character <integer>, characters, NumberedGlobal
       cidr address of <network adapter interface>, cidr addresses, Plain
@@ -3877,6 +3916,7 @@ Creation techniques & properties of each type:
       cidr string of <network adapter interface>, cidr strings, Plain
       cidr string of <network adapter>, cidr strings, Plain
       cidr string of <network ip interface>, cidr strings, Plain
+      codename of <operating system>, codenames, Plain
       command line argument <integer> of <process>, command line arguments, Numbered
       command line argument of <process>, command line arguments, Plain
       common name of <license>, common names, Plain
@@ -3902,6 +3942,7 @@ Creation techniques & properties of each type:
       domain name, domain names, PlainGlobal
       domainname, domainnames, PlainGlobal
       download path <string>, download paths, NamedGlobal
+      element of <string set>, elements, Plain
       email address of <license>, email addresses, Plain
       encrypt report failure message of <client_cryptography>, encrypt report failure messages, Plain
       expiration state of <license>, expiration states, Plain
@@ -4084,6 +4125,7 @@ Creation techniques & properties of each type:
       <rpm package version> < <string>, , BinaryOperator, <boolean>
       <rpm package version> <= <string>, , BinaryOperator, <boolean>
       <rpm package version> = <string>, , BinaryOperator, <boolean>
+      <string set> contains <string>, , BinaryOperator, <boolean>
       <string> & <html>, , BinaryOperator, <html>
       <string> & <rope>, , BinaryOperator, <rope>
       <string> & <string>, , BinaryOperator, <string>
@@ -4253,6 +4295,7 @@ Creation techniques & properties of each type:
       regex escape of <string>, regex escapes, Plain, <string>
       samp <string> of <string>, samps, Named, <html>
       samp of <string>, samps, Plain, <html>
+      set of <string>, sets, Plain, <string set>
       small <string> of <string>, smalls, Named, <html>
       small of <string>, smalls, Plain, <html>
       span <string> of <string>, spans, Named, <html>
@@ -4306,6 +4349,26 @@ Creation techniques & properties of each type:
     Properties of <string position> { key phrase, plural keyword, form, <result type>}:
       following text of <string position>, following texts, Plain, <substring>
       preceding text of <string position>, preceding texts, Plain, <substring>
+
+  Type <string set>
+    Creation of <string set>: { key phrase, plural keyword, form}
+      <string set> * <string set>, , BinaryOperator
+      <string set> + <string set>, , BinaryOperator
+      <string set> - <string set>, , BinaryOperator
+      intersection of <string set>, intersections, Plain
+      set of <string>, sets, Plain
+      union of <string set>, unions, Plain
+    Properties of <string set> { key phrase, plural keyword, form, <result type>}:
+      <string set> * <string set>, , BinaryOperator, <string set>
+      <string set> + <string set>, , BinaryOperator, <string set>
+      <string set> - <string set>, , BinaryOperator, <string set>
+      <string set> = <string set>, , BinaryOperator, <boolean>
+      <string set> contains <string set>, , BinaryOperator, <boolean>
+      <string set> contains <string>, , BinaryOperator, <boolean>
+      element of <string set>, elements, Plain, <string>
+      intersection of <string set>, intersections, Plain, <string set>
+      size of <string set>, sizes, Plain, <integer>
+      union of <string set>, unions, Plain, <string set>
 
   Type <string with multiplicity> (derives from string)
     Creation of <string with multiplicity>: { key phrase, plural keyword, form}
@@ -4912,6 +4975,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   computer id, computer ids, PlainGlobal, <integer>
   computer name, computer names, PlainGlobal, <string>
   cryptography, cryptographies, PlainGlobal, <cryptography>
+  current analysis, current analyses, PlainGlobal, <fixlet>
   current date, current dates, PlainGlobal, <date>
   current day_of_month, current days_of_month, PlainGlobal, <day of month>
   current day_of_week, current days_of_week, PlainGlobal, <day of week>
@@ -5411,6 +5475,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       bootup_state, bootup_states, <integer>, <dmi system_enclosure_or_chassis>, Plain
       br, brs, <html>, world , NamedGlobal
       br, brs, <html>, world , PlainGlobal
+      brand, brands, <string>, <client>, Plain
       broadcast address, broadcast addresses, <ipv4 address>, <network ip interface>, Plain
       broadcast address, broadcast addresses, <ipv4or6 address>, <network adapter interface>, Plain
       broadcast support, broadcast supports, <boolean>, <network adapter interface>, Plain
@@ -5465,6 +5530,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       code, codes, <html>, <html>, Plain
       code, codes, <html>, <string>, Named
       code, codes, <html>, <string>, Plain
+      codename, codenames, <string>, <operating system>, Plain
       col, cols, <html>, <html>, Named
       col, cols, <html>, <html>, Plain
       col, cols, <html>, <string>, Named
@@ -5508,6 +5574,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       core_enabled, core_enableds, <integer>, <dmi processor_information>, Plain
       cpuid level, cpuid levels, <integer>, <processor>, Plain
       cryptography, cryptographies, <cryptography>, world , PlainGlobal
+      current analysis, current analyses, <fixlet>, world , PlainGlobal
       current date, current dates, <date>, world , PlainGlobal
       current day_of_month, current days_of_month, <day of month>, world , PlainGlobal
       current day_of_week, current days_of_week, <day of week>, world , PlainGlobal
@@ -5632,6 +5699,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       effective time, effective times, <time>, <runlevel>, Plain
       electrical_current_probe, electrical_current_probes, <dmi electrical_current_probe>, <dmi>, Numbered
       electrical_current_probe, electrical_current_probes, <dmi electrical_current_probe>, <dmi>, Plain
+      element, elements, <integer>, <integer set>, Plain
+      element, elements, <string>, <string set>, Plain
       em, ems, <html>, <html>, Named
       em, ems, <html>, <html>, Plain
       em, ems, <html>, <string>, Named
@@ -5907,6 +5976,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       interleaved_data_depth, interleaved_data_depths, <integer>, <dmi memory_device_mapped_address>, Plain
       internal_connector_type, internal_connector_types, <integer>, <dmi port_connector_information>, Plain
       internal_reference_designator, internal_reference_designators, <string>, <dmi port_connector_information>, Plain
+      intersection, intersections, <integer set>, <integer set>, Plain
+      intersection, intersections, <string set>, <string set>, Plain
       invalid before, invalid befores, <time>, <x509 certificate>, Plain
       invalid, invalids, <boolean>, <floating point>, Plain
       ip address, ip addresses, <ipv4or6 address>, <selected server>, Plain
@@ -6531,6 +6602,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       serial_number, serial_numbers, <string>, <dmi system_information>, Plain
       serial_number, serial_numbers, <string>, <dmi system_power_supply>, Plain
       service, services, <service>, world , NamedGlobal
+      set, sets, <integer set>, <integer>, Plain
+      set, sets, <string set>, <string>, Plain
       setgid, setgids, <boolean>, <filesystem object>, Plain
       setgid, setgids, <boolean>, <mode>, Plain
       setting, settings, <setting>, <client>, Named
@@ -6556,13 +6629,16 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       site url, site urls, <string>, <bes product>, Plain
       site version list, site version lists, <site version list>, <site>, Plain
       site version list, site version lists, <site version list>, world , NamedGlobal
+      site, sites, <site>, <fixlet>, Plain
       site, sites, <site>, world , NamedGlobal
       site, sites, <site>, world , PlainGlobal
       size, sizes, <integer>, <application usage summary instance>, Plain
       size, sizes, <integer>, <dmi memory_device>, Plain
       size, sizes, <integer>, <file>, Plain
       size, sizes, <integer>, <filesystem>, Plain
+      size, sizes, <integer>, <integer set>, Plain
       size, sizes, <integer>, <ram>, Plain
+      size, sizes, <integer>, <string set>, Plain
       size, sizes, <integer>, <swap>, Plain
       size, sizes, <integer>, <type>, Plain
       sku_number, sku_numbers, <string>, <dmi system_information>, Plain
@@ -6774,6 +6850,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       unary operator, unary operators, <unary operator>, world , PlainGlobal
       unavailable amount, unavailable amounts, <integer>, <ram>, Plain
       underflow, underflows, <boolean>, <floating point>, Plain
+      union, unions, <integer set>, <integer set>, Plain
+      union, unions, <string set>, <string set>, Plain
       unique name, unique names, <string>, <package>, Plain
       unique value, unique values, <date with multiplicity>, <date>, Plain
       unique value, unique values, <day of month with multiplicity>, <day of month>, Plain

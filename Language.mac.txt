@@ -3,7 +3,9 @@ Operating System:Mac OS X Server 10_5_8
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   action
   action lock state
+  active directory group
   active directory local computer
+  active directory local user
   active directory server
   administrative rights
   analysis
@@ -76,6 +78,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   license
   linear projection
   logged on user (derives from  user)
+  monitor power interval
   month
   month and year
   month and year with multiplicity (derives from  month and year)
@@ -91,7 +94,9 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   number of months with multiplicity (derives from  number of months)
   operating system
   osxvalue
+  power history
   power level
+  power state
   preference
   process
   processor
@@ -109,6 +114,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   rope
   scsibus
   scsidevice
+  security identifier
   selected server
   setting
   site
@@ -121,6 +127,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   string set
   string with multiplicity (derives from  string)
   substring (derives from  string)
+  system power interval
   time
   time interval
   time interval with multiplicity (derives from  time interval)
@@ -196,19 +203,55 @@ Creation techniques & properties of each type:
       lock string of <action lock state>, lock strings, Plain, <string>
       locked of <action lock state>, lockeds, Plain, <boolean>
 
+  Type <active directory group>
+    Creation of <active directory group>: { key phrase, plural keyword, form}
+      group <string> of <active directory local computer>, groups, Named
+      group <string> of <active directory local user>, groups, Named
+      group of <active directory local computer>, groups, Plain
+      group of <active directory local user>, groups, Plain
+    Properties of <active directory group> { key phrase, plural keyword, form, <result type>}:
+      distinguished name error message of <active directory group>, distinguished name error messages, Plain, <string>
+      distinguished name of <active directory group>, distinguished names, Plain, <string>
+      name of <active directory group>, names, Plain, <string>
+      sample time of <active directory group>, sample times, Plain, <time>
+      sid of <active directory group>, sids, Plain, <security identifier>
+
   Type <active directory local computer>
     Creation of <active directory local computer>: { key phrase, plural keyword, form}
       local computer of <active directory server>, local computers, Plain
     Properties of <active directory local computer> { key phrase, plural keyword, form, <result type>}:
       distinguished name error message of <active directory local computer>, distinguished name error messages, Plain, <string>
       distinguished name of <active directory local computer>, distinguished names, Plain, <string>
+      group <string> of <active directory local computer>, groups, Named, <active directory group>
+      group of <active directory local computer>, groups, Plain, <active directory group>
+      groups error message of <active directory local computer>, groups error messages, Plain, <string>
       sample time of <active directory local computer>, sample times, Plain, <time>
+
+  Type <active directory local user>
+    Creation of <active directory local user>: { key phrase, plural keyword, form}
+      active directory user of <user>, active directory users, Plain
+      local user <string> of <active directory server>, local users, Named
+      local user of <active directory server>, local users, Plain
+      logged on user <string> of <active directory server>, logged on users, Named
+      logged on user of <active directory server>, logged on users, Plain
+    Properties of <active directory local user> { key phrase, plural keyword, form, <result type>}:
+      distinguished name error message of <active directory local user>, distinguished name error messages, Plain, <string>
+      distinguished name of <active directory local user>, distinguished names, Plain, <string>
+      group <string> of <active directory local user>, groups, Named, <active directory group>
+      group of <active directory local user>, groups, Plain, <active directory group>
+      groups error message of <active directory local user>, groups error messages, Plain, <string>
+      name of <active directory local user>, names, Plain, <string>
+      sample time of <active directory local user>, sample times, Plain, <time>
 
   Type <active directory server>
     Creation of <active directory server>: { key phrase, plural keyword, form}
       active directory, active directories, PlainGlobal
     Properties of <active directory server> { key phrase, plural keyword, form, <result type>}:
       local computer of <active directory server>, local computers, Plain, <active directory local computer>
+      local user <string> of <active directory server>, local users, Named, <active directory local user>
+      local user of <active directory server>, local users, Plain, <active directory local user>
+      logged on user <string> of <active directory server>, logged on users, Named, <active directory local user>
+      logged on user of <active directory server>, logged on users, Plain, <active directory local user>
 
   Type <administrative rights>
     Creation of <administrative rights>: { key phrase, plural keyword, form}
@@ -255,6 +298,7 @@ Creation techniques & properties of each type:
       array <integer> of <array>, arrays, Numbered
       array <string> of <dictionary>, arrays, Named
       array <string> of <preference>, arrays, Named
+      array of <file>, arrays, Plain
       array of <osxvalue>, arrays, Plain
     Properties of <array> { key phrase, plural keyword, form, <result type>}:
       array <integer> of <array>, arrays, Numbered, <array>
@@ -389,11 +433,13 @@ Creation techniques & properties of each type:
       <number of months> < <number of months>, , BinaryOperator
       <number of months> <= <number of months>, , BinaryOperator
       <number of months> = <number of months>, , BinaryOperator
+      <power state> = <power state>, , BinaryOperator
       <rate> < <rate>, , BinaryOperator
       <rate> <= <rate>, , BinaryOperator
       <rate> = <rate>, , BinaryOperator
       <regular expression> = <string>, , BinaryOperator
       <rope> contains <string>, , BinaryOperator
+      <security identifier> = <security identifier>, , BinaryOperator
       <site version list> < <site version list>, , BinaryOperator
       <site version list> <= <site version list>, , BinaryOperator
       <site version list> = <site version list>, , BinaryOperator
@@ -574,6 +620,7 @@ Creation techniques & properties of each type:
       administrative rights of <client>, administrative rightss, Plain, <administrative rights>
       administrator <string> of <client>, administrators, Named, <setting>
       administrator of <client>, administrators, Plain, <setting>
+      brand of <client>, brands, Plain, <string>
       evaluationcycle of <client>, evaluationcycles, Plain, <evaluation cycle>
       process owner of <client>, process owners, Plain, <client process owner>
       registration address of <client>, registration addresses, Plain, <ipv4or6 address>
@@ -1065,6 +1112,7 @@ Creation techniques & properties of each type:
       sibling file <string> of <filesystem object>, sibling files, Named
     Properties of <file> { key phrase, plural keyword, form, <result type>}:
       alias of <file>, aliases, Plain, <boolean>
+      array of <file>, arrays, Plain, <array>
       byte <integer> of <file>, bytes, Numbered, <integer>
       content of <file>, contents, Plain, <file content>
       creator of <file>, creators, Plain, <file signature>
@@ -1173,6 +1221,7 @@ Creation techniques & properties of each type:
 
   Type <fixlet>
     Creation of <fixlet>: { key phrase, plural keyword, form}
+      current analysis, current analyses, PlainGlobal
       fixlet of <site>, fixlets, Plain
       relevant fixlet of <site>, relevant fixlets, Plain
     Properties of <fixlet> { key phrase, plural keyword, form, <result type>}:
@@ -1180,6 +1229,7 @@ Creation techniques & properties of each type:
       header of <fixlet>, headers, Plain, <fixlet_header>
       id of <fixlet>, ids, Plain, <integer>
       relevance of <fixlet>, relevances, Plain, <boolean>
+      site of <fixlet>, sites, Plain, <site>
 
   Type <fixlet_header>
     Creation of <fixlet_header>: { key phrase, plural keyword, form}
@@ -1958,6 +2008,7 @@ Creation techniques & properties of each type:
       computer count of <bes product>, computer counts, Plain
       computer id, computer ids, PlainGlobal
       constraint of <action>, constraints, Plain
+      count of <monitor power interval>, counts, Plain
       cpu speed, cpu speeds, PlainGlobal
       directory count of <volume>, directory counts, Plain
       download failure of <action>, download failures, Plain
@@ -2370,6 +2421,19 @@ Creation techniques & properties of each type:
       active of <logged on user>, actives, Plain, <boolean>
       remote of <logged on user>, remotes, Plain, <boolean>
       session id of <logged on user>, session ids, Plain, <string>
+      user of <logged on user>, users, Plain, <user>
+
+  Type <monitor power interval>
+    Creation of <monitor power interval>: { key phrase, plural keyword, form}
+      current monitor interval of <power history>, current monitor intervals, Plain
+      last monitor interval in <power state> of <power history>, last monitor intervals in, Index<power state>
+      last monitor interval in monitor off state of <power history>, last monitor intervals in monitor off state, Plain
+      last monitor interval in monitor on state of <power history>, last monitor intervals in monitor on state, Plain
+      monitor interval of <power history>, monitor intervals, Plain
+    Properties of <monitor power interval> { key phrase, plural keyword, form, <result type>}:
+      count of <monitor power interval>, counts, Plain, <integer>
+      range of <monitor power interval>, ranges, Plain, <time range>
+      state of <monitor power interval>, states, Plain, <power state>
 
   Type <month>
     Creation of <month>: { key phrase, plural keyword, form}
@@ -2689,6 +2753,24 @@ Creation techniques & properties of each type:
       string of <osxvalue>, strings, Plain, <string>
       type of <osxvalue>, types, Plain, <string>
 
+  Type <power history>
+    Creation of <power history>: { key phrase, plural keyword, form}
+      power history, power histories, PlainGlobal
+    Properties of <power history> { key phrase, plural keyword, form, <result type>}:
+      current monitor interval of <power history>, current monitor intervals, Plain, <monitor power interval>
+      current system interval of <power history>, current system intervals, Plain, <system power interval>
+      last monitor interval in <power state> of <power history>, last monitor intervals in, Index<power state>, <monitor power interval>
+      last monitor interval in monitor off state of <power history>, last monitor intervals in monitor off state, Plain, <monitor power interval>
+      last monitor interval in monitor on state of <power history>, last monitor intervals in monitor on state, Plain, <monitor power interval>
+      last system interval in <power state> of <power history>, last system intervals in, Index<power state>, <system power interval>
+      last system interval in active state of <power history>, last system intervals in active state, Plain, <system power interval>
+      last system interval in idle state of <power history>, last system intervals in idle state, Plain, <system power interval>
+      last system interval in logged off state of <power history>, last system intervals in logged off state, Plain, <system power interval>
+      last system interval in off state of <power history>, last system intervals in off state, Plain, <system power interval>
+      last system interval in standby state of <power history>, last system intervals in standby state, Plain, <system power interval>
+      monitor interval of <power history>, monitor intervals, Plain, <monitor power interval>
+      system interval of <power history>, system intervals, Plain, <system power interval>
+
   Type <power level>
     Creation of <power level>: { key phrase, plural keyword, form}
       power level, power levels, PlainGlobal
@@ -2699,6 +2781,24 @@ Creation techniques & properties of each type:
       normal of <power level>, normals, Plain, <boolean>
       plugged of <power level>, pluggeds, Plain, <boolean>
       ups of <power level>, upss, Plain, <boolean>
+
+  Type <power state>
+    Creation of <power state>: { key phrase, plural keyword, form}
+      active state, active states, PlainGlobal
+      idle state, idle states, PlainGlobal
+      invalid state, invalid states, PlainGlobal
+      logged off state, logged off states, PlainGlobal
+      monitor invalid state, monitor invalid states, PlainGlobal
+      monitor off state, monitor off states, PlainGlobal
+      monitor on state, monitor on states, PlainGlobal
+      monitor standby state, monitor standby states, PlainGlobal
+      off state, off states, PlainGlobal
+      standby state, standby states, PlainGlobal
+      state of <monitor power interval>, states, Plain
+      state of <system power interval>, states, Plain
+    Properties of <power state> { key phrase, plural keyword, form, <result type>}:
+      <power state> = <power state>, , BinaryOperator, <boolean>
+      <power state> as string, , Cast, <string>
 
   Type <preference>
     Creation of <preference>: { key phrase, plural keyword, form}
@@ -2904,6 +3004,14 @@ Creation techniques & properties of each type:
       type of <scsidevice>, types, Plain, <string>
       vendor of <scsidevice>, vendors, Plain, <string>
 
+  Type <security identifier>
+    Creation of <security identifier>: { key phrase, plural keyword, form}
+      sid of <active directory group>, sids, Plain
+    Properties of <security identifier> { key phrase, plural keyword, form, <result type>}:
+      <security identifier> = <security identifier>, , BinaryOperator, <boolean>
+      <security identifier> as string, , Cast, <string>
+      component string of <security identifier>, component strings, Plain, <string>
+
   Type <selected server>
     Creation of <selected server>: { key phrase, plural keyword, form}
       selected server, selected servers, PlainGlobal
@@ -2939,6 +3047,7 @@ Creation techniques & properties of each type:
     Creation of <site>: { key phrase, plural keyword, form}
       current site, current sites, PlainGlobal
       site <string>, sites, NamedGlobal
+      site of <fixlet>, sites, Plain
       site, sites, PlainGlobal
     Properties of <site> { key phrase, plural keyword, form, <result type>}:
       client folder of <site>, client folders, Plain, <folder>
@@ -3056,9 +3165,11 @@ Creation techniques & properties of each type:
       <number of months> as string, , Cast
       <operating system> as string, , Cast
       <power level> as string, , Cast
+      <power state> as string, , Cast
       <property> as string, , Cast
       <rate> as string, , Cast
       <rope> as string, , Cast
+      <security identifier> as string, , Cast
       <setting> as string, , Cast
       <site version list> as string, , Cast
       <stage> as string, , Cast
@@ -3085,6 +3196,7 @@ Creation techniques & properties of each type:
       <version> as string, , Cast
       <year> as string, , Cast
       architecture of <operating system>, architectures, Plain
+      brand of <client>, brands, Plain
       build number of <operating system>, build numbers, Plain
       build of <operating system>, builds, Plain
       character <integer>, characters, NumberedGlobal
@@ -3096,6 +3208,7 @@ Creation techniques & properties of each type:
       cidr string of <network ip interface>, cidr strings, Plain
       classname of <registrynode>, classnames, Plain
       common name of <license>, common names, Plain
+      component string of <security identifier>, component strings, Plain
       computer name, computer names, PlainGlobal
       concatenation <string> of <string>, concatenations, Named
       concatenation of <string>, concatenations, Plain
@@ -3105,8 +3218,12 @@ Creation techniques & properties of each type:
       data <string> of <dictionary>, datas, Named
       data of <osxvalue>, datas, Plain
       date of <bios>, dates, Plain
+      distinguished name error message of <active directory group>, distinguished name error messages, Plain
       distinguished name error message of <active directory local computer>, distinguished name error messages, Plain
+      distinguished name error message of <active directory local user>, distinguished name error messages, Plain
+      distinguished name of <active directory group>, distinguished names, Plain
       distinguished name of <active directory local computer>, distinguished names, Plain
+      distinguished name of <active directory local user>, distinguished names, Plain
       dns name, dns names, PlainGlobal
       download path <string>, download paths, NamedGlobal
       element of <string set>, elements, Plain
@@ -3119,6 +3236,8 @@ Creation techniques & properties of each type:
       friendly name of <network adapter>, friendly names, Plain
       gather schedule authority of <site>, gather schedule authoritys, Plain
       gather url of <license>, gather urls, Plain
+      groups error message of <active directory local computer>, groups error messages, Plain
+      groups error message of <active directory local user>, groups error messages, Plain
       hexadecimal string <string>, hexadecimal strings, NamedGlobal
       hfs path of <filesystem object>, hfs paths, Plain
       host name of <root server>, host names, Plain
@@ -3139,6 +3258,8 @@ Creation techniques & properties of each type:
       mac address of <network link interface>, mac addresses, Plain
       machine name, machine names, PlainGlobal
       maker of <component>, makers, Plain
+      name of <active directory group>, names, Plain
+      name of <active directory local user>, names, Plain
       name of <application usage summary instance>, names, Plain
       name of <application usage summary>, names, Plain
       name of <bes product>, names, Plain
@@ -3212,6 +3333,7 @@ Creation techniques & properties of each type:
       type of <processor>, types, Plain
       type of <scsidevice>, types, Plain
       type of <site>, types, Plain
+      type of <volume>, types, Plain
       upload progress of <client>, upload progresses, Plain
       url of <site>, urls, Plain
       usual name of <property>, usual names, Plain
@@ -3494,6 +3616,20 @@ Creation techniques & properties of each type:
       preceding text of <substring>, preceding texts, Plain, <substring>
       start of <substring>, starts, Plain, <string position>
 
+  Type <system power interval>
+    Creation of <system power interval>: { key phrase, plural keyword, form}
+      current system interval of <power history>, current system intervals, Plain
+      last system interval in <power state> of <power history>, last system intervals in, Index<power state>
+      last system interval in active state of <power history>, last system intervals in active state, Plain
+      last system interval in idle state of <power history>, last system intervals in idle state, Plain
+      last system interval in logged off state of <power history>, last system intervals in logged off state, Plain
+      last system interval in off state of <power history>, last system intervals in off state, Plain
+      last system interval in standby state of <power history>, last system intervals in standby state, Plain
+      system interval of <power history>, system intervals, Plain
+    Properties of <system power interval> { key phrase, plural keyword, form, <result type>}:
+      range of <system power interval>, ranges, Plain, <time range>
+      state of <system power interval>, states, Plain, <power state>
+
   Type <time>
     Creation of <time>: { key phrase, plural keyword, form}
       <date> & <time of day with time zone>, , BinaryOperator
@@ -3542,7 +3678,9 @@ Creation techniques & properties of each type:
       now of <registration server>, nows, Plain
       now, nows, PlainGlobal
       pending time of <action>, pending times, Plain
+      sample time of <active directory group>, sample times, Plain
       sample time of <active directory local computer>, sample times, Plain
+      sample time of <active directory local user>, sample times, Plain
       start date of <license>, start dates, Plain
       start of <time range>, starts, Plain
       subscribe time of <site>, subscribe times, Plain
@@ -3764,6 +3902,8 @@ Creation techniques & properties of each type:
       initial part <time interval> of <time range>, initial parts, Index<time interval>
       range after <time> of <time range>, ranges after, Index<time>
       range before <time> of <time range>, ranges before, Index<time>
+      range of <monitor power interval>, ranges, Plain
+      range of <system power interval>, ranges, Plain
     Properties of <time range> { key phrase, plural keyword, form, <result type>}:
       <boolean> * <time range>, , BinaryOperator, <timed( time range, boolean )>
       <integer> * <time range>, , BinaryOperator, <timed( time range, integer )>
@@ -3883,9 +4023,12 @@ Creation techniques & properties of each type:
 
   Type <user>
     Creation of <user>: { key phrase, plural keyword, form}
+      local user, local users, PlainGlobal
       user <string>, users, NamedGlobal
+      user of <logged on user>, users, Plain
       user, users, PlainGlobal
     Properties of <user> { key phrase, plural keyword, form, <result type>}:
+      active directory user of <user>, active directory users, Plain, <active directory local user>
       attribute <string> of <user>, attributes, Named, <user attribute>
       attribute of <user>, attributes, Plain, <user attribute>
       home directory of <user>, home directories, Plain, <folder>
@@ -3991,6 +4134,7 @@ Creation techniques & properties of each type:
       name of <volume>, names, Plain, <string>
       size of <volume>, sizes, Plain, <integer>
       total space of <volume>, total spaces, Plain, <integer>
+      type of <volume>, types, Plain, <string>
       used percent of <volume>, used percents, Plain, <integer>
       used space of <volume>, used spaces, Plain, <integer>
 
@@ -4048,6 +4192,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   action, actions, PlainGlobal, <action>
   active action, active actions, PlainGlobal, <action>
   active directory, active directories, PlainGlobal, <active directory server>
+  active state, active states, PlainGlobal, <power state>
   analysis, analysiss, PlainGlobal, <analysis>
   any ip version, any ip versions, PlainGlobal, <ip version>
   apparent registration server time, apparent registration server times, PlainGlobal, <time>
@@ -4107,6 +4252,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   country <string>, countries, NamedGlobal, <country>
   cpu speed, cpu speeds, PlainGlobal, <integer>
   cryptography, cryptographies, PlainGlobal, <cryptography>
+  current analysis, current analyses, PlainGlobal, <fixlet>
   current date, current dates, PlainGlobal, <date>
   current day_of_month, current days_of_month, PlainGlobal, <day of month>
   current day_of_week, current days_of_week, PlainGlobal, <day of week>
@@ -4210,12 +4356,14 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   html tag <( string, html attribute list, string )>, html tags, Index<( string, html attribute list, string )>Global, <html>
   html tag <( string, string )>, html tags, Index<( string, string )>Global, <html>
   hz, hzs, PlainGlobal, <hertz>
+  idle state, idle states, PlainGlobal, <power state>
   integer <integer>, integers, NumberedGlobal, <integer>
   integer <string>, integers, NamedGlobal, <integer>
   integer in <( integer, integer )>, integers in, Index<( integer, integer )>Global, <integer>
   integer in <( integer, integer, integer )>, integers in, Index<( integer, integer, integer )>Global, <integer>
   integer to <integer>, integers to, NumberedGlobal, <integer>
   internet plugins folder, internet plugins folders, PlainGlobal, <folder>
+  invalid state, invalid states, PlainGlobal, <power state>
   iokit registry, iokit registries, PlainGlobal, <registryroot>
   ip version <integer>, ip versions, NumberedGlobal, <ip version>
   ipv4 address <string>, ipv4 addresses, NamedGlobal, <ipv4 address>
@@ -4241,10 +4389,12 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   local domain, local domains, PlainGlobal, <domain>
   local time <string>, local times, NamedGlobal, <time>
   local time zone, local time zones, PlainGlobal, <time zone>
+  local user, local users, PlainGlobal, <user>
   locales folder, locales folders, PlainGlobal, <folder>
   location manager modules folder, location manager modules folders, PlainGlobal, <folder>
   location manager preferences folder, location manager preferences folders, PlainGlobal, <folder>
   locations folder, locations folders, PlainGlobal, <folder>
+  logged off state, logged off states, PlainGlobal, <power state>
   logged on user, logged on users, PlainGlobal, <logged on user>
   logical ram, logical rams, PlainGlobal, <integer>
   machine name, machine names, PlainGlobal, <string>
@@ -4263,6 +4413,10 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   minute, minutes, PlainGlobal, <time interval>
   modem scripts folder, modem scripts folders, PlainGlobal, <folder>
   monday, mondays, PlainGlobal, <day of week>
+  monitor invalid state, monitor invalid states, PlainGlobal, <power state>
+  monitor off state, monitor off states, PlainGlobal, <power state>
+  monitor on state, monitor on states, PlainGlobal, <power state>
+  monitor standby state, monitor standby states, PlainGlobal, <power state>
   month <integer>, months, NumberedGlobal, <month>
   month <string>, months, NamedGlobal, <month>
   month, months, PlainGlobal, <number of months>
@@ -4278,6 +4432,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   null, nothing, PlainGlobal, <undefined>
   october <integer>, octobers, NumberedGlobal, <day of year>
   october, octobers, PlainGlobal, <month>
+  off state, off states, PlainGlobal, <power state>
   on appropriate disk domain, on appropriate disk domains, PlainGlobal, <domain>
   on system disk domain, on system disk domains, PlainGlobal, <domain>
   operating system, operating systems, PlainGlobal, <operating system>
@@ -4290,6 +4445,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   posix file <string>, posix files, NamedGlobal, <file>
   posix folder <string>, posix folders, NamedGlobal, <folder>
   posix item <string>, posix items, NamedGlobal, <filesystem object>
+  power history, power histories, PlainGlobal, <power history>
   power level, power levels, PlainGlobal, <power level>
   powerpc, powerpcs, PlainGlobal, <boolean>
   preference <string>, preferences, NamedGlobal, <preference>
@@ -4341,6 +4497,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   sound folder, sound folders, PlainGlobal, <folder>
   speech folder, speech folders, PlainGlobal, <folder>
   stage <string>, stages, NamedGlobal, <stage>
+  standby state, standby states, PlainGlobal, <power state>
   startup item <string>, startup items, NamedGlobal, <enableable_file>
   startup item, startup items, PlainGlobal, <enableable_file>
   startup items folder, startup items folders, PlainGlobal, <folder>
@@ -4405,9 +4562,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       action, actions, <action>, world , PlainGlobal
       active action, active actions, <action>, world , PlainGlobal
       active count, active counts, <integer>, <action>, Plain
+      active directory user, active directory users, <active directory local user>, <user>, Plain
       active directory, active directories, <active directory server>, world , PlainGlobal
       active line number, active line numbers, <integer>, <action>, Plain
       active start time, active start times, <time>, <action>, Plain
+      active state, active states, <power state>, world , PlainGlobal
       active, actives, <boolean>, <action>, Plain
       active, actives, <boolean>, <logged on user>, Plain
       adapter, adapters, <network adapter>, <network adapter interface>, Plain
@@ -4458,6 +4617,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       architecture, architectures, <string>, <operating system>, Plain
       array, arrays, <array>, <array>, Numbered
       array, arrays, <array>, <dictionary>, Named
+      array, arrays, <array>, <file>, Plain
       array, arrays, <array>, <osxvalue>, Plain
       array, arrays, <array>, <preference>, Named
       as bit set, , <bit set>, <integer>, Cast
@@ -4547,9 +4707,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <number of months>, Cast
       as string, , <string>, <operating system>, Cast
       as string, , <string>, <power level>, Cast
+      as string, , <string>, <power state>, Cast
       as string, , <string>, <property>, Cast
       as string, , <string>, <rate>, Cast
       as string, , <string>, <rope>, Cast
+      as string, , <string>, <security identifier>, Cast
       as string, , <string>, <setting>, Cast
       as string, , <string>, <site version list>, Cast
       as string, , <string>, <stage>, Cast
@@ -4636,6 +4798,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       boot time, boot times, <time>, <operating system>, Plain
       br, brs, <html>, world , NamedGlobal
       br, brs, <html>, world , PlainGlobal
+      brand, brands, <string>, <client>, Plain
       broadcast address, broadcast addresses, <ipv4 address>, <network adapter>, Plain
       broadcast address, broadcast addresses, <ipv4 address>, <network ip interface>, Plain
       broadcast address, broadcast addresses, <ipv4or6 address>, <network adapter interface>, Plain
@@ -4711,6 +4874,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       complete time, complete times, <time>, <action>, Plain
       component folder, component folders, <folder>, <domain>, Plain
       component folder, component folders, <folder>, world , PlainGlobal
+      component string, component strings, <string>, <security identifier>, Plain
       component, components, <component>, world , PlainGlobal
       component, components, <integer>, <site version list>, Numbered
       computer count, computer counts, <integer>, <bes product>, Plain
@@ -4740,6 +4904,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       core services folder, core services folders, <folder>, world , PlainGlobal
       correlation coefficient, correlation coefficients, <floating point>, <exponential projection>, Plain
       correlation coefficient, correlation coefficients, <floating point>, <linear projection>, Plain
+      count, counts, <integer>, <monitor power interval>, Plain
       country, countries, <country>, world , NamedGlobal
       cpu speed, cpu speeds, <integer>, world , PlainGlobal
       creation time, creation times, <time>, <filesystem object>, Plain
@@ -4748,14 +4913,17 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       cryptography, cryptographies, <cryptography>, world , PlainGlobal
       cstring, csrings, <string>, <osxvalue>, Plain
       cstring, cstrings, <string>, <dictionary>, Named
+      current analysis, current analyses, <fixlet>, world , PlainGlobal
       current date, current dates, <date>, world , PlainGlobal
       current day_of_month, current days_of_month, <day of month>, world , PlainGlobal
       current day_of_week, current days_of_week, <day of week>, world , PlainGlobal
       current day_of_year, current days_of_year, <day of year>, world , PlainGlobal
+      current monitor interval, current monitor intervals, <monitor power interval>, <power history>, Plain
       current month, current months, <month>, world , PlainGlobal
       current month_and_year, current months_and_years, <month and year>, world , PlainGlobal
       current relay, current relays, <current relay>, world , PlainGlobal
       current site, current sites, <site>, world , PlainGlobal
+      current system interval, current system intervals, <system power interval>, <power history>, Plain
       current time_of_day, current times_of_day, <time of day with time zone>, world , Index<time zone>Global
       current time_of_day, current times_of_day, <time of day with time zone>, world , PlainGlobal
       current user folder, current user folders, <folder>, <domain>, Plain
@@ -4845,8 +5013,12 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       disabled, disableds, <boolean>, <enableable_file>, Plain
       disjunction, disjunctions, <boolean>, <boolean>, Plain
       distance, distances, <integer range>, <selected server>, Plain
+      distinguished name error message, distinguished name error messages, <string>, <active directory group>, Plain
       distinguished name error message, distinguished name error messages, <string>, <active directory local computer>, Plain
+      distinguished name error message, distinguished name error messages, <string>, <active directory local user>, Plain
+      distinguished name, distinguished names, <string>, <active directory group>, Plain
       distinguished name, distinguished names, <string>, <active directory local computer>, Plain
+      distinguished name, distinguished names, <string>, <active directory local user>, Plain
       div, divs, <html>, <html>, Named
       div, divs, <html>, <html>, Plain
       div, divs, <html>, <string>, Named
@@ -5018,7 +5190,13 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       greatest integer, greatest integers, <integer>, world , PlainGlobal
       greatest time interval, greatest time intervals, <time interval>, world , PlainGlobal
       group leader, group leaders, <boolean>, <action>, Plain
+      group, groups, <active directory group>, <active directory local computer>, Named
+      group, groups, <active directory group>, <active directory local computer>, Plain
+      group, groups, <active directory group>, <active directory local user>, Named
+      group, groups, <active directory group>, <active directory local user>, Plain
       group, groups, <site group>, <site>, Numbered
+      groups error message, groups error messages, <string>, <active directory local computer>, Plain
+      groups error message, groups error messages, <string>, <active directory local user>, Plain
       h1, h1s, <html>, <html>, Named
       h1, h1s, <html>, <html>, Plain
       h1, h1s, <html>, <string>, Named
@@ -5090,6 +5268,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       id, ids, <integer>, <site group>, Plain
       id, ids, <string>, <user>, Plain
       identity, identites, <string>, <execution>, Plain
+      idle state, idle states, <power state>, world , PlainGlobal
       index type, index types, <type>, <property>, Plain
       inexact, inexacts, <boolean>, <floating point>, Plain
       infinite, infinites, <boolean>, <floating point>, Plain
@@ -5120,6 +5299,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       intersection, intersections, <integer set>, <integer set>, Plain
       intersection, intersections, <string set>, <string set>, Plain
       invalid before, invalid befores, <time>, <x509 certificate>, Plain
+      invalid state, invalid states, <power state>, world , PlainGlobal
       invalid, invalids, <boolean>, <floating point>, Plain
       iokit registry, iokit registries, <registryroot>, world , PlainGlobal
       ip address, ip addresses, <ipv4or6 address>, <selected server>, Plain
@@ -5181,9 +5361,18 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       last active time, last active times, <time>, <action>, Plain
       last change time, last change times, <time>, <action>, Plain
       last gather time, last gather times, <time>, <site>, Plain
+      last monitor interval in monitor off state, last monitor intervals in monitor off state, <monitor power interval>, <power history>, Plain
+      last monitor interval in monitor on state, last monitor intervals in monitor on state, <monitor power interval>, <power history>, Plain
+      last monitor interval in, last monitor intervals in, <monitor power interval>, <power history>, Index<power state>
       last relay select time, last relay select times, <time>, world , PlainGlobal
       last start time, last start times, <time>, <application usage summary instance>, Plain
       last start time, last start times, <time>, <application usage summary>, Plain
+      last system interval in active state, last system intervals in active state, <system power interval>, <power history>, Plain
+      last system interval in idle state, last system intervals in idle state, <system power interval>, <power history>, Plain
+      last system interval in logged off state, last system intervals in logged off state, <system power interval>, <power history>, Plain
+      last system interval in off state, last system intervals in off state, <system power interval>, <power history>, Plain
+      last system interval in standby state, last system intervals in standby state, <system power interval>, <power history>, Plain
+      last system interval in, last system intervals in, <system power interval>, <power history>, Index<power state>
       last time seen, last times seen, <time>, <application usage summary instance>, Plain
       last time seen, last times seen, <time>, <application usage summary>, Plain
       last time, last times, <time>, <analysis>, Plain
@@ -5226,6 +5415,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       local domain, local domains, <domain>, world , PlainGlobal
       local time zone, local time zones, <time zone>, world , PlainGlobal
       local time, local times, <time>, world , NamedGlobal
+      local user, local users, <active directory local user>, <active directory server>, Named
+      local user, local users, <active directory local user>, <active directory server>, Plain
+      local user, local users, <user>, world , PlainGlobal
       locales folder, locales folders, <folder>, <domain>, Plain
       locales folder, locales folders, <folder>, world , PlainGlobal
       location manager modules folder, location manager modules folders, <folder>, <domain>, Plain
@@ -5237,6 +5429,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       lock string, lock strings, <string>, <action lock state>, Plain
       locked, lockeds, <boolean>, <action lock state>, Plain
       locked, lockeds, <boolean>, <file>, Plain
+      logged off state, logged off states, <power state>, world , PlainGlobal
+      logged on user, logged on users, <active directory local user>, <active directory server>, Named
+      logged on user, logged on users, <active directory local user>, <active directory server>, Plain
       logged on user, logged on users, <logged on user>, world , PlainGlobal
       logical ram, logical rams, <integer>, world , PlainGlobal
       long name, long names, <string>, <client process owner>, Plain
@@ -5329,6 +5524,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       modification time, modification times, <time>, <filesystem object>, Plain
       modification time, modification times, <time>, <volume>, Plain
       monday, mondays, <day of week>, world , PlainGlobal
+      monitor interval, monitor intervals, <monitor power interval>, <power history>, Plain
+      monitor invalid state, monitor invalid states, <power state>, world , PlainGlobal
+      monitor off state, monitor off states, <power state>, world , PlainGlobal
+      monitor on state, monitor on states, <power state>, world , PlainGlobal
+      monitor standby state, monitor standby states, <power state>, world , PlainGlobal
       month, months, <month>, <date>, Plain
       month, months, <month>, <day of year>, Plain
       month, months, <month>, <month and year>, Plain
@@ -5367,6 +5567,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       multiplicity, multiplicities, <integer>, <year with multiplicity>, Plain
       multivalued, multivalueds, <boolean>, <property>, Plain
       name registry version, name registry versions, <version>, world , PlainGlobal
+      name, names, <string>, <active directory group>, Plain
+      name, names, <string>, <active directory local user>, Plain
       name, names, <string>, <application usage summary instance>, Plain
       name, names, <string>, <application usage summary>, Plain
       name, names, <string>, <bes product>, Plain
@@ -5418,6 +5620,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       october, octobers, <day of year>, world , NumberedGlobal
       october, octobers, <month and year>, <integer>, Plain
       october, octobers, <month>, world , PlainGlobal
+      off state, off states, <power state>, world , PlainGlobal
       offer accepted, offer accepteds, <boolean>, <action>, Plain
       offer, offers, <boolean>, <action>, Plain
       ol, ols, <html>, <html>, Named
@@ -5474,6 +5677,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       posix item, posix items, <filesystem object>, world , NamedGlobal
       posix path, posix paths, <string>, <filesystem object>, Plain
       posix relative item, posix relative items, <filesystem object>, <folder>, Named
+      power history, power histories, <power history>, world , PlainGlobal
       power level, power levels, <power level>, world , PlainGlobal
       power plane, power planes, <registrynode>, <registryroot>, Plain
       powerpc, powerpcs, <boolean>, world , PlainGlobal
@@ -5525,6 +5729,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       ram, rams, <ram>, world , PlainGlobal
       range after, ranges after, <time range>, <time range>, Index<time>
       range before, ranges before, <time range>, <time range>, Index<time>
+      range, ranges, <time range>, <monitor power interval>, Plain
+      range, ranges, <time range>, <system power interval>, Plain
       rate, rates, <floating point>, <exponential projection>, Index<time interval>
       rate, rates, <rate>, <linear projection>, Plain
       receipts folder, receipts folders, <folder>, <domain>, Plain
@@ -5571,7 +5777,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       samp, samps, <html>, <html>, Plain
       samp, samps, <html>, <string>, Named
       samp, samps, <html>, <string>, Plain
+      sample time, sample times, <time>, <active directory group>, Plain
       sample time, sample times, <time>, <active directory local computer>, Plain
+      sample time, sample times, <time>, <active directory local user>, Plain
       saturday, saturdays, <day of week>, world , PlainGlobal
       scripting additions folder, scripting additions folders, <folder>, <domain>, Plain
       scripting additions folder, scripting additions folders, <folder>, world , PlainGlobal
@@ -5615,6 +5823,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sibling file, sibling files, <file>, <filesystem object>, Named
       sibling folder, sibling folders, <folder>, <filesystem object>, Named
       sibling item, sibling items, <filesystem object>, <filesystem object>, Named
+      sid, sids, <security identifier>, <active directory group>, Plain
       significance place, significance places, <floating point>, <floating point>, Numbered
       significance place, significance places, <floating point>, <floating point>, Plain
       significance threshold, significance thresholds, <floating point>, <floating point>, Plain
@@ -5626,6 +5835,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       site url, site urls, <string>, <bes product>, Plain
       site version list, site version lists, <site version list>, <site>, Plain
       site version list, site version lists, <site version list>, world , NamedGlobal
+      site, sites, <site>, <fixlet>, Plain
       site, sites, <site>, world , NamedGlobal
       site, sites, <site>, world , PlainGlobal
       size, sizes, <integer>, <application usage summary instance>, Plain
@@ -5656,6 +5866,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       stage, stages, <stage>, world , NamedGlobal
       standard deviation, standard deviations, <floating point>, <floating point>, Plain
       standard deviation, standard deviations, <floating point>, <integer>, Plain
+      standby state, standby states, <power state>, world , PlainGlobal
       start date, start dates, <time>, <license>, Plain
       start, starts, <string position>, <substring>, Plain
       start, starts, <time>, <time range>, Plain
@@ -5663,6 +5874,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       startup item, startup items, <enableable_file>, world , PlainGlobal
       startup items folder, startup items folders, <folder>, <domain>, Plain
       startup items folder, startup items folders, <folder>, world , PlainGlobal
+      state, states, <power state>, <monitor power interval>, Plain
+      state, states, <power state>, <system power interval>, Plain
       state, states, <string>, <dummy>, Plain
       stationery, stationeries, <boolean>, <file>, Plain
       status, statuss, <string>, <action>, Plain
@@ -5708,6 +5921,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       system domain, system domains, <domain>, world , PlainGlobal
       system folder, system folders, <folder>, <domain>, Plain
       system folder, system folders, <folder>, world , PlainGlobal
+      system interval, system intervals, <system power interval>, <power history>, Plain
       system version, system versions, <version>, world , PlainGlobal
       table, tables, <html>, <html>, Named
       table, tables, <html>, <html>, Plain
@@ -5781,6 +5995,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       type, types, <string>, <processor>, Plain
       type, types, <string>, <scsidevice>, Plain
       type, types, <string>, <site>, Plain
+      type, types, <string>, <volume>, Plain
       type, types, <type>, world , NamedGlobal
       type, types, <type>, world , PlainGlobal
       ul, uls, <html>, <html>, Named
@@ -5840,6 +6055,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       user domain, user domains, <domain>, world , PlainGlobal
       user temp folder, user temp folders, <folder>, <domain>, Plain
       user temp folder, user temp folders, <folder>, world , PlainGlobal
+      user, users, <user>, <logged on user>, Plain
       user, users, <user>, world , NamedGlobal
       user, users, <user>, world , PlainGlobal
       users folder, users folders, <folder>, <domain>, Plain
