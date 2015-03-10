@@ -134,8 +134,6 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   format
   hertz
   hertz with multiplicity (derives from  hertz)
-  hotsync manager
-  hotsync user
   html
   html attribute list
   idle task trigger (derives from  task trigger)
@@ -186,8 +184,6 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   operating system
   operating system product type
   operating system suite mask (derives from  bit set)
-  palm application
-  palm device
   port mapping
   power history
   power level
@@ -878,7 +874,6 @@ Creation techniques & properties of each type:
       allow redirect of <firewall icmp settings>, allow redirects, Plain
       allow unmentioned site of <license>, allow unmentioned sites, Plain
       append permission of <access control entry>, append permissions, Plain
-      appinfodirty of <palm application>, appinfodirties, Plain
       archive of <filesystem object>, archives, Plain
       at compatibility of <task settings>, at compatibilities, Plain
       attribute permission of <network share>, attribute permissions, Plain
@@ -887,7 +882,6 @@ Creation techniques & properties of each type:
       audit success of <access control entry>, audit successes, Plain
       audit success of <audit policy information>, audit successes, Plain
       backoffice bit <operating system suite mask>, backoffice bits, Index<operating system suite mask>Global
-      backup of <palm application>, backups, Plain
       bit <integer> of <bit set>, bits, Numbered
       bit <integer> of <integer>, bits, Numbered
       blade bit <operating system suite mask>, blade bits, Index<operating system suite mask>Global
@@ -907,7 +901,6 @@ Creation techniques & properties of each type:
       console disconnect of <session state change task trigger>, console disconnects, Plain
       constrained of <action>, constraineds, Plain
       container inherit of <access control entry>, container inherits, Plain
-      copy prevention of <palm application>, copy preventions, Plain
       create file permission of <access control entry>, create file permissions, Plain
       create folder permission of <access control entry>, create folder permissions, Plain
       create link permission of <access control entry>, create link permissions, Plain
@@ -1039,11 +1032,9 @@ Creation techniques & properties of each type:
       guest privilege of <user>, guest privileges, Plain
       has blank sa password of <local mssql database>, has blank sa passwords, Plain
       hidden of <filesystem object>, hiddens, Plain
-      hidden of <palm application>, hiddens, Plain
       hidden of <task settings>, hiddens, Plain
       highest runlevel of <task principal>, highest runlevels, Plain
       home directory required flag of <user>, home directory required flags, Plain
-      hotsync in progress of <hotsync manager>, hotsyncs in progress, Plain
       hyperthreading capable, hyperthreading capables, PlainGlobal
       hyperthreading enabled, hyperthreading enableds, PlainGlobal
       ia64 of <operating system>, ia64s, Plain
@@ -1063,7 +1054,6 @@ Creation techniques & properties of each type:
       interactive token password logon of <task principal>, interactive token password logons, Plain
       interdomain trust account flag of <user>, interdomain trust account flags, Plain
       invalid of <floating point>, invalids, Plain
-      launchable of <palm application>, launchables, Plain
       leap of <year>, leaps, Plain
       list permission of <access control entry>, list permissions, Plain
       local administrator, local administrators, PlainGlobal
@@ -1096,8 +1086,6 @@ Creation techniques & properties of each type:
       offer accepted of <action>, offer accepteds, Plain
       offer of <action>, offers, Plain
       offline of <filesystem object>, offlines, Plain
-      oktoinstallnewer of <palm application>, oktoinstallnewers, Plain
-      open of <palm application>, opens, Plain
       outbound connections allowed of <firewall profile>, outbound connections alloweds, Plain
       outbound of <firewall rule>, outbounds, Plain
       overflow of <floating point>, overflows, Plain
@@ -1129,7 +1117,6 @@ Creation techniques & properties of each type:
       read permission of <access control entry>, read permissions, Plain
       read permission of <network share>, read permissions, Plain
       readonly of <filesystem object>, readonlys, Plain
-      readonly of <palm application>, readonlies, Plain
       ready state of <running task>, ready states, Plain
       ready state of <scheduled task>, ready states, Plain
       reference attribute of <metabase value>, reference attributes, Plain
@@ -1137,8 +1124,6 @@ Creation techniques & properties of each type:
       remote connect of <session state change task trigger>, remote connects, Plain
       remote disconnect of <session state change task trigger>, remote disconnects, Plain
       remote of <logged on user>, remotes, Plain
-      resetafterinstall of <palm application>, resetafterinstalls, Plain
-      resource of <palm application>, resources, Plain
       restart on idle of <task idle settings>, restart on idles, Plain
       rule group currently enabled <string> of <firewall>, rule group currently enableds, Named
       rule group enabled <string> of <firewall profile>, rule group enableds, Named
@@ -1176,7 +1161,6 @@ Creation techniques & properties of each type:
       stop existing instance of <task settings>, stop existing instances, Plain
       stop on idle end of <task idle settings>, stop on idle ends, Plain
       stop when going on battery of <task settings>, stop when going on batteries, Plain
-      stream of <palm application>, streams, Plain
       synchronize permission of <access control entry>, synchronize permissions, Plain
       system of <filesystem object>, systems, Plain
       temporary duplicate account flag of <user>, temporary duplicate account flags, Plain
@@ -2818,7 +2802,6 @@ Creation techniques & properties of each type:
       application folder <string> of <registry key>, application folders, Named
       application folder <string> of <registry>, application folders, Named
       application folder of <registry key>, application folders, Plain
-      backup folder of <palm device>, backup folders, Plain
       client folder of <site>, client folders, Plain
       csidl folder <integer>, csidl folders, NumberedGlobal
       descendant folder of <folder>, descendant folders, Plain
@@ -2828,18 +2811,14 @@ Creation techniques & properties of each type:
       folder <string> of <folder>, folders, Named
       folder <string>, folders, NamedGlobal
       folder of <folder>, folders, Plain
-      folder of <hotsync user>, folders, Plain
-      folder of <palm device>, folders, Plain
       folder of <site>, folders, Plain
       install folder <integer>, install folders, NumberedGlobal
-      install folder of <palm device>, install folders, Plain
       parent folder of <filesystem object>, parent folders, Plain
       root folder of <drive>, root folders, Plain
       system folder, system folders, PlainGlobal
       system wow64 folder, system wow64 folders, PlainGlobal
       system x32 folder, system x32 folders, PlainGlobal
       system x64 folder, system x64 folders, PlainGlobal
-      update folder of <palm device>, update folders, Plain
       windows folder, windows folders, PlainGlobal
       x32 folder <string>, x32 folders, NamedGlobal
       x64 folder <string>, x64 folders, NamedGlobal
@@ -2923,25 +2902,6 @@ Creation techniques & properties of each type:
       unique value of <hertz>, unique values, Plain
     Properties of <hertz with multiplicity> { key phrase, plural keyword, form, <result type>}:
       multiplicity of <hertz with multiplicity>, multiplicities, Plain, <integer>
-
-  Type <hotsync manager>
-    Creation of <hotsync manager>: { key phrase, plural keyword, form}
-      hotsync manager, hotsync managers, PlainGlobal
-    Properties of <hotsync manager> { key phrase, plural keyword, form, <result type>}:
-      hotsync in progress of <hotsync manager>, hotsyncs in progress, Plain, <boolean>
-      user <integer> of <hotsync manager>, users, Numbered, <hotsync user>
-      user <string> of <hotsync manager>, users, Named, <hotsync user>
-      user of <hotsync manager>, users, Plain, <hotsync user>
-
-  Type <hotsync user>
-    Creation of <hotsync user>: { key phrase, plural keyword, form}
-      user <integer> of <hotsync manager>, users, Numbered
-      user <string> of <hotsync manager>, users, Named
-      user of <hotsync manager>, users, Plain
-    Properties of <hotsync user> { key phrase, plural keyword, form, <result type>}:
-      folder of <hotsync user>, folders, Plain, <folder>
-      name of <hotsync user>, names, Plain, <string>
-      palm device of <hotsync user>, palm devices, Plain, <palm device>
 
   Type <html>
     Creation of <html>: { key phrase, plural keyword, form}
@@ -3379,12 +3339,9 @@ Creation techniques & properties of each type:
       attributes of <dmi memory_device>, attributess, Plain
       audit level of <local mssql database>, audit levels, Plain
       average of <evaluation cycle>, averages, Plain
-      backlight feature of <palm device>, backlight features, Plain
       bad password count of <user>, bad password counts, Plain
       bank_connections of <dmi memory_module_information>, bank_connectionss, Plain
       base_address of <dmi ipmi_device_information>, base_addresss, Plain
-      battery percentage of <palm device>, battery percentages, Plain
-      battery voltage of <palm device>, battery voltages, Plain
       bios_characteristics of <dmi bios_information>, bios_characteristicss, Plain
       bios_rom_size of <dmi bios_information>, bios_rom_sizes, Plain
       bios_starting_address_segment of <dmi bios_information>, bios_starting_address_segments, Plain
@@ -3445,7 +3402,6 @@ Creation techniques & properties of each type:
       device_type of <dmi on_board_devices_information>, device_types, Plain
       device_type_and_status of <dmi cooling_device>, device_type_and_statuss, Plain
       device_type_instance of <dmi onboard_devices_extended_information>, device_type_instances, Plain
-      display depth of <palm device>, display depths, Plain
       download failure of <action>, download failures, Plain
       effective access mode for <security account> of <access control list>, effective access modes for, Index<security account>
       effective access mode for <string> of <access control list>, effective access modes for, Named
@@ -3453,7 +3409,6 @@ Creation techniques & properties of each type:
       embedded_controller_firmware_major_release of <dmi bios_information>, embedded_controller_firmware_major_releases, Plain
       embedded_controller_firmware_minor_release of <dmi bios_information>, embedded_controller_firmware_minor_releases, Plain
       enabled_size of <dmi memory_module_information>, enabled_sizes, Plain
-      encryption feature of <palm device>, encryption features, Plain
       ending_address of <dmi memory_array_mapped_address>, ending_addresss, Plain
       ending_address of <dmi memory_device_mapped_address>, ending_addresss, Plain
       engine pid of <running task>, engine pids, Plain
@@ -3483,12 +3438,10 @@ Creation techniques & properties of each type:
       first active count of <action>, first active counts, Plain
       flags of <dmi bios_language_information>, flagss, Plain
       form_factor of <dmi memory_device>, form_factors, Plain
-      free memory of <palm device>, free memories, Plain
       free space of <drive>, free spaces, Plain
       gdi object count of <process>, gdi object counts, Plain
       greatest integer, greatest integers, PlainGlobal
       handle count of <process>, handle counts, Plain
-      handspring version of <palm device>, handspring versions, Plain
       hardware_security_settings of <dmi hardware_security>, hardware_security_settingss, Plain
       height of <dmi system_enclosure_or_chassis>, heights, Plain
       hexadecet <integer> of <ipv4or6 address>, hexadecets, Numbered
@@ -3506,7 +3459,6 @@ Creation techniques & properties of each type:
       inheritance of <access control entry>, inheritances, Plain
       input_current_probe_handle of <dmi system_power_supply>, input_current_probe_handles, Plain
       input_voltage_probe_handle of <dmi system_power_supply>, input_voltage_probe_handles, Plain
-      inspector set of <palm device>, inspector sets, Plain
       installable_languages of <dmi bios_language_information>, installable_languagess, Plain
       installed_size of <dmi cache_information>, installed_sizes, Plain
       installed_size of <dmi memory_module_information>, installed_sizes, Plain
@@ -3676,7 +3628,6 @@ Creation techniques & properties of each type:
       nominal_value of <dmi temperature_probe>, nominal_values, Plain
       nominal_value of <dmi voltage_probe>, nominal_values, Plain
       non windows server count of <bes product>, non windows server counts, Plain
-      notify version of <palm device>, notify versions, Plain
       number_of_additional_information_entries of <dmi additional_information>, number_of_additional_information_entriess, Plain
       number_of_associated_memory_slots of <dmi memory_controller_information>, number_of_associated_memory_slotss, Plain
       number_of_buttons of <dmi built_in_pointing_device>, number_of_buttonss, Plain
@@ -3693,9 +3644,6 @@ Creation techniques & properties of each type:
       oem_defined of <dmi temperature_probe>, oem_defineds, Plain
       oem_defined of <dmi voltage_probe>, oem_defineds, Plain
       oem_specific of <dmi portable_battery>, oem_specifics, Plain
-      oemcompanyid of <palm device>, oemcompanyids, Plain
-      oemdeviceid of <palm device>, oemdeviceids, Plain
-      oemhalid of <palm device>, oemhalids, Plain
       offset of <smbios value>, offsets, Plain
       oldest record number of <event log>, oldest record numbers, Plain
       one bit of <bit set>, one bits, Plain
@@ -3764,12 +3712,10 @@ Creation techniques & properties of each type:
       size of <dmi memory_device>, sizes, Plain
       size of <file>, sizes, Plain
       size of <integer set>, sizes, Plain
-      size of <palm application>, sizes, Plain
       size of <ram>, sizes, Plain
       size of <registry key value>, sizes, Plain
       size of <string set>, sizes, Plain
       size of <type>, sizes, Plain
-      sleep timeout of <palm device>, sleep timeouts, Plain
       slot_characteristics_1 of <dmi system_slots>, slot_characteristics_1s, Plain
       slot_characteristics_2 of <dmi system_slots>, slot_characteristics_2s, Plain
       slot_data_bus_width of <dmi system_slots>, slot_data_bus_widths, Plain
@@ -3802,7 +3748,6 @@ Creation techniques & properties of each type:
       tolerance of <dmi electrical_current_probe>, tolerances, Plain
       tolerance of <dmi temperature_probe>, tolerances, Plain
       tolerance of <dmi voltage_probe>, tolerances, Plain
-      total memory of <palm device>, total memories, Plain
       total processor core count, total processor core counts, PlainGlobal
       total run count of <application usage summary instance>, total run counts, Plain
       total run count of <application usage summary>, total run counts, Plain
@@ -3826,10 +3771,8 @@ Creation techniques & properties of each type:
       use count of <network share>, use counts, Plain
       use limit of <network share>, use limits, Plain
       use of <dmi physical_memory_array>, uses, Plain
-      used memory of <palm device>, used memories, Plain
       user id of <user>, user ids, Plain
       user object count of <process>, user object counts, Plain
-      vendor id of <palm device>, vendor ids, Plain
       vendor_syndrome of <dmi b32_bit_memory_error_information>, vendor_syndromes, Plain
       vendor_syndrome of <dmi b64_bit_memory_error_information>, vendor_syndromes, Plain
       version of <site>, versions, Plain
@@ -4698,72 +4641,6 @@ Creation techniques & properties of each type:
       suite mask of <operating system>, suite masks, Plain
     Properties of <operating system suite mask> { key phrase, plural keyword, form, <result type>}:
 
-  Type <palm application>
-    Creation of <palm application>: { key phrase, plural keyword, form}
-      application <string> of <palm device>, applications, Named
-      application of <palm device>, applications, Plain
-    Properties of <palm application> { key phrase, plural keyword, form, <result type>}:
-      <palm application> as string, , Cast, <string>
-      appinfodirty of <palm application>, appinfodirties, Plain, <boolean>
-      backup of <palm application>, backups, Plain, <boolean>
-      copy prevention of <palm application>, copy preventions, Plain, <boolean>
-      creation date of <palm application>, creation dates, Plain, <time>
-      creator id of <palm application>, creator ids, Plain, <string>
-      database name of <palm application>, database names, Plain, <string>
-      hidden of <palm application>, hiddens, Plain, <boolean>
-      launchable of <palm application>, launchables, Plain, <boolean>
-      launcher name of <palm application>, launcher names, Plain, <string>
-      name of <palm application>, names, Plain, <string>
-      oktoinstallnewer of <palm application>, oktoinstallnewers, Plain, <boolean>
-      open of <palm application>, opens, Plain, <boolean>
-      readonly of <palm application>, readonlies, Plain, <boolean>
-      resetafterinstall of <palm application>, resetafterinstalls, Plain, <boolean>
-      resource of <palm application>, resources, Plain, <boolean>
-      size of <palm application>, sizes, Plain, <integer>
-      stream of <palm application>, streams, Plain, <boolean>
-      version of <palm application>, versions, Plain, <string>
-      version string of <palm application>, version strings, Plain, <string>
-
-  Type <palm device>
-    Creation of <palm device>: { key phrase, plural keyword, form}
-      main palm device, main palm devices, PlainGlobal
-      palm device <integer>, palm devices, NumberedGlobal
-      palm device <string>, palm devices, NamedGlobal
-      palm device of <hotsync user>, palm devices, Plain
-      palm device, palm devices, PlainGlobal
-    Properties of <palm device> { key phrase, plural keyword, form, <result type>}:
-      <palm device> as string, , Cast, <string>
-      application <string> of <palm device>, applications, Named, <palm application>
-      application of <palm device>, applications, Plain, <palm application>
-      backlight feature of <palm device>, backlight features, Plain, <integer>
-      backup folder of <palm device>, backup folders, Plain, <folder>
-      battery percentage of <palm device>, battery percentages, Plain, <integer>
-      battery type of <palm device>, battery types, Plain, <string>
-      battery voltage of <palm device>, battery voltages, Plain, <integer>
-      device hotsync time of <palm device>, device hotsync times, Plain, <time>
-      directory of <palm device>, directories, Plain, <string>
-      display depth of <palm device>, display depths, Plain, <integer>
-      encryption feature of <palm device>, encryption features, Plain, <integer>
-      folder of <palm device>, folders, Plain, <folder>
-      free memory of <palm device>, free memories, Plain, <integer>
-      handspring version of <palm device>, handspring versions, Plain, <integer>
-      hotsync time of <palm device>, hotsync times, Plain, <time>
-      inspector set of <palm device>, inspector sets, Plain, <integer>
-      install folder of <palm device>, install folders, Plain, <folder>
-      name of <palm device>, names, Plain, <string>
-      notify version of <palm device>, notify versions, Plain, <integer>
-      oemcompanyid of <palm device>, oemcompanyids, Plain, <integer>
-      oemdeviceid of <palm device>, oemdeviceids, Plain, <integer>
-      oemhalid of <palm device>, oemhalids, Plain, <integer>
-      os version of <palm device>, os versions, Plain, <string>
-      processor type of <palm device>, processor types, Plain, <string>
-      serial number of <palm device>, serial numbers, Plain, <string>
-      sleep timeout of <palm device>, sleep timeouts, Plain, <integer>
-      total memory of <palm device>, total memories, Plain, <integer>
-      update folder of <palm device>, update folders, Plain, <folder>
-      used memory of <palm device>, used memories, Plain, <integer>
-      vendor id of <palm device>, vendor ids, Plain, <integer>
-
   Type <port mapping>
     Creation of <port mapping>: { key phrase, plural keyword, form}
       port mapping of <internet connection firewall>, port mappings, Plain
@@ -5458,8 +5335,6 @@ Creation techniques & properties of each type:
       <month> as two digits, , Cast
       <number of months> as string, , Cast
       <operating system> as string, , Cast
-      <palm application> as string, , Cast
-      <palm device> as string, , Cast
       <power level> as string, , Cast
       <power state> as string, , Cast
       <primary language> as string, , Cast
@@ -5518,7 +5393,6 @@ Creation techniques & properties of each type:
       bank_locator of <dmi memory_device>, bank_locators, Plain
       base64 decode <string>, base64 decodes, NamedGlobal
       base64 encode <string>, base64 encodes, NamedGlobal
-      battery type of <palm device>, battery types, Plain
       bcc of <email task action>, bccs, Plain
       bios_release_date of <dmi bios_information>, bios_release_dates, Plain
       bios_version of <dmi bios_information>, bios_versions, Plain
@@ -5549,13 +5423,11 @@ Creation techniques & properties of each type:
       concatenation <string> of <string>, concatenations, Named
       concatenation of <string>, concatenations, Plain
       controller of <action lock state>, controllers, Plain
-      creator id of <palm application>, creator ids, Plain
       csd version of <operating system>, csd versions, Plain
       current action of <running task>, current actions, Plain
       current_language of <dmi bios_language_information>, current_languages, Plain
       data of <com handler task action>, datas, Plain
       data of <task definition>, datas, Plain
-      database name of <palm application>, database names, Plain
       date of <bios>, dates, Plain
       description of <active device>, descriptions, Plain
       description of <dmi electrical_current_probe>, descriptions, Plain
@@ -5574,7 +5446,6 @@ Creation techniques & properties of each type:
       device_locator of <dmi memory_device>, device_locators, Plain
       device_name of <dmi portable_battery>, device_names, Plain
       device_name of <dmi system_power_supply>, device_names, Plain
-      directory of <palm device>, directories, Plain
       display name of <service>, display names, Plain
       display name of <task principal>, display names, Plain
       distinguished name error message of <active directory group>, distinguished name error messages, Plain
@@ -5644,7 +5515,6 @@ Creation techniques & properties of each type:
       key <string> of <file section>, keys, Named
       key <string> of <file>, keys, Named
       language of <file version block>, languages, Plain
-      launcher name of <palm application>, launcher names, Plain
       local addresses string of <firewall rule>, local addresses strings, Plain
       local ports string of <firewall rule>, local ports strings, Plain
       location information of <active device>, location informations, Plain
@@ -5688,7 +5558,6 @@ Creation techniques & properties of each type:
       name of <firewall rule>, names, Plain
       name of <firewall service>, names, Plain
       name of <fixlet_header>, names, Plain
-      name of <hotsync user>, names, Plain
       name of <local group>, names, Plain
       name of <logged on user>, names, Plain
       name of <metabase key>, names, Plain
@@ -5696,8 +5565,6 @@ Creation techniques & properties of each type:
       name of <network adapter>, names, Plain
       name of <network share>, names, Plain
       name of <operating system>, names, Plain
-      name of <palm application>, names, Plain
-      name of <palm device>, names, Plain
       name of <port mapping>, names, Plain
       name of <process>, names, Plain
       name of <registration server>, names, Plain
@@ -5725,7 +5592,6 @@ Creation techniques & properties of each type:
       oem_string <integer> of <dmi>, oem_strings, Numbered
       oem_string of <dmi>, oem_strings, Plain
       organization of <license>, organizations, Plain
-      os version of <palm device>, os versions, Plain
       parameter <string> of <action>, parameters, Named
       parameter <string>, parameters, NamedGlobal
       part_number of <dmi memory_device>, part_numbers, Plain
@@ -5743,7 +5609,6 @@ Creation techniques & properties of each type:
       plural name of <property>, plural names, Plain
       privilege of <security account>, privileges, Plain
       process image file name of <firewall authorized application>, process image file names, Plain
-      processor type of <palm device>, processor types, Plain
       processor_manufacturer of <dmi processor_information>, processor_manufacturers, Plain
       processor_version of <dmi processor_information>, processor_versions, Plain
       product info string of <operating system>, product info strings, Plain
@@ -5767,7 +5632,6 @@ Creation techniques & properties of each type:
       sbds_device_chemistry of <dmi portable_battery>, sbds_device_chemistrys, Plain
       sbds_version_number of <dmi portable_battery>, sbds_version_numbers, Plain
       seat count state of <license>, seat count states, Plain
-      serial number of <palm device>, serial numbers, Plain
       serial_number of <dmi base_board_information>, serial_numbers, Plain
       serial_number of <dmi memory_device>, serial_numbers, Plain
       serial_number of <dmi portable_battery>, serial_numbers, Plain
@@ -5853,11 +5717,9 @@ Creation techniques & properties of each type:
       version of <dmi base_board_information>, versions, Plain
       version of <dmi system_enclosure_or_chassis>, versions, Plain
       version of <dmi system_information>, versions, Plain
-      version of <palm application>, versions, Plain
       version of <task registration info>, versions, Plain
       version string <string> of <module>, version strings, Named
       version string of <bios>, version strings, Plain
-      version string of <palm application>, version strings, Plain
       virtualizer of <application>, virtualizers, Plain
       wake on lan subnet cidr string, wake on lan subnet cidr strings, PlainGlobal
       working directory of <exec task action>, working directories, Plain
@@ -6379,12 +6241,10 @@ Creation techniques & properties of each type:
       apparent registration server time, apparent registration server times, PlainGlobal
       boot time of <operating system>, boot times, Plain
       complete time of <action>, complete times, Plain
-      creation date of <palm application>, creation dates, Plain
       creation time of <filesystem object>, creation times, Plain
       creation time of <process>, creation times, Plain
       custom site subscription effective date <string>, custom site subscription effective dates, NamedGlobal
       date of <task registration info>, dates, Plain
-      device hotsync time of <palm device>, device hotsync times, Plain
       effective date of <action lock state>, effective dates, Plain
       effective date of <setting>, effective dates, Plain
       end boundary of <task trigger>, end boundaries, Plain
@@ -6393,7 +6253,6 @@ Creation techniques & properties of each type:
       expiration date of <license>, expiration dates, Plain
       first start time of <application usage summary instance>, first start times, Plain
       first start time of <application usage summary>, first start times, Plain
-      hotsync time of <palm device>, hotsync times, Plain
       invalid before of <x509 certificate>, invalid befores, Plain
       last active time of <action>, last active times, Plain
       last change time of <action>, last change times, Plain
@@ -7214,7 +7073,6 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   hexadecimal string <string>, hexadecimal strings, NamedGlobal, <string>
   high priority, high priorities, PlainGlobal, <priority class>
   hostname, hostnames, PlainGlobal, <string>
-  hotsync manager, hotsync managers, PlainGlobal, <hotsync manager>
   hour, hours, PlainGlobal, <time interval>
   hr <string>, hrs, NamedGlobal, <html>
   hr, hrs, PlainGlobal, <html>
@@ -7276,7 +7134,6 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   logical processor count, logical processor counts, PlainGlobal, <integer>
   logon task trigger type, logon task trigger types, PlainGlobal, <task trigger type>
   main gather service, main gather services, PlainGlobal, <service>
-  main palm device, main palm devices, PlainGlobal, <palm device>
   main processor, main processors, PlainGlobal, <processor>
   march <integer>, marchs, NumberedGlobal, <day of year>
   march, marchs, PlainGlobal, <month>
@@ -7334,9 +7191,6 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   ok firewall local policy modify state, ok firewall local policy modify states, PlainGlobal, <firewall local policy modify state>
   operating system product type <integer>, operating system product types, NumberedGlobal, <operating system product type>
   operating system, operating systems, PlainGlobal, <operating system>
-  palm device <integer>, palm devices, NumberedGlobal, <palm device>
-  palm device <string>, palm devices, NamedGlobal, <palm device>
-  palm device, palm devices, PlainGlobal, <palm device>
   parameter <string>, parameters, NamedGlobal, <string>
   pending login, pending logins, PlainGlobal, <boolean>
   pending restart <string>, pending restarts, NamedGlobal, <boolean>
@@ -7573,7 +7427,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       aol error, aol errors, <string>, <file>, Plain
       apparent registration server time, apparent registration server times, <time>, world , PlainGlobal
       append permission, append permissions, <boolean>, <access control entry>, Plain
-      appinfodirty, appinfodirties, <boolean>, <palm application>, Plain
       application event log, application event logs, <event log>, world , PlainGlobal
       application folder, application folders, <folder>, <registry key>, Named
       application folder, application folders, <folder>, <registry key>, Plain
@@ -7589,8 +7442,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       application, applications, <application>, <registry>, Named
       application, applications, <application>, <registry>, Plain
       application, applications, <application>, world , NamedGlobal
-      application, applications, <palm application>, <palm device>, Named
-      application, applications, <palm application>, <palm device>, Plain
       april, aprils, <date>, <integer>, Numbered
       april, aprils, <day of year>, world , NumberedGlobal
       april, aprils, <month and year>, <integer>, Plain
@@ -7712,8 +7563,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <month>, Cast
       as string, , <string>, <number of months>, Cast
       as string, , <string>, <operating system>, Cast
-      as string, , <string>, <palm application>, Cast
-      as string, , <string>, <palm device>, Cast
       as string, , <string>, <power level>, Cast
       as string, , <string>, <power state>, Cast
       as string, , <string>, <primary language>, Cast
@@ -7808,10 +7657,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       b32_bit_memory_error_information, b32_bit_memory_error_informations, <dmi b32_bit_memory_error_information>, <dmi>, Plain
       b64_bit_memory_error_information, b64_bit_memory_error_informations, <dmi b64_bit_memory_error_information>, <dmi>, Numbered
       b64_bit_memory_error_information, b64_bit_memory_error_informations, <dmi b64_bit_memory_error_information>, <dmi>, Plain
-      backlight feature, backlight features, <integer>, <palm device>, Plain
       backoffice bit, backoffice bits, <boolean>, world , Index<operating system suite mask>Global
-      backup folder, backup folders, <folder>, <palm device>, Plain
-      backup, backups, <boolean>, <palm application>, Plain
       bad password count, bad password counts, <integer>, <user>, Plain
       bank_connections, bank_connectionss, <integer>, <dmi memory_module_information>, Plain
       bank_locator, bank_locators, <string>, <dmi memory_device>, Plain
@@ -7826,9 +7672,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       base_board_information, base_board_informations, <dmi base_board_information>, <dmi>, Numbered
       base_board_information, base_board_informations, <dmi base_board_information>, <dmi>, Plain
       batch group, batch groups, <security account>, world , PlainGlobal
-      battery percentage, battery percentages, <integer>, <palm device>, Plain
-      battery type, battery types, <string>, <palm device>, Plain
-      battery voltage, battery voltages, <integer>, <palm device>, Plain
       bcc, bccs, <string>, <email task action>, Plain
       below normal priority, below normal priorities, <priority class>, world , PlainGlobal
       bes license, bes licenses, <license>, world , PlainGlobal
@@ -8014,7 +7857,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       cooling_device, cooling_devices, <dmi cooling_device>, <dmi>, Plain
       cooling_device_handle, cooling_device_handles, <integer>, <dmi system_power_supply>, Plain
       cooling_unit_group, cooling_unit_groups, <integer>, <dmi cooling_device>, Plain
-      copy prevention, copy preventions, <boolean>, <palm application>, Plain
       core, cores, <integer>, <cpupackage>, Plain
       core_count, core_counts, <integer>, <dmi processor_information>, Plain
       core_enabled, core_enableds, <integer>, <dmi processor_information>, Plain
@@ -8027,11 +7869,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       create link permission, create link permissions, <boolean>, <access control entry>, Plain
       create permission, create permissions, <boolean>, <network share>, Plain
       create subkey permission, create subkey permissions, <boolean>, <access control entry>, Plain
-      creation date, creation dates, <time>, <palm application>, Plain
       creation time, creation times, <time>, <filesystem object>, Plain
       creation time, creation times, <time>, <process>, Plain
       creator group group, creator group groups, <security account>, world , PlainGlobal
-      creator id, creator ids, <string>, <palm application>, Plain
       creator owner group, creator owner groups, <security account>, world , PlainGlobal
       cryptography, cryptographies, <cryptography>, world , PlainGlobal
       csd version, csd versions, <string>, <operating system>, Plain
@@ -8073,7 +7913,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       data, datas, <string>, <com handler task action>, Plain
       data, datas, <string>, <task definition>, Plain
       data_width, data_widths, <integer>, <dmi memory_device>, Plain
-      database name, database names, <string>, <palm application>, Plain
       datacenter bit, datacenter bits, <boolean>, world , Index<operating system suite mask>Global
       date, dates, <date>, <time>, Index<time zone>
       date, dates, <date>, world , NamedGlobal
@@ -8141,7 +7980,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       desired encrypt report, desired encrypt reports, <boolean>, <client_cryptography>, Plain
       desired fips mode, desired fips modes, <boolean>, <cryptography>, Plain
       detailed tracking category, detailed tracking categories, <audit policy category>, <audit policy>, Plain
-      device hotsync time, device hotsync times, <time>, <palm device>, Plain
       device name, device names, <string>, <connection>, Plain
       device_chemistry, device_chemistrys, <integer>, <dmi portable_battery>, Plain
       device_description, device_descriptions, <string>, <dmi on_board_devices_information>, Numbered
@@ -8166,12 +8004,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       dhcp server, dhcp servers, <ipv4 address>, <network adapter>, Plain
       dialup group, dialup groups, <security account>, world , PlainGlobal
       direct object type, direct object types, <type>, <property>, Plain
-      directory, directories, <string>, <palm device>, Plain
       disabled state, disabled states, <boolean>, <running task>, Plain
       disabled state, disabled states, <boolean>, <scheduled task>, Plain
       disallow start when on battery, disallow start when on batteries, <boolean>, <task settings>, Plain
       disjunction, disjunctions, <boolean>, <boolean>, Plain
-      display depth, display depths, <integer>, <palm device>, Plain
       display name, display names, <string>, <service>, Plain
       display name, display names, <string>, <task principal>, Plain
       distance, distances, <integer range>, <selected server>, Plain
@@ -8318,7 +8154,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       encrypt report failure message, encrypt report failure messages, <string>, <client_cryptography>, Plain
       encrypt report, encrypt reports, <boolean>, <client_cryptography>, Plain
       encryption certificate, encryption certificates, <x509 certificate>, <license>, Plain
-      encryption feature, encryption features, <integer>, <palm device>, Plain
       end boundary, end boundaries, <time>, <task trigger>, Plain
       end, ends, <string position>, <substring>, Plain
       end, ends, <time>, <time range>, Plain
@@ -8460,8 +8295,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       folder, folders, <folder>, <drive>, Named
       folder, folders, <folder>, <folder>, Named
       folder, folders, <folder>, <folder>, Plain
-      folder, folders, <folder>, <hotsync user>, Plain
-      folder, folders, <folder>, <palm device>, Plain
       folder, folders, <folder>, <site>, Plain
       folder, folders, <folder>, world , NamedGlobal
       following text, following texts, <substring>, <string position>, Plain
@@ -8469,7 +8302,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       force logoff interval, force logoff intervals, <time interval>, <security database>, Plain
       form_factor, form_factors, <integer>, <dmi memory_device>, Plain
       format, formats, <format>, world , NamedGlobal
-      free memory, free memories, <integer>, <palm device>, Plain
       free space, free spaces, <integer>, <drive>, Plain
       friday, fridays, <day of week>, world , PlainGlobal
       friendly name, friendly names, <string>, <active device>, Plain
@@ -8549,7 +8381,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       h6, h6s, <html>, <string>, Named
       h6, h6s, <html>, <string>, Plain
       handle count, handle counts, <integer>, <process>, Plain
-      handspring version, handspring versions, <integer>, <palm device>, Plain
       hardware id, hardware ids, <string>, <active device>, Plain
       hardware_security, hardware_securitys, <dmi hardware_security>, <dmi>, Numbered
       hardware_security, hardware_securitys, <dmi hardware_security>, <dmi>, Plain
@@ -8570,7 +8401,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       hexadecimal integer, hexadecimal integers, <integer>, world , NamedGlobal
       hexadecimal string, hexadecimal strings, <string>, world , NamedGlobal
       hidden, hiddens, <boolean>, <filesystem object>, Plain
-      hidden, hiddens, <boolean>, <palm application>, Plain
       hidden, hiddens, <boolean>, <task settings>, Plain
       high priority, high priorities, <priority class>, world , PlainGlobal
       highest runlevel, highest runlevels, <boolean>, <task principal>, Plain
@@ -8579,9 +8409,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       home directory, home directories, <string>, <user>, Plain
       host name, host names, <string>, <root server>, Plain
       hostname, hostnames, <string>, world , PlainGlobal
-      hotsync in progress, hotsyncs in progress, <boolean>, <hotsync manager>, Plain
-      hotsync manager, hotsync managers, <hotsync manager>, world , PlainGlobal
-      hotsync time, hotsync times, <time>, <palm device>, Plain
       hour, hours, <time interval>, world , PlainGlobal
       hour_of_day, hours_of_day, <integer>, <time of day with time zone>, Plain
       hour_of_day, hours_of_day, <integer>, <time of day>, Plain
@@ -8654,8 +8481,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       ins, inss, <html>, <string>, Plain
       insert path attribute, insert path attributes, <boolean>, <metabase value>, Plain
       inspectability, inspectabilities, <boolean>, <application>, Plain
-      inspector set, inspector sets, <integer>, <palm device>, Plain
-      install folder, install folders, <folder>, <palm device>, Plain
       install folder, install folders, <folder>, world , NumberedGlobal
       installable_languages, installable_languagess, <integer>, <dmi bios_language_information>, Plain
       installed_size, installed_sizes, <integer>, <dmi cache_information>, Plain
@@ -8795,8 +8620,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       last write time, last write times, <time>, <registry key>, Plain
       last, lasts, <substring>, <string>, Named
       last, lasts, <substring>, <string>, Numbered
-      launchable, launchables, <boolean>, <palm application>, Plain
-      launcher name, launcher names, <string>, <palm application>, Plain
       leap, leaps, <boolean>, <year>, Plain
       lease expires, leases expire, <time>, <network adapter>, Plain
       lease obtained, leases obtained, <time>, <network adapter>, Plain
@@ -8925,7 +8748,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       mac address, mac addresses, <string>, <network adapter>, Plain
       mac, macs, <boolean>, <operating system>, Plain
       main gather service, main gather services, <service>, world , PlainGlobal
-      main palm device, main palm devices, <palm device>, world , PlainGlobal
       main processor, main processors, <processor>, world , PlainGlobal
       major version, major versions, <integer>, <operating system>, Plain
       management_device, management_devices, <dmi management_device>, <dmi>, Numbered
@@ -9140,7 +8962,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       name, names, <string>, <firewall rule>, Plain
       name, names, <string>, <firewall service>, Plain
       name, names, <string>, <fixlet_header>, Plain
-      name, names, <string>, <hotsync user>, Plain
       name, names, <string>, <local group>, Plain
       name, names, <string>, <logged on user>, Plain
       name, names, <string>, <metabase key>, Plain
@@ -9148,8 +8969,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       name, names, <string>, <network adapter>, Plain
       name, names, <string>, <network share>, Plain
       name, names, <string>, <operating system>, Plain
-      name, names, <string>, <palm application>, Plain
-      name, names, <string>, <palm device>, Plain
       name, names, <string>, <port mapping>, Plain
       name, names, <string>, <process>, Plain
       name, names, <string>, <registration server>, Plain
@@ -9208,7 +9027,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       normal, normals, <boolean>, <floating point>, Plain
       normal, normals, <boolean>, <power level>, Plain
       notifications disabled, notifications disableds, <boolean>, <firewall profile>, Plain
-      notify version, notify versions, <integer>, <palm device>, Plain
       november, novembers, <date>, <integer>, Numbered
       november, novembers, <day of year>, world , NumberedGlobal
       november, novembers, <month and year>, <integer>, Plain
@@ -9245,16 +9063,12 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       oem_specific, oem_specifics, <integer>, <dmi portable_battery>, Plain
       oem_string, oem_strings, <string>, <dmi>, Numbered
       oem_string, oem_strings, <string>, <dmi>, Plain
-      oemcompanyid, oemcompanyids, <integer>, <palm device>, Plain
-      oemdeviceid, oemdeviceids, <integer>, <palm device>, Plain
-      oemhalid, oemhalids, <integer>, <palm device>, Plain
       off state, off states, <power state>, world , PlainGlobal
       offer accepted, offer accepteds, <boolean>, <action>, Plain
       offer, offers, <boolean>, <action>, Plain
       offline, offlines, <boolean>, <filesystem object>, Plain
       offset, offsets, <integer>, <smbios value>, Plain
       ok firewall local policy modify state, ok firewall local policy modify states, <firewall local policy modify state>, world , PlainGlobal
-      oktoinstallnewer, oktoinstallnewers, <boolean>, <palm application>, Plain
       ol, ols, <html>, <html>, Named
       ol, ols, <html>, <html>, Plain
       ol, ols, <html>, <string>, Named
@@ -9267,7 +9081,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       one bit, one bits, <integer>, <bit set>, Plain
       only raw version block, only raw version blocks, <file version block>, <file>, Plain
       only version block, only version blocks, <file version block>, <file>, Plain
-      open, opens, <boolean>, <palm application>, Plain
       operand type, operand types, <type>, <cast>, Plain
       operand type, operand types, <type>, <unary operator>, Plain
       operating system product type, operating system product types, <operating system product type>, world , NumberedGlobal
@@ -9279,7 +9092,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       ordered list, ordered lists, <html>, <string>, Plain
       organization, organizations, <string>, <license>, Plain
       origin fixlet id, origin fixlet ids, <integer>, <action>, Plain
-      os version, os versions, <string>, <palm device>, Plain
       out_of_band_remote_access, out_of_band_remote_accesss, <dmi out_of_band_remote_access>, <dmi>, Numbered
       out_of_band_remote_access, out_of_band_remote_accesss, <dmi out_of_band_remote_access>, <dmi>, Plain
       outbound connections allowed, outbound connections alloweds, <boolean>, <firewall profile>, Plain
@@ -9294,10 +9106,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       pad, pads, <version>, <version>, Plain
       page fault count, page fault counts, <integer>, <process>, Plain
       page file usage, page file usages, <integer>, <process>, Plain
-      palm device, palm devices, <palm device>, <hotsync user>, Plain
-      palm device, palm devices, <palm device>, world , NamedGlobal
-      palm device, palm devices, <palm device>, world , NumberedGlobal
-      palm device, palm devices, <palm device>, world , PlainGlobal
       parallel instance, parallel instances, <boolean>, <task settings>, Plain
       parameter, parameters, <string>, <action>, Named
       parameter, parameters, <string>, world , NamedGlobal
@@ -9388,7 +9196,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       problem id, problem ids, <integer>, <active device>, Plain
       process image file name, process image file names, <string>, <firewall authorized application>, Plain
       process, processes, <process>, world , PlainGlobal
-      processor type, processor types, <string>, <palm device>, Plain
       processor, processors, <processor>, world , NumberedGlobal
       processor, processors, <processor>, world , PlainGlobal
       processor_characteristics, processor_characteristicss, <integer>, <dmi processor_information>, Plain
@@ -9462,7 +9269,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       read extended attributes permission, read extended attributes permissions, <boolean>, <access control entry>, Plain
       read permission, read permissions, <boolean>, <access control entry>, Plain
       read permission, read permissions, <boolean>, <network share>, Plain
-      readonly, readonlies, <boolean>, <palm application>, Plain
       readonly, readonlys, <boolean>, <filesystem object>, Plain
       ready state, ready states, <boolean>, <running task>, Plain
       ready state, ready states, <boolean>, <scheduled task>, Plain
@@ -9513,11 +9319,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       reserved, reserveds, <string>, <dmi system_boot_information>, Plain
       reset_count, reset_counts, <integer>, <dmi system_reset>, Plain
       reset_limit, reset_limits, <integer>, <dmi system_reset>, Plain
-      resetafterinstall, resetafterinstalls, <boolean>, <palm application>, Plain
       resolution, resolutions, <integer>, <dmi electrical_current_probe>, Plain
       resolution, resolutions, <integer>, <dmi temperature_probe>, Plain
       resolution, resolutions, <integer>, <dmi voltage_probe>, Plain
-      resource, resources, <boolean>, <palm application>, Plain
       restart count, restart counts, <integer>, <task settings>, Plain
       restart interval, restart intervals, <time interval>, <task settings>, Plain
       restart on idle, restart on idles, <boolean>, <task idle settings>, Plain
@@ -9609,7 +9413,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       september, septembers, <day of year>, world , NumberedGlobal
       september, septembers, <month and year>, <integer>, Plain
       september, septembers, <month>, world , PlainGlobal
-      serial number, serial numbers, <string>, <palm device>, Plain
       serial_number, serial_numbers, <string>, <dmi base_board_information>, Plain
       serial_number, serial_numbers, <string>, <dmi memory_device>, Plain
       serial_number, serial_numbers, <string>, <dmi portable_battery>, Plain
@@ -9675,13 +9478,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       size, sizes, <integer>, <dmi memory_device>, Plain
       size, sizes, <integer>, <file>, Plain
       size, sizes, <integer>, <integer set>, Plain
-      size, sizes, <integer>, <palm application>, Plain
       size, sizes, <integer>, <ram>, Plain
       size, sizes, <integer>, <registry key value>, Plain
       size, sizes, <integer>, <string set>, Plain
       size, sizes, <integer>, <type>, Plain
       sku_number, sku_numbers, <string>, <dmi system_information>, Plain
-      sleep timeout, sleep timeouts, <integer>, <palm device>, Plain
       slot_characteristics_1, slot_characteristics_1s, <integer>, <dmi system_slots>, Plain
       slot_characteristics_2, slot_characteristics_2s, <integer>, <dmi system_slots>, Plain
       slot_data_bus_width, slot_data_bus_widths, <integer>, <dmi system_slots>, Plain
@@ -9736,7 +9537,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       stop existing instance, stop existing instances, <boolean>, <task settings>, Plain
       stop on idle end, stop on idle ends, <boolean>, <task idle settings>, Plain
       stop when going on battery, stop when going on batteries, <boolean>, <task settings>, Plain
-      stream, streams, <boolean>, <palm application>, Plain
       string value, string values, <smbios value>, <smbios structure>, Named
       string value, string values, <string>, <wmi select>, Numbered
       string value, string values, <string>, <wmi select>, Plain
@@ -9895,7 +9695,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       tolerance, tolerances, <integer>, <dmi voltage_probe>, Plain
       total duration, total durations, <time interval>, <application usage summary instance>, Plain
       total duration, total durations, <time interval>, <application usage summary>, Plain
-      total memory, total memories, <integer>, <palm device>, Plain
       total processor core count, total processor core counts, <integer>, world , PlainGlobal
       total run count, total run counts, <integer>, <application usage summary instance>, Plain
       total run count, total run counts, <integer>, <application usage summary>, Plain
@@ -9997,7 +9796,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       up, ups, <boolean>, <network adapter interface>, Plain
       up, ups, <boolean>, <network adapter>, Plain
       up, ups, <boolean>, <network ip interface>, Plain
-      update folder, update folders, <folder>, <palm device>, Plain
       upload progress, upload progresses, <string>, <client>, Plain
       upnp firewall service type, upnp firewall service types, <firewall service type>, world , PlainGlobal
       upper bound, upper bounds, <integer>, <integer range>, Plain
@@ -10011,7 +9809,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       use count, use counts, <integer>, <network share>, Plain
       use limit, use limits, <integer>, <network share>, Plain
       use, uses, <integer>, <dmi physical_memory_array>, Plain
-      used memory, used memories, <integer>, <palm device>, Plain
       user comment, user comments, <string>, <user>, Plain
       user id, user ids, <integer>, <user>, Plain
       user id, user ids, <string>, <logon task trigger>, Plain
@@ -10026,9 +9823,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       user time, user times, <time interval>, <process>, Plain
       user type, user types, <metabase user type>, <metabase value>, Plain
       user ui language, user ui languages, <language>, world , PlainGlobal
-      user, users, <hotsync user>, <hotsync manager>, Named
-      user, users, <hotsync user>, <hotsync manager>, Numbered
-      user, users, <hotsync user>, <hotsync manager>, Plain
       user, users, <security identifier>, <process>, Plain
       user, users, <user>, <logged on user>, Plain
       user, users, <user>, <security identifier>, Plain
@@ -10060,7 +9854,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       variable, variables, <site profile variable>, <site profile>, Named
       variable, variables, <site profile variable>, <site profile>, Plain
       variable, variables, <string>, <file>, Plain
-      vendor id, vendor ids, <integer>, <palm device>, Plain
       vendor name, vendor names, <string>, <processor>, Plain
       vendor, vendors, <string>, <dmi bios_information>, Plain
       vendor_syndrome, vendor_syndromes, <integer>, <dmi b32_bit_memory_error_information>, Plain
@@ -10071,13 +9864,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       version info, version infos, <string>, <execution>, Plain
       version string, version strings, <string>, <bios>, Plain
       version string, version strings, <string>, <module>, Named
-      version string, version strings, <string>, <palm application>, Plain
       version, versions, <integer>, <site>, Plain
       version, versions, <string>, <bios>, Plain
       version, versions, <string>, <dmi base_board_information>, Plain
       version, versions, <string>, <dmi system_enclosure_or_chassis>, Plain
       version, versions, <string>, <dmi system_information>, Plain
-      version, versions, <string>, <palm application>, Plain
       version, versions, <string>, <task registration info>, Plain
       version, versions, <version>, <application usage summary instance>, Plain
       version, versions, <version>, <current relay>, Plain

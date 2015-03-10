@@ -10,6 +10,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   active directory server
   administrative rights
   analysis
+  application (derives from  filesystem object)
   application usage summary
   application usage summary instance
   array
@@ -20,7 +21,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   boolean
   bundle
   cast
-  client (derives from  filesystem object)
+  client (derives from  application)
   client process owner
   client_cryptography
   component
@@ -271,6 +272,16 @@ Creation techniques & properties of each type:
       analysis, analysiss, PlainGlobal
     Properties of <analysis> { key phrase, plural keyword, form, <result type>}:
       last time of <analysis>, last times, Plain, <time>
+
+  Type <application> (derives from filesystem object)
+    Creation of <application>: { key phrase, plural keyword, form}
+      application <string>, applications, NamedGlobal
+      application of <folder>, applications, Plain
+      application, applications, PlainGlobal
+      regapp <string>, regapps, NamedGlobal
+      regapp, regapps, PlainGlobal
+    Properties of <application> { key phrase, plural keyword, form, <result type>}:
+      <application> as string, , Cast, <string>
 
   Type <application usage summary>
     Creation of <application usage summary>: { key phrase, plural keyword, form}
@@ -627,7 +638,7 @@ Creation techniques & properties of each type:
       operand type of <cast>, operand types, Plain, <type>
       result type of <cast>, result types, Plain, <type>
 
-  Type <client> (derives from filesystem object)
+  Type <client> (derives from application)
     Creation of <client>: { key phrase, plural keyword, form}
       client, clients, PlainGlobal
     Properties of <client> { key phrase, plural keyword, form, <result type>}:
@@ -1139,6 +1150,7 @@ Creation techniques & properties of each type:
       relative posix file <string> of <folder>, relative posix files, Named
       sibling file <string> of <filesystem object>, sibling files, Named
     Properties of <file> { key phrase, plural keyword, form, <result type>}:
+      <file> as string, , Cast, <string>
       alias of <file>, aliases, Plain, <boolean>
       array of <file>, arrays, Plain, <array>
       byte <integer> of <file>, bytes, Numbered, <integer>
@@ -1212,9 +1224,6 @@ Creation techniques & properties of each type:
 
   Type <filesystem object>
     Creation of <filesystem object>: { key phrase, plural keyword, form}
-      application <string>, applications, NamedGlobal
-      application of <folder>, applications, Plain
-      application, applications, PlainGlobal
       find item <string> of <folder>, find items, Named
       hfs item <string>, hfs items, NamedGlobal
       hfs relative item <string> of <folder>, hfs relative items, Named
@@ -1224,7 +1233,6 @@ Creation techniques & properties of each type:
       item of <folder>, items, Plain
       posix item <string>, posix items, NamedGlobal
       posix relative item <string> of <folder>, posix relative items, Named
-      regapp, regapps, PlainGlobal
       relative item <string> of <folder>, relative items, Named
       sibling item <string> of <filesystem object>, sibling items, Named
     Properties of <filesystem object> { key phrase, plural keyword, form, <result type>}:
@@ -1538,7 +1546,7 @@ Creation techniques & properties of each type:
       volume settings folder of <domain>, volume settings folders, Plain
       volume settings folder, volume settings folders, PlainGlobal
     Properties of <folder> { key phrase, plural keyword, form, <result type>}:
-      application of <folder>, applications, Plain, <filesystem object>
+      application of <folder>, applications, Plain, <application>
       bundle of <folder>, bundles, Plain, <bundle>
       bundle version of <folder>, bundle versions, Plain, <version>
       descendant folder of <folder>, descendant folders, Plain, <folder>
@@ -2459,6 +2467,7 @@ Creation techniques & properties of each type:
   Type <logged on user>
     Creation of <logged on user>: { key phrase, plural keyword, form}
       current user, current users, PlainGlobal
+      logged on user of <user>, logged on users, Plain
       logged on user, logged on users, PlainGlobal
     Properties of <logged on user> { key phrase, plural keyword, form, <result type>}:
       active of <logged on user>, actives, Plain, <boolean>
@@ -3072,10 +3081,12 @@ Creation techniques & properties of each type:
   Type <security identifier>
     Creation of <security identifier>: { key phrase, plural keyword, form}
       sid of <active directory group>, sids, Plain
+      sid of <user>, sids, Plain
     Properties of <security identifier> { key phrase, plural keyword, form, <result type>}:
       <security identifier> = <security identifier>, , BinaryOperator, <boolean>
       <security identifier> as string, , Cast, <string>
       component string of <security identifier>, component strings, Plain, <string>
+      user of <security identifier>, users, Plain, <user>
 
   Type <selected server>
     Creation of <selected server>: { key phrase, plural keyword, form}
@@ -3180,6 +3191,7 @@ Creation techniques & properties of each type:
     Creation of <string>: { key phrase, plural keyword, form}
       <action lock state> as string, , Cast
       <action> as string, , Cast
+      <application> as string, , Cast
       <binary operator> as string, , Cast
       <bios> as string, , Cast
       <bit set> as string, , Cast
@@ -3194,6 +3206,7 @@ Creation techniques & properties of each type:
       <day of year> as string, , Cast
       <dummy type> as string, , Cast
       <environment variable> as string, , Cast
+      <file> as string, , Cast
       <filesystem object> as string, , Cast
       <floating point> as scientific notation, , Cast
       <floating point> as standard notation, , Cast
@@ -3277,6 +3290,7 @@ Creation techniques & properties of each type:
       cidr string of <network adapter>, cidr strings, Plain
       cidr string of <network ip interface>, cidr strings, Plain
       classname of <registrynode>, classnames, Plain
+      comment of <user>, comments, Plain
       common name of <license>, common names, Plain
       component string of <security identifier>, component strings, Plain
       computer name, computer names, PlainGlobal
@@ -3306,6 +3320,7 @@ Creation techniques & properties of each type:
       family name of <processor>, family names, Plain
       fips mode failure message of <cryptography>, fips mode failure messages, Plain
       friendly name of <network adapter>, friendly names, Plain
+      full name of <user>, full names, Plain
       gather schedule authority of <site>, gather schedule authoritys, Plain
       gather url of <license>, gather urls, Plain
       groups error message of <active directory local computer>, groups error messages, Plain
@@ -3414,6 +3429,7 @@ Creation techniques & properties of each type:
       type of <volume>, types, Plain
       upload progress of <client>, upload progresses, Plain
       url of <site>, urls, Plain
+      user id of <user>, user ids, Plain
       usual name of <property>, usual names, Plain
       value of <environment variable>, values, Plain
       value of <fixlet_header>, values, Plain
@@ -4112,15 +4128,21 @@ Creation techniques & properties of each type:
       local user, local users, PlainGlobal
       user <string>, users, NamedGlobal
       user of <logged on user>, users, Plain
+      user of <security identifier>, users, Plain
       user, users, PlainGlobal
     Properties of <user> { key phrase, plural keyword, form, <result type>}:
       active directory user of <user>, active directory users, Plain, <active directory local user>
       attribute <string> of <user>, attributes, Named, <user attribute>
       attribute of <user>, attributes, Plain, <user attribute>
+      comment of <user>, comments, Plain, <string>
+      full name of <user>, full names, Plain, <string>
       home directory of <user>, home directories, Plain, <folder>
       id of <user>, ids, Plain, <string>
+      logged on user of <user>, logged on users, Plain, <logged on user>
       name of <user>, names, Plain, <string>
       primary group id of <user>, primary group ids, Plain, <string>
+      sid of <user>, sids, Plain, <security identifier>
+      user id of <user>, user ids, Plain, <string>
 
   Type <user attribute>
     Creation of <user attribute>: { key phrase, plural keyword, form}
@@ -4285,12 +4307,12 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   apparent registration server time, apparent registration server times, PlainGlobal, <time>
   apple extras folder, apple extras folders, PlainGlobal, <folder>
   apple menu items folder, apple menu items folders, PlainGlobal, <folder>
-  application <string>, applications, NamedGlobal, <filesystem object>
+  application <string>, applications, NamedGlobal, <application>
   application support folder, application support folders, PlainGlobal, <folder>
   application usage <string>, application usages, NamedGlobal, <timed( time range, integer )>
   application usage summary <string>, application usage summaries, NamedGlobal, <application usage summary>
   application usage summary, application usage summaries, PlainGlobal, <application usage summary>
-  application, applications, PlainGlobal, <filesystem object>
+  application, applications, PlainGlobal, <application>
   applications folder, applications folders, PlainGlobal, <folder>
   april <integer>, aprils, NumberedGlobal, <day of year>
   april, aprils, PlainGlobal, <month>
@@ -4561,7 +4583,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   quicktime folder, quicktime folders, PlainGlobal, <folder>
   ram, rams, PlainGlobal, <ram>
   receipts folder, receipts folders, PlainGlobal, <folder>
-  regapp, regapps, PlainGlobal, <filesystem object>
+  regapp <string>, regapps, NamedGlobal, <application>
+  regapp, regapps, PlainGlobal, <application>
   regex <string>, regexes, NamedGlobal, <regular expression>
   registration server, registration servers, PlainGlobal, <registration server>
   registry, registries, PlainGlobal, <dummy type>
@@ -4700,9 +4723,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       application usage summary, application usage summaries, <application usage summary>, world , NamedGlobal
       application usage summary, application usage summaries, <application usage summary>, world , PlainGlobal
       application usage, application usages, <timed( time range, integer )>, world , NamedGlobal
-      application, applications, <filesystem object>, <folder>, Plain
-      application, applications, <filesystem object>, world , NamedGlobal
-      application, applications, <filesystem object>, world , PlainGlobal
+      application, applications, <application>, <folder>, Plain
+      application, applications, <application>, world , NamedGlobal
+      application, applications, <application>, world , PlainGlobal
       applications folder, applications folders, <folder>, <domain>, Plain
       applications folder, applications folders, <folder>, world , PlainGlobal
       april, aprils, <date>, <integer>, Numbered
@@ -4776,6 +4799,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string with zone index, , <string>, <ipv6 address>, Cast
       as string, , <string>, <action lock state>, Cast
       as string, , <string>, <action>, Cast
+      as string, , <string>, <application>, Cast
       as string, , <string>, <binary operator>, Cast
       as string, , <string>, <bios>, Cast
       as string, , <string>, <bit set>, Cast
@@ -4788,6 +4812,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <day of year>, Cast
       as string, , <string>, <dummy type>, Cast
       as string, , <string>, <environment variable>, Cast
+      as string, , <string>, <file>, Cast
       as string, , <string>, <filesystem object>, Cast
       as string, , <string>, <floating point>, Cast
       as string, , <string>, <hertz>, Cast
@@ -4970,6 +4995,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       color sync folder, color sync folders, <folder>, world , PlainGlobal
       colorsync profiles folder, colorsync profiles folders, <folder>, <domain>, Plain
       colorsync profiles folder, colorsync profiles folders, <folder>, world , PlainGlobal
+      comment, comments, <string>, <user>, Plain
       common name, common names, <string>, <license>, Plain
       competition size, competition sizes, <integer>, <selected server>, Plain
       competition weight, competition weights, <integer>, <selected server>, Plain
@@ -5289,6 +5315,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       friday, fridays, <day of week>, world , PlainGlobal
       friendly name, friendly names, <string>, <network adapter>, Plain
       full gateway address, full gateway addresses, <ipv4or6 address>, <selected server>, Plain
+      full name, full names, <string>, <user>, Plain
       full, fulls, <boolean>, <power level>, Plain
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Numbered
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Plain
@@ -5549,6 +5576,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       logged off state, logged off states, <power state>, world , PlainGlobal
       logged on user, logged on users, <active directory local user>, <active directory server>, Named
       logged on user, logged on users, <active directory local user>, <active directory server>, Plain
+      logged on user, logged on users, <logged on user>, <user>, Plain
       logged on user, logged on users, <logged on user>, world , PlainGlobal
       logical ram, logical rams, <integer>, world , PlainGlobal
       long name, long names, <string>, <client process owner>, Plain
@@ -5860,7 +5888,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       rate, rates, <rate>, <linear projection>, Plain
       receipts folder, receipts folders, <folder>, <domain>, Plain
       receipts folder, receipts folders, <folder>, world , PlainGlobal
-      regapp, regapps, <filesystem object>, world , PlainGlobal
+      regapp, regapps, <application>, world , NamedGlobal
+      regapp, regapps, <application>, world , PlainGlobal
       regex escape, regex escapes, <string>, <string>, Plain
       regex, regexes, <regular expression>, world , NamedGlobal
       registrar number, registrar numbers, <integer>, <license>, Plain
@@ -5951,6 +5980,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sibling folder, sibling folders, <folder>, <filesystem object>, Named
       sibling item, sibling items, <filesystem object>, <filesystem object>, Named
       sid, sids, <security identifier>, <active directory group>, Plain
+      sid, sids, <security identifier>, <user>, Plain
       significance place, significance places, <floating point>, <floating point>, Numbered
       significance place, significance places, <floating point>, <floating point>, Plain
       significance threshold, significance thresholds, <floating point>, <floating point>, Plain
@@ -6187,9 +6217,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       used percent, used percents, <integer>, <volume>, Plain
       used space, used spaces, <integer>, <volume>, Plain
       user domain, user domains, <domain>, world , PlainGlobal
+      user id, user ids, <string>, <user>, Plain
       user temp folder, user temp folders, <folder>, <domain>, Plain
       user temp folder, user temp folders, <folder>, world , PlainGlobal
       user, users, <user>, <logged on user>, Plain
+      user, users, <user>, <security identifier>, Plain
       user, users, <user>, world , NamedGlobal
       user, users, <user>, world , PlainGlobal
       users folder, users folders, <folder>, <domain>, Plain
