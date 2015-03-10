@@ -1,4 +1,4 @@
-Operating System:Linux SuSE Enterprise (2_6_27_19-5-default)
+Operating System:Linux SuSE Enterprise Desktop 11 (2_6_27_19-5-default)
 Build Target:x86_64_sled11
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
