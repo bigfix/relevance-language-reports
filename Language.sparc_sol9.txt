@@ -449,6 +449,7 @@ Creation techniques & properties of each type:
       alias of <network ip interface>, aliases, Plain
       allow unmentioned site of <license>, allow unmentioned sites, Plain
       authenticating of <client>, authenticatings, Plain
+      authenticating of <current relay>, authenticatings, Plain
       autoboot value of <zone>, autoboot values, Plain
       bit <integer> of <bit set>, bits, Numbered
       bit <integer> of <integer>, bits, Numbered
@@ -628,6 +629,7 @@ Creation techniques & properties of each type:
     Creation of <current relay>: { key phrase, plural keyword, form}
       current relay, current relays, PlainGlobal
     Properties of <current relay> { key phrase, plural keyword, form, <result type>}:
+      authenticating of <current relay>, authenticatings, Plain, <boolean>
       version of <current relay>, versions, Plain, <version>
 
   Type <date>
@@ -4650,6 +4652,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       august, augusts, <month and year>, <integer>, Plain
       august, augusts, <month>, world , PlainGlobal
       authenticating, authenticatings, <boolean>, <client>, Plain
+      authenticating, authenticatings, <boolean>, <current relay>, Plain
       autoboot value, autoboot values, <boolean>, <zone>, Plain
       average duration, average durations, <time interval>, <evaluation cycle>, Plain
       average, averages, <integer>, <evaluation cycle>, Plain
