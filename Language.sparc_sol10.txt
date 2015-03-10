@@ -1,4 +1,4 @@
-Operating System:SunOS 5_10 (Generic)
+Operating System:SunOS 5_10 (Generic_139555-08)
 Build Target:
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
@@ -70,6 +70,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   language
   license
   logged on user
+  manual group
   mode
   mode_mask
   module
@@ -267,6 +268,7 @@ Creation techniques & properties of each type:
       computer count of <bes product>, computer counts, Plain, <integer>
       expiration date of <bes product>, expiration dates, Plain, <date>
       legacy of <bes product>, legacies, Plain, <boolean>
+      mvs count of <bes product>, mvs counts, Plain, <integer>
       name of <bes product>, names, Plain, <string>
       non windows server count of <bes product>, non windows server counts, Plain, <integer>
       perpetual maintenance of <bes product>, perpetual maintenances, Plain, <boolean>
@@ -424,6 +426,8 @@ Creation techniques & properties of each type:
       <time interval> < <time interval>, , BinaryOperator
       <time interval> <= <time interval>, , BinaryOperator
       <time interval> = <time interval>, , BinaryOperator
+      <time of day with time zone> < <time of day with time zone>, , BinaryOperator
+      <time of day with time zone> <= <time of day with time zone>, , BinaryOperator
       <time of day with time zone> = <time of day with time zone>, , BinaryOperator
       <time of day> < <time of day>, , BinaryOperator
       <time of day> <= <time of day>, , BinaryOperator
@@ -455,6 +459,7 @@ Creation techniques & properties of each type:
       active of <logged on user>, actives, Plain
       alias of <network ip interface>, aliases, Plain
       allow unmentioned site of <license>, allow unmentioned sites, Plain
+      android of <operating system>, androids, Plain
       authenticating of <client>, authenticatings, Plain
       authenticating of <current relay>, authenticatings, Plain
       autoboot value of <zone>, autoboot values, Plain
@@ -480,6 +485,7 @@ Creation techniques & properties of each type:
       enabled of <administrative rights>, enableds, Plain
       enabled of <setting>, enableds, Plain
       encrypt report of <client_cryptography>, encrypt reports, Plain
+      enhanced security of <license>, enhanced securities, Plain
       evaluated of <site>, evaluateds, Plain
       evaluation of <license>, evaluations, Plain
       exclusive ip of <zone>, exclusive ips, Plain
@@ -512,6 +518,7 @@ Creation techniques & properties of each type:
       loopback of <network ip interface>, loopbacks, Plain
       low of <power level>, lows, Plain
       mac of <operating system>, macs, Plain
+      member of <manual group>, members, Plain
       member of <site group>, members, Plain
       modified flag of <ipv4 route>, modified flags, Plain
       multicast support of <network adapter interface>, multicast supports, Plain
@@ -554,6 +561,7 @@ Creation techniques & properties of each type:
       setsrc flag of <ipv4 route>, setsrc flags, Plain
       setuid of <filesystem object>, setuids, Plain
       setuid of <mode>, setuids, Plain
+      sha256 download of <license>, sha256 downloads, Plain
       smt capable of <cpupackage>, smt capables, Plain
       smt enabled of <cpupackage>, smt enableds, Plain
       static flag of <ipv4 route>, static flags, Plain
@@ -613,6 +621,8 @@ Creation techniques & properties of each type:
       last command time of <client>, last command times, Plain, <time>
       last report time of <client>, last report times, Plain, <time>
       local character set of <client>, local character sets, Plain, <string>
+      manual group <string> of <client>, manual groups, Named, <manual group>
+      manual group of <client>, manual groups, Plain, <manual group>
       registration address of <client>, registration addresses, Plain, <ipv4or6 address>
       registration cidr address of <client>, registration cidr addresses, Plain, <string>
       registration mac address of <client>, registration mac addresses, Plain, <string>
@@ -989,10 +999,14 @@ Creation techniques & properties of each type:
       md5 of <file>, md5s, Plain, <string>
       section <string> of <file>, sections, Named, <file section>
       sha1 of <file>, sha1s, Plain, <string>
+      sha224 of <file>, sha224s, Plain, <string>
+      sha256 of <file>, sha256s, Plain, <string>
       sha2_224 of <file>, sha2_224s, Plain, <string>
       sha2_256 of <file>, sha2_256s, Plain, <string>
       sha2_384 of <file>, sha2_384s, Plain, <string>
       sha2_512 of <file>, sha2_512s, Plain, <string>
+      sha384 of <file>, sha384s, Plain, <string>
+      sha512 of <file>, sha512s, Plain, <string>
       size of <file>, sizes, Plain, <integer>
       sqlite database of <file>, sqlite databases, Plain, <sqlite database>
       variable of <file>, variables, Plain, <string>
@@ -1161,6 +1175,8 @@ Creation techniques & properties of each type:
       significance place of <floating point>, significance places, Plain
       significance threshold of <floating point>, significance thresholds, Plain
       sleep percent of <evaluation cycle>, sleep percents, Plain
+      sqrt of <floating point>, sqrts, Plain
+      sqrt of <integer>, sqrts, Plain
       standard deviation of <floating point>, standard deviations, Plain
       standard deviation of <integer>, standard deviations, Plain
       sum of <floating point>, sums, Plain
@@ -1214,6 +1230,7 @@ Creation techniques & properties of each type:
       significance place <integer> of <floating point>, significance places, Numbered, <floating point>
       significance place of <floating point>, significance places, Plain, <floating point>
       significance threshold of <floating point>, significance thresholds, Plain, <floating point>
+      sqrt of <floating point>, sqrts, Plain, <floating point>
       standard deviation of <floating point>, standard deviations, Plain, <floating point>
       sum of <floating point>, sums, Plain, <floating point>
       underflow of <floating point>, underflows, Plain, <boolean>
@@ -1843,6 +1860,7 @@ Creation techniques & properties of each type:
       multiplicity of <uuid with multiplicity>, multiplicities, Plain
       multiplicity of <version with multiplicity>, multiplicities, Plain
       multiplicity of <year with multiplicity>, multiplicities, Plain
+      mvs count of <bes product>, mvs counts, Plain
       nanoseconds value of <smf time>, nanoseconds values, Plain
       non windows server count of <bes product>, non windows server counts, Plain
       numeric value of <string>, numeric values, Plain
@@ -1886,6 +1904,7 @@ Creation techniques & properties of each type:
       total space of <filesystem>, total spaces, Plain
       uid of <filesystem object>, uids, Plain
       uid of <symlink>, uids, Plain
+      update level of <operating system>, update levels, Plain
       upper bound of <integer range>, upper bounds, Plain
       use count of <ipv4 route>, use counts, Plain
       used amount of <ram>, used amounts, Plain
@@ -1977,6 +1996,7 @@ Creation techniques & properties of each type:
       september of <integer>, septembers, Plain, <month and year>
       set of <integer>, sets, Plain, <integer set>
       significant digits <integer> of <integer>, significant digitss, Numbered, <integer>
+      sqrt of <integer>, sqrts, Plain, <floating point>
       standard deviation of <integer>, standard deviations, Plain, <floating point>
       sum of <integer>, sums, Plain, <integer>
       unique value of <integer>, unique values, Plain, <integer with multiplicity>
@@ -2238,8 +2258,12 @@ Creation techniques & properties of each type:
     Properties of <license> { key phrase, plural keyword, form, <result type>}:
       allow unmentioned site of <license>, allow unmentioned sites, Plain, <boolean>
       common name of <license>, common names, Plain, <string>
+      download hash algorithm of <license>, download hash algorithms, Plain, <string>
+      effective download hash algorithm of <license>, effective download hash algorithms, Plain, <string>
+      effective signature hash algorithm of <license>, effective signature hash algorithms, Plain, <string>
       email address of <license>, email addresses, Plain, <string>
       encryption certificate of <license>, encryption certificates, Plain, <x509 certificate>
+      enhanced security of <license>, enhanced securities, Plain, <boolean>
       evaluation of <license>, evaluations, Plain, <boolean>
       expiration date of <license>, expiration dates, Plain, <time>
       expiration state of <license>, expiration states, Plain, <string>
@@ -2251,6 +2275,8 @@ Creation techniques & properties of each type:
       registrar number of <license>, registrar numbers, Plain, <integer>
       seat count state of <license>, seat count states, Plain, <string>
       seat of <license>, seats, Plain, <integer>
+      sha256 download of <license>, sha256 downloads, Plain, <boolean>
+      signature hash algorithm of <license>, signature hash algorithms, Plain, <string>
       site number of <license>, site numbers, Plain, <integer>
       start date of <license>, start dates, Plain, <time>
       type of <license>, types, Plain, <string>
@@ -2266,6 +2292,15 @@ Creation techniques & properties of each type:
       remote of <logged on user>, remotes, Plain, <boolean>
       tty of <logged on user>, ttys, Plain, <string>
       user of <logged on user>, users, Plain, <user>
+
+  Type <manual group>
+    Creation of <manual group>: { key phrase, plural keyword, form}
+      manual group <string> of <client>, manual groups, Named
+      manual group of <client>, manual groups, Plain
+    Properties of <manual group> { key phrase, plural keyword, form, <result type>}:
+      <manual group> as string, , Cast, <string>
+      member of <manual group>, members, Plain, <boolean>
+      setting of <manual group>, settings, Plain, <setting>
 
   Type <mode>
     Creation of <mode>: { key phrase, plural keyword, form}
@@ -2560,6 +2595,7 @@ Creation techniques & properties of each type:
       operating system, operating systems, PlainGlobal
     Properties of <operating system> { key phrase, plural keyword, form, <result type>}:
       <operating system> as string, , Cast, <string>
+      android of <operating system>, androids, Plain, <boolean>
       architecture of <operating system>, architectures, Plain, <string>
       boot time of <operating system>, boot times, Plain, <time>
       build number high of <operating system>, build number highs, Plain, <integer>
@@ -2576,6 +2612,7 @@ Creation techniques & properties of each type:
       product info string of <operating system>, product info strings, Plain, <string>
       release of <operating system>, releases, Plain, <string>
       unix of <operating system>, unixes, Plain, <boolean>
+      update level of <operating system>, update levels, Plain, <integer>
       uptime of <operating system>, uptimes, Plain, <time interval>
       version of <operating system>, versions, Plain, <version>
       windows of <operating system>, windowses, Plain, <boolean>
@@ -2798,6 +2835,7 @@ Creation techniques & properties of each type:
       setting <string> of <client>, settings, Named
       setting <string> of <site>, settings, Named
       setting of <client>, settings, Plain
+      setting of <manual group>, settings, Plain
       setting of <site>, settings, Plain
     Properties of <setting> { key phrase, plural keyword, form, <result type>}:
       <setting> as string, , Cast, <string>
@@ -3113,6 +3151,7 @@ Creation techniques & properties of each type:
       <json key> as string, , Cast
       <json value> as string, , Cast
       <language> as string, , Cast
+      <manual group> as string, , Cast
       <mode> as octal string, , Cast
       <mode> as string, , Cast
       <mode_mask> as string, , Cast
@@ -3208,7 +3247,10 @@ Creation techniques & properties of each type:
       dns name, dns names, PlainGlobal
       domain name, domain names, PlainGlobal
       domainname, domainnames, PlainGlobal
+      download hash algorithm of <license>, download hash algorithms, Plain
       download path <string>, download paths, NamedGlobal
+      effective download hash algorithm of <license>, effective download hash algorithms, Plain
+      effective signature hash algorithm of <license>, effective signature hash algorithms, Plain
       element of <string set>, elements, Plain
       email address of <license>, email addresses, Plain
       encoding of <sqlite database>, encodings, Plain
@@ -3297,6 +3339,8 @@ Creation techniques & properties of each type:
       pathname of <filesystem object>, pathnames, Plain
       pathname of <symlink>, pathnames, Plain
       pending restart name, pending restart names, PlainGlobal
+      percent decode <string>, percent decodes, NamedGlobal
+      percent encode <string>, percent encodes, NamedGlobal
       pkginst of <pkginfo>, pkginsts, Plain
       platform id of <language>, platform ids, Plain
       plural name of <property>, plural names, Plain
@@ -3315,6 +3359,10 @@ Creation techniques & properties of each type:
       sha1 of <file>, sha1s, Plain
       sha1 of <string>, sha1s, Plain
       sha1 of <x509 certificate>, sha1s, Plain
+      sha224 of <file>, sha224s, Plain
+      sha224 of <string>, sha224s, Plain
+      sha256 of <file>, sha256s, Plain
+      sha256 of <string>, sha256s, Plain
       sha2_224 of <file>, sha2_224s, Plain
       sha2_224 of <string>, sha2_224s, Plain
       sha2_256 of <file>, sha2_256s, Plain
@@ -3323,6 +3371,11 @@ Creation techniques & properties of each type:
       sha2_384 of <string>, sha2_384s, Plain
       sha2_512 of <file>, sha2_512s, Plain
       sha2_512 of <string>, sha2_512s, Plain
+      sha384 of <file>, sha384s, Plain
+      sha384 of <string>, sha384s, Plain
+      sha512 of <file>, sha512s, Plain
+      sha512 of <string>, sha512s, Plain
+      signature hash algorithm of <license>, signature hash algorithms, Plain
       singular name of <property>, singular names, Plain
       site tag of <site>, site tags, Plain
       site url of <bes product>, site urls, Plain
@@ -3550,10 +3603,14 @@ Creation techniques & properties of each type:
       samp of <string>, samps, Plain, <html>
       set of <string>, sets, Plain, <string set>
       sha1 of <string>, sha1s, Plain, <string>
+      sha224 of <string>, sha224s, Plain, <string>
+      sha256 of <string>, sha256s, Plain, <string>
       sha2_224 of <string>, sha2_224s, Plain, <string>
       sha2_256 of <string>, sha2_256s, Plain, <string>
       sha2_384 of <string>, sha2_384s, Plain, <string>
       sha2_512 of <string>, sha2_512s, Plain, <string>
+      sha384 of <string>, sha384s, Plain, <string>
+      sha512 of <string>, sha512s, Plain, <string>
       small <string> of <string>, smalls, Named, <html>
       small of <string>, smalls, Plain, <html>
       span <string> of <string>, spans, Named, <html>
@@ -3957,6 +4014,8 @@ Creation techniques & properties of each type:
       <time of day with time zone> + <time interval>, , BinaryOperator, <time of day with time zone>
       <time of day with time zone> - <time interval>, , BinaryOperator, <time of day with time zone>
       <time of day with time zone> - <time of day with time zone>, , BinaryOperator, <time interval>
+      <time of day with time zone> < <time of day with time zone>, , BinaryOperator, <boolean>
+      <time of day with time zone> <= <time of day with time zone>, , BinaryOperator, <boolean>
       <time of day with time zone> = <time of day with time zone>, , BinaryOperator, <boolean>
       <time of day with time zone> as string, , Cast, <string>
       <time zone> & <time of day with time zone>, , BinaryOperator, <time of day with time zone>
@@ -4446,6 +4505,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   pending restart <string>, pending restarts, NamedGlobal, <boolean>
   pending restart name, pending restart names, PlainGlobal, <string>
   pending restart, pending restarts, PlainGlobal, <boolean>
+  percent decode <string>, percent decodes, NamedGlobal, <string>
+  percent encode <string>, percent encodes, NamedGlobal, <string>
   pkgdb, pkgdbs, PlainGlobal, <pkgdb>
   power level, power levels, PlainGlobal, <power level>
   process <integer>, processes, NumberedGlobal, <process>
@@ -4574,6 +4635,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       anchor, anchors, <html>, <html>, Plain
       anchor, anchors, <html>, <string>, Named
       anchor, anchors, <html>, <string>, Plain
+      android, androids, <boolean>, <operating system>, Plain
       any adapter, any adapters, <network adapter>, <network>, Plain
       any ip version, any ip versions, <ip version>, world , PlainGlobal
       api duration, api durations, <time interval>, <evaluation cycle>, Plain
@@ -4693,6 +4755,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <json key>, Cast
       as string, , <string>, <json value>, Cast
       as string, , <string>, <language>, Cast
+      as string, , <string>, <manual group>, Cast
       as string, , <string>, <mode>, Cast
       as string, , <string>, <mode_mask>, Cast
       as string, , <string>, <month and year>, Cast
@@ -4978,6 +5041,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       download failure, download failures, <integer>, <action>, Plain
       download file, download files, <file>, world , NamedGlobal
       download folder, download folders, <folder>, world , PlainGlobal
+      download hash algorithm, download hash algorithms, <string>, <license>, Plain
       download path, download paths, <string>, world , NamedGlobal
       download server, download servers, <download server>, world , PlainGlobal
       download storage folder, download storage folders, <download storage folder>, world , PlainGlobal
@@ -4996,6 +5060,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       dynamic flag, dynamic flags, <boolean>, <ipv4 route>, Plain
       effective date, effective dates, <time>, <action lock state>, Plain
       effective date, effective dates, <time>, <setting>, Plain
+      effective download hash algorithm, effective download hash algorithms, <string>, <license>, Plain
+      effective signature hash algorithm, effective signature hash algorithms, <string>, <license>, Plain
       effective time, effective times, <time>, <runlevel>, Plain
       effective user, effective users, <user>, <process>, Plain
       element, elements, <integer>, <integer set>, Plain
@@ -5016,6 +5082,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       encryption certificate, encryption certificates, <x509 certificate>, <license>, Plain
       end, ends, <string position>, <substring>, Plain
       end, ends, <time>, <time range>, Plain
+      enhanced security, enhanced securities, <boolean>, <license>, Plain
       environment, environments, <environment>, <process>, Plain
       environment, environments, <environment>, world , PlainGlobal
       error, errors, <undefined>, world , NamedGlobal
@@ -5367,6 +5434,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       main processor, main processors, <processor>, world , PlainGlobal
       major version, major versions, <integer>, <operating system>, Plain
       major, majors, <integer>, <device file>, Plain
+      manual group, manual groups, <manual group>, <client>, Named
+      manual group, manual groups, <manual group>, <client>, Plain
       march, marchs, <date>, <integer>, Numbered
       march, marchs, <day of year>, world , NumberedGlobal
       march, marchs, <month and year>, <integer>, Plain
@@ -5404,6 +5473,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       md5, md5s, <string>, <string>, Plain
       mean, means, <floating point>, <floating point>, Plain
       mean, means, <floating point>, <integer>, Plain
+      member, members, <boolean>, <manual group>, Plain
       member, members, <boolean>, <site group>, Plain
       meta, metas, <html>, <html>, Named
       meta, metas, <html>, <html>, Plain
@@ -5484,6 +5554,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       multiplicity, multiplicities, <integer>, <year with multiplicity>, Plain
       multiroute flag, multiroute flags, <boolean>, <ipv4 route>, Plain
       multivalued, multivalueds, <boolean>, <property>, Plain
+      mvs count, mvs counts, <integer>, <bes product>, Plain
       name, names, <string>, <application usage summary instance>, Plain
       name, names, <string>, <application usage summary>, Plain
       name, names, <string>, <bes product>, Plain
@@ -5610,6 +5681,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       pending restart, pending restarts, <boolean>, world , PlainGlobal
       pending time, pending times, <time>, <action>, Plain
       pending, pendings, <boolean>, <action>, Plain
+      percent decode, percent decodes, <string>, world , NamedGlobal
+      percent encode, percent encodes, <string>, world , NamedGlobal
       perpetual maintenance, perpetual maintenances, <boolean>, <bes product>, Plain
       perpetual, perpetuals, <boolean>, <bes product>, Plain
       persistent constraint, persistent constraints, <integer>, <action>, Plain
@@ -5758,6 +5831,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       setsrc flag, setsrc flags, <boolean>, <ipv4 route>, Plain
       setting, settings, <setting>, <client>, Named
       setting, settings, <setting>, <client>, Plain
+      setting, settings, <setting>, <manual group>, Plain
       setting, settings, <setting>, <site>, Named
       setting, settings, <setting>, <site>, Plain
       setuid, setuids, <boolean>, <filesystem object>, Plain
@@ -5765,6 +5839,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sha1, sha1s, <string>, <file>, Plain
       sha1, sha1s, <string>, <string>, Plain
       sha1, sha1s, <string>, <x509 certificate>, Plain
+      sha224, sha224s, <string>, <file>, Plain
+      sha224, sha224s, <string>, <string>, Plain
+      sha256 download, sha256 downloads, <boolean>, <license>, Plain
+      sha256, sha256s, <string>, <file>, Plain
+      sha256, sha256s, <string>, <string>, Plain
       sha2_224, sha2_224s, <string>, <file>, Plain
       sha2_224, sha2_224s, <string>, <string>, Plain
       sha2_256, sha2_256s, <string>, <file>, Plain
@@ -5773,6 +5852,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sha2_384, sha2_384s, <string>, <string>, Plain
       sha2_512, sha2_512s, <string>, <file>, Plain
       sha2_512, sha2_512s, <string>, <string>, Plain
+      sha384, sha384s, <string>, <file>, Plain
+      sha384, sha384s, <string>, <string>, Plain
+      sha512, sha512s, <string>, <file>, Plain
+      sha512, sha512s, <string>, <string>, Plain
+      signature hash algorithm, signature hash algorithms, <string>, <license>, Plain
       significance place, significance places, <floating point>, <floating point>, Numbered
       significance place, significance places, <floating point>, <floating point>, Plain
       significance threshold, significance thresholds, <floating point>, <floating point>, Plain
@@ -5818,6 +5902,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       span, spans, <html>, <string>, Plain
       speed, speeds, <hertz>, <processor>, Plain
       sqlite database, sqlite databases, <sqlite database>, <file>, Plain
+      sqrt, sqrts, <floating point>, <floating point>, Plain
+      sqrt, sqrts, <floating point>, <integer>, Plain
       standard deviation, standard deviations, <floating point>, <floating point>, Plain
       standard deviation, standard deviations, <floating point>, <integer>, Plain
       start date, start dates, <time>, <license>, Plain
@@ -6005,6 +6091,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       up, ups, <boolean>, <network adapter interface>, Plain
       up, ups, <boolean>, <network adapter>, Plain
       up, ups, <boolean>, <network ip interface>, Plain
+      update level, update levels, <integer>, <operating system>, Plain
       upload progress, upload progresses, <string>, <client>, Plain
       upper bound, upper bounds, <integer>, <integer range>, Plain
       ups, upss, <boolean>, <power level>, Plain

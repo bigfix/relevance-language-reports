@@ -63,6 +63,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   floating point
   floating point with multiplicity (derives from  floating point)
   folder (derives from  filesystem object)
+  format
   hertz
   hertz with multiplicity (derives from  hertz)
   html
@@ -83,6 +84,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   license
   linear projection
   logged on user
+  manual group
   module
   monitor power interval
   month
@@ -118,6 +120,8 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   resfork
   root server
   rope
+  route
+  routing table
   scsibus
   scsidevice
   security identifier
@@ -348,6 +352,7 @@ Creation techniques & properties of each type:
       computer count of <bes product>, computer counts, Plain, <integer>
       expiration date of <bes product>, expiration dates, Plain, <date>
       legacy of <bes product>, legacies, Plain, <boolean>
+      mvs count of <bes product>, mvs counts, Plain, <integer>
       name of <bes product>, names, Plain, <string>
       non windows server count of <bes product>, non windows server counts, Plain, <integer>
       perpetual maintenance of <bes product>, perpetual maintenances, Plain, <boolean>
@@ -511,6 +516,8 @@ Creation techniques & properties of each type:
       <time interval> < <time interval>, , BinaryOperator
       <time interval> <= <time interval>, , BinaryOperator
       <time interval> = <time interval>, , BinaryOperator
+      <time of day with time zone> < <time of day with time zone>, , BinaryOperator
+      <time of day with time zone> <= <time of day with time zone>, , BinaryOperator
       <time of day with time zone> = <time of day with time zone>, , BinaryOperator
       <time of day> < <time of day>, , BinaryOperator
       <time of day> <= <time of day>, , BinaryOperator
@@ -542,28 +549,38 @@ Creation techniques & properties of each type:
       authenticating of <current relay>, authenticatings, Plain
       bit <integer> of <bit set>, bits, Numbered
       bit <integer> of <integer>, bits, Numbered
+      blackhole flag of <route>, blackhole flags, Plain
       blob of <sqlite column type>, blobs, Plain
       boolean <integer> of <array>, booleans, Numbered
       boolean <string> of <dictionary>, booleans, Named
       boolean <string> of <preference>, booleans, Named
       boolean <string>, booleans, NamedGlobal
       boolean of <osxvalue>, booleans, Plain
+      broadcast flag of <route>, broadcast flags, Plain
       broadcast support of <network adapter interface>, broadcast supports, Plain
       broadcast support of <network adapter>, broadcast supports, Plain
       broadcast support of <network ip interface>, broadcast supports, Plain
+      cloned of <route>, cloneds, Plain
+      cloning flag of <route>, cloning flags, Plain
+      condemned flag of <route>, condemned flags, Plain
       conjunction of <boolean>, conjunctions, Plain
       constrained of <action>, constraineds, Plain
+      default of <route>, defaults, Plain
+      delclone flag of <route>, delclone flags, Plain
       dependency known of <property>, dependencies known, Plain
       desired encrypt report of <client_cryptography>, desired encrypt reports, Plain
       desired fips mode of <cryptography>, desired fips modes, Plain
       disabled of <enableable_file>, disableds, Plain
       disjunction of <boolean>, disjunctions, Plain
       divided by zero of <floating point>, divided by zeroes, Plain
+      done flag of <route>, done flags, Plain
+      dynamic flag of <route>, dynamic flags, Plain
       embedded of <operating system>, embeddeds, Plain
       enabled of <administrative rights>, enableds, Plain
       enabled of <enableable_file>, enableds, Plain
       enabled of <setting>, enableds, Plain
       encrypt report of <client_cryptography>, encrypt reports, Plain
+      enhanced security of <license>, enhanced securities, Plain
       evaluated of <site>, evaluateds, Plain
       evaluation of <license>, evaluations, Plain
       false, falses, PlainGlobal
@@ -573,7 +590,11 @@ Creation techniques & properties of each type:
       fips mode of <license>, fips modes, Plain
       float of <sqlite column type>, floats, Plain
       full of <power level>, fulls, Plain
+      gateway flag of <route>, gateway flags, Plain
       group leader of <action>, group leaders, Plain
+      host flag of <route>, host flags, Plain
+      ifref flag of <route>, ifref flags, Plain
+      ifscope flag of <route>, ifscope flags, Plain
       in agent context, in agent contexts, PlainGlobal
       in proxy agent context, in proxy agent contexts, PlainGlobal
       inexact of <floating point>, inexacts, Plain
@@ -583,6 +604,8 @@ Creation techniques & properties of each type:
       isochronous of <usb>, isochronouses, Plain
       leap of <year>, leaps, Plain
       legacy of <bes product>, legacies, Plain
+      llinfo flag of <route>, llinfo flags, Plain
+      local flag of <route>, local flags, Plain
       locked of <action lock state>, lockeds, Plain
       locked of <file>, lockeds, Plain
       loopback of <network adapter interface>, loopbacks, Plain
@@ -590,7 +613,10 @@ Creation techniques & properties of each type:
       loopback of <network ip interface>, loopbacks, Plain
       low of <power level>, lows, Plain
       mac of <operating system>, macs, Plain
+      member of <manual group>, members, Plain
       member of <site group>, members, Plain
+      modified flag of <route>, modified flags, Plain
+      multicast flag of <route>, multicast flags, Plain
       multicast support of <network adapter interface>, multicast supports, Plain
       multicast support of <network adapter>, multicast supports, Plain
       multicast support of <network ip interface>, multicast supports, Plain
@@ -610,22 +636,33 @@ Creation techniques & properties of each type:
       pending restart, pending restarts, PlainGlobal
       perpetual maintenance of <bes product>, perpetual maintenances, Plain
       perpetual of <bes product>, perpetuals, Plain
+      pinned flag of <route>, pinned flags, Plain
       plugged of <power level>, pluggeds, Plain
       point to point of <network adapter interface>, point to points, Plain
       point to point of <network adapter>, point to points, Plain
       point to point of <network ip interface>, point to points, Plain
       powerpc, powerpcs, PlainGlobal
+      prcloning flag of <route>, prcloning flags, Plain
+      proto1 flag of <route>, proto1 flags, Plain
+      proto2 flag of <route>, proto2 flags, Plain
+      proto3 flag of <route>, proto3 flags, Plain
+      proxy flag of <route>, proxy flags, Plain
+      reject flag of <route>, reject flags, Plain
       relevance of <fixlet>, relevances, Plain
       remote of <logged on user>, remotes, Plain
+      router flag of <route>, router flags, Plain
       running of <application usage summary>, runnings, Plain
+      sha256 download of <license>, sha256 downloads, Plain
       smt capable of <cpupackage>, smt capables, Plain
       smt enabled of <cpupackage>, smt enableds, Plain
+      static flag of <route>, static flags, Plain
       stationery of <file>, stationeries, Plain
       term of <bes product>, terms, Plain
       text of <sqlite column type>, texts, Plain
       true, trues, PlainGlobal
       underflow of <floating point>, underflows, Plain
       unix of <operating system>, unixes, Plain
+      up flag of <route>, up flags, Plain
       up of <network adapter interface>, ups, Plain
       up of <network adapter>, ups, Plain
       up of <network interface>, ups, Plain
@@ -634,9 +671,11 @@ Creation techniques & properties of each type:
       virtual memory, virtual memories, PlainGlobal
       visible of <file>, visibles, Plain
       waiting for download of <action>, waiting for downloads, Plain
+      wascloned flag of <route>, wascloned flags, Plain
       wide16 scsi of <scsibus>, wide16 scsis, Plain
       wide32 scsi of <scsibus>, wide32 scsis, Plain
       windows of <operating system>, windowses, Plain
+      xresolve flag of <route>, xresolve flags, Plain
     Properties of <boolean> { key phrase, plural keyword, form, <result type>}:
       <boolean> * <time range>, , BinaryOperator, <timed( time range, boolean )>
       <boolean> = <boolean>, , BinaryOperator, <boolean>
@@ -687,6 +726,8 @@ Creation techniques & properties of each type:
       last command time of <client>, last command times, Plain, <time>
       last report time of <client>, last report times, Plain, <time>
       local character set of <client>, local character sets, Plain, <string>
+      manual group <string> of <client>, manual groups, Named, <manual group>
+      manual group of <client>, manual groups, Plain, <manual group>
       process owner of <client>, process owners, Plain, <client process owner>
       registration address of <client>, registration addresses, Plain, <ipv4or6 address>
       registration cidr address of <client>, registration cidr addresses, Plain, <string>
@@ -822,6 +863,7 @@ Creation techniques & properties of each type:
       <date> <= <date>, , BinaryOperator, <boolean>
       <date> = <date>, , BinaryOperator, <boolean>
       <date> as string, , Cast, <string>
+      <format> + <date>, , BinaryOperator, <format>
       <number of months> + <date>, , BinaryOperator, <date>
       <time interval> + <date>, , BinaryOperator, <date>
       <time of day with time zone> & <date>, , BinaryOperator, <time>
@@ -905,6 +947,7 @@ Creation techniques & properties of each type:
       <day of week> = <day of week>, , BinaryOperator, <boolean>
       <day of week> as string, , Cast, <string>
       <day of week> as three letters, , Cast, <string>
+      <format> + <day of week>, , BinaryOperator, <format>
       <time interval> + <day of week>, , BinaryOperator, <day of week>
       unique value of <day of week>, unique values, Plain, <day of week with multiplicity>
 
@@ -1236,10 +1279,14 @@ Creation techniques & properties of each type:
       resource fork of <file>, resource forks, Plain, <resfork>
       section <string> of <file>, sections, Named, <file section>
       sha1 of <file>, sha1s, Plain, <string>
+      sha224 of <file>, sha224s, Plain, <string>
+      sha256 of <file>, sha256s, Plain, <string>
       sha2_224 of <file>, sha2_224s, Plain, <string>
       sha2_256 of <file>, sha2_256s, Plain, <string>
       sha2_384 of <file>, sha2_384s, Plain, <string>
       sha2_512 of <file>, sha2_512s, Plain, <string>
+      sha384 of <file>, sha384s, Plain, <string>
+      sha512 of <file>, sha512s, Plain, <string>
       size of <file>, sizes, Plain, <integer>
       sqlite database of <file>, sqlite databases, Plain, <sqlite database>
       stationery of <file>, stationeries, Plain, <boolean>
@@ -1401,6 +1448,8 @@ Creation techniques & properties of each type:
       significance place of <floating point>, significance places, Plain
       significance threshold of <floating point>, significance thresholds, Plain
       sleep percent of <evaluation cycle>, sleep percents, Plain
+      sqrt of <floating point>, sqrts, Plain
+      sqrt of <integer>, sqrts, Plain
       standard deviation of <floating point>, standard deviations, Plain
       standard deviation of <integer>, standard deviations, Plain
       sum of <floating point>, sums, Plain
@@ -1458,6 +1507,7 @@ Creation techniques & properties of each type:
       significance place <integer> of <floating point>, significance places, Numbered, <floating point>
       significance place of <floating point>, significance places, Plain, <floating point>
       significance threshold of <floating point>, significance thresholds, Plain, <floating point>
+      sqrt of <floating point>, sqrts, Plain, <floating point>
       standard deviation of <floating point>, standard deviations, Plain, <floating point>
       sum of <floating point>, sums, Plain, <floating point>
       underflow of <floating point>, underflows, Plain, <boolean>
@@ -1664,6 +1714,28 @@ Creation techniques & properties of each type:
       relative posix folder <string> of <folder>, relative posix folders, Named, <folder>
       version of <folder>, versions, Plain, <version>
       volume of <folder>, volumes, Plain, <volume>
+
+  Type <format>
+    Creation of <format>: { key phrase, plural keyword, form}
+      <format> + <date>, , BinaryOperator
+      <format> + <day of week>, , BinaryOperator
+      <format> + <format>, , BinaryOperator
+      <format> + <integer>, , BinaryOperator
+      <format> + <string>, , BinaryOperator
+      <format> + <time interval>, , BinaryOperator
+      <format> + <time of day>, , BinaryOperator
+      <format> + <time>, , BinaryOperator
+      format <string>, formats, NamedGlobal
+    Properties of <format> { key phrase, plural keyword, form, <result type>}:
+      <format> + <date>, , BinaryOperator, <format>
+      <format> + <day of week>, , BinaryOperator, <format>
+      <format> + <format>, , BinaryOperator, <format>
+      <format> + <integer>, , BinaryOperator, <format>
+      <format> + <string>, , BinaryOperator, <format>
+      <format> + <time interval>, , BinaryOperator, <format>
+      <format> + <time of day>, , BinaryOperator, <format>
+      <format> + <time>, , BinaryOperator, <format>
+      <format> as string, , Cast, <string>
 
   Type <hertz>
     Creation of <hertz>: { key phrase, plural keyword, form}
@@ -2208,6 +2280,7 @@ Creation techniques & properties of each type:
       minute_of_hour of <time of day>, minutes_of_hour, Plain
       model of <processor>, models, Plain
       most significant one bit of <bit set>, most significant one bits, Plain
+      mtu of <route>, mtus, Plain
       multiplicity of <date with multiplicity>, multiplicities, Plain
       multiplicity of <day of month with multiplicity>, multiplicities, Plain
       multiplicity of <day of week with multiplicity>, multiplicities, Plain
@@ -2232,6 +2305,7 @@ Creation techniques & properties of each type:
       multiplicity of <time zone with multiplicity>, multiplicities, Plain
       multiplicity of <version with multiplicity>, multiplicities, Plain
       multiplicity of <year with multiplicity>, multiplicities, Plain
+      mvs count of <bes product>, mvs counts, Plain
       non windows server count of <bes product>, non windows server counts, Plain
       nubus map, nubus maps, PlainGlobal
       numeric value of <string>, numeric values, Plain
@@ -2244,11 +2318,14 @@ Creation techniques & properties of each type:
       priority of <selected server>, priorities, Plain
       process id of <process>, process ids, Plain
       product of <integer>, products, Plain
+      reference of <route>, references, Plain
       registrar number of <license>, registrar numbers, Plain
       rvu count of <bes product>, rvu counts, Plain
       seat of <license>, seats, Plain
       second_of_minute of <time of day with time zone>, seconds_of_minute, Plain
       second_of_minute of <time of day>, seconds_of_minute, Plain
+      seconds to expiration of <route>, seconds to expirations, Plain
+      sent packet count of <route>, sent packets counts, Plain
       session id of <logged on user>, session ids, Plain
       significant digits <integer> of <integer>, significant digitss, Numbered
       site number of <license>, site numbers, Plain
@@ -2288,6 +2365,7 @@ Creation techniques & properties of each type:
       <floating point> < <integer>, , BinaryOperator, <boolean>
       <floating point> <= <integer>, , BinaryOperator, <boolean>
       <floating point> = <integer>, , BinaryOperator, <boolean>
+      <format> + <integer>, , BinaryOperator, <format>
       <hertz> * <integer>, , BinaryOperator, <hertz>
       <hertz> / <integer>, , BinaryOperator, <hertz>
       <integer set> contains <integer>, , BinaryOperator, <boolean>
@@ -2357,6 +2435,7 @@ Creation techniques & properties of each type:
       september of <integer>, septembers, Plain, <month and year>
       set of <integer>, sets, Plain, <integer set>
       significant digits <integer> of <integer>, significant digitss, Numbered, <integer>
+      sqrt of <integer>, sqrts, Plain, <floating point>
       standard deviation of <integer>, standard deviations, Plain, <floating point>
       sum of <integer>, sums, Plain, <integer>
       unique value of <integer>, unique values, Plain, <integer with multiplicity>
@@ -2451,11 +2530,14 @@ Creation techniques & properties of each type:
       <string> as ipv4or6 address, , Cast
       address of <network adapter interface>, addresses, Plain
       broadcast address of <network adapter interface>, broadcast addresses, Plain
+      destination of <route>, destinations, Plain
       full gateway address of <selected server>, full gateway addresses, Plain
       gateway address <integer> of <selected server>, gateway addresses, Numbered
       gateway address of <selected server>, gateway addresses, Plain
+      gateway of <route>, gateways, Plain
       ip address of <selected server>, ip addresses, Plain
       ipv4or6 address <string>, ipv4or6 addresses, NamedGlobal
+      mask of <route>, masks, Plain
       maximum of <ipv4or6 address>, maxima, Plain
       minimum of <ipv4or6 address>, minima, Plain
       registration address of <client>, registration addresses, Plain
@@ -2569,8 +2651,12 @@ Creation techniques & properties of each type:
     Properties of <license> { key phrase, plural keyword, form, <result type>}:
       allow unmentioned site of <license>, allow unmentioned sites, Plain, <boolean>
       common name of <license>, common names, Plain, <string>
+      download hash algorithm of <license>, download hash algorithms, Plain, <string>
+      effective download hash algorithm of <license>, effective download hash algorithms, Plain, <string>
+      effective signature hash algorithm of <license>, effective signature hash algorithms, Plain, <string>
       email address of <license>, email addresses, Plain, <string>
       encryption certificate of <license>, encryption certificates, Plain, <x509 certificate>
+      enhanced security of <license>, enhanced securities, Plain, <boolean>
       evaluation of <license>, evaluations, Plain, <boolean>
       expiration date of <license>, expiration dates, Plain, <time>
       expiration state of <license>, expiration states, Plain, <string>
@@ -2582,6 +2668,8 @@ Creation techniques & properties of each type:
       registrar number of <license>, registrar numbers, Plain, <integer>
       seat count state of <license>, seat count states, Plain, <string>
       seat of <license>, seats, Plain, <integer>
+      sha256 download of <license>, sha256 downloads, Plain, <boolean>
+      signature hash algorithm of <license>, signature hash algorithms, Plain, <string>
       site number of <license>, site numbers, Plain, <integer>
       start date of <license>, start dates, Plain, <time>
       type of <license>, types, Plain, <string>
@@ -2605,6 +2693,15 @@ Creation techniques & properties of each type:
       session id of <logged on user>, session ids, Plain, <integer>
       tty of <logged on user>, ttys, Plain, <string>
       user of <logged on user>, users, Plain, <user>
+
+  Type <manual group>
+    Creation of <manual group>: { key phrase, plural keyword, form}
+      manual group <string> of <client>, manual groups, Named
+      manual group of <client>, manual groups, Plain
+    Properties of <manual group> { key phrase, plural keyword, form, <result type>}:
+      <manual group> as string, , Cast, <string>
+      member of <manual group>, members, Plain, <boolean>
+      setting of <manual group>, settings, Plain, <setting>
 
   Type <module>
     Creation of <module>: { key phrase, plural keyword, form}
@@ -3194,6 +3291,64 @@ Creation techniques & properties of each type:
       <string> & <rope>, , BinaryOperator, <rope>
       length of <rope>, lengths, Plain, <integer>
 
+  Type <route>
+    Creation of <route>: { key phrase, plural keyword, form}
+      route of <routing table>, routes, Plain
+    Properties of <route> { key phrase, plural keyword, form, <result type>}:
+      blackhole flag of <route>, blackhole flags, Plain, <boolean>
+      broadcast flag of <route>, broadcast flags, Plain, <boolean>
+      cloned of <route>, cloneds, Plain, <boolean>
+      cloning flag of <route>, cloning flags, Plain, <boolean>
+      condemned flag of <route>, condemned flags, Plain, <boolean>
+      default of <route>, defaults, Plain, <boolean>
+      delclone flag of <route>, delclone flags, Plain, <boolean>
+      destination of <route>, destinations, Plain, <ipv4or6 address>
+      destination string of <route>, destination strings, Plain, <string>
+      destination type of <route>, destination types, Plain, <string>
+      done flag of <route>, done flags, Plain, <boolean>
+      dynamic flag of <route>, dynamic flags, Plain, <boolean>
+      expiration time of <route>, expiration times, Plain, <time>
+      flags string of <route>, flags strings, Plain, <string>
+      gateway flag of <route>, gateway flags, Plain, <boolean>
+      gateway of <route>, gateways, Plain, <ipv4or6 address>
+      gateway string of <route>, gateway strings, Plain, <string>
+      gateway type of <route>, gateways types, Plain, <string>
+      host flag of <route>, host flags, Plain, <boolean>
+      ifref flag of <route>, ifref flags, Plain, <boolean>
+      ifscope flag of <route>, ifscope flags, Plain, <boolean>
+      interface of <route>, interfaces, Plain, <string>
+      ip family of <route>, ip families, Plain, <string>
+      llinfo flag of <route>, llinfo flags, Plain, <boolean>
+      local flag of <route>, local flags, Plain, <boolean>
+      mask of <route>, masks, Plain, <ipv4or6 address>
+      modified flag of <route>, modified flags, Plain, <boolean>
+      mtu of <route>, mtus, Plain, <integer>
+      multicast flag of <route>, multicast flags, Plain, <boolean>
+      netstat flag of <route>, netstat flags, Plain, <string>
+      pinned flag of <route>, pinned flags, Plain, <boolean>
+      prcloning flag of <route>, prcloning flags, Plain, <boolean>
+      proto1 flag of <route>, proto1 flags, Plain, <boolean>
+      proto2 flag of <route>, proto2 flags, Plain, <boolean>
+      proto3 flag of <route>, proto3 flags, Plain, <boolean>
+      proxy flag of <route>, proxy flags, Plain, <boolean>
+      reference of <route>, references, Plain, <integer>
+      reject flag of <route>, reject flags, Plain, <boolean>
+      router flag of <route>, router flags, Plain, <boolean>
+      seconds to expiration of <route>, seconds to expirations, Plain, <integer>
+      sent packet count of <route>, sent packets counts, Plain, <integer>
+      static flag of <route>, static flags, Plain, <boolean>
+      up flag of <route>, up flags, Plain, <boolean>
+      wascloned flag of <route>, wascloned flags, Plain, <boolean>
+      xresolve flag of <route>, xresolve flags, Plain, <boolean>
+
+  Type <routing table>
+    Creation of <routing table>: { key phrase, plural keyword, form}
+      ipv4 routing table, ipv4 routing tables, PlainGlobal
+      ipv6 routing table, ipv6 routing tables, PlainGlobal
+      routing table, routing tables, PlainGlobal
+    Properties of <routing table> { key phrase, plural keyword, form, <result type>}:
+      route of <routing table>, routes, Plain, <route>
+
   Type <scsibus>
     Creation of <scsibus>: { key phrase, plural keyword, form}
       scsibus <integer>, scsibuses, NumberedGlobal
@@ -3251,6 +3406,7 @@ Creation techniques & properties of each type:
       setting <string> of <client>, settings, Named
       setting <string> of <site>, settings, Named
       setting of <client>, settings, Plain
+      setting of <manual group>, settings, Plain
       setting of <site>, settings, Plain
     Properties of <setting> { key phrase, plural keyword, form, <result type>}:
       <setting> as string, , Cast, <string>
@@ -3413,6 +3569,7 @@ Creation techniques & properties of each type:
       <floating point> as scientific notation, , Cast
       <floating point> as standard notation, , Cast
       <floating point> as string, , Cast
+      <format> as string, , Cast
       <hertz> as string, , Cast
       <html> as string, , Cast
       <integer> as hexadecimal, , Cast
@@ -3441,6 +3598,7 @@ Creation techniques & properties of each type:
       <ipv6 address> as string, , Cast
       <json key> as string, , Cast
       <json value> as string, , Cast
+      <manual group> as string, , Cast
       <month and year> as string, , Cast
       <month> as string, , Cast
       <month> as three letters, , Cast
@@ -3513,6 +3671,8 @@ Creation techniques & properties of each type:
       data of <osxvalue>, datas, Plain
       date of <bios>, dates, Plain
       deployment character set of <client>, deployment character sets, Plain
+      destination string of <route>, destination strings, Plain
+      destination type of <route>, destination types, Plain
       distinguished name error message of <active directory group>, distinguished name error messages, Plain
       distinguished name error message of <active directory local computer>, distinguished name error messages, Plain
       distinguished name error message of <active directory local user>, distinguished name error messages, Plain
@@ -3522,7 +3682,10 @@ Creation techniques & properties of each type:
       dns domainname of <active directory local computer>, dns domainnames, Plain
       dns domainname of <active directory local user>, dns domainnames, Plain
       dns name, dns names, PlainGlobal
+      download hash algorithm of <license>, download hash algorithms, Plain
       download path <string>, download paths, NamedGlobal
+      effective download hash algorithm of <license>, effective download hash algorithms, Plain
+      effective signature hash algorithm of <license>, effective signature hash algorithms, Plain
       element of <string set>, elements, Plain
       email address of <license>, email addresses, Plain
       encoding of <sqlite database>, encodings, Plain
@@ -3531,8 +3694,11 @@ Creation techniques & properties of each type:
       family name of <network interface>, family names, Plain
       family name of <processor>, family names, Plain
       fips mode failure message of <cryptography>, fips mode failure messages, Plain
+      flags string of <route>, flags strings, Plain
       friendly name of <network adapter>, friendly names, Plain
       full name of <user>, full names, Plain
+      gateway string of <route>, gateway strings, Plain
+      gateway type of <route>, gateways types, Plain
       gather schedule authority of <site>, gather schedule authoritys, Plain
       gather url of <license>, gather urls, Plain
       groups error message of <active directory local computer>, groups error messages, Plain
@@ -3545,6 +3711,8 @@ Creation techniques & properties of each type:
       identity of <execution>, identites, Plain
       index of <sqlite table>, indices, Plain
       info of <component>, infos, Plain
+      interface of <route>, interfaces, Plain
+      ip family of <route>, ip families, Plain
       key <string> of <file section>, keys, Named
       key <string> of <file>, keys, Named
       key of <dictionary>, keys, Plain
@@ -3596,6 +3764,7 @@ Creation techniques & properties of each type:
       name of <unary operator>, names, Plain
       name of <user>, names, Plain
       name of <volume>, names, Plain
+      netstat flag of <route>, netstat flags, Plain
       organization of <license>, organizations, Plain
       padded string of <bit set>, padded strings, Plain
       parameter <string> of <action>, parameters, Named
@@ -3604,6 +3773,8 @@ Creation techniques & properties of each type:
       path of <registrynode>, paths, Plain
       pathname of <filesystem object>, pathnames, Plain
       pending restart name, pending restart names, PlainGlobal
+      percent decode <string>, percent decodes, NamedGlobal
+      percent encode <string>, percent encodes, NamedGlobal
       plural name of <property>, plural names, Plain
       posix path of <filesystem object>, posix paths, Plain
       primary group id of <user>, primary group ids, Plain
@@ -3618,6 +3789,10 @@ Creation techniques & properties of each type:
       sha1 of <file>, sha1s, Plain
       sha1 of <string>, sha1s, Plain
       sha1 of <x509 certificate>, sha1s, Plain
+      sha224 of <file>, sha224s, Plain
+      sha224 of <string>, sha224s, Plain
+      sha256 of <file>, sha256s, Plain
+      sha256 of <string>, sha256s, Plain
       sha2_224 of <file>, sha2_224s, Plain
       sha2_224 of <string>, sha2_224s, Plain
       sha2_256 of <file>, sha2_256s, Plain
@@ -3626,7 +3801,12 @@ Creation techniques & properties of each type:
       sha2_384 of <string>, sha2_384s, Plain
       sha2_512 of <file>, sha2_512s, Plain
       sha2_512 of <string>, sha2_512s, Plain
+      sha384 of <file>, sha384s, Plain
+      sha384 of <string>, sha384s, Plain
+      sha512 of <file>, sha512s, Plain
+      sha512 of <string>, sha512s, Plain
       short name of <client process owner>, short names, Plain
+      signature hash algorithm of <license>, signature hash algorithms, Plain
       singular name of <property>, singular names, Plain
       site tag of <site>, site tags, Plain
       site url of <bes product>, site urls, Plain
@@ -3678,6 +3858,7 @@ Creation techniques & properties of each type:
       wake on lan subnet cidr string, wake on lan subnet cidr strings, PlainGlobal
     Properties of <string> { key phrase, plural keyword, form, <result type>}:
       <file content> contains <string>, , BinaryOperator, <boolean>
+      <format> + <string>, , BinaryOperator, <format>
       <html> & <string>, , BinaryOperator, <html>
       <ipv4 address> < <string>, , BinaryOperator, <boolean>
       <ipv4 address> <= <string>, , BinaryOperator, <boolean>
@@ -3846,10 +4027,14 @@ Creation techniques & properties of each type:
       samp of <string>, samps, Plain, <html>
       set of <string>, sets, Plain, <string set>
       sha1 of <string>, sha1s, Plain, <string>
+      sha224 of <string>, sha224s, Plain, <string>
+      sha256 of <string>, sha256s, Plain, <string>
       sha2_224 of <string>, sha2_224s, Plain, <string>
       sha2_256 of <string>, sha2_256s, Plain, <string>
       sha2_384 of <string>, sha2_384s, Plain, <string>
       sha2_512 of <string>, sha2_512s, Plain, <string>
+      sha384 of <string>, sha384s, Plain, <string>
+      sha512 of <string>, sha512s, Plain, <string>
       small <string> of <string>, smalls, Named, <html>
       small of <string>, smalls, Plain, <html>
       span <string> of <string>, spans, Named, <html>
@@ -3996,6 +4181,7 @@ Creation techniques & properties of each type:
       end of <time range>, ends, Plain
       expiration date of <action lock state>, expiration dates, Plain
       expiration date of <license>, expiration dates, Plain
+      expiration time of <route>, expiration times, Plain
       first start time of <application usage summary instance>, first start times, Plain
       first start time of <application usage summary>, first start times, Plain
       init date of <volume>, init dates, Plain
@@ -4030,6 +4216,7 @@ Creation techniques & properties of each type:
       time of <execution>, times, Plain
       universal time <string>, universal times, NamedGlobal
     Properties of <time> { key phrase, plural keyword, form, <result type>}:
+      <format> + <time>, , BinaryOperator, <format>
       <time interval> & <time>, , BinaryOperator, <time range>
       <time interval> + <time>, , BinaryOperator, <time>
       <time range> & <time>, , BinaryOperator, <time range>
@@ -4117,6 +4304,7 @@ Creation techniques & properties of each type:
       <day of year> + <time interval>, , BinaryOperator, <day of year>
       <day of year> - <time interval>, , BinaryOperator, <day of year>
       <floating point> / <time interval>, , BinaryOperator, <rate>
+      <format> + <time interval>, , BinaryOperator, <format>
       <integer> * <time interval>, , BinaryOperator, <time interval>
       <rate> * <time interval>, , BinaryOperator, <floating point>
       <time interval> & <time>, , BinaryOperator, <time range>
@@ -4174,6 +4362,7 @@ Creation techniques & properties of each type:
       time of <time of day with time zone>, times, Plain
       time_of_day <string>, times_of_day, NamedGlobal
     Properties of <time of day> { key phrase, plural keyword, form, <result type>}:
+      <format> + <time of day>, , BinaryOperator, <format>
       <time interval> + <time of day>, , BinaryOperator, <time of day>
       <time of day> & <time zone>, , BinaryOperator, <time of day with time zone>
       <time of day> + <time interval>, , BinaryOperator, <time of day>
@@ -4225,6 +4414,8 @@ Creation techniques & properties of each type:
       <time of day with time zone> + <time interval>, , BinaryOperator, <time of day with time zone>
       <time of day with time zone> - <time interval>, , BinaryOperator, <time of day with time zone>
       <time of day with time zone> - <time of day with time zone>, , BinaryOperator, <time interval>
+      <time of day with time zone> < <time of day with time zone>, , BinaryOperator, <boolean>
+      <time of day with time zone> <= <time of day with time zone>, , BinaryOperator, <boolean>
       <time of day with time zone> = <time of day with time zone>, , BinaryOperator, <boolean>
       <time of day with time zone> as string, , Cast, <string>
       <time zone> & <time of day with time zone>, , BinaryOperator, <time of day with time zone>
@@ -4701,6 +4892,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   floating point <string>, floating points, NamedGlobal, <floating point>
   folder <string>, folders, NamedGlobal, <folder>
   fonts folder, fonts folders, PlainGlobal, <folder>
+  format <string>, formats, NamedGlobal, <format>
   framework <string>, frameworks, NamedGlobal, <folder>
   framework folder, framework folders, PlainGlobal, <folder>
   friday, fridays, PlainGlobal, <day of week>
@@ -4739,9 +4931,11 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   iokit registry, iokit registries, PlainGlobal, <registryroot>
   ip version <integer>, ip versions, NumberedGlobal, <ip version>
   ipv4 address <string>, ipv4 addresses, NamedGlobal, <ipv4 address>
+  ipv4 routing table, ipv4 routing tables, PlainGlobal, <routing table>
   ipv4, ipv4s, PlainGlobal, <ip version>
   ipv4or6 address <string>, ipv4or6 addresses, NamedGlobal, <ipv4or6 address>
   ipv6 address <string>, ipv6 addresses, NamedGlobal, <ipv6 address>
+  ipv6 routing table, ipv6 routing tables, PlainGlobal, <routing table>
   ipv6, ipv6s, PlainGlobal, <ip version>
   iss download folder, iss download folders, PlainGlobal, <folder>
   item <string>, items, NamedGlobal, <filesystem object>
@@ -4816,6 +5010,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   pending restart <string>, pending restarts, NamedGlobal, <boolean>
   pending restart name, pending restart names, PlainGlobal, <string>
   pending restart, pending restarts, PlainGlobal, <boolean>
+  percent decode <string>, percent decodes, NamedGlobal, <string>
+  percent encode <string>, percent encodes, NamedGlobal, <string>
   physical ram, physical rams, PlainGlobal, <integer>
   posix file <string>, posix files, NamedGlobal, <file>
   posix folder <string>, posix folders, NamedGlobal, <folder>
@@ -4853,6 +5049,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   rom version, rom versions, PlainGlobal, <version>
   root server, root servers, PlainGlobal, <root server>
   rope <string>, ropes, NamedGlobal, <rope>
+  routing table, routing tables, PlainGlobal, <routing table>
   saturday, saturdays, PlainGlobal, <day of week>
   scripting additions folder, scripting additions folders, PlainGlobal, <folder>
   scsibus <integer>, scsibuses, NumberedGlobal, <scsibus>
@@ -5084,6 +5281,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <file>, Cast
       as string, , <string>, <filesystem object>, Cast
       as string, , <string>, <floating point>, Cast
+      as string, , <string>, <format>, Cast
       as string, , <string>, <hertz>, Cast
       as string, , <string>, <html>, Cast
       as string, , <string>, <integer>, Cast
@@ -5093,6 +5291,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <ipv6 address>, Cast
       as string, , <string>, <json key>, Cast
       as string, , <string>, <json value>, Cast
+      as string, , <string>, <manual group>, Cast
       as string, , <string>, <month and year>, Cast
       as string, , <string>, <month>, Cast
       as string, , <string>, <number of months>, Cast
@@ -5184,6 +5383,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       bit, bits, <bit set>, world , NumberedGlobal
       bit, bits, <boolean>, <bit set>, Numbered
       bit, bits, <boolean>, <integer>, Numbered
+      blackhole flag, blackhole flags, <boolean>, <route>, Plain
       blob, blobs, <boolean>, <sqlite column type>, Plain
       blockquote, blockquotes, <html>, <html>, Named
       blockquote, blockquotes, <html>, <html>, Plain
@@ -5207,6 +5407,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       broadcast address, broadcast addresses, <ipv4 address>, <network adapter>, Plain
       broadcast address, broadcast addresses, <ipv4 address>, <network ip interface>, Plain
       broadcast address, broadcast addresses, <ipv4or6 address>, <network adapter interface>, Plain
+      broadcast flag, broadcast flags, <boolean>, <route>, Plain
       broadcast support, broadcast supports, <boolean>, <network adapter interface>, Plain
       broadcast support, broadcast supports, <boolean>, <network adapter>, Plain
       broadcast support, broadcast supports, <boolean>, <network ip interface>, Plain
@@ -5263,6 +5464,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       client folder, client folders, <folder>, <site>, Plain
       client license, client licenses, <license>, world , PlainGlobal
       client, clients, <client>, world , PlainGlobal
+      cloned, cloneds, <boolean>, <route>, Plain
+      cloning flag, cloning flags, <boolean>, <route>, Plain
       code, codes, <html>, <html>, Named
       code, codes, <html>, <html>, Plain
       code, codes, <html>, <string>, Named
@@ -5304,6 +5507,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       concatenation, concatenations, <html>, <string>, Index<html>
       concatenation, concatenations, <string>, <string>, Named
       concatenation, concatenations, <string>, <string>, Plain
+      condemned flag, condemned flags, <boolean>, <route>, Plain
       conjunction, conjunctions, <boolean>, <boolean>, Plain
       constrained, constraineds, <boolean>, <action>, Plain
       constraint, constraints, <integer>, <action>, Plain
@@ -5378,6 +5582,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       december, decembers, <day of year>, world , NumberedGlobal
       december, decembers, <month and year>, <integer>, Plain
       december, decembers, <month>, world , PlainGlobal
+      default, defaults, <boolean>, <route>, Plain
       definition list, definition lists, <html>, <html>, Named
       definition list, definition lists, <html>, <html>, Plain
       definition list, definition lists, <html>, <string>, Named
@@ -5386,6 +5591,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       del, dels, <html>, <html>, Plain
       del, dels, <html>, <string>, Named
       del, dels, <html>, <string>, Plain
+      delclone flag, delclone flags, <boolean>, <route>, Plain
       dependency known, dependencies known, <boolean>, <property>, Plain
       deployment character set, deployment character sets, <string>, <client>, Plain
       descendant folder, descendant folders, <folder>, <folder>, Plain
@@ -5394,6 +5600,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       desired fips mode, desired fips modes, <boolean>, <cryptography>, Plain
       desktop folder, desktop folders, <folder>, <domain>, Plain
       desktop folder, desktop folders, <folder>, world , PlainGlobal
+      destination string, destination strings, <string>, <route>, Plain
+      destination type, destination types, <string>, <route>, Plain
+      destination, destinations, <ipv4or6 address>, <route>, Plain
       developer docs folder, developer docs folders, <folder>, <domain>, Plain
       developer docs folder, developer docs folders, <folder>, world , PlainGlobal
       developer folder, developer folders, <folder>, <domain>, Plain
@@ -5457,9 +5666,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       domain library folder, domain library folders, <folder>, world , PlainGlobal
       domain top folder, domain top folders, <folder>, <domain>, Plain
       domain top folder, domain top folders, <folder>, world , PlainGlobal
+      done flag, done flags, <boolean>, <route>, Plain
       download failure, download failures, <integer>, <action>, Plain
       download file, download files, <file>, world , NamedGlobal
       download folder, download folders, <folder>, world , PlainGlobal
+      download hash algorithm, download hash algorithms, <string>, <license>, Plain
       download path, download paths, <string>, world , NamedGlobal
       download server, download servers, <download server>, world , PlainGlobal
       drive, drives, <volume>, <file>, Plain
@@ -5471,8 +5682,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       dt, dts, <html>, <html>, Plain
       dt, dts, <html>, <string>, Named
       dt, dts, <html>, <string>, Plain
+      dynamic flag, dynamic flags, <boolean>, <route>, Plain
       effective date, effective dates, <time>, <action lock state>, Plain
       effective date, effective dates, <time>, <setting>, Plain
+      effective download hash algorithm, effective download hash algorithms, <string>, <license>, Plain
+      effective signature hash algorithm, effective signature hash algorithms, <string>, <license>, Plain
       element, elements, <integer>, <integer set>, Plain
       element, elements, <json value>, <json value>, Numbered
       element, elements, <json value>, <json value>, Plain
@@ -5500,6 +5714,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       encryption certificate, encryption certificates, <x509 certificate>, <license>, Plain
       end, ends, <string position>, <substring>, Plain
       end, ends, <time>, <time range>, Plain
+      enhanced security, enhanced securities, <boolean>, <license>, Plain
       entry, entries, <dictionaryentry>, <dictionary>, Plain
       environment, environments, <environment>, world , PlainGlobal
       error, errors, <undefined>, world , NamedGlobal
@@ -5512,6 +5727,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       expiration date, expiration dates, <time>, <action lock state>, Plain
       expiration date, expiration dates, <time>, <license>, Plain
       expiration state, expiration states, <string>, <license>, Plain
+      expiration time, expiration times, <time>, <route>, Plain
       extended family, extended families, <integer>, <processor>, Plain
       extended feature mask, extended feature masks, <integer>, <processor>, Plain
       extended model, extended models, <integer>, <processor>, Plain
@@ -5591,6 +5807,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       first, firsts, <substring>, <string>, Numbered
       fixlet, fixlets, <fixlet>, <site>, Plain
       flag, flags, <integer>, <volume>, Plain
+      flags string, flags strings, <string>, <route>, Plain
       float, floats, <boolean>, <sqlite column type>, Plain
       floating point, floating points, <floating point>, world , Index<floating point>Global
       floating point, floating points, <floating point>, world , NamedGlobal
@@ -5603,6 +5820,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       following text, following texts, <substring>, <substring>, Plain
       fonts folder, fonts folders, <folder>, <domain>, Plain
       fonts folder, fonts folders, <folder>, world , PlainGlobal
+      format, formats, <format>, world , NamedGlobal
       framework folder, framework folders, <folder>, <domain>, Plain
       framework folder, framework folders, <folder>, world , PlainGlobal
       framework, frameworks, <folder>, <domain>, Named
@@ -5617,6 +5835,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       full, fulls, <boolean>, <power level>, Plain
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Numbered
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Plain
+      gateway flag, gateway flags, <boolean>, <route>, Plain
+      gateway string, gateway strings, <string>, <route>, Plain
+      gateway type, gateways types, <string>, <route>, Plain
+      gateway, gateways, <ipv4or6 address>, <route>, Plain
       gather duration, gather durations, <time interval>, <evaluation cycle>, Plain
       gather percent, gather percents, <floating point>, <evaluation cycle>, Plain
       gather schedule authority, gather schedule authoritys, <string>, <site>, Plain
@@ -5680,6 +5902,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       hfs path, hfs paths, <string>, <filesystem object>, Plain
       hfs relative item, hfs relative items, <filesystem object>, <folder>, Named
       home directory, home directories, <folder>, <user>, Plain
+      host flag, host flags, <boolean>, <route>, Plain
       host name, host names, <string>, <root server>, Plain
       hostname, hostnames, <string>, world , PlainGlobal
       hour, hours, <time interval>, world , PlainGlobal
@@ -5710,6 +5933,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       id, ids, <string>, <user>, Plain
       identity, identites, <string>, <execution>, Plain
       idle state, idle states, <power state>, world , PlainGlobal
+      ifref flag, ifref flags, <boolean>, <route>, Plain
+      ifscope flag, ifscope flags, <boolean>, <route>, Plain
       in agent context, in agent contexts, <boolean>, world , PlainGlobal
       in proxy agent context, in proxy agent contexts, <boolean>, world , PlainGlobal
       index type, index types, <type>, <property>, Plain
@@ -5739,6 +5964,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       interface, interfaces, <network interface>, <network adapter>, Plain
       interface, interfaces, <network interface>, <network>, Numbered
       interface, interfaces, <network interface>, <network>, Plain
+      interface, interfaces, <string>, <route>, Plain
       internet plugins folder, internet plugins folders, <folder>, <domain>, Plain
       internet plugins folder, internet plugins folders, <folder>, world , PlainGlobal
       intersection, intersections, <integer set>, <integer set>, Plain
@@ -5748,6 +5974,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       invalid, invalids, <boolean>, <floating point>, Plain
       iokit registry, iokit registries, <registryroot>, world , PlainGlobal
       ip address, ip addresses, <ipv4or6 address>, <selected server>, Plain
+      ip family, ip families, <string>, <route>, Plain
       ip interface, ip interfaces, <network ip interface>, <network adapter>, Plain
       ip interface, ip interfaces, <network ip interface>, <network>, Numbered
       ip interface, ip interfaces, <network ip interface>, <network>, Plain
@@ -5758,6 +5985,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       ipv4 interface, ipv4 interfaces, <network adapter interface>, <network>, Plain
       ipv4 part, ipv4 parts, <ipv4 address>, <ipv4or6 address>, Plain
       ipv4 part, ipv4 parts, <ipv4 address>, <ipv6 address>, Plain
+      ipv4 routing table, ipv4 routing tables, <routing table>, world , PlainGlobal
       ipv4, ipv4s, <ip version>, world , PlainGlobal
       ipv4or6 address, ipv4or6 addresses, <ipv4or6 address>, world , NamedGlobal
       ipv4or6 interface, ipv4or6 interfaces, <network adapter interface>, <network adapter>, Plain
@@ -5765,6 +5993,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       ipv6 address, ipv6 addresses, <ipv6 address>, world , NamedGlobal
       ipv6 interface, ipv6 interfaces, <network adapter interface>, <network adapter>, Plain
       ipv6 interface, ipv6 interfaces, <network adapter interface>, <network>, Plain
+      ipv6 routing table, ipv6 routing tables, <routing table>, world , PlainGlobal
       ipv6, ipv6s, <ip version>, world , PlainGlobal
       isochronous, isochronouses, <boolean>, <usb>, Plain
       iss download folder, iss download folders, <folder>, <domain>, Plain
@@ -5862,10 +6091,12 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       link, links, <html>, <html>, Plain
       link, links, <html>, <string>, Named
       link, links, <html>, <string>, Plain
+      llinfo flag, llinfo flags, <boolean>, <route>, Plain
       local character set, local character sets, <string>, <client>, Plain
       local computer, local computers, <active directory local computer>, <active directory server>, Plain
       local dictionary, local dictionaries, <dictionary>, <bundle>, Plain
       local domain, local domains, <domain>, world , PlainGlobal
+      local flag, local flags, <boolean>, <route>, Plain
       local group, local groups, <active directory group>, <active directory server>, Named
       local time zone, local time zones, <time zone>, world , PlainGlobal
       local time, local times, <time>, world , NamedGlobal
@@ -5913,10 +6144,13 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       major revision, major revisions, <integer>, <version>, Plain
       major version, major versions, <integer>, <operating system>, Plain
       maker, makers, <string>, <component>, Plain
+      manual group, manual groups, <manual group>, <client>, Named
+      manual group, manual groups, <manual group>, <client>, Plain
       march, marchs, <date>, <integer>, Numbered
       march, marchs, <day of year>, world , NumberedGlobal
       march, marchs, <month and year>, <integer>, Plain
       march, marchs, <month>, world , PlainGlobal
+      mask, masks, <ipv4or6 address>, <route>, Plain
       masthead, mastheads, <file>, <site>, Plain
       match, matches, <regular expression match>, <string>, Index<regular expression>
       maximum duration, maximum durations, <time interval>, <evaluation cycle>, Plain
@@ -5949,6 +6183,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       md5, md5s, <string>, <string>, Plain
       mean, means, <floating point>, <floating point>, Plain
       mean, means, <floating point>, <integer>, Plain
+      member, members, <boolean>, <manual group>, Plain
       member, members, <boolean>, <site group>, Plain
       meta, metas, <html>, <html>, Named
       meta, metas, <html>, <html>, Plain
@@ -5988,6 +6223,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       modification time, modification times, <time>, <execution>, Plain
       modification time, modification times, <time>, <filesystem object>, Plain
       modification time, modification times, <time>, <volume>, Plain
+      modified flag, modified flags, <boolean>, <route>, Plain
       module, modules, <module>, world , NamedGlobal
       module, modules, <module>, world , PlainGlobal
       monday, mondays, <day of week>, world , PlainGlobal
@@ -6005,6 +6241,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       month_and_year, months_and_years, <month and year>, <date>, Plain
       more significance, more significances, <floating point>, <floating point>, Numbered
       most significant one bit, most significant one bits, <integer>, <bit set>, Plain
+      mtu, mtus, <integer>, <route>, Plain
+      multicast flag, multicast flags, <boolean>, <route>, Plain
       multicast support, multicast supports, <boolean>, <network adapter interface>, Plain
       multicast support, multicast supports, <boolean>, <network adapter>, Plain
       multicast support, multicast supports, <boolean>, <network ip interface>, Plain
@@ -6033,6 +6271,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       multiplicity, multiplicities, <integer>, <version with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <year with multiplicity>, Plain
       multivalued, multivalueds, <boolean>, <property>, Plain
+      mvs count, mvs counts, <integer>, <bes product>, Plain
       name registry version, name registry versions, <version>, world , PlainGlobal
       name, names, <string>, <active directory group>, Plain
       name, names, <string>, <active directory local user>, Plain
@@ -6069,6 +6308,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       name, names, <string>, <user>, Plain
       name, names, <string>, <volume>, Plain
       nan, nans, <boolean>, <floating point>, Plain
+      netstat flag, netstat flags, <string>, <route>, Plain
       network domain, network domains, <domain>, world , PlainGlobal
       network, networks, <network>, world , PlainGlobal
       next line, next lines, <file line>, <file line>, Plain
@@ -6139,11 +6379,14 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       pending restart, pending restarts, <boolean>, world , PlainGlobal
       pending time, pending times, <time>, <action>, Plain
       pending, pendings, <boolean>, <action>, Plain
+      percent decode, percent decodes, <string>, world , NamedGlobal
+      percent encode, percent encodes, <string>, world , NamedGlobal
       perpetual maintenance, perpetual maintenances, <boolean>, <bes product>, Plain
       perpetual, perpetuals, <boolean>, <bes product>, Plain
       persistent constraint, persistent constraints, <integer>, <action>, Plain
       physical ram, physical rams, <integer>, world , PlainGlobal
       pid, pids, <integer>, <process>, Plain
+      pinned flag, pinned flags, <boolean>, <route>, Plain
       plugged, pluggeds, <boolean>, <power level>, Plain
       plural name, plural names, <string>, <property>, Plain
       point to point, point to points, <boolean>, <network adapter interface>, Plain
@@ -6161,6 +6404,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       power level, power levels, <power level>, world , PlainGlobal
       power plane, power planes, <registrynode>, <registryroot>, Plain
       powerpc, powerpcs, <boolean>, world , PlainGlobal
+      prcloning flag, prcloning flags, <boolean>, <route>, Plain
       pre, pres, <html>, <html>, Named
       pre, pres, <html>, <html>, Plain
       pre, pres, <html>, <string>, Named
@@ -6203,6 +6447,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       property, properties, <property>, <type>, Plain
       property, properties, <property>, world , NamedGlobal
       property, properties, <property>, world , PlainGlobal
+      proto1 flag, proto1 flags, <boolean>, <route>, Plain
+      proto2 flag, proto2 flags, <boolean>, <route>, Plain
+      proto3 flag, proto3 flags, <boolean>, <route>, Plain
+      proxy flag, proxy flags, <boolean>, <route>, Plain
       q, qs, <html>, <html>, Named
       q, qs, <html>, <html>, Plain
       q, qs, <html>, <string>, Named
@@ -6222,6 +6470,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       rate, rates, <rate>, <linear projection>, Plain
       receipts folder, receipts folders, <folder>, <domain>, Plain
       receipts folder, receipts folders, <folder>, world , PlainGlobal
+      reference, references, <integer>, <route>, Plain
       regapp, regapps, <application>, world , NamedGlobal
       regapp, regapps, <application>, world , PlainGlobal
       regex escape, regex escapes, <string>, <string>, Plain
@@ -6234,6 +6483,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       registration subnet address, registration subnet addresses, <ipv4or6 address>, <client>, Plain
       registry, registries, <dummy type>, world , PlainGlobal
       regular expression, regular expressions, <regular expression>, world , NamedGlobal
+      reject flag, reject flags, <boolean>, <route>, Plain
       relative file, relative files, <file>, <folder>, Named
       relative folder, relative folders, <folder>, <folder>, Named
       relative hfs file, relative hfs files, <file>, <folder>, Named
@@ -6266,6 +6516,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       rom version, rom versions, <version>, world , PlainGlobal
       root server, root servers, <root server>, world , PlainGlobal
       rope, ropes, <rope>, world , NamedGlobal
+      route, routes, <route>, <routing table>, Plain
+      router flag, router flags, <boolean>, <route>, Plain
+      routing table, routing tables, <routing table>, world , PlainGlobal
       row, rows, <sqlite row>, <sqlite statement>, Plain
       running, runnings, <boolean>, <application usage summary>, Plain
       rvu count, rvu counts, <integer>, <bes product>, Plain
@@ -6291,8 +6544,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       second, seconds, <time interval>, world , PlainGlobal
       second_of_minute, seconds_of_minute, <integer>, <time of day with time zone>, Plain
       second_of_minute, seconds_of_minute, <integer>, <time of day>, Plain
+      seconds to expiration, seconds to expirations, <integer>, <route>, Plain
       section, sections, <file section>, <file>, Named
       selected server, selected servers, <selected server>, world , PlainGlobal
+      sent packet count, sent packets counts, <integer>, <route>, Plain
       september, septembers, <date>, <integer>, Numbered
       september, septembers, <day of year>, world , NumberedGlobal
       september, septembers, <month and year>, <integer>, Plain
@@ -6304,11 +6559,17 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       set, sets, <string set>, <string>, Plain
       setting, settings, <setting>, <client>, Named
       setting, settings, <setting>, <client>, Plain
+      setting, settings, <setting>, <manual group>, Plain
       setting, settings, <setting>, <site>, Named
       setting, settings, <setting>, <site>, Plain
       sha1, sha1s, <string>, <file>, Plain
       sha1, sha1s, <string>, <string>, Plain
       sha1, sha1s, <string>, <x509 certificate>, Plain
+      sha224, sha224s, <string>, <file>, Plain
+      sha224, sha224s, <string>, <string>, Plain
+      sha256 download, sha256 downloads, <boolean>, <license>, Plain
+      sha256, sha256s, <string>, <file>, Plain
+      sha256, sha256s, <string>, <string>, Plain
       sha2_224, sha2_224s, <string>, <file>, Plain
       sha2_224, sha2_224s, <string>, <string>, Plain
       sha2_256, sha2_256s, <string>, <file>, Plain
@@ -6317,6 +6578,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sha2_384, sha2_384s, <string>, <string>, Plain
       sha2_512, sha2_512s, <string>, <file>, Plain
       sha2_512, sha2_512s, <string>, <string>, Plain
+      sha384, sha384s, <string>, <file>, Plain
+      sha384, sha384s, <string>, <string>, Plain
+      sha512, sha512s, <string>, <file>, Plain
+      sha512, sha512s, <string>, <string>, Plain
       shared folder, shared folders, <folder>, <domain>, Plain
       shared folder, shared folders, <folder>, world , PlainGlobal
       shared libraries folder, shared libraries folders, <folder>, <domain>, Plain
@@ -6331,6 +6596,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sibling item, sibling items, <filesystem object>, <filesystem object>, Named
       sid, sids, <security identifier>, <active directory group>, Plain
       sid, sids, <security identifier>, <user>, Plain
+      signature hash algorithm, signature hash algorithms, <string>, <license>, Plain
       significance place, significance places, <floating point>, <floating point>, Numbered
       significance place, significance places, <floating point>, <floating point>, Plain
       significance threshold, significance thresholds, <floating point>, <floating point>, Plain
@@ -6374,6 +6640,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       speech folder, speech folders, <folder>, world , PlainGlobal
       speed, speeds, <hertz>, <processor>, Plain
       sqlite database, sqlite databases, <sqlite database>, <file>, Plain
+      sqrt, sqrts, <floating point>, <floating point>, Plain
+      sqrt, sqrts, <floating point>, <integer>, Plain
       stage, stages, <stage>, <version>, Plain
       stage, stages, <stage>, world , NamedGlobal
       standard deviation, standard deviations, <floating point>, <floating point>, Plain
@@ -6390,6 +6658,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       state, states, <power state>, <system power interval>, Plain
       state, states, <string>, <dummy>, Plain
       statement, statements, <sqlite statement>, <sqlite database>, Named
+      static flag, static flags, <boolean>, <route>, Plain
       stationery, stationeries, <boolean>, <file>, Plain
       status, statuss, <string>, <action>, Plain
       stepping, steppings, <integer>, <processor>, Plain
@@ -6568,6 +6837,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       unordered list, unordered lists, <html>, <html>, Plain
       unordered list, unordered lists, <html>, <string>, Named
       unordered list, unordered lists, <html>, <string>, Plain
+      up flag, up flags, <boolean>, <route>, Plain
       up, ups, <boolean>, <network adapter interface>, Plain
       up, ups, <boolean>, <network adapter>, Plain
       up, ups, <boolean>, <network interface>, Plain
@@ -6642,6 +6912,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       volume, volumes, <volume>, world , PlainGlobal
       waiting for download, waiting for downloads, <boolean>, <action>, Plain
       wake on lan subnet cidr string, wake on lan subnet cidr strings, <string>, world , PlainGlobal
+      wascloned flag, wascloned flags, <boolean>, <route>, Plain
       wednesday, wednesdays, <day of week>, world , PlainGlobal
       week, weeks, <time interval>, world , PlainGlobal
       weight, weights, <integer>, <selected server>, Plain
@@ -6650,6 +6921,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       windows server count, windows server counts, <integer>, <bes product>, Plain
       windows, windowses, <boolean>, <operating system>, Plain
       workstation count, workstation counts, <integer>, <bes product>, Plain
+      xresolve flag, xresolve flags, <boolean>, <route>, Plain
       year, years, <number of months>, world , PlainGlobal
       year, years, <year>, <date>, Plain
       year, years, <year>, <month and year>, Plain

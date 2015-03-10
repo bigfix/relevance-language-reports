@@ -212,6 +212,8 @@ Creation techniques & properties of each type:
       message timeout delay of <bes action>, message timeout delays, Plain, <time interval>
       message title of <bes action>, message titles, Plain, <string>
       middle action of <bes action>, middle actions, Plain, <bes action>
+      mime field <string> of <bes action>, mime fields, Named, <string>
+      mime field of <bes action>, mime fields, Plain, <mime field>
       multiple flag of <bes action>, multiple flags, Plain, <boolean>
       name of <bes action>, names, Plain, <string>
       offer category of <bes action>, offer categories, Plain, <string>
@@ -431,6 +433,7 @@ Creation techniques & properties of each type:
     Creation of <bes computer>: { key phrase, plural keyword, form}
       administered computer of <bes user>, administered computers, Plain
       applicable computer of <bes fixlet>, applicable computers, Plain
+      bes computer <integer>, bes computers, NumberedGlobal
       bes computer, bes computers, PlainGlobal
       computer of <bes action result>, computers, Plain
       computer of <bes fixlet result>, computers, Plain
@@ -450,6 +453,8 @@ Creation techniques & properties of each type:
       administrator set of <bes computer>, administrator sets, Plain, <bes user set>
       agent type of <bes computer>, agent types, Plain, <string>
       agent version of <bes computer>, agent versions, Plain, <string>
+      bes computer group of <bes computer>, bes computer groups, Plain, <bes computer group>
+      bes computer group set of <bes computer>, bes computer group sets, Plain, <bes computer group set>
       client setting of <bes computer>, client settings, Plain, <bes client setting>
       comment of <bes computer>, comments, Plain, <bes comment>
       cpu of <bes computer>, cpus, Plain, <string>
@@ -492,6 +497,7 @@ Creation techniques & properties of each type:
 
   Type <bes computer group>
     Creation of <bes computer group>: { key phrase, plural keyword, form}
+      bes computer group of <bes computer>, bes computer groups, Plain
       bes computer group, bes computer groups, PlainGlobal
       computer group of <bes domain>, computer groups, Plain
       element of <bes computer group set>, elements, Plain
@@ -520,6 +526,7 @@ Creation techniques & properties of each type:
       <bes computer group set> * <bes computer group set>, , BinaryOperator
       <bes computer group set> + <bes computer group set>, , BinaryOperator
       <bes computer group set> - <bes computer group set>, , BinaryOperator
+      bes computer group set of <bes computer>, bes computer group sets, Plain
       bes computer group set, bes computer group sets, PlainGlobal
       computer group set of <bes domain>, computer group sets, Plain
       intersection of <bes computer group set>, intersections, Plain
@@ -867,6 +874,7 @@ Creation techniques & properties of each type:
       last became nonrelevant of <bes fixlet result>, last became nonrelevants, Plain, <time>
       last became relevant of <bes fixlet result>, last became relevants, Plain, <time>
       relevant flag of <bes fixlet result>, relevant flags, Plain, <boolean>
+      remediated flag of <bes fixlet result>, remediated flags, Plain, <boolean>
 
   Type <bes fixlet set>
     Creation of <bes fixlet set>: { key phrase, plural keyword, form}
@@ -975,6 +983,7 @@ Creation techniques & properties of each type:
       computer count of <bes product>, computer counts, Plain, <integer>
       expiration date of <bes product>, expiration dates, Plain, <date>
       legacy of <bes product>, legacies, Plain, <boolean>
+      mvs count of <bes product>, mvs counts, Plain, <integer>
       name of <bes product>, names, Plain, <string>
       non windows server count of <bes product>, non windows server counts, Plain, <integer>
       perpetual maintenance of <bes product>, perpetual maintenances, Plain, <boolean>
@@ -1365,6 +1374,7 @@ Creation techniques & properties of each type:
       role of <bes user>, roles, Plain, <bes role>
       role set of <bes user>, role sets, Plain, <bes role set>
       set of <bes user>, sets, Plain, <bes user set>
+      show other action flag of <bes user>, show other action flags, Plain, <boolean>
       unique value of <bes user>, unique values, Plain, <bes user with multiplicity>
       unmanagedasset privilege scanpoint flag of <bes user>, unmanagedasset privilege scanpoint flags, Plain, <boolean>
       unmanagedasset privilege showall flag of <bes user>, unmanagedasset privilege showall flags, Plain, <boolean>
@@ -1684,6 +1694,8 @@ Creation techniques & properties of each type:
       <time interval> < <time interval>, , BinaryOperator
       <time interval> <= <time interval>, , BinaryOperator
       <time interval> = <time interval>, , BinaryOperator
+      <time of day with time zone> < <time of day with time zone>, , BinaryOperator
+      <time of day with time zone> <= <time of day with time zone>, , BinaryOperator
       <time of day with time zone> = <time of day with time zone>, , BinaryOperator
       <time of day> < <time of day>, , BinaryOperator
       <time of day> <= <time of day>, , BinaryOperator
@@ -1744,6 +1756,7 @@ Creation techniques & properties of each type:
       editable flag of <bes unmanagedasset field>, editable flags, Plain
       enabled of <bes wakeonlan status>, enableds, Plain
       end flag of <bes action>, end flags, Plain
+      enhanced security of <license>, enhanced securities, Plain
       error flag of <bes property result>, error flags, Plain
       evaluation of <license>, evaluations, Plain
       expiration flag of <bes action>, expiration flags, Plain
@@ -1808,6 +1821,7 @@ Creation techniques & properties of each type:
       relevant <bes computer> of <bes fixlet>, relevants, Index<bes computer>
       relevant <bes fixlet> of <bes computer>, relevants, Index<bes fixlet>
       relevant flag of <bes fixlet result>, relevant flags, Plain
+      remediated flag of <bes fixlet result>, remediated flags, Plain
       require user absence of <bes action>, require user absences, Plain
       require user presence of <bes action>, require user presences, Plain
       requires authoring flag of <bes wizard>, requires authoring flags, Plain
@@ -1817,7 +1831,9 @@ Creation techniques & properties of each type:
       root server flag of <bes computer>, root server flags, Plain
       secure parameter flag of <bes action>, secure parameter flags, Plain
       settings flag of <bes action>, settings flags, Plain
+      sha256 download of <license>, sha256 downloads, Plain
       show message flag of <bes action>, show message flags, Plain
+      show other action flag of <bes user>, show other action flags, Plain
       show running message flag of <bes action>, show running message flags, Plain
       shutdown flag of <bes action>, shutdown flags, Plain
       single flag of <bes action>, single flags, Plain
@@ -2185,6 +2201,8 @@ Creation techniques & properties of each type:
       significance place of <floating point>, significance places, Plain
       significance threshold of <floating point>, significance thresholds, Plain
       skewness of <statistical bin>, skewnesses, Plain
+      sqrt of <floating point>, sqrts, Plain
+      sqrt of <integer>, sqrts, Plain
       standard deviation of <floating point>, standard deviations, Plain
       standard deviation of <integer>, standard deviations, Plain
       standard deviation of <statistical bin>, standard deviations, Plain
@@ -2247,6 +2265,7 @@ Creation techniques & properties of each type:
       significance place <integer> of <floating point>, significance places, Numbered, <floating point>
       significance place of <floating point>, significance places, Plain, <floating point>
       significance threshold of <floating point>, significance thresholds, Plain, <floating point>
+      sqrt of <floating point>, sqrts, Plain, <floating point>
       standard deviation of <floating point>, standard deviations, Plain, <floating point>
       sum of <floating point>, sums, Plain, <floating point>
       underflow of <floating point>, underflows, Plain, <boolean>
@@ -2880,6 +2899,7 @@ Creation techniques & properties of each type:
       multiplicity of <time zone with multiplicity>, multiplicities, Plain
       multiplicity of <version with multiplicity>, multiplicities, Plain
       multiplicity of <year with multiplicity>, multiplicities, Plain
+      mvs count of <bes product>, mvs counts, Plain
       node type of <xml dom node>, node types, Plain
       non windows server count of <bes product>, non windows server counts, Plain
       numeric value of <string>, numeric values, Plain
@@ -3005,6 +3025,7 @@ Creation techniques & properties of each type:
       september of <integer>, septembers, Plain, <month and year>
       set of <integer>, sets, Plain, <integer set>
       significant digits <integer> of <integer>, significant digitss, Numbered, <integer>
+      sqrt of <integer>, sqrts, Plain, <floating point>
       standard deviation of <integer>, standard deviations, Plain, <floating point>
       sum of <integer>, sums, Plain, <integer>
       unique value of <integer>, unique values, Plain, <integer with multiplicity>
@@ -3198,8 +3219,12 @@ Creation techniques & properties of each type:
     Properties of <license> { key phrase, plural keyword, form, <result type>}:
       allow unmentioned site of <license>, allow unmentioned sites, Plain, <boolean>
       common name of <license>, common names, Plain, <string>
+      download hash algorithm of <license>, download hash algorithms, Plain, <string>
+      effective download hash algorithm of <license>, effective download hash algorithms, Plain, <string>
+      effective signature hash algorithm of <license>, effective signature hash algorithms, Plain, <string>
       email address of <license>, email addresses, Plain, <string>
       encryption certificate of <license>, encryption certificates, Plain, <x509 certificate>
+      enhanced security of <license>, enhanced securities, Plain, <boolean>
       evaluation of <license>, evaluations, Plain, <boolean>
       expiration date of <license>, expiration dates, Plain, <time>
       expiration state of <license>, expiration states, Plain, <string>
@@ -3211,6 +3236,8 @@ Creation techniques & properties of each type:
       registrar number of <license>, registrar numbers, Plain, <integer>
       seat count state of <license>, seat count states, Plain, <string>
       seat of <license>, seats, Plain, <integer>
+      sha256 download of <license>, sha256 downloads, Plain, <boolean>
+      signature hash algorithm of <license>, signature hash algorithms, Plain, <string>
       site number of <license>, site numbers, Plain, <integer>
       start date of <license>, start dates, Plain, <time>
       type of <license>, types, Plain, <string>
@@ -3225,6 +3252,7 @@ Creation techniques & properties of each type:
 
   Type <mime field>
     Creation of <mime field>: { key phrase, plural keyword, form}
+      mime field of <bes action>, mime fields, Plain
       mime field of <bes fixlet>, mime fields, Plain
     Properties of <mime field> { key phrase, plural keyword, form, <result type>}:
       name of <mime field>, names, Plain, <string>
@@ -3708,6 +3736,9 @@ Creation techniques & properties of each type:
       display source severity of <bes fixlet>, display source severities, Plain
       display value of <bes fixlet field value>, display values, Plain
       distinguished name of <bes user>, distinguished names, Plain
+      download hash algorithm of <license>, download hash algorithms, Plain
+      effective download hash algorithm of <license>, effective download hash algorithms, Plain
+      effective signature hash algorithm of <license>, effective signature hash algorithms, Plain
       element of <string set>, elements, Plain
       email address of <license>, email addresses, Plain
       error message of <bes property result>, error messages, Plain
@@ -3733,6 +3764,7 @@ Creation techniques & properties of each type:
       menu path of <bes wizard>, menu paths, Plain
       message text of <bes action>, message texts, Plain
       message title of <bes action>, message titles, Plain
+      mime field <string> of <bes action>, mime fields, Named
       mime field <string> of <bes fixlet>, mime fields, Named
       name of <bes action parameter>, names, Plain
       name of <bes action>, names, Plain
@@ -3772,6 +3804,8 @@ Creation techniques & properties of each type:
       padded string of <bit set>, padded strings, Plain
       parameter <string> of <bes action>, parameters, Named
       parent relevance of <bes fixlet>, parent relevances, Plain
+      percent decode <string>, percent decodes, NamedGlobal
+      percent encode <string>, percent encodes, NamedGlobal
       plural name of <property>, plural names, Plain
       postaction message text of <bes action>, postaction message texts, Plain
       postaction message title of <bes action>, postaction message titles, Plain
@@ -3796,12 +3830,17 @@ Creation techniques & properties of each type:
       selected groups string of <bes action>, selected groups strings, Plain
       sha1 of <string>, sha1s, Plain
       sha1 of <x509 certificate>, sha1s, Plain
+      sha224 of <string>, sha224s, Plain
+      sha256 of <string>, sha256s, Plain
       sha2_224 of <string>, sha2_224s, Plain
       sha2_256 of <string>, sha2_256s, Plain
       sha2_384 of <string>, sha2_384s, Plain
       sha2_512 of <string>, sha2_512s, Plain
+      sha384 of <string>, sha384s, Plain
+      sha512 of <string>, sha512s, Plain
       shared variable <( string, string )>, shared variables, Index<( string, string )>Global
       shared variable <string> of <bes wizard>, shared variables, Named
+      signature hash algorithm of <license>, signature hash algorithms, Plain
       simple name of <bes property>, simple names, Plain
       singular name of <property>, singular names, Plain
       site level relevance of <bes site>, site level relevances, Plain
@@ -4025,10 +4064,14 @@ Creation techniques & properties of each type:
       samp of <string>, samps, Plain, <html>
       set of <string>, sets, Plain, <string set>
       sha1 of <string>, sha1s, Plain, <string>
+      sha224 of <string>, sha224s, Plain, <string>
+      sha256 of <string>, sha256s, Plain, <string>
       sha2_224 of <string>, sha2_224s, Plain, <string>
       sha2_256 of <string>, sha2_256s, Plain, <string>
       sha2_384 of <string>, sha2_384s, Plain, <string>
       sha2_512 of <string>, sha2_512s, Plain, <string>
+      sha384 of <string>, sha384s, Plain, <string>
+      sha512 of <string>, sha512s, Plain, <string>
       small <string> of <string>, smalls, Named, <html>
       small of <string>, smalls, Plain, <html>
       span <string> of <string>, spans, Named, <html>
@@ -4378,6 +4421,8 @@ Creation techniques & properties of each type:
       <time of day with time zone> + <time interval>, , BinaryOperator, <time of day with time zone>
       <time of day with time zone> - <time interval>, , BinaryOperator, <time of day with time zone>
       <time of day with time zone> - <time of day with time zone>, , BinaryOperator, <time interval>
+      <time of day with time zone> < <time of day with time zone>, , BinaryOperator, <boolean>
+      <time of day with time zone> <= <time of day with time zone>, , BinaryOperator, <boolean>
       <time of day with time zone> = <time of day with time zone>, , BinaryOperator, <boolean>
       <time of day with time zone> as string, , Cast, <string>
       <time zone> & <time of day with time zone>, , BinaryOperator, <time of day with time zone>
@@ -4700,6 +4745,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   bes baseline set, bes baseline sets, PlainGlobal, <bes fixlet set>
   bes baseline, bes baselines, PlainGlobal, <bes fixlet>
   bes brand, bes brands, PlainGlobal, <string>
+  bes computer <integer>, bes computers, NumberedGlobal, <bes computer>
   bes computer group set, bes computer group sets, PlainGlobal, <bes computer group set>
   bes computer group, bes computer groups, PlainGlobal, <bes computer group>
   bes computer set, bes computer sets, PlainGlobal, <bes computer set>
@@ -4855,6 +4901,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   october <integer>, octobers, NumberedGlobal, <day of year>
   october, octobers, PlainGlobal, <month>
   pending license update, pending license updates, PlainGlobal, <boolean>
+  percent decode <string>, percent decodes, NamedGlobal, <string>
+  percent encode <string>, percent encodes, NamedGlobal, <string>
   plain bes fixlet set, plain bes fixlet sets, PlainGlobal, <bes fixlet set>
   plain bes fixlet, plain bes fixlets, PlainGlobal, <bes fixlet>
   preferred bes language, preferred bes languages, PlainGlobal, <string>
@@ -5167,9 +5215,12 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       bes baseline set, bes baseline sets, <bes fixlet set>, world , PlainGlobal
       bes baseline, bes baselines, <bes fixlet>, world , PlainGlobal
       bes brand, bes brands, <string>, world , PlainGlobal
+      bes computer group set, bes computer group sets, <bes computer group set>, <bes computer>, Plain
       bes computer group set, bes computer group sets, <bes computer group set>, world , PlainGlobal
+      bes computer group, bes computer groups, <bes computer group>, <bes computer>, Plain
       bes computer group, bes computer groups, <bes computer group>, world , PlainGlobal
       bes computer set, bes computer sets, <bes computer set>, world , PlainGlobal
+      bes computer, bes computers, <bes computer>, world , NumberedGlobal
       bes computer, bes computers, <bes computer>, world , PlainGlobal
       bes custom site, bes custom sites, <bes site>, world , PlainGlobal
       bes deployment option, bes deployment options, <bes deployment option>, world , NamedGlobal
@@ -5440,12 +5491,15 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       domain, domains, <bes domain>, <bes filter>, Plain
       domain, domains, <bes domain>, <bes fixlet>, Plain
       domain, domains, <bes domain>, <bes site>, Plain
+      download hash algorithm, download hash algorithms, <string>, <license>, Plain
       download size, download sizes, <integer>, <bes fixlet>, Plain
       dt, dts, <html>, <html>, Named
       dt, dts, <html>, <html>, Plain
       dt, dts, <html>, <string>, Named
       dt, dts, <html>, <string>, Plain
       editable flag, editable flags, <boolean>, <bes unmanagedasset field>, Plain
+      effective download hash algorithm, effective download hash algorithms, <string>, <license>, Plain
+      effective signature hash algorithm, effective signature hash algorithms, <string>, <license>, Plain
       element, elements, <bes action>, <bes action set>, Plain
       element, elements, <bes computer group>, <bes computer group set>, Plain
       element, elements, <bes computer>, <bes computer set>, Plain
@@ -5478,6 +5532,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       end, ends, <time>, <statistic range>, Plain
       end, ends, <time>, <statistical bin>, Plain
       end, ends, <time>, <time range>, Plain
+      enhanced security, enhanced securities, <boolean>, <license>, Plain
       error flag, error flags, <boolean>, <bes property result>, Plain
       error message, error messages, <string>, <bes property result>, Plain
       error, errors, <undefined>, world , NamedGlobal
@@ -5876,7 +5931,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       middle action, middle actions, <bes action>, <bes action>, Plain
       midnight, midnights, <time of day>, world , PlainGlobal
       millisecond, milliseconds, <time interval>, world , PlainGlobal
+      mime field, mime fields, <mime field>, <bes action>, Plain
       mime field, mime fields, <mime field>, <bes fixlet>, Plain
+      mime field, mime fields, <string>, <bes action>, Named
       mime field, mime fields, <string>, <bes fixlet>, Named
       minimum single computer total, minimum single computer totals, <floating point>, <statistical bin>, Plain
       minimum value, minimum values, <floating point>, <statistical bin>, Plain
@@ -5956,6 +6013,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       multiplicity, multiplicities, <integer>, <version with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <year with multiplicity>, Plain
       multivalued, multivalueds, <boolean>, <property>, Plain
+      mvs count, mvs counts, <integer>, <bes product>, Plain
       name, names, <string>, <bes action parameter>, Plain
       name, names, <string>, <bes action>, Plain
       name, names, <string>, <bes activation>, Plain
@@ -6049,6 +6107,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       parenthesized part, parenthesized parts, <substring>, <regular expression match>, Plain
       path, paths, <json value>, <json value>, Named
       pending license update, pending license updates, <boolean>, world , PlainGlobal
+      percent decode, percent decodes, <string>, world , NamedGlobal
+      percent encode, percent encodes, <string>, world , NamedGlobal
       perpetual maintenance, perpetual maintenances, <boolean>, <bes product>, Plain
       perpetual, perpetuals, <boolean>, <bes product>, Plain
       plain bes fixlet set, plain bes fixlet sets, <bes fixlet set>, world , PlainGlobal
@@ -6127,6 +6187,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       relevant, relevants, <boolean>, <bes fixlet>, Index<bes computer>
       relevant, relevants, <boolean>, world , Index<( bes computer, bes fixlet )>Global
       relevant, relevants, <boolean>, world , Index<( bes fixlet, bes computer )>Global
+      remediated flag, remediated flags, <boolean>, <bes fixlet result>, Plain
       reported action set, reported action sets, <bes action set>, <bes computer>, Plain
       reported computer set, reported computer sets, <bes computer set>, <bes action>, Plain
       reported computer set, reported computer sets, <bes computer set>, <bes property>, Plain
@@ -6210,16 +6271,23 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       settings flag, settings flags, <boolean>, <bes action>, Plain
       sha1, sha1s, <string>, <string>, Plain
       sha1, sha1s, <string>, <x509 certificate>, Plain
+      sha224, sha224s, <string>, <string>, Plain
+      sha256 download, sha256 downloads, <boolean>, <license>, Plain
+      sha256, sha256s, <string>, <string>, Plain
       sha2_224, sha2_224s, <string>, <string>, Plain
       sha2_256, sha2_256s, <string>, <string>, Plain
       sha2_384, sha2_384s, <string>, <string>, Plain
       sha2_512, sha2_512s, <string>, <string>, Plain
+      sha384, sha384s, <string>, <string>, Plain
+      sha512, sha512s, <string>, <string>, Plain
       shared variable, shared variables, <bes wizard variable>, <bes wizard>, Plain
       shared variable, shared variables, <string>, <bes wizard>, Named
       shared variable, shared variables, <string>, world , Index<( string, string )>Global
       show message flag, show message flags, <boolean>, <bes action>, Plain
+      show other action flag, show other action flags, <boolean>, <bes user>, Plain
       show running message flag, show running message flags, <boolean>, <bes action>, Plain
       shutdown flag, shutdown flags, <boolean>, <bes action>, Plain
+      signature hash algorithm, signature hash algorithms, <string>, <license>, Plain
       significance place, significance places, <floating point>, <floating point>, Numbered
       significance place, significance places, <floating point>, <floating point>, Plain
       significance threshold, significance thresholds, <floating point>, <floating point>, Plain
@@ -6276,6 +6344,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       span, spans, <html>, <html>, Plain
       span, spans, <html>, <string>, Named
       span, spans, <html>, <string>, Plain
+      sqrt, sqrts, <floating point>, <floating point>, Plain
+      sqrt, sqrts, <floating point>, <integer>, Plain
       standard deviation, standard deviations, <floating point>, <floating point>, Plain
       standard deviation, standard deviations, <floating point>, <integer>, Plain
       standard deviation, standard deviations, <floating point>, <statistical bin>, Plain

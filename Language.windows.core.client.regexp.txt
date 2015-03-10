@@ -1,4 +1,4 @@
-Operating System:Win2008R2 6_1_7601
+Operating System:Win2008R2 6_1_7600
 Build Target:i386_win32
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
@@ -159,6 +159,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   local mssql database
   logged on user
   logon task trigger (derives from  task trigger)
+  manual group
   media type
   metabase
   metabase identifier
@@ -296,6 +297,7 @@ Creation techniques & properties of each type:
       entry of <access control list>, entries, Plain
     Properties of <access control entry> { key phrase, plural keyword, form, <result type>}:
       access mode of <access control entry>, access modes, Plain, <integer>
+      access system security permission of <access control entry>, access system security permissions, Plain, <boolean>
       ace flag of <access control entry>, ace flags, Plain, <integer>
       ace type of <access control entry>, ace types, Plain, <integer>
       append permission of <access control entry>, append permissions, Plain, <boolean>
@@ -559,6 +561,7 @@ Creation techniques & properties of each type:
       application of <registry key>, applications, Plain
       application of <registry>, applications, Plain
       default web browser, default web browsers, PlainGlobal
+      native application <string>, native applications, NamedGlobal
       recent application <string>, recent applications, NamedGlobal
       recent application, recent applications, PlainGlobal
       regapp <string>, regapps, NamedGlobal
@@ -659,6 +662,7 @@ Creation techniques & properties of each type:
       computer count of <bes product>, computer counts, Plain, <integer>
       expiration date of <bes product>, expiration dates, Plain, <date>
       legacy of <bes product>, legacies, Plain, <boolean>
+      mvs count of <bes product>, mvs counts, Plain, <integer>
       name of <bes product>, names, Plain, <string>
       non windows server count of <bes product>, non windows server counts, Plain, <integer>
       perpetual maintenance of <bes product>, perpetual maintenances, Plain, <boolean>
@@ -861,6 +865,8 @@ Creation techniques & properties of each type:
       <time interval> < <time interval>, , BinaryOperator
       <time interval> <= <time interval>, , BinaryOperator
       <time interval> = <time interval>, , BinaryOperator
+      <time of day with time zone> < <time of day with time zone>, , BinaryOperator
+      <time of day with time zone> <= <time of day with time zone>, , BinaryOperator
       <time of day with time zone> = <time of day with time zone>, , BinaryOperator
       <time of day> < <time of day>, , BinaryOperator
       <time of day> <= <time of day>, , BinaryOperator
@@ -882,6 +888,7 @@ Creation techniques & properties of each type:
       <year> < <year>, , BinaryOperator
       <year> <= <year>, , BinaryOperator
       <year> = <year>, , BinaryOperator
+      access system security permission of <access control entry>, access system security permissions, Plain
       account disabled flag of <user>, account disabled flags, Plain
       accounts operator flag of <user>, accounts operator flags, Plain
       active of <action>, actives, Plain
@@ -947,6 +954,7 @@ Creation techniques & properties of each type:
       delete permission of <network share>, delete permissions, Plain
       delete tcb of <tcp state>, delete tcbs, Plain
       deny type of <access control entry>, deny types, Plain
+      dep enabled of <process>, dep enableds, Plain
       dependency known of <property>, dependencies known, Plain
       desired encrypt report of <client_cryptography>, desired encrypt reports, Plain
       desired fips mode of <cryptography>, desired fips modes, Plain
@@ -1033,6 +1041,7 @@ Creation techniques & properties of each type:
       enabled of <task settings>, enableds, Plain
       enabled of <task trigger>, enableds, Plain
       encrypt report of <client_cryptography>, encrypt reports, Plain
+      enhanced security of <license>, enhanced securities, Plain
       enterprise bit <operating system suite mask>, enterprise bits, Index<operating system suite mask>Global
       enumerate subkeys permission of <access control entry>, enumerate subkeys permissions, Plain
       established of <tcp state>, establisheds, Plain
@@ -1109,6 +1118,7 @@ Creation techniques & properties of each type:
       lua runlevel of <task principal>, lua runlevels, Plain
       mac of <operating system>, macs, Plain
       maximum allowed permission of <access control entry>, maximum allowed permissions, Plain
+      member of <manual group>, members, Plain
       member of <site group>, members, Plain
       multicast support of <network adapter interface>, multicast supports, Plain
       multicast support of <network adapter>, multicast supports, Plain
@@ -1198,6 +1208,7 @@ Creation techniques & properties of each type:
       session lock of <session state change task trigger>, session locks, Plain
       session unlock of <session state change task trigger>, session unlocks, Plain
       set value permission of <access control entry>, set value permissions, Plain
+      sha256 download of <license>, sha256 downloads, Plain
       single user ts bit <operating system suite mask>, single user ts bits, Index<operating system suite mask>Global
       small business bit <operating system suite mask>, small business bits, Index<operating system suite mask>Global
       small business restricted bit <operating system suite mask>, small business restricted bits, Index<operating system suite mask>Global
@@ -1245,6 +1256,7 @@ Creation techniques & properties of each type:
       winsock2 supported of <network>, winsock2 supporteds, Plain
       workstation trust account flag of <user>, workstation trust account flags, Plain
       wow64 of <process>, wow64s, Plain
+      wow64 of <registry key>, wow64s, Plain
       write attributes permission of <access control entry>, write attributes permissions, Plain
       write dac permission of <access control entry>, write dac permissions, Plain
       write extended attributes permission of <access control entry>, write extended attributes permissions, Plain
@@ -1296,6 +1308,8 @@ Creation techniques & properties of each type:
       last command time of <client>, last command times, Plain, <time>
       last report time of <client>, last report times, Plain, <time>
       local character set of <client>, local character sets, Plain, <string>
+      manual group <string> of <client>, manual groups, Named, <manual group>
+      manual group of <client>, manual groups, Plain, <manual group>
       registration address of <client>, registration addresses, Plain, <ipv4or6 address>
       registration cidr address of <client>, registration cidr addresses, Plain, <string>
       registration mac address of <client>, registration mac addresses, Plain, <string>
@@ -2450,6 +2464,7 @@ Creation techniques & properties of each type:
       find file <string> of <folder>, find files, Named
       image file of <process>, image files, Plain
       masthead of <site>, mastheads, Plain
+      native file <string>, native files, NamedGlobal
       system file <string>, system files, NamedGlobal
       system ini device file <string>, system ini device files, NamedGlobal
       system ini device file, system ini device files, PlainGlobal
@@ -2488,10 +2503,14 @@ Creation techniques & properties of each type:
       section <string> of <file>, sections, Named, <file section>
       security descriptor of <file>, security descriptors, Plain, <security descriptor>
       sha1 of <file>, sha1s, Plain, <string>
+      sha224 of <file>, sha224s, Plain, <string>
+      sha256 of <file>, sha256s, Plain, <string>
       sha2_224 of <file>, sha2_224s, Plain, <string>
       sha2_256 of <file>, sha2_256s, Plain, <string>
       sha2_384 of <file>, sha2_384s, Plain, <string>
       sha2_512 of <file>, sha2_512s, Plain, <string>
+      sha384 of <file>, sha384s, Plain, <string>
+      sha512 of <file>, sha512s, Plain, <string>
       shortcut of <file>, shortcuts, Plain, <file shortcut>
       size of <file>, sizes, Plain, <integer>
       sqlite database of <file>, sqlite databases, Plain, <sqlite database>
@@ -2500,6 +2519,7 @@ Creation techniques & properties of each type:
       version block <string> of <file>, version blocks, Named, <file version block>
       version block of <file>, version blocks, Plain, <file version block>
       version of <file>, versions, Plain, <version>
+      windows checksum of <file>, windows checksums, Plain, <integer>
       xml document of <file>, xml documents, Plain, <xml dom document>
 
   Type <file content>
@@ -2841,6 +2861,8 @@ Creation techniques & properties of each type:
       significance place of <floating point>, significance places, Plain
       significance threshold of <floating point>, significance thresholds, Plain
       sleep percent of <evaluation cycle>, sleep percents, Plain
+      sqrt of <floating point>, sqrts, Plain
+      sqrt of <integer>, sqrts, Plain
       standard deviation of <floating point>, standard deviations, Plain
       standard deviation of <integer>, standard deviations, Plain
       sum of <floating point>, sums, Plain
@@ -2894,6 +2916,7 @@ Creation techniques & properties of each type:
       significance place <integer> of <floating point>, significance places, Numbered, <floating point>
       significance place of <floating point>, significance places, Plain, <floating point>
       significance threshold of <floating point>, significance thresholds, Plain, <floating point>
+      sqrt of <floating point>, sqrts, Plain, <floating point>
       standard deviation of <floating point>, standard deviations, Plain, <floating point>
       sum of <floating point>, sums, Plain, <floating point>
       underflow of <floating point>, underflows, Plain, <boolean>
@@ -2925,6 +2948,7 @@ Creation techniques & properties of each type:
       folder of <site>, folders, Plain
       install folder <integer>, install folders, NumberedGlobal
       installed path of <winrt package>, installed paths, Plain
+      native folder <string>, native folders, NamedGlobal
       native program files folder, native program files folders, PlainGlobal
       native system folder, native system folders, PlainGlobal
       parent folder of <filesystem object>, parent folders, Plain
@@ -3739,6 +3763,7 @@ Creation techniques & properties of each type:
       multiplicity of <time zone with multiplicity>, multiplicities, Plain
       multiplicity of <version with multiplicity>, multiplicities, Plain
       multiplicity of <year with multiplicity>, multiplicities, Plain
+      mvs count of <bes product>, mvs counts, Plain
       next_scheduled_power_on_day_of_month of <dmi system_power_controls>, next_scheduled_power_on_day_of_months, Plain
       next_scheduled_power_on_hour of <dmi system_power_controls>, next_scheduled_power_on_hours, Plain
       next_scheduled_power_on_minute of <dmi system_power_controls>, next_scheduled_power_on_minutes, Plain
@@ -3782,6 +3807,7 @@ Creation techniques & properties of each type:
       persistent constraint of <action>, persistent constraints, Plain
       physical processor count, physical processor counts, PlainGlobal
       pid of <process>, pids, Plain
+      pid of <service>, pids, Plain
       platform id of <operating system>, platform ids, Plain
       port number of <selected server>, port numbers, Plain
       port of <firewall open port>, ports, Plain
@@ -3909,6 +3935,7 @@ Creation techniques & properties of each type:
       wake_up_type of <dmi system_information>, wake_up_types, Plain
       weight of <selected server>, weights, Plain
       win32 exit code of <service>, win32 exit codes, Plain
+      windows checksum of <file>, windows checksums, Plain
       windows server count of <bes product>, windows server counts, Plain
       working set size of <process>, working set sizes, Plain
       workstation count of <bes product>, workstation counts, Plain
@@ -4003,6 +4030,7 @@ Creation techniques & properties of each type:
       september of <integer>, septembers, Plain, <month and year>
       set of <integer>, sets, Plain, <integer set>
       significant digits <integer> of <integer>, significant digitss, Numbered, <integer>
+      sqrt of <integer>, sqrts, Plain, <floating point>
       standard deviation of <integer>, standard deviations, Plain, <floating point>
       sum of <integer>, sums, Plain, <integer>
       unique value of <integer>, unique values, Plain, <integer with multiplicity>
@@ -4259,8 +4287,12 @@ Creation techniques & properties of each type:
     Properties of <license> { key phrase, plural keyword, form, <result type>}:
       allow unmentioned site of <license>, allow unmentioned sites, Plain, <boolean>
       common name of <license>, common names, Plain, <string>
+      download hash algorithm of <license>, download hash algorithms, Plain, <string>
+      effective download hash algorithm of <license>, effective download hash algorithms, Plain, <string>
+      effective signature hash algorithm of <license>, effective signature hash algorithms, Plain, <string>
       email address of <license>, email addresses, Plain, <string>
       encryption certificate of <license>, encryption certificates, Plain, <x509 certificate>
+      enhanced security of <license>, enhanced securities, Plain, <boolean>
       evaluation of <license>, evaluations, Plain, <boolean>
       expiration date of <license>, expiration dates, Plain, <time>
       expiration state of <license>, expiration states, Plain, <string>
@@ -4272,6 +4304,8 @@ Creation techniques & properties of each type:
       registrar number of <license>, registrar numbers, Plain, <integer>
       seat count state of <license>, seat count states, Plain, <string>
       seat of <license>, seats, Plain, <integer>
+      sha256 download of <license>, sha256 downloads, Plain, <boolean>
+      signature hash algorithm of <license>, signature hash algorithms, Plain, <string>
       site number of <license>, site numbers, Plain, <integer>
       start date of <license>, start dates, Plain, <time>
       type of <license>, types, Plain, <string>
@@ -4324,6 +4358,15 @@ Creation techniques & properties of each type:
     Properties of <logon task trigger> { key phrase, plural keyword, form, <result type>}:
       delay of <logon task trigger>, delays, Plain, <time interval>
       user id of <logon task trigger>, user ids, Plain, <string>
+
+  Type <manual group>
+    Creation of <manual group>: { key phrase, plural keyword, form}
+      manual group <string> of <client>, manual groups, Named
+      manual group of <client>, manual groups, Plain
+    Properties of <manual group> { key phrase, plural keyword, form, <result type>}:
+      <manual group> as string, , Cast, <string>
+      member of <manual group>, members, Plain, <boolean>
+      setting of <manual group>, settings, Plain, <setting>
 
   Type <media type>
     Creation of <media type>: { key phrase, plural keyword, form}
@@ -4561,7 +4604,9 @@ Creation techniques & properties of each type:
     Creation of <network>: { key phrase, plural keyword, form}
       network, networks, PlainGlobal
     Properties of <network> { key phrase, plural keyword, form, <result type>}:
+      adapter <integer> of <network>, adapters, Numbered, <network adapter>
       adapter of <network>, adapters, Plain, <network adapter>
+      any adapter <integer> of <network>, any adapters, Numbered, <network adapter>
       any adapter of <network>, any adapters, Plain, <network adapter>
       connection of <network>, connections, Plain, <connection>
       dns server of <network>, dns servers, Plain, <network address list>
@@ -4570,16 +4615,21 @@ Creation techniques & properties of each type:
       interface of <network>, interfaces, Plain, <network interface>
       ip interface <integer> of <network>, ip interfaces, Numbered, <network ip interface>
       ip interface of <network>, ip interfaces, Plain, <network ip interface>
+      ipv4 interface <integer> of <network>, ipv4 interfaces, Numbered, <network adapter interface>
       ipv4 interface of <network>, ipv4 interfaces, Plain, <network adapter interface>
+      ipv4or6 interface <integer> of <network>, ipv4or6 interfaces, Numbered, <network adapter interface>
       ipv4or6 interface of <network>, ipv4or6 interfaces, Plain, <network adapter interface>
+      ipv6 interface <integer> of <network>, ipv6 interfaces, Numbered, <network adapter interface>
       ipv6 interface of <network>, ipv6 interfaces, Plain, <network adapter interface>
       socket of <network>, sockets, Plain, <socket>
       winsock2 supported of <network>, winsock2 supporteds, Plain, <boolean>
 
   Type <network adapter>
     Creation of <network adapter>: { key phrase, plural keyword, form}
+      adapter <integer> of <network>, adapters, Numbered
       adapter of <network adapter interface>, adapters, Plain
       adapter of <network>, adapters, Plain
+      any adapter <integer> of <network>, any adapters, Numbered
       any adapter of <network>, any adapters, Plain
       find adapter <string> of <network>, find adapters, Named
     Properties of <network adapter> { key phrase, plural keyword, form, <result type>}:
@@ -4596,11 +4646,14 @@ Creation techniques & properties of each type:
       gateway list of <network adapter>, gateway lists, Plain, <network address list>
       gateway of <network adapter>, gateways, Plain, <ipv4 address>
       internet connection firewall of <network adapter>, internet connection firewalls, Plain, <internet connection firewall>
+      ipv4 interface <integer> of <network adapter>, ipv4 interfaces, Numbered, <network adapter interface>
       ipv4 interface of <network adapter>, ipv4 interfaces, Plain, <network adapter interface>
       ipv4or6 dns server of <network adapter>, ipv4or6 dns servers, Plain, <ipv4or6 address>
+      ipv4or6 interface <integer> of <network adapter>, ipv4or6 interfaces, Numbered, <network adapter interface>
       ipv4or6 interface of <network adapter>, ipv4or6 interfaces, Plain, <network adapter interface>
       ipv6 address of <network adapter>, ipv6 addresses, Plain, <ipv6 address>
       ipv6 dns server of <network adapter>, ipv6 dns servers, Plain, <ipv6 address>
+      ipv6 interface <integer> of <network adapter>, ipv6 interfaces, Numbered, <network adapter interface>
       ipv6 interface of <network adapter>, ipv6 interfaces, Plain, <network adapter interface>
       lease expires of <network adapter>, leases expire, Plain, <time>
       lease obtained of <network adapter>, leases obtained, Plain, <time>
@@ -4624,10 +4677,16 @@ Creation techniques & properties of each type:
 
   Type <network adapter interface>
     Creation of <network adapter interface>: { key phrase, plural keyword, form}
+      ipv4 interface <integer> of <network adapter>, ipv4 interfaces, Numbered
+      ipv4 interface <integer> of <network>, ipv4 interfaces, Numbered
       ipv4 interface of <network adapter>, ipv4 interfaces, Plain
       ipv4 interface of <network>, ipv4 interfaces, Plain
+      ipv4or6 interface <integer> of <network adapter>, ipv4or6 interfaces, Numbered
+      ipv4or6 interface <integer> of <network>, ipv4or6 interfaces, Numbered
       ipv4or6 interface of <network adapter>, ipv4or6 interfaces, Plain
       ipv4or6 interface of <network>, ipv4or6 interfaces, Plain
+      ipv6 interface <integer> of <network adapter>, ipv6 interfaces, Numbered
+      ipv6 interface <integer> of <network>, ipv6 interfaces, Numbered
       ipv6 interface of <network adapter>, ipv6 interfaces, Plain
       ipv6 interface of <network>, ipv6 interfaces, Plain
     Properties of <network adapter interface> { key phrase, plural keyword, form, <result type>}:
@@ -4897,6 +4956,7 @@ Creation techniques & properties of each type:
     Properties of <process> { key phrase, plural keyword, form, <result type>}:
       base priority of <process>, base priorities, Plain, <priority class>
       creation time of <process>, creation times, Plain, <time>
+      dep enabled of <process>, dep enableds, Plain, <boolean>
       gdi object count of <process>, gdi object counts, Plain, <integer>
       handle count of <process>, handle counts, Plain, <integer>
       id of <process>, ids, Plain, <integer>
@@ -5018,6 +5078,7 @@ Creation techniques & properties of each type:
       key <string> of <registry key>, keys, Named
       key <string> of <registry>, keys, Named
       key of <registry key>, keys, Plain
+      parent key of <registry key value>, parent keys, Plain
       parent key of <registry key>, parent keys, Plain
       user key of <logged on user>, user keys, Plain
     Properties of <registry key> { key phrase, plural keyword, form, <result type>}:
@@ -5037,6 +5098,7 @@ Creation techniques & properties of each type:
       security descriptor of <registry key>, security descriptors, Plain, <security descriptor>
       value <string> of <registry key>, values, Named, <registry key value>
       value of <registry key>, values, Plain, <registry key value>
+      wow64 of <registry key>, wow64s, Plain, <boolean>
 
   Type <registry key value>
     Creation of <registry key value>: { key phrase, plural keyword, form}
@@ -5069,6 +5131,7 @@ Creation techniques & properties of each type:
       <string> <= <registry key value>, , BinaryOperator, <boolean>
       <string> = <registry key value>, , BinaryOperator, <boolean>
       name of <registry key value>, names, Plain, <string>
+      parent key of <registry key value>, parent keys, Plain, <registry key>
       size of <registry key value>, sizes, Plain, <integer>
       type of <registry key value>, types, Plain, <registry key value type>
 
@@ -5304,6 +5367,7 @@ Creation techniques & properties of each type:
       file of <service>, files, Plain, <file>
       image path of <service>, image paths, Plain, <string>
       login account of <service>, login accounts, Plain, <string>
+      pid of <service>, pids, Plain, <integer>
       running of <service>, runnings, Plain, <boolean>
       security descriptor of <service>, security descriptors, Plain, <security descriptor>
       service name of <service>, service names, Plain, <string>
@@ -5334,6 +5398,7 @@ Creation techniques & properties of each type:
       setting <string> of <client>, settings, Named
       setting <string> of <site>, settings, Named
       setting of <client>, settings, Plain
+      setting of <manual group>, settings, Plain
       setting of <site>, settings, Plain
     Properties of <setting> { key phrase, plural keyword, form, <result type>}:
       <setting> as string, , Cast, <string>
@@ -5593,6 +5658,7 @@ Creation techniques & properties of each type:
       <json value> as string, , Cast
       <language> as string, , Cast
       <local group member> as string, , Cast
+      <manual group> as string, , Cast
       <metabase identifier> as string, , Cast
       <metabase type> as string, , Cast
       <metabase user type> as string, , Cast
@@ -5744,8 +5810,11 @@ Creation techniques & properties of each type:
       domain name of <security identifier>, domain names, Plain
       domain of <active directory local user>, domains, Plain
       domain of <user>, domains, Plain
+      download hash algorithm of <license>, download hash algorithms, Plain
       download path <string>, download paths, NamedGlobal
       driver key value name of <active device>, driver key value names, Plain
+      effective download hash algorithm of <license>, effective download hash algorithms, Plain
+      effective signature hash algorithm of <license>, effective signature hash algorithms, Plain
       element of <string set>, elements, Plain
       email address of <license>, email addresses, Plain
       encoding of <sqlite database>, encodings, Plain
@@ -5907,6 +5976,8 @@ Creation techniques & properties of each type:
       pathname of <filesystem object>, pathnames, Plain
       pathname of <registry key>, pathnames, Plain
       pending restart name, pending restart names, PlainGlobal
+      percent decode <string>, percent decodes, NamedGlobal
+      percent encode <string>, percent encodes, NamedGlobal
       plural name of <property>, plural names, Plain
       privilege of <security account>, privileges, Plain
       process image file name of <firewall authorized application>, process image file names, Plain
@@ -5950,6 +6021,10 @@ Creation techniques & properties of each type:
       sha1 of <file>, sha1s, Plain
       sha1 of <string>, sha1s, Plain
       sha1 of <x509 certificate>, sha1s, Plain
+      sha224 of <file>, sha224s, Plain
+      sha224 of <string>, sha224s, Plain
+      sha256 of <file>, sha256s, Plain
+      sha256 of <string>, sha256s, Plain
       sha2_224 of <file>, sha2_224s, Plain
       sha2_224 of <string>, sha2_224s, Plain
       sha2_256 of <file>, sha2_256s, Plain
@@ -5958,6 +6033,11 @@ Creation techniques & properties of each type:
       sha2_384 of <string>, sha2_384s, Plain
       sha2_512 of <file>, sha2_512s, Plain
       sha2_512 of <string>, sha2_512s, Plain
+      sha384 of <file>, sha384s, Plain
+      sha384 of <string>, sha384s, Plain
+      sha512 of <file>, sha512s, Plain
+      sha512 of <string>, sha512s, Plain
+      signature hash algorithm of <license>, signature hash algorithms, Plain
       singular name of <property>, singular names, Plain
       site tag of <site>, site tags, Plain
       site url of <bes product>, site urls, Plain
@@ -6232,10 +6312,14 @@ Creation techniques & properties of each type:
       samp of <string>, samps, Plain, <html>
       set of <string>, sets, Plain, <string set>
       sha1 of <string>, sha1s, Plain, <string>
+      sha224 of <string>, sha224s, Plain, <string>
+      sha256 of <string>, sha256s, Plain, <string>
       sha2_224 of <string>, sha2_224s, Plain, <string>
       sha2_256 of <string>, sha2_256s, Plain, <string>
       sha2_384 of <string>, sha2_384s, Plain, <string>
       sha2_512 of <string>, sha2_512s, Plain, <string>
+      sha384 of <string>, sha384s, Plain, <string>
+      sha512 of <string>, sha512s, Plain, <string>
       small <string> of <string>, smalls, Named, <html>
       small of <string>, smalls, Plain, <html>
       span <string> of <string>, spans, Named, <html>
@@ -6861,6 +6945,8 @@ Creation techniques & properties of each type:
       <time of day with time zone> + <time interval>, , BinaryOperator, <time of day with time zone>
       <time of day with time zone> - <time interval>, , BinaryOperator, <time of day with time zone>
       <time of day with time zone> - <time of day with time zone>, , BinaryOperator, <time interval>
+      <time of day with time zone> < <time of day with time zone>, , BinaryOperator, <boolean>
+      <time of day with time zone> <= <time of day with time zone>, , BinaryOperator, <boolean>
       <time of day with time zone> = <time of day with time zone>, , BinaryOperator, <boolean>
       <time of day with time zone> as string, , Cast, <string>
       <time zone> & <time of day with time zone>, , BinaryOperator, <time of day with time zone>
@@ -7576,6 +7662,9 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   month, months, PlainGlobal, <number of months>
   monthly task trigger type, monthly task trigger types, PlainGlobal, <task trigger type>
   monthlydow task trigger type, monthlydow task trigger types, PlainGlobal, <task trigger type>
+  native application <string>, native applications, NamedGlobal, <application>
+  native file <string>, native files, NamedGlobal, <file>
+  native folder <string>, native folders, NamedGlobal, <folder>
   native program files folder, native program files folders, PlainGlobal, <folder>
   native registry, native registries, PlainGlobal, <registry>
   native system folder, native system folders, PlainGlobal, <folder>
@@ -7607,6 +7696,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   pending restart <string>, pending restarts, NamedGlobal, <boolean>
   pending restart name, pending restart names, PlainGlobal, <string>
   pending restart, pending restarts, PlainGlobal, <boolean>
+  percent decode <string>, percent decodes, NamedGlobal, <string>
+  percent encode <string>, percent encodes, NamedGlobal, <string>
   personal bit <operating system suite mask>, personal bits, Index<operating system suite mask>Global, <boolean>
   physical processor count, physical processor counts, PlainGlobal, <integer>
   power history, power histories, PlainGlobal, <power history>
@@ -7760,6 +7851,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       absolute value, absolute values, <integer>, <integer>, Plain
       absolute value, absolute values, <time interval>, <time interval>, Plain
       access mode, access modes, <integer>, <access control entry>, Plain
+      access system security permission, access system security permissions, <boolean>, <access control entry>, Plain
       accessed time, accessed times, <time>, <filesystem object>, Plain
       account disabled flag, account disabled flags, <boolean>, <user>, Plain
       account expiration, account expirations, <time>, <user>, Plain
@@ -7802,6 +7894,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       active, actives, <boolean>, <logged on user>, Plain
       activity history, activity histories, <activity history>, <logged on user>, Plain
       adapter, adapters, <network adapter>, <network adapter interface>, Plain
+      adapter, adapters, <network adapter>, <network>, Numbered
       adapter, adapters, <network adapter>, <network>, Plain
       additional_information, additional_informations, <dmi additional_information>, <dmi>, Numbered
       additional_information, additional_informations, <dmi additional_information>, <dmi>, Plain
@@ -7846,6 +7939,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       anchor, anchors, <html>, <string>, Plain
       anonymous logon group, anonymous logon groups, <security account>, world , PlainGlobal
       ansi code page, ansi code pages, <integer>, world , PlainGlobal
+      any adapter, any adapters, <network adapter>, <network>, Numbered
       any adapter, any adapters, <network adapter>, <network>, Plain
       any ip version, any ip versions, <ip version>, world , PlainGlobal
       aol error time, aol error times, <time>, <file>, Plain
@@ -7990,6 +8084,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <json value>, Cast
       as string, , <string>, <language>, Cast
       as string, , <string>, <local group member>, Cast
+      as string, , <string>, <manual group>, Cast
       as string, , <string>, <metabase identifier>, Cast
       as string, , <string>, <metabase type>, Cast
       as string, , <string>, <metabase user type>, Cast
@@ -8424,6 +8519,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       delete permission, delete permissions, <boolean>, <network share>, Plain
       delete tcb, delete tcbs, <boolean>, <tcp state>, Plain
       deny type, deny types, <boolean>, <access control entry>, Plain
+      dep enabled, dep enableds, <boolean>, <process>, Plain
       dependency known, dependencies known, <boolean>, <property>, Plain
       deployment character set, deployment character sets, <string>, <client>, Plain
       descendant folder, descendant folders, <folder>, <folder>, Plain
@@ -8508,6 +8604,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       download failure, download failures, <integer>, <action>, Plain
       download file, download files, <file>, world , NamedGlobal
       download folder, download folders, <folder>, world , PlainGlobal
+      download hash algorithm, download hash algorithms, <string>, <license>, Plain
       download path, download paths, <string>, world , NamedGlobal
       download server, download servers, <download server>, world , PlainGlobal
       download storage folder, download storage folders, <download storage folder>, world , PlainGlobal
@@ -8549,6 +8646,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       effective delete child permission for, effective delete child permissions for, <boolean>, <access control list>, Named
       effective delete permission for, effective delete permissions for, <boolean>, <access control list>, Index<security account>
       effective delete permission for, effective delete permissions for, <boolean>, <access control list>, Named
+      effective download hash algorithm, effective download hash algorithms, <string>, <license>, Plain
       effective enumerate subkeys permission for, effective enumerate subkeys permissions for, <boolean>, <access control list>, Index<security account>
       effective enumerate subkeys permission for, effective enumerate subkeys permissions for, <boolean>, <access control list>, Named
       effective execute permission for, effective execute permissions for, <boolean>, <access control list>, Index<security account>
@@ -8578,6 +8676,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       effective read permission for, effective read permissions for, <boolean>, <access control list>, Named
       effective set value permission for, effective set value permissions for, <boolean>, <access control list>, Index<security account>
       effective set value permission for, effective set value permissions for, <boolean>, <access control list>, Named
+      effective signature hash algorithm, effective signature hash algorithms, <string>, <license>, Plain
       effective synchronize permission for, effective synchronize permissions for, <boolean>, <access control list>, Index<security account>
       effective synchronize permission for, effective synchronize permissions for, <boolean>, <access control list>, Named
       effective traverse permission for, effective traverse permissions for, <boolean>, <access control list>, Index<security account>
@@ -8634,6 +8733,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       ending_address, ending_addresss, <integer>, <dmi memory_array_mapped_address>, Plain
       ending_address, ending_addresss, <integer>, <dmi memory_device_mapped_address>, Plain
       engine pid, engine pids, <integer>, <running task>, Plain
+      enhanced security, enhanced securities, <boolean>, <license>, Plain
       enterprise bit, enterprise bits, <boolean>, world , Index<operating system suite mask>Global
       entry, entries, <access control entry>, <access control list>, Plain
       enumerate subkeys permission, enumerate subkeys permissions, <boolean>, <access control entry>, Plain
@@ -9028,19 +9128,25 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       ipmi_device_information, ipmi_device_informations, <dmi ipmi_device_information>, <dmi>, Plain
       ipmi_specification_revision, ipmi_specification_revisions, <integer>, <dmi ipmi_device_information>, Plain
       ipv4 address, ipv4 addresses, <ipv4 address>, world , NamedGlobal
+      ipv4 interface, ipv4 interfaces, <network adapter interface>, <network adapter>, Numbered
       ipv4 interface, ipv4 interfaces, <network adapter interface>, <network adapter>, Plain
+      ipv4 interface, ipv4 interfaces, <network adapter interface>, <network>, Numbered
       ipv4 interface, ipv4 interfaces, <network adapter interface>, <network>, Plain
       ipv4 part, ipv4 parts, <ipv4 address>, <ipv4or6 address>, Plain
       ipv4 part, ipv4 parts, <ipv4 address>, <ipv6 address>, Plain
       ipv4, ipv4s, <ip version>, world , PlainGlobal
       ipv4or6 address, ipv4or6 addresses, <ipv4or6 address>, world , NamedGlobal
       ipv4or6 dns server, ipv4or6 dns servers, <ipv4or6 address>, <network adapter>, Plain
+      ipv4or6 interface, ipv4or6 interfaces, <network adapter interface>, <network adapter>, Numbered
       ipv4or6 interface, ipv4or6 interfaces, <network adapter interface>, <network adapter>, Plain
+      ipv4or6 interface, ipv4or6 interfaces, <network adapter interface>, <network>, Numbered
       ipv4or6 interface, ipv4or6 interfaces, <network adapter interface>, <network>, Plain
       ipv6 address, ipv6 addresses, <ipv6 address>, <network adapter>, Plain
       ipv6 address, ipv6 addresses, <ipv6 address>, world , NamedGlobal
       ipv6 dns server, ipv6 dns servers, <ipv6 address>, <network adapter>, Plain
+      ipv6 interface, ipv6 interfaces, <network adapter interface>, <network adapter>, Numbered
       ipv6 interface, ipv6 interfaces, <network adapter interface>, <network adapter>, Plain
+      ipv6 interface, ipv6 interfaces, <network adapter interface>, <network>, Numbered
       ipv6 interface, ipv6 interfaces, <network adapter interface>, <network>, Plain
       ipv6, ipv6s, <ip version>, world , PlainGlobal
       italic, italics, <html>, <html>, Named
@@ -9259,6 +9365,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       management_device_handle, management_device_handles, <integer>, <dmi management_device_component>, Plain
       management_device_threshold_data, management_device_threshold_datas, <dmi management_device_threshold_data>, <dmi>, Numbered
       management_device_threshold_data, management_device_threshold_datas, <dmi management_device_threshold_data>, <dmi>, Plain
+      manual group, manual groups, <manual group>, <client>, Named
+      manual group, manual groups, <manual group>, <client>, Plain
       manufacture_date, manufacture_dates, <string>, <dmi portable_battery>, Plain
       manufacturer, manufacturers, <string>, <active device>, Plain
       manufacturer, manufacturers, <string>, <dmi base_board_information>, Plain
@@ -9328,6 +9436,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       media type tunnel, media types tunnel, <media type>, world , PlainGlobal
       media type, media types, <media type>, <connection>, Plain
       media type, media types, <media type>, world , NumberedGlobal
+      member, members, <boolean>, <manual group>, Plain
       member, members, <boolean>, <site group>, Plain
       member, members, <local group member>, <local group>, Plain
       memory_array_error_address, memory_array_error_addresss, <integer>, <dmi b32_bit_memory_error_information>, Plain
@@ -9448,6 +9557,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       multiplicity, multiplicities, <integer>, <version with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <year with multiplicity>, Plain
       multivalued, multivalueds, <boolean>, <property>, Plain
+      mvs count, mvs counts, <integer>, <bes product>, Plain
       name, names, <string>, <active directory group>, Plain
       name, names, <string>, <active directory local user>, Plain
       name, names, <string>, <application usage summary instance>, Plain
@@ -9501,6 +9611,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       name, names, <string>, <winrt package id>, Plain
       name, names, <string>, <wmi select>, Plain
       nan, nans, <boolean>, <floating point>, Plain
+      native application, native applications, <application>, world , NamedGlobal
+      native file, native files, <file>, world , NamedGlobal
+      native folder, native folders, <folder>, world , NamedGlobal
       native program files folder, native program files folders, <folder>, world , PlainGlobal
       native registry, native registries, <registry>, world , PlainGlobal
       native system folder, native system folders, <folder>, world , PlainGlobal
@@ -9627,6 +9740,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       parameter, parameters, <string>, <action>, Named
       parameter, parameters, <string>, world , NamedGlobal
       parent folder, parent folders, <folder>, <filesystem object>, Plain
+      parent key, parent keys, <registry key>, <registry key value>, Plain
       parent key, parent keys, <registry key>, <registry key>, Plain
       parent node, parent nodes, <xml dom node>, <xml dom node>, Plain
       parent, parents, <type>, <type>, Plain
@@ -9665,6 +9779,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       pending time, pending times, <time>, <action>, Plain
       pending, pendings, <boolean>, <action>, Plain
       per user policy, per user policies, <audit policy information>, <audit policy subcategory>, Index<security account>
+      percent decode, percent decodes, <string>, world , NamedGlobal
+      percent encode, percent encodes, <string>, world , NamedGlobal
       performance counter frequency, performance counter frequencies, <hertz>, <operating system>, Plain
       performance counter, performance counters, <integer>, <operating system>, Plain
       permission permission, permission permissions, <boolean>, <network share>, Plain
@@ -9676,6 +9792,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       physical_memory_array, physical_memory_arrays, <dmi physical_memory_array>, <dmi>, Numbered
       physical_memory_array, physical_memory_arrays, <dmi physical_memory_array>, <dmi>, Plain
       pid, pids, <integer>, <process>, Plain
+      pid, pids, <integer>, <service>, Plain
       platform id, platform ids, <integer>, <operating system>, Plain
       plugged, pluggeds, <boolean>, <power level>, Plain
       plural name, plural names, <string>, <property>, Plain
@@ -9996,12 +10113,18 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       set, sets, <string set>, <string>, Plain
       setting, settings, <setting>, <client>, Named
       setting, settings, <setting>, <client>, Plain
+      setting, settings, <setting>, <manual group>, Plain
       setting, settings, <setting>, <site>, Named
       setting, settings, <setting>, <site>, Plain
       setting, settings, <task settings>, <task definition>, Plain
       sha1, sha1s, <string>, <file>, Plain
       sha1, sha1s, <string>, <string>, Plain
       sha1, sha1s, <string>, <x509 certificate>, Plain
+      sha224, sha224s, <string>, <file>, Plain
+      sha224, sha224s, <string>, <string>, Plain
+      sha256 download, sha256 downloads, <boolean>, <license>, Plain
+      sha256, sha256s, <string>, <file>, Plain
+      sha256, sha256s, <string>, <string>, Plain
       sha2_224, sha2_224s, <string>, <file>, Plain
       sha2_224, sha2_224s, <string>, <string>, Plain
       sha2_256, sha2_256s, <string>, <file>, Plain
@@ -10010,6 +10133,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sha2_384, sha2_384s, <string>, <string>, Plain
       sha2_512, sha2_512s, <string>, <file>, Plain
       sha2_512, sha2_512s, <string>, <string>, Plain
+      sha384, sha384s, <string>, <file>, Plain
+      sha384, sha384s, <string>, <string>, Plain
+      sha512, sha512s, <string>, <file>, Plain
+      sha512, sha512s, <string>, <string>, Plain
       shortcut, shortcuts, <file shortcut>, <file>, Plain
       show message task action type, show message task action types, <task action type>, world , PlainGlobal
       sid, sids, <security identifier>, <active directory group>, Plain
@@ -10018,6 +10145,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sid, sids, <security identifier>, <user>, Plain
       sid, sids, <security identifier>, <winrt package user information>, Plain
       sid, sids, <security identifier>, world , NamedGlobal
+      signature hash algorithm, signature hash algorithms, <string>, <license>, Plain
       significance place, significance places, <floating point>, <floating point>, Numbered
       significance place, significance places, <floating point>, <floating point>, Plain
       significance threshold, significance thresholds, <floating point>, <floating point>, Plain
@@ -10073,6 +10201,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       speed, speeds, <hertz>, <processor>, Plain
       speed, speeds, <integer>, <dmi memory_device>, Plain
       sqlite database, sqlite databases, <sqlite database>, <file>, Plain
+      sqrt, sqrts, <floating point>, <floating point>, Plain
+      sqrt, sqrts, <floating point>, <integer>, Plain
       ssid, ssids, <string>, <wifi>, Plain
       standard deviation, standard deviations, <floating point>, <floating point>, Plain
       standard deviation, standard deviations, <floating point>, <integer>, Plain
@@ -10491,6 +10621,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       win32 running service, win32 running services, <service>, world , PlainGlobal
       win32 service, win32 services, <service>, world , PlainGlobal
       win32 type, win32 types, <boolean>, <service>, Plain
+      windows checksum, windows checksums, <integer>, <file>, Plain
       windows display time, windows display times, <time>, world , NamedGlobal
       windows file, windows files, <file>, world , NamedGlobal
       windows folder, windows folders, <folder>, world , PlainGlobal
@@ -10509,6 +10640,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       workstation count, workstation counts, <integer>, <bes product>, Plain
       workstation trust account flag, workstation trust account flags, <boolean>, <user>, Plain
       wow64, wow64s, <boolean>, <process>, Plain
+      wow64, wow64s, <boolean>, <registry key>, Plain
       write attributes permission, write attributes permissions, <boolean>, <access control entry>, Plain
       write dac permission, write dac permissions, <boolean>, <access control entry>, Plain
       write extended attributes permission, write extended attributes permissions, <boolean>, <access control entry>, Plain

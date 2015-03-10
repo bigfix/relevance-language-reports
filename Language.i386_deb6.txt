@@ -1,4 +1,4 @@
-Operating System:Linux SuSE Enterprise Server 9 (2_6_5-7_97-default)
+Operating System:Linux Debian 6_0 (2_6_32-5-686)
 Build Target:
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
@@ -14,7 +14,6 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   bios
   bit set
   boolean
-  capability
   cast
   client (derives from  application)
   client_cryptography
@@ -29,6 +28,21 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   day of week with multiplicity (derives from  day of week)
   day of year
   day of year with multiplicity (derives from  day of year)
+  debian base package
+  debian package upstream version
+  debian package upstream version with multiplicity (derives from  debian package upstream version)
+  debian package version
+  debian package version epoch
+  debian package version epoch with multiplicity (derives from  debian package version epoch)
+  debian package version revision
+  debian package version revision with multiplicity (derives from  debian package version revision)
+  debian package version with multiplicity (derives from  debian package version)
+  debian versioned package
+  debianpackagecache
+  debianpkg dependency
+  debianpkg reverse dependencies
+  debianpkg verfile
+  debianpkg version
   device file (derives from  filesystem object)
   dmi
   dmi additional_information
@@ -114,8 +128,6 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   ip version
   ipv4 address (derives from  ipv4or6 address)
   ipv4 address with multiplicity (derives from  ipv4 address)
-  ipv4 route
-  ipv4 routing table
   ipv4or6 address
   ipv4or6 address with multiplicity (derives from  ipv4or6 address)
   ipv6 address (derives from  ipv4or6 address)
@@ -125,6 +137,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   language
   license
   logged on user
+  manual group
   mode
   mode_mask
   module
@@ -140,7 +153,6 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   number of months
   number of months with multiplicity (derives from  number of months)
   operating system
-  package
   power level
   primary language
   process
@@ -152,19 +164,12 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   regular expression match (derives from  substring)
   root server
   rope
-  rpm package release
-  rpm package release with multiplicity (derives from  rpm package release)
-  rpm package version
-  rpm package version record
-  rpm package version record with multiplicity (derives from  rpm package version record)
-  rpm package version with multiplicity (derives from  rpm package version)
-  rpmdatabase
+  route
+  routing table
   runlevel
   selected server
   service
   setting
-  short rpm package version record
-  short rpm package version record with multiplicity (derives from  short rpm package version record)
   site
   site group
   site version list
@@ -172,6 +177,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   smbios
   smbios structure
   smbios value
+  socket
   socket file (derives from  filesystem object)
   sqlite column
   sqlite column type
@@ -187,6 +193,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   substring (derives from  string)
   swap
   symlink
+  tcp state
   time
   time interval
   time interval with multiplicity (derives from  time interval)
@@ -319,6 +326,7 @@ Creation techniques & properties of each type:
       computer count of <bes product>, computer counts, Plain, <integer>
       expiration date of <bes product>, expiration dates, Plain, <date>
       legacy of <bes product>, legacies, Plain, <boolean>
+      mvs count of <bes product>, mvs counts, Plain, <integer>
       name of <bes product>, names, Plain, <string>
       non windows server count of <bes product>, non windows server counts, Plain, <integer>
       perpetual maintenance of <bes product>, perpetual maintenances, Plain, <boolean>
@@ -383,7 +391,6 @@ Creation techniques & properties of each type:
       <bit set> contains <bit set>, , BinaryOperator
       <boolean> = <boolean>, , BinaryOperator
       <boolean> as boolean, , Cast
-      <capability> contains <capability>, , BinaryOperator
       <date> < <date>, , BinaryOperator
       <date> <= <date>, , BinaryOperator
       <date> = <date>, , BinaryOperator
@@ -394,6 +401,30 @@ Creation techniques & properties of each type:
       <day of year> < <day of year>, , BinaryOperator
       <day of year> <= <day of year>, , BinaryOperator
       <day of year> = <day of year>, , BinaryOperator
+      <debian package upstream version> < <debian package upstream version>, , BinaryOperator
+      <debian package upstream version> < <string>, , BinaryOperator
+      <debian package upstream version> <= <debian package upstream version>, , BinaryOperator
+      <debian package upstream version> <= <string>, , BinaryOperator
+      <debian package upstream version> = <debian package upstream version>, , BinaryOperator
+      <debian package upstream version> = <string>, , BinaryOperator
+      <debian package version epoch> < <debian package version epoch>, , BinaryOperator
+      <debian package version epoch> < <string>, , BinaryOperator
+      <debian package version epoch> <= <debian package version epoch>, , BinaryOperator
+      <debian package version epoch> <= <string>, , BinaryOperator
+      <debian package version epoch> = <debian package version epoch>, , BinaryOperator
+      <debian package version epoch> = <string>, , BinaryOperator
+      <debian package version revision> < <debian package version revision>, , BinaryOperator
+      <debian package version revision> < <string>, , BinaryOperator
+      <debian package version revision> <= <debian package version revision>, , BinaryOperator
+      <debian package version revision> <= <string>, , BinaryOperator
+      <debian package version revision> = <debian package version revision>, , BinaryOperator
+      <debian package version revision> = <string>, , BinaryOperator
+      <debian package version> < <debian package version>, , BinaryOperator
+      <debian package version> < <string>, , BinaryOperator
+      <debian package version> <= <debian package version>, , BinaryOperator
+      <debian package version> <= <string>, , BinaryOperator
+      <debian package version> = <debian package version>, , BinaryOperator
+      <debian package version> = <string>, , BinaryOperator
       <file content> contains <string>, , BinaryOperator
       <floating point> < <floating point>, , BinaryOperator
       <floating point> < <integer>, , BinaryOperator
@@ -443,33 +474,6 @@ Creation techniques & properties of each type:
       <number of months> = <number of months>, , BinaryOperator
       <regular expression> = <string>, , BinaryOperator
       <rope> contains <string>, , BinaryOperator
-      <rpm package release> < <rpm package release>, , BinaryOperator
-      <rpm package release> < <string>, , BinaryOperator
-      <rpm package release> <= <rpm package release>, , BinaryOperator
-      <rpm package release> <= <string>, , BinaryOperator
-      <rpm package release> = <rpm package release>, , BinaryOperator
-      <rpm package release> = <string>, , BinaryOperator
-      <rpm package version record> < <rpm package version record>, , BinaryOperator
-      <rpm package version record> < <short rpm package version record>, , BinaryOperator
-      <rpm package version record> < <string>, , BinaryOperator
-      <rpm package version record> <= <rpm package version record>, , BinaryOperator
-      <rpm package version record> <= <short rpm package version record>, , BinaryOperator
-      <rpm package version record> <= <string>, , BinaryOperator
-      <rpm package version record> = <rpm package version record>, , BinaryOperator
-      <rpm package version record> = <short rpm package version record>, , BinaryOperator
-      <rpm package version record> = <string>, , BinaryOperator
-      <rpm package version> < <rpm package version>, , BinaryOperator
-      <rpm package version> < <string>, , BinaryOperator
-      <rpm package version> <= <rpm package version>, , BinaryOperator
-      <rpm package version> <= <string>, , BinaryOperator
-      <rpm package version> = <rpm package version>, , BinaryOperator
-      <rpm package version> = <string>, , BinaryOperator
-      <short rpm package version record> < <rpm package version record>, , BinaryOperator
-      <short rpm package version record> < <short rpm package version record>, , BinaryOperator
-      <short rpm package version record> <= <rpm package version record>, , BinaryOperator
-      <short rpm package version record> <= <short rpm package version record>, , BinaryOperator
-      <short rpm package version record> = <rpm package version record>, , BinaryOperator
-      <short rpm package version record> = <short rpm package version record>, , BinaryOperator
       <site version list> < <site version list>, , BinaryOperator
       <site version list> <= <site version list>, , BinaryOperator
       <site version list> = <site version list>, , BinaryOperator
@@ -477,28 +481,31 @@ Creation techniques & properties of each type:
       <string set> = <string set>, , BinaryOperator
       <string set> contains <string set>, , BinaryOperator
       <string set> contains <string>, , BinaryOperator
+      <string> < <debian package upstream version>, , BinaryOperator
+      <string> < <debian package version epoch>, , BinaryOperator
+      <string> < <debian package version revision>, , BinaryOperator
+      <string> < <debian package version>, , BinaryOperator
       <string> < <ipv4 address>, , BinaryOperator
       <string> < <ipv4or6 address>, , BinaryOperator
-      <string> < <rpm package release>, , BinaryOperator
-      <string> < <rpm package version record>, , BinaryOperator
-      <string> < <rpm package version>, , BinaryOperator
       <string> < <string>, , BinaryOperator
       <string> < <strverscmp version>, , BinaryOperator
       <string> < <version>, , BinaryOperator
+      <string> <= <debian package upstream version>, , BinaryOperator
+      <string> <= <debian package version epoch>, , BinaryOperator
+      <string> <= <debian package version revision>, , BinaryOperator
+      <string> <= <debian package version>, , BinaryOperator
       <string> <= <ipv4 address>, , BinaryOperator
       <string> <= <ipv4or6 address>, , BinaryOperator
-      <string> <= <rpm package release>, , BinaryOperator
-      <string> <= <rpm package version record>, , BinaryOperator
-      <string> <= <rpm package version>, , BinaryOperator
       <string> <= <string>, , BinaryOperator
       <string> <= <strverscmp version>, , BinaryOperator
       <string> <= <version>, , BinaryOperator
+      <string> = <debian package upstream version>, , BinaryOperator
+      <string> = <debian package version epoch>, , BinaryOperator
+      <string> = <debian package version revision>, , BinaryOperator
+      <string> = <debian package version>, , BinaryOperator
       <string> = <ipv4 address>, , BinaryOperator
       <string> = <ipv4or6 address>, , BinaryOperator
       <string> = <regular expression>, , BinaryOperator
-      <string> = <rpm package release>, , BinaryOperator
-      <string> = <rpm package version record>, , BinaryOperator
-      <string> = <rpm package version>, , BinaryOperator
       <string> = <string>, , BinaryOperator
       <string> = <strverscmp version>, , BinaryOperator
       <string> = <version>, , BinaryOperator
@@ -518,6 +525,8 @@ Creation techniques & properties of each type:
       <time interval> < <time interval>, , BinaryOperator
       <time interval> <= <time interval>, , BinaryOperator
       <time interval> = <time interval>, , BinaryOperator
+      <time of day with time zone> < <time of day with time zone>, , BinaryOperator
+      <time of day with time zone> <= <time of day with time zone>, , BinaryOperator
       <time of day with time zone> = <time of day with time zone>, , BinaryOperator
       <time of day> < <time of day>, , BinaryOperator
       <time of day> <= <time of day>, , BinaryOperator
@@ -543,6 +552,7 @@ Creation techniques & properties of each type:
       active of <logged on user>, actives, Plain
       alias of <network ip interface>, aliases, Plain
       allow unmentioned site of <license>, allow unmentioned sites, Plain
+      android of <operating system>, androids, Plain
       authenticating of <client>, authenticatings, Plain
       authenticating of <current relay>, authenticatings, Plain
       bit <integer> of <bit set>, bits, Numbered
@@ -551,9 +561,16 @@ Creation techniques & properties of each type:
       boolean <string>, booleans, NamedGlobal
       broadcast support of <network adapter interface>, broadcast supports, Plain
       broadcast support of <network ip interface>, broadcast supports, Plain
+      close wait of <tcp state>, close waits, Plain
+      closed of <tcp state>, closeds, Plain
+      closing of <tcp state>, closings, Plain
       coma bug of <processor>, coma bugs, Plain
       conjunction of <boolean>, conjunctions, Plain
       constrained of <action>, constraineds, Plain
+      critical of <debianpkg dependency>, criticals, Plain
+      currently installed of <debian base package>, currently installeds, Plain
+      currently installed of <debian versioned package>, currently installeds, Plain
+      delete tcb of <tcp state>, delete tcbs, Plain
       dependency known of <property>, dependencies known, Plain
       desired encrypt report of <client_cryptography>, desired encrypt reports, Plain
       desired fips mode of <cryptography>, desired fips modes, Plain
@@ -563,12 +580,16 @@ Creation techniques & properties of each type:
       enabled of <administrative rights>, enableds, Plain
       enabled of <setting>, enableds, Plain
       encrypt report of <client_cryptography>, encrypt reports, Plain
+      enhanced security of <license>, enhanced securities, Plain
+      established of <tcp state>, establisheds, Plain
       evaluated of <site>, evaluateds, Plain
       evaluation of <license>, evaluations, Plain
       execute of <mode_mask>, executes, Plain
       f00f bug of <processor>, f00f bugs, Plain
       false, falses, PlainGlobal
       fdiv bug of <processor>, fdiv bugs, Plain
+      fin wait one of <tcp state>, fin wait ones, Plain
+      fin wait two of <tcp state>, fin wait twos, Plain
       finite of <floating point>, finites, Plain
       fips mode of <cryptography>, fips modes, Plain
       fips mode of <license>, fips modes, Plain
@@ -576,29 +597,31 @@ Creation techniques & properties of each type:
       fpu exception of <processor>, fpu exceptions, Plain
       fpu of <processor>, fpus, Plain
       full of <power level>, fulls, Plain
-      gateway flag of <ipv4 route>, gateway flags, Plain
+      gateway flag of <route>, gateway flags, Plain
       group execute of <filesystem object>, group executes, Plain
       group leader of <action>, group leaders, Plain
       group read of <filesystem object>, group reads, Plain
       group write of <filesystem object>, group writes, Plain
       hiddenmenu of <grub config file>, hiddenmenus, Plain
       hlt bug of <processor>, hlt bugs, Plain
-      host flag of <ipv4 route>, host flags, Plain
+      host flag of <route>, host flags, Plain
       in agent context, in agent contexts, PlainGlobal
       in proxy agent context, in proxy agent contexts, PlainGlobal
       inexact of <floating point>, inexacts, Plain
       infinite of <floating point>, infinites, Plain
-      installed <string> of <rpmdatabase>, installeds, Named
       integer of <sqlite column type>, integers, Plain
       invalid of <floating point>, invalids, Plain
+      last ack of <tcp state>, last acks, Plain
       leap of <year>, leaps, Plain
       legacy of <bes product>, legacies, Plain
+      listening of <tcp state>, listenings, Plain
       locked of <action lock state>, lockeds, Plain
       loopback of <network adapter interface>, loopbacks, Plain
       loopback of <network adapter>, loopbacks, Plain
       loopback of <network ip interface>, loopbacks, Plain
       low of <power level>, lows, Plain
       mac of <operating system>, macs, Plain
+      member of <manual group>, members, Plain
       member of <site group>, members, Plain
       multicast support of <network adapter interface>, multicast supports, Plain
       multicast support of <network adapter>, multicast supports, Plain
@@ -628,7 +651,7 @@ Creation techniques & properties of each type:
       point to point of <network ip interface>, point to points, Plain
       quiet of <grub bootable image>, quiets, Plain
       read of <mode_mask>, reads, Plain
-      reject flag of <ipv4 route>, reject flags, Plain
+      reject flag of <route>, reject flags, Plain
       relevance of <fixlet>, relevances, Plain
       remote of <logged on user>, remotes, Plain
       running of <application usage summary>, runnings, Plain
@@ -639,15 +662,21 @@ Creation techniques & properties of each type:
       setgid of <mode>, setgids, Plain
       setuid of <filesystem object>, setuids, Plain
       setuid of <mode>, setuids, Plain
+      sha256 download of <license>, sha256 downloads, Plain
       smt capable of <cpupackage>, smt capables, Plain
       smt enabled of <cpupackage>, smt enableds, Plain
       sticky of <mode>, stickies, Plain
+      syn received of <tcp state>, syn receiveds, Plain
+      syn sent of <tcp state>, syn sents, Plain
+      tcp of <socket>, tcps, Plain
       term of <bes product>, terms, Plain
       text of <sqlite column type>, texts, Plain
+      time wait of <tcp state>, time waits, Plain
       true, trues, PlainGlobal
+      udp of <socket>, udps, Plain
       underflow of <floating point>, underflows, Plain
       unix of <operating system>, unixes, Plain
-      up flag of <ipv4 route>, up flags, Plain
+      up flag of <route>, up flags, Plain
       up of <network adapter interface>, ups, Plain
       up of <network adapter>, ups, Plain
       up of <network ip interface>, ups, Plain
@@ -668,22 +697,6 @@ Creation techniques & properties of each type:
       <time range> * <boolean>, , BinaryOperator, <timed( time range, boolean )>
       conjunction of <boolean>, conjunctions, Plain, <boolean>
       disjunction of <boolean>, disjunctions, Plain, <boolean>
-
-  Type <capability>
-    Creation of <capability>: { key phrase, plural keyword, form}
-      capability <string> of <rpmdatabase>, capabilities, Named
-      capability <string>, capabilities, NamedGlobal
-      conflict of <package>, conflicts, Plain
-      installed file of <package>, installed files, Plain
-      obsolete of <package>, obsoletes, Plain
-      provide of <package>, provides, Plain
-      require of <package>, requires, Plain
-    Properties of <capability> { key phrase, plural keyword, form, <result type>}:
-      <capability> as string, , Cast, <string>
-      <capability> contains <capability>, , BinaryOperator, <boolean>
-      name of <capability>, names, Plain, <string>
-      relation of <capability>, relations, Plain, <string>
-      version of <capability>, versions, Plain, <string>
 
   Type <cast>
     Creation of <cast>: { key phrase, plural keyword, form}
@@ -714,6 +727,8 @@ Creation techniques & properties of each type:
       last command time of <client>, last command times, Plain, <time>
       last report time of <client>, last report times, Plain, <time>
       local character set of <client>, local character sets, Plain, <string>
+      manual group <string> of <client>, manual groups, Named, <manual group>
+      manual group of <client>, manual groups, Plain, <manual group>
       registration address of <client>, registration addresses, Plain, <ipv4or6 address>
       registration cidr address of <client>, registration cidr addresses, Plain, <string>
       registration mac address of <client>, registration mac addresses, Plain, <string>
@@ -957,6 +972,207 @@ Creation techniques & properties of each type:
       unique value of <day of year>, unique values, Plain
     Properties of <day of year with multiplicity> { key phrase, plural keyword, form, <result type>}:
       multiplicity of <day of year with multiplicity>, multiplicities, Plain, <integer>
+
+  Type <debian base package>
+    Creation of <debian base package>: { key phrase, plural keyword, form}
+      base package <string> of <debianpackagecache>, base packages, Named
+      base package of <debianpackagecache>, base packages, Plain
+      base package of <debianpkg version>, base packages, Plain
+    Properties of <debian base package> { key phrase, plural keyword, form, <result type>}:
+      <debian base package> as string, , Cast, <string>
+      currently installed of <debian base package>, currently installeds, Plain, <boolean>
+      installed version of <debian base package>, installed versions, Plain, <debianpkg version>
+      name of <debian base package>, names, Plain, <string>
+      pkg version of <debian base package>, pkg versions, Plain, <debianpkg version>
+
+  Type <debian package upstream version>
+    Creation of <debian package upstream version>: { key phrase, plural keyword, form}
+      <debian package upstream version> as debian package version upstream, , Cast
+      debian package version upstream <debian package upstream version>, debian package version upstreams, Index<debian package upstream version>Global
+      debian package version upstream <string>, debian package version upstreams, NamedGlobal
+      maximum of <debian package upstream version>, maxima, Plain
+      minimum of <debian package upstream version>, minima, Plain
+      upstream of <debian package version>, upstreams, Plain
+    Properties of <debian package upstream version> { key phrase, plural keyword, form, <result type>}:
+      <debian package upstream version> < <debian package upstream version>, , BinaryOperator, <boolean>
+      <debian package upstream version> < <string>, , BinaryOperator, <boolean>
+      <debian package upstream version> <= <debian package upstream version>, , BinaryOperator, <boolean>
+      <debian package upstream version> <= <string>, , BinaryOperator, <boolean>
+      <debian package upstream version> = <debian package upstream version>, , BinaryOperator, <boolean>
+      <debian package upstream version> = <string>, , BinaryOperator, <boolean>
+      <debian package upstream version> as debian package version upstream, , Cast, <debian package upstream version>
+      <debian package upstream version> as string, , Cast, <string>
+      <string> < <debian package upstream version>, , BinaryOperator, <boolean>
+      <string> <= <debian package upstream version>, , BinaryOperator, <boolean>
+      <string> = <debian package upstream version>, , BinaryOperator, <boolean>
+      extrema of <debian package upstream version>, extremas, Plain, <( debian package upstream version, debian package upstream version )>
+      maximum of <debian package upstream version>, maxima, Plain, <debian package upstream version>
+      minimum of <debian package upstream version>, minima, Plain, <debian package upstream version>
+      unique value of <debian package upstream version>, unique values, Plain, <debian package upstream version with multiplicity>
+
+  Type <debian package upstream version with multiplicity> (derives from debian package upstream version)
+    Creation of <debian package upstream version with multiplicity>: { key phrase, plural keyword, form}
+      unique value of <debian package upstream version>, unique values, Plain
+    Properties of <debian package upstream version with multiplicity> { key phrase, plural keyword, form, <result type>}:
+      multiplicity of <debian package upstream version with multiplicity>, multiplicities, Plain, <integer>
+
+  Type <debian package version>
+    Creation of <debian package version>: { key phrase, plural keyword, form}
+      <debian package version> as debian package version, , Cast
+      <debianpkg version> as debian package version, , Cast
+      debian package version <debian package version>, debian package versions, Index<debian package version>Global
+      debian package version <string>, debian package versions, NamedGlobal
+      maximum of <debian package version>, maxima, Plain
+      minimum of <debian package version>, minima, Plain
+      version of <debian versioned package>, versions, Plain
+      version of <debianpkg dependency>, versions, Plain
+    Properties of <debian package version> { key phrase, plural keyword, form, <result type>}:
+      <debian package version> < <debian package version>, , BinaryOperator, <boolean>
+      <debian package version> < <string>, , BinaryOperator, <boolean>
+      <debian package version> <= <debian package version>, , BinaryOperator, <boolean>
+      <debian package version> <= <string>, , BinaryOperator, <boolean>
+      <debian package version> = <debian package version>, , BinaryOperator, <boolean>
+      <debian package version> = <string>, , BinaryOperator, <boolean>
+      <debian package version> as debian package version, , Cast, <debian package version>
+      <debian package version> as string, , Cast, <string>
+      <string> < <debian package version>, , BinaryOperator, <boolean>
+      <string> <= <debian package version>, , BinaryOperator, <boolean>
+      <string> = <debian package version>, , BinaryOperator, <boolean>
+      epoch of <debian package version>, epochs, Plain, <debian package version epoch>
+      extrema of <debian package version>, extremas, Plain, <( debian package version, debian package version )>
+      maximum of <debian package version>, maxima, Plain, <debian package version>
+      minimum of <debian package version>, minima, Plain, <debian package version>
+      revision of <debian package version>, revisions, Plain, <debian package version revision>
+      unique value of <debian package version>, unique values, Plain, <debian package version with multiplicity>
+      upstream of <debian package version>, upstreams, Plain, <debian package upstream version>
+
+  Type <debian package version epoch>
+    Creation of <debian package version epoch>: { key phrase, plural keyword, form}
+      <debian package version epoch> as debian package version epoch, , Cast
+      debian package version epoch <debian package version epoch>, debian package version epochs, Index<debian package version epoch>Global
+      debian package version epoch <string>, debian package version epochs, NamedGlobal
+      epoch of <debian package version>, epochs, Plain
+      maximum of <debian package version epoch>, maxima, Plain
+      minimum of <debian package version epoch>, minima, Plain
+    Properties of <debian package version epoch> { key phrase, plural keyword, form, <result type>}:
+      <debian package version epoch> < <debian package version epoch>, , BinaryOperator, <boolean>
+      <debian package version epoch> < <string>, , BinaryOperator, <boolean>
+      <debian package version epoch> <= <debian package version epoch>, , BinaryOperator, <boolean>
+      <debian package version epoch> <= <string>, , BinaryOperator, <boolean>
+      <debian package version epoch> = <debian package version epoch>, , BinaryOperator, <boolean>
+      <debian package version epoch> = <string>, , BinaryOperator, <boolean>
+      <debian package version epoch> as debian package version epoch, , Cast, <debian package version epoch>
+      <debian package version epoch> as string, , Cast, <string>
+      <string> < <debian package version epoch>, , BinaryOperator, <boolean>
+      <string> <= <debian package version epoch>, , BinaryOperator, <boolean>
+      <string> = <debian package version epoch>, , BinaryOperator, <boolean>
+      extrema of <debian package version epoch>, extremas, Plain, <( debian package version epoch, debian package version epoch )>
+      maximum of <debian package version epoch>, maxima, Plain, <debian package version epoch>
+      minimum of <debian package version epoch>, minima, Plain, <debian package version epoch>
+      unique value of <debian package version epoch>, unique values, Plain, <debian package version epoch with multiplicity>
+
+  Type <debian package version epoch with multiplicity> (derives from debian package version epoch)
+    Creation of <debian package version epoch with multiplicity>: { key phrase, plural keyword, form}
+      unique value of <debian package version epoch>, unique values, Plain
+    Properties of <debian package version epoch with multiplicity> { key phrase, plural keyword, form, <result type>}:
+      multiplicity of <debian package version epoch with multiplicity>, multiplicities, Plain, <integer>
+
+  Type <debian package version revision>
+    Creation of <debian package version revision>: { key phrase, plural keyword, form}
+      <debian package version revision> as debian package version revision, , Cast
+      debian package version revision <debian package version revision>, debian package version revisions, Index<debian package version revision>Global
+      debian package version revision <string>, debian package version revisions, NamedGlobal
+      maximum of <debian package version revision>, maxima, Plain
+      minimum of <debian package version revision>, minima, Plain
+      revision of <debian package version>, revisions, Plain
+    Properties of <debian package version revision> { key phrase, plural keyword, form, <result type>}:
+      <debian package version revision> < <debian package version revision>, , BinaryOperator, <boolean>
+      <debian package version revision> < <string>, , BinaryOperator, <boolean>
+      <debian package version revision> <= <debian package version revision>, , BinaryOperator, <boolean>
+      <debian package version revision> <= <string>, , BinaryOperator, <boolean>
+      <debian package version revision> = <debian package version revision>, , BinaryOperator, <boolean>
+      <debian package version revision> = <string>, , BinaryOperator, <boolean>
+      <debian package version revision> as debian package version revision, , Cast, <debian package version revision>
+      <debian package version revision> as string, , Cast, <string>
+      <string> < <debian package version revision>, , BinaryOperator, <boolean>
+      <string> <= <debian package version revision>, , BinaryOperator, <boolean>
+      <string> = <debian package version revision>, , BinaryOperator, <boolean>
+      extrema of <debian package version revision>, extremas, Plain, <( debian package version revision, debian package version revision )>
+      maximum of <debian package version revision>, maxima, Plain, <debian package version revision>
+      minimum of <debian package version revision>, minima, Plain, <debian package version revision>
+      unique value of <debian package version revision>, unique values, Plain, <debian package version revision with multiplicity>
+
+  Type <debian package version revision with multiplicity> (derives from debian package version revision)
+    Creation of <debian package version revision with multiplicity>: { key phrase, plural keyword, form}
+      unique value of <debian package version revision>, unique values, Plain
+    Properties of <debian package version revision with multiplicity> { key phrase, plural keyword, form, <result type>}:
+      multiplicity of <debian package version revision with multiplicity>, multiplicities, Plain, <integer>
+
+  Type <debian package version with multiplicity> (derives from debian package version)
+    Creation of <debian package version with multiplicity>: { key phrase, plural keyword, form}
+      unique value of <debian package version>, unique values, Plain
+    Properties of <debian package version with multiplicity> { key phrase, plural keyword, form, <result type>}:
+      multiplicity of <debian package version with multiplicity>, multiplicities, Plain, <integer>
+
+  Type <debian versioned package>
+    Creation of <debian versioned package>: { key phrase, plural keyword, form}
+      package <string> of <debianpackagecache>, packages, Named
+      package of <debianpackagecache>, packages, Plain
+    Properties of <debian versioned package> { key phrase, plural keyword, form, <result type>}:
+      <debian versioned package> as string, , Cast, <string>
+      architecture of <debian versioned package>, architectures, Plain, <string>
+      currently installed of <debian versioned package>, currently installeds, Plain, <boolean>
+      dependency of <debian versioned package>, dependencies, Plain, <debianpkg dependency>
+      name of <debian versioned package>, names, Plain, <string>
+      release of <debian versioned package>, releases, Plain, <string>
+      reverse dependency of <debian versioned package>, reverse dependencies, Plain, <debianpkg reverse dependencies>
+      section of <debian versioned package>, sections, Plain, <string>
+      verfile of <debian versioned package>, verfiles, Plain, <debianpkg verfile>
+      version of <debian versioned package>, versions, Plain, <debian package version>
+
+  Type <debianpackagecache>
+    Creation of <debianpackagecache>: { key phrase, plural keyword, form}
+      debianpackage, debianpackages, PlainGlobal
+    Properties of <debianpackagecache> { key phrase, plural keyword, form, <result type>}:
+      base package <string> of <debianpackagecache>, base packages, Named, <debian base package>
+      base package of <debianpackagecache>, base packages, Plain, <debian base package>
+      package <string> of <debianpackagecache>, packages, Named, <debian versioned package>
+      package of <debianpackagecache>, packages, Plain, <debian versioned package>
+      pkglibversion of <debianpackagecache>, pkglibversions, Plain, <string>
+
+  Type <debianpkg dependency>
+    Creation of <debianpkg dependency>: { key phrase, plural keyword, form}
+      dependency of <debian versioned package>, dependencies, Plain
+    Properties of <debianpkg dependency> { key phrase, plural keyword, form, <result type>}:
+      <debianpkg dependency> as string, , Cast, <string>
+      compare_op of <debianpkg dependency>, compare_ops, Plain, <string>
+      critical of <debianpkg dependency>, criticals, Plain, <boolean>
+      type of <debianpkg dependency>, types, Plain, <string>
+      version of <debianpkg dependency>, versions, Plain, <debian package version>
+
+  Type <debianpkg reverse dependencies>
+    Creation of <debianpkg reverse dependencies>: { key phrase, plural keyword, form}
+      reverse dependency of <debian versioned package>, reverse dependencies, Plain
+    Properties of <debianpkg reverse dependencies> { key phrase, plural keyword, form, <result type>}:
+      <debianpkg reverse dependencies> as string, , Cast, <string>
+      version of <debianpkg reverse dependencies>, versions, Plain, <string>
+
+  Type <debianpkg verfile>
+    Creation of <debianpkg verfile>: { key phrase, plural keyword, form}
+      verfile of <debian versioned package>, verfiles, Plain
+    Properties of <debianpkg verfile> { key phrase, plural keyword, form, <result type>}:
+      <debianpkg verfile> as string, , Cast, <string>
+
+  Type <debianpkg version>
+    Creation of <debianpkg version>: { key phrase, plural keyword, form}
+      installed version of <debian base package>, installed versions, Plain
+      pkg version of <debian base package>, pkg versions, Plain
+    Properties of <debianpkg version> { key phrase, plural keyword, form, <result type>}:
+      <debianpkg version> as debian package version, , Cast, <debian package version>
+      <debianpkg version> as string, , Cast, <string>
+      architecture of <debianpkg version>, architectures, Plain, <string>
+      base package of <debianpkg version>, base packages, Plain, <debian base package>
+      section of <debianpkg version>, sections, Plain, <string>
 
   Type <device file> (derives from filesystem object)
     Creation of <device file>: { key phrase, plural keyword, form}
@@ -1741,10 +1957,14 @@ Creation techniques & properties of each type:
       md5 of <file>, md5s, Plain, <string>
       section <string> of <file>, sections, Named, <file section>
       sha1 of <file>, sha1s, Plain, <string>
+      sha224 of <file>, sha224s, Plain, <string>
+      sha256 of <file>, sha256s, Plain, <string>
       sha2_224 of <file>, sha2_224s, Plain, <string>
       sha2_256 of <file>, sha2_256s, Plain, <string>
       sha2_384 of <file>, sha2_384s, Plain, <string>
       sha2_512 of <file>, sha2_512s, Plain, <string>
+      sha384 of <file>, sha384s, Plain, <string>
+      sha512 of <file>, sha512s, Plain, <string>
       size of <file>, sizes, Plain, <integer>
       sqlite database of <file>, sqlite databases, Plain, <sqlite database>
       variable of <file>, variables, Plain, <string>
@@ -1913,6 +2133,8 @@ Creation techniques & properties of each type:
       significance place of <floating point>, significance places, Plain
       significance threshold of <floating point>, significance thresholds, Plain
       sleep percent of <evaluation cycle>, sleep percents, Plain
+      sqrt of <floating point>, sqrts, Plain
+      sqrt of <integer>, sqrts, Plain
       standard deviation of <floating point>, standard deviations, Plain
       standard deviation of <integer>, standard deviations, Plain
       sum of <floating point>, sums, Plain
@@ -1966,6 +2188,7 @@ Creation techniques & properties of each type:
       significance place <integer> of <floating point>, significance places, Numbered, <floating point>
       significance place of <floating point>, significance places, Plain, <floating point>
       significance threshold of <floating point>, significance thresholds, Plain, <floating point>
+      sqrt of <floating point>, sqrts, Plain, <floating point>
       standard deviation of <floating point>, standard deviations, Plain, <floating point>
       sum of <floating point>, sums, Plain, <floating point>
       underflow of <floating point>, underflows, Plain, <boolean>
@@ -2686,8 +2909,6 @@ Creation techniques & properties of each type:
       enabled_size of <dmi memory_module_information>, enabled_sizes, Plain
       ending_address of <dmi memory_array_mapped_address>, ending_addresss, Plain
       ending_address of <dmi memory_device_mapped_address>, ending_addresss, Plain
-      epoch of <rpm package version record>, epochs, Plain
-      epoch of <short rpm package version record>, epochs, Plain
       error_correcting_capability of <dmi memory_controller_information>, error_correcting_capabilitys, Plain
       error_correction_type of <dmi cache_information>, error_correction_types, Plain
       error_detecting_method of <dmi memory_controller_information>, error_detecting_methods, Plain
@@ -2756,7 +2977,7 @@ Creation techniques & properties of each type:
       interleaved_data_depth of <dmi memory_device_mapped_address>, interleaved_data_depths, Plain
       internal_connector_type of <dmi port_connector_information>, internal_connector_types, Plain
       ipmi_specification_revision of <dmi ipmi_device_information>, ipmi_specification_revisions, Plain
-      irtt of <ipv4 route>, irtts, Plain
+      irtt of <route>, irtts, Plain
       item_handle of <dmi group_associations>, item_handles, Plain
       item_type of <dmi group_associations>, item_types, Plain
       l1_cache_handle of <dmi processor_information>, l1_cache_handles, Plain
@@ -2811,6 +3032,7 @@ Creation techniques & properties of each type:
       line number of <file line>, line numbers, Plain
       link count of <filesystem object>, link counts, Plain
       link count of <symlink>, link counts, Plain
+      local port of <socket>, local ports, Plain
       location of <dmi physical_memory_array>, locations, Plain
       location_and_status of <dmi electrical_current_probe>, location_and_statuss, Plain
       location_and_status of <dmi temperature_probe>, location_and_statuss, Plain
@@ -2849,7 +3071,7 @@ Creation techniques & properties of each type:
       memory_error_information_handle of <dmi physical_memory_array>, memory_error_information_handles, Plain
       memory_module_voltage of <dmi memory_controller_information>, memory_module_voltages, Plain
       memory_type of <dmi memory_device>, memory_types, Plain
-      metric of <ipv4 route>, metrics, Plain
+      metric of <route>, metrics, Plain
       minimum of <integer>, minima, Plain
       minimum_value of <dmi electrical_current_probe>, minimum_values, Plain
       minimum_value of <dmi temperature_probe>, minimum_values, Plain
@@ -2860,11 +3082,15 @@ Creation techniques & properties of each type:
       minute_of_hour of <time of day>, minutes_of_hour, Plain
       model of <processor>, models, Plain
       most significant one bit of <bit set>, most significant one bits, Plain
-      mtu of <ipv4 route>, mtus, Plain
+      mtu of <route>, mtus, Plain
       multiplicity of <date with multiplicity>, multiplicities, Plain
       multiplicity of <day of month with multiplicity>, multiplicities, Plain
       multiplicity of <day of week with multiplicity>, multiplicities, Plain
       multiplicity of <day of year with multiplicity>, multiplicities, Plain
+      multiplicity of <debian package upstream version with multiplicity>, multiplicities, Plain
+      multiplicity of <debian package version epoch with multiplicity>, multiplicities, Plain
+      multiplicity of <debian package version revision with multiplicity>, multiplicities, Plain
+      multiplicity of <debian package version with multiplicity>, multiplicities, Plain
       multiplicity of <floating point with multiplicity>, multiplicities, Plain
       multiplicity of <hertz with multiplicity>, multiplicities, Plain
       multiplicity of <integer with multiplicity>, multiplicities, Plain
@@ -2874,10 +3100,6 @@ Creation techniques & properties of each type:
       multiplicity of <month and year with multiplicity>, multiplicities, Plain
       multiplicity of <month with multiplicity>, multiplicities, Plain
       multiplicity of <number of months with multiplicity>, multiplicities, Plain
-      multiplicity of <rpm package release with multiplicity>, multiplicities, Plain
-      multiplicity of <rpm package version record with multiplicity>, multiplicities, Plain
-      multiplicity of <rpm package version with multiplicity>, multiplicities, Plain
-      multiplicity of <short rpm package version record with multiplicity>, multiplicities, Plain
       multiplicity of <site version list with multiplicity>, multiplicities, Plain
       multiplicity of <string with multiplicity>, multiplicities, Plain
       multiplicity of <time interval with multiplicity>, multiplicities, Plain
@@ -2888,6 +3110,7 @@ Creation techniques & properties of each type:
       multiplicity of <time zone with multiplicity>, multiplicities, Plain
       multiplicity of <version with multiplicity>, multiplicities, Plain
       multiplicity of <year with multiplicity>, multiplicities, Plain
+      mvs count of <bes product>, mvs counts, Plain
       next_scheduled_power_on_day_of_month of <dmi system_power_controls>, next_scheduled_power_on_day_of_months, Plain
       next_scheduled_power_on_hour of <dmi system_power_controls>, next_scheduled_power_on_hours, Plain
       next_scheduled_power_on_minute of <dmi system_power_controls>, next_scheduled_power_on_minutes, Plain
@@ -2938,6 +3161,7 @@ Creation techniques & properties of each type:
       product of <integer>, products, Plain
       reference_designation of <dmi onboard_devices_extended_information>, reference_designations, Plain
       registrar number of <license>, registrar numbers, Plain
+      remote port of <socket>, remote ports, Plain
       reset_count of <dmi system_reset>, reset_counts, Plain
       reset_limit of <dmi system_reset>, reset_limits, Plain
       resolution of <dmi electrical_current_probe>, resolutions, Plain
@@ -3010,6 +3234,7 @@ Creation techniques & properties of each type:
       uid of <filesystem object>, uids, Plain
       uid of <symlink>, uids, Plain
       unavailable amount of <ram>, unavailable amounts, Plain
+      update level of <operating system>, update levels, Plain
       upper bound of <integer range>, upper bounds, Plain
       upper_threshold_critical of <dmi management_device_threshold_data>, upper_threshold_criticals, Plain
       upper_threshold_non_critical of <dmi management_device_threshold_data>, upper_threshold_non_criticals, Plain
@@ -3027,7 +3252,7 @@ Creation techniques & properties of each type:
       voltage of <dmi processor_information>, voltages, Plain
       wake_up_type of <dmi system_information>, wake_up_types, Plain
       weight of <selected server>, weights, Plain
-      window of <ipv4 route>, windows, Plain
+      window of <route>, windows, Plain
       windows server count of <bes product>, windows server counts, Plain
       workstation count of <bes product>, workstation counts, Plain
     Properties of <integer> { key phrase, plural keyword, form, <result type>}:
@@ -3109,6 +3334,7 @@ Creation techniques & properties of each type:
       september of <integer>, septembers, Plain, <month and year>
       set of <integer>, sets, Plain, <integer set>
       significant digits <integer> of <integer>, significant digitss, Numbered, <integer>
+      sqrt of <integer>, sqrts, Plain, <floating point>
       standard deviation of <integer>, standard deviations, Plain, <floating point>
       sum of <integer>, sums, Plain, <integer>
       unique value of <integer>, unique values, Plain, <integer with multiplicity>
@@ -3162,12 +3388,9 @@ Creation techniques & properties of each type:
       address of <network adapter>, addresses, Plain
       address of <network ip interface>, addresses, Plain
       broadcast address of <network ip interface>, broadcast addresses, Plain
-      destination of <ipv4 route>, destinations, Plain
-      gateway of <ipv4 route>, gateways, Plain
       ipv4 address <string>, ipv4 addresses, NamedGlobal
       ipv4 part of <ipv4or6 address>, ipv4 parts, Plain
       ipv4 part of <ipv6 address>, ipv4 parts, Plain
-      mask of <ipv4 route>, masks, Plain
       maximum of <ipv4 address>, maxima, Plain
       minimum of <ipv4 address>, minima, Plain
       subnet address of <network adapter>, subnet addresses, Plain
@@ -3198,29 +3421,6 @@ Creation techniques & properties of each type:
     Properties of <ipv4 address with multiplicity> { key phrase, plural keyword, form, <result type>}:
       multiplicity of <ipv4 address with multiplicity>, multiplicities, Plain, <integer>
 
-  Type <ipv4 route>
-    Creation of <ipv4 route>: { key phrase, plural keyword, form}
-      route of <ipv4 routing table>, routes, Plain
-    Properties of <ipv4 route> { key phrase, plural keyword, form, <result type>}:
-      destination of <ipv4 route>, destinations, Plain, <ipv4 address>
-      gateway flag of <ipv4 route>, gateway flags, Plain, <boolean>
-      gateway of <ipv4 route>, gateways, Plain, <ipv4 address>
-      host flag of <ipv4 route>, host flags, Plain, <boolean>
-      interface of <ipv4 route>, interfaces, Plain, <string>
-      irtt of <ipv4 route>, irtts, Plain, <integer>
-      mask of <ipv4 route>, masks, Plain, <ipv4 address>
-      metric of <ipv4 route>, metrics, Plain, <integer>
-      mtu of <ipv4 route>, mtus, Plain, <integer>
-      reject flag of <ipv4 route>, reject flags, Plain, <boolean>
-      up flag of <ipv4 route>, up flags, Plain, <boolean>
-      window of <ipv4 route>, windows, Plain, <integer>
-
-  Type <ipv4 routing table>
-    Creation of <ipv4 routing table>: { key phrase, plural keyword, form}
-      ipv4 routing table, ipv4 routing tables, PlainGlobal
-    Properties of <ipv4 routing table> { key phrase, plural keyword, form, <result type>}:
-      route of <ipv4 routing table>, routes, Plain, <ipv4 route>
-
   Type <ipv4or6 address>
     Creation of <ipv4or6 address>: { key phrase, plural keyword, form}
       <ipv4 address> as ipv4or6 address, , Cast
@@ -3228,15 +3428,20 @@ Creation techniques & properties of each type:
       <string> as ipv4or6 address, , Cast
       address of <network adapter interface>, addresses, Plain
       broadcast address of <network adapter interface>, broadcast addresses, Plain
+      destination of <route>, destinations, Plain
       full gateway address of <selected server>, full gateway addresses, Plain
       gateway address <integer> of <selected server>, gateway addresses, Numbered
       gateway address of <selected server>, gateway addresses, Plain
+      gateway of <route>, gateways, Plain
       ip address of <selected server>, ip addresses, Plain
       ipv4or6 address <string>, ipv4or6 addresses, NamedGlobal
+      local address of <socket>, local addresses, Plain
+      mask of <route>, masks, Plain
       maximum of <ipv4or6 address>, maxima, Plain
       minimum of <ipv4or6 address>, minima, Plain
       registration address of <client>, registration addresses, Plain
       registration subnet address of <client>, registration subnet addresses, Plain
+      remote address of <socket>, remote addresses, Plain
       subnet address of <network adapter interface>, subnet addresses, Plain
       subnet mask of <network adapter interface>, subnet masks, Plain
     Properties of <ipv4or6 address> { key phrase, plural keyword, form, <result type>}:
@@ -3357,8 +3562,12 @@ Creation techniques & properties of each type:
     Properties of <license> { key phrase, plural keyword, form, <result type>}:
       allow unmentioned site of <license>, allow unmentioned sites, Plain, <boolean>
       common name of <license>, common names, Plain, <string>
+      download hash algorithm of <license>, download hash algorithms, Plain, <string>
+      effective download hash algorithm of <license>, effective download hash algorithms, Plain, <string>
+      effective signature hash algorithm of <license>, effective signature hash algorithms, Plain, <string>
       email address of <license>, email addresses, Plain, <string>
       encryption certificate of <license>, encryption certificates, Plain, <x509 certificate>
+      enhanced security of <license>, enhanced securities, Plain, <boolean>
       evaluation of <license>, evaluations, Plain, <boolean>
       expiration date of <license>, expiration dates, Plain, <time>
       expiration state of <license>, expiration states, Plain, <string>
@@ -3370,6 +3579,8 @@ Creation techniques & properties of each type:
       registrar number of <license>, registrar numbers, Plain, <integer>
       seat count state of <license>, seat count states, Plain, <string>
       seat of <license>, seats, Plain, <integer>
+      sha256 download of <license>, sha256 downloads, Plain, <boolean>
+      signature hash algorithm of <license>, signature hash algorithms, Plain, <string>
       site number of <license>, site numbers, Plain, <integer>
       start date of <license>, start dates, Plain, <time>
       type of <license>, types, Plain, <string>
@@ -3385,6 +3596,15 @@ Creation techniques & properties of each type:
       remote of <logged on user>, remotes, Plain, <boolean>
       tty of <logged on user>, ttys, Plain, <string>
       user of <logged on user>, users, Plain, <user>
+
+  Type <manual group>
+    Creation of <manual group>: { key phrase, plural keyword, form}
+      manual group <string> of <client>, manual groups, Named
+      manual group of <client>, manual groups, Plain
+    Properties of <manual group> { key phrase, plural keyword, form, <result type>}:
+      <manual group> as string, , Cast, <string>
+      member of <manual group>, members, Plain, <boolean>
+      setting of <manual group>, settings, Plain, <setting>
 
   Type <mode>
     Creation of <mode>: { key phrase, plural keyword, form}
@@ -3546,6 +3766,7 @@ Creation techniques & properties of each type:
       ipv4 interface of <network>, ipv4 interfaces, Plain, <network adapter interface>
       ipv4or6 interface of <network>, ipv4or6 interfaces, Plain, <network adapter interface>
       ipv6 interface of <network>, ipv6 interfaces, Plain, <network adapter interface>
+      socket of <network>, sockets, Plain, <socket>
 
   Type <network adapter>
     Creation of <network adapter>: { key phrase, plural keyword, form}
@@ -3679,6 +3900,7 @@ Creation techniques & properties of each type:
       operating system, operating systems, PlainGlobal
     Properties of <operating system> { key phrase, plural keyword, form, <result type>}:
       <operating system> as string, , Cast, <string>
+      android of <operating system>, androids, Plain, <boolean>
       architecture of <operating system>, architectures, Plain, <string>
       boot time of <operating system>, boot times, Plain, <time>
       build number high of <operating system>, build number highs, Plain, <integer>
@@ -3695,30 +3917,10 @@ Creation techniques & properties of each type:
       product info string of <operating system>, product info strings, Plain, <string>
       release of <operating system>, releases, Plain, <string>
       unix of <operating system>, unixes, Plain, <boolean>
+      update level of <operating system>, update levels, Plain, <integer>
       uptime of <operating system>, uptimes, Plain, <time interval>
       version of <operating system>, versions, Plain, <version>
       windows of <operating system>, windowses, Plain, <boolean>
-
-  Type <package>
-    Creation of <package>: { key phrase, plural keyword, form}
-      package <string> of <rpmdatabase>, packages, Named
-      package conflicting with <capability> of <rpmdatabase>, packages conflicting with, Index<capability>
-      package installing <capability> of <rpmdatabase>, packages installing, Index<capability>
-      package of <rpmdatabase>, packages, Plain
-      package providing <capability> of <rpmdatabase>, packages providing, Index<capability>
-      package requiring <capability> of <rpmdatabase>, packages requiring, Index<capability>
-    Properties of <package> { key phrase, plural keyword, form, <result type>}:
-      <package> as string, , Cast, <string>
-      architecture of <package>, architectures, Plain, <string>
-      conflict of <package>, conflicts, Plain, <capability>
-      installed file of <package>, installed files, Plain, <capability>
-      name of <package>, names, Plain, <string>
-      obsolete of <package>, obsoletes, Plain, <capability>
-      provide of <package>, provides, Plain, <capability>
-      require of <package>, requires, Plain, <capability>
-      rpm version record of <package>, rpm version records, Plain, <rpm package version record>
-      unique name of <package>, unique names, Plain, <string>
-      version of <package>, versions, Plain, <version>
 
   Type <power level>
     Creation of <power level>: { key phrase, plural keyword, form}
@@ -3741,6 +3943,7 @@ Creation techniques & properties of each type:
     Creation of <process>: { key phrase, plural keyword, form}
       process <integer>, processes, NumberedGlobal
       process <string>, processes, NamedGlobal
+      process of <socket>, processes, Plain
       process, processes, PlainGlobal
     Properties of <process> { key phrase, plural keyword, form, <result type>}:
       command line argument <integer> of <process>, command line arguments, Numbered, <string>
@@ -3867,130 +4070,29 @@ Creation techniques & properties of each type:
       <string> & <rope>, , BinaryOperator, <rope>
       length of <rope>, lengths, Plain, <integer>
 
-  Type <rpm package release>
-    Creation of <rpm package release>: { key phrase, plural keyword, form}
-      <rpm package release> as rpm package release, , Cast
-      maximum of <rpm package release>, maxima, Plain
-      minimum of <rpm package release>, minima, Plain
-      release of <rpm package version record>, releases, Plain
-      release of <short rpm package version record>, releases, Plain
-      rpm package release <rpm package release>, rpm package releases, Index<rpm package release>Global
-      rpm package release <string>, rpm package releases, NamedGlobal
-    Properties of <rpm package release> { key phrase, plural keyword, form, <result type>}:
-      <rpm package release> < <rpm package release>, , BinaryOperator, <boolean>
-      <rpm package release> < <string>, , BinaryOperator, <boolean>
-      <rpm package release> <= <rpm package release>, , BinaryOperator, <boolean>
-      <rpm package release> <= <string>, , BinaryOperator, <boolean>
-      <rpm package release> = <rpm package release>, , BinaryOperator, <boolean>
-      <rpm package release> = <string>, , BinaryOperator, <boolean>
-      <rpm package release> as rpm package release, , Cast, <rpm package release>
-      <rpm package release> as string, , Cast, <string>
-      <string> < <rpm package release>, , BinaryOperator, <boolean>
-      <string> <= <rpm package release>, , BinaryOperator, <boolean>
-      <string> = <rpm package release>, , BinaryOperator, <boolean>
-      extrema of <rpm package release>, extremas, Plain, <( rpm package release, rpm package release )>
-      maximum of <rpm package release>, maxima, Plain, <rpm package release>
-      minimum of <rpm package release>, minima, Plain, <rpm package release>
-      unique value of <rpm package release>, unique values, Plain, <rpm package release with multiplicity>
+  Type <route>
+    Creation of <route>: { key phrase, plural keyword, form}
+      route of <routing table>, routes, Plain
+    Properties of <route> { key phrase, plural keyword, form, <result type>}:
+      destination of <route>, destinations, Plain, <ipv4or6 address>
+      gateway flag of <route>, gateway flags, Plain, <boolean>
+      gateway of <route>, gateways, Plain, <ipv4or6 address>
+      host flag of <route>, host flags, Plain, <boolean>
+      interface of <route>, interfaces, Plain, <string>
+      irtt of <route>, irtts, Plain, <integer>
+      mask of <route>, masks, Plain, <ipv4or6 address>
+      metric of <route>, metrics, Plain, <integer>
+      mtu of <route>, mtus, Plain, <integer>
+      reject flag of <route>, reject flags, Plain, <boolean>
+      up flag of <route>, up flags, Plain, <boolean>
+      window of <route>, windows, Plain, <integer>
 
-  Type <rpm package release with multiplicity> (derives from rpm package release)
-    Creation of <rpm package release with multiplicity>: { key phrase, plural keyword, form}
-      unique value of <rpm package release>, unique values, Plain
-    Properties of <rpm package release with multiplicity> { key phrase, plural keyword, form, <result type>}:
-      multiplicity of <rpm package release with multiplicity>, multiplicities, Plain, <integer>
-
-  Type <rpm package version>
-    Creation of <rpm package version>: { key phrase, plural keyword, form}
-      <rpm package version> as rpm package version, , Cast
-      maximum of <rpm package version>, maxima, Plain
-      minimum of <rpm package version>, minima, Plain
-      rpm package version <rpm package version>, rpm package versions, Index<rpm package version>Global
-      rpm package version <string>, rpm package versions, NamedGlobal
-      version of <rpm package version record>, versions, Plain
-      version of <short rpm package version record>, versions, Plain
-    Properties of <rpm package version> { key phrase, plural keyword, form, <result type>}:
-      <rpm package version> < <rpm package version>, , BinaryOperator, <boolean>
-      <rpm package version> < <string>, , BinaryOperator, <boolean>
-      <rpm package version> <= <rpm package version>, , BinaryOperator, <boolean>
-      <rpm package version> <= <string>, , BinaryOperator, <boolean>
-      <rpm package version> = <rpm package version>, , BinaryOperator, <boolean>
-      <rpm package version> = <string>, , BinaryOperator, <boolean>
-      <rpm package version> as rpm package version, , Cast, <rpm package version>
-      <rpm package version> as string, , Cast, <string>
-      <string> < <rpm package version>, , BinaryOperator, <boolean>
-      <string> <= <rpm package version>, , BinaryOperator, <boolean>
-      <string> = <rpm package version>, , BinaryOperator, <boolean>
-      extrema of <rpm package version>, extremas, Plain, <( rpm package version, rpm package version )>
-      maximum of <rpm package version>, maxima, Plain, <rpm package version>
-      minimum of <rpm package version>, minima, Plain, <rpm package version>
-      unique value of <rpm package version>, unique values, Plain, <rpm package version with multiplicity>
-
-  Type <rpm package version record>
-    Creation of <rpm package version record>: { key phrase, plural keyword, form}
-      <rpm package version record> as rpm package version record, , Cast
-      <short rpm package version record> as rpm package version record, , Cast
-      long form of <short rpm package version record>, long forms, Plain
-      maximum of <rpm package version record>, maxima, Plain
-      minimum of <rpm package version record>, minima, Plain
-      no epoch of <rpm package version record>, no epochs, Plain
-      rpm package version record <rpm package version record>, rpm package version records, Index<rpm package version record>Global
-      rpm package version record <short rpm package version record>, rpm package version records, Index<short rpm package version record>Global
-      rpm package version record <string>, rpm package version records, NamedGlobal
-      rpm version record of <package>, rpm version records, Plain
-    Properties of <rpm package version record> { key phrase, plural keyword, form, <result type>}:
-      <rpm package version record> < <rpm package version record>, , BinaryOperator, <boolean>
-      <rpm package version record> < <short rpm package version record>, , BinaryOperator, <boolean>
-      <rpm package version record> < <string>, , BinaryOperator, <boolean>
-      <rpm package version record> <= <rpm package version record>, , BinaryOperator, <boolean>
-      <rpm package version record> <= <short rpm package version record>, , BinaryOperator, <boolean>
-      <rpm package version record> <= <string>, , BinaryOperator, <boolean>
-      <rpm package version record> = <rpm package version record>, , BinaryOperator, <boolean>
-      <rpm package version record> = <short rpm package version record>, , BinaryOperator, <boolean>
-      <rpm package version record> = <string>, , BinaryOperator, <boolean>
-      <rpm package version record> as rpm package version record, , Cast, <rpm package version record>
-      <rpm package version record> as short rpm package version record, , Cast, <short rpm package version record>
-      <rpm package version record> as string, , Cast, <string>
-      <short rpm package version record> < <rpm package version record>, , BinaryOperator, <boolean>
-      <short rpm package version record> <= <rpm package version record>, , BinaryOperator, <boolean>
-      <short rpm package version record> = <rpm package version record>, , BinaryOperator, <boolean>
-      <string> < <rpm package version record>, , BinaryOperator, <boolean>
-      <string> <= <rpm package version record>, , BinaryOperator, <boolean>
-      <string> = <rpm package version record>, , BinaryOperator, <boolean>
-      epoch of <rpm package version record>, epochs, Plain, <integer>
-      extrema of <rpm package version record>, extremas, Plain, <( rpm package version record, rpm package version record )>
-      maximum of <rpm package version record>, maxima, Plain, <rpm package version record>
-      minimum of <rpm package version record>, minima, Plain, <rpm package version record>
-      no epoch of <rpm package version record>, no epochs, Plain, <rpm package version record>
-      release of <rpm package version record>, releases, Plain, <rpm package release>
-      short form of <rpm package version record>, short forms, Plain, <short rpm package version record>
-      unique value of <rpm package version record>, unique values, Plain, <rpm package version record with multiplicity>
-      version of <rpm package version record>, versions, Plain, <rpm package version>
-
-  Type <rpm package version record with multiplicity> (derives from rpm package version record)
-    Creation of <rpm package version record with multiplicity>: { key phrase, plural keyword, form}
-      unique value of <rpm package version record>, unique values, Plain
-    Properties of <rpm package version record with multiplicity> { key phrase, plural keyword, form, <result type>}:
-      multiplicity of <rpm package version record with multiplicity>, multiplicities, Plain, <integer>
-
-  Type <rpm package version with multiplicity> (derives from rpm package version)
-    Creation of <rpm package version with multiplicity>: { key phrase, plural keyword, form}
-      unique value of <rpm package version>, unique values, Plain
-    Properties of <rpm package version with multiplicity> { key phrase, plural keyword, form, <result type>}:
-      multiplicity of <rpm package version with multiplicity>, multiplicities, Plain, <integer>
-
-  Type <rpmdatabase>
-    Creation of <rpmdatabase>: { key phrase, plural keyword, form}
-      rpm <string>, rpms, NamedGlobal
-      rpm, rpms, PlainGlobal
-    Properties of <rpmdatabase> { key phrase, plural keyword, form, <result type>}:
-      capability <string> of <rpmdatabase>, capabilities, Named, <capability>
-      installed <string> of <rpmdatabase>, installeds, Named, <boolean>
-      package <string> of <rpmdatabase>, packages, Named, <package>
-      package conflicting with <capability> of <rpmdatabase>, packages conflicting with, Index<capability>, <package>
-      package installing <capability> of <rpmdatabase>, packages installing, Index<capability>, <package>
-      package of <rpmdatabase>, packages, Plain, <package>
-      package providing <capability> of <rpmdatabase>, packages providing, Index<capability>, <package>
-      package requiring <capability> of <rpmdatabase>, packages requiring, Index<capability>, <package>
+  Type <routing table>
+    Creation of <routing table>: { key phrase, plural keyword, form}
+      ipv4 routing table, ipv4 routing tables, PlainGlobal
+      routing table, routing tables, PlainGlobal
+    Properties of <routing table> { key phrase, plural keyword, form, <result type>}:
+      route of <routing table>, routes, Plain, <route>
 
   Type <runlevel>
     Creation of <runlevel>: { key phrase, plural keyword, form}
@@ -4037,6 +4139,7 @@ Creation techniques & properties of each type:
       setting <string> of <client>, settings, Named
       setting <string> of <site>, settings, Named
       setting of <client>, settings, Plain
+      setting of <manual group>, settings, Plain
       setting of <site>, settings, Plain
     Properties of <setting> { key phrase, plural keyword, form, <result type>}:
       <setting> as string, , Cast, <string>
@@ -4044,45 +4147,6 @@ Creation techniques & properties of each type:
       enabled of <setting>, enableds, Plain, <boolean>
       name of <setting>, names, Plain, <string>
       value of <setting>, values, Plain, <string>
-
-  Type <short rpm package version record>
-    Creation of <short rpm package version record>: { key phrase, plural keyword, form}
-      <rpm package version record> as short rpm package version record, , Cast
-      <short rpm package version record> as short rpm package version record, , Cast
-      maximum of <short rpm package version record>, maxima, Plain
-      minimum of <short rpm package version record>, minima, Plain
-      no epoch of <short rpm package version record>, no epochs, Plain
-      short form of <rpm package version record>, short forms, Plain
-      short rpm package version record <rpm package version record>, short rpm package version records, Index<rpm package version record>Global
-      short rpm package version record <short rpm package version record>, short rpm package version records, Index<short rpm package version record>Global
-    Properties of <short rpm package version record> { key phrase, plural keyword, form, <result type>}:
-      <rpm package version record> < <short rpm package version record>, , BinaryOperator, <boolean>
-      <rpm package version record> <= <short rpm package version record>, , BinaryOperator, <boolean>
-      <rpm package version record> = <short rpm package version record>, , BinaryOperator, <boolean>
-      <short rpm package version record> < <rpm package version record>, , BinaryOperator, <boolean>
-      <short rpm package version record> < <short rpm package version record>, , BinaryOperator, <boolean>
-      <short rpm package version record> <= <rpm package version record>, , BinaryOperator, <boolean>
-      <short rpm package version record> <= <short rpm package version record>, , BinaryOperator, <boolean>
-      <short rpm package version record> = <rpm package version record>, , BinaryOperator, <boolean>
-      <short rpm package version record> = <short rpm package version record>, , BinaryOperator, <boolean>
-      <short rpm package version record> as rpm package version record, , Cast, <rpm package version record>
-      <short rpm package version record> as short rpm package version record, , Cast, <short rpm package version record>
-      <short rpm package version record> as string, , Cast, <string>
-      epoch of <short rpm package version record>, epochs, Plain, <integer>
-      extrema of <short rpm package version record>, extremas, Plain, <( short rpm package version record, short rpm package version record )>
-      long form of <short rpm package version record>, long forms, Plain, <rpm package version record>
-      maximum of <short rpm package version record>, maxima, Plain, <short rpm package version record>
-      minimum of <short rpm package version record>, minima, Plain, <short rpm package version record>
-      no epoch of <short rpm package version record>, no epochs, Plain, <short rpm package version record>
-      release of <short rpm package version record>, releases, Plain, <rpm package release>
-      unique value of <short rpm package version record>, unique values, Plain, <short rpm package version record with multiplicity>
-      version of <short rpm package version record>, versions, Plain, <rpm package version>
-
-  Type <short rpm package version record with multiplicity> (derives from short rpm package version record)
-    Creation of <short rpm package version record with multiplicity>: { key phrase, plural keyword, form}
-      unique value of <short rpm package version record>, unique values, Plain
-    Properties of <short rpm package version record with multiplicity> { key phrase, plural keyword, form, <result type>}:
-      multiplicity of <short rpm package version record with multiplicity>, multiplicities, Plain, <integer>
 
   Type <site>
     Creation of <site>: { key phrase, plural keyword, form}
@@ -4180,6 +4244,19 @@ Creation techniques & properties of each type:
       structure of <smbios value>, structures, Plain, <smbios structure>
       type of <smbios value>, types, Plain, <string>
 
+  Type <socket>
+    Creation of <socket>: { key phrase, plural keyword, form}
+      socket of <network>, sockets, Plain
+    Properties of <socket> { key phrase, plural keyword, form, <result type>}:
+      local address of <socket>, local addresses, Plain, <ipv4or6 address>
+      local port of <socket>, local ports, Plain, <integer>
+      process of <socket>, processes, Plain, <process>
+      remote address of <socket>, remote addresses, Plain, <ipv4or6 address>
+      remote port of <socket>, remote ports, Plain, <integer>
+      tcp of <socket>, tcps, Plain, <boolean>
+      tcp state of <socket>, tcp states, Plain, <tcp state>
+      udp of <socket>, udps, Plain, <boolean>
+
   Type <socket file> (derives from filesystem object)
     Creation of <socket file>: { key phrase, plural keyword, form}
       <filesystem object> as socket file, , Cast
@@ -4265,7 +4342,6 @@ Creation techniques & properties of each type:
       <bios> as string, , Cast
       <bit set> as string, , Cast
       <boolean> as string, , Cast
-      <capability> as string, , Cast
       <cast> as string, , Cast
       <date> as string, , Cast
       <day of month> as string, , Cast
@@ -4273,6 +4349,16 @@ Creation techniques & properties of each type:
       <day of week> as string, , Cast
       <day of week> as three letters, , Cast
       <day of year> as string, , Cast
+      <debian base package> as string, , Cast
+      <debian package upstream version> as string, , Cast
+      <debian package version epoch> as string, , Cast
+      <debian package version revision> as string, , Cast
+      <debian package version> as string, , Cast
+      <debian versioned package> as string, , Cast
+      <debianpkg dependency> as string, , Cast
+      <debianpkg reverse dependencies> as string, , Cast
+      <debianpkg verfile> as string, , Cast
+      <debianpkg version> as string, , Cast
       <environment variable> as string, , Cast
       <filesystem object> as string, , Cast
       <floating point> as scientific notation, , Cast
@@ -4316,6 +4402,7 @@ Creation techniques & properties of each type:
       <json key> as string, , Cast
       <json value> as string, , Cast
       <language> as string, , Cast
+      <manual group> as string, , Cast
       <mode> as octal string, , Cast
       <mode> as string, , Cast
       <mode_mask> as string, , Cast
@@ -4325,18 +4412,13 @@ Creation techniques & properties of each type:
       <month> as two digits, , Cast
       <number of months> as string, , Cast
       <operating system> as string, , Cast
-      <package> as string, , Cast
       <power level> as string, , Cast
       <primary language> as string, , Cast
       <property> as string, , Cast
       <rope> as string, , Cast
-      <rpm package release> as string, , Cast
-      <rpm package version record> as string, , Cast
-      <rpm package version> as string, , Cast
       <runlevel> as string, , Cast
       <service> as string, , Cast
       <setting> as string, , Cast
-      <short rpm package version record> as string, , Cast
       <site version list> as string, , Cast
       <smbios value> as string, , Cast
       <sqlite column type> as string, , Cast
@@ -4353,6 +4435,7 @@ Creation techniques & properties of each type:
       <string> as trimmed string, , Cast
       <string> as uppercase, , Cast
       <symlink> as string, , Cast
+      <tcp state> as string, , Cast
       <time interval> as string, , Cast
       <time of day with time zone> as string, , Cast
       <time of day> as string, , Cast
@@ -4366,8 +4449,9 @@ Creation techniques & properties of each type:
       <undefined> as string, , Cast
       <version> as string, , Cast
       <year> as string, , Cast
+      architecture of <debian versioned package>, architectures, Plain
+      architecture of <debianpkg version>, architectures, Plain
       architecture of <operating system>, architectures, Plain
-      architecture of <package>, architectures, Plain
       asset_tag of <dmi base_board_information>, asset_tags, Plain
       asset_tag of <dmi memory_device>, asset_tags, Plain
       asset_tag of <dmi processor_information>, asset_tags, Plain
@@ -4397,6 +4481,7 @@ Creation techniques & properties of each type:
       command line argument <integer> of <process>, command line arguments, Numbered
       command line argument of <process>, command line arguments, Plain
       common name of <license>, common names, Plain
+      compare_op of <debianpkg dependency>, compare_ops, Plain
       computer name, computer names, PlainGlobal
       concatenation <string> of <string>, concatenations, Named
       concatenation of <string>, concatenations, Plain
@@ -4419,7 +4504,10 @@ Creation techniques & properties of each type:
       dns name, dns names, PlainGlobal
       domain name, domain names, PlainGlobal
       domainname, domainnames, PlainGlobal
+      download hash algorithm of <license>, download hash algorithms, Plain
       download path <string>, download paths, NamedGlobal
+      effective download hash algorithm of <license>, effective download hash algorithms, Plain
+      effective signature hash algorithm of <license>, effective signature hash algorithms, Plain
       element of <string set>, elements, Plain
       email address of <license>, email addresses, Plain
       encoding of <sqlite database>, encodings, Plain
@@ -4442,7 +4530,7 @@ Creation techniques & properties of each type:
       hostname, hostnames, PlainGlobal
       identity of <execution>, identites, Plain
       index of <sqlite table>, indices, Plain
-      interface of <ipv4 route>, interfaces, Plain
+      interface of <route>, interfaces, Plain
       internal_reference_designator of <dmi port_connector_information>, internal_reference_designators, Plain
       key <string> of <file section>, keys, Named
       key <string> of <file>, keys, Named
@@ -4473,8 +4561,9 @@ Creation techniques & properties of each type:
       name of <application usage summary>, names, Plain
       name of <bes product>, names, Plain
       name of <binary operator>, names, Plain
-      name of <capability>, names, Plain
       name of <cast>, names, Plain
+      name of <debian base package>, names, Plain
+      name of <debian versioned package>, names, Plain
       name of <download server>, names, Plain
       name of <environment variable>, names, Plain
       name of <filesystem object>, names, Plain
@@ -4486,7 +4575,6 @@ Creation techniques & properties of each type:
       name of <network adapter>, names, Plain
       name of <network ip interface>, names, Plain
       name of <operating system>, names, Plain
-      name of <package>, names, Plain
       name of <process>, names, Plain
       name of <registration server>, names, Plain
       name of <selected server>, names, Plain
@@ -4515,6 +4603,9 @@ Creation techniques & properties of each type:
       pathname of <filesystem object>, pathnames, Plain
       pathname of <symlink>, pathnames, Plain
       pending restart name, pending restart names, PlainGlobal
+      percent decode <string>, percent decodes, NamedGlobal
+      percent encode <string>, percent encodes, NamedGlobal
+      pkglibversion of <debianpackagecache>, pkglibversions, Plain
       platform id of <language>, platform ids, Plain
       plural name of <property>, plural names, Plain
       previous value of <runlevel>, previous values, Plain
@@ -4528,7 +4619,7 @@ Creation techniques & properties of each type:
       regex escape of <string>, regex escapes, Plain
       registration cidr address of <client>, registration cidr addresses, Plain
       registration mac address of <client>, registration mac addresses, Plain
-      relation of <capability>, relations, Plain
+      release of <debian versioned package>, releases, Plain
       release of <operating system>, releases, Plain
       reserved of <dmi bios_language_information>, reserveds, Plain
       reserved of <dmi system_boot_information>, reserveds, Plain
@@ -4537,6 +4628,8 @@ Creation techniques & properties of each type:
       sbds_version_number of <dmi portable_battery>, sbds_version_numbers, Plain
       schema of <sqlite table>, schemas, Plain
       seat count state of <license>, seat count states, Plain
+      section of <debian versioned package>, sections, Plain
+      section of <debianpkg version>, sections, Plain
       serial_number of <dmi base_board_information>, serial_numbers, Plain
       serial_number of <dmi memory_device>, serial_numbers, Plain
       serial_number of <dmi portable_battery>, serial_numbers, Plain
@@ -4547,6 +4640,10 @@ Creation techniques & properties of each type:
       sha1 of <file>, sha1s, Plain
       sha1 of <string>, sha1s, Plain
       sha1 of <x509 certificate>, sha1s, Plain
+      sha224 of <file>, sha224s, Plain
+      sha224 of <string>, sha224s, Plain
+      sha256 of <file>, sha256s, Plain
+      sha256 of <string>, sha256s, Plain
       sha2_224 of <file>, sha2_224s, Plain
       sha2_224 of <string>, sha2_224s, Plain
       sha2_256 of <file>, sha2_256s, Plain
@@ -4555,6 +4652,11 @@ Creation techniques & properties of each type:
       sha2_384 of <string>, sha2_384s, Plain
       sha2_512 of <file>, sha2_512s, Plain
       sha2_512 of <string>, sha2_512s, Plain
+      sha384 of <file>, sha384s, Plain
+      sha384 of <string>, sha384s, Plain
+      sha512 of <file>, sha512s, Plain
+      sha512 of <string>, sha512s, Plain
+      signature hash algorithm of <license>, signature hash algorithms, Plain
       singular name of <property>, singular names, Plain
       site tag of <site>, site tags, Plain
       site url of <bes product>, site urls, Plain
@@ -4585,6 +4687,7 @@ Creation techniques & properties of each type:
       two digit minute of <time of day>, two digit minutes, Plain
       two digit second of <time of day with time zone>, two digit seconds, Plain
       two digit second of <time of day>, two digit seconds, Plain
+      type of <debianpkg dependency>, types, Plain
       type of <execution>, types, Plain
       type of <filesystem>, types, Plain
       type of <json value>, types, Plain
@@ -4592,7 +4695,6 @@ Creation techniques & properties of each type:
       type of <site>, types, Plain
       type of <smbios value>, types, Plain
       type of <sqlite column type>, types, Plain
-      unique name of <package>, unique names, Plain
       upload progress of <client>, upload progresses, Plain
       url of <site>, urls, Plain
       user name of <filesystem object>, user names, Plain
@@ -4609,7 +4711,7 @@ Creation techniques & properties of each type:
       vendor of <dmi bios_information>, vendors, Plain
       version info of <execution>, version infos, Plain
       version of <bios>, versions, Plain
-      version of <capability>, versions, Plain
+      version of <debianpkg reverse dependencies>, versions, Plain
       version of <dmi base_board_information>, versions, Plain
       version of <dmi system_enclosure_or_chassis>, versions, Plain
       version of <dmi system_information>, versions, Plain
@@ -4617,6 +4719,18 @@ Creation techniques & properties of each type:
       volume of <filesystem>, volumes, Plain
       wake on lan subnet cidr string, wake on lan subnet cidr strings, PlainGlobal
     Properties of <string> { key phrase, plural keyword, form, <result type>}:
+      <debian package upstream version> < <string>, , BinaryOperator, <boolean>
+      <debian package upstream version> <= <string>, , BinaryOperator, <boolean>
+      <debian package upstream version> = <string>, , BinaryOperator, <boolean>
+      <debian package version epoch> < <string>, , BinaryOperator, <boolean>
+      <debian package version epoch> <= <string>, , BinaryOperator, <boolean>
+      <debian package version epoch> = <string>, , BinaryOperator, <boolean>
+      <debian package version revision> < <string>, , BinaryOperator, <boolean>
+      <debian package version revision> <= <string>, , BinaryOperator, <boolean>
+      <debian package version revision> = <string>, , BinaryOperator, <boolean>
+      <debian package version> < <string>, , BinaryOperator, <boolean>
+      <debian package version> <= <string>, , BinaryOperator, <boolean>
+      <debian package version> = <string>, , BinaryOperator, <boolean>
       <file content> contains <string>, , BinaryOperator, <boolean>
       <format> + <string>, , BinaryOperator, <format>
       <html> & <string>, , BinaryOperator, <html>
@@ -4629,41 +4743,35 @@ Creation techniques & properties of each type:
       <regular expression> = <string>, , BinaryOperator, <boolean>
       <rope> & <string>, , BinaryOperator, <rope>
       <rope> contains <string>, , BinaryOperator, <boolean>
-      <rpm package release> < <string>, , BinaryOperator, <boolean>
-      <rpm package release> <= <string>, , BinaryOperator, <boolean>
-      <rpm package release> = <string>, , BinaryOperator, <boolean>
-      <rpm package version record> < <string>, , BinaryOperator, <boolean>
-      <rpm package version record> <= <string>, , BinaryOperator, <boolean>
-      <rpm package version record> = <string>, , BinaryOperator, <boolean>
-      <rpm package version> < <string>, , BinaryOperator, <boolean>
-      <rpm package version> <= <string>, , BinaryOperator, <boolean>
-      <rpm package version> = <string>, , BinaryOperator, <boolean>
       <string set> contains <string>, , BinaryOperator, <boolean>
       <string> & <html>, , BinaryOperator, <html>
       <string> & <rope>, , BinaryOperator, <rope>
       <string> & <string>, , BinaryOperator, <string>
+      <string> < <debian package upstream version>, , BinaryOperator, <boolean>
+      <string> < <debian package version epoch>, , BinaryOperator, <boolean>
+      <string> < <debian package version revision>, , BinaryOperator, <boolean>
+      <string> < <debian package version>, , BinaryOperator, <boolean>
       <string> < <ipv4 address>, , BinaryOperator, <boolean>
       <string> < <ipv4or6 address>, , BinaryOperator, <boolean>
-      <string> < <rpm package release>, , BinaryOperator, <boolean>
-      <string> < <rpm package version record>, , BinaryOperator, <boolean>
-      <string> < <rpm package version>, , BinaryOperator, <boolean>
       <string> < <string>, , BinaryOperator, <boolean>
       <string> < <strverscmp version>, , BinaryOperator, <boolean>
       <string> < <version>, , BinaryOperator, <boolean>
+      <string> <= <debian package upstream version>, , BinaryOperator, <boolean>
+      <string> <= <debian package version epoch>, , BinaryOperator, <boolean>
+      <string> <= <debian package version revision>, , BinaryOperator, <boolean>
+      <string> <= <debian package version>, , BinaryOperator, <boolean>
       <string> <= <ipv4 address>, , BinaryOperator, <boolean>
       <string> <= <ipv4or6 address>, , BinaryOperator, <boolean>
-      <string> <= <rpm package release>, , BinaryOperator, <boolean>
-      <string> <= <rpm package version record>, , BinaryOperator, <boolean>
-      <string> <= <rpm package version>, , BinaryOperator, <boolean>
       <string> <= <string>, , BinaryOperator, <boolean>
       <string> <= <strverscmp version>, , BinaryOperator, <boolean>
       <string> <= <version>, , BinaryOperator, <boolean>
+      <string> = <debian package upstream version>, , BinaryOperator, <boolean>
+      <string> = <debian package version epoch>, , BinaryOperator, <boolean>
+      <string> = <debian package version revision>, , BinaryOperator, <boolean>
+      <string> = <debian package version>, , BinaryOperator, <boolean>
       <string> = <ipv4 address>, , BinaryOperator, <boolean>
       <string> = <ipv4or6 address>, , BinaryOperator, <boolean>
       <string> = <regular expression>, , BinaryOperator, <boolean>
-      <string> = <rpm package release>, , BinaryOperator, <boolean>
-      <string> = <rpm package version record>, , BinaryOperator, <boolean>
-      <string> = <rpm package version>, , BinaryOperator, <boolean>
       <string> = <string>, , BinaryOperator, <boolean>
       <string> = <strverscmp version>, , BinaryOperator, <boolean>
       <string> = <version>, , BinaryOperator, <boolean>
@@ -4812,10 +4920,14 @@ Creation techniques & properties of each type:
       samp of <string>, samps, Plain, <html>
       set of <string>, sets, Plain, <string set>
       sha1 of <string>, sha1s, Plain, <string>
+      sha224 of <string>, sha224s, Plain, <string>
+      sha256 of <string>, sha256s, Plain, <string>
       sha2_224 of <string>, sha2_224s, Plain, <string>
       sha2_256 of <string>, sha2_256s, Plain, <string>
       sha2_384 of <string>, sha2_384s, Plain, <string>
       sha2_512 of <string>, sha2_512s, Plain, <string>
+      sha384 of <string>, sha384s, Plain, <string>
+      sha512 of <string>, sha512s, Plain, <string>
       small <string> of <string>, smalls, Named, <html>
       small of <string>, smalls, Plain, <html>
       span <string> of <string>, spans, Named, <html>
@@ -4983,6 +5095,24 @@ Creation techniques & properties of each type:
       user name of <symlink>, user names, Plain, <string>
       value accessible of <symlink>, values accessible, Plain, <boolean>
       value of <symlink>, values, Plain, <string>
+
+  Type <tcp state>
+    Creation of <tcp state>: { key phrase, plural keyword, form}
+      tcp state of <socket>, tcp states, Plain
+    Properties of <tcp state> { key phrase, plural keyword, form, <result type>}:
+      <tcp state> as string, , Cast, <string>
+      close wait of <tcp state>, close waits, Plain, <boolean>
+      closed of <tcp state>, closeds, Plain, <boolean>
+      closing of <tcp state>, closings, Plain, <boolean>
+      delete tcb of <tcp state>, delete tcbs, Plain, <boolean>
+      established of <tcp state>, establisheds, Plain, <boolean>
+      fin wait one of <tcp state>, fin wait ones, Plain, <boolean>
+      fin wait two of <tcp state>, fin wait twos, Plain, <boolean>
+      last ack of <tcp state>, last acks, Plain, <boolean>
+      listening of <tcp state>, listenings, Plain, <boolean>
+      syn received of <tcp state>, syn receiveds, Plain, <boolean>
+      syn sent of <tcp state>, syn sents, Plain, <boolean>
+      time wait of <tcp state>, time waits, Plain, <boolean>
 
   Type <time>
     Creation of <time>: { key phrase, plural keyword, form}
@@ -5234,6 +5364,8 @@ Creation techniques & properties of each type:
       <time of day with time zone> + <time interval>, , BinaryOperator, <time of day with time zone>
       <time of day with time zone> - <time interval>, , BinaryOperator, <time of day with time zone>
       <time of day with time zone> - <time of day with time zone>, , BinaryOperator, <time interval>
+      <time of day with time zone> < <time of day with time zone>, , BinaryOperator, <boolean>
+      <time of day with time zone> <= <time of day with time zone>, , BinaryOperator, <boolean>
       <time of day with time zone> = <time of day with time zone>, , BinaryOperator, <boolean>
       <time of day with time zone> as string, , Cast, <string>
       <time zone> & <time of day with time zone>, , BinaryOperator, <time of day with time zone>
@@ -5406,7 +5538,6 @@ Creation techniques & properties of each type:
       version of <current relay>, versions, Plain
       version of <module>, versions, Plain
       version of <operating system>, versions, Plain
-      version of <package>, versions, Plain
       version of <registration server>, versions, Plain
       version of <service>, versions, Plain
     Properties of <version> { key phrase, plural keyword, form, <result type>}:
@@ -5510,7 +5641,6 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   boolean <string>, booleans, NamedGlobal, <boolean>
   br <string>, brs, NamedGlobal, <html>
   br, brs, PlainGlobal, <html>
-  capability <string>, capabilities, NamedGlobal, <capability>
   case insensitive regex <string>, case insensitive regexes, NamedGlobal, <regular expression>
   case insensitive regular expression <string>, case insensitive regular expressions, NamedGlobal, <regular expression>
   cast <string>, casts, NamedGlobal, <cast>
@@ -5544,6 +5674,15 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   day_of_month <integer>, days_of_month, NumberedGlobal, <day of month>
   day_of_month <string>, days_of_month, NamedGlobal, <day of month>
   day_of_week <string>, days_of_week, NamedGlobal, <day of week>
+  debian package version <debian package version>, debian package versions, Index<debian package version>Global, <debian package version>
+  debian package version <string>, debian package versions, NamedGlobal, <debian package version>
+  debian package version epoch <debian package version epoch>, debian package version epochs, Index<debian package version epoch>Global, <debian package version epoch>
+  debian package version epoch <string>, debian package version epochs, NamedGlobal, <debian package version epoch>
+  debian package version revision <debian package version revision>, debian package version revisions, Index<debian package version revision>Global, <debian package version revision>
+  debian package version revision <string>, debian package version revisions, NamedGlobal, <debian package version revision>
+  debian package version upstream <debian package upstream version>, debian package version upstreams, Index<debian package upstream version>Global, <debian package upstream version>
+  debian package version upstream <string>, debian package version upstreams, NamedGlobal, <debian package upstream version>
+  debianpackage, debianpackages, PlainGlobal, <debianpackagecache>
   december <integer>, decembers, NumberedGlobal, <day of year>
   december, decembers, PlainGlobal, <month>
   default web browser, default web browsers, PlainGlobal, <file>
@@ -5611,7 +5750,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   integer to <integer>, integers to, NumberedGlobal, <integer>
   ip version <integer>, ip versions, NumberedGlobal, <ip version>
   ipv4 address <string>, ipv4 addresses, NamedGlobal, <ipv4 address>
-  ipv4 routing table, ipv4 routing tables, PlainGlobal, <ipv4 routing table>
+  ipv4 routing table, ipv4 routing tables, PlainGlobal, <routing table>
   ipv4, ipv4s, PlainGlobal, <ip version>
   ipv4or6 address <string>, ipv4or6 addresses, NamedGlobal, <ipv4or6 address>
   ipv6 address <string>, ipv6 addresses, NamedGlobal, <ipv6 address>
@@ -5663,6 +5802,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   pending restart <string>, pending restarts, NamedGlobal, <boolean>
   pending restart name, pending restart names, PlainGlobal, <string>
   pending restart, pending restarts, PlainGlobal, <boolean>
+  percent decode <string>, percent decodes, NamedGlobal, <string>
+  percent encode <string>, percent encodes, NamedGlobal, <string>
   power level, power levels, PlainGlobal, <power level>
   process <integer>, processes, NumberedGlobal, <process>
   process <string>, processes, NamedGlobal, <process>
@@ -5684,15 +5825,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   root folder, root folders, PlainGlobal, <folder>
   root server, root servers, PlainGlobal, <root server>
   rope <string>, ropes, NamedGlobal, <rope>
-  rpm <string>, rpms, NamedGlobal, <rpmdatabase>
-  rpm package release <rpm package release>, rpm package releases, Index<rpm package release>Global, <rpm package release>
-  rpm package release <string>, rpm package releases, NamedGlobal, <rpm package release>
-  rpm package version <rpm package version>, rpm package versions, Index<rpm package version>Global, <rpm package version>
-  rpm package version <string>, rpm package versions, NamedGlobal, <rpm package version>
-  rpm package version record <rpm package version record>, rpm package version records, Index<rpm package version record>Global, <rpm package version record>
-  rpm package version record <short rpm package version record>, rpm package version records, Index<short rpm package version record>Global, <rpm package version record>
-  rpm package version record <string>, rpm package version records, NamedGlobal, <rpm package version record>
-  rpm, rpms, PlainGlobal, <rpmdatabase>
+  routing table, routing tables, PlainGlobal, <routing table>
   runlevel, runlevels, PlainGlobal, <runlevel>
   running application <string>, running applications, NamedGlobal, <application>
   running application, running applications, PlainGlobal, <application>
@@ -5703,8 +5836,6 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   september <integer>, septembers, NumberedGlobal, <day of year>
   september, septembers, PlainGlobal, <month>
   service <string>, services, NamedGlobal, <service>
-  short rpm package version record <rpm package version record>, short rpm package version records, Index<rpm package version record>Global, <short rpm package version record>
-  short rpm package version record <short rpm package version record>, short rpm package version records, Index<short rpm package version record>Global, <short rpm package version record>
   site <string>, sites, NamedGlobal, <site>
   site version list <string>, site version lists, NamedGlobal, <site version list>
   site, sites, PlainGlobal, <site>
@@ -5802,6 +5933,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       anchor, anchors, <html>, <html>, Plain
       anchor, anchors, <html>, <string>, Named
       anchor, anchors, <html>, <string>, Plain
+      android, androids, <boolean>, <operating system>, Plain
       any adapter, any adapters, <network adapter>, <network>, Plain
       any ip version, any ip versions, <ip version>, world , PlainGlobal
       api duration, api durations, <time interval>, <evaluation cycle>, Plain
@@ -5816,8 +5948,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       april, aprils, <day of year>, world , NumberedGlobal
       april, aprils, <month and year>, <integer>, Plain
       april, aprils, <month>, world , PlainGlobal
+      architecture, architectures, <string>, <debian versioned package>, Plain
+      architecture, architectures, <string>, <debianpkg version>, Plain
       architecture, architectures, <string>, <operating system>, Plain
-      architecture, architectures, <string>, <package>, Plain
       archive duration, archive durations, <time interval>, <evaluation cycle>, Plain
       archive percent, archive percents, <floating point>, <evaluation cycle>, Plain
       as bit set, , <bit set>, <integer>, Cast
@@ -5837,6 +5970,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as day_of_month, , <day of month>, <integer>, Cast
       as day_of_month, , <day of month>, <string>, Cast
       as day_of_week, , <day of week>, <string>, Cast
+      as debian package version epoch, , <debian package version epoch>, <debian package version epoch>, Cast
+      as debian package version revision, , <debian package version revision>, <debian package version revision>, Cast
+      as debian package version upstream, , <debian package upstream version>, <debian package upstream version>, Cast
+      as debian package version, , <debian package version>, <debian package version>, Cast
+      as debian package version, , <debian package version>, <debianpkg version>, Cast
       as device file, , <device file>, <filesystem object>, Cast
       as device file, , <device file>, <symlink>, Cast
       as device file, , <device file>, <symlink>, Cast
@@ -5877,13 +6015,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as month, , <month>, <string>, Cast
       as octal string, , <string>, <mode>, Cast
       as right trimmed string, , <string>, <string>, Cast
-      as rpm package release, , <rpm package release>, <rpm package release>, Cast
-      as rpm package version record, , <rpm package version record>, <rpm package version record>, Cast
-      as rpm package version record, , <rpm package version record>, <short rpm package version record>, Cast
-      as rpm package version, , <rpm package version>, <rpm package version>, Cast
       as scientific notation, , <string>, <floating point>, Cast
-      as short rpm package version record, , <short rpm package version record>, <rpm package version record>, Cast
-      as short rpm package version record, , <short rpm package version record>, <short rpm package version record>, Cast
       as site version list, , <site version list>, <string>, Cast
       as socket file, , <socket file>, <filesystem object>, Cast
       as socket file, , <socket file>, <symlink>, Cast
@@ -5905,12 +6037,21 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <bios>, Cast
       as string, , <string>, <bit set>, Cast
       as string, , <string>, <boolean>, Cast
-      as string, , <string>, <capability>, Cast
       as string, , <string>, <cast>, Cast
       as string, , <string>, <date>, Cast
       as string, , <string>, <day of month>, Cast
       as string, , <string>, <day of week>, Cast
       as string, , <string>, <day of year>, Cast
+      as string, , <string>, <debian base package>, Cast
+      as string, , <string>, <debian package upstream version>, Cast
+      as string, , <string>, <debian package version epoch>, Cast
+      as string, , <string>, <debian package version revision>, Cast
+      as string, , <string>, <debian package version>, Cast
+      as string, , <string>, <debian versioned package>, Cast
+      as string, , <string>, <debianpkg dependency>, Cast
+      as string, , <string>, <debianpkg reverse dependencies>, Cast
+      as string, , <string>, <debianpkg verfile>, Cast
+      as string, , <string>, <debianpkg version>, Cast
       as string, , <string>, <environment variable>, Cast
       as string, , <string>, <filesystem object>, Cast
       as string, , <string>, <floating point>, Cast
@@ -5933,24 +6074,20 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <json key>, Cast
       as string, , <string>, <json value>, Cast
       as string, , <string>, <language>, Cast
+      as string, , <string>, <manual group>, Cast
       as string, , <string>, <mode>, Cast
       as string, , <string>, <mode_mask>, Cast
       as string, , <string>, <month and year>, Cast
       as string, , <string>, <month>, Cast
       as string, , <string>, <number of months>, Cast
       as string, , <string>, <operating system>, Cast
-      as string, , <string>, <package>, Cast
       as string, , <string>, <power level>, Cast
       as string, , <string>, <primary language>, Cast
       as string, , <string>, <property>, Cast
       as string, , <string>, <rope>, Cast
-      as string, , <string>, <rpm package release>, Cast
-      as string, , <string>, <rpm package version record>, Cast
-      as string, , <string>, <rpm package version>, Cast
       as string, , <string>, <runlevel>, Cast
       as string, , <string>, <service>, Cast
       as string, , <string>, <setting>, Cast
-      as string, , <string>, <short rpm package version record>, Cast
       as string, , <string>, <site version list>, Cast
       as string, , <string>, <smbios value>, Cast
       as string, , <string>, <sqlite column type>, Cast
@@ -5960,6 +6097,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <sqlite table>, Cast
       as string, , <string>, <string>, Cast
       as string, , <string>, <symlink>, Cast
+      as string, , <string>, <tcp state>, Cast
       as string, , <string>, <time interval>, Cast
       as string, , <string>, <time of day with time zone>, Cast
       as string, , <string>, <time of day>, Cast
@@ -6022,6 +6160,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       bank_connections, bank_connectionss, <integer>, <dmi memory_module_information>, Plain
       bank_locator, bank_locators, <string>, <dmi memory_device>, Plain
       banned prefetch plugin, banned prefetch plugins, <string>, world , Index<client>Global
+      base package, base packages, <debian base package>, <debianpackagecache>, Named
+      base package, base packages, <debian base package>, <debianpackagecache>, Plain
+      base package, base packages, <debian base package>, <debianpkg version>, Plain
       base, bases, <html>, <html>, Named
       base, bases, <html>, <html>, Plain
       base, bases, <html>, <string>, Named
@@ -6098,8 +6239,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       cache_speed, cache_speeds, <integer>, <dmi cache_information>, Plain
       cached amount, cached amounts, <integer>, <ram>, Plain
       capabilities, capabilitiess, <integer>, <dmi system_reset>, Plain
-      capability, capabilities, <capability>, <rpmdatabase>, Named
-      capability, capabilities, <capability>, world , NamedGlobal
       caption, captions, <html>, <html>, Named
       caption, captions, <html>, <html>, Plain
       caption, captions, <html>, <string>, Named
@@ -6135,6 +6274,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       client folder, client folders, <folder>, <site>, Plain
       client license, client licenses, <license>, world , PlainGlobal
       client, clients, <client>, world , PlainGlobal
+      close wait, close waits, <boolean>, <tcp state>, Plain
+      closed, closeds, <boolean>, <tcp state>, Plain
+      closing, closings, <boolean>, <tcp state>, Plain
       code, codes, <html>, <html>, Named
       code, codes, <html>, <html>, Plain
       code, codes, <html>, <string>, Named
@@ -6158,6 +6300,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       command line argument, command line arguments, <string>, <process>, Numbered
       command line argument, command line arguments, <string>, <process>, Plain
       common name, common names, <string>, <license>, Plain
+      compare_op, compare_ops, <string>, <debianpkg dependency>, Plain
       competition size, competition sizes, <integer>, <selected server>, Plain
       competition weight, competition weights, <integer>, <selected server>, Plain
       complete time, complete times, <time>, <action>, Plain
@@ -6172,7 +6315,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       concatenation, concatenations, <html>, <string>, Index<html>
       concatenation, concatenations, <string>, <string>, Named
       concatenation, concatenations, <string>, <string>, Plain
-      conflict, conflicts, <capability>, <package>, Plain
       conjunction, conjunctions, <boolean>, <boolean>, Plain
       connections, connectionss, <integer>, <dmi out_of_band_remote_access>, Plain
       constrained, constraineds, <boolean>, <action>, Plain
@@ -6191,6 +6333,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       count, counts, <integer>, <cpupackage>, Plain
       cpuid level, cpuid levels, <integer>, <processor>, Plain
       cpupackage, cpupackages, <cpupackage>, world , PlainGlobal
+      critical, criticals, <boolean>, <debianpkg dependency>, Plain
       cryptography, cryptographies, <cryptography>, world , PlainGlobal
       current analysis, current analyses, <fixlet>, world , PlainGlobal
       current date, current dates, <date>, world , PlainGlobal
@@ -6212,6 +6355,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       current_speed, current_speeds, <integer>, <dmi processor_information>, Plain
       current_sram_type, current_sram_types, <integer>, <dmi cache_information>, Plain
       current_usage, current_usages, <integer>, <dmi system_slots>, Plain
+      currently installed, currently installeds, <boolean>, <debian base package>, Plain
+      currently installed, currently installeds, <boolean>, <debian versioned package>, Plain
       custom site subscription effective date, custom site subscription effective dates, <time>, world , NamedGlobal
       data folder, data folders, <folder>, <client>, Plain
       data_width, data_widths, <integer>, <dmi memory_device>, Plain
@@ -6230,6 +6375,15 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       dd, dds, <html>, <html>, Plain
       dd, dds, <html>, <string>, Named
       dd, dds, <html>, <string>, Plain
+      debian package version epoch, debian package version epochs, <debian package version epoch>, world , Index<debian package version epoch>Global
+      debian package version epoch, debian package version epochs, <debian package version epoch>, world , NamedGlobal
+      debian package version revision, debian package version revisions, <debian package version revision>, world , Index<debian package version revision>Global
+      debian package version revision, debian package version revisions, <debian package version revision>, world , NamedGlobal
+      debian package version upstream, debian package version upstreams, <debian package upstream version>, world , Index<debian package upstream version>Global
+      debian package version upstream, debian package version upstreams, <debian package upstream version>, world , NamedGlobal
+      debian package version, debian package versions, <debian package version>, world , Index<debian package version>Global
+      debian package version, debian package versions, <debian package version>, world , NamedGlobal
+      debianpackage, debianpackages, <debianpackagecache>, world , PlainGlobal
       december, decembers, <date>, <integer>, Numbered
       december, decembers, <day of year>, world , NumberedGlobal
       december, decembers, <month and year>, <integer>, Plain
@@ -6244,7 +6398,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       del, dels, <html>, <html>, Plain
       del, dels, <html>, <string>, Named
       del, dels, <html>, <string>, Plain
+      delete tcb, delete tcbs, <boolean>, <tcp state>, Plain
       dependency known, dependencies known, <boolean>, <property>, Plain
+      dependency, dependencies, <debianpkg dependency>, <debian versioned package>, Plain
       deployment character set, deployment character sets, <string>, <client>, Plain
       descendant folder, descendant folders, <folder>, <folder>, Plain
       descendant, descendants, <file>, <folder>, Plain
@@ -6259,7 +6415,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       design_voltage, design_voltages, <integer>, <dmi portable_battery>, Plain
       desired encrypt report, desired encrypt reports, <boolean>, <client_cryptography>, Plain
       desired fips mode, desired fips modes, <boolean>, <cryptography>, Plain
-      destination, destinations, <ipv4 address>, <ipv4 route>, Plain
+      destination, destinations, <ipv4or6 address>, <route>, Plain
       device file, device files, <device file>, <folder>, Named
       device file, device files, <device file>, <folder>, Plain
       device file, device files, <device file>, world , Index<filesystem object>Global
@@ -6302,6 +6458,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       download failure, download failures, <integer>, <action>, Plain
       download file, download files, <file>, world , NamedGlobal
       download folder, download folders, <folder>, world , PlainGlobal
+      download hash algorithm, download hash algorithms, <string>, <license>, Plain
       download path, download paths, <string>, world , NamedGlobal
       download server, download servers, <download server>, world , PlainGlobal
       download storage folder, download storage folders, <download storage folder>, world , PlainGlobal
@@ -6319,6 +6476,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       dt, dts, <html>, <string>, Plain
       effective date, effective dates, <time>, <action lock state>, Plain
       effective date, effective dates, <time>, <setting>, Plain
+      effective download hash algorithm, effective download hash algorithms, <string>, <license>, Plain
+      effective signature hash algorithm, effective signature hash algorithms, <string>, <license>, Plain
       effective time, effective times, <time>, <runlevel>, Plain
       effective user, effective users, <user>, <process>, Plain
       electrical_current_probe, electrical_current_probes, <dmi electrical_current_probe>, <dmi>, Numbered
@@ -6348,10 +6507,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       end_of_table, end_of_tables, <dmi end_of_table>, <dmi>, Plain
       ending_address, ending_addresss, <integer>, <dmi memory_array_mapped_address>, Plain
       ending_address, ending_addresss, <integer>, <dmi memory_device_mapped_address>, Plain
+      enhanced security, enhanced securities, <boolean>, <license>, Plain
       environment, environments, <environment>, <process>, Plain
       environment, environments, <environment>, world , PlainGlobal
-      epoch, epochs, <integer>, <rpm package version record>, Plain
-      epoch, epochs, <integer>, <short rpm package version record>, Plain
+      epoch, epochs, <debian package version epoch>, <debian package version>, Plain
       error, errors, <undefined>, world , NamedGlobal
       error_correcting_capability, error_correcting_capabilitys, <integer>, <dmi memory_controller_information>, Plain
       error_correction_type, error_correction_types, <integer>, <dmi cache_information>, Plain
@@ -6365,6 +6524,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       error_status, error_statuss, <integer>, <dmi memory_module_information>, Plain
       error_type, error_types, <integer>, <dmi b32_bit_memory_error_information>, Plain
       error_type, error_types, <integer>, <dmi b64_bit_memory_error_information>, Plain
+      established, establisheds, <boolean>, <tcp state>, Plain
       evaluated, evaluateds, <boolean>, <site>, Plain
       evaluation, evaluations, <boolean>, <license>, Plain
       evaluationcycle, evaluationcycles, <evaluation cycle>, <client>, Plain
@@ -6382,6 +6542,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       extrema, extremas, <( date, date )>, <date>, Plain
       extrema, extremas, <( day of month, day of month )>, <day of month>, Plain
       extrema, extremas, <( day of year, day of year )>, <day of year>, Plain
+      extrema, extremas, <( debian package upstream version, debian package upstream version )>, <debian package upstream version>, Plain
+      extrema, extremas, <( debian package version epoch, debian package version epoch )>, <debian package version epoch>, Plain
+      extrema, extremas, <( debian package version revision, debian package version revision )>, <debian package version revision>, Plain
+      extrema, extremas, <( debian package version, debian package version )>, <debian package version>, Plain
       extrema, extremas, <( floating point, floating point )>, <floating point>, Plain
       extrema, extremas, <( hertz, hertz )>, <hertz>, Plain
       extrema, extremas, <( integer, integer )>, <integer>, Plain
@@ -6391,10 +6555,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       extrema, extremas, <( month and year, month and year )>, <month and year>, Plain
       extrema, extremas, <( month, month )>, <month>, Plain
       extrema, extremas, <( number of months, number of months )>, <number of months>, Plain
-      extrema, extremas, <( rpm package release, rpm package release )>, <rpm package release>, Plain
-      extrema, extremas, <( rpm package version record, rpm package version record )>, <rpm package version record>, Plain
-      extrema, extremas, <( rpm package version, rpm package version )>, <rpm package version>, Plain
-      extrema, extremas, <( short rpm package version record, short rpm package version record )>, <short rpm package version record>, Plain
       extrema, extremas, <( site version list, site version list )>, <site version list>, Plain
       extrema, extremas, <( time interval, time interval )>, <time interval>, Plain
       extrema, extremas, <( time of day, time of day )>, <time of day>, Plain
@@ -6435,6 +6595,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       filesystem, filesystems, <filesystem>, <symlink>, Plain
       filesystem, filesystems, <filesystem>, world , NamedGlobal
       filesystem, filesystems, <filesystem>, world , PlainGlobal
+      fin wait one, fin wait ones, <boolean>, <tcp state>, Plain
+      fin wait two, fin wait twos, <boolean>, <tcp state>, Plain
       final part, final parts, <time range>, <time range>, Index<time interval>
       find adapter, find adapters, <network adapter>, <network>, Named
       find file, find files, <file>, <folder>, Named
@@ -6486,8 +6648,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       full, fulls, <boolean>, <power level>, Plain
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Numbered
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Plain
-      gateway flag, gateway flags, <boolean>, <ipv4 route>, Plain
-      gateway, gateways, <ipv4 address>, <ipv4 route>, Plain
+      gateway flag, gateway flags, <boolean>, <route>, Plain
+      gateway, gateways, <ipv4or6 address>, <route>, Plain
       gather duration, gather durations, <time interval>, <evaluation cycle>, Plain
       gather percent, gather percents, <floating point>, <evaluation cycle>, Plain
       gather schedule authority, gather schedule authoritys, <string>, <site>, Plain
@@ -6557,7 +6719,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       hiddenmenu, hiddenmenus, <boolean>, <grub config file>, Plain
       highlight, highlights, <grub color pair>, <grub color scheme>, Plain
       hlt bug, hlt bugs, <boolean>, <processor>, Plain
-      host flag, host flags, <boolean>, <ipv4 route>, Plain
+      host flag, host flags, <boolean>, <route>, Plain
       host name, host names, <string>, <root server>, Plain
       host name, host names, <string>, world , PlainGlobal
       hostname, hostnames, <string>, world , PlainGlobal
@@ -6608,8 +6770,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       ins, inss, <html>, <string>, Named
       ins, inss, <html>, <string>, Plain
       installable_languages, installable_languagess, <integer>, <dmi bios_language_information>, Plain
-      installed file, installed files, <capability>, <package>, Plain
-      installed, installeds, <boolean>, <rpmdatabase>, Named
+      installed version, installed versions, <debianpkg version>, <debian base package>, Plain
       installed_size, installed_sizes, <integer>, <dmi cache_information>, Plain
       installed_size, installed_sizes, <integer>, <dmi memory_module_information>, Plain
       instance, instances, <application usage summary instance>, <application usage summary>, Plain
@@ -6626,7 +6787,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       interface, interfaces, <integer>, <dmi built_in_pointing_device>, Plain
       interface, interfaces, <network interface>, <network>, Numbered
       interface, interfaces, <network interface>, <network>, Plain
-      interface, interfaces, <string>, <ipv4 route>, Plain
+      interface, interfaces, <string>, <route>, Plain
       interface_type, interface_types, <integer>, <dmi ipmi_device_information>, Plain
       interleave_position, interleave_positions, <integer>, <dmi memory_device_mapped_address>, Plain
       interleaved_data_depth, interleaved_data_depths, <integer>, <dmi memory_device_mapped_address>, Plain
@@ -6649,7 +6810,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       ipv4 interface, ipv4 interfaces, <network adapter interface>, <network>, Plain
       ipv4 part, ipv4 parts, <ipv4 address>, <ipv4or6 address>, Plain
       ipv4 part, ipv4 parts, <ipv4 address>, <ipv6 address>, Plain
-      ipv4 routing table, ipv4 routing tables, <ipv4 routing table>, world , PlainGlobal
+      ipv4 routing table, ipv4 routing tables, <routing table>, world , PlainGlobal
       ipv4, ipv4s, <ip version>, world , PlainGlobal
       ipv4or6 address, ipv4or6 addresses, <ipv4or6 address>, world , NamedGlobal
       ipv4or6 interface, ipv4or6 interfaces, <network adapter interface>, <network adapter>, Plain
@@ -6658,7 +6819,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       ipv6 interface, ipv6 interfaces, <network adapter interface>, <network adapter>, Plain
       ipv6 interface, ipv6 interfaces, <network adapter interface>, <network>, Plain
       ipv6, ipv6s, <ip version>, world , PlainGlobal
-      irtt, irtts, <integer>, <ipv4 route>, Plain
+      irtt, irtts, <integer>, <route>, Plain
       italic, italics, <html>, <html>, Named
       italic, italics, <html>, <html>, Plain
       italic, italics, <html>, <string>, Named
@@ -6692,6 +6853,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       l1_cache_handle, l1_cache_handles, <integer>, <dmi processor_information>, Plain
       l2_cache_handle, l2_cache_handles, <integer>, <dmi processor_information>, Plain
       l3_cache_handle, l3_cache_handles, <integer>, <dmi processor_information>, Plain
+      last ack, last acks, <boolean>, <tcp state>, Plain
       last active line number, last active line numbers, <integer>, <action>, Plain
       last active time, last active times, <time>, <action>, Plain
       last change time, last change times, <time>, <action>, Plain
@@ -6776,7 +6938,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       link, links, <html>, <html>, Plain
       link, links, <html>, <string>, Named
       link, links, <html>, <string>, Plain
+      listening, listenings, <boolean>, <tcp state>, Plain
+      local address, local addresses, <ipv4or6 address>, <socket>, Plain
       local character set, local character sets, <string>, <client>, Plain
+      local port, local ports, <integer>, <socket>, Plain
       local time zone, local time zones, <time zone>, world , PlainGlobal
       local time, local times, <time>, world , NamedGlobal
       local user, local users, <user>, world , NamedGlobal
@@ -6793,7 +6958,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       lock string, lock strings, <string>, <action lock state>, Plain
       locked, lockeds, <boolean>, <action lock state>, Plain
       logged on user, logged on users, <logged on user>, world , PlainGlobal
-      long form, long forms, <rpm package version record>, <short rpm package version record>, Plain
       loopback, loopbacks, <boolean>, <network adapter interface>, Plain
       loopback, loopbacks, <boolean>, <network adapter>, Plain
       loopback, loopbacks, <boolean>, <network ip interface>, Plain
@@ -6818,6 +6982,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       management_device_handle, management_device_handles, <integer>, <dmi management_device_component>, Plain
       management_device_threshold_data, management_device_threshold_datas, <dmi management_device_threshold_data>, <dmi>, Numbered
       management_device_threshold_data, management_device_threshold_datas, <dmi management_device_threshold_data>, <dmi>, Plain
+      manual group, manual groups, <manual group>, <client>, Named
+      manual group, manual groups, <manual group>, <client>, Plain
       manufacture_date, manufacture_dates, <string>, <dmi portable_battery>, Plain
       manufacturer, manufacturers, <string>, <dmi base_board_information>, Plain
       manufacturer, manufacturers, <string>, <dmi memory_device>, Plain
@@ -6830,7 +6996,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       march, marchs, <day of year>, world , NumberedGlobal
       march, marchs, <month and year>, <integer>, Plain
       march, marchs, <month>, world , PlainGlobal
-      mask, masks, <ipv4 address>, <ipv4 route>, Plain
+      mask, masks, <ipv4or6 address>, <route>, Plain
       masthead, mastheads, <file>, <site>, Plain
       match, matches, <regular expression match>, <string>, Index<regular expression>
       max_power_capacity, max_power_capacitys, <integer>, <dmi system_power_supply>, Plain
@@ -6840,6 +7006,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       maximum, maxima, <date>, <date>, Plain
       maximum, maxima, <day of month>, <day of month>, Plain
       maximum, maxima, <day of year>, <day of year>, Plain
+      maximum, maxima, <debian package upstream version>, <debian package upstream version>, Plain
+      maximum, maxima, <debian package version epoch>, <debian package version epoch>, Plain
+      maximum, maxima, <debian package version revision>, <debian package version revision>, Plain
+      maximum, maxima, <debian package version>, <debian package version>, Plain
       maximum, maxima, <floating point>, <floating point>, Plain
       maximum, maxima, <hertz>, <hertz>, Plain
       maximum, maxima, <integer>, <integer>, Plain
@@ -6849,10 +7019,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       maximum, maxima, <month and year>, <month and year>, Plain
       maximum, maxima, <month>, <month>, Plain
       maximum, maxima, <number of months>, <number of months>, Plain
-      maximum, maxima, <rpm package release>, <rpm package release>, Plain
-      maximum, maxima, <rpm package version record>, <rpm package version record>, Plain
-      maximum, maxima, <rpm package version>, <rpm package version>, Plain
-      maximum, maxima, <short rpm package version record>, <short rpm package version record>, Plain
       maximum, maxima, <site version list>, <site version list>, Plain
       maximum, maxima, <time interval>, <time interval>, Plain
       maximum, maxima, <time of day>, <time of day>, Plain
@@ -6876,6 +7042,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       md5, md5s, <string>, <string>, Plain
       mean, means, <floating point>, <floating point>, Plain
       mean, means, <floating point>, <integer>, Plain
+      member, members, <boolean>, <manual group>, Plain
       member, members, <boolean>, <site group>, Plain
       memory_array_error_address, memory_array_error_addresss, <integer>, <dmi b32_bit_memory_error_information>, Plain
       memory_array_error_address, memory_array_error_addresss, <integer>, <dmi b64_bit_memory_error_information>, Plain
@@ -6907,7 +7074,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       meta, metas, <html>, <html>, Plain
       meta, metas, <html>, <string>, Named
       meta, metas, <html>, <string>, Plain
-      metric, metrics, <integer>, <ipv4 route>, Plain
+      metric, metrics, <integer>, <route>, Plain
       mhz, mhzs, <hertz>, world , PlainGlobal
       microsecond, microseconds, <time interval>, world , PlainGlobal
       midnight, midnights, <time of day>, world , PlainGlobal
@@ -6915,6 +7082,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       minimum, minima, <date>, <date>, Plain
       minimum, minima, <day of month>, <day of month>, Plain
       minimum, minima, <day of year>, <day of year>, Plain
+      minimum, minima, <debian package upstream version>, <debian package upstream version>, Plain
+      minimum, minima, <debian package version epoch>, <debian package version epoch>, Plain
+      minimum, minima, <debian package version revision>, <debian package version revision>, Plain
+      minimum, minima, <debian package version>, <debian package version>, Plain
       minimum, minima, <floating point>, <floating point>, Plain
       minimum, minima, <hertz>, <hertz>, Plain
       minimum, minima, <integer>, <integer>, Plain
@@ -6924,10 +7095,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       minimum, minima, <month and year>, <month and year>, Plain
       minimum, minima, <month>, <month>, Plain
       minimum, minima, <number of months>, <number of months>, Plain
-      minimum, minima, <rpm package release>, <rpm package release>, Plain
-      minimum, minima, <rpm package version record>, <rpm package version record>, Plain
-      minimum, minima, <rpm package version>, <rpm package version>, Plain
-      minimum, minima, <short rpm package version record>, <short rpm package version record>, Plain
       minimum, minima, <site version list>, <site version list>, Plain
       minimum, minima, <time interval>, <time interval>, Plain
       minimum, minima, <time of day>, <time of day>, Plain
@@ -6963,7 +7130,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       month_and_year, months_and_years, <month and year>, <date>, Plain
       more significance, more significances, <floating point>, <floating point>, Numbered
       most significant one bit, most significant one bits, <integer>, <bit set>, Plain
-      mtu, mtus, <integer>, <ipv4 route>, Plain
+      mtu, mtus, <integer>, <route>, Plain
       multicast support, multicast supports, <boolean>, <network adapter interface>, Plain
       multicast support, multicast supports, <boolean>, <network adapter>, Plain
       multicast support, multicast supports, <boolean>, <network ip interface>, Plain
@@ -6971,6 +7138,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       multiplicity, multiplicities, <integer>, <day of month with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <day of week with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <day of year with multiplicity>, Plain
+      multiplicity, multiplicities, <integer>, <debian package upstream version with multiplicity>, Plain
+      multiplicity, multiplicities, <integer>, <debian package version epoch with multiplicity>, Plain
+      multiplicity, multiplicities, <integer>, <debian package version revision with multiplicity>, Plain
+      multiplicity, multiplicities, <integer>, <debian package version with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <floating point with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <hertz with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <integer with multiplicity>, Plain
@@ -6980,10 +7151,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       multiplicity, multiplicities, <integer>, <month and year with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <month with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <number of months with multiplicity>, Plain
-      multiplicity, multiplicities, <integer>, <rpm package release with multiplicity>, Plain
-      multiplicity, multiplicities, <integer>, <rpm package version record with multiplicity>, Plain
-      multiplicity, multiplicities, <integer>, <rpm package version with multiplicity>, Plain
-      multiplicity, multiplicities, <integer>, <short rpm package version record with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <site version list with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <string with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <time interval with multiplicity>, Plain
@@ -6995,12 +7162,14 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       multiplicity, multiplicities, <integer>, <version with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <year with multiplicity>, Plain
       multivalued, multivalueds, <boolean>, <property>, Plain
+      mvs count, mvs counts, <integer>, <bes product>, Plain
       name, names, <string>, <application usage summary instance>, Plain
       name, names, <string>, <application usage summary>, Plain
       name, names, <string>, <bes product>, Plain
       name, names, <string>, <binary operator>, Plain
-      name, names, <string>, <capability>, Plain
       name, names, <string>, <cast>, Plain
+      name, names, <string>, <debian base package>, Plain
+      name, names, <string>, <debian versioned package>, Plain
       name, names, <string>, <download server>, Plain
       name, names, <string>, <environment variable>, Plain
       name, names, <string>, <filesystem object>, Plain
@@ -7012,7 +7181,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       name, names, <string>, <network adapter>, Plain
       name, names, <string>, <network ip interface>, Plain
       name, names, <string>, <operating system>, Plain
-      name, names, <string>, <package>, Plain
       name, names, <string>, <process>, Plain
       name, names, <string>, <registration server>, Plain
       name, names, <string>, <selected server>, Plain
@@ -7036,8 +7204,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       next_scheduled_power_on_month, next_scheduled_power_on_months, <integer>, <dmi system_power_controls>, Plain
       next_scheduled_power_on_second, next_scheduled_power_on_seconds, <integer>, <dmi system_power_controls>, Plain
       nil, nothings, <undefined>, world , PlainGlobal
-      no epoch, no epochs, <rpm package version record>, <rpm package version record>, Plain
-      no epoch, no epochs, <short rpm package version record>, <short rpm package version record>, Plain
       nominal_speed, nominal_speeds, <integer>, <dmi cooling_device>, Plain
       nominal_value, nominal_values, <integer>, <dmi electrical_current_probe>, Plain
       nominal_value, nominal_values, <integer>, <dmi temperature_probe>, Plain
@@ -7064,7 +7230,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       number_of_power_cords, number_of_power_cordss, <integer>, <dmi system_enclosure_or_chassis>, Plain
       numeric value, numeric values, <integer>, <string>, Plain
       nv_storage_device_address, nv_storage_device_addresss, <integer>, <dmi ipmi_device_information>, Plain
-      obsolete, obsoletes, <capability>, <package>, Plain
       october, octobers, <date>, <integer>, Numbered
       october, octobers, <day of year>, world , NumberedGlobal
       october, octobers, <month and year>, <integer>, Plain
@@ -7112,12 +7277,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       p, ps, <html>, <html>, Plain
       p, ps, <html>, <string>, Named
       p, ps, <html>, <string>, Plain
-      package conflicting with, packages conflicting with, <package>, <rpmdatabase>, Index<capability>
-      package installing, packages installing, <package>, <rpmdatabase>, Index<capability>
-      package providing, packages providing, <package>, <rpmdatabase>, Index<capability>
-      package requiring, packages requiring, <package>, <rpmdatabase>, Index<capability>
-      package, packages, <package>, <rpmdatabase>, Named
-      package, packages, <package>, <rpmdatabase>, Plain
+      package, packages, <debian versioned package>, <debianpackagecache>, Named
+      package, packages, <debian versioned package>, <debianpackagecache>, Plain
       padded string, padded strings, <string>, <bit set>, Plain
       parameter, parameters, <string>, <action>, Named
       parameter, parameters, <string>, world , NamedGlobal
@@ -7144,12 +7305,16 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       pending restart, pending restarts, <boolean>, world , PlainGlobal
       pending time, pending times, <time>, <action>, Plain
       pending, pendings, <boolean>, <action>, Plain
+      percent decode, percent decodes, <string>, world , NamedGlobal
+      percent encode, percent encodes, <string>, world , NamedGlobal
       perpetual maintenance, perpetual maintenances, <boolean>, <bes product>, Plain
       perpetual, perpetuals, <boolean>, <bes product>, Plain
       persistent constraint, persistent constraints, <integer>, <action>, Plain
       physical_memory_array, physical_memory_arrays, <dmi physical_memory_array>, <dmi>, Numbered
       physical_memory_array, physical_memory_arrays, <dmi physical_memory_array>, <dmi>, Plain
       pid, pids, <integer>, <process>, Plain
+      pkg version, pkg versions, <debianpkg version>, <debian base package>, Plain
+      pkglibversion, pkglibversions, <string>, <debianpackagecache>, Plain
       platform id, platform ids, <string>, <language>, Plain
       plugged, pluggeds, <boolean>, <power level>, Plain
       plural name, plural names, <string>, <property>, Plain
@@ -7182,6 +7347,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       priority, priorities, <integer>, <selected server>, Plain
       process id, process ids, <integer>, <logged on user>, Plain
       process id, process ids, <integer>, <process>, Plain
+      process, processes, <process>, <socket>, Plain
       process, processes, <process>, world , NamedGlobal
       process, processes, <process>, world , NumberedGlobal
       process, processes, <process>, world , PlainGlobal
@@ -7211,7 +7377,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       property, properties, <property>, <type>, Plain
       property, properties, <property>, world , NamedGlobal
       property, properties, <property>, world , PlainGlobal
-      provide, provides, <capability>, <package>, Plain
       proxy agent service, proxy agent services, <service>, world , PlainGlobal
       q, qs, <html>, <html>, Named
       q, qs, <html>, <html>, Plain
@@ -7237,25 +7402,24 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       registration server, registration servers, <registration server>, world , PlainGlobal
       registration subnet address, registration subnet addresses, <ipv4or6 address>, <client>, Plain
       regular expression, regular expressions, <regular expression>, world , NamedGlobal
-      reject flag, reject flags, <boolean>, <ipv4 route>, Plain
-      relation, relations, <string>, <capability>, Plain
+      reject flag, reject flags, <boolean>, <route>, Plain
       relative significance place, relative significance places, <floating point>, <floating point>, Numbered
       relative significance place, relative significance places, <floating point>, <floating point>, Plain
       relay select duration, relay select durations, <time interval>, <evaluation cycle>, Plain
       relay select percent, relay select percents, <floating point>, <evaluation cycle>, Plain
       relay service, relay services, <service>, world , PlainGlobal
-      release, releases, <rpm package release>, <rpm package version record>, Plain
-      release, releases, <rpm package release>, <short rpm package version record>, Plain
+      release, releases, <string>, <debian versioned package>, Plain
       release, releases, <string>, <operating system>, Plain
       relevance duration, relevance durations, <time interval>, <evaluation cycle>, Plain
       relevance percent, relevance percents, <floating point>, <evaluation cycle>, Plain
       relevance, relevances, <boolean>, <fixlet>, Plain
       relevant fixlet, relevant fixlets, <fixlet>, <site>, Plain
       relevant offer action, relevant offer actions, <action>, <site>, Plain
+      remote address, remote addresses, <ipv4or6 address>, <socket>, Plain
+      remote port, remote ports, <integer>, <socket>, Plain
       remote, remotes, <boolean>, <logged on user>, Plain
       report duration, report durations, <time interval>, <evaluation cycle>, Plain
       report percent, report percents, <floating point>, <evaluation cycle>, Plain
-      require, requires, <capability>, <package>, Plain
       reserved, reserveds, <string>, <dmi bios_language_information>, Plain
       reserved, reserveds, <string>, <dmi system_boot_information>, Plain
       reset_count, reset_counts, <integer>, <dmi system_reset>, Plain
@@ -7267,6 +7431,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       result type, result types, <type>, <cast>, Plain
       result type, result types, <type>, <property>, Plain
       result type, result types, <type>, <unary operator>, Plain
+      reverse dependency, reverse dependencies, <debianpkg reverse dependencies>, <debian versioned package>, Plain
+      revision, revisions, <debian package version revision>, <debian package version>, Plain
       revision_level, revision_levels, <string>, <dmi system_power_supply>, Plain
       right operand type, right operand types, <type>, <binary operator>, Plain
       right shift, right shifts, <bit set>, <bit set>, Numbered
@@ -7275,18 +7441,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       root, roots, <grub device>, <grub bootable image>, Plain
       rootnoverify, rootnoverifys, <grub device>, <grub bootable image>, Plain
       rope, ropes, <rope>, world , NamedGlobal
-      route, routes, <ipv4 route>, <ipv4 routing table>, Plain
+      route, routes, <route>, <routing table>, Plain
+      routing table, routing tables, <routing table>, world , PlainGlobal
       row, rows, <sqlite row>, <sqlite statement>, Plain
-      rpm package release, rpm package releases, <rpm package release>, world , Index<rpm package release>Global
-      rpm package release, rpm package releases, <rpm package release>, world , NamedGlobal
-      rpm package version record, rpm package version records, <rpm package version record>, world , Index<rpm package version record>Global
-      rpm package version record, rpm package version records, <rpm package version record>, world , Index<short rpm package version record>Global
-      rpm package version record, rpm package version records, <rpm package version record>, world , NamedGlobal
-      rpm package version, rpm package versions, <rpm package version>, world , Index<rpm package version>Global
-      rpm package version, rpm package versions, <rpm package version>, world , NamedGlobal
-      rpm version record, rpm version records, <rpm package version record>, <package>, Plain
-      rpm, rpms, <rpmdatabase>, world , NamedGlobal
-      rpm, rpms, <rpmdatabase>, world , PlainGlobal
       runlevel, runlevels, <runlevel>, world , PlainGlobal
       running application, running applications, <application>, world , NamedGlobal
       running application, running applications, <application>, world , PlainGlobal
@@ -7311,6 +7468,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       second_of_minute, seconds_of_minute, <integer>, <time of day with time zone>, Plain
       second_of_minute, seconds_of_minute, <integer>, <time of day>, Plain
       section, sections, <file section>, <file>, Named
+      section, sections, <string>, <debian versioned package>, Plain
+      section, sections, <string>, <debianpkg version>, Plain
       security_status, security_statuss, <integer>, <dmi system_enclosure_or_chassis>, Plain
       segment_group_number, segment_group_numbers, <integer>, <dmi onboard_devices_extended_information>, Plain
       segment_group_number, segment_group_numbers, <integer>, <dmi system_slots>, Plain
@@ -7334,6 +7493,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       setgid, setgids, <boolean>, <mode>, Plain
       setting, settings, <setting>, <client>, Named
       setting, settings, <setting>, <client>, Plain
+      setting, settings, <setting>, <manual group>, Plain
       setting, settings, <setting>, <site>, Named
       setting, settings, <setting>, <site>, Plain
       setuid, setuids, <boolean>, <filesystem object>, Plain
@@ -7341,6 +7501,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sha1, sha1s, <string>, <file>, Plain
       sha1, sha1s, <string>, <string>, Plain
       sha1, sha1s, <string>, <x509 certificate>, Plain
+      sha224, sha224s, <string>, <file>, Plain
+      sha224, sha224s, <string>, <string>, Plain
+      sha256 download, sha256 downloads, <boolean>, <license>, Plain
+      sha256, sha256s, <string>, <file>, Plain
+      sha256, sha256s, <string>, <string>, Plain
       sha2_224, sha2_224s, <string>, <file>, Plain
       sha2_224, sha2_224s, <string>, <string>, Plain
       sha2_256, sha2_256s, <string>, <file>, Plain
@@ -7349,10 +7514,12 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sha2_384, sha2_384s, <string>, <string>, Plain
       sha2_512, sha2_512s, <string>, <file>, Plain
       sha2_512, sha2_512s, <string>, <string>, Plain
+      sha384, sha384s, <string>, <file>, Plain
+      sha384, sha384s, <string>, <string>, Plain
+      sha512, sha512s, <string>, <file>, Plain
+      sha512, sha512s, <string>, <string>, Plain
       shared amount, shared amounts, <integer>, <ram>, Plain
-      short form, short forms, <short rpm package version record>, <rpm package version record>, Plain
-      short rpm package version record, short rpm package version records, <short rpm package version record>, world , Index<rpm package version record>Global
-      short rpm package version record, short rpm package version records, <short rpm package version record>, world , Index<short rpm package version record>Global
+      signature hash algorithm, signature hash algorithms, <string>, <license>, Plain
       significance place, significance places, <floating point>, <floating point>, Numbered
       significance place, significance places, <floating point>, <floating point>, Plain
       significance threshold, significance thresholds, <floating point>, <floating point>, Plain
@@ -7399,6 +7566,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       socket file, socket files, <socket file>, world , Index<symlink>Global
       socket file, socket files, <socket file>, world , Index<symlink>Global
       socket file, socket files, <socket file>, world , NamedGlobal
+      socket, sockets, <socket>, <network>, Plain
       socket_designation, socket_designations, <string>, <dmi cache_information>, Plain
       socket_designation, socket_designations, <string>, <dmi memory_module_information>, Plain
       socket_designation, socket_designations, <string>, <dmi processor_information>, Plain
@@ -7410,6 +7578,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       speed, speeds, <integer>, <dmi memory_device>, Plain
       splashimage, splashimages, <grub file location>, <grub config file>, Plain
       sqlite database, sqlite databases, <sqlite database>, <file>, Plain
+      sqrt, sqrts, <floating point>, <floating point>, Plain
+      sqrt, sqrts, <floating point>, <integer>, Plain
       standard deviation, standard deviations, <floating point>, <floating point>, Plain
       standard deviation, standard deviations, <floating point>, <integer>, Plain
       start date, start dates, <time>, <license>, Plain
@@ -7473,6 +7643,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       symlink, symlinks, <symlink>, world , Index<filesystem object>Global
       symlink, symlinks, <symlink>, world , Index<symlink>Global
       symlink, symlinks, <symlink>, world , NamedGlobal
+      syn received, syn receiveds, <boolean>, <tcp state>, Plain
+      syn sent, syn sents, <boolean>, <tcp state>, Plain
       system constraint, system constraints, <integer>, <action>, Plain
       system folder, system folders, <folder>, world , PlainGlobal
       system language, system languages, <string>, world , PlainGlobal
@@ -7507,6 +7679,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       tbody, tbodys, <html>, <html>, Plain
       tbody, tbodys, <html>, <string>, Named
       tbody, tbodys, <html>, <string>, Plain
+      tcp state, tcp states, <tcp state>, <socket>, Plain
+      tcp, tcps, <boolean>, <socket>, Plain
       td, tds, <html>, <html>, Named
       td, tds, <html>, <html>, Plain
       td, tds, <html>, <string>, Named
@@ -7534,6 +7708,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       threshold_handle, threshold_handles, <integer>, <dmi management_device_component>, Plain
       thursday, thursdays, <day of week>, world , PlainGlobal
       time interval, time intervals, <time interval>, world , NamedGlobal
+      time wait, time waits, <boolean>, <tcp state>, Plain
       time zone, time zones, <time zone>, world , NamedGlobal
       time, times, <time of day with time zone>, <time>, Index<time zone>
       time, times, <time of day>, <time of day with time zone>, Plain
@@ -7587,6 +7762,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       type, types, <integer>, <dmi system_enclosure_or_chassis>, Plain
       type, types, <integer>, <smbios structure>, Plain
       type, types, <sqlite column type>, <sqlite column>, Plain
+      type, types, <string>, <debianpkg dependency>, Plain
       type, types, <string>, <execution>, Plain
       type, types, <string>, <filesystem>, Plain
       type, types, <string>, <json value>, Plain
@@ -7597,6 +7773,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       type, types, <type>, world , NamedGlobal
       type, types, <type>, world , PlainGlobal
       type_detail, type_details, <integer>, <dmi memory_device>, Plain
+      udp, udps, <boolean>, <socket>, Plain
       uid, uids, <integer>, <filesystem object>, Plain
       uid, uids, <integer>, <symlink>, Plain
       ul, uls, <html>, <html>, Named
@@ -7610,11 +7787,14 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       underflow, underflows, <boolean>, <floating point>, Plain
       union, unions, <integer set>, <integer set>, Plain
       union, unions, <string set>, <string set>, Plain
-      unique name, unique names, <string>, <package>, Plain
       unique value, unique values, <date with multiplicity>, <date>, Plain
       unique value, unique values, <day of month with multiplicity>, <day of month>, Plain
       unique value, unique values, <day of week with multiplicity>, <day of week>, Plain
       unique value, unique values, <day of year with multiplicity>, <day of year>, Plain
+      unique value, unique values, <debian package upstream version with multiplicity>, <debian package upstream version>, Plain
+      unique value, unique values, <debian package version epoch with multiplicity>, <debian package version epoch>, Plain
+      unique value, unique values, <debian package version revision with multiplicity>, <debian package version revision>, Plain
+      unique value, unique values, <debian package version with multiplicity>, <debian package version>, Plain
       unique value, unique values, <floating point with multiplicity>, <floating point>, Plain
       unique value, unique values, <hertz with multiplicity>, <hertz>, Plain
       unique value, unique values, <integer with multiplicity>, <integer>, Plain
@@ -7624,10 +7804,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       unique value, unique values, <month and year with multiplicity>, <month and year>, Plain
       unique value, unique values, <month with multiplicity>, <month>, Plain
       unique value, unique values, <number of months with multiplicity>, <number of months>, Plain
-      unique value, unique values, <rpm package release with multiplicity>, <rpm package release>, Plain
-      unique value, unique values, <rpm package version record with multiplicity>, <rpm package version record>, Plain
-      unique value, unique values, <rpm package version with multiplicity>, <rpm package version>, Plain
-      unique value, unique values, <short rpm package version record with multiplicity>, <short rpm package version record>, Plain
       unique value, unique values, <site version list with multiplicity>, <site version list>, Plain
       unique value, unique values, <string with multiplicity>, <string>, Plain
       unique value, unique values, <time interval with multiplicity>, <time interval>, Plain
@@ -7645,16 +7821,18 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       unordered list, unordered lists, <html>, <html>, Plain
       unordered list, unordered lists, <html>, <string>, Named
       unordered list, unordered lists, <html>, <string>, Plain
-      up flag, up flags, <boolean>, <ipv4 route>, Plain
+      up flag, up flags, <boolean>, <route>, Plain
       up, ups, <boolean>, <network adapter interface>, Plain
       up, ups, <boolean>, <network adapter>, Plain
       up, ups, <boolean>, <network ip interface>, Plain
+      update level, update levels, <integer>, <operating system>, Plain
       upload progress, upload progresses, <string>, <client>, Plain
       upper bound, upper bounds, <integer>, <integer range>, Plain
       upper_threshold_critical, upper_threshold_criticals, <integer>, <dmi management_device_threshold_data>, Plain
       upper_threshold_non_critical, upper_threshold_non_criticals, <integer>, <dmi management_device_threshold_data>, Plain
       upper_threshold_non_recoverable, upper_threshold_non_recoverables, <integer>, <dmi management_device_threshold_data>, Plain
       ups, upss, <boolean>, <power level>, Plain
+      upstream, upstreams, <debian package upstream version>, <debian package version>, Plain
       uptime, uptimes, <time interval>, <operating system>, Plain
       url, urls, <string>, <site>, Plain
       use, uses, <integer>, <dmi physical_memory_array>, Plain
@@ -7696,13 +7874,14 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       vendor, vendors, <string>, <dmi bios_information>, Plain
       vendor_syndrome, vendor_syndromes, <integer>, <dmi b32_bit_memory_error_information>, Plain
       vendor_syndrome, vendor_syndromes, <integer>, <dmi b64_bit_memory_error_information>, Plain
+      verfile, verfiles, <debianpkg verfile>, <debian versioned package>, Plain
       version info, version infos, <string>, <execution>, Plain
       version string, version strings, <string>, <module>, Named
+      version, versions, <debian package version>, <debian versioned package>, Plain
+      version, versions, <debian package version>, <debianpkg dependency>, Plain
       version, versions, <integer>, <site>, Plain
-      version, versions, <rpm package version>, <rpm package version record>, Plain
-      version, versions, <rpm package version>, <short rpm package version record>, Plain
       version, versions, <string>, <bios>, Plain
-      version, versions, <string>, <capability>, Plain
+      version, versions, <string>, <debianpkg reverse dependencies>, Plain
       version, versions, <string>, <dmi base_board_information>, Plain
       version, versions, <string>, <dmi system_enclosure_or_chassis>, Plain
       version, versions, <string>, <dmi system_information>, Plain
@@ -7711,7 +7890,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       version, versions, <version>, <current relay>, Plain
       version, versions, <version>, <module>, Plain
       version, versions, <version>, <operating system>, Plain
-      version, versions, <version>, <package>, Plain
       version, versions, <version>, <registration server>, Plain
       version, versions, <version>, <service>, Plain
       version, versions, <version>, world , NamedGlobal
@@ -7725,7 +7903,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       wednesday, wednesdays, <day of week>, world , PlainGlobal
       week, weeks, <time interval>, world , PlainGlobal
       weight, weights, <integer>, <selected server>, Plain
-      window, windows, <integer>, <ipv4 route>, Plain
+      window, windows, <integer>, <route>, Plain
       windows server count, windows server counts, <integer>, <bes product>, Plain
       windows, windowses, <boolean>, <operating system>, Plain
       workstation count, workstation counts, <integer>, <bes product>, Plain
