@@ -165,6 +165,8 @@ Creation techniques & properties of each type:
       exit code of <action>, exit codes, Plain, <integer>
       first active count of <action>, first active counts, Plain, <integer>
       group leader of <action>, group leaders, Plain, <boolean>
+      header <string> of <action>, headers, Named, <fixlet_header>
+      header of <action>, headers, Plain, <fixlet_header>
       id of <action>, ids, Plain, <integer>
       last active line number of <action>, last active line numbers, Plain, <integer>
       last active time of <action>, last active times, Plain, <time>
@@ -992,7 +994,9 @@ Creation techniques & properties of each type:
 
   Type <fixlet_header>
     Creation of <fixlet_header>: { key phrase, plural keyword, form}
+      header <string> of <action>, headers, Named
       header <string> of <fixlet>, headers, Named
+      header of <action>, headers, Plain
       header of <fixlet>, headers, Plain
     Properties of <fixlet_header> { key phrase, plural keyword, form, <result type>}:
       name of <fixlet_header>, names, Plain, <string>
@@ -4592,6 +4596,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       head, heads, <html>, <html>, Plain
       head, heads, <html>, <string>, Named
       head, heads, <html>, <string>, Plain
+      header, headers, <fixlet_header>, <action>, Named
+      header, headers, <fixlet_header>, <action>, Plain
       header, headers, <fixlet_header>, <fixlet>, Named
       header, headers, <fixlet_header>, <fixlet>, Plain
       hexadecet, hexadecets, <integer>, <ipv4or6 address>, Numbered

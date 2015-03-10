@@ -1,4 +1,5 @@
 Operating System:Mac OS X Server 10_5_8
+Build Target:
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   action
@@ -79,6 +80,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   license
   linear projection
   logged on user
+  module
   monitor power interval
   month
   month and year
@@ -176,6 +178,8 @@ Creation techniques & properties of each type:
       exit code of <action>, exit codes, Plain, <integer>
       first active count of <action>, first active counts, Plain, <integer>
       group leader of <action>, group leaders, Plain, <boolean>
+      header <string> of <action>, headers, Named, <fixlet_header>
+      header of <action>, headers, Plain, <fixlet_header>
       id of <action>, ids, Plain, <integer>
       last active line number of <action>, last active line numbers, Plain, <integer>
       last active time of <action>, last active times, Plain, <time>
@@ -1257,7 +1261,9 @@ Creation techniques & properties of each type:
 
   Type <fixlet_header>
     Creation of <fixlet_header>: { key phrase, plural keyword, form}
+      header <string> of <action>, headers, Named
       header <string> of <fixlet>, headers, Named
+      header of <action>, headers, Plain
       header of <fixlet>, headers, Plain
     Properties of <fixlet_header> { key phrase, plural keyword, form, <result type>}:
       name of <fixlet_header>, names, Plain, <string>
@@ -2462,6 +2468,15 @@ Creation techniques & properties of each type:
       tty of <logged on user>, ttys, Plain, <string>
       user of <logged on user>, users, Plain, <user>
 
+  Type <module>
+    Creation of <module>: { key phrase, plural keyword, form}
+      module <string>, modules, NamedGlobal
+      module, modules, PlainGlobal
+    Properties of <module> { key phrase, plural keyword, form, <result type>}:
+      name of <module>, names, Plain, <string>
+      version of <module>, versions, Plain, <version>
+      version string <string> of <module>, version strings, Named, <string>
+
   Type <monitor power interval>
     Creation of <monitor power interval>: { key phrase, plural keyword, form}
       current monitor interval of <power history>, current monitor intervals, Plain
@@ -3330,6 +3345,7 @@ Creation techniques & properties of each type:
       name of <filesystem object>, names, Plain
       name of <fixlet_header>, names, Plain
       name of <logged on user>, names, Plain
+      name of <module>, names, Plain
       name of <network adapter>, names, Plain
       name of <network interface>, names, Plain
       name of <network ip interface>, names, Plain
@@ -3380,6 +3396,8 @@ Creation techniques & properties of each type:
       symbol of <binary operator>, symbols, Plain
       symbol of <unary operator>, symbols, Plain
       tty of <logged on user>, ttys, Plain
+      tuple string item <integer> of <string>, tuple string items, Numbered
+      tuple string item of <string>, tuple string items, Plain
       two digit hour of <time of day with time zone>, two digit hours, Plain
       two digit hour of <time of day>, two digit hours, Plain
       two digit minute of <time of day with time zone>, two digit minutes, Plain
@@ -3405,6 +3423,7 @@ Creation techniques & properties of each type:
       vendor of <scsidevice>, vendors, Plain
       version info of <execution>, version infos, Plain
       version of <bios>, versions, Plain
+      version string <string> of <module>, version strings, Named
       wake on lan subnet cidr string, wake on lan subnet cidr strings, PlainGlobal
     Properties of <string> { key phrase, plural keyword, form, <result type>}:
       <file content> contains <string>, , BinaryOperator, <boolean>
@@ -3608,6 +3627,8 @@ Creation techniques & properties of each type:
       tr of <string>, trs, Plain, <html>
       tt <string> of <string>, tts, Named, <html>
       tt of <string>, tts, Plain, <html>
+      tuple string item <integer> of <string>, tuple string items, Numbered, <string>
+      tuple string item of <string>, tuple string items, Plain, <string>
       ul <string> of <string>, uls, Named, <html>
       ul of <string>, uls, Plain, <html>
       unique value of <string>, unique values, Plain, <string with multiplicity>
@@ -4137,6 +4158,7 @@ Creation techniques & properties of each type:
       version of <current relay>, versions, Plain
       version of <filesystem object>, versions, Plain
       version of <folder>, versions, Plain
+      version of <module>, versions, Plain
       version of <operating system>, versions, Plain
       version of <registration server>, versions, Plain
       version of <scsibus>, versions, Plain
@@ -4482,6 +4504,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   millisecond, milliseconds, PlainGlobal, <time interval>
   minute, minutes, PlainGlobal, <time interval>
   modem scripts folder, modem scripts folders, PlainGlobal, <folder>
+  module <string>, modules, NamedGlobal, <module>
+  module, modules, PlainGlobal, <module>
   monday, mondays, PlainGlobal, <day of week>
   monitor invalid state, monitor invalid states, PlainGlobal, <power state>
   monitor off state, monitor off states, PlainGlobal, <power state>
@@ -5313,6 +5337,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       head, heads, <html>, <html>, Plain
       head, heads, <html>, <string>, Named
       head, heads, <html>, <string>, Plain
+      header, headers, <fixlet_header>, <action>, Named
+      header, headers, <fixlet_header>, <action>, Plain
       header, headers, <fixlet_header>, <fixlet>, Named
       header, headers, <fixlet_header>, <fixlet>, Plain
       help folder, help folders, <folder>, <domain>, Plain
@@ -5616,6 +5642,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       modification time, modification times, <time>, <execution>, Plain
       modification time, modification times, <time>, <filesystem object>, Plain
       modification time, modification times, <time>, <volume>, Plain
+      module, modules, <module>, world , NamedGlobal
+      module, modules, <module>, world , PlainGlobal
       monday, mondays, <day of week>, world , PlainGlobal
       monitor interval, monitor intervals, <monitor power interval>, <power history>, Plain
       monitor invalid state, monitor invalid states, <power state>, world , PlainGlobal
@@ -5675,6 +5703,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       name, names, <string>, <filesystem object>, Plain
       name, names, <string>, <fixlet_header>, Plain
       name, names, <string>, <logged on user>, Plain
+      name, names, <string>, <module>, Plain
       name, names, <string>, <network adapter>, Plain
       name, names, <string>, <network interface>, Plain
       name, names, <string>, <network ip interface>, Plain
@@ -6083,6 +6112,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       tt, tts, <html>, <string>, Plain
       tty, ttys, <string>, <logged on user>, Plain
       tuesday, tuesdays, <day of week>, world , PlainGlobal
+      tuple string item, tuple string items, <string>, <string>, Numbered
+      tuple string item, tuple string items, <string>, <string>, Plain
       two digit hour, two digit hours, <string>, <time of day with time zone>, Plain
       two digit hour, two digit hours, <string>, <time of day>, Plain
       two digit minute, two digit minutes, <string>, <time of day with time zone>, Plain
@@ -6181,6 +6212,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       vendor name, vendor names, <string>, <processor>, Plain
       vendor, vendors, <string>, <scsidevice>, Plain
       version info, version infos, <string>, <execution>, Plain
+      version string, version strings, <string>, <module>, Named
       version, versions, <integer>, <site>, Plain
       version, versions, <string>, <bios>, Plain
       version, versions, <version>, <application usage summary instance>, Plain
@@ -6191,6 +6223,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       version, versions, <version>, <file>, Numbered
       version, versions, <version>, <filesystem object>, Plain
       version, versions, <version>, <folder>, Plain
+      version, versions, <version>, <module>, Plain
       version, versions, <version>, <operating system>, Plain
       version, versions, <version>, <registration server>, Plain
       version, versions, <version>, <scsibus>, Plain

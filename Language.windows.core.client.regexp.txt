@@ -415,6 +415,8 @@ Creation techniques & properties of each type:
       exit code of <action>, exit codes, Plain, <integer>
       first active count of <action>, first active counts, Plain, <integer>
       group leader of <action>, group leaders, Plain, <boolean>
+      header <string> of <action>, headers, Named, <fixlet_header>
+      header of <action>, headers, Plain, <fixlet_header>
       id of <action>, ids, Plain, <integer>
       last active line number of <action>, last active line numbers, Plain, <integer>
       last active time of <action>, last active times, Plain, <time>
@@ -2705,7 +2707,9 @@ Creation techniques & properties of each type:
 
   Type <fixlet_header>
     Creation of <fixlet_header>: { key phrase, plural keyword, form}
+      header <string> of <action>, headers, Named
       header <string> of <fixlet>, headers, Named
+      header of <action>, headers, Plain
       header of <fixlet>, headers, Plain
     Properties of <fixlet_header> { key phrase, plural keyword, form, <result type>}:
       name of <fixlet_header>, names, Plain, <string>
@@ -4942,8 +4946,6 @@ Creation techniques & properties of each type:
       application folder <string> of <registry>, application folders, Named, <folder>
       application of <registry>, applications, Plain, <application>
       current user key <logged on user> of <registry>, current user keys, Index<logged on user>, <registry key>
-      device key <string> of <registry>, device keys, Named, <registry key>
-      device key of <registry>, device keys, Plain, <registry key>
       file extension <string> of <registry>, file extensions, Named, <registry key>
       file type <string> of <registry>, file types, Named, <registry key>
       key <string> of <registry>, keys, Named, <registry key>
@@ -4951,8 +4953,6 @@ Creation techniques & properties of each type:
   Type <registry key>
     Creation of <registry key>: { key phrase, plural keyword, form}
       current user key <logged on user> of <registry>, current user keys, Index<logged on user>
-      device key <string> of <registry>, device keys, Named
-      device key of <registry>, device keys, Plain
       driver key of <active device>, driver keys, Plain
       driver key of <registry key>, driver keys, Plain
       file extension <string> of <registry>, file extensions, Named
@@ -8142,8 +8142,6 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       desired fips mode, desired fips modes, <boolean>, <cryptography>, Plain
       detailed tracking category, detailed tracking categories, <audit policy category>, <audit policy>, Plain
       device hotsync time, device hotsync times, <time>, <palm device>, Plain
-      device key, device keys, <registry key>, <registry>, Named
-      device key, device keys, <registry key>, <registry>, Plain
       device name, device names, <string>, <connection>, Plain
       device_chemistry, device_chemistrys, <integer>, <dmi portable_battery>, Plain
       device_description, device_descriptions, <string>, <dmi on_board_devices_information>, Numbered
@@ -8562,6 +8560,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       head, heads, <html>, <string>, Named
       head, heads, <html>, <string>, Plain
       header field, header fields, <task named value pair>, <email task action>, Plain
+      header, headers, <fixlet_header>, <action>, Named
+      header, headers, <fixlet_header>, <action>, Plain
       header, headers, <fixlet_header>, <fixlet>, Named
       header, headers, <fixlet_header>, <fixlet>, Plain
       height, heights, <integer>, <dmi system_enclosure_or_chassis>, Plain
