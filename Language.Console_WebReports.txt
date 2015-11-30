@@ -59,6 +59,9 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   bes user set
   bes user with multiplicity (derives from  bes user)
   bes wakeonlan status
+  bes webui app
+  bes webui app set
+  bes webui app with multiplicity (derives from  bes webui app)
   bes wizard
   bes wizard set
   bes wizard variable
@@ -387,6 +390,7 @@ Creation techniques & properties of each type:
       issuer of <bes activation>, issuers, Plain, <bes user>
       modification time of <bes activation>, modification times, Plain, <time>
       name of <bes activation>, names, Plain, <string>
+      status of <bes activation>, statuses, Plain, <string>
 
   Type <bes baseline component>
     Creation of <bes baseline component>: { key phrase, plural keyword, form}
@@ -1433,6 +1437,45 @@ Creation techniques & properties of each type:
       database name of <bes wakeonlan status>, database names, Plain, <string>
       enabled of <bes wakeonlan status>, enableds, Plain, <boolean>
 
+  Type <bes webui app>
+    Creation of <bes webui app>: { key phrase, plural keyword, form}
+      bes webui app, bes webui apps, PlainGlobal
+      element of <bes webui app set>, elements, Plain
+    Properties of <bes webui app> { key phrase, plural keyword, form, <result type>}:
+      <bes webui app set> contains <bes webui app>, , BinaryOperator, <boolean>
+      <bes webui app> = <bes webui app>, , BinaryOperator, <boolean>
+      globally allowed flag of <bes webui app>, globally allowed flags, Plain, <boolean>
+      name of <bes webui app>, names, Plain, <string>
+      set of <bes webui app>, sets, Plain, <bes webui app set>
+      unique value of <bes webui app>, unique values, Plain, <bes webui app with multiplicity>
+
+  Type <bes webui app set>
+    Creation of <bes webui app set>: { key phrase, plural keyword, form}
+      <bes webui app set> * <bes webui app set>, , BinaryOperator
+      <bes webui app set> + <bes webui app set>, , BinaryOperator
+      <bes webui app set> - <bes webui app set>, , BinaryOperator
+      bes webui app set, bes webui app sets, PlainGlobal
+      intersection of <bes webui app set>, intersections, Plain
+      set of <bes webui app>, sets, Plain
+      union of <bes webui app set>, unions, Plain
+    Properties of <bes webui app set> { key phrase, plural keyword, form, <result type>}:
+      <bes webui app set> * <bes webui app set>, , BinaryOperator, <bes webui app set>
+      <bes webui app set> + <bes webui app set>, , BinaryOperator, <bes webui app set>
+      <bes webui app set> - <bes webui app set>, , BinaryOperator, <bes webui app set>
+      <bes webui app set> = <bes webui app set>, , BinaryOperator, <boolean>
+      <bes webui app set> contains <bes webui app set>, , BinaryOperator, <boolean>
+      <bes webui app set> contains <bes webui app>, , BinaryOperator, <boolean>
+      element of <bes webui app set>, elements, Plain, <bes webui app>
+      intersection of <bes webui app set>, intersections, Plain, <bes webui app set>
+      size of <bes webui app set>, sizes, Plain, <integer>
+      union of <bes webui app set>, unions, Plain, <bes webui app set>
+
+  Type <bes webui app with multiplicity> (derives from bes webui app)
+    Creation of <bes webui app with multiplicity>: { key phrase, plural keyword, form}
+      unique value of <bes webui app>, unique values, Plain
+    Properties of <bes webui app with multiplicity> { key phrase, plural keyword, form, <result type>}:
+      multiplicity of <bes webui app with multiplicity>, multiplicities, Plain, <integer>
+
   Type <bes wizard>
     Creation of <bes wizard>: { key phrase, plural keyword, form}
       bes wizard, bes wizards, PlainGlobal
@@ -1604,6 +1647,10 @@ Creation techniques & properties of each type:
       <bes user set> contains <bes user set>, , BinaryOperator
       <bes user set> contains <bes user>, , BinaryOperator
       <bes user> = <bes user>, , BinaryOperator
+      <bes webui app set> = <bes webui app set>, , BinaryOperator
+      <bes webui app set> contains <bes webui app set>, , BinaryOperator
+      <bes webui app set> contains <bes webui app>, , BinaryOperator
+      <bes webui app> = <bes webui app>, , BinaryOperator
       <bes wizard set> = <bes wizard set>, , BinaryOperator
       <bes wizard set> contains <bes wizard set>, , BinaryOperator
       <bes wizard set> contains <bes wizard>, , BinaryOperator
@@ -1781,6 +1828,7 @@ Creation techniques & properties of each type:
       fixlet flag of <bes filter>, fixlet flags, Plain
       fixlet flag of <bes fixlet>, fixlet flags, Plain
       global catalog of <bes ldap directory>, global catalogs, Plain
+      globally allowed flag of <bes webui app>, globally allowed flags, Plain
       globally readable flag of <bes site>, globally readable flags, Plain
       globally visible flag of <bes fixlet>, globally visible flags, Plain
       group flag of <bes filter>, group flags, Plain
@@ -1889,6 +1937,7 @@ Creation techniques & properties of each type:
       user flag of <bes filter>, user flags, Plain
       utc time flag of <bes action>, utc time flags, Plain
       visible flag of <bes fixlet>, visible flags, Plain
+      webui enabled, webuis enabled, PlainGlobal
     Properties of <boolean> { key phrase, plural keyword, form, <result type>}:
       <boolean> * <time range>, , BinaryOperator, <timed( time range, boolean )>
       <boolean> = <boolean>, , BinaryOperator, <boolean>
@@ -2892,6 +2941,7 @@ Creation techniques & properties of each type:
       multiplicity of <bes site with multiplicity>, multiplicities, Plain
       multiplicity of <bes unmanagedasset with multiplicity>, multiplicities, Plain
       multiplicity of <bes user with multiplicity>, multiplicities, Plain
+      multiplicity of <bes webui app with multiplicity>, multiplicities, Plain
       multiplicity of <bes wizard with multiplicity>, multiplicities, Plain
       multiplicity of <date with multiplicity>, multiplicities, Plain
       multiplicity of <day of month with multiplicity>, multiplicities, Plain
@@ -2950,6 +3000,7 @@ Creation techniques & properties of each type:
       size of <bes site set>, sizes, Plain
       size of <bes unmanagedasset set>, sizes, Plain
       size of <bes user set>, sizes, Plain
+      size of <bes webui app set>, sizes, Plain
       size of <bes wizard set>, sizes, Plain
       size of <integer set>, sizes, Plain
       size of <string set>, sizes, Plain
@@ -3804,6 +3855,7 @@ Creation techniques & properties of each type:
       name of <bes site>, names, Plain
       name of <bes unmanagedasset field>, names, Plain
       name of <bes user>, names, Plain
+      name of <bes webui app>, names, Plain
       name of <bes wizard variable>, names, Plain
       name of <bes wizard>, names, Plain
       name of <binary operator>, names, Plain
@@ -3871,6 +3923,7 @@ Creation techniques & properties of each type:
       source severity of <bes fixlet>, source severities, Plain
       source severity of <fixlet count pair>, source severitys, Plain
       state of <bes action>, states, Plain
+      status of <bes activation>, statuses, Plain
       string <string>, strings, NamedGlobal
       subscription mode of <bes site>, subscription modes, Plain
       symbol of <binary operator>, symbols, Plain
@@ -4796,6 +4849,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   bes user set, bes user sets, PlainGlobal, <bes user set>
   bes user, bes users, PlainGlobal, <bes user>
   bes wakeonlan status, bes wakeonlan statuses, PlainGlobal, <bes wakeonlan status>
+  bes webui app set, bes webui app sets, PlainGlobal, <bes webui app set>
+  bes webui app, bes webui apps, PlainGlobal, <bes webui app>
   bes wizard set, bes wizard sets, PlainGlobal, <bes wizard set>
   bes wizard, bes wizards, PlainGlobal, <bes wizard>
   binary operator <string>, binary operators, NamedGlobal, <binary operator>
@@ -4966,6 +5021,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   universal time <string>, universal times, NamedGlobal, <time>
   universal time zone, universal time zones, PlainGlobal, <time zone>
   version <string>, versions, NamedGlobal, <version>
+  webui enabled, webuis enabled, PlainGlobal, <boolean>
   wednesday, wednesdays, PlainGlobal, <day of week>
   week, weeks, PlainGlobal, <time interval>
   windows display time <string>, windows display times, NamedGlobal, <time>
@@ -5268,6 +5324,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       bes user set, bes user sets, <bes user set>, world , PlainGlobal
       bes user, bes users, <bes user>, world , PlainGlobal
       bes wakeonlan status, bes wakeonlan statuses, <bes wakeonlan status>, world , PlainGlobal
+      bes webui app set, bes webui app sets, <bes webui app set>, world , PlainGlobal
+      bes webui app, bes webui apps, <bes webui app>, world , PlainGlobal
       bes wizard set, bes wizard sets, <bes wizard set>, world , PlainGlobal
       bes wizard, bes wizards, <bes wizard>, world , PlainGlobal
       best activation, best activations, <bes activation>, <bes fixlet>, Plain
@@ -5534,6 +5592,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       element, elements, <bes site>, <bes site set>, Plain
       element, elements, <bes unmanagedasset>, <bes unmanagedasset set>, Plain
       element, elements, <bes user>, <bes user set>, Plain
+      element, elements, <bes webui app>, <bes webui app set>, Plain
       element, elements, <bes wizard>, <bes wizard set>, Plain
       element, elements, <integer>, <integer set>, Plain
       element, elements, <json value>, <json value>, Numbered
@@ -5640,6 +5699,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       geometric mean, geometric means, <floating point>, <statistical bin>, Plain
       ghz, ghzs, <hertz>, world , PlainGlobal
       global catalog, global catalogs, <boolean>, <bes ldap directory>, Plain
+      globally allowed flag, globally allowed flags, <boolean>, <bes webui app>, Plain
       globally readable flag, globally readable flags, <boolean>, <bes site>, Plain
       globally visible flag, globally visible flags, <boolean>, <bes fixlet>, Plain
       greatest hz, greatest hzs, <hertz>, world , PlainGlobal
@@ -5750,6 +5810,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       intersection, intersections, <bes site set>, <bes site set>, Plain
       intersection, intersections, <bes unmanagedasset set>, <bes unmanagedasset set>, Plain
       intersection, intersections, <bes user set>, <bes user set>, Plain
+      intersection, intersections, <bes webui app set>, <bes webui app set>, Plain
       intersection, intersections, <bes wizard set>, <bes wizard set>, Plain
       intersection, intersections, <integer set>, <integer set>, Plain
       intersection, intersections, <string set>, <string set>, Plain
@@ -6008,6 +6069,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       multiplicity, multiplicities, <integer>, <bes site with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <bes unmanagedasset with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <bes user with multiplicity>, Plain
+      multiplicity, multiplicities, <integer>, <bes webui app with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <bes wizard with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <date with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <day of month with multiplicity>, Plain
@@ -6055,6 +6117,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       name, names, <string>, <bes site>, Plain
       name, names, <string>, <bes unmanagedasset field>, Plain
       name, names, <string>, <bes user>, Plain
+      name, names, <string>, <bes webui app>, Plain
       name, names, <string>, <bes wizard variable>, Plain
       name, names, <string>, <bes wizard>, Plain
       name, names, <string>, <binary operator>, Plain
@@ -6292,6 +6355,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       set, sets, <bes site set>, <bes site>, Plain
       set, sets, <bes unmanagedasset set>, <bes unmanagedasset>, Plain
       set, sets, <bes user set>, <bes user>, Plain
+      set, sets, <bes webui app set>, <bes webui app>, Plain
       set, sets, <bes wizard set>, <bes wizard>, Plain
       set, sets, <integer set>, <integer>, Plain
       set, sets, <string set>, <string>, Plain
@@ -6345,6 +6409,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       size, sizes, <integer>, <bes site set>, Plain
       size, sizes, <integer>, <bes unmanagedasset set>, Plain
       size, sizes, <integer>, <bes user set>, Plain
+      size, sizes, <integer>, <bes webui app set>, Plain
       size, sizes, <integer>, <bes wizard set>, Plain
       size, sizes, <integer>, <integer set>, Plain
       size, sizes, <integer>, <string set>, Plain
@@ -6387,6 +6452,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       state, states, <string>, <bes action>, Plain
       statistic range, statistic ranges, <statistic range>, <bes property>, Plain
       status, statuses, <bes action status>, <bes action result>, Plain
+      status, statuses, <string>, <bes activation>, Plain
       stopper, stoppers, <bes user>, <bes action>, Plain
       string, strings, <string>, world , NamedGlobal
       strong, strongs, <html>, <html>, Named
@@ -6543,6 +6609,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       union, unions, <bes site set>, <bes site set>, Plain
       union, unions, <bes unmanagedasset set>, <bes unmanagedasset set>, Plain
       union, unions, <bes user set>, <bes user set>, Plain
+      union, unions, <bes webui app set>, <bes webui app set>, Plain
       union, unions, <bes wizard set>, <bes wizard set>, Plain
       union, unions, <integer set>, <integer set>, Plain
       union, unions, <string set>, <string set>, Plain
@@ -6559,6 +6626,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       unique value, unique values, <bes site with multiplicity>, <bes site>, Plain
       unique value, unique values, <bes unmanagedasset with multiplicity>, <bes unmanagedasset>, Plain
       unique value, unique values, <bes user with multiplicity>, <bes user>, Plain
+      unique value, unique values, <bes webui app with multiplicity>, <bes webui app>, Plain
       unique value, unique values, <bes wizard with multiplicity>, <bes wizard>, Plain
       unique value, unique values, <date with multiplicity>, <date>, Plain
       unique value, unique values, <day of month with multiplicity>, <day of month>, Plain
@@ -6636,6 +6704,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       version, versions, <version>, <module>, Plain
       version, versions, <version>, world , NamedGlobal
       visible flag, visible flags, <boolean>, <bes fixlet>, Plain
+      webui enabled, webuis enabled, <boolean>, world , PlainGlobal
       wednesday, wednesdays, <day of week>, world , PlainGlobal
       week, weeks, <time interval>, world , PlainGlobal
       windows display time, windows display times, <time>, world , NamedGlobal

@@ -1,4 +1,4 @@
-Operating System:SunOS 5_10 (Generic_139555-08)
+Operating System:SunOS 5_10 (Generic)
 Build Target:
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
