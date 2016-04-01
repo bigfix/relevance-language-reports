@@ -2,6 +2,8 @@ Operating System:Linux Debian 6_0 (2_6_32-5-686)
 Build Target:
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
+  SELinux Boolean
+  Xinetd Service
   action
   action lock state
   administrative rights
@@ -214,10 +216,41 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   version
   version with multiplicity (derives from  version)
   x509 certificate
+  xml dom document (derives from  xml dom node)
+  xml dom node
   year
   year with multiplicity (derives from  year)
 
 Creation techniques & properties of each type:
+
+  Type <SELinux Boolean>
+    Creation of <SELinux Boolean>: { key phrase, plural keyword, form}
+      selinux boolean <string>, selinux booleans, NamedGlobal
+      selinux boolean, selinux booleans, PlainGlobal
+    Properties of <SELinux Boolean> { key phrase, plural keyword, form, <result type>}:
+      current status of <SELinux Boolean>, current statuses, Plain, <boolean>
+      name of <SELinux Boolean>, names, Plain, <string>
+      pending status of <SELinux Boolean>, pending statuses, Plain, <boolean>
+
+  Type <Xinetd Service>
+    Creation of <Xinetd Service>: { key phrase, plural keyword, form}
+      xinetd service <string>, xinetd services, NamedGlobal
+      xinetd service, xinetd services, PlainGlobal
+    Properties of <Xinetd Service> { key phrase, plural keyword, form, <result type>}:
+      disabled of <Xinetd Service>, disableds, Plain, <boolean>
+      flag of <Xinetd Service>, flags, Plain, <string>
+      id of <Xinetd Service>, ids, Plain, <string>
+      name of <Xinetd Service>, names, Plain, <string>
+      no access of <Xinetd Service>, no accesses, Plain, <string>
+      only from of <Xinetd Service>, only froms, Plain, <string>
+      port of <Xinetd Service>, ports, Plain, <integer>
+      protocol of <Xinetd Service>, protocols, Plain, <string>
+      server arg of <Xinetd Service>, server args, Plain, <string>
+      server of <Xinetd Service>, servers, Plain, <string>
+      socket type of <Xinetd Service>, socket types, Plain, <string>
+      type of <Xinetd Service>, types, Plain, <string>
+      user of <Xinetd Service>, users, Plain, <string>
+      wait of <Xinetd Service>, waits, Plain, <boolean>
 
   Type <action>
     Creation of <action>: { key phrase, plural keyword, form}
@@ -569,12 +602,14 @@ Creation techniques & properties of each type:
       conjunction of <boolean>, conjunctions, Plain
       constrained of <action>, constraineds, Plain
       critical of <debianpkg dependency>, criticals, Plain
+      current status of <SELinux Boolean>, current statuses, Plain
       currently installed of <debian base package>, currently installeds, Plain
       currently installed of <debian versioned package>, currently installeds, Plain
       delete tcb of <tcp state>, delete tcbs, Plain
       dependency known of <property>, dependencies known, Plain
       desired encrypt report of <client_cryptography>, desired encrypt reports, Plain
       desired fips mode of <cryptography>, desired fips modes, Plain
+      disabled of <Xinetd Service>, disableds, Plain
       disjunction of <boolean>, disjunctions, Plain
       divided by zero of <floating point>, divided by zeroes, Plain
       embedded of <operating system>, embeddeds, Plain
@@ -585,6 +620,7 @@ Creation techniques & properties of each type:
       established of <tcp state>, establisheds, Plain
       evaluated of <site>, evaluateds, Plain
       evaluation of <license>, evaluations, Plain
+      exec shield of <process>, exec shields, Plain
       execute of <mode_mask>, executes, Plain
       f00f bug of <processor>, f00f bugs, Plain
       false, falses, PlainGlobal
@@ -603,6 +639,7 @@ Creation techniques & properties of each type:
       group leader of <action>, group leaders, Plain
       group read of <filesystem object>, group reads, Plain
       group write of <filesystem object>, group writes, Plain
+      has extended acl of <filesystem object>, has extended acls, Plain
       hiddenmenu of <grub config file>, hiddenmenus, Plain
       hlt bug of <processor>, hlt bugs, Plain
       host flag of <route>, host flags, Plain
@@ -634,6 +671,7 @@ Creation techniques & properties of each type:
       normal of <power level>, normals, Plain
       nounzip of <grub module>, nounzips, Plain
       null of <sqlite column type>, nulls, Plain
+      nx bit of <process>, nx bits, Plain
       offer accepted of <action>, offer accepteds, Plain
       offer of <action>, offers, Plain
       other execute of <filesystem object>, other executes, Plain
@@ -646,6 +684,7 @@ Creation techniques & properties of each type:
       pending restart <string>, pending restarts, NamedGlobal
       pending restart of <action>, pending restarts, Plain
       pending restart, pending restarts, PlainGlobal
+      pending status of <SELinux Boolean>, pending statuses, Plain
       perpetual maintenance of <bes product>, perpetual maintenances, Plain
       perpetual of <bes product>, perpetuals, Plain
       plugged of <power level>, pluggeds, Plain
@@ -687,6 +726,7 @@ Creation techniques & properties of each type:
       user read of <filesystem object>, user reads, Plain
       user write of <filesystem object>, user writes, Plain
       value accessible of <symlink>, values accessible, Plain
+      wait of <Xinetd Service>, waits, Plain
       waiting for download of <action>, waiting for downloads, Plain
       windows of <operating system>, windowses, Plain
       wp of <processor>, wps, Plain
@@ -1974,6 +2014,7 @@ Creation techniques & properties of each type:
       size of <file>, sizes, Plain, <integer>
       sqlite database of <file>, sqlite databases, Plain, <sqlite database>
       variable of <file>, variables, Plain, <string>
+      xml document of <file>, xml documents, Plain, <xml dom document>
 
   Type <file content>
     Creation of <file content>: { key phrase, plural keyword, form}
@@ -2023,10 +2064,16 @@ Creation techniques & properties of each type:
       filesystem of <symlink>, filesystems, Plain
       filesystem, filesystems, PlainGlobal
     Properties of <filesystem> { key phrase, plural keyword, form, <result type>}:
+      block size of <filesystem>, block sizes, Plain, <integer>
+      device name of <filesystem>, device names, Plain, <string>
       file count of <filesystem>, file counts, Plain, <integer>
+      filesystem type of <filesystem>, filesystem types, Plain, <string>
       free file count of <filesystem>, free file counts, Plain, <integer>
       free percent of <filesystem>, free percents, Plain, <integer>
       free space of <filesystem>, free spaces, Plain, <integer>
+      fstype of <filesystem>, fstypes, Plain, <string>
+      mount option of <filesystem>, mount options, Plain, <string>
+      mount point of <filesystem>, mount points, Plain, <string>
       name of <filesystem>, names, Plain, <string>
       size of <filesystem>, sizes, Plain, <integer>
       total space of <filesystem>, total spaces, Plain, <integer>
@@ -2034,6 +2081,7 @@ Creation techniques & properties of each type:
       used file count of <filesystem>, used file counts, Plain, <integer>
       used percent of <filesystem>, used percents, Plain, <integer>
       used space of <filesystem>, used spaces, Plain, <integer>
+      uuid of <filesystem>, uuids, Plain, <string>
       volume of <filesystem>, volumes, Plain, <string>
 
   Type <filesystem object>
@@ -2053,6 +2101,7 @@ Creation techniques & properties of each type:
       group name of <filesystem object>, group names, Plain, <string>
       group read of <filesystem object>, group reads, Plain, <boolean>
       group write of <filesystem object>, group writes, Plain, <boolean>
+      has extended acl of <filesystem object>, has extended acls, Plain, <boolean>
       link count of <filesystem object>, link counts, Plain, <integer>
       location of <filesystem object>, locations, Plain, <string>
       mode of <filesystem object>, modes, Plain, <mode>
@@ -2854,6 +2903,7 @@ Creation techniques & properties of each type:
       bios_characteristics of <dmi bios_information>, bios_characteristicss, Plain
       bios_rom_size of <dmi bios_information>, bios_rom_sizes, Plain
       bios_starting_address_segment of <dmi bios_information>, bios_starting_address_segments, Plain
+      block size of <filesystem>, block sizes, Plain
       board_type of <dmi base_board_information>, board_types, Plain
       bogomips of <processor>, bogomipses, Plain
       bootup_state of <dmi system_enclosure_or_chassis>, bootup_states, Plain
@@ -3043,6 +3093,7 @@ Creation techniques & properties of each type:
       location_and_status of <dmi electrical_current_probe>, location_and_statuss, Plain
       location_and_status of <dmi temperature_probe>, location_and_statuss, Plain
       location_and_status of <dmi voltage_probe>, location_and_statuss, Plain
+      loginuid of <process>, loginuids, Plain
       lower bound of <integer range>, lower bounds, Plain
       lower_threshold_critical of <dmi management_device_threshold_data>, lower_threshold_criticals, Plain
       lower_threshold_non_critical of <dmi management_device_threshold_data>, lower_threshold_non_criticals, Plain
@@ -3122,6 +3173,7 @@ Creation techniques & properties of each type:
       next_scheduled_power_on_minute of <dmi system_power_controls>, next_scheduled_power_on_minutes, Plain
       next_scheduled_power_on_month of <dmi system_power_controls>, next_scheduled_power_on_months, Plain
       next_scheduled_power_on_second of <dmi system_power_controls>, next_scheduled_power_on_seconds, Plain
+      node type of <xml dom node>, node types, Plain
       nominal_speed of <dmi cooling_device>, nominal_speeds, Plain
       nominal_value of <dmi electrical_current_probe>, nominal_values, Plain
       nominal_value of <dmi temperature_probe>, nominal_values, Plain
@@ -3150,11 +3202,14 @@ Creation techniques & properties of each type:
       persistent constraint of <action>, persistent constraints, Plain
       pid of <process>, pids, Plain
       port number of <selected server>, port numbers, Plain
+      port of <Xinetd Service>, ports, Plain
       port_type of <dmi port_connector_information>, port_types, Plain
+      posix capability of <process>, posix capabilities, Plain
       power_supply_characteristics of <dmi system_power_supply>, power_supply_characteristicss, Plain
       power_supply_state of <dmi system_enclosure_or_chassis>, power_supply_states, Plain
       power_unit_group of <dmi system_power_supply>, power_unit_groups, Plain
       ppid of <process>, ppids, Plain
+      priority of <process>, priorities, Plain
       priority of <selected server>, priorities, Plain
       process id of <logged on user>, process ids, Plain
       process id of <process>, process ids, Plain
@@ -3182,6 +3237,7 @@ Creation techniques & properties of each type:
       security_status of <dmi system_enclosure_or_chassis>, security_statuss, Plain
       segment_group_number of <dmi onboard_devices_extended_information>, segment_group_numbers, Plain
       segment_group_number of <dmi system_slots>, segment_group_numbers, Plain
+      session of <process>, sessions, Plain
       shared amount of <ram>, shared amounts, Plain
       significant digits <integer> of <integer>, significant digitss, Numbered
       site number of <license>, site numbers, Plain
@@ -3957,13 +4013,26 @@ Creation techniques & properties of each type:
       command line argument <integer> of <process>, command line arguments, Numbered, <string>
       command line argument of <process>, command line arguments, Plain, <string>
       effective user of <process>, effective users, Plain, <user>
+      elapsed time of <process>, elapsed times, Plain, <time interval>
       environment of <process>, environments, Plain, <environment>
+      exec shield of <process>, exec shields, Plain, <boolean>
+      exec time of <process>, exec times, Plain, <time interval>
       id of <process>, ids, Plain, <integer>
+      loginuid of <process>, loginuids, Plain, <integer>
       name of <process>, names, Plain, <string>
+      nx bit of <process>, nx bits, Plain, <boolean>
       pid of <process>, pids, Plain, <integer>
+      policy of <process>, policies, Plain, <string>
+      posix capability of <process>, posix capabilities, Plain, <integer>
       ppid of <process>, ppids, Plain, <integer>
+      priority of <process>, priorities, Plain, <integer>
       process id of <process>, process ids, Plain, <integer>
+      schedule class of <process>, schedule classes, Plain, <string>
       selinux context of <process>, selinux contexts, Plain, <string>
+      selinux domain of <process>, selinux domains, Plain, <string>
+      session of <process>, sessions, Plain, <integer>
+      start time of <process>, start times, Plain, <time>
+      tty of <process>, ttys, Plain, <string>
       user of <process>, users, Plain, <user>
 
   Type <processor>
@@ -4458,6 +4527,8 @@ Creation techniques & properties of each type:
       <unary operator> as string, , Cast
       <undefined> as string, , Cast
       <version> as string, , Cast
+      <xml dom node> as text, , Cast
+      <xml dom node> as xml, , Cast
       <year> as string, , Cast
       architecture of <debian versioned package>, architectures, Plain
       architecture of <debianpkg version>, architectures, Plain
@@ -4505,6 +4576,7 @@ Creation techniques & properties of each type:
       description of <dmi temperature_probe>, descriptions, Plain
       description of <dmi voltage_probe>, descriptions, Plain
       description_string of <dmi on_board_devices_information>, description_strings, Plain
+      device name of <filesystem>, device names, Plain
       device type of <device file>, device types, Plain
       device_description <integer> of <dmi on_board_devices_information>, device_descriptions, Numbered
       device_description of <dmi on_board_devices_information>, device_descriptions, Plain
@@ -4526,9 +4598,12 @@ Creation techniques & properties of each type:
       external_reference_designator of <dmi port_connector_information>, external_reference_designators, Plain
       family name of <processor>, family names, Plain
       family of <dmi system_information>, familys, Plain
+      filesystem type of <filesystem>, filesystem types, Plain
       fips mode failure message of <cryptography>, fips mode failure messages, Plain
       flag list of <processor>, flag lists, Plain
+      flag of <Xinetd Service>, flags, Plain
       friendly name of <network adapter>, friendly names, Plain
+      fstype of <filesystem>, fstypes, Plain
       fxf character set of <client>, fxf character sets, Plain
       gather schedule authority of <site>, gather schedule authoritys, Plain
       gather url of <license>, gather urls, Plain
@@ -4539,6 +4614,7 @@ Creation techniques & properties of each type:
       host name of <root server>, host names, Plain
       host name, host names, PlainGlobal
       hostname, hostnames, PlainGlobal
+      id of <Xinetd Service>, ids, Plain
       identity of <execution>, identites, Plain
       index of <sqlite table>, indices, Plain
       interface of <route>, interfaces, Plain
@@ -4568,6 +4644,10 @@ Creation techniques & properties of each type:
       md5 of <string>, md5s, Plain
       model name of <processor>, model names, Plain
       model_part_number of <dmi system_power_supply>, model_part_numbers, Plain
+      mount option of <filesystem>, mount options, Plain
+      mount point of <filesystem>, mount points, Plain
+      name of <SELinux Boolean>, names, Plain
+      name of <Xinetd Service>, names, Plain
       name of <application usage summary instance>, names, Plain
       name of <application usage summary>, names, Plain
       name of <bes product>, names, Plain
@@ -4600,8 +4680,12 @@ Creation techniques & properties of each type:
       name of <type>, names, Plain
       name of <unary operator>, names, Plain
       name of <user>, names, Plain
+      no access of <Xinetd Service>, no accesses, Plain
+      node name of <xml dom node>, node names, Plain
+      node value of <xml dom node>, node values, Plain
       oem_string <integer> of <dmi>, oem_strings, Numbered
       oem_string of <dmi>, oem_strings, Plain
+      only from of <Xinetd Service>, only froms, Plain
       organization of <license>, organizations, Plain
       padded string of <bit set>, padded strings, Plain
       parameter <string> of <action>, parameters, Named
@@ -4619,6 +4703,7 @@ Creation techniques & properties of each type:
       pkglibversion of <debianpackagecache>, pkglibversions, Plain
       platform id of <language>, platform ids, Plain
       plural name of <property>, plural names, Plain
+      policy of <process>, policies, Plain
       previous value of <runlevel>, previous values, Plain
       primary codeset of <language>, primary codesets, Plain
       primary country of <language>, primary countries, Plain
@@ -4627,6 +4712,7 @@ Creation techniques & properties of each type:
       product info string of <operating system>, product info strings, Plain
       product of <dmi base_board_information>, products, Plain
       product_name of <dmi system_information>, product_names, Plain
+      protocol of <Xinetd Service>, protocols, Plain
       regex escape of <string>, regex escapes, Plain
       registration cidr address of <client>, registration cidr addresses, Plain
       registration mac address of <client>, registration mac addresses, Plain
@@ -4638,11 +4724,13 @@ Creation techniques & properties of each type:
       revision_level of <dmi system_power_supply>, revision_levels, Plain
       sbds_device_chemistry of <dmi portable_battery>, sbds_device_chemistrys, Plain
       sbds_version_number of <dmi portable_battery>, sbds_version_numbers, Plain
+      schedule class of <process>, schedule classes, Plain
       schema of <sqlite table>, schemas, Plain
       seat count state of <license>, seat count states, Plain
       section of <debian versioned package>, sections, Plain
       section of <debianpkg version>, sections, Plain
       selinux context of <process>, selinux contexts, Plain
+      selinux domain of <process>, selinux domains, Plain
       serial_number of <dmi base_board_information>, serial_numbers, Plain
       serial_number of <dmi memory_device>, serial_numbers, Plain
       serial_number of <dmi portable_battery>, serial_numbers, Plain
@@ -4650,6 +4738,8 @@ Creation techniques & properties of each type:
       serial_number of <dmi system_enclosure_or_chassis>, serial_numbers, Plain
       serial_number of <dmi system_information>, serial_numbers, Plain
       serial_number of <dmi system_power_supply>, serial_numbers, Plain
+      server arg of <Xinetd Service>, server args, Plain
+      server of <Xinetd Service>, servers, Plain
       sha1 of <file>, sha1s, Plain
       sha1 of <string>, sha1s, Plain
       sha1 of <x509 certificate>, sha1s, Plain
@@ -4676,6 +4766,7 @@ Creation techniques & properties of each type:
       site url of <bes product>, site urls, Plain
       sku_number of <dmi system_information>, sku_numbers, Plain
       slot_designation of <dmi system_slots>, slot_designations, Plain
+      socket type of <Xinetd Service>, socket types, Plain
       socket_designation of <dmi cache_information>, socket_designations, Plain
       socket_designation of <dmi memory_module_information>, socket_designations, Plain
       socket_designation of <dmi processor_information>, socket_designations, Plain
@@ -4692,6 +4783,7 @@ Creation techniques & properties of each type:
       title of <grub bootable image>, titles, Plain
       track fixlet of <evaluation cycle>, track fixlets, Plain
       tty of <logged on user>, ttys, Plain
+      tty of <process>, ttys, Plain
       tty of <user>, ttys, Plain
       tuple string item <integer> of <string>, tuple string items, Numbered
       tuple string item of <string>, tuple string items, Plain
@@ -4701,6 +4793,7 @@ Creation techniques & properties of each type:
       two digit minute of <time of day>, two digit minutes, Plain
       two digit second of <time of day with time zone>, two digit seconds, Plain
       two digit second of <time of day>, two digit seconds, Plain
+      type of <Xinetd Service>, types, Plain
       type of <debianpkg dependency>, types, Plain
       type of <execution>, types, Plain
       type of <filesystem>, types, Plain
@@ -4713,8 +4806,10 @@ Creation techniques & properties of each type:
       url of <site>, urls, Plain
       user name of <filesystem object>, user names, Plain
       user name of <symlink>, user names, Plain
+      user of <Xinetd Service>, users, Plain
       usual name of <property>, usual names, Plain
       uuid of <dmi system_information>, uuids, Plain
+      uuid of <filesystem>, uuids, Plain
       value of <environment variable>, values, Plain
       value of <fixlet_header>, values, Plain
       value of <runlevel>, values, Plain
@@ -4985,6 +5080,7 @@ Creation techniques & properties of each type:
       unordered list of <string>, unordered lists, Plain, <html>
       var <string> of <string>, vars, Named, <html>
       var of <string>, vars, Plain, <html>
+      xml document of <string>, xml documents, Plain, <xml dom document>
 
   Type <string position> (derives from integer)
     Creation of <string position>: { key phrase, plural keyword, form}
@@ -5178,6 +5274,7 @@ Creation techniques & properties of each type:
       pending time of <action>, pending times, Plain
       start date of <license>, start dates, Plain
       start of <time range>, starts, Plain
+      start time of <process>, start times, Plain
       subscribe time of <site>, subscribe times, Plain
       time <string>, times, NamedGlobal
       time of <execution>, times, Plain
@@ -5231,6 +5328,8 @@ Creation techniques & properties of each type:
       archive duration of <evaluation cycle>, archive durations, Plain
       average duration of <evaluation cycle>, average durations, Plain
       day, days, PlainGlobal
+      elapsed time of <process>, elapsed times, Plain
+      exec time of <process>, exec times, Plain
       gather duration of <evaluation cycle>, gather durations, Plain
       gather schedule time interval of <site>, gather schedule time intervals, Plain
       greatest time interval, greatest time intervals, PlainGlobal
@@ -5585,6 +5684,47 @@ Creation techniques & properties of each type:
       invalid before of <x509 certificate>, invalid befores, Plain, <time>
       sha1 of <x509 certificate>, sha1s, Plain, <string>
 
+  Type <xml dom document> (derives from xml dom node)
+    Creation of <xml dom document>: { key phrase, plural keyword, form}
+      owner document of <xml dom node>, owner documents, Plain
+      xml document of <file>, xml documents, Plain
+      xml document of <string>, xml documents, Plain
+    Properties of <xml dom document> { key phrase, plural keyword, form, <result type>}:
+
+  Type <xml dom node>
+    Creation of <xml dom node>: { key phrase, plural keyword, form}
+      attribute <integer> of <xml dom node>, attributes, Numbered
+      attribute <string> of <xml dom node>, attributes, Named
+      attribute of <xml dom node>, attributes, Plain
+      child node <integer> of <xml dom node>, child nodes, Numbered
+      child node of <xml dom node>, child nodes, Plain
+      first child of <xml dom node>, first children, Plain
+      last child of <xml dom node>, last children, Plain
+      next sibling of <xml dom node>, next siblings, Plain
+      parent node of <xml dom node>, parent nodes, Plain
+      previous sibling of <xml dom node>, previous siblings, Plain
+      xpath <( string, string )> of <xml dom node>, xpaths, Index<( string, string )>
+      xpath <string> of <xml dom node>, xpaths, Named
+    Properties of <xml dom node> { key phrase, plural keyword, form, <result type>}:
+      <xml dom node> as text, , Cast, <string>
+      <xml dom node> as xml, , Cast, <string>
+      attribute <integer> of <xml dom node>, attributes, Numbered, <xml dom node>
+      attribute <string> of <xml dom node>, attributes, Named, <xml dom node>
+      attribute of <xml dom node>, attributes, Plain, <xml dom node>
+      child node <integer> of <xml dom node>, child nodes, Numbered, <xml dom node>
+      child node of <xml dom node>, child nodes, Plain, <xml dom node>
+      first child of <xml dom node>, first children, Plain, <xml dom node>
+      last child of <xml dom node>, last children, Plain, <xml dom node>
+      next sibling of <xml dom node>, next siblings, Plain, <xml dom node>
+      node name of <xml dom node>, node names, Plain, <string>
+      node type of <xml dom node>, node types, Plain, <integer>
+      node value of <xml dom node>, node values, Plain, <string>
+      owner document of <xml dom node>, owner documents, Plain, <xml dom document>
+      parent node of <xml dom node>, parent nodes, Plain, <xml dom node>
+      previous sibling of <xml dom node>, previous siblings, Plain, <xml dom node>
+      xpath <( string, string )> of <xml dom node>, xpaths, Index<( string, string )>, <xml dom node>
+      xpath <string> of <xml dom node>, xpaths, Named, <xml dom node>
+
   Type <year>
     Creation of <year>: { key phrase, plural keyword, form}
       <integer> as year, , Cast
@@ -5845,6 +5985,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   saturday, saturdays, PlainGlobal, <day of week>
   second, seconds, PlainGlobal, <time interval>
   selected server, selected servers, PlainGlobal, <selected server>
+  selinux boolean <string>, selinux booleans, NamedGlobal, <SELinux Boolean>
+  selinux boolean, selinux booleans, PlainGlobal, <SELinux Boolean>
   september <integer>, septembers, NumberedGlobal, <day of year>
   september, septembers, PlainGlobal, <month>
   service <string>, services, NamedGlobal, <service>
@@ -5887,6 +6029,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   wake on lan subnet cidr string, wake on lan subnet cidr strings, PlainGlobal, <string>
   wednesday, wednesdays, PlainGlobal, <day of week>
   week, weeks, PlainGlobal, <time interval>
+  xinetd service <string>, xinetd services, NamedGlobal, <Xinetd Service>
+  xinetd service, xinetd services, PlainGlobal, <Xinetd Service>
   year <integer>, years, NumberedGlobal, <year>
   year <string>, years, NamedGlobal, <year>
   year, years, PlainGlobal, <number of months>
@@ -6124,6 +6268,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as strverscmp version, , <strverscmp version>, <string>, Cast
       as symlink, , <symlink>, <filesystem object>, Cast
       as symlink, , <symlink>, <symlink>, Cast
+      as text, , <string>, <xml dom node>, Cast
       as three letters, , <string>, <day of week>, Cast
       as three letters, , <string>, <month>, Cast
       as time interval, , <time interval>, <string>, Cast
@@ -6140,6 +6285,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as uppercase, , <string>, <string>, Cast
       as version, , <version>, <string>, Cast
       as version, , <version>, <version>, Cast
+      as xml, , <string>, <xml dom node>, Cast
       as year, , <year>, <integer>, Cast
       as year, , <year>, <string>, Cast
       as zoned time_of_day, , <time of day with time zone>, <string>, Cast
@@ -6150,6 +6296,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       asset_tag_number, asset_tag_numbers, <string>, <dmi system_power_supply>, Plain
       associativity, associativitys, <integer>, <dmi cache_information>, Plain
       attr list, attr lists, <html attribute list>, <( string, string )>, Plain
+      attribute, attributes, <xml dom node>, <xml dom node>, Named
+      attribute, attributes, <xml dom node>, <xml dom node>, Numbered
+      attribute, attributes, <xml dom node>, <xml dom node>, Plain
       attributes, attributess, <integer>, <dmi memory_device>, Plain
       august, augusts, <date>, <integer>, Numbered
       august, augusts, <day of year>, world , NumberedGlobal
@@ -6209,6 +6358,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       bit, bits, <boolean>, <integer>, Numbered
       blob, blobs, <boolean>, <sqlite column type>, Plain
       block list, block lists, <grub block list>, <grub file location>, Plain
+      block size, block sizes, <integer>, <filesystem>, Plain
       blockquote, blockquotes, <html>, <html>, Named
       blockquote, blockquotes, <html>, <html>, Plain
       blockquote, blockquotes, <html>, <string>, Named
@@ -6272,6 +6422,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       character, characters, <substring>, <string>, Numbered
       character, characters, <substring>, <string>, Plain
       chassis_handle, chassis_handles, <integer>, <dmi base_board_information>, Plain
+      child node, child nodes, <xml dom node>, <xml dom node>, Numbered
+      child node, child nodes, <xml dom node>, <xml dom node>, Plain
       cidr address, cidr addresses, <string>, <network adapter interface>, Plain
       cidr address, cidr addresses, <string>, <network adapter>, Plain
       cidr address, cidr addresses, <string>, <network ip interface>, Plain
@@ -6357,6 +6509,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       current month_and_year, current months_and_years, <month and year>, world , PlainGlobal
       current relay, current relays, <current relay>, world , PlainGlobal
       current site, current sites, <site>, world , PlainGlobal
+      current status, current statuses, <boolean>, <SELinux Boolean>, Plain
       current time_of_day, current times_of_day, <time of day with time zone>, world , Index<time zone>Global
       current time_of_day, current times_of_day, <time of day with time zone>, world , PlainGlobal
       current user, current users, <logged on user>, world , PlainGlobal
@@ -6435,6 +6588,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       device file, device files, <device file>, world , Index<symlink>Global
       device file, device files, <device file>, world , Index<symlink>Global
       device file, device files, <device file>, world , NamedGlobal
+      device name, device names, <string>, <filesystem>, Plain
       device type, device types, <string>, <device file>, Plain
       device, devices, <grub device>, <grub file location>, Plain
       device_chemistry, device_chemistrys, <integer>, <dmi portable_battery>, Plain
@@ -6457,6 +6611,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       dfn, dfns, <html>, <string>, Named
       dfn, dfns, <html>, <string>, Plain
       direct object type, direct object types, <type>, <property>, Plain
+      disabled, disableds, <boolean>, <Xinetd Service>, Plain
       disjunction, disjunctions, <boolean>, <boolean>, Plain
       distance, distances, <integer range>, <selected server>, Plain
       div, divs, <html>, <html>, Named
@@ -6493,6 +6648,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       effective signature hash algorithm, effective signature hash algorithms, <string>, <license>, Plain
       effective time, effective times, <time>, <runlevel>, Plain
       effective user, effective users, <user>, <process>, Plain
+      elapsed time, elapsed times, <time interval>, <process>, Plain
       electrical_current_probe, electrical_current_probes, <dmi electrical_current_probe>, <dmi>, Numbered
       electrical_current_probe, electrical_current_probes, <dmi electrical_current_probe>, <dmi>, Plain
       element, elements, <integer>, <integer set>, Plain
@@ -6541,6 +6697,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       evaluated, evaluateds, <boolean>, <site>, Plain
       evaluation, evaluations, <boolean>, <license>, Plain
       evaluationcycle, evaluationcycles, <evaluation cycle>, <client>, Plain
+      exec shield, exec shields, <boolean>, <process>, Plain
+      exec time, exec times, <time interval>, <process>, Plain
       execute, executes, <boolean>, <mode_mask>, Plain
       execution, executions, <execution>, world , NamedGlobal
       exit code, exit codes, <integer>, <action>, Plain
@@ -6600,6 +6758,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       file, files, <file>, <folder>, Plain
       file, files, <file>, world , Index<symlink>Global
       file, files, <file>, world , NamedGlobal
+      filesystem type, filesystem types, <string>, <filesystem>, Plain
       filesystem, filesystems, <filesystem>, <device file>, Plain
       filesystem, filesystems, <filesystem>, <fifo file>, Plain
       filesystem, filesystems, <filesystem>, <file>, Plain
@@ -6619,6 +6778,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       fips mode, fips modes, <boolean>, <cryptography>, Plain
       fips mode, fips modes, <boolean>, <license>, Plain
       first active count, first active counts, <integer>, <action>, Plain
+      first child, first children, <xml dom node>, <xml dom node>, Plain
       first friday, first fridays, <date>, <month and year>, Plain
       first match, first matches, <regular expression match>, <string>, Index<regular expression>
       first monday, first mondays, <date>, <month and year>, Plain
@@ -6634,6 +6794,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       first, firsts, <substring>, <string>, Numbered
       fixlet, fixlets, <fixlet>, <site>, Plain
       flag list, flag lists, <string>, <processor>, Plain
+      flag, flags, <string>, <Xinetd Service>, Plain
       flags, flagss, <integer>, <dmi bios_language_information>, Plain
       float, floats, <boolean>, <sqlite column type>, Plain
       floating point, floating points, <floating point>, world , Index<floating point>Global
@@ -6657,6 +6818,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       free space, free spaces, <integer>, <filesystem>, Plain
       friday, fridays, <day of week>, world , PlainGlobal
       friendly name, friendly names, <string>, <network adapter>, Plain
+      fstype, fstypes, <string>, <filesystem>, Plain
       full gateway address, full gateway addresses, <ipv4or6 address>, <selected server>, Plain
       full, fulls, <boolean>, <power level>, Plain
       fxf character set, fxf character sets, <string>, <client>, Plain
@@ -6717,6 +6879,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       hardware_security, hardware_securitys, <dmi hardware_security>, <dmi>, Numbered
       hardware_security, hardware_securitys, <dmi hardware_security>, <dmi>, Plain
       hardware_security_settings, hardware_security_settingss, <integer>, <dmi hardware_security>, Plain
+      has extended acl, has extended acls, <boolean>, <filesystem object>, Plain
       head, heads, <html>, <html>, Named
       head, heads, <html>, <html>, Plain
       head, heads, <html>, <string>, Named
@@ -6764,6 +6927,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       id, ids, <integer>, <root server>, Plain
       id, ids, <integer>, <site group>, Plain
       id, ids, <integer>, <user>, Plain
+      id, ids, <string>, <Xinetd Service>, Plain
       identity, identites, <string>, <execution>, Plain
       in agent context, in agent contexts, <boolean>, world , PlainGlobal
       in proxy agent context, in proxy agent contexts, <boolean>, world , PlainGlobal
@@ -6871,6 +7035,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       last active line number, last active line numbers, <integer>, <action>, Plain
       last active time, last active times, <time>, <action>, Plain
       last change time, last change times, <time>, <action>, Plain
+      last child, last children, <xml dom node>, <xml dom node>, Plain
       last command time, last command times, <time>, <client>, Plain
       last gather time, last gather times, <time>, <site>, Plain
       last relay select time, last relay select times, <time>, world , PlainGlobal
@@ -6973,6 +7138,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       lock string, lock strings, <string>, <action lock state>, Plain
       locked, lockeds, <boolean>, <action lock state>, Plain
       logged on user, logged on users, <logged on user>, world , PlainGlobal
+      loginuid, loginuids, <integer>, <process>, Plain
       loopback, loopbacks, <boolean>, <network adapter interface>, Plain
       loopback, loopbacks, <boolean>, <network adapter>, Plain
       loopback, loopbacks, <boolean>, <network ip interface>, Plain
@@ -7145,6 +7311,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       month_and_year, months_and_years, <month and year>, <date>, Plain
       more significance, more significances, <floating point>, <floating point>, Numbered
       most significant one bit, most significant one bits, <integer>, <bit set>, Plain
+      mount option, mount options, <string>, <filesystem>, Plain
+      mount point, mount points, <string>, <filesystem>, Plain
       mtu, mtus, <integer>, <route>, Plain
       multicast support, multicast supports, <boolean>, <network adapter interface>, Plain
       multicast support, multicast supports, <boolean>, <network adapter>, Plain
@@ -7178,6 +7346,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       multiplicity, multiplicities, <integer>, <year with multiplicity>, Plain
       multivalued, multivalueds, <boolean>, <property>, Plain
       mvs count, mvs counts, <integer>, <bes product>, Plain
+      name, names, <string>, <SELinux Boolean>, Plain
+      name, names, <string>, <Xinetd Service>, Plain
       name, names, <string>, <application usage summary instance>, Plain
       name, names, <string>, <application usage summary>, Plain
       name, names, <string>, <bes product>, Plain
@@ -7213,12 +7383,17 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       nan, nans, <boolean>, <floating point>, Plain
       network, networks, <network>, world , PlainGlobal
       next line, next lines, <file line>, <file line>, Plain
+      next sibling, next siblings, <xml dom node>, <xml dom node>, Plain
       next_scheduled_power_on_day_of_month, next_scheduled_power_on_day_of_months, <integer>, <dmi system_power_controls>, Plain
       next_scheduled_power_on_hour, next_scheduled_power_on_hours, <integer>, <dmi system_power_controls>, Plain
       next_scheduled_power_on_minute, next_scheduled_power_on_minutes, <integer>, <dmi system_power_controls>, Plain
       next_scheduled_power_on_month, next_scheduled_power_on_months, <integer>, <dmi system_power_controls>, Plain
       next_scheduled_power_on_second, next_scheduled_power_on_seconds, <integer>, <dmi system_power_controls>, Plain
       nil, nothings, <undefined>, world , PlainGlobal
+      no access, no accesses, <string>, <Xinetd Service>, Plain
+      node name, node names, <string>, <xml dom node>, Plain
+      node type, node types, <integer>, <xml dom node>, Plain
+      node value, node values, <string>, <xml dom node>, Plain
       nominal_speed, nominal_speeds, <integer>, <dmi cooling_device>, Plain
       nominal_value, nominal_values, <integer>, <dmi electrical_current_probe>, Plain
       nominal_value, nominal_values, <integer>, <dmi temperature_probe>, Plain
@@ -7245,6 +7420,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       number_of_power_cords, number_of_power_cordss, <integer>, <dmi system_enclosure_or_chassis>, Plain
       numeric value, numeric values, <integer>, <string>, Plain
       nv_storage_device_address, nv_storage_device_addresss, <integer>, <dmi ipmi_device_information>, Plain
+      nx bit, nx bits, <boolean>, <process>, Plain
       october, octobers, <date>, <integer>, Numbered
       october, octobers, <day of year>, world , NumberedGlobal
       october, octobers, <month and year>, <integer>, Plain
@@ -7269,6 +7445,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       onboard_devices_extended_information, onboard_devices_extended_informations, <dmi onboard_devices_extended_information>, <dmi>, Numbered
       onboard_devices_extended_information, onboard_devices_extended_informations, <dmi onboard_devices_extended_information>, <dmi>, Plain
       one bit, one bits, <integer>, <bit set>, Plain
+      only from, only froms, <string>, <Xinetd Service>, Plain
       operand type, operand types, <type>, <cast>, Plain
       operand type, operand types, <type>, <unary operator>, Plain
       operating system, operating systems, <operating system>, world , PlainGlobal
@@ -7288,6 +7465,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       out_of_band_remote_access, out_of_band_remote_accesss, <dmi out_of_band_remote_access>, <dmi>, Numbered
       out_of_band_remote_access, out_of_band_remote_accesss, <dmi out_of_band_remote_access>, <dmi>, Plain
       overflow, overflows, <boolean>, <floating point>, Plain
+      owner document, owner documents, <xml dom document>, <xml dom node>, Plain
       p, ps, <html>, <html>, Named
       p, ps, <html>, <html>, Plain
       p, ps, <html>, <string>, Named
@@ -7299,6 +7477,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       parameter, parameters, <string>, world , NamedGlobal
       parent folder, parent folders, <folder>, <filesystem object>, Plain
       parent folder, parent folders, <folder>, <symlink>, Plain
+      parent node, parent nodes, <xml dom node>, <xml dom node>, Plain
       parent, parents, <type>, <type>, Plain
       parenthesized part, parenthesized parts, <substring>, <regular expression match>, Numbered
       parenthesized part, parenthesized parts, <substring>, <regular expression match>, Plain
@@ -7318,6 +7497,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       pending restart, pending restarts, <boolean>, <action>, Plain
       pending restart, pending restarts, <boolean>, world , NamedGlobal
       pending restart, pending restarts, <boolean>, world , PlainGlobal
+      pending status, pending statuses, <boolean>, <SELinux Boolean>, Plain
       pending time, pending times, <time>, <action>, Plain
       pending, pendings, <boolean>, <action>, Plain
       percent decode, percent decodes, <string>, world , NamedGlobal
@@ -7335,7 +7515,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       plural name, plural names, <string>, <property>, Plain
       point to point, point to points, <boolean>, <network adapter interface>, Plain
       point to point, point to points, <boolean>, <network ip interface>, Plain
+      policy, policies, <string>, <process>, Plain
       port number, port numbers, <integer>, <selected server>, Plain
+      port, ports, <integer>, <Xinetd Service>, Plain
       port_connector_information, port_connector_informations, <dmi port_connector_information>, <dmi>, Numbered
       port_connector_information, port_connector_informations, <dmi port_connector_information>, <dmi>, Plain
       port_type, port_types, <integer>, <dmi port_connector_information>, Plain
@@ -7343,6 +7525,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       portable_battery, portable_batterys, <dmi portable_battery>, <dmi>, Plain
       position, positions, <string position>, <string>, Numbered
       position, positions, <string position>, <string>, Plain
+      posix capability, posix capabilities, <integer>, <process>, Plain
       power level, power levels, <power level>, world , PlainGlobal
       power_supply_characteristics, power_supply_characteristicss, <integer>, <dmi system_power_supply>, Plain
       power_supply_state, power_supply_states, <integer>, <dmi system_enclosure_or_chassis>, Plain
@@ -7355,10 +7538,12 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       preceding text, preceding texts, <substring>, <string position>, Plain
       preceding text, preceding texts, <substring>, <substring>, Plain
       previous line, previous lines, <file line>, <file line>, Plain
+      previous sibling, previous siblings, <xml dom node>, <xml dom node>, Plain
       previous value, previous values, <string>, <runlevel>, Plain
       primary codeset, primary codesets, <string>, <language>, Plain
       primary country, primary countries, <string>, <language>, Plain
       primary language, primary languages, <primary language>, <language>, Plain
+      priority, priorities, <integer>, <process>, Plain
       priority, priorities, <integer>, <selected server>, Plain
       process id, process ids, <integer>, <logged on user>, Plain
       process id, process ids, <integer>, <process>, Plain
@@ -7392,6 +7577,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       property, properties, <property>, <type>, Plain
       property, properties, <property>, world , NamedGlobal
       property, properties, <property>, world , PlainGlobal
+      protocol, protocols, <string>, <Xinetd Service>, Plain
       proxy agent service, proxy agent services, <service>, world , PlainGlobal
       q, qs, <html>, <html>, Named
       q, qs, <html>, <html>, Plain
@@ -7477,6 +7663,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sbds_manufacture_date, sbds_manufacture_dates, <integer>, <dmi portable_battery>, Plain
       sbds_serial_number, sbds_serial_numbers, <integer>, <dmi portable_battery>, Plain
       sbds_version_number, sbds_version_numbers, <string>, <dmi portable_battery>, Plain
+      schedule class, schedule classes, <string>, <process>, Plain
       schema, schemas, <string>, <sqlite table>, Plain
       seat count state, seat count states, <string>, <license>, Plain
       seat, seats, <integer>, <license>, Plain
@@ -7490,7 +7677,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       segment_group_number, segment_group_numbers, <integer>, <dmi onboard_devices_extended_information>, Plain
       segment_group_number, segment_group_numbers, <integer>, <dmi system_slots>, Plain
       selected server, selected servers, <selected server>, world , PlainGlobal
+      selinux boolean, selinux booleans, <SELinux Boolean>, world , NamedGlobal
+      selinux boolean, selinux booleans, <SELinux Boolean>, world , PlainGlobal
       selinux context, selinux contexts, <string>, <process>, Plain
+      selinux domain, selinux domains, <string>, <process>, Plain
       sep bug, sep bugs, <boolean>, <processor>, Plain
       september, septembers, <date>, <integer>, Numbered
       september, septembers, <day of year>, world , NumberedGlobal
@@ -7503,7 +7693,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       serial_number, serial_numbers, <string>, <dmi system_enclosure_or_chassis>, Plain
       serial_number, serial_numbers, <string>, <dmi system_information>, Plain
       serial_number, serial_numbers, <string>, <dmi system_power_supply>, Plain
+      server arg, server args, <string>, <Xinetd Service>, Plain
+      server, servers, <string>, <Xinetd Service>, Plain
       service, services, <service>, world , NamedGlobal
+      session, sessions, <integer>, <process>, Plain
       set, sets, <integer set>, <integer>, Plain
       set, sets, <string set>, <string>, Plain
       setgid, setgids, <boolean>, <filesystem object>, Plain
@@ -7584,6 +7777,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       socket file, socket files, <socket file>, world , Index<symlink>Global
       socket file, socket files, <socket file>, world , Index<symlink>Global
       socket file, socket files, <socket file>, world , NamedGlobal
+      socket type, socket types, <string>, <Xinetd Service>, Plain
       socket, sockets, <socket>, <network>, Plain
       socket_designation, socket_designations, <string>, <dmi cache_information>, Plain
       socket_designation, socket_designations, <string>, <dmi memory_module_information>, Plain
@@ -7601,6 +7795,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       standard deviation, standard deviations, <floating point>, <floating point>, Plain
       standard deviation, standard deviations, <floating point>, <integer>, Plain
       start date, start dates, <time>, <license>, Plain
+      start time, start times, <time>, <process>, Plain
       start, starts, <string position>, <substring>, Plain
       start, starts, <time>, <time range>, Plain
       starting_address, starting_addresss, <integer>, <dmi memory_array_mapped_address>, Plain
@@ -7765,6 +7960,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       tt, tts, <html>, <string>, Named
       tt, tts, <html>, <string>, Plain
       tty, ttys, <string>, <logged on user>, Plain
+      tty, ttys, <string>, <process>, Plain
       tty, ttys, <string>, <user>, Plain
       tuesday, tuesdays, <day of week>, world , PlainGlobal
       tuple string item, tuple string items, <string>, <string>, Numbered
@@ -7780,6 +7976,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       type, types, <integer>, <dmi system_enclosure_or_chassis>, Plain
       type, types, <integer>, <smbios structure>, Plain
       type, types, <sqlite column type>, <sqlite column>, Plain
+      type, types, <string>, <Xinetd Service>, Plain
       type, types, <string>, <debianpkg dependency>, Plain
       type, types, <string>, <execution>, Plain
       type, types, <string>, <filesystem>, Plain
@@ -7866,12 +8063,14 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       user name, user names, <string>, <symlink>, Plain
       user read, user reads, <boolean>, <filesystem object>, Plain
       user write, user writes, <boolean>, <filesystem object>, Plain
+      user, users, <string>, <Xinetd Service>, Plain
       user, users, <user>, <logged on user>, Plain
       user, users, <user>, <process>, Plain
       user, users, <user>, world , NamedGlobal
       user, users, <user>, world , PlainGlobal
       usual name, usual names, <string>, <property>, Plain
       uuid, uuids, <string>, <dmi system_information>, Plain
+      uuid, uuids, <string>, <filesystem>, Plain
       value accessible, values accessible, <boolean>, <symlink>, Plain
       value, values, <json value>, <json key>, Plain
       value, values, <smbios value>, <smbios structure>, Named
@@ -7915,6 +8114,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       voltage_probe, voltage_probes, <dmi voltage_probe>, <dmi>, Numbered
       voltage_probe, voltage_probes, <dmi voltage_probe>, <dmi>, Plain
       volume, volumes, <string>, <filesystem>, Plain
+      wait, waits, <boolean>, <Xinetd Service>, Plain
       waiting for download, waiting for downloads, <boolean>, <action>, Plain
       wake on lan subnet cidr string, wake on lan subnet cidr strings, <string>, world , PlainGlobal
       wake_up_type, wake_up_types, <integer>, <dmi system_information>, Plain
@@ -7927,6 +8127,12 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       workstation count, workstation counts, <integer>, <bes product>, Plain
       wp, wps, <boolean>, <processor>, Plain
       write, writes, <boolean>, <mode_mask>, Plain
+      xinetd service, xinetd services, <Xinetd Service>, world , NamedGlobal
+      xinetd service, xinetd services, <Xinetd Service>, world , PlainGlobal
+      xml document, xml documents, <xml dom document>, <file>, Plain
+      xml document, xml documents, <xml dom document>, <string>, Plain
+      xpath, xpaths, <xml dom node>, <xml dom node>, Index<( string, string )>
+      xpath, xpaths, <xml dom node>, <xml dom node>, Named
       year, years, <number of months>, world , PlainGlobal
       year, years, <year>, <date>, Plain
       year, years, <year>, <month and year>, Plain

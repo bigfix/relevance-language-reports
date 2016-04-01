@@ -553,6 +553,7 @@ Creation techniques & properties of each type:
       group leader of <action>, group leaders, Plain
       group read of <filesystem object>, group reads, Plain
       group write of <filesystem object>, group writes, Plain
+      has extended acl of <filesystem object>, has extended acls, Plain
       host flag of <ipv4 route>, host flags, Plain
       in agent context, in agent contexts, PlainGlobal
       in proxy agent context, in proxy agent contexts, PlainGlobal
@@ -1130,10 +1131,16 @@ Creation techniques & properties of each type:
       filesystem of <symlink>, filesystems, Plain
       filesystem, filesystems, PlainGlobal
     Properties of <filesystem> { key phrase, plural keyword, form, <result type>}:
+      block size of <filesystem>, block sizes, Plain, <integer>
+      device name of <filesystem>, device names, Plain, <string>
       file count of <filesystem>, file counts, Plain, <integer>
+      filesystem type of <filesystem>, filesystem types, Plain, <string>
       free file count of <filesystem>, free file counts, Plain, <integer>
       free percent of <filesystem>, free percents, Plain, <integer>
       free space of <filesystem>, free spaces, Plain, <integer>
+      fstype of <filesystem>, fstypes, Plain, <string>
+      mount option of <filesystem>, mount options, Plain, <string>
+      mount point of <filesystem>, mount points, Plain, <string>
       name of <filesystem>, names, Plain, <string>
       size of <filesystem>, sizes, Plain, <integer>
       total space of <filesystem>, total spaces, Plain, <integer>
@@ -1141,6 +1148,7 @@ Creation techniques & properties of each type:
       used file count of <filesystem>, used file counts, Plain, <integer>
       used percent of <filesystem>, used percents, Plain, <integer>
       used space of <filesystem>, used spaces, Plain, <integer>
+      uuid of <filesystem>, uuids, Plain, <string>
       volume of <filesystem>, volumes, Plain, <string>
 
   Type <filesystem object>
@@ -1160,6 +1168,7 @@ Creation techniques & properties of each type:
       group name of <filesystem object>, group names, Plain, <string>
       group read of <filesystem object>, group reads, Plain, <boolean>
       group write of <filesystem object>, group writes, Plain, <boolean>
+      has extended acl of <filesystem object>, has extended acls, Plain, <boolean>
       link count of <filesystem object>, link counts, Plain, <integer>
       location of <filesystem object>, locations, Plain, <string>
       mode of <filesystem object>, modes, Plain, <mode>
@@ -1838,6 +1847,7 @@ Creation techniques & properties of each type:
       active count of <action>, active counts, Plain
       active line number of <action>, active line numbers, Plain
       average of <evaluation cycle>, averages, Plain
+      block size of <filesystem>, block sizes, Plain
       build number high of <operating system>, build number highs, Plain
       build number low of <operating system>, build number lows, Plain
       build number of <operating system>, build numbers, Plain
@@ -3600,6 +3610,7 @@ Creation techniques & properties of each type:
       deployment character set of <client>, deployment character sets, Plain
       description of <ips package>, descriptions, Plain
       description of <ips repo>, descriptions, Plain
+      device name of <filesystem>, device names, Plain
       device type of <device file>, device types, Plain
       dns name, dns names, PlainGlobal
       domain name, domain names, PlainGlobal
@@ -3616,6 +3627,7 @@ Creation techniques & properties of each type:
       expiration state of <license>, expiration states, Plain
       family name of <processor>, family names, Plain
       family of <processor>, families, Plain
+      filesystem type of <filesystem>, filesystem types, Plain
       fips mode failure message of <cryptography>, fips mode failure messages, Plain
       fmri of <ips fmri>, fmris, Plain
       fmri of <ips package>, fmris, Plain
@@ -3623,6 +3635,7 @@ Creation techniques & properties of each type:
       fmri of <ips version dependency>, fmris, Plain
       fputype of <processor>, fputypes, Plain
       friendly name of <network adapter>, friendly names, Plain
+      fstype of <filesystem>, fstypes, Plain
       full name of <ips fmri>, full names, Plain
       full name of <ips package>, full names, Plain
       full name of <ips partial matching fmri>, full names, Plain
@@ -3659,6 +3672,8 @@ Creation techniques & properties of each type:
       md5 of <string>, md5s, Plain
       mirrors of <ips authority info>, mirrorses, Plain
       model of <processor>, models, Plain
+      mount option of <filesystem>, mount options, Plain
+      mount point of <filesystem>, mount points, Plain
       name of <application usage summary instance>, names, Plain
       name of <application usage summary>, names, Plain
       name of <bes product>, names, Plain
@@ -3821,6 +3836,7 @@ Creation techniques & properties of each type:
       user name of <filesystem object>, user names, Plain
       user name of <symlink>, user names, Plain
       usual name of <property>, usual names, Plain
+      uuid of <filesystem>, uuids, Plain
       uuid of <ips authority info>, uuids, Plain
       value of <environment variable>, values, Plain
       value of <fixlet_header>, values, Plain
@@ -5338,6 +5354,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       bit, bits, <boolean>, <integer>, Numbered
       blackhole flag, blackhole flags, <boolean>, <ipv4 route>, Plain
       blob, blobs, <boolean>, <sqlite column type>, Plain
+      block size, block sizes, <integer>, <filesystem>, Plain
       blockquote, blockquotes, <html>, <html>, Named
       blockquote, blockquotes, <html>, <html>, Plain
       blockquote, blockquotes, <html>, <string>, Named
@@ -5524,6 +5541,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       device file, device files, <device file>, world , Index<symlink>Global
       device file, device files, <device file>, world , Index<symlink>Global
       device file, device files, <device file>, world , NamedGlobal
+      device name, device names, <string>, <filesystem>, Plain
       device type, device types, <string>, <device file>, Plain
       dfn, dfns, <html>, <html>, Named
       dfn, dfns, <html>, <html>, Plain
@@ -5647,6 +5665,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       file, files, <file>, <folder>, Plain
       file, files, <file>, world , Index<symlink>Global
       file, files, <file>, world , NamedGlobal
+      filesystem type, filesystem types, <string>, <filesystem>, Plain
       filesystem, filesystems, <filesystem>, <device file>, Plain
       filesystem, filesystems, <filesystem>, <fifo file>, Plain
       filesystem, filesystems, <filesystem>, <file>, Plain
@@ -5706,6 +5725,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       friday, fridays, <day of week>, world , PlainGlobal
       friendly name, friendly names, <string>, <network adapter>, Plain
       frozen, frozens, <boolean>, <ips package>, Plain
+      fstype, fstypes, <string>, <filesystem>, Plain
       full gateway address, full gateway addresses, <ipv4or6 address>, <selected server>, Plain
       full name, full names, <string>, <ips fmri>, Plain
       full name, full names, <string>, <ips package>, Plain
@@ -5764,6 +5784,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       h6, h6s, <html>, <html>, Plain
       h6, h6s, <html>, <string>, Named
       h6, h6s, <html>, <string>, Plain
+      has extended acl, has extended acls, <boolean>, <filesystem object>, Plain
       head, heads, <html>, <html>, Named
       head, heads, <html>, <html>, Plain
       head, heads, <html>, <string>, Named
@@ -6065,6 +6086,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       month_and_year, months_and_years, <month and year>, <date>, Plain
       more significance, more significances, <floating point>, <floating point>, Numbered
       most significant one bit, most significant one bits, <integer>, <bit set>, Plain
+      mount option, mount options, <string>, <filesystem>, Plain
+      mount point, mount points, <string>, <filesystem>, Plain
       multicast support, multicast supports, <boolean>, <network adapter interface>, Plain
       multicast support, multicast supports, <boolean>, <network adapter>, Plain
       multicast support, multicast supports, <boolean>, <network ip interface>, Plain
@@ -6713,6 +6736,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       user, users, <user>, world , NamedGlobal
       user, users, <user>, world , PlainGlobal
       usual name, usual names, <string>, <property>, Plain
+      uuid, uuids, <string>, <filesystem>, Plain
       uuid, uuids, <string>, <ips authority info>, Plain
       uuid, uuids, <uuid>, <zone>, Plain
       uuid, uuids, <uuid>, world , NamedGlobal

@@ -1138,6 +1138,7 @@ Creation techniques & properties of each type:
       null dacl of <security descriptor>, null dacls, Plain
       null of <sqlite column type>, nulls, Plain
       null sacl of <security descriptor>, null sacls, Plain
+      nx bit of <process>, nx bits, Plain
       object inherit of <access control entry>, object inherits, Plain
       offer accepted of <action>, offer accepteds, Plain
       offer of <action>, offers, Plain
@@ -4979,6 +4980,7 @@ Creation techniques & properties of each type:
       io write size of <process>, io write sizes, Plain, <integer>
       kernel time of <process>, kernel times, Plain, <time interval>
       name of <process>, names, Plain, <string>
+      nx bit of <process>, nx bits, Plain, <boolean>
       page fault count of <process>, page fault counts, Plain, <integer>
       page file usage of <process>, page file usages, Plain, <integer>
       peak page file usage of <process>, peak page file usages, Plain, <integer>
@@ -9690,6 +9692,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       numeric type, numeric types, <integer>, <drive>, Plain
       numeric value, numeric values, <integer>, <string>, Plain
       nv_storage_device_address, nv_storage_device_addresss, <integer>, <dmi ipmi_device_information>, Plain
+      nx bit, nx bits, <boolean>, <process>, Plain
       object access category, object access categories, <audit policy category>, <audit policy>, Plain
       object inherit, object inherits, <boolean>, <access control entry>, Plain
       october, octobers, <date>, <integer>, Numbered
