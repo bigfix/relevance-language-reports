@@ -1,5 +1,5 @@
 Operating System:Win2008R2 6_1_7601
-Client Version:9_5_0_311
+Client Version:9_5_2_56
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   access control entry
@@ -5813,6 +5813,7 @@ Creation techniques & properties of each type:
       description of <task registration info>, descriptions, Plain
       description_string of <dmi on_board_devices_information>, description_strings, Plain
       device name of <connection>, device names, Plain
+      device type, device types, PlainGlobal
       device_description <integer> of <dmi on_board_devices_information>, device_descriptions, Numbered
       device_description of <dmi on_board_devices_information>, device_descriptions, Plain
       device_locator of <dmi memory_device>, device_locators, Plain
@@ -7557,6 +7558,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   december <integer>, decembers, NumberedGlobal, <day of year>
   december, decembers, PlainGlobal, <month>
   default web browser, default web browsers, PlainGlobal, <application>
+  device type, device types, PlainGlobal, <string>
   dialup group, dialup groups, PlainGlobal, <security account>
   distinguished name <string>, distinguished names, NamedGlobal, <distinguished name>
   dmi, dmis, PlainGlobal, <dmi>
@@ -8595,6 +8597,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       desired fips mode, desired fips modes, <boolean>, <cryptography>, Plain
       detailed tracking category, detailed tracking categories, <audit policy category>, <audit policy>, Plain
       device name, device names, <string>, <connection>, Plain
+      device type, device types, <string>, world , PlainGlobal
       device_chemistry, device_chemistrys, <integer>, <dmi portable_battery>, Plain
       device_description, device_descriptions, <string>, <dmi on_board_devices_information>, Numbered
       device_description, device_descriptions, <string>, <dmi on_board_devices_information>, Plain

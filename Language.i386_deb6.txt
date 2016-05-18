@@ -1,7 +1,7 @@
 Operating System:Linux Debian 6_0 (2_6_32-5-686)
-Client Version:9_5_0_311
+Client Version:9_5_2_56
 Build Target:
-ModuleName:HostApplication, Version:9_5_0_311, ClientCompatible:Yes
+ModuleName:HostApplication, Version:9_5_2_56, ClientCompatible:Yes
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   SELinux Boolean

@@ -1,7 +1,7 @@
 Operating System:Linux Red Hat Enterprise Server 5_1 (2_6_18-53_el5)
-Client Version:9_5_0_311
+Client Version:9_5_2_56
 Build Target:
-ModuleName:HostApplication, Version:9_5_0_311, ClientCompatible:Yes
+ModuleName:HostApplication, Version:9_5_2_56, ClientCompatible:Yes
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   SELinux Boolean

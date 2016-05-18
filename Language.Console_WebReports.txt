@@ -1,6 +1,6 @@
-Build Target:9_5_0_311
-ModuleName:HostApplication, Version:9_5_0_311, ClientCompatible:Yes
-ModuleName:9_5_0_311, Version:9_5_0_311, ClientCompatible:9_5_0_311
+Build Target:9_5_2_56
+ModuleName:HostApplication, Version:9_5_2_56, ClientCompatible:Yes
+ModuleName:9_5_2_56, Version:9_5_2_56, ClientCompatible:9_5_2_56
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   bes action
@@ -1095,6 +1095,7 @@ Creation techniques & properties of each type:
     Properties of <bes role> { key phrase, plural keyword, form, <result type>}:
       <bes role set> contains <bes role>, , BinaryOperator, <boolean>
       <bes role> = <bes role>, , BinaryOperator, <boolean>
+      can submit queries flag of <bes role>, can submit queries flags, Plain, <boolean>
       master flag of <bes role>, master flags, Plain, <boolean>
       name of <bes role>, names, Plain, <string>
       set of <bes role>, sets, Plain, <bes role set>
@@ -1362,6 +1363,7 @@ Creation techniques & properties of each type:
       can create actions flag of <bes user>, can create actions flags, Plain, <boolean>
       can lock flag of <bes user>, can lock flags, Plain, <boolean>
       can send multiple refresh flag of <bes user>, can send multiple refresh flags, Plain, <boolean>
+      can submit queries flag of <bes user>, can submit queries flags, Plain, <boolean>
       creation time of <bes user>, creation times, Plain, <time>
       custom content flag of <bes user>, custom content flags, Plain, <boolean>
       distinguished name of <bes user>, distinguished names, Plain, <string>
@@ -1796,6 +1798,8 @@ Creation techniques & properties of each type:
       can create actions flag of <bes user>, can create actions flags, Plain
       can lock flag of <bes user>, can lock flags, Plain
       can send multiple refresh flag of <bes user>, can send multiple refresh flags, Plain
+      can submit queries flag of <bes role>, can submit queries flags, Plain
+      can submit queries flag of <bes user>, can submit queries flags, Plain
       client evaluated flag of <bes computer group>, client evaluated flags, Plain
       client installed flag of <bes unmanagedasset>, client installed flags, Plain
       computer flag of <bes filter>, computer flags, Plain
@@ -5386,6 +5390,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       can create actions flag, can create actions flags, <boolean>, <bes user>, Plain
       can lock flag, can lock flags, <boolean>, <bes user>, Plain
       can send multiple refresh flag, can send multiple refresh flags, <boolean>, <bes user>, Plain
+      can submit queries flag, can submit queries flags, <boolean>, <bes role>, Plain
+      can submit queries flag, can submit queries flags, <boolean>, <bes user>, Plain
       caption, captions, <html>, <html>, Named
       caption, captions, <html>, <html>, Plain
       caption, captions, <html>, <string>, Named
