@@ -1,5 +1,7 @@
 Operating System:Linux Debian 6_0 (2_6_32-5-amd64)
+Client Version:9_5_0_311
 Build Target:
+ModuleName:HostApplication, Version:9_5_0_311, ClientCompatible:Yes
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   SELinux Boolean
@@ -810,6 +812,7 @@ Creation techniques & properties of each type:
       desired fips mode of <cryptography>, desired fips modes, Plain, <boolean>
       fips mode failure message of <cryptography>, fips mode failure messages, Plain, <string>
       fips mode of <cryptography>, fips modes, Plain, <boolean>
+      version of <cryptography>, versions, Plain, <string>
 
   Type <current relay>
     Creation of <current relay>: { key phrase, plural keyword, form}
@@ -832,6 +835,8 @@ Creation techniques & properties of each type:
       <number of months> + <date>, , BinaryOperator
       <string> as date, , Cast
       <time interval> + <date>, , BinaryOperator
+      <time> as local date, , Cast
+      <time> as universal date, , Cast
       <year> & <day of year>, , BinaryOperator
       april <integer> of <integer>, aprils, Numbered
       august <integer> of <integer>, augusts, Numbered
@@ -2735,6 +2740,7 @@ Creation techniques & properties of each type:
     Properties of <html> { key phrase, plural keyword, form, <result type>}:
       <html> & <html>, , BinaryOperator, <html>
       <html> & <string>, , BinaryOperator, <html>
+      <html> as decoded string, , Cast, <string>
       <html> as html, , Cast, <html>
       <html> as string, , Cast, <string>
       <string> & <html>, , BinaryOperator, <html>
@@ -3307,6 +3313,7 @@ Creation techniques & properties of each type:
       used file count of <filesystem>, used file counts, Plain
       used percent of <filesystem>, used percents, Plain
       used space of <filesystem>, used spaces, Plain
+      user id of <user>, user ids, Plain
       user mask of <filesystem object>, user masks, Plain
       vendor_syndrome of <dmi b32_bit_memory_error_information>, vendor_syndromes, Plain
       vendor_syndrome of <dmi b64_bit_memory_error_information>, vendor_syndromes, Plain
@@ -4300,6 +4307,7 @@ Creation techniques & properties of each type:
       structure of <smbios value>, structures, Plain
       structure of <smbios>, structures, Plain
     Properties of <smbios structure> { key phrase, plural keyword, form, <result type>}:
+      hexadecimal <string> of <smbios structure>, hexadecimals, Named, <string>
       integer <string> of <smbios structure>, integers, Named, <integer>
       integer value <string> of <smbios structure>, integer values, Named, <smbios value>
       length of <smbios structure>, lengths, Plain, <integer>
@@ -4318,6 +4326,7 @@ Creation techniques & properties of each type:
       value of <smbios structure>, values, Plain
     Properties of <smbios value> { key phrase, plural keyword, form, <result type>}:
       <smbios value> as string, , Cast, <string>
+      hexadecimal of <smbios value>, hexadecimals, Plain, <string>
       name of <smbios value>, names, Plain, <string>
       offset of <smbios value>, offsets, Plain, <integer>
       structure of <smbios value>, structures, Plain, <smbios structure>
@@ -4453,6 +4462,7 @@ Creation techniques & properties of each type:
       <grub image choice> as string, , Cast
       <grub module> as string, , Cast
       <hertz> as string, , Cast
+      <html> as decoded string, , Cast
       <html> as string, , Cast
       <integer> as hexadecimal, , Cast
       <integer> as string, , Cast
@@ -4513,6 +4523,7 @@ Creation techniques & properties of each type:
       <string> as string, , Cast
       <string> as trimmed string, , Cast
       <string> as uppercase, , Cast
+      <substring> as string, , Cast
       <symlink> as string, , Cast
       <tcp state> as string, , Cast
       <time interval> as string, , Cast
@@ -4605,11 +4616,15 @@ Creation techniques & properties of each type:
       friendly name of <network adapter>, friendly names, Plain
       fstype of <filesystem>, fstypes, Plain
       fxf character set of <client>, fxf character sets, Plain
+      fxf encoding concatenation <string> of <string>, fxf encoding concatenations, Named
+      fxf encoding concatenation of <string>, fxf encoding concatenations, Plain
       gather schedule authority of <site>, gather schedule authoritys, Plain
       gather url of <license>, gather urls, Plain
       group name of <filesystem object>, group names, Plain
       group name of <symlink>, group names, Plain
       group_name of <dmi group_associations>, group_names, Plain
+      hexadecimal <string> of <smbios structure>, hexadecimals, Named
+      hexadecimal of <smbios value>, hexadecimals, Plain
       hexadecimal string <string>, hexadecimal strings, NamedGlobal
       host name of <root server>, host names, Plain
       host name, host names, PlainGlobal
@@ -4622,6 +4637,8 @@ Creation techniques & properties of each type:
       key <string> of <file section>, keys, Named
       key <string> of <file>, keys, Named
       local character set of <client>, local character sets, Plain
+      local encoding concatenation <string> of <string>, local encoding concatenations, Named
+      local encoding concatenation of <string>, local encoding concatenations, Plain
       location of <dmi portable_battery>, locations, Plain
       location of <dmi system_power_supply>, locations, Plain
       location of <filesystem object>, locations, Plain
@@ -4820,6 +4837,7 @@ Creation techniques & properties of each type:
       vendor of <dmi bios_information>, vendors, Plain
       version info of <execution>, version infos, Plain
       version of <bios>, versions, Plain
+      version of <cryptography>, versions, Plain
       version of <debianpkg reverse dependencies>, versions, Plain
       version of <dmi base_board_information>, versions, Plain
       version of <dmi system_enclosure_or_chassis>, versions, Plain
@@ -4976,6 +4994,8 @@ Creation techniques & properties of each type:
       first <integer> of <string>, firsts, Numbered, <substring>
       first <string> of <string>, firsts, Named, <substring>
       first match <regular expression> of <string>, first matches, Index<regular expression>, <regular expression match>
+      fxf encoding concatenation <string> of <string>, fxf encoding concatenations, Named, <string>
+      fxf encoding concatenation of <string>, fxf encoding concatenations, Plain, <string>
       h1 <string> of <string>, h1s, Named, <html>
       h1 of <string>, h1s, Plain, <html>
       h2 <string> of <string>, h2s, Named, <html>
@@ -5007,6 +5027,8 @@ Creation techniques & properties of each type:
       li of <string>, lis, Plain, <html>
       link <string> of <string>, links, Named, <html>
       link of <string>, links, Plain, <html>
+      local encoding concatenation <string> of <string>, local encoding concatenations, Named, <string>
+      local encoding concatenation of <string>, local encoding concatenations, Plain, <string>
       match <regular expression> of <string>, matches, Index<regular expression>, <regular expression match>
       md5 of <string>, md5s, Plain, <string>
       meta <string> of <string>, metas, Named, <html>
@@ -5135,6 +5157,7 @@ Creation techniques & properties of each type:
 
   Type <substring> (derives from string)
     Creation of <substring>: { key phrase, plural keyword, form}
+      <substring> as substring, , Cast
       character <integer> of <string>, characters, Numbered
       character of <string>, characters, Plain
       first <integer> of <string>, firsts, Numbered
@@ -5154,6 +5177,8 @@ Creation techniques & properties of each type:
       substring between <string> of <string>, substrings between, Named
       substring separated by <string> of <string>, substrings separated by, Named
     Properties of <substring> { key phrase, plural keyword, form, <result type>}:
+      <substring> as string, , Cast, <string>
+      <substring> as substring, , Cast, <substring>
       end of <substring>, ends, Plain, <string position>
       following text of <substring>, following texts, Plain, <substring>
       preceding text of <substring>, preceding texts, Plain, <substring>
@@ -5294,8 +5319,10 @@ Creation techniques & properties of each type:
       <time> < <time>, , BinaryOperator, <boolean>
       <time> <= <time>, , BinaryOperator, <boolean>
       <time> = <time>, , BinaryOperator, <boolean>
+      <time> as local date, , Cast, <date>
       <time> as local string, , Cast, <string>
       <time> as string, , Cast, <string>
+      <time> as universal date, , Cast, <date>
       <time> as universal string, , Cast, <string>
       date <time zone> of <time>, dates, Index<time zone>, <date>
       extrema of <time>, extremas, Plain, <( time, time )>
@@ -5626,6 +5653,7 @@ Creation techniques & properties of each type:
     Creation of <user>: { key phrase, plural keyword, form}
       effective user of <process>, effective users, Plain
       local user <string>, local users, NamedGlobal
+      local user, local users, PlainGlobal
       user <string>, users, NamedGlobal
       user of <logged on user>, users, Plain
       user of <process>, users, Plain
@@ -5634,6 +5662,7 @@ Creation techniques & properties of each type:
       id of <user>, ids, Plain, <integer>
       name of <user>, names, Plain, <string>
       tty of <user>, ttys, Plain, <string>
+      user id of <user>, user ids, Plain, <integer>
 
   Type <utf8 string>
     Creation of <utf8 string>: { key phrase, plural keyword, form}
@@ -5645,6 +5674,7 @@ Creation techniques & properties of each type:
       <version> as version, , Cast
       maximum of <version>, maxima, Plain
       minimum of <version>, minima, Plain
+      sqlite version, sqlite versions, PlainGlobal
       version <string>, versions, NamedGlobal
       version of <application usage summary instance>, versions, Plain
       version of <client>, versions, Plain
@@ -5921,6 +5951,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   local time <string>, local times, NamedGlobal, <time>
   local time zone, local time zones, PlainGlobal, <time zone>
   local user <string>, local users, NamedGlobal, <user>
+  local user, local users, PlainGlobal, <user>
   logged on user, logged on users, PlainGlobal, <logged on user>
   main gather service, main gather services, PlainGlobal, <service>
   main processor, main processors, PlainGlobal, <processor>
@@ -5998,6 +6029,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   socket file <string>, socket files, NamedGlobal, <socket file>
   socket file <symlink>, socket files, Index<symlink>Global, <socket file>
   socket file <symlink>, socket files, Index<symlink>Global, <socket file>
+  sqlite version, sqlite versions, PlainGlobal, <version>
   string <string>, strings, NamedGlobal, <string>
   strverscmp version <string>, strverscmp versions, NamedGlobal, <strverscmp version>
   sunday, sundays, PlainGlobal, <day of week>
@@ -6131,6 +6163,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as debian package version upstream, , <debian package upstream version>, <debian package upstream version>, Cast
       as debian package version, , <debian package version>, <debian package version>, Cast
       as debian package version, , <debian package version>, <debianpkg version>, Cast
+      as decoded string, , <string>, <html>, Cast
       as device file, , <device file>, <filesystem object>, Cast
       as device file, , <device file>, <symlink>, Cast
       as device file, , <device file>, <symlink>, Cast
@@ -6162,6 +6195,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as ipv6 address, , <ipv6 address>, <ipv4 address>, Cast
       as ipv6 address, , <ipv6 address>, <string>, Cast
       as left trimmed string, , <string>, <string>, Cast
+      as local date, , <date>, <time>, Cast
       as local string, , <string>, <time>, Cast
       as local time, , <time>, <string>, Cast
       as local zoned time_of_day, , <time of day with time zone>, <string>, Cast
@@ -6252,6 +6286,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <sqlite row>, Cast
       as string, , <string>, <sqlite table>, Cast
       as string, , <string>, <string>, Cast
+      as string, , <string>, <substring>, Cast
       as string, , <string>, <symlink>, Cast
       as string, , <string>, <tcp state>, Cast
       as string, , <string>, <time interval>, Cast
@@ -6266,6 +6301,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <version>, Cast
       as string, , <string>, <year>, Cast
       as strverscmp version, , <strverscmp version>, <string>, Cast
+      as substring, , <substring>, <substring>, Cast
       as symlink, , <symlink>, <filesystem object>, Cast
       as symlink, , <symlink>, <symlink>, Cast
       as text, , <string>, <xml dom node>, Cast
@@ -6278,6 +6314,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as trimmed string, , <string>, <string>, Cast
       as two digits, , <string>, <day of month>, Cast
       as two digits, , <string>, <month>, Cast
+      as universal date, , <date>, <time>, Cast
       as universal string, , <string>, <time>, Cast
       as universal time, , <time>, <string>, Cast
       as universal zoned time_of_day, , <time of day with time zone>, <string>, Cast
@@ -6822,6 +6859,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       full gateway address, full gateway addresses, <ipv4or6 address>, <selected server>, Plain
       full, fulls, <boolean>, <power level>, Plain
       fxf character set, fxf character sets, <string>, <client>, Plain
+      fxf encoding concatenation, fxf encoding concatenations, <string>, <string>, Named
+      fxf encoding concatenation, fxf encoding concatenations, <string>, <string>, Plain
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Numbered
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Plain
       gateway flag, gateway flags, <boolean>, <route>, Plain
@@ -6893,6 +6932,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       hexadecet, hexadecets, <integer>, <ipv6 address>, Numbered
       hexadecimal integer, hexadecimal integers, <integer>, world , NamedGlobal
       hexadecimal string, hexadecimal strings, <string>, world , NamedGlobal
+      hexadecimal, hexadecimals, <string>, <smbios structure>, Named
+      hexadecimal, hexadecimals, <string>, <smbios value>, Plain
       hiddenmenu, hiddenmenus, <boolean>, <grub config file>, Plain
       highlight, highlights, <grub color pair>, <grub color scheme>, Plain
       hlt bug, hlt bugs, <boolean>, <processor>, Plain
@@ -7121,10 +7162,13 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       little endian, little endians, <boolean>, <operating system>, Plain
       local address, local addresses, <ipv4or6 address>, <socket>, Plain
       local character set, local character sets, <string>, <client>, Plain
+      local encoding concatenation, local encoding concatenations, <string>, <string>, Named
+      local encoding concatenation, local encoding concatenations, <string>, <string>, Plain
       local port, local ports, <integer>, <socket>, Plain
       local time zone, local time zones, <time zone>, world , PlainGlobal
       local time, local times, <time>, world , NamedGlobal
       local user, local users, <user>, world , NamedGlobal
+      local user, local users, <user>, world , PlainGlobal
       location, locations, <grub file location>, <grub kernel>, Plain
       location, locations, <integer>, <dmi physical_memory_array>, Plain
       location, locations, <string>, <dmi portable_battery>, Plain
@@ -7790,6 +7834,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       speed, speeds, <integer>, <dmi memory_device>, Plain
       splashimage, splashimages, <grub file location>, <grub config file>, Plain
       sqlite database, sqlite databases, <sqlite database>, <file>, Plain
+      sqlite version, sqlite versions, <version>, world , PlainGlobal
       sqrt, sqrts, <floating point>, <floating point>, Plain
       sqrt, sqrts, <floating point>, <integer>, Plain
       standard deviation, standard deviations, <floating point>, <floating point>, Plain
@@ -8057,6 +8102,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       used percent, used percents, <integer>, <filesystem>, Plain
       used space, used spaces, <integer>, <filesystem>, Plain
       user execute, user executes, <boolean>, <filesystem object>, Plain
+      user id, user ids, <integer>, <user>, Plain
       user mask, user masks, <integer>, <filesystem object>, Plain
       user mask, user masks, <mode_mask>, <mode>, Plain
       user name, user names, <string>, <filesystem object>, Plain
@@ -8098,6 +8144,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       version, versions, <debian package version>, <debianpkg dependency>, Plain
       version, versions, <integer>, <site>, Plain
       version, versions, <string>, <bios>, Plain
+      version, versions, <string>, <cryptography>, Plain
       version, versions, <string>, <debianpkg reverse dependencies>, Plain
       version, versions, <string>, <dmi base_board_information>, Plain
       version, versions, <string>, <dmi system_enclosure_or_chassis>, Plain

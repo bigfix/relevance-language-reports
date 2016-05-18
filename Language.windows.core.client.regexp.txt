@@ -1,5 +1,5 @@
 Operating System:Win2008R2 6_1_7601
-Build Target:i386_win32
+Client Version:9_5_0_311
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   access control entry
@@ -1388,6 +1388,7 @@ Creation techniques & properties of each type:
       desired fips mode of <cryptography>, desired fips modes, Plain, <boolean>
       fips mode failure message of <cryptography>, fips mode failure messages, Plain, <string>
       fips mode of <cryptography>, fips modes, Plain, <boolean>
+      version of <cryptography>, versions, Plain, <string>
 
   Type <current relay>
     Creation of <current relay>: { key phrase, plural keyword, form}
@@ -1417,6 +1418,8 @@ Creation techniques & properties of each type:
       <number of months> + <date>, , BinaryOperator
       <string> as date, , Cast
       <time interval> + <date>, , BinaryOperator
+      <time> as local date, , Cast
+      <time> as universal date, , Cast
       <year> & <day of year>, , BinaryOperator
       april <integer> of <integer>, aprils, Numbered
       august <integer> of <integer>, augusts, Numbered
@@ -2954,6 +2957,7 @@ Creation techniques & properties of each type:
       folder <string>, folders, NamedGlobal
       folder of <folder>, folders, Plain
       folder of <site>, folders, Plain
+      home directory folder of <user>, home directory folders, Plain
       install folder <integer>, install folders, NumberedGlobal
       installed path of <winrt package>, installed paths, Plain
       native folder <string>, native folders, NamedGlobal
@@ -3313,6 +3317,7 @@ Creation techniques & properties of each type:
     Properties of <html> { key phrase, plural keyword, form, <result type>}:
       <html> & <html>, , BinaryOperator, <html>
       <html> & <string>, , BinaryOperator, <html>
+      <html> as decoded string, , Cast, <string>
       <html> as html, , Cast, <html>
       <html> as string, , Cast, <string>
       <string> & <html>, , BinaryOperator, <html>
@@ -3609,6 +3614,7 @@ Creation techniques & properties of each type:
       id of <process>, ids, Plain
       id of <root server>, ids, Plain
       id of <site group>, ids, Plain
+      id of <user>, ids, Plain
       inheritance of <access control entry>, inheritances, Plain
       input_current_probe_handle of <dmi system_power_supply>, input_current_probe_handles, Plain
       input_voltage_probe_handle of <dmi system_power_supply>, input_voltage_probe_handles, Plain
@@ -4854,6 +4860,7 @@ Creation techniques & properties of each type:
       product info string of <operating system>, product info strings, Plain, <string>
       product type of <operating system>, product types, Plain, <operating system product type>
       release of <operating system>, releases, Plain, <string>
+      releaseid of <operating system>, releaseids, Plain, <string>
       service pack major version of <operating system>, service pack major versions, Plain, <integer>
       service pack minor version of <operating system>, service pack minor versions, Plain, <integer>
       suite mask of <operating system>, suite masks, Plain, <operating system suite mask>
@@ -5519,6 +5526,7 @@ Creation techniques & properties of each type:
       structure of <smbios value>, structures, Plain
       structure of <smbios>, structures, Plain
     Properties of <smbios structure> { key phrase, plural keyword, form, <result type>}:
+      hexadecimal <string> of <smbios structure>, hexadecimals, Named, <string>
       integer <string> of <smbios structure>, integers, Named, <integer>
       integer value <string> of <smbios structure>, integer values, Named, <smbios value>
       length of <smbios structure>, lengths, Plain, <integer>
@@ -5537,6 +5545,7 @@ Creation techniques & properties of each type:
       value of <smbios structure>, values, Plain
     Properties of <smbios value> { key phrase, plural keyword, form, <result type>}:
       <smbios value> as string, , Cast, <string>
+      hexadecimal of <smbios value>, hexadecimals, Plain, <string>
       name of <smbios value>, names, Plain, <string>
       offset of <smbios value>, offsets, Plain, <integer>
       structure of <smbios value>, structures, Plain, <smbios structure>
@@ -5642,6 +5651,7 @@ Creation techniques & properties of each type:
       <floating point> as string, , Cast
       <format> as string, , Cast
       <hertz> as string, , Cast
+      <html> as decoded string, , Cast
       <html> as string, , Cast
       <integer> as hexadecimal, , Cast
       <integer> as string, , Cast
@@ -5710,6 +5720,7 @@ Creation techniques & properties of each type:
       <string> as string, , Cast
       <string> as trimmed string, , Cast
       <string> as uppercase, , Cast
+      <substring> as string, , Cast
       <system access control list> as string, , Cast
       <tcp state> as string, , Cast
       <time interval> as string, , Cast
@@ -5852,6 +5863,8 @@ Creation techniques & properties of each type:
       full name of <user>, full names, Plain
       full name of <winrt package id>, full names, Plain
       fxf character set of <client>, fxf character sets, Plain
+      fxf encoding concatenation <string> of <string>, fxf encoding concatenations, Named
+      fxf encoding concatenation of <string>, fxf encoding concatenations, Plain
       gather schedule authority of <site>, gather schedule authoritys, Plain
       gather url of <license>, gather urls, Plain
       group id of <task principal>, group ids, Plain
@@ -5863,6 +5876,8 @@ Creation techniques & properties of each type:
       guid of <audit policy subcategory>, guids, Plain
       guid of <connection>, guids, Plain
       hardware id of <active device>, hardware ids, Plain
+      hexadecimal <string> of <smbios structure>, hexadecimals, Named
+      hexadecimal of <smbios value>, hexadecimals, Plain
       hexadecimal string <string>, hexadecimal strings, NamedGlobal
       home directory drive of <user>, home directory drives, Plain
       home directory of <user>, home directories, Plain
@@ -5888,6 +5903,8 @@ Creation techniques & properties of each type:
       language of <file version block>, languages, Plain
       local addresses string of <firewall rule>, local addresses strings, Plain
       local character set of <client>, local character sets, Plain
+      local encoding concatenation <string> of <string>, local encoding concatenations, Named
+      local encoding concatenation of <string>, local encoding concatenations, Plain
       local ports string of <firewall rule>, local ports strings, Plain
       location information of <active device>, location informations, Plain
       location of <dmi portable_battery>, locations, Plain
@@ -6008,6 +6025,7 @@ Creation techniques & properties of each type:
       registration cidr address of <client>, registration cidr addresses, Plain
       registration mac address of <client>, registration mac addresses, Plain
       release of <operating system>, releases, Plain
+      releaseid of <operating system>, releaseids, Plain
       remote addresses of <firewall authorized application>, remote addresseses, Plain
       remote addresses of <firewall open port>, remote addresseses, Plain
       remote addresses of <firewall service>, remote addresseses, Plain
@@ -6126,6 +6144,7 @@ Creation techniques & properties of each type:
       vendor of <dmi bios_information>, vendors, Plain
       version info of <execution>, version infos, Plain
       version of <bios>, versions, Plain
+      version of <cryptography>, versions, Plain
       version of <dmi base_board_information>, versions, Plain
       version of <dmi system_enclosure_or_chassis>, versions, Plain
       version of <dmi system_information>, versions, Plain
@@ -6275,6 +6294,8 @@ Creation techniques & properties of each type:
       first <integer> of <string>, firsts, Numbered, <substring>
       first <string> of <string>, firsts, Named, <substring>
       first match <regular expression> of <string>, first matches, Index<regular expression>, <regular expression match>
+      fxf encoding concatenation <string> of <string>, fxf encoding concatenations, Named, <string>
+      fxf encoding concatenation of <string>, fxf encoding concatenations, Plain, <string>
       h1 <string> of <string>, h1s, Named, <html>
       h1 of <string>, h1s, Plain, <html>
       h2 <string> of <string>, h2s, Named, <html>
@@ -6306,6 +6327,8 @@ Creation techniques & properties of each type:
       li of <string>, lis, Plain, <html>
       link <string> of <string>, links, Named, <html>
       link of <string>, links, Plain, <html>
+      local encoding concatenation <string> of <string>, local encoding concatenations, Named, <string>
+      local encoding concatenation of <string>, local encoding concatenations, Plain, <string>
       match <regular expression> of <string>, matches, Index<regular expression>, <regular expression match>
       md5 of <string>, md5s, Plain, <string>
       meta <string> of <string>, metas, Named, <html>
@@ -6419,6 +6442,7 @@ Creation techniques & properties of each type:
 
   Type <substring> (derives from string)
     Creation of <substring>: { key phrase, plural keyword, form}
+      <substring> as substring, , Cast
       character <integer> of <string>, characters, Numbered
       character of <string>, characters, Plain
       first <integer> of <string>, firsts, Numbered
@@ -6438,6 +6462,8 @@ Creation techniques & properties of each type:
       substring between <string> of <string>, substrings between, Named
       substring separated by <string> of <string>, substrings separated by, Named
     Properties of <substring> { key phrase, plural keyword, form, <result type>}:
+      <substring> as string, , Cast, <string>
+      <substring> as substring, , Cast, <substring>
       end of <substring>, ends, Plain, <string position>
       following text of <substring>, following texts, Plain, <substring>
       preceding text of <substring>, preceding texts, Plain, <substring>
@@ -6752,8 +6778,10 @@ Creation techniques & properties of each type:
       <time> < <time>, , BinaryOperator, <boolean>
       <time> <= <time>, , BinaryOperator, <boolean>
       <time> = <time>, , BinaryOperator, <boolean>
+      <time> as local date, , Cast, <date>
       <time> as local string, , Cast, <string>
       <time> as string, , Cast, <string>
+      <time> as universal date, , Cast, <date>
       <time> as universal string, , Cast, <string>
       date <time zone> of <time>, dates, Index<time zone>, <date>
       extrema of <time>, extremas, Plain, <( time, time )>
@@ -7142,8 +7170,10 @@ Creation techniques & properties of each type:
       full name of <user>, full names, Plain, <string>
       guest privilege of <user>, guest privileges, Plain, <boolean>
       home directory drive of <user>, home directory drives, Plain, <string>
+      home directory folder of <user>, home directory folders, Plain, <folder>
       home directory of <user>, home directories, Plain, <string>
       home directory required flag of <user>, home directory required flags, Plain, <boolean>
+      id of <user>, ids, Plain, <integer>
       interdomain trust account flag of <user>, interdomain trust account flags, Plain, <boolean>
       last logoff of <user>, last logoffs, Plain, <time>
       last logon of <user>, last logons, Plain, <time>
@@ -7190,6 +7220,7 @@ Creation techniques & properties of each type:
       raw file version of <file>, raw file versions, Plain
       raw product version of <file>, raw product versions, Plain
       raw version of <file>, raw versions, Plain
+      sqlite version, sqlite versions, PlainGlobal
       version <string>, versions, NamedGlobal
       version of <application usage summary instance>, versions, Plain
       version of <current relay>, versions, Plain
@@ -7778,6 +7809,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   small business bit <operating system suite mask>, small business bits, Index<operating system suite mask>Global, <boolean>
   small business restricted bit <operating system suite mask>, small business restricted bits, Index<operating system suite mask>Global, <boolean>
   smbios, smbioses, PlainGlobal, <smbios>
+  sqlite version, sqlite versions, PlainGlobal, <version>
   standard firewall profile type, standard firewall profile types, PlainGlobal, <firewall profile type>
   standby state, standby states, PlainGlobal, <power state>
   string <string>, strings, NamedGlobal, <string>
@@ -8009,6 +8041,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as day_of_month, , <day of month>, <integer>, Cast
       as day_of_month, , <day of month>, <string>, Cast
       as day_of_week, , <day of week>, <string>, Cast
+      as decoded string, , <string>, <html>, Cast
       as email task action, , <email task action>, <task action>, Cast
       as event task trigger, , <event task trigger>, <task trigger>, Cast
       as exec task action, , <exec task action>, <task action>, Cast
@@ -8042,6 +8075,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as ipv6 address, , <ipv6 address>, <ipv4 address>, Cast
       as ipv6 address, , <ipv6 address>, <string>, Cast
       as left trimmed string, , <string>, <string>, Cast
+      as local date, , <date>, <time>, Cast
       as local string, , <string>, <time>, Cast
       as local time, , <time>, <string>, Cast
       as local zoned time_of_day, , <time of day with time zone>, <string>, Cast
@@ -8128,6 +8162,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <sqlite row>, Cast
       as string, , <string>, <sqlite table>, Cast
       as string, , <string>, <string>, Cast
+      as string, , <string>, <substring>, Cast
       as string, , <string>, <system access control list>, Cast
       as string, , <string>, <tcp state>, Cast
       as string, , <string>, <time interval>, Cast
@@ -8146,6 +8181,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <wmi object>, Cast
       as string, , <string>, <wmi select>, Cast
       as string, , <string>, <year>, Cast
+      as substring, , <substring>, <substring>, Cast
       as system file, , <file>, <registry key value>, Cast
       as system x32 file, , <file>, <registry key value>, Cast
       as system x64 file, , <file>, <registry key value>, Cast
@@ -8161,6 +8197,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as trimmed string, , <string>, <string>, Cast
       as two digits, , <string>, <day of month>, Cast
       as two digits, , <string>, <month>, Cast
+      as universal date, , <date>, <time>, Cast
       as universal string, , <string>, <time>, Cast
       as universal time, , <time>, <string>, Cast
       as universal zoned time_of_day, , <time of day with time zone>, <string>, Cast
@@ -8914,6 +8951,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       full wmi, full wmis, <wmi>, world , NamedGlobal
       full, fulls, <boolean>, <power level>, Plain
       fxf character set, fxf character sets, <string>, <client>, Plain
+      fxf encoding concatenation, fxf encoding concatenations, <string>, <string>, Named
+      fxf encoding concatenation, fxf encoding concatenations, <string>, <string>, Plain
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Numbered
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Plain
       gateway list, gateway lists, <network address list>, <network adapter>, Plain
@@ -8999,11 +9038,14 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       hexadecet, hexadecets, <integer>, <ipv6 address>, Numbered
       hexadecimal integer, hexadecimal integers, <integer>, world , NamedGlobal
       hexadecimal string, hexadecimal strings, <string>, world , NamedGlobal
+      hexadecimal, hexadecimals, <string>, <smbios structure>, Named
+      hexadecimal, hexadecimals, <string>, <smbios value>, Plain
       hidden, hiddens, <boolean>, <filesystem object>, Plain
       hidden, hiddens, <boolean>, <task settings>, Plain
       high priority, high priorities, <priority class>, world , PlainGlobal
       highest runlevel, highest runlevels, <boolean>, <task principal>, Plain
       home directory drive, home directory drives, <string>, <user>, Plain
+      home directory folder, home directory folders, <folder>, <user>, Plain
       home directory required flag, home directory required flags, <boolean>, <user>, Plain
       home directory, home directories, <string>, <user>, Plain
       host name, host names, <string>, <root server>, Plain
@@ -9041,6 +9083,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       id, ids, <integer>, <process>, Plain
       id, ids, <integer>, <root server>, Plain
       id, ids, <integer>, <site group>, Plain
+      id, ids, <integer>, <user>, Plain
       id, ids, <string>, <file version block>, Plain
       id, ids, <string>, <task action>, Plain
       id, ids, <string>, <task network settings>, Plain
@@ -9316,6 +9359,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       local administrator, local administrators, <boolean>, world , PlainGlobal
       local character set, local character sets, <string>, <client>, Plain
       local computer, local computers, <active directory local computer>, <active directory server>, Plain
+      local encoding concatenation, local encoding concatenations, <string>, <string>, Named
+      local encoding concatenation, local encoding concatenations, <string>, <string>, Plain
       local group, local groups, <active directory group>, <active directory server>, Named
       local group, local groups, <local group>, world , NamedGlobal
       local group, local groups, <local group>, world , PlainGlobal
@@ -9974,6 +10019,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       relay select percent, relay select percents, <floating point>, <evaluation cycle>, Plain
       relay service, relay services, <service>, world , PlainGlobal
       release, releases, <string>, <operating system>, Plain
+      releaseid, releaseids, <string>, <operating system>, Plain
       relevance duration, relevance durations, <time interval>, <evaluation cycle>, Plain
       relevance percent, relevance percents, <floating point>, <evaluation cycle>, Plain
       relevance, relevances, <boolean>, <fixlet>, Plain
@@ -10221,6 +10267,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       speed, speeds, <hertz>, <processor>, Plain
       speed, speeds, <integer>, <dmi memory_device>, Plain
       sqlite database, sqlite databases, <sqlite database>, <file>, Plain
+      sqlite version, sqlite versions, <version>, world , PlainGlobal
       sqrt, sqrts, <floating point>, <floating point>, Plain
       sqrt, sqrts, <floating point>, <integer>, Plain
       ssid, ssids, <string>, <wifi>, Plain
@@ -10604,6 +10651,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       version string, version strings, <string>, <module>, Named
       version, versions, <integer>, <site>, Plain
       version, versions, <string>, <bios>, Plain
+      version, versions, <string>, <cryptography>, Plain
       version, versions, <string>, <dmi base_board_information>, Plain
       version, versions, <string>, <dmi system_enclosure_or_chassis>, Plain
       version, versions, <string>, <dmi system_information>, Plain

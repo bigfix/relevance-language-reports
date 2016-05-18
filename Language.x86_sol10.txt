@@ -1,5 +1,7 @@
 Operating System:SunOS 5_10 (Generic_120012-14)
+Client Version:9_5_0_311
 Build Target:
+ModuleName:HostApplication, Version:9_5_0_311, ClientCompatible:Yes
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   action
@@ -680,6 +682,7 @@ Creation techniques & properties of each type:
       desired fips mode of <cryptography>, desired fips modes, Plain, <boolean>
       fips mode failure message of <cryptography>, fips mode failure messages, Plain, <string>
       fips mode of <cryptography>, fips modes, Plain, <boolean>
+      version of <cryptography>, versions, Plain, <string>
 
   Type <current relay>
     Creation of <current relay>: { key phrase, plural keyword, form}
@@ -702,6 +705,8 @@ Creation techniques & properties of each type:
       <number of months> + <date>, , BinaryOperator
       <string> as date, , Cast
       <time interval> + <date>, , BinaryOperator
+      <time> as local date, , Cast
+      <time> as universal date, , Cast
       <year> & <day of year>, , BinaryOperator
       april <integer> of <integer>, aprils, Numbered
       august <integer> of <integer>, augusts, Numbered
@@ -1752,6 +1757,7 @@ Creation techniques & properties of each type:
     Properties of <html> { key phrase, plural keyword, form, <result type>}:
       <html> & <html>, , BinaryOperator, <html>
       <html> & <string>, , BinaryOperator, <html>
+      <html> as decoded string, , Cast, <string>
       <html> as html, , Cast, <html>
       <html> as string, , Cast, <string>
       <string> & <html>, , BinaryOperator, <html>
@@ -2056,6 +2062,7 @@ Creation techniques & properties of each type:
       used file count of <filesystem>, used file counts, Plain
       used percent of <filesystem>, used percents, Plain
       used space of <filesystem>, used spaces, Plain
+      user id of <user>, user ids, Plain
       user mask of <filesystem object>, user masks, Plain
       version of <site>, versions, Plain
       weight of <selected server>, weights, Plain
@@ -3278,6 +3285,7 @@ Creation techniques & properties of each type:
       <grub image choice> as string, , Cast
       <grub module> as string, , Cast
       <hertz> as string, , Cast
+      <html> as decoded string, , Cast
       <html> as string, , Cast
       <integer> as hexadecimal, , Cast
       <integer> as string, , Cast
@@ -3346,6 +3354,7 @@ Creation techniques & properties of each type:
       <string> as string, , Cast
       <string> as trimmed string, , Cast
       <string> as uppercase, , Cast
+      <substring> as string, , Cast
       <symlink> as string, , Cast
       <time interval> as string, , Cast
       <time of day with time zone> as string, , Cast
@@ -3423,6 +3432,8 @@ Creation techniques & properties of each type:
       friendly name of <network adapter>, friendly names, Plain
       fstype of <filesystem>, fstypes, Plain
       fxf character set of <client>, fxf character sets, Plain
+      fxf encoding concatenation <string> of <string>, fxf encoding concatenations, Named
+      fxf encoding concatenation of <string>, fxf encoding concatenations, Plain
       gather schedule authority of <site>, gather schedule authoritys, Plain
       gather url of <license>, gather urls, Plain
       greatest revision of <patch>, greatest revisions, Plain
@@ -3440,6 +3451,8 @@ Creation techniques & properties of each type:
       key <string> of <file>, keys, Named
       least revision of <patch>, least revisions, Plain
       local character set of <client>, local character sets, Plain
+      local encoding concatenation <string> of <string>, local encoding concatenations, Named
+      local encoding concatenation of <string>, local encoding concatenations, Plain
       location of <filesystem object>, locations, Plain
       location of <symlink>, locations, Plain
       lock string of <action lock state>, lock strings, Plain
@@ -3591,6 +3604,7 @@ Creation techniques & properties of each type:
       vendor of <pkginfo>, vendors, Plain
       version info of <execution>, version infos, Plain
       version of <bios>, versions, Plain
+      version of <cryptography>, versions, Plain
       version of <pkginfo>, versions, Plain
       version string <string> of <module>, version strings, Named
       volume of <filesystem>, volumes, Plain
@@ -3719,6 +3733,8 @@ Creation techniques & properties of each type:
       first <integer> of <string>, firsts, Numbered, <substring>
       first <string> of <string>, firsts, Named, <substring>
       first match <regular expression> of <string>, first matches, Index<regular expression>, <regular expression match>
+      fxf encoding concatenation <string> of <string>, fxf encoding concatenations, Named, <string>
+      fxf encoding concatenation of <string>, fxf encoding concatenations, Plain, <string>
       h1 <string> of <string>, h1s, Named, <html>
       h1 of <string>, h1s, Plain, <html>
       h2 <string> of <string>, h2s, Named, <html>
@@ -3750,6 +3766,8 @@ Creation techniques & properties of each type:
       li of <string>, lis, Plain, <html>
       link <string> of <string>, links, Named, <html>
       link of <string>, links, Plain, <html>
+      local encoding concatenation <string> of <string>, local encoding concatenations, Named, <string>
+      local encoding concatenation of <string>, local encoding concatenations, Plain, <string>
       match <regular expression> of <string>, matches, Index<regular expression>, <regular expression match>
       md5 of <string>, md5s, Plain, <string>
       meta <string> of <string>, metas, Named, <html>
@@ -3862,6 +3880,7 @@ Creation techniques & properties of each type:
 
   Type <substring> (derives from string)
     Creation of <substring>: { key phrase, plural keyword, form}
+      <substring> as substring, , Cast
       character <integer> of <string>, characters, Numbered
       character of <string>, characters, Plain
       first <integer> of <string>, firsts, Numbered
@@ -3881,6 +3900,8 @@ Creation techniques & properties of each type:
       substring between <string> of <string>, substrings between, Named
       substring separated by <string> of <string>, substrings separated by, Named
     Properties of <substring> { key phrase, plural keyword, form, <result type>}:
+      <substring> as string, , Cast, <string>
+      <substring> as substring, , Cast, <substring>
       end of <substring>, ends, Plain, <string position>
       following text of <substring>, following texts, Plain, <substring>
       preceding text of <substring>, preceding texts, Plain, <substring>
@@ -4002,8 +4023,10 @@ Creation techniques & properties of each type:
       <time> < <time>, , BinaryOperator, <boolean>
       <time> <= <time>, , BinaryOperator, <boolean>
       <time> = <time>, , BinaryOperator, <boolean>
+      <time> as local date, , Cast, <date>
       <time> as local string, , Cast, <string>
       <time> as string, , Cast, <string>
+      <time> as universal date, , Cast, <date>
       <time> as universal string, , Cast, <string>
       date <time zone> of <time>, dates, Index<time zone>, <date>
       extrema of <time>, extremas, Plain, <( time, time )>
@@ -4332,6 +4355,7 @@ Creation techniques & properties of each type:
     Creation of <user>: { key phrase, plural keyword, form}
       effective user of <process>, effective users, Plain
       local user <string>, local users, NamedGlobal
+      local user, local users, PlainGlobal
       user <string>, users, NamedGlobal
       user of <logged on user>, users, Plain
       user of <process>, users, Plain
@@ -4340,6 +4364,7 @@ Creation techniques & properties of each type:
       id of <user>, ids, Plain, <integer>
       name of <user>, names, Plain, <string>
       tty of <user>, ttys, Plain, <string>
+      user id of <user>, user ids, Plain, <integer>
 
   Type <utf8 string>
     Creation of <utf8 string>: { key phrase, plural keyword, form}
@@ -4379,6 +4404,7 @@ Creation techniques & properties of each type:
       <version> as version, , Cast
       maximum of <version>, maxima, Plain
       minimum of <version>, minima, Plain
+      sqlite version, sqlite versions, PlainGlobal
       version <string>, versions, NamedGlobal
       version of <application usage summary instance>, versions, Plain
       version of <client>, versions, Plain
@@ -4641,6 +4667,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   local time <string>, local times, NamedGlobal, <time>
   local time zone, local time zones, PlainGlobal, <time zone>
   local user <string>, local users, NamedGlobal, <user>
+  local user, local users, PlainGlobal, <user>
   logged on user, logged on users, PlainGlobal, <logged on user>
   main gather service, main gather services, PlainGlobal, <service>
   main processor, main processors, PlainGlobal, <processor>
@@ -4716,6 +4743,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   socket file <string>, socket files, NamedGlobal, <socket file>
   socket file <symlink>, socket files, Index<symlink>Global, <socket file>
   socket file <symlink>, socket files, Index<symlink>Global, <socket file>
+  sqlite version, sqlite versions, PlainGlobal, <version>
   string <string>, strings, NamedGlobal, <string>
   sunday, sundays, PlainGlobal, <day of week>
   swap, swaps, PlainGlobal, <swap>
@@ -4841,6 +4869,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as day_of_month, , <day of month>, <integer>, Cast
       as day_of_month, , <day of month>, <string>, Cast
       as day_of_week, , <day of week>, <string>, Cast
+      as decoded string, , <string>, <html>, Cast
       as device file, , <device file>, <filesystem object>, Cast
       as device file, , <device file>, <symlink>, Cast
       as device file, , <device file>, <symlink>, Cast
@@ -4873,6 +4902,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as ipv6 address, , <ipv6 address>, <ipv4 address>, Cast
       as ipv6 address, , <ipv6 address>, <string>, Cast
       as left trimmed string, , <string>, <string>, Cast
+      as local date, , <date>, <time>, Cast
       as local string, , <string>, <time>, Cast
       as local time, , <time>, <string>, Cast
       as local zoned time_of_day, , <time of day with time zone>, <string>, Cast
@@ -4962,6 +4992,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <sqlite row>, Cast
       as string, , <string>, <sqlite table>, Cast
       as string, , <string>, <string>, Cast
+      as string, , <string>, <substring>, Cast
       as string, , <string>, <symlink>, Cast
       as string, , <string>, <time interval>, Cast
       as string, , <string>, <time of day with time zone>, Cast
@@ -4977,6 +5008,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <year>, Cast
       as string, , <string>, <zone network interface>, Cast
       as string, , <string>, <zone>, Cast
+      as substring, , <substring>, <substring>, Cast
       as symlink, , <symlink>, <filesystem object>, Cast
       as symlink, , <symlink>, <symlink>, Cast
       as three letters, , <string>, <day of week>, Cast
@@ -4988,6 +5020,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as trimmed string, , <string>, <string>, Cast
       as two digits, , <string>, <day of month>, Cast
       as two digits, , <string>, <month>, Cast
+      as universal date, , <date>, <time>, Cast
       as universal string, , <string>, <time>, Cast
       as universal time, , <time>, <string>, Cast
       as universal zoned time_of_day, , <time of day with time zone>, <string>, Cast
@@ -5389,6 +5422,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       full gateway address, full gateway addresses, <ipv4or6 address>, <selected server>, Plain
       full, fulls, <boolean>, <power level>, Plain
       fxf character set, fxf character sets, <string>, <client>, Plain
+      fxf encoding concatenation, fxf encoding concatenations, <string>, <string>, Named
+      fxf encoding concatenation, fxf encoding concatenations, <string>, <string>, Plain
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Numbered
       gateway address, gateway addresses, <ipv4or6 address>, <selected server>, Plain
       gateway flag, gateway flags, <boolean>, <ipv4 route>, Plain
@@ -5617,10 +5652,13 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       link, links, <html>, <string>, Plain
       little endian, little endians, <boolean>, <operating system>, Plain
       local character set, local character sets, <string>, <client>, Plain
+      local encoding concatenation, local encoding concatenations, <string>, <string>, Named
+      local encoding concatenation, local encoding concatenations, <string>, <string>, Plain
       local flag, local flags, <boolean>, <ipv4 route>, Plain
       local time zone, local time zones, <time zone>, world , PlainGlobal
       local time, local times, <time>, world , NamedGlobal
       local user, local users, <user>, world , NamedGlobal
+      local user, local users, <user>, world , PlainGlobal
       location, locations, <grub file location>, <grub kernel>, Plain
       location, locations, <string>, <filesystem object>, Plain
       location, locations, <string>, <symlink>, Plain
@@ -6125,6 +6163,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       speed, speeds, <hertz>, <processor>, Plain
       splashimage, splashimages, <grub file location>, <grub config file>, Plain
       sqlite database, sqlite databases, <sqlite database>, <file>, Plain
+      sqlite version, sqlite versions, <version>, world , PlainGlobal
       sqrt, sqrts, <floating point>, <floating point>, Plain
       sqrt, sqrts, <floating point>, <integer>, Plain
       standard deviation, standard deviations, <floating point>, <floating point>, Plain
@@ -6329,6 +6368,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       used percent, used percents, <integer>, <filesystem>, Plain
       used space, used spaces, <integer>, <filesystem>, Plain
       user execute, user executes, <boolean>, <filesystem object>, Plain
+      user id, user ids, <integer>, <user>, Plain
       user mask, user masks, <integer>, <filesystem object>, Plain
       user mask, user masks, <mode_mask>, <mode>, Plain
       user name, user names, <string>, <filesystem object>, Plain
@@ -6363,6 +6403,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       version string, version strings, <string>, <module>, Named
       version, versions, <integer>, <site>, Plain
       version, versions, <string>, <bios>, Plain
+      version, versions, <string>, <cryptography>, Plain
       version, versions, <string>, <pkginfo>, Plain
       version, versions, <version>, <application usage summary instance>, Plain
       version, versions, <version>, <client>, Plain

@@ -1,4 +1,6 @@
-Build Target:i386_win32
+Build Target:9_5_0_311
+ModuleName:HostApplication, Version:9_5_0_311, ClientCompatible:Yes
+ModuleName:9_5_0_311, Version:9_5_0_311, ClientCompatible:9_5_0_311
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   bes action
@@ -1137,6 +1139,7 @@ Creation techniques & properties of each type:
     Properties of <bes server> { key phrase, plural keyword, form, <result type>}:
       database id of <bes server>, database ids, Plain, <integer>
       database name of <bes server>, database names, Plain, <string>
+      fxf character set of <bes server>, fxf character sets, Plain, <string>
       url of <bes server>, urls, Plain, <string>
 
   Type <bes site>
@@ -1967,6 +1970,7 @@ Creation techniques & properties of each type:
       desired fips mode of <cryptography>, desired fips modes, Plain, <boolean>
       fips mode failure message of <cryptography>, fips mode failure messages, Plain, <string>
       fips mode of <cryptography>, fips modes, Plain, <boolean>
+      version of <cryptography>, versions, Plain, <string>
 
   Type <date>
     Creation of <date>: { key phrase, plural keyword, form}
@@ -1983,6 +1987,8 @@ Creation techniques & properties of each type:
       <number of months> + <date>, , BinaryOperator
       <string> as date, , Cast
       <time interval> + <date>, , BinaryOperator
+      <time> as local date, , Cast
+      <time> as universal date, , Cast
       <year> & <day of year>, , BinaryOperator
       april <integer> of <integer>, aprils, Numbered
       august <integer> of <integer>, augusts, Numbered
@@ -2717,6 +2723,7 @@ Creation techniques & properties of each type:
     Properties of <html> { key phrase, plural keyword, form, <result type>}:
       <html> & <html>, , BinaryOperator, <html>
       <html> & <string>, , BinaryOperator, <html>
+      <html> as decoded string, , Cast, <string>
       <html> as html, , Cast, <html>
       <html> as string, , Cast, <string>
       <string> & <html>, , BinaryOperator, <html>
@@ -3693,6 +3700,7 @@ Creation techniques & properties of each type:
       <floating point> as string, , Cast
       <format> as string, , Cast
       <hertz> as string, , Cast
+      <html> as decoded string, , Cast
       <html> as string, , Cast
       <integer> as hexadecimal, , Cast
       <integer> as string, , Cast
@@ -3737,6 +3745,7 @@ Creation techniques & properties of each type:
       <string> as string, , Cast
       <string> as trimmed string, , Cast
       <string> as uppercase, , Cast
+      <substring> as string, , Cast
       <time interval> as string, , Cast
       <time of day with time zone> as string, , Cast
       <time of day> as string, , Cast
@@ -3813,6 +3822,9 @@ Creation techniques & properties of each type:
       error message of <bes property result>, error messages, Plain
       expiration state of <license>, expiration states, Plain
       fips mode failure message of <cryptography>, fips mode failure messages, Plain
+      fxf character set of <bes server>, fxf character sets, Plain
+      fxf encoding concatenation <string> of <string>, fxf encoding concatenations, Named
+      fxf encoding concatenation of <string>, fxf encoding concatenations, Plain
       gather url of <license>, gather urls, Plain
       group filter of <bes ldap directory>, group filters, Plain
       hexadecimal string <string>, hexadecimal strings, NamedGlobal
@@ -3827,6 +3839,8 @@ Creation techniques & properties of each type:
       link href of <bes unmanagedasset>, link hrefs, Plain
       link href of <bes user>, link hrefs, Plain
       link href of <bes wizard>, link hrefs, Plain
+      local encoding concatenation <string> of <string>, local encoding concatenations, Named
+      local encoding concatenation of <string>, local encoding concatenations, Plain
       login user of <bes ldap directory>, login users, Plain
       masthead operator name of <bes user>, masthead operator names, Plain
       md5 of <string>, md5s, Plain
@@ -3960,6 +3974,7 @@ Creation techniques & properties of each type:
       value of <bes wizard variable>, values, Plain
       value of <distinguished name component>, values, Plain
       value of <mime field>, values, Plain
+      version of <cryptography>, versions, Plain
       version string <string> of <module>, version strings, Named
       wizard link of <bes fixlet>, wizard links, Plain
       wizard name of <bes fixlet>, wizard names, Plain
@@ -4081,6 +4096,8 @@ Creation techniques & properties of each type:
       first <integer> of <string>, firsts, Numbered, <substring>
       first <string> of <string>, firsts, Named, <substring>
       first match <regular expression> of <string>, first matches, Index<regular expression>, <regular expression match>
+      fxf encoding concatenation <string> of <string>, fxf encoding concatenations, Named, <string>
+      fxf encoding concatenation of <string>, fxf encoding concatenations, Plain, <string>
       h1 <string> of <string>, h1s, Named, <html>
       h1 of <string>, h1s, Plain, <html>
       h2 <string> of <string>, h2s, Named, <html>
@@ -4113,6 +4130,8 @@ Creation techniques & properties of each type:
       li of <string>, lis, Plain, <html>
       link <string> of <string>, links, Named, <html>
       link of <string>, links, Plain, <html>
+      local encoding concatenation <string> of <string>, local encoding concatenations, Named, <string>
+      local encoding concatenation of <string>, local encoding concatenations, Plain, <string>
       match <regular expression> of <string>, matches, Index<regular expression>, <regular expression match>
       md5 of <string>, md5s, Plain, <string>
       meta <string> of <string>, metas, Named, <html>
@@ -4226,6 +4245,7 @@ Creation techniques & properties of each type:
 
   Type <substring> (derives from string)
     Creation of <substring>: { key phrase, plural keyword, form}
+      <substring> as substring, , Cast
       character <integer> of <string>, characters, Numbered
       character of <string>, characters, Plain
       first <integer> of <string>, firsts, Numbered
@@ -4245,6 +4265,8 @@ Creation techniques & properties of each type:
       substring between <string> of <string>, substrings between, Named
       substring separated by <string> of <string>, substrings separated by, Named
     Properties of <substring> { key phrase, plural keyword, form, <result type>}:
+      <substring> as string, , Cast, <string>
+      <substring> as substring, , Cast, <substring>
       end of <substring>, ends, Plain, <string position>
       following text of <substring>, following texts, Plain, <substring>
       preceding text of <substring>, preceding texts, Plain, <substring>
@@ -4311,8 +4333,10 @@ Creation techniques & properties of each type:
       <time> < <time>, , BinaryOperator, <boolean>
       <time> <= <time>, , BinaryOperator, <boolean>
       <time> = <time>, , BinaryOperator, <boolean>
+      <time> as local date, , Cast, <date>
       <time> as local string, , Cast, <string>
       <time> as string, , Cast, <string>
+      <time> as universal date, , Cast, <date>
       <time> as universal string, , Cast, <string>
       date <time zone> of <time>, dates, Index<time zone>, <date>
       extrema of <time>, extremas, Plain, <( time, time )>
@@ -5120,6 +5144,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as day_of_month, , <day of month>, <integer>, Cast
       as day_of_month, , <day of month>, <string>, Cast
       as day_of_week, , <day of week>, <string>, Cast
+      as decoded string, , <string>, <html>, Cast
       as float, , <floating point>, <json value>, Cast
       as floating point, , <floating point>, <floating point>, Cast
       as floating point, , <floating point>, <integer>, Cast
@@ -5143,6 +5168,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as ipv6 address, , <ipv6 address>, <ipv4 address>, Cast
       as ipv6 address, , <ipv6 address>, <string>, Cast
       as left trimmed string, , <string>, <string>, Cast
+      as local date, , <date>, <time>, Cast
       as local string, , <string>, <time>, Cast
       as local time, , <time>, <string>, Cast
       as local zoned time_of_day, , <time of day with time zone>, <string>, Cast
@@ -5192,6 +5218,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <rope>, Cast
       as string, , <string>, <site version list>, Cast
       as string, , <string>, <string>, Cast
+      as string, , <string>, <substring>, Cast
       as string, , <string>, <time interval>, Cast
       as string, , <string>, <time of day with time zone>, Cast
       as string, , <string>, <time of day>, Cast
@@ -5203,6 +5230,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <undefined>, Cast
       as string, , <string>, <version>, Cast
       as string, , <string>, <year>, Cast
+      as substring, , <substring>, <substring>, Cast
       as text, , <string>, <xml dom node>, Cast
       as three letters, , <string>, <day of week>, Cast
       as three letters, , <string>, <month>, Cast
@@ -5214,6 +5242,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as trimmed string, , <string>, <string>, Cast
       as two digits, , <string>, <day of month>, Cast
       as two digits, , <string>, <month>, Cast
+      as universal date, , <date>, <time>, Cast
       as universal string, , <string>, <time>, Cast
       as universal time, , <time>, <string>, Cast
       as universal zoned time_of_day, , <time of day with time zone>, <string>, Cast
@@ -5695,6 +5724,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       following text, following texts, <substring>, <substring>, Plain
       format, formats, <format>, world , NamedGlobal
       friday, fridays, <day of week>, world , PlainGlobal
+      fxf character set, fxf character sets, <string>, <bes server>, Plain
+      fxf encoding concatenation, fxf encoding concatenations, <string>, <string>, Named
+      fxf encoding concatenation, fxf encoding concatenations, <string>, <string>, Plain
       gather url, gather urls, <string>, <license>, Plain
       geometric mean, geometric means, <floating point>, <statistical bin>, Plain
       ghz, ghzs, <hertz>, world , PlainGlobal
@@ -5929,6 +5961,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       link, links, <html>, <html>, Plain
       link, links, <html>, <string>, Named
       link, links, <html>, <string>, Plain
+      local encoding concatenation, local encoding concatenations, <string>, <string>, Named
+      local encoding concatenation, local encoding concatenations, <string>, <string>, Plain
       local time zone, local time zones, <time zone>, world , PlainGlobal
       local time, local times, <time>, world , NamedGlobal
       locally visible flag, locally visible flags, <boolean>, <bes fixlet>, Plain
@@ -6701,6 +6735,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       variance, variances, <floating point>, <statistical bin>, Plain
       version string, version strings, <string>, <module>, Named
       version, versions, <integer>, <bes site>, Plain
+      version, versions, <string>, <cryptography>, Plain
       version, versions, <version>, <module>, Plain
       version, versions, <version>, world , NamedGlobal
       visible flag, visible flags, <boolean>, <bes fixlet>, Plain
