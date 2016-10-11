@@ -1,7 +1,7 @@
 Operating System:AIX 6_1
-Client Version:9_5_2_56
+Client Version:9_5_3_211
 Build Target:
-ModuleName:HostApplication, Version:9_5_2_56, ClientCompatible:Yes
+ModuleName:HostApplication, Version:9_5_3_211, ClientCompatible:Yes
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   action
@@ -14,6 +14,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   application usage summary instance
   bes product
   binary operator
+  binary_string
   bios
   bit set
   boolean
@@ -168,6 +169,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   time with multiplicity (derives from  time)
   time zone
   time zone with multiplicity (derives from  time zone)
+  tuple item
   type
   unary operator
   undefined
@@ -323,6 +325,12 @@ Creation techniques & properties of each type:
       result type of <binary operator>, result types, Plain, <type>
       right operand type of <binary operator>, right operand types, Plain, <type>
       symbol of <binary operator>, symbols, Plain, <string>
+
+  Type <binary_string>
+    Creation of <binary_string>: { key phrase, plural keyword, form}
+    Properties of <binary_string> { key phrase, plural keyword, form, <result type>}:
+      <binary_string> as hexadecimal, , Cast, <string>
+      <binary_string> as string, , Cast, <string>
 
   Type <bios>
     Creation of <bios>: { key phrase, plural keyword, form}
@@ -1192,6 +1200,7 @@ Creation techniques & properties of each type:
       product of <fileset>, products, Plain, <product>
       root part of <fileset>, root parts, Plain, <fileset part>
       share part of <fileset>, share parts, Plain, <fileset part>
+      state of <fileset>, states, Plain, <string>
       update of <fileset>, updates, Plain, <integer>
       usr part of <fileset>, usr parts, Plain, <fileset part>
       version of <fileset>, versions, Plain, <version>
@@ -1403,6 +1412,7 @@ Creation techniques & properties of each type:
       product of <floating point>, products, Plain
       property percent of <evaluation cycle>, property percents, Plain
       quiet mode percent of <evaluation cycle>, quiet mode percents, Plain
+      random floating point, random floating points, PlainGlobal
       relative significance place <integer> of <floating point>, relative significance places, Numbered
       relative significance place of <floating point>, relative significance places, Plain
       relay select percent of <evaluation cycle>, relay select percents, Plain
@@ -2008,6 +2018,7 @@ Creation techniques & properties of each type:
       build number high of <operating system>, build number highs, Plain
       build number low of <operating system>, build number lows, Plain
       build number of <operating system>, build numbers, Plain
+      build revision of <version>, build revisions, Plain
       byte <integer> of <file>, bytes, Numbered
       client device count of <bes product>, client device counts, Plain
       competition size of <selected server>, competition sizes, Plain
@@ -2050,6 +2061,7 @@ Creation techniques & properties of each type:
       id of <site group>, ids, Plain
       id of <user>, ids, Plain
       index of <processor>, indexes, Plain
+      index of <tuple item>, indexes, Plain
       integer <integer>, integers, NumberedGlobal
       integer <string>, integers, NamedGlobal
       integer ceiling of <floating point>, integer ceilings, Plain
@@ -2069,6 +2081,7 @@ Creation techniques & properties of each type:
       lower bound of <integer range>, lower bounds, Plain
       major number of <volume group>, major numbers, Plain
       major of <device file>, majors, Plain
+      major revision of <version>, major revisions, Plain
       major version of <operating system>, major versions, Plain
       maximum of <evaluation cycle>, maximums, Plain
       maximum of <integer>, maxima, Plain
@@ -2077,6 +2090,7 @@ Creation techniques & properties of each type:
       minimum of <integer>, minima, Plain
       minor number of <logical volume>, minor numbers, Plain
       minor of <device file>, minors, Plain
+      minor revision of <version>, minor revisions, Plain
       minor version of <operating system>, minor versions, Plain
       minute_of_hour of <time of day with time zone>, minutes_of_hour, Plain
       minute_of_hour of <time of day>, minutes_of_hour, Plain
@@ -2121,6 +2135,7 @@ Creation techniques & properties of each type:
       other mask of <filesystem object>, other masks, Plain
       partition count of <logical volume>, partition counts, Plain
       partition size of <volume group>, partition sizes, Plain
+      patch revision of <version>, patch revisions, Plain
       persistent constraint of <action>, persistent constraints, Plain
       pid of <process>, pids, Plain
       port number of <selected server>, port numbers, Plain
@@ -2129,6 +2144,8 @@ Creation techniques & properties of each type:
       process id of <logged on user>, process ids, Plain
       process id of <process>, process ids, Plain
       product of <integer>, products, Plain
+      random integer of <integer>, random integers, Plain
+      random integer, random integers, PlainGlobal
       registrar number of <license>, registrar numbers, Plain
       rel_part of <fileset version record>, rel_parts, Plain
       remote port of <socket>, remote ports, Plain
@@ -2247,6 +2264,7 @@ Creation techniques & properties of each type:
       october <integer> of <integer>, octobers, Numbered, <date>
       october of <integer>, octobers, Plain, <month and year>
       product of <integer>, products, Plain, <integer>
+      random integer of <integer>, random integers, Plain, <integer>
       september <integer> of <integer>, septembers, Numbered, <date>
       september of <integer>, septembers, Plain, <month and year>
       set of <integer>, sets, Plain, <integer set>
@@ -3297,6 +3315,7 @@ Creation techniques & properties of each type:
       relay service, relay services, PlainGlobal
       running service <string>, running services, NamedGlobal
       service <string>, services, NamedGlobal
+      webui service, webui services, PlainGlobal
     Properties of <service> { key phrase, plural keyword, form, <result type>}:
       <service> as string, , Cast, <string>
       running of <service>, runnings, Plain, <boolean>
@@ -3552,6 +3571,8 @@ Creation techniques & properties of each type:
       <action> as string, , Cast
       <apar> as string, , Cast
       <binary operator> as string, , Cast
+      <binary_string> as hexadecimal, , Cast
+      <binary_string> as string, , Cast
       <bios> as string, , Cast
       <bit set> as string, , Cast
       <boolean> as string, , Cast
@@ -3660,6 +3681,7 @@ Creation techniques & properties of each type:
       <time> as local string, , Cast
       <time> as string, , Cast
       <time> as universal string, , Cast
+      <tuple item> as string, , Cast
       <type> as string, , Cast
       <unary operator> as string, , Cast
       <undefined> as string, , Cast
@@ -3879,11 +3901,13 @@ Creation techniques & properties of each type:
       site url of <bes product>, site urls, Plain
       size of <kernel_extension>, sizes, Plain
       start method of <predefined_device>, start methods, Plain
+      state of <fileset>, states, Plain
       state of <service>, states, Plain
       status of <action>, statuss, Plain
       status of <customized_device>, statuses, Plain
       stop method of <predefined_device>, stop methods, Plain
       string <string>, strings, NamedGlobal
+      string of <tuple item>, strings, Plain
       string version of <application usage summary instance>, string versions, Plain
       subclass of <predefined_device>, subclasses, Plain
       symbol of <binary operator>, symbols, Plain
@@ -3896,6 +3920,7 @@ Creation techniques & properties of each type:
       tty of <user>, ttys, Plain
       tuple string item <integer> of <string>, tuple string items, Numbered
       tuple string item of <string>, tuple string items, Plain
+      tuple string of <string>, tuple strings, Plain
       two digit hour of <time of day with time zone>, two digit hours, Plain
       two digit hour of <time of day>, two digit hours, Plain
       two digit minute of <time of day with time zone>, two digit minutes, Plain
@@ -4192,8 +4217,10 @@ Creation techniques & properties of each type:
       tr of <string>, trs, Plain, <html>
       tt <string> of <string>, tts, Named, <html>
       tt of <string>, tts, Plain, <html>
+      tuple item of <string>, tuple items, Plain, <tuple item>
       tuple string item <integer> of <string>, tuple string items, Numbered, <string>
       tuple string item of <string>, tuple string items, Plain, <string>
+      tuple string of <string>, tuple strings, Plain, <string>
       ul <string> of <string>, uls, Named, <html>
       ul of <string>, uls, Plain, <html>
       unique value of <string>, unique values, Plain, <string with multiplicity>
@@ -4720,6 +4747,14 @@ Creation techniques & properties of each type:
     Properties of <time zone with multiplicity> { key phrase, plural keyword, form, <result type>}:
       multiplicity of <time zone with multiplicity>, multiplicities, Plain, <integer>
 
+  Type <tuple item>
+    Creation of <tuple item>: { key phrase, plural keyword, form}
+      tuple item of <string>, tuple items, Plain
+    Properties of <tuple item> { key phrase, plural keyword, form, <result type>}:
+      <tuple item> as string, , Cast, <string>
+      index of <tuple item>, indexes, Plain, <integer>
+      string of <tuple item>, strings, Plain, <string>
+
   Type <type>
     Creation of <type>: { key phrase, plural keyword, form}
       direct object type of <property>, direct object types, Plain
@@ -4791,6 +4826,7 @@ Creation techniques & properties of each type:
       <version> as version, , Cast
       maximum of <version>, maxima, Plain
       minimum of <version>, minima, Plain
+      pad of <version>, pads, Plain
       sqlite version, sqlite versions, PlainGlobal
       version <string>, versions, NamedGlobal
       version of <application usage summary instance>, versions, Plain
@@ -4814,9 +4850,14 @@ Creation techniques & properties of each type:
       <version> = <version>, , BinaryOperator, <boolean>
       <version> as string, , Cast, <string>
       <version> as version, , Cast, <version>
+      build revision of <version>, build revisions, Plain, <integer>
       extrema of <version>, extremas, Plain, <( version, version )>
+      major revision of <version>, major revisions, Plain, <integer>
       maximum of <version>, maxima, Plain, <version>
       minimum of <version>, minima, Plain, <version>
+      minor revision of <version>, minor revisions, Plain, <integer>
+      pad of <version>, pads, Plain, <version>
+      patch revision of <version>, patch revisions, Plain, <integer>
       unique value of <version>, unique values, Plain, <version with multiplicity>
 
   Type <version with multiplicity> (derives from version)
@@ -5090,6 +5131,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   proxy agent service, proxy agent services, PlainGlobal, <service>
   ram, rams, PlainGlobal, <ram>
   random access memory, random access memories, PlainGlobal, <ram>
+  random floating point, random floating points, PlainGlobal, <floating point>
+  random integer, random integers, PlainGlobal, <integer>
   regex <string>, regexes, NamedGlobal, <regular expression>
   registration server, registration servers, PlainGlobal, <registration server>
   regular expression <string>, regular expressions, NamedGlobal, <regular expression>
@@ -5153,6 +5196,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   user, users, PlainGlobal, <user>
   version <string>, versions, NamedGlobal, <version>
   wake on lan subnet cidr string, wake on lan subnet cidr strings, PlainGlobal, <string>
+  webui service, webui services, PlainGlobal, <service>
   wednesday, wednesdays, PlainGlobal, <day of week>
   week, weeks, PlainGlobal, <time interval>
   year <integer>, years, NumberedGlobal, <year>
@@ -5262,6 +5306,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as floating point, , <floating point>, <integer>, Cast
       as floating point, , <floating point>, <string>, Cast
       as folder, , <folder>, <symlink>, Cast
+      as hexadecimal, , <string>, <binary_string>, Cast
       as hexadecimal, , <string>, <integer>, Cast
       as hexadecimal, , <string>, <string>, Cast
       as html, , <html>, <html>, Cast
@@ -5317,6 +5362,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <action>, Cast
       as string, , <string>, <apar>, Cast
       as string, , <string>, <binary operator>, Cast
+      as string, , <string>, <binary_string>, Cast
       as string, , <string>, <bios>, Cast
       as string, , <string>, <bit set>, Cast
       as string, , <string>, <boolean>, Cast
@@ -5389,6 +5435,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <time range>, Cast
       as string, , <string>, <time zone>, Cast
       as string, , <string>, <time>, Cast
+      as string, , <string>, <tuple item>, Cast
       as string, , <string>, <type>, Cast
       as string, , <string>, <unary operator>, Cast
       as string, , <string>, <undefined>, Cast
@@ -5480,6 +5527,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       build number high, build number highs, <integer>, <operating system>, Plain
       build number low, build number lows, <integer>, <operating system>, Plain
       build number, build numbers, <integer>, <operating system>, Plain
+      build revision, build revisions, <integer>, <version>, Plain
       build target, build targets, <string>, <client>, Plain
       build, builds, <string>, <operating system>, Plain
       bus extender flag, bus extender flags, <string>, <predefined_device>, Plain
@@ -5936,6 +5984,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       in proxy agent context, in proxy agent contexts, <boolean>, world , PlainGlobal
       index type, index types, <type>, <property>, Plain
       index, indexes, <integer>, <processor>, Plain
+      index, indexes, <integer>, <tuple item>, Plain
       index, indices, <string>, <sqlite table>, Plain
       inexact, inexacts, <boolean>, <floating point>, Plain
       infinite, infinites, <boolean>, <floating point>, Plain
@@ -6099,6 +6148,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       main gather service, main gather services, <service>, world , PlainGlobal
       main processor, main processors, <processor>, world , PlainGlobal
       major number, major numbers, <integer>, <volume group>, Plain
+      major revision, major revisions, <integer>, <version>, Plain
       major version, major versions, <integer>, <operating system>, Plain
       major, majors, <integer>, <device file>, Plain
       manual group, manual groups, <manual group>, <client>, Named
@@ -6183,6 +6233,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       minimum, minima, <version>, <version>, Plain
       minimum, minima, <year>, <year>, Plain
       minor number, minor numbers, <integer>, <logical volume>, Plain
+      minor revision, minor revisions, <integer>, <version>, Plain
       minor version, minor versions, <integer>, <operating system>, Plain
       minor, minors, <integer>, <device file>, Plain
       minute, minutes, <time interval>, world , PlainGlobal
@@ -6347,6 +6398,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       package requiring, packages requiring, <package>, <rpmdatabase>, Index<capability>
       package, packages, <package>, <rpmdatabase>, Named
       package, packages, <package>, <rpmdatabase>, Plain
+      pad, pads, <version>, <version>, Plain
       padded string, padded strings, <string>, <bit set>, Plain
       parameter, parameters, <string>, <action>, Named
       parameter, parameters, <string>, world , NamedGlobal
@@ -6359,6 +6411,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       parenthesized part, parenthesized parts, <substring>, <regular expression match>, Plain
       partition count, partition counts, <integer>, <logical volume>, Plain
       partition size, partition sizes, <integer>, <volume group>, Plain
+      patch revision, patch revisions, <integer>, <version>, Plain
       path, paths, <json value>, <json value>, Named
       path, paths, <string>, <execution>, Plain
       pathname, pathnames, <string>, <filesystem object>, Plain
@@ -6440,6 +6493,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       quiet mode percent, quiet mode percents, <floating point>, <evaluation cycle>, Plain
       ram, rams, <ram>, world , PlainGlobal
       random access memory, random access memories, <ram>, world , PlainGlobal
+      random floating point, random floating points, <floating point>, world , PlainGlobal
+      random integer, random integers, <integer>, <integer>, Plain
+      random integer, random integers, <integer>, world , PlainGlobal
       range after, ranges after, <time range>, <time range>, Index<time>
       range before, ranges before, <time range>, <time range>, Index<time>
       read, reads, <boolean>, <mode_mask>, Plain
@@ -6617,6 +6673,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       start method, start methods, <string>, <predefined_device>, Plain
       start, starts, <string position>, <substring>, Plain
       start, starts, <time>, <time range>, Plain
+      state, states, <string>, <fileset>, Plain
       state, states, <string>, <service>, Plain
       statement, statements, <sqlite statement>, <sqlite database>, Named
       status, statuses, <string>, <customized_device>, Plain
@@ -6625,6 +6682,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       stop method, stop methods, <string>, <predefined_device>, Plain
       storage folder, storage folders, <folder>, <client>, Plain
       string version, string versions, <string>, <application usage summary instance>, Plain
+      string, strings, <string>, <tuple item>, Plain
       string, strings, <string>, world , NamedGlobal
       strong, strongs, <html>, <html>, Named
       strong, strongs, <html>, <html>, Plain
@@ -6742,8 +6800,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       tty, ttys, <string>, <logged on user>, Plain
       tty, ttys, <string>, <user>, Plain
       tuesday, tuesdays, <day of week>, world , PlainGlobal
+      tuple item, tuple items, <tuple item>, <string>, Plain
       tuple string item, tuple string items, <string>, <string>, Numbered
       tuple string item, tuple string items, <string>, <string>, Plain
+      tuple string, tuple strings, <string>, <string>, Plain
       two digit hour, two digit hours, <string>, <time of day with time zone>, Plain
       two digit hour, two digit hours, <string>, <time of day>, Plain
       two digit minute, two digit minutes, <string>, <time of day with time zone>, Plain
@@ -6894,6 +6954,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       vpd flag, vpd flags, <string>, <predefined_device>, Plain
       waiting for download, waiting for downloads, <boolean>, <action>, Plain
       wake on lan subnet cidr string, wake on lan subnet cidr strings, <string>, world , PlainGlobal
+      webui service, webui services, <service>, world , PlainGlobal
       wednesday, wednesdays, <day of week>, world , PlainGlobal
       week, weeks, <time interval>, world , PlainGlobal
       weight, weights, <integer>, <selected server>, Plain

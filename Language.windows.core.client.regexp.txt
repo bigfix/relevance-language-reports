@@ -1,5 +1,5 @@
 Operating System:Win2008R2 6_1_7601
-Client Version:9_5_2_56
+Client Version:9_5_3_211
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   access control entry
@@ -23,6 +23,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   audit policy subcategory
   bes product
   binary operator
+  binary_string
   bios
   bit set
   boolean
@@ -268,6 +269,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   time with multiplicity (derives from  time)
   time zone
   time zone with multiplicity (derives from  time zone)
+  tuple item
   type
   unary operator
   undefined
@@ -685,6 +687,15 @@ Creation techniques & properties of each type:
       result type of <binary operator>, result types, Plain, <type>
       right operand type of <binary operator>, right operand types, Plain, <type>
       symbol of <binary operator>, symbols, Plain, <string>
+
+  Type <binary_string>
+    Creation of <binary_string>: { key phrase, plural keyword, form}
+      reserved of <dmi bios_language_information>, reserveds, Plain
+      reserved of <dmi system_boot_information>, reserveds, Plain
+      uuid of <dmi system_information>, uuids, Plain
+    Properties of <binary_string> { key phrase, plural keyword, form, <result type>}:
+      <binary_string> as hexadecimal, , Cast, <string>
+      <binary_string> as string, , Cast, <string>
 
   Type <bios>
     Creation of <bios>: { key phrase, plural keyword, form}
@@ -1249,6 +1260,7 @@ Creation techniques & properties of each type:
       user privilege of <user>, user privileges, Plain
       v1 compatibility of <task settings>, v1 compatibilities, Plain
       v2 compatibility of <task settings>, v2 compatibilities, Plain
+      virtual machine of <operating system>, virtual machines, Plain
       volatile attribute of <metabase value>, volatile attributes, Plain
       waiting for download of <action>, waiting for downloads, Plain
       wake to run of <task settings>, wake to runs, Plain
@@ -1799,7 +1811,7 @@ Creation techniques & properties of each type:
       flags of <dmi bios_language_information>, flagss, Plain, <integer>
       installable_languages of <dmi bios_language_information>, installable_languagess, Plain, <integer>
       length of <dmi bios_language_information>, lengths, Plain, <integer>
-      reserved of <dmi bios_language_information>, reserveds, Plain, <string>
+      reserved of <dmi bios_language_information>, reserveds, Plain, <binary_string>
 
   Type <dmi built_in_pointing_device>
     Creation of <dmi built_in_pointing_device>: { key phrase, plural keyword, form}
@@ -2146,7 +2158,7 @@ Creation techniques & properties of each type:
       system_boot_information of <dmi>, system_boot_informations, Plain
     Properties of <dmi system_boot_information> { key phrase, plural keyword, form, <result type>}:
       length of <dmi system_boot_information>, lengths, Plain, <integer>
-      reserved of <dmi system_boot_information>, reserveds, Plain, <string>
+      reserved of <dmi system_boot_information>, reserveds, Plain, <binary_string>
 
   Type <dmi system_configuration_option>
     Creation of <dmi system_configuration_option>: { key phrase, plural keyword, form}
@@ -2184,7 +2196,7 @@ Creation techniques & properties of each type:
       product_name of <dmi system_information>, product_names, Plain, <string>
       serial_number of <dmi system_information>, serial_numbers, Plain, <string>
       sku_number of <dmi system_information>, sku_numbers, Plain, <string>
-      uuid of <dmi system_information>, uuids, Plain, <string>
+      uuid of <dmi system_information>, uuids, Plain, <binary_string>
       version of <dmi system_information>, versions, Plain, <string>
       wake_up_type of <dmi system_information>, wake_up_types, Plain, <integer>
 
@@ -2429,6 +2441,7 @@ Creation techniques & properties of each type:
       time generated of <event log record>, times generated, Plain, <time>
       time written of <event log record>, times written, Plain, <time>
       user sid of <event log record>, user sids, Plain, <security identifier>
+      xml of <event log record>, xmls, Plain, <xml dom node>
 
   Type <event task trigger> (derives from task trigger)
     Creation of <event task trigger>: { key phrase, plural keyword, form}
@@ -2863,6 +2876,7 @@ Creation techniques & properties of each type:
       product of <floating point>, products, Plain
       property percent of <evaluation cycle>, property percents, Plain
       quiet mode percent of <evaluation cycle>, quiet mode percents, Plain
+      random floating point, random floating points, PlainGlobal
       relative significance place <integer> of <floating point>, relative significance places, Numbered
       relative significance place of <floating point>, relative significance places, Plain
       relay select percent of <evaluation cycle>, relay select percents, Plain
@@ -3507,6 +3521,7 @@ Creation techniques & properties of each type:
       build number high of <operating system>, build number highs, Plain
       build number low of <operating system>, build number lows, Plain
       build number of <operating system>, build numbers, Plain
+      build revision of <version>, build revisions, Plain
       bus_number of <dmi onboard_devices_extended_information>, bus_numbers, Plain
       bus_number of <dmi system_slots>, bus_numbers, Plain
       byte <integer> of <file>, bytes, Numbered
@@ -3615,6 +3630,7 @@ Creation techniques & properties of each type:
       id of <root server>, ids, Plain
       id of <site group>, ids, Plain
       id of <user>, ids, Plain
+      index of <tuple item>, indexes, Plain
       inheritance of <access control entry>, inheritances, Plain
       input_current_probe_handle of <dmi system_power_supply>, input_current_probe_handles, Plain
       input_voltage_probe_handle of <dmi system_power_supply>, input_voltage_probe_handles, Plain
@@ -3711,6 +3727,7 @@ Creation techniques & properties of each type:
       lower_threshold_critical of <dmi management_device_threshold_data>, lower_threshold_criticals, Plain
       lower_threshold_non_critical of <dmi management_device_threshold_data>, lower_threshold_non_criticals, Plain
       lower_threshold_non_recoverable of <dmi management_device_threshold_data>, lower_threshold_non_recoverables, Plain
+      major revision of <version>, major revisions, Plain
       major version of <operating system>, major versions, Plain
       management_device_handle of <dmi management_device_component>, management_device_handles, Plain
       max_power_capacity of <dmi system_power_supply>, max_power_capacitys, Plain
@@ -3748,6 +3765,7 @@ Creation techniques & properties of each type:
       minimum_value of <dmi electrical_current_probe>, minimum_values, Plain
       minimum_value of <dmi temperature_probe>, minimum_values, Plain
       minimum_value of <dmi voltage_probe>, minimum_values, Plain
+      minor revision of <version>, minor revisions, Plain
       minor version of <operating system>, minor versions, Plain
       minute_of_hour of <time of day with time zone>, minutes_of_hour, Plain
       minute_of_hour of <time of day>, minutes_of_hour, Plain
@@ -3815,6 +3833,7 @@ Creation techniques & properties of each type:
       partition_row_position of <dmi memory_device_mapped_address>, partition_row_positions, Plain
       partition_width of <dmi memory_array_mapped_address>, partition_widths, Plain
       password history length of <security database>, password history lengths, Plain
+      patch revision of <version>, patch revisions, Plain
       peak page file usage of <process>, peak page file usages, Plain
       peak working set size of <process>, peak working set sizes, Plain
       performance counter of <operating system>, performance counters, Plain
@@ -3847,6 +3866,8 @@ Creation techniques & properties of each type:
       quota paged pool usage of <process>, quota paged pool usages, Plain
       quota peak nonpaged pool usage of <process>, quota peak nonpaged pool usages, Plain
       quota peak paged pool usage of <process>, quota peak paged pool usages, Plain
+      random integer of <integer>, random integers, Plain
+      random integer, random integers, PlainGlobal
       record count of <event log>, record counts, Plain
       record number of <event log record>, record numbers, Plain
       reference_designation of <dmi onboard_devices_extended_information>, reference_designations, Plain
@@ -4040,6 +4061,7 @@ Creation techniques & properties of each type:
       october <integer> of <integer>, octobers, Numbered, <date>
       october of <integer>, octobers, Plain, <month and year>
       product of <integer>, products, Plain, <integer>
+      random integer of <integer>, random integers, Plain, <integer>
       september <integer> of <integer>, septembers, Numbered, <date>
       september of <integer>, septembers, Plain, <month and year>
       set of <integer>, sets, Plain, <integer set>
@@ -4845,6 +4867,7 @@ Creation techniques & properties of each type:
       build of <operating system>, builds, Plain, <string>
       csd version of <operating system>, csd versions, Plain, <string>
       embedded of <operating system>, embeddeds, Plain, <boolean>
+      hypervisor of <operating system>, hypervisors, Plain, <string>
       ia64 of <operating system>, ia64s, Plain, <boolean>
       little endian of <operating system>, little endians, Plain, <boolean>
       mac of <operating system>, macs, Plain, <boolean>
@@ -4867,6 +4890,7 @@ Creation techniques & properties of each type:
       unix of <operating system>, unixes, Plain, <boolean>
       uptime of <operating system>, uptimes, Plain, <time interval>
       version of <operating system>, versions, Plain, <version>
+      virtual machine of <operating system>, virtual machines, Plain, <boolean>
       windows of <operating system>, windowses, Plain, <boolean>
       x32 of <operating system>, x32s, Plain, <boolean>
       x64 of <operating system>, x64s, Plain, <boolean>
@@ -5375,6 +5399,7 @@ Creation techniques & properties of each type:
       running service, running services, PlainGlobal
       service <string>, services, NamedGlobal
       service, services, PlainGlobal
+      webui service, webui services, PlainGlobal
       win32 running service, win32 running services, PlainGlobal
       win32 service, win32 services, PlainGlobal
     Properties of <service> { key phrase, plural keyword, form, <result type>}:
@@ -5544,6 +5569,7 @@ Creation techniques & properties of each type:
       value <string> of <smbios structure>, values, Named
       value of <smbios structure>, values, Plain
     Properties of <smbios value> { key phrase, plural keyword, form, <result type>}:
+      <smbios value> as hexadecimal, , Cast, <string>
       <smbios value> as string, , Cast, <string>
       hexadecimal of <smbios value>, hexadecimals, Plain, <string>
       name of <smbios value>, names, Plain, <string>
@@ -5631,6 +5657,8 @@ Creation techniques & properties of each type:
       <action lock state> as string, , Cast
       <action> as string, , Cast
       <binary operator> as string, , Cast
+      <binary_string> as hexadecimal, , Cast
+      <binary_string> as string, , Cast
       <bios> as string, , Cast
       <bit set> as string, , Cast
       <boolean> as string, , Cast
@@ -5706,6 +5734,7 @@ Creation techniques & properties of each type:
       <setting> as string, , Cast
       <site profile variable> as string, , Cast
       <site version list> as string, , Cast
+      <smbios value> as hexadecimal, , Cast
       <smbios value> as string, , Cast
       <sqlite column type> as string, , Cast
       <sqlite column> as string, , Cast
@@ -5731,6 +5760,7 @@ Creation techniques & properties of each type:
       <time> as local string, , Cast
       <time> as string, , Cast
       <time> as universal string, , Cast
+      <tuple item> as string, , Cast
       <type> as string, , Cast
       <unary operator> as string, , Cast
       <undefined> as string, , Cast
@@ -5884,6 +5914,7 @@ Creation techniques & properties of each type:
       home directory of <user>, home directories, Plain
       host name of <root server>, host names, Plain
       hostname, hostnames, PlainGlobal
+      hypervisor of <operating system>, hypervisors, Plain
       icmp types_and_codes string of <firewall rule>, icmp types_and_codes strings, Plain
       icon pathname of <file shortcut>, icon pathnames, Plain
       id of <file version block>, ids, Plain
@@ -6034,8 +6065,6 @@ Creation techniques & properties of each type:
       remote ports string of <firewall rule>, remote ports strings, Plain
       replyto of <email task action>, replytos, Plain
       report character set of <client>, report character sets, Plain
-      reserved of <dmi bios_language_information>, reserveds, Plain
-      reserved of <dmi system_boot_information>, reserveds, Plain
       revision_level of <dmi system_power_supply>, revision_levels, Plain
       sbds_device_chemistry of <dmi portable_battery>, sbds_device_chemistrys, Plain
       sbds_version_number of <dmi portable_battery>, sbds_version_numbers, Plain
@@ -6090,6 +6119,7 @@ Creation techniques & properties of each type:
       status of <action>, statuss, Plain
       string <string> of <smbios structure>, strings, Named
       string <string>, strings, NamedGlobal
+      string of <tuple item>, strings, Plain
       string value <integer> of <wmi select>, string values, Numbered
       string value of <wmi select>, string values, Plain
       string version of <application usage summary instance>, string versions, Plain
@@ -6109,6 +6139,7 @@ Creation techniques & properties of each type:
       tty of <logged on user>, ttys, Plain
       tuple string item <integer> of <string>, tuple string items, Numbered
       tuple string item of <string>, tuple string items, Plain
+      tuple string of <string>, tuple strings, Plain
       two digit hour of <time of day with time zone>, two digit hours, Plain
       two digit hour of <time of day>, two digit hours, Plain
       two digit minute of <time of day with time zone>, two digit minutes, Plain
@@ -6132,7 +6163,6 @@ Creation techniques & properties of each type:
       user id of <task principal>, user ids, Plain
       user language, user languages, PlainGlobal
       usual name of <property>, usual names, Plain
-      uuid of <dmi system_information>, uuids, Plain
       value <string> of <file version block>, values, Named
       value of <distinguished name component>, values, Plain
       value of <environment variable>, values, Plain
@@ -6394,8 +6424,10 @@ Creation techniques & properties of each type:
       tr of <string>, trs, Plain, <html>
       tt <string> of <string>, tts, Named, <html>
       tt of <string>, tts, Plain, <html>
+      tuple item of <string>, tuple items, Plain, <tuple item>
       tuple string item <integer> of <string>, tuple string items, Numbered, <string>
       tuple string item of <string>, tuple string items, Plain, <string>
+      tuple string of <string>, tuple strings, Plain, <string>
       ul <string> of <string>, uls, Named, <html>
       ul of <string>, uls, Plain, <html>
       unique value of <string>, unique values, Plain, <string with multiplicity>
@@ -7097,6 +7129,14 @@ Creation techniques & properties of each type:
     Properties of <time zone with multiplicity> { key phrase, plural keyword, form, <result type>}:
       multiplicity of <time zone with multiplicity>, multiplicities, Plain, <integer>
 
+  Type <tuple item>
+    Creation of <tuple item>: { key phrase, plural keyword, form}
+      tuple item of <string>, tuple items, Plain
+    Properties of <tuple item> { key phrase, plural keyword, form, <result type>}:
+      <tuple item> as string, , Cast, <string>
+      index of <tuple item>, indexes, Plain, <integer>
+      string of <tuple item>, strings, Plain, <string>
+
   Type <type>
     Creation of <type>: { key phrase, plural keyword, form}
       direct object type of <property>, direct object types, Plain
@@ -7243,10 +7283,14 @@ Creation techniques & properties of each type:
       <version> = <version>, , BinaryOperator, <boolean>
       <version> as string, , Cast, <string>
       <version> as version, , Cast, <version>
+      build revision of <version>, build revisions, Plain, <integer>
       extrema of <version>, extremas, Plain, <( version, version )>
+      major revision of <version>, major revisions, Plain, <integer>
       maximum of <version>, maxima, Plain, <version>
       minimum of <version>, minima, Plain, <version>
+      minor revision of <version>, minor revisions, Plain, <integer>
       pad of <version>, pads, Plain, <version>
+      patch revision of <version>, patch revisions, Plain, <integer>
       unique value of <version>, unique values, Plain, <version with multiplicity>
 
   Type <version with multiplicity> (derives from version)
@@ -7377,6 +7421,7 @@ Creation techniques & properties of each type:
       parent node of <xml dom node>, parent nodes, Plain
       previous sibling of <xml dom node>, previous siblings, Plain
       select <string> of <xml dom node>, selects, Named
+      xml of <event log record>, xmls, Plain
       xpath <( string, string )> of <xml dom node>, xpaths, Index<( string, string )>
       xpath <string> of <xml dom node>, xpaths, Named
     Properties of <xml dom node> { key phrase, plural keyword, form, <result type>}:
@@ -7765,6 +7810,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   public firewall profile type, public firewall profile types, PlainGlobal, <firewall profile type>
   ram, rams, PlainGlobal, <ram>
   random access memory, random access memories, PlainGlobal, <ram>
+  random floating point, random floating points, PlainGlobal, <floating point>
+  random integer, random integers, PlainGlobal, <integer>
   realtime priority, realtime priorities, PlainGlobal, <priority class>
   recent application <string>, recent applications, NamedGlobal, <application>
   recent application, recent applications, PlainGlobal, <application>
@@ -7863,6 +7910,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   version <string>, versions, NamedGlobal, <version>
   wake on lan subnet cidr string, wake on lan subnet cidr strings, PlainGlobal, <string>
   warning event log event type, warning event log event types, PlainGlobal, <event log event type>
+  webui service, webui services, PlainGlobal, <service>
   wednesday, wednesdays, PlainGlobal, <day of week>
   week, weeks, PlainGlobal, <time interval>
   weekly task trigger type, weekly task trigger types, PlainGlobal, <task trigger type>
@@ -8053,7 +8101,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as floating point, , <floating point>, <integer>, Cast
       as floating point, , <floating point>, <string>, Cast
       as folder, , <folder>, <registry key value>, Cast
+      as hexadecimal, , <string>, <binary_string>, Cast
       as hexadecimal, , <string>, <integer>, Cast
+      as hexadecimal, , <string>, <smbios value>, Cast
       as hexadecimal, , <string>, <string>, Cast
       as html, , <html>, <html>, Cast
       as html, , <html>, <string>, Cast
@@ -8108,6 +8158,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <action lock state>, Cast
       as string, , <string>, <action>, Cast
       as string, , <string>, <binary operator>, Cast
+      as string, , <string>, <binary_string>, Cast
       as string, , <string>, <bios>, Cast
       as string, , <string>, <bit set>, Cast
       as string, , <string>, <boolean>, Cast
@@ -8173,6 +8224,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <time range>, Cast
       as string, , <string>, <time zone>, Cast
       as string, , <string>, <time>, Cast
+      as string, , <string>, <tuple item>, Cast
       as string, , <string>, <type>, Cast
       as string, , <string>, <unary operator>, Cast
       as string, , <string>, <undefined>, Cast
@@ -8326,6 +8378,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       build number high, build number highs, <integer>, <operating system>, Plain
       build number low, build number lows, <integer>, <operating system>, Plain
       build number, build numbers, <integer>, <operating system>, Plain
+      build revision, build revisions, <integer>, <version>, Plain
       build target, build targets, <string>, <client>, Plain
       build, builds, <string>, <operating system>, Plain
       built in, built ins, <boolean>, <firewall open port>, Plain
@@ -9074,6 +9127,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       html, htmls, <html>, world , NamedGlobal
       hyperthreading capable, hyperthreading capables, <boolean>, world , PlainGlobal
       hyperthreading enabled, hyperthreading enableds, <boolean>, world , PlainGlobal
+      hypervisor, hypervisors, <string>, <operating system>, Plain
       hz, hzs, <hertz>, world , PlainGlobal
       i2c_slave_address, i2c_slave_addresss, <integer>, <dmi ipmi_device_information>, Plain
       ia64, ia64s, <boolean>, <operating system>, Plain
@@ -9111,6 +9165,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       inbound connections allowed, inbound connections alloweds, <boolean>, <firewall profile>, Plain
       inbound, inbounds, <boolean>, <firewall rule>, Plain
       index type, index types, <type>, <property>, Plain
+      index, indexes, <integer>, <tuple item>, Plain
       index, indices, <string>, <sqlite table>, Plain
       inexact, inexacts, <boolean>, <floating point>, Plain
       infinite, infinites, <boolean>, <floating point>, Plain
@@ -9422,6 +9477,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       machine, machines, <string>, <operating system>, Plain
       main gather service, main gather services, <service>, world , PlainGlobal
       main processor, main processors, <processor>, world , PlainGlobal
+      major revision, major revisions, <integer>, <version>, Plain
       major version, major versions, <integer>, <operating system>, Plain
       management_device, management_devices, <dmi management_device>, <dmi>, Numbered
       management_device, management_devices, <dmi management_device>, <dmi>, Plain
@@ -9564,6 +9620,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       minimum_value, minimum_values, <integer>, <dmi electrical_current_probe>, Plain
       minimum_value, minimum_values, <integer>, <dmi temperature_probe>, Plain
       minimum_value, minimum_values, <integer>, <dmi voltage_probe>, Plain
+      minor revision, minor revisions, <integer>, <version>, Plain
       minor version, minor versions, <integer>, <operating system>, Plain
       minute, minutes, <time interval>, world , PlainGlobal
       minute_of_hour, minutes_of_hour, <integer>, <time of day with time zone>, Plain
@@ -9823,6 +9880,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       password history length, password history lengths, <integer>, <security database>, Plain
       password logon, password logons, <boolean>, <task principal>, Plain
       password, passwords, <string>, <network share>, Plain
+      patch revision, patch revisions, <integer>, <version>, Plain
       path, paths, <json value>, <json value>, Named
       path, paths, <string>, <exec task action>, Plain
       path, paths, <string>, <execution>, Plain
@@ -9975,6 +10033,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       random delay, random delays, <time interval>, <monthlydow task trigger>, Plain
       random delay, random delays, <time interval>, <time task trigger>, Plain
       random delay, random delays, <time interval>, <weekly task trigger>, Plain
+      random floating point, random floating points, <floating point>, world , PlainGlobal
+      random integer, random integers, <integer>, <integer>, Plain
+      random integer, random integers, <integer>, world , PlainGlobal
       range after, ranges after, <time range>, <time range>, Index<time>
       range before, ranges before, <time range>, <time range>, Index<time>
       range, ranges, <time range>, <monitor power interval>, Plain
@@ -10046,8 +10107,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       report character set, report character sets, <string>, <client>, Plain
       report duration, report durations, <time interval>, <evaluation cycle>, Plain
       report percent, report percents, <floating point>, <evaluation cycle>, Plain
-      reserved, reserveds, <string>, <dmi bios_language_information>, Plain
-      reserved, reserveds, <string>, <dmi system_boot_information>, Plain
+      reserved, reserveds, <binary_string>, <dmi bios_language_information>, Plain
+      reserved, reserveds, <binary_string>, <dmi system_boot_information>, Plain
       reset_count, reset_counts, <integer>, <dmi system_reset>, Plain
       reset_limit, reset_limits, <integer>, <dmi system_reset>, Plain
       resolution, resolutions, <integer>, <dmi electrical_current_probe>, Plain
@@ -10308,6 +10369,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       string value, string values, <string>, <wmi select>, Plain
       string version, string versions, <string>, <application usage summary instance>, Plain
       string, strings, <string>, <smbios structure>, Named
+      string, strings, <string>, <tuple item>, Plain
       string, strings, <string>, world , NamedGlobal
       strong, strongs, <html>, <html>, Named
       strong, strongs, <html>, <html>, Plain
@@ -10498,8 +10560,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       tty, ttys, <string>, <logged on user>, Plain
       tuesday, tuesdays, <day of week>, world , PlainGlobal
       tunnel, tunnels, <boolean>, <network adapter>, Plain
+      tuple item, tuple items, <tuple item>, <string>, Plain
       tuple string item, tuple string items, <string>, <string>, Numbered
       tuple string item, tuple string items, <string>, <string>, Plain
+      tuple string, tuple strings, <string>, <string>, Plain
       two digit hour, two digit hours, <string>, <time of day with time zone>, Plain
       two digit hour, two digit hours, <string>, <time of day>, Plain
       two digit minute, two digit minutes, <string>, <time of day with time zone>, Plain
@@ -10615,7 +10679,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       user, users, <user>, world , NamedGlobal
       user, users, <user>, world , PlainGlobal
       usual name, usual names, <string>, <property>, Plain
-      uuid, uuids, <string>, <dmi system_information>, Plain
+      uuid, uuids, <binary_string>, <dmi system_information>, Plain
       v1 compatibility, v1 compatibilities, <boolean>, <task settings>, Plain
       v2 compatibility, v2 compatibilities, <boolean>, <task settings>, Plain
       value query, value queries, <task named value pair>, <event task trigger>, Plain
@@ -10668,6 +10732,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       version, versions, <version>, <service>, Plain
       version, versions, <version>, <winrt package id>, Plain
       version, versions, <version>, world , NamedGlobal
+      virtual machine, virtual machines, <boolean>, <operating system>, Plain
       virtualizer, virtualizers, <string>, <application>, Plain
       volatile attribute, volatile attributes, <boolean>, <metabase value>, Plain
       voltage, voltages, <integer>, <dmi processor_information>, Plain
@@ -10681,6 +10746,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       wake_up_type, wake_up_types, <integer>, <dmi system_information>, Plain
       wakeonlan enabled, wakeonlan enableds, <boolean>, <network adapter>, Plain
       warning event log event type, warning event log event types, <event log event type>, world , PlainGlobal
+      webui service, webui services, <service>, world , PlainGlobal
       wednesday, wednesdays, <day of week>, world , PlainGlobal
       week, weeks, <time interval>, world , PlainGlobal
       weekly task trigger type, weekly task trigger types, <task trigger type>, world , PlainGlobal
@@ -10736,6 +10802,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       xml, xmls, <string>, <task definition>, Plain
       xml, xmls, <string>, <task registration info>, Plain
       xml, xmls, <string>, <task settings>, Plain
+      xml, xmls, <xml dom node>, <event log record>, Plain
       xpath, xpaths, <xml dom node>, <xml dom node>, Index<( string, string )>
       xpath, xpaths, <xml dom node>, <xml dom node>, Named
       year, years, <number of months>, world , PlainGlobal

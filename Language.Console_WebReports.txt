@@ -1,6 +1,6 @@
-Build Target:9_5_2_56
-ModuleName:HostApplication, Version:9_5_2_56, ClientCompatible:Yes
-ModuleName:9_5_2_56, Version:9_5_2_56, ClientCompatible:9_5_2_56
+Build Target:9_5_3_211
+ModuleName:HostApplication, Version:9_5_3_211, ClientCompatible:Yes
+ModuleName:9_5_3_211, Version:9_5_3_211, ClientCompatible:9_5_3_211
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   bes action
@@ -61,6 +61,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   bes user set
   bes user with multiplicity (derives from  bes user)
   bes wakeonlan status
+  bes webui
   bes webui app
   bes webui app set
   bes webui app with multiplicity (derives from  bes webui app)
@@ -69,6 +70,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   bes wizard variable
   bes wizard with multiplicity (derives from  bes wizard)
   binary operator
+  binary_string
   bit set
   boolean
   cast
@@ -144,6 +146,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   time with multiplicity (derives from  time)
   time zone
   time zone with multiplicity (derives from  time zone)
+  tuple item
   type
   unary operator
   undefined
@@ -1442,6 +1445,11 @@ Creation techniques & properties of each type:
       database name of <bes wakeonlan status>, database names, Plain, <string>
       enabled of <bes wakeonlan status>, enableds, Plain, <boolean>
 
+  Type <bes webui>
+    Creation of <bes webui>: { key phrase, plural keyword, form}
+      bes webui, bes webuis, PlainGlobal
+    Properties of <bes webui> { key phrase, plural keyword, form, <result type>}:
+
   Type <bes webui app>
     Creation of <bes webui app>: { key phrase, plural keyword, form}
       bes webui app, bes webui apps, PlainGlobal
@@ -1569,6 +1577,12 @@ Creation techniques & properties of each type:
       result type of <binary operator>, result types, Plain, <type>
       right operand type of <binary operator>, right operand types, Plain, <type>
       symbol of <binary operator>, symbols, Plain, <string>
+
+  Type <binary_string>
+    Creation of <binary_string>: { key phrase, plural keyword, form}
+    Properties of <binary_string> { key phrase, plural keyword, form, <result type>}:
+      <binary_string> as hexadecimal, , Cast, <string>
+      <binary_string> as string, , Cast, <string>
 
   Type <bit set>
     Creation of <bit set>: { key phrase, plural keyword, form}
@@ -2271,6 +2285,7 @@ Creation techniques & properties of each type:
       minimum value of <statistical bin>, minimum values, Plain
       more significance <integer> of <floating point>, more significances, Numbered
       product of <floating point>, products, Plain
+      random floating point, random floating points, PlainGlobal
       rate <time interval> of <exponential projection>, rates, Index<time interval>
       relative significance place <integer> of <floating point>, relative significance places, Numbered
       relative significance place of <floating point>, relative significance places, Plain
@@ -2883,6 +2898,7 @@ Creation techniques & properties of each type:
       applicable computer count of <bes baseline component>, applicable computer counts, Plain
       applicable computer count of <bes fixlet>, applicable computer counts, Plain
       apply count of <bes action result>, apply counts, Plain
+      build revision of <version>, build revisions, Plain
       client device count of <bes product>, client device counts, Plain
       component <integer> of <site version list>, components, Numbered
       computer count of <bes product>, computer counts, Plain
@@ -2919,6 +2935,7 @@ Creation techniques & properties of each type:
       id of <bes site file>, ids, Plain
       id of <bes site>, ids, Plain
       id of <bes unmanagedasset>, ids, Plain
+      index of <tuple item>, indexes, Plain
       integer <integer>, integers, NumberedGlobal
       integer <string>, integers, NamedGlobal
       integer ceiling of <floating point>, integer ceilings, Plain
@@ -2932,10 +2949,12 @@ Creation techniques & properties of each type:
       length of <string>, lengths, Plain
       line number of <bes action result>, line numbers, Plain
       lower bound of <integer range>, lower bounds, Plain
+      major revision of <version>, major revisions, Plain
       maximum of <integer>, maxima, Plain
       maximum seat count of <license>, maximum seat counts, Plain
       memory usage of <bes property>, memory usages, Plain
       minimum of <integer>, minima, Plain
+      minor revision of <version>, minor revisions, Plain
       minute_of_hour of <time of day with time zone>, minutes_of_hour, Plain
       minute_of_hour of <time of day>, minutes_of_hour, Plain
       most significant one bit of <bit set>, most significant one bits, Plain
@@ -2984,9 +3003,12 @@ Creation techniques & properties of each type:
       numeric value of <string>, numeric values, Plain
       one bit of <bit set>, one bits, Plain
       open action count of <bes fixlet>, open action counts, Plain
+      patch revision of <version>, patch revisions, Plain
       port of <bes ldap directory server>, ports, Plain
       priority of <bes ldap directory server>, priorities, Plain
       product of <integer>, products, Plain
+      random integer of <integer>, random integers, Plain
+      random integer, random integers, PlainGlobal
       reapplication limit of <bes action>, reapplication limits, Plain
       registrar number of <license>, registrar numbers, Plain
       relay distance of <bes computer>, relay distances, Plain
@@ -3101,6 +3123,7 @@ Creation techniques & properties of each type:
       october <integer> of <integer>, octobers, Numbered, <date>
       october of <integer>, octobers, Plain, <month and year>
       product of <integer>, products, Plain, <integer>
+      random integer of <integer>, random integers, Plain, <integer>
       september <integer> of <integer>, septembers, Numbered, <date>
       september of <integer>, septembers, Plain, <month and year>
       set of <integer>, sets, Plain, <integer set>
@@ -3690,6 +3713,8 @@ Creation techniques & properties of each type:
       <bes action status> as string, , Cast
       <bes fixlet field value> as string, , Cast
       <binary operator> as string, , Cast
+      <binary_string> as hexadecimal, , Cast
+      <binary_string> as string, , Cast
       <bit set> as string, , Cast
       <boolean> as string, , Cast
       <cast> as string, , Cast
@@ -3758,6 +3783,7 @@ Creation techniques & properties of each type:
       <time> as local string, , Cast
       <time> as string, , Cast
       <time> as universal string, , Cast
+      <tuple item> as string, , Cast
       <type> as string, , Cast
       <unary operator> as string, , Cast
       <undefined> as string, , Cast
@@ -3774,6 +3800,7 @@ Creation techniques & properties of each type:
       base64 decode <string>, base64 decodes, NamedGlobal
       base64 encode <string>, base64 encodes, NamedGlobal
       bes brand, bes brands, PlainGlobal
+      bes current wruser, bes current wrusers, PlainGlobal
       bes language, bes languages, PlainGlobal
       category of <bes fixlet>, categories, Plain
       category of <bes property>, categories, Plain
@@ -3943,6 +3970,7 @@ Creation techniques & properties of each type:
       state of <bes action>, states, Plain
       status of <bes activation>, statuses, Plain
       string <string>, strings, NamedGlobal
+      string of <tuple item>, strings, Plain
       subscription mode of <bes site>, subscription modes, Plain
       symbol of <binary operator>, symbols, Plain
       symbol of <unary operator>, symbols, Plain
@@ -3954,6 +3982,7 @@ Creation techniques & properties of each type:
       text of <bes comment>, texts, Plain
       tuple string item <integer> of <string>, tuple string items, Numbered
       tuple string item of <string>, tuple string items, Plain
+      tuple string of <string>, tuple strings, Plain
       two digit hour of <time of day with time zone>, two digit hours, Plain
       two digit hour of <time of day>, two digit hours, Plain
       two digit minute of <time of day with time zone>, two digit minutes, Plain
@@ -4200,8 +4229,10 @@ Creation techniques & properties of each type:
       tr of <string>, trs, Plain, <html>
       tt <string> of <string>, tts, Named, <html>
       tt of <string>, tts, Plain, <html>
+      tuple item of <string>, tuple items, Plain, <tuple item>
       tuple string item <integer> of <string>, tuple string items, Numbered, <string>
       tuple string item of <string>, tuple string items, Plain, <string>
+      tuple string of <string>, tuple strings, Plain, <string>
       ul <string> of <string>, uls, Named, <html>
       ul of <string>, uls, Plain, <html>
       unique value of <string>, unique values, Plain, <string with multiplicity>
@@ -4619,6 +4650,14 @@ Creation techniques & properties of each type:
     Properties of <time zone with multiplicity> { key phrase, plural keyword, form, <result type>}:
       multiplicity of <time zone with multiplicity>, multiplicities, Plain, <integer>
 
+  Type <tuple item>
+    Creation of <tuple item>: { key phrase, plural keyword, form}
+      tuple item of <string>, tuple items, Plain
+    Properties of <tuple item> { key phrase, plural keyword, form, <result type>}:
+      <tuple item> as string, , Cast, <string>
+      index of <tuple item>, indexes, Plain, <integer>
+      string of <tuple item>, strings, Plain, <string>
+
   Type <type>
     Creation of <type>: { key phrase, plural keyword, form}
       direct object type of <property>, direct object types, Plain
@@ -4698,10 +4737,14 @@ Creation techniques & properties of each type:
       <version> = <version>, , BinaryOperator, <boolean>
       <version> as string, , Cast, <string>
       <version> as version, , Cast, <version>
+      build revision of <version>, build revisions, Plain, <integer>
       extrema of <version>, extremas, Plain, <( version, version )>
+      major revision of <version>, major revisions, Plain, <integer>
       maximum of <version>, maxima, Plain, <version>
       minimum of <version>, minima, Plain, <version>
+      minor revision of <version>, minor revisions, Plain, <integer>
       pad of <version>, pads, Plain, <version>
+      patch revision of <version>, patch revisions, Plain, <integer>
       unique value of <version>, unique values, Plain, <version with multiplicity>
 
   Type <version with multiplicity> (derives from version)
@@ -4849,6 +4892,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   bes computer group, bes computer groups, PlainGlobal, <bes computer group>
   bes computer set, bes computer sets, PlainGlobal, <bes computer set>
   bes computer, bes computers, PlainGlobal, <bes computer>
+  bes current wruser, bes current wrusers, PlainGlobal, <string>
   bes custom site, bes custom sites, PlainGlobal, <bes site>
   bes deployment option <string>, bes deployment options, NamedGlobal, <bes deployment option>
   bes deployment option, bes deployment options, PlainGlobal, <bes deployment option>
@@ -4879,6 +4923,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   bes wakeonlan status, bes wakeonlan statuses, PlainGlobal, <bes wakeonlan status>
   bes webui app set, bes webui app sets, PlainGlobal, <bes webui app set>
   bes webui app, bes webui apps, PlainGlobal, <bes webui app>
+  bes webui, bes webuis, PlainGlobal, <bes webui>
   bes wizard set, bes wizard sets, PlainGlobal, <bes wizard set>
   bes wizard, bes wizards, PlainGlobal, <bes wizard>
   binary operator <string>, binary operators, NamedGlobal, <binary operator>
@@ -5011,6 +5056,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   property <string>, properties, NamedGlobal, <property>
   property returning <type>, properties returning, Index<type>Global, <property>
   property, properties, PlainGlobal, <property>
+  random floating point, random floating points, PlainGlobal, <floating point>
+  random integer, random integers, PlainGlobal, <integer>
   regex <string>, regexes, NamedGlobal, <regular expression>
   regular expression <string>, regular expressions, NamedGlobal, <regular expression>
   relevant <( bes computer, bes fixlet )>, relevants, Index<( bes computer, bes fixlet )>Global, <boolean>
@@ -5153,6 +5200,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as floating point, , <floating point>, <floating point>, Cast
       as floating point, , <floating point>, <integer>, Cast
       as floating point, , <floating point>, <string>, Cast
+      as hexadecimal, , <string>, <binary_string>, Cast
       as hexadecimal, , <string>, <integer>, Cast
       as hexadecimal, , <string>, <string>, Cast
       as html, , <html>, <html>, Cast
@@ -5196,6 +5244,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <bes action status>, Cast
       as string, , <string>, <bes fixlet field value>, Cast
       as string, , <string>, <binary operator>, Cast
+      as string, , <string>, <binary_string>, Cast
       as string, , <string>, <bit set>, Cast
       as string, , <string>, <boolean>, Cast
       as string, , <string>, <cast>, Cast
@@ -5229,6 +5278,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <time range>, Cast
       as string, , <string>, <time zone>, Cast
       as string, , <string>, <time>, Cast
+      as string, , <string>, <tuple item>, Cast
       as string, , <string>, <type>, Cast
       as string, , <string>, <unary operator>, Cast
       as string, , <string>, <undefined>, Cast
@@ -5329,6 +5379,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       bes computer set, bes computer sets, <bes computer set>, world , PlainGlobal
       bes computer, bes computers, <bes computer>, world , NumberedGlobal
       bes computer, bes computers, <bes computer>, world , PlainGlobal
+      bes current wruser, bes current wrusers, <string>, world , PlainGlobal
       bes custom site, bes custom sites, <bes site>, world , PlainGlobal
       bes deployment option, bes deployment options, <bes deployment option>, world , NamedGlobal
       bes deployment option, bes deployment options, <bes deployment option>, world , PlainGlobal
@@ -5359,6 +5410,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       bes wakeonlan status, bes wakeonlan statuses, <bes wakeonlan status>, world , PlainGlobal
       bes webui app set, bes webui app sets, <bes webui app set>, world , PlainGlobal
       bes webui app, bes webui apps, <bes webui app>, world , PlainGlobal
+      bes webui, bes webuis, <bes webui>, world , PlainGlobal
       bes wizard set, bes wizard sets, <bes wizard set>, world , PlainGlobal
       bes wizard, bes wizards, <bes wizard>, world , PlainGlobal
       best activation, best activations, <bes activation>, <bes fixlet>, Plain
@@ -5387,6 +5439,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       boolean, booleans, <boolean>, world , NamedGlobal
       br, brs, <html>, world , NamedGlobal
       br, brs, <html>, world , PlainGlobal
+      build revision, build revisions, <integer>, <version>, Plain
       can create actions flag, can create actions flags, <boolean>, <bes user>, Plain
       can lock flag, can lock flags, <boolean>, <bes user>, Plain
       can send multiple refresh flag, can send multiple refresh flags, <boolean>, <bes user>, Plain
@@ -5821,6 +5874,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       in web reports context, in web reports contexts, <boolean>, world , PlainGlobal
       include in relevance flag, include in relevance flags, <boolean>, <bes baseline component>, Plain
       index type, index types, <type>, <property>, Plain
+      index, indexes, <integer>, <tuple item>, Plain
       inexact, inexacts, <boolean>, <floating point>, Plain
       infinite, infinites, <boolean>, <floating point>, Plain
       initial part, initial parts, <time range>, <time range>, Index<time interval>
@@ -5979,6 +6033,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       logarithm variance, logarithm variances, <floating point>, <statistical bin>, Plain
       login user, login users, <string>, <bes ldap directory>, Plain
       lower bound, lower bounds, <integer>, <integer range>, Plain
+      major revision, major revisions, <integer>, <version>, Plain
       management rights flag, management rights flags, <boolean>, <bes action>, Plain
       manual flag, manual flags, <boolean>, <bes computer group>, Plain
       march, marchs, <date>, <integer>, Numbered
@@ -6078,6 +6133,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       minimum, minima, <time>, <time>, Plain
       minimum, minima, <version>, <version>, Plain
       minimum, minima, <year>, <year>, Plain
+      minor revision, minor revisions, <integer>, <version>, Plain
       minute, minutes, <time interval>, world , PlainGlobal
       minute_of_hour, minutes_of_hour, <integer>, <time of day with time zone>, Plain
       minute_of_hour, minutes_of_hour, <integer>, <time of day>, Plain
@@ -6229,6 +6285,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       parent, parents, <type>, <type>, Plain
       parenthesized part, parenthesized parts, <substring>, <regular expression match>, Numbered
       parenthesized part, parenthesized parts, <substring>, <regular expression match>, Plain
+      patch revision, patch revisions, <integer>, <version>, Plain
       path, paths, <json value>, <json value>, Named
       pending license update, pending license updates, <boolean>, world , PlainGlobal
       percent decode, percent decodes, <string>, world , NamedGlobal
@@ -6280,6 +6337,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       q, qs, <html>, <html>, Plain
       q, qs, <html>, <string>, Named
       q, qs, <html>, <string>, Plain
+      random floating point, random floating points, <floating point>, world , PlainGlobal
+      random integer, random integers, <integer>, <integer>, Plain
+      random integer, random integers, <integer>, world , PlainGlobal
       range after, ranges after, <time range>, <time range>, Index<time>
       range before, ranges before, <time range>, <time range>, Index<time>
       range, ranges, <statistic range>, <statistic range>, Index<time range>
@@ -6494,6 +6554,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       status, statuses, <bes action status>, <bes action result>, Plain
       status, statuses, <string>, <bes activation>, Plain
       stopper, stoppers, <bes user>, <bes action>, Plain
+      string, strings, <string>, <tuple item>, Plain
       string, strings, <string>, world , NamedGlobal
       strong, strongs, <html>, <html>, Named
       strong, strongs, <html>, <html>, Plain
@@ -6613,8 +6674,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       tt, tts, <html>, <string>, Named
       tt, tts, <html>, <string>, Plain
       tuesday, tuesdays, <day of week>, world , PlainGlobal
+      tuple item, tuple items, <tuple item>, <string>, Plain
       tuple string item, tuple string items, <string>, <string>, Numbered
       tuple string item, tuple string items, <string>, <string>, Plain
+      tuple string, tuple strings, <string>, <string>, Plain
       two digit hour, two digit hours, <string>, <time of day with time zone>, Plain
       two digit hour, two digit hours, <string>, <time of day>, Plain
       two digit minute, two digit minutes, <string>, <time of day with time zone>, Plain

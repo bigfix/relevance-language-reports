@@ -1,7 +1,7 @@
-Operating System:Mac OS X Server 10_7_3
-Client Version:9_5_2_56
+Operating System:Mac OS X Server 10_7_3 (11D50d)
+Client Version:9_5_3_211
 Build Target:
-ModuleName:HostApplication, Version:9_5_2_56, ClientCompatible:Yes
+ModuleName:HostApplication, Version:9_5_3_211, ClientCompatible:Yes
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   action
@@ -18,6 +18,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   array
   bes product
   binary operator
+  binary_string
   bios
   bit set
   boolean
@@ -160,6 +161,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   time with multiplicity (derives from  time)
   time zone
   time zone with multiplicity (derives from  time zone)
+  tuple item
   type
   unary operator
   undefined
@@ -170,6 +172,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   version
   version with multiplicity (derives from  version)
   volume (derives from  folder)
+  wifi
   x509 certificate
   year
   year with multiplicity (derives from  year)
@@ -298,8 +301,12 @@ Creation techniques & properties of each type:
       application <string>, applications, NamedGlobal
       application of <folder>, applications, Plain
       application, applications, PlainGlobal
+      recent application <string>, recent applications, NamedGlobal
+      recent application, recent applications, PlainGlobal
       regapp <string>, regapps, NamedGlobal
       regapp, regapps, PlainGlobal
+      running application <string>, running applications, NamedGlobal
+      running application, running applications, PlainGlobal
     Properties of <application> { key phrase, plural keyword, form, <result type>}:
       <application> as string, , Cast, <string>
 
@@ -344,6 +351,7 @@ Creation techniques & properties of each type:
       date <integer> of <array>, dates, Numbered, <time>
       dictionary <integer> of <array>, dictionaries, Numbered, <dictionary>
       integer <integer> of <array>, integers, Numbered, <integer>
+      real <integer> of <array>, reals, Numbered, <floating point>
       size of <array>, sizes, Plain, <integer>
       string <integer> of <array>, strings, Numbered, <string>
       value of <array>, values, Plain, <osxvalue>
@@ -379,6 +387,14 @@ Creation techniques & properties of each type:
       result type of <binary operator>, result types, Plain, <type>
       right operand type of <binary operator>, right operand types, Plain, <type>
       symbol of <binary operator>, symbols, Plain, <string>
+
+  Type <binary_string>
+    Creation of <binary_string>: { key phrase, plural keyword, form}
+      data <string> of <dictionary>, datas, Named
+      data of <osxvalue>, datas, Plain
+    Properties of <binary_string> { key phrase, plural keyword, form, <result type>}:
+      <binary_string> as hexadecimal, , Cast, <string>
+      <binary_string> as string, , Cast, <string>
 
   Type <bios>
     Creation of <bios>: { key phrase, plural keyword, form}
@@ -667,6 +683,7 @@ Creation techniques & properties of each type:
       remote of <logged on user>, remotes, Plain
       router flag of <route>, router flags, Plain
       running of <application usage summary>, runnings, Plain
+      secured of <wifi>, secureds, Plain
       sha256 download of <license>, sha256 downloads, Plain
       smt capable of <cpupackage>, smt capables, Plain
       smt enabled of <cpupackage>, smt enableds, Plain
@@ -1054,12 +1071,13 @@ Creation techniques & properties of each type:
       array <string> of <dictionary>, arrays, Named, <array>
       boolean <string> of <dictionary>, booleans, Named, <boolean>
       cstring <string> of <dictionary>, cstrings, Named, <string>
-      data <string> of <dictionary>, datas, Named, <string>
+      data <string> of <dictionary>, datas, Named, <binary_string>
       date <string> of <dictionary>, dates, Named, <time>
       dictionary <string> of <dictionary>, dictionaries, Named, <dictionary>
       entry of <dictionary>, entries, Plain, <dictionaryentry>
       integer <string> of <dictionary>, integers, Named, <integer>
       key of <dictionary>, keys, Plain, <string>
+      real <string> of <dictionary>, reals, Named, <floating point>
       size of <dictionary>, sizes, Plain, <integer>
       string <string> of <dictionary>, strings, Named, <string>
 
@@ -1277,6 +1295,7 @@ Creation techniques & properties of each type:
       file of <folder>, files, Plain
       find file <string> of <folder>, find files, Named
       hfs file <string>, hfs files, NamedGlobal
+      image file of <process>, image files, Plain
       masthead of <site>, mastheads, Plain
       posix file <string>, posix files, NamedGlobal
       relative file <string> of <folder>, relative files, Named
@@ -1466,6 +1485,9 @@ Creation techniques & properties of each type:
       property percent of <evaluation cycle>, property percents, Plain
       quiet mode percent of <evaluation cycle>, quiet mode percents, Plain
       rate <time interval> of <exponential projection>, rates, Index<time interval>
+      real <integer> of <array>, reals, Numbered
+      real <string> of <dictionary>, reals, Named
+      real of <osxvalue>, reals, Plain
       relative significance place <integer> of <floating point>, relative significance places, Numbered
       relative significance place of <floating point>, relative significance places, Plain
       relay select percent of <evaluation cycle>, relay select percents, Plain
@@ -2273,6 +2295,7 @@ Creation techniques & properties of each type:
       id of <root server>, ids, Plain
       id of <site group>, ids, Plain
       id of <user>, ids, Plain
+      index of <tuple item>, indexes, Plain
       integer <integer> of <array>, integers, Numbered
       integer <integer>, integers, NumberedGlobal
       integer <string> of <dictionary>, integers, Named
@@ -2341,6 +2364,7 @@ Creation techniques & properties of each type:
       numeric value of <string>, numeric values, Plain
       one bit of <bit set>, one bits, Plain
       origin fixlet id of <action>, origin fixlet ids, Plain
+      patch revision of <version>, patch revisions, Plain
       persistent constraint of <action>, persistent constraints, Plain
       physical ram, physical rams, PlainGlobal
       pid of <process>, pids, Plain
@@ -2921,6 +2945,7 @@ Creation techniques & properties of each type:
       subnet address of <network adapter>, subnet addresses, Plain, <ipv4 address>
       subnet mask of <network adapter>, subnet masks, Plain, <ipv4 address>
       up of <network adapter>, ups, Plain, <boolean>
+      wifi of <network adapter>, wifis, Plain, <wifi>
 
   Type <network adapter interface>
     Creation of <network adapter interface>: { key phrase, plural keyword, form}
@@ -3068,6 +3093,7 @@ Creation techniques & properties of each type:
       name of <operating system>, names, Plain, <string>
       product info string of <operating system>, product info strings, Plain, <string>
       release of <operating system>, releases, Plain, <version>
+      releaseid of <operating system>, releaseids, Plain, <string>
       unix of <operating system>, unixes, Plain, <boolean>
       uptime of <operating system>, uptimes, Plain, <time interval>
       version of <operating system>, versions, Plain, <version>
@@ -3081,10 +3107,11 @@ Creation techniques & properties of each type:
       array of <osxvalue>, arrays, Plain, <array>
       boolean of <osxvalue>, booleans, Plain, <boolean>
       cstring of <osxvalue>, csrings, Plain, <string>
-      data of <osxvalue>, datas, Plain, <string>
+      data of <osxvalue>, datas, Plain, <binary_string>
       date of <osxvalue>, dates, Plain, <time>
       dictionary of <osxvalue>, dictionaries, Plain, <dictionary>
       integer of <osxvalue>, integers, Plain, <integer>
+      real of <osxvalue>, reals, Plain, <floating point>
       string of <osxvalue>, strings, Plain, <string>
       type of <osxvalue>, types, Plain, <string>
 
@@ -3153,6 +3180,7 @@ Creation techniques & properties of each type:
       process, processes, PlainGlobal
     Properties of <process> { key phrase, plural keyword, form, <result type>}:
       id of <process>, ids, Plain, <integer>
+      image file of <process>, image files, Plain, <file>
       name of <process>, names, Plain, <string>
       pid of <process>, pids, Plain, <integer>
       ppid of <process>, ppids, Plain, <integer>
@@ -3606,6 +3634,8 @@ Creation techniques & properties of each type:
       <action> as string, , Cast
       <application> as string, , Cast
       <binary operator> as string, , Cast
+      <binary_string> as hexadecimal, , Cast
+      <binary_string> as string, , Cast
       <bios> as string, , Cast
       <bit set> as string, , Cast
       <boolean> as string, , Cast
@@ -3693,6 +3723,7 @@ Creation techniques & properties of each type:
       <time> as local string, , Cast
       <time> as string, , Cast
       <time> as universal string, , Cast
+      <tuple item> as string, , Cast
       <type> as string, , Cast
       <unary operator> as string, , Cast
       <undefined> as string, , Cast
@@ -3725,8 +3756,6 @@ Creation techniques & properties of each type:
       controller of <action lock state>, controllers, Plain
       cstring <string> of <dictionary>, cstrings, Named
       cstring of <osxvalue>, csrings, Plain
-      data <string> of <dictionary>, datas, Named
-      data of <osxvalue>, datas, Plain
       date of <bios>, dates, Plain
       deployment character set of <client>, deployment character sets, Plain
       destination string of <route>, destination strings, Plain
@@ -3748,6 +3777,7 @@ Creation techniques & properties of each type:
       email address of <license>, email addresses, Plain
       encoding of <sqlite database>, encodings, Plain
       encrypt report failure message of <client_cryptography>, encrypt report failure messages, Plain
+      encryption of <wifi>, encryptions, Plain
       expiration state of <license>, expiration states, Plain
       family name of <network interface>, family names, Plain
       family name of <processor>, family names, Plain
@@ -3827,6 +3857,7 @@ Creation techniques & properties of each type:
       name of <unary operator>, names, Plain
       name of <user>, names, Plain
       name of <volume>, names, Plain
+      name of <wifi>, names, Plain
       netstat flag of <route>, netstat flags, Plain
       organization of <license>, organizations, Plain
       padded string of <bit set>, padded strings, Plain
@@ -3845,6 +3876,7 @@ Creation techniques & properties of each type:
       regex escape of <string>, regex escapes, Plain
       registration cidr address of <client>, registration cidr addresses, Plain
       registration mac address of <client>, registration mac addresses, Plain
+      releaseid of <operating system>, releaseids, Plain
       report character set of <client>, report character sets, Plain
       revision of <scsidevice>, revisions, Plain
       schema of <sqlite table>, schemas, Plain
@@ -3874,6 +3906,7 @@ Creation techniques & properties of each type:
       singular name of <property>, singular names, Plain
       site tag of <site>, site tags, Plain
       site url of <bes product>, site urls, Plain
+      ssid of <wifi>, ssids, Plain
       state of <dummy>, states, Plain
       status of <action>, statuss, Plain
       string <integer> of <array>, strings, Numbered
@@ -3881,6 +3914,7 @@ Creation techniques & properties of each type:
       string <string> of <preference>, strings, Named
       string <string>, strings, NamedGlobal
       string of <osxvalue>, strings, Plain
+      string of <tuple item>, strings, Plain
       string version of <application usage summary instance>, string versions, Plain
       subtype of <component>, subtypes, Plain
       symbol of <binary operator>, symbols, Plain
@@ -3889,6 +3923,7 @@ Creation techniques & properties of each type:
       tty of <logged on user>, ttys, Plain
       tuple string item <integer> of <string>, tuple string items, Numbered
       tuple string item of <string>, tuple string items, Plain
+      tuple string of <string>, tuple strings, Plain
       two digit hour of <time of day with time zone>, two digit hours, Plain
       two digit hour of <time of day>, two digit hours, Plain
       two digit minute of <time of day with time zone>, two digit minutes, Plain
@@ -4137,8 +4172,10 @@ Creation techniques & properties of each type:
       tr of <string>, trs, Plain, <html>
       tt <string> of <string>, tts, Named, <html>
       tt of <string>, tts, Plain, <html>
+      tuple item of <string>, tuple items, Plain, <tuple item>
       tuple string item <integer> of <string>, tuple string items, Numbered, <string>
       tuple string item of <string>, tuple string items, Plain, <string>
+      tuple string of <string>, tuple strings, Plain, <string>
       ul <string> of <string>, uls, Named, <html>
       ul of <string>, uls, Plain, <html>
       unique value of <string>, unique values, Plain, <string with multiplicity>
@@ -4606,6 +4643,14 @@ Creation techniques & properties of each type:
     Properties of <time zone with multiplicity> { key phrase, plural keyword, form, <result type>}:
       multiplicity of <time zone with multiplicity>, multiplicities, Plain, <integer>
 
+  Type <tuple item>
+    Creation of <tuple item>: { key phrase, plural keyword, form}
+      tuple item of <string>, tuple items, Plain
+    Properties of <tuple item> { key phrase, plural keyword, form, <result type>}:
+      <tuple item> as string, , Cast, <string>
+      index of <tuple item>, indexes, Plain, <integer>
+      string of <tuple item>, strings, Plain, <string>
+
   Type <type>
     Creation of <type>: { key phrase, plural keyword, form}
       direct object type of <property>, direct object types, Plain
@@ -4705,6 +4750,7 @@ Creation techniques & properties of each type:
       maximum of <version>, maxima, Plain
       minimum of <version>, minima, Plain
       name registry version, name registry versions, PlainGlobal
+      pad of <version>, pads, Plain
       quickdraw version, quickdraw versions, PlainGlobal
       release of <operating system>, releases, Plain
       rom version, rom versions, PlainGlobal
@@ -4743,6 +4789,8 @@ Creation techniques & properties of each type:
       maximum of <version>, maxima, Plain, <version>
       minimum of <version>, minima, Plain, <version>
       minor revision of <version>, minor revisions, Plain, <integer>
+      pad of <version>, pads, Plain, <version>
+      patch revision of <version>, patch revisions, Plain, <integer>
       stage of <version>, stages, Plain, <stage>
       unique value of <version>, unique values, Plain, <version with multiplicity>
 
@@ -4785,6 +4833,15 @@ Creation techniques & properties of each type:
       type of <volume>, types, Plain, <string>
       used percent of <volume>, used percents, Plain, <integer>
       used space of <volume>, used spaces, Plain, <integer>
+
+  Type <wifi>
+    Creation of <wifi>: { key phrase, plural keyword, form}
+      wifi of <network adapter>, wifis, Plain
+    Properties of <wifi> { key phrase, plural keyword, form, <result type>}:
+      encryption of <wifi>, encryptions, Plain, <string>
+      name of <wifi>, names, Plain, <string>
+      secured of <wifi>, secureds, Plain, <boolean>
+      ssid of <wifi>, ssids, Plain, <string>
 
   Type <x509 certificate>
     Creation of <x509 certificate>: { key phrase, plural keyword, form}
@@ -5130,6 +5187,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   ram, rams, PlainGlobal, <ram>
   random access memory, random access memories, PlainGlobal, <ram>
   receipts folder, receipts folders, PlainGlobal, <folder>
+  recent application <string>, recent applications, NamedGlobal, <application>
+  recent application, recent applications, PlainGlobal, <application>
   regapp <string>, regapps, NamedGlobal, <application>
   regapp, regapps, PlainGlobal, <application>
   regex <string>, regexes, NamedGlobal, <regular expression>
@@ -5141,6 +5200,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   root server, root servers, PlainGlobal, <root server>
   rope <string>, ropes, NamedGlobal, <rope>
   routing table, routing tables, PlainGlobal, <routing table>
+  running application <string>, running applications, NamedGlobal, <application>
+  running application, running applications, PlainGlobal, <application>
   saturday, saturdays, PlainGlobal, <day of week>
   scripting additions folder, scripting additions folders, PlainGlobal, <folder>
   scsibus <integer>, scsibuses, NumberedGlobal, <scsibus>
@@ -5317,6 +5378,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as floating point, , <floating point>, <integer>, Cast
       as floating point, , <floating point>, <string>, Cast
       as folder, , <folder>, <filesystem object>, Cast
+      as hexadecimal, , <string>, <binary_string>, Cast
       as hexadecimal, , <string>, <integer>, Cast
       as hexadecimal, , <string>, <string>, Cast
       as html, , <html>, <html>, Cast
@@ -5361,6 +5423,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <action>, Cast
       as string, , <string>, <application>, Cast
       as string, , <string>, <binary operator>, Cast
+      as string, , <string>, <binary_string>, Cast
       as string, , <string>, <bios>, Cast
       as string, , <string>, <bit set>, Cast
       as string, , <string>, <boolean>, Cast
@@ -5413,6 +5476,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <time range>, Cast
       as string, , <string>, <time zone>, Cast
       as string, , <string>, <time>, Cast
+      as string, , <string>, <tuple item>, Cast
       as string, , <string>, <type>, Cast
       as string, , <string>, <unary operator>, Cast
       as string, , <string>, <undefined>, Cast
@@ -5659,8 +5723,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       custom site subscription effective date, custom site subscription effective dates, <time>, world , NamedGlobal
       data folder, data folders, <folder>, <client>, Plain
       data fork, data forks, <datafork>, <file>, Plain
-      data, datas, <string>, <dictionary>, Named
-      data, datas, <string>, <osxvalue>, Plain
+      data, datas, <binary_string>, <dictionary>, Named
+      data, datas, <binary_string>, <osxvalue>, Plain
       date, dates, <date>, <time>, Index<time zone>
       date, dates, <date>, world , NamedGlobal
       date, dates, <string>, <bios>, Plain
@@ -5815,6 +5879,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       encrypt report failure message, encrypt report failure messages, <string>, <client_cryptography>, Plain
       encrypt report, encrypt reports, <boolean>, <client_cryptography>, Plain
       encryption certificate, encryption certificates, <x509 certificate>, <license>, Plain
+      encryption, encryptions, <string>, <wifi>, Plain
       end, ends, <string position>, <substring>, Plain
       end, ends, <time>, <time range>, Plain
       enhanced security, enhanced securities, <boolean>, <license>, Plain
@@ -6045,9 +6110,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       idle state, idle states, <power state>, world , PlainGlobal
       ifref flag, ifref flags, <boolean>, <route>, Plain
       ifscope flag, ifscope flags, <boolean>, <route>, Plain
+      image file, image files, <file>, <process>, Plain
       in agent context, in agent contexts, <boolean>, world , PlainGlobal
       in proxy agent context, in proxy agent contexts, <boolean>, world , PlainGlobal
       index type, index types, <type>, <property>, Plain
+      index, indexes, <integer>, <tuple item>, Plain
       index, indices, <string>, <sqlite table>, Plain
       inexact, inexacts, <boolean>, <floating point>, Plain
       infinite, infinites, <boolean>, <floating point>, Plain
@@ -6424,6 +6491,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       name, names, <string>, <unary operator>, Plain
       name, names, <string>, <user>, Plain
       name, names, <string>, <volume>, Plain
+      name, names, <string>, <wifi>, Plain
       nan, nans, <boolean>, <floating point>, Plain
       netstat flag, netstat flags, <string>, <route>, Plain
       network domain, network domains, <domain>, world , PlainGlobal
@@ -6477,6 +6545,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       p, ps, <html>, <html>, Plain
       p, ps, <html>, <string>, Named
       p, ps, <html>, <string>, Plain
+      pad, pads, <version>, <version>, Plain
       padded string, padded strings, <string>, <bit set>, Plain
       parameter, parameters, <string>, <action>, Named
       parameter, parameters, <string>, world , NamedGlobal
@@ -6484,6 +6553,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       parent, parents, <type>, <type>, Plain
       parenthesized part, parenthesized parts, <substring>, <regular expression match>, Numbered
       parenthesized part, parenthesized parts, <substring>, <regular expression match>, Plain
+      patch revision, patch revisions, <integer>, <version>, Plain
       path, paths, <json value>, <json value>, Named
       path, paths, <string>, <execution>, Plain
       path, paths, <string>, <registrynode>, Plain
@@ -6587,8 +6657,13 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       range, ranges, <time range>, <system power interval>, Plain
       rate, rates, <floating point>, <exponential projection>, Index<time interval>
       rate, rates, <rate>, <linear projection>, Plain
+      real, reals, <floating point>, <array>, Numbered
+      real, reals, <floating point>, <dictionary>, Named
+      real, reals, <floating point>, <osxvalue>, Plain
       receipts folder, receipts folders, <folder>, <domain>, Plain
       receipts folder, receipts folders, <folder>, world , PlainGlobal
+      recent application, recent applications, <application>, world , NamedGlobal
+      recent application, recent applications, <application>, world , PlainGlobal
       reference, references, <integer>, <route>, Plain
       regapp, regapps, <application>, world , NamedGlobal
       regapp, regapps, <application>, world , PlainGlobal
@@ -6616,6 +6691,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       relay select percent, relay select percents, <floating point>, <evaluation cycle>, Plain
       relay service, relay services, <nothing>, world , PlainGlobal
       release, releases, <version>, <operating system>, Plain
+      releaseid, releaseids, <string>, <operating system>, Plain
       relevance duration, relevance durations, <time interval>, <evaluation cycle>, Plain
       relevance percent, relevance percents, <floating point>, <evaluation cycle>, Plain
       relevance, relevances, <boolean>, <fixlet>, Plain
@@ -6642,6 +6718,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       router flag, router flags, <boolean>, <route>, Plain
       routing table, routing tables, <routing table>, world , PlainGlobal
       row, rows, <sqlite row>, <sqlite statement>, Plain
+      running application, running applications, <application>, world , NamedGlobal
+      running application, running applications, <application>, world , PlainGlobal
       running, runnings, <boolean>, <application usage summary>, Plain
       rvu count, rvu counts, <integer>, <bes product>, Plain
       samp, samps, <html>, <html>, Named
@@ -6668,6 +6746,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       second_of_minute, seconds_of_minute, <integer>, <time of day>, Plain
       seconds to expiration, seconds to expirations, <integer>, <route>, Plain
       section, sections, <file section>, <file>, Named
+      secured, secureds, <boolean>, <wifi>, Plain
       selected server, selected servers, <selected server>, world , PlainGlobal
       sent packet count, sent packets counts, <integer>, <route>, Plain
       september, septembers, <date>, <integer>, Numbered
@@ -6767,6 +6846,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sqlite version, sqlite versions, <version>, world , PlainGlobal
       sqrt, sqrts, <floating point>, <floating point>, Plain
       sqrt, sqrts, <floating point>, <integer>, Plain
+      ssid, ssids, <string>, <wifi>, Plain
       stage, stages, <stage>, <version>, Plain
       stage, stages, <stage>, world , NamedGlobal
       standard deviation, standard deviations, <floating point>, <floating point>, Plain
@@ -6793,6 +6873,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       string, strings, <string>, <dictionary>, Named
       string, strings, <string>, <osxvalue>, Plain
       string, strings, <string>, <preference>, Named
+      string, strings, <string>, <tuple item>, Plain
       string, strings, <string>, world , NamedGlobal
       strong, strongs, <html>, <html>, Named
       strong, strongs, <html>, <html>, Plain
@@ -6903,8 +6984,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       tt, tts, <html>, <string>, Plain
       tty, ttys, <string>, <logged on user>, Plain
       tuesday, tuesdays, <day of week>, world , PlainGlobal
+      tuple item, tuple items, <tuple item>, <string>, Plain
       tuple string item, tuple string items, <string>, <string>, Numbered
       tuple string item, tuple string items, <string>, <string>, Plain
+      tuple string, tuple strings, <string>, <string>, Plain
       two digit hour, two digit hours, <string>, <time of day with time zone>, Plain
       two digit hour, two digit hours, <string>, <time of day>, Plain
       two digit minute, two digit minutes, <string>, <time of day with time zone>, Plain
@@ -7050,6 +7133,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       weight, weights, <integer>, <selected server>, Plain
       wide16 scsi, wide16 scsis, <boolean>, <scsibus>, Plain
       wide32 scsi, wide32 scsis, <boolean>, <scsibus>, Plain
+      wifi, wifis, <wifi>, <network adapter>, Plain
       windows server count, windows server counts, <integer>, <bes product>, Plain
       windows, windowses, <boolean>, <operating system>, Plain
       workstation count, workstation counts, <integer>, <bes product>, Plain
