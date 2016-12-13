@@ -1,5 +1,5 @@
 Operating System:Win2008R2 6_1_7601
-Client Version:9_5_3_211
+Client Version:9_5_4_38
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   access control entry
@@ -1456,6 +1456,7 @@ Creation techniques & properties of each type:
       maximum of <date>, maxima, Plain
       may <integer> of <integer>, mays, Numbered
       minimum of <date>, minima, Plain
+      normalized date of <fixlet_header>, normalized dates, Plain
       november <integer> of <integer>, novembers, Numbered
       october <integer> of <integer>, octobers, Numbered
       september <integer> of <integer>, septembers, Numbered
@@ -2839,6 +2840,7 @@ Creation techniques & properties of each type:
       header of <fixlet>, headers, Plain
     Properties of <fixlet_header> { key phrase, plural keyword, form, <result type>}:
       name of <fixlet_header>, names, Plain, <string>
+      normalized date of <fixlet_header>, normalized dates, Plain, <date>
       value of <fixlet_header>, values, Plain, <string>
 
   Type <floating point>
@@ -9774,6 +9776,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       normal, normals, <boolean>, <filesystem object>, Plain
       normal, normals, <boolean>, <floating point>, Plain
       normal, normals, <boolean>, <power level>, Plain
+      normalized date, normalized dates, <date>, <fixlet_header>, Plain
       notifications disabled, notifications disableds, <boolean>, <firewall profile>, Plain
       november, novembers, <date>, <integer>, Numbered
       november, novembers, <day of year>, world , NumberedGlobal
