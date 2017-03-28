@@ -1,7 +1,7 @@
 Operating System:Mac OS X Server 10_7_3 (11D50d)
-Client Version:9_5_4_38
+Client Version:9_5_5_193
 Build Target:
-ModuleName:HostApplication, Version:9_5_4_38, ClientCompatible:Yes
+ModuleName:HostApplication, Version:9_5_5_193, ClientCompatible:Yes
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   action
@@ -18,7 +18,9 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   array
   bes product
   binary operator
+  binary position (derives from  integer)
   binary_string
+  binary_substring (derives from  binary_string)
   bios
   bit set
   boolean
@@ -49,6 +51,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   dummy
   dummy type
   enableable_file (derives from  file)
+  encoding
   environment
   environment variable
   evaluation cycle
@@ -173,6 +176,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   version with multiplicity (derives from  version)
   volume (derives from  folder)
   wifi
+  wifi network
   x509 certificate
   year
   year with multiplicity (derives from  year)
@@ -298,6 +302,7 @@ Creation techniques & properties of each type:
 
   Type <application> (derives from filesystem object)
     Creation of <application>: { key phrase, plural keyword, form}
+      application <binary_string>, applications, Index<binary_string>Global
       application <string>, applications, NamedGlobal
       application of <folder>, applications, Plain
       application, applications, PlainGlobal
@@ -329,6 +334,7 @@ Creation techniques & properties of each type:
       instance of <application usage summary>, instances, Plain
     Properties of <application usage summary instance> { key phrase, plural keyword, form, <result type>}:
       first start time of <application usage summary instance>, first start times, Plain, <time>
+      image path of <application usage summary instance>, image paths, Plain, <string>
       last start time of <application usage summary instance>, last start times, Plain, <time>
       last time seen of <application usage summary instance>, last times seen, Plain, <time>
       name of <application usage summary instance>, names, Plain, <string>
@@ -388,13 +394,58 @@ Creation techniques & properties of each type:
       right operand type of <binary operator>, right operand types, Plain, <type>
       symbol of <binary operator>, symbols, Plain, <string>
 
+  Type <binary position> (derives from integer)
+    Creation of <binary position>: { key phrase, plural keyword, form}
+      end of <binary_substring>, ends, Plain
+      position <integer> of <binary_string>, positions, Numbered
+      position of <binary_string>, positions, Plain
+      start of <binary_substring>, starts, Plain
+    Properties of <binary position> { key phrase, plural keyword, form, <result type>}:
+      following binary_string of <binary position>, following binary_strings, Plain, <binary_substring>
+      preceding binary_string of <binary position>, preceding binary_strings, Plain, <binary_substring>
+
   Type <binary_string>
     Creation of <binary_string>: { key phrase, plural keyword, form}
+      <string> as binary_string, , Cast
+      <string> as fxf binary_string, , Cast
+      <string> as local binary_string, , Cast
+      <string> as utf16 binary_string, , Cast
+      <string> as utf8 binary_string, , Cast
+      binary name of <filesystem object>, binary names, Plain
       data <string> of <dictionary>, datas, Named
       data of <osxvalue>, datas, Plain
     Properties of <binary_string> { key phrase, plural keyword, form, <result type>}:
       <binary_string> as hexadecimal, , Cast, <string>
       <binary_string> as string, , Cast, <string>
+      binary_substring <( integer, integer )> of <binary_string>, binary_substrings, Index<( integer, integer )>, <binary_substring>
+      binary_substring <binary_string> of <binary_string>, binary_substrings, Index<binary_string>, <binary_substring>
+      byte <integer> of <binary_string>, bytes, Numbered, <binary_substring>
+      byte of <binary_string>, bytes, Plain, <binary_substring>
+      first <integer> of <binary_string>, firsts, Numbered, <binary_substring>
+      last <integer> of <binary_string>, lasts, Numbered, <binary_substring>
+      position <integer> of <binary_string>, positions, Numbered, <binary position>
+      position of <binary_string>, positions, Plain, <binary position>
+
+  Type <binary_substring> (derives from binary_string)
+    Creation of <binary_substring>: { key phrase, plural keyword, form}
+      <binary_substring> as binary_substring, , Cast
+      binary_substring <( integer, integer )> of <binary_string>, binary_substrings, Index<( integer, integer )>
+      binary_substring <binary_string> of <binary_string>, binary_substrings, Index<binary_string>
+      byte <integer> of <binary_string>, bytes, Numbered
+      byte of <binary_string>, bytes, Plain
+      first <integer> of <binary_string>, firsts, Numbered
+      following binary_string of <binary position>, following binary_strings, Plain
+      following binary_string of <binary_substring>, following binary_strings, Plain
+      last <integer> of <binary_string>, lasts, Numbered
+      preceding binary_string of <binary position>, preceding binary_strings, Plain
+      preceding binary_string of <binary_substring>, preceding binary_strings, Plain
+    Properties of <binary_substring> { key phrase, plural keyword, form, <result type>}:
+      <binary_substring> as binary_substring, , Cast, <binary_substring>
+      <binary_substring> as string, , Cast, <string>
+      end of <binary_substring>, ends, Plain, <binary position>
+      following binary_string of <binary_substring>, following binary_strings, Plain, <binary_substring>
+      preceding binary_string of <binary_substring>, preceding binary_strings, Plain, <binary_substring>
+      start of <binary_substring>, starts, Plain, <binary position>
 
   Type <bios>
     Creation of <bios>: { key phrase, plural keyword, form}
@@ -604,6 +655,7 @@ Creation techniques & properties of each type:
       enabled of <administrative rights>, enableds, Plain
       enabled of <enableable_file>, enableds, Plain
       enabled of <setting>, enableds, Plain
+      enabled of <wifi>, enableds, Plain
       encrypt report of <client_cryptography>, encrypt reports, Plain
       enhanced security of <license>, enhanced securities, Plain
       established of <tcp state>, establisheds, Plain
@@ -621,6 +673,7 @@ Creation techniques & properties of each type:
       gateway flag of <route>, gateway flags, Plain
       group leader of <action>, group leaders, Plain
       host flag of <route>, host flags, Plain
+      ibss of <wifi network>, ibsss, Plain
       ifref flag of <route>, ifref flags, Plain
       ifscope flag of <route>, ifscope flags, Plain
       in agent context, in agent contexts, PlainGlobal
@@ -683,6 +736,7 @@ Creation techniques & properties of each type:
       remote of <logged on user>, remotes, Plain
       router flag of <route>, router flags, Plain
       running of <application usage summary>, runnings, Plain
+      secured of <wifi network>, secureds, Plain
       secured of <wifi>, secureds, Plain
       sha256 download of <license>, sha256 downloads, Plain
       smt capable of <cpupackage>, smt capables, Plain
@@ -1217,6 +1271,19 @@ Creation techniques & properties of each type:
       disabled of <enableable_file>, disableds, Plain, <boolean>
       enabled of <enableable_file>, enableds, Plain, <boolean>
 
+  Type <encoding>
+    Creation of <encoding>: { key phrase, plural keyword, form}
+      encoding <string>, encodings, NamedGlobal
+    Properties of <encoding> { key phrase, plural keyword, form, <result type>}:
+      download file <string> of <encoding>, download files, Named, <file>
+      download folder of <encoding>, download folders, Plain, <folder>
+      file <string> of <encoding>, files, Named, <file>
+      folder <string> of <encoding>, folders, Named, <folder>
+      hfs file <string> of <encoding>, hfs files, Named, <file>
+      hfs folder <string> of <encoding>, hfs folders, Named, <folder>
+      posix file <string> of <encoding>, posix files, Named, <file>
+      posix folder <string> of <encoding>, posix folders, Named, <folder>
+
   Type <environment>
     Creation of <environment>: { key phrase, plural keyword, form}
       environment, environments, PlainGlobal
@@ -1287,21 +1354,29 @@ Creation techniques & properties of each type:
   Type <file> (derives from filesystem object)
     Creation of <file>: { key phrase, plural keyword, form}
       <filesystem object> as file, , Cast
+      binary named file of <folder>, binary named files, Plain
       descendant of <folder>, descendants, Plain
+      download file <string> of <encoding>, download files, Named
       download file <string>, download files, NamedGlobal
+      file <binary_string> of <folder>, files, Index<binary_string>
+      file <string> of <encoding>, files, Named
       file <string> of <folder>, files, Named
       file <string>, files, NamedGlobal
       file ending in <string> of <folder>, files ending in, Named
       file of <folder>, files, Plain
       find file <string> of <folder>, find files, Named
+      hfs file <string> of <encoding>, hfs files, Named
       hfs file <string>, hfs files, NamedGlobal
       image file of <process>, image files, Plain
       masthead of <site>, mastheads, Plain
+      posix file <string> of <encoding>, posix files, Named
       posix file <string>, posix files, NamedGlobal
       relative file <string> of <folder>, relative files, Named
       relative hfs file <string> of <folder>, relative hfs files, Named
       relative posix file <string> of <folder>, relative posix files, Named
+      sibling file <binary_string> of <filesystem object>, sibling files, Index<binary_string>
       sibling file <string> of <filesystem object>, sibling files, Named
+      string named file of <folder>, string named files, Plain
     Properties of <file> { key phrase, plural keyword, form, <result type>}:
       <file> as string, , Cast, <string>
       alias of <file>, aliases, Plain, <boolean>
@@ -1407,6 +1482,7 @@ Creation techniques & properties of each type:
       <filesystem object> as string, , Cast, <string>
       ancestor of <filesystem object>, ancestors, Plain, <folder>
       backup time of <filesystem object>, backup times, Plain, <time>
+      binary name of <filesystem object>, binary names, Plain, <binary_string>
       bundle version of <filesystem object>, bundle versions, Plain, <version>
       creation time of <filesystem object>, creation times, Plain, <time>
       hfs path of <filesystem object>, hfs paths, Plain, <string>
@@ -1416,6 +1492,7 @@ Creation techniques & properties of each type:
       parent folder of <filesystem object>, parent folders, Plain, <folder>
       pathname of <filesystem object>, pathnames, Plain, <string>
       posix path of <filesystem object>, posix paths, Plain, <string>
+      sibling file <binary_string> of <filesystem object>, sibling files, Index<binary_string>, <file>
       sibling file <string> of <filesystem object>, sibling files, Named, <file>
       sibling folder <string> of <filesystem object>, sibling folders, Named, <folder>
       sibling item <string> of <filesystem object>, sibling items, Named, <filesystem object>
@@ -1484,6 +1561,7 @@ Creation techniques & properties of each type:
       product of <floating point>, products, Plain
       property percent of <evaluation cycle>, property percents, Plain
       quiet mode percent of <evaluation cycle>, quiet mode percents, Plain
+      random floating point, random floating points, PlainGlobal
       rate <time interval> of <exponential projection>, rates, Index<time interval>
       real <integer> of <array>, reals, Numbered
       real <string> of <dictionary>, reals, Named
@@ -1584,6 +1662,7 @@ Creation techniques & properties of each type:
       assistants folder, assistants folders, PlainGlobal
       audio folder of <domain>, audio folders, Plain
       audio folder, audio folders, PlainGlobal
+      binary named folder of <folder>, binary named folders, Plain
       cache folder of <domain>, cache folders, Plain
       cache folder, cache folders, PlainGlobal
       carbon folder of <domain>, carbon folders, Plain
@@ -1637,12 +1716,15 @@ Creation techniques & properties of each type:
       domain library folder, domain library folders, PlainGlobal
       domain top folder of <domain>, domain top folders, Plain
       domain top folder, domain top folders, PlainGlobal
+      download folder of <encoding>, download folders, Plain
       download folder, download folders, PlainGlobal
       extensions folder of <domain>, extensions folders, Plain
       extensions folder, extensions folders, PlainGlobal
       favorites folder of <domain>, favorites folders, Plain
       favorites folder, favorites folders, PlainGlobal
       find folder <string> of <folder>, find folders, Named
+      folder <binary_string>, folders, Index<binary_string>Global
+      folder <string> of <encoding>, folders, Named
       folder <string> of <folder>, folders, Named
       folder <string>, folders, NamedGlobal
       folder ending in <string> of <folder>, folders ending in, Named
@@ -1656,6 +1738,7 @@ Creation techniques & properties of each type:
       framework folder, framework folders, PlainGlobal
       help folder of <domain>, help folders, Plain
       help folder, help folders, PlainGlobal
+      hfs folder <string> of <encoding>, hfs folders, Named
       hfs folder <string>, hfs folders, NamedGlobal
       home directory folder of <user>, home directory folders, Plain
       internet plugins folder of <domain>, internet plugins folders, Plain
@@ -1678,6 +1761,7 @@ Creation techniques & properties of each type:
       modem scripts folder of <domain>, modem scripts folders, Plain
       modem scripts folder, modem scripts folders, PlainGlobal
       parent folder of <filesystem object>, parent folders, Plain
+      posix folder <string> of <encoding>, posix folders, Named
       posix folder <string>, posix folders, NamedGlobal
       preferences folder of <domain>, preferences folders, Plain
       preferences folder, preferences folders, PlainGlobal
@@ -1695,6 +1779,7 @@ Creation techniques & properties of each type:
       quicktime folder, quicktime folders, PlainGlobal
       receipts folder of <domain>, receipts folders, Plain
       receipts folder, receipts folders, PlainGlobal
+      relative folder <binary_string> of <folder>, relative folders, Index<binary_string>
       relative folder <string> of <folder>, relative folders, Named
       relative hfs folder <string> of <folder>, relative hfs folders, Named
       relative posix folder <string> of <folder>, relative posix folders, Named
@@ -1714,6 +1799,7 @@ Creation techniques & properties of each type:
       startup items folder of <domain>, startup items folders, Plain
       startup items folder, startup items folders, PlainGlobal
       storage folder of <client>, storage folders, Plain
+      string named folder of <folder>, string named folders, Plain
       system folder of <domain>, system folders, Plain
       system folder, system folders, PlainGlobal
       temporary items folder of <domain>, temporary items folders, Plain
@@ -1734,11 +1820,14 @@ Creation techniques & properties of each type:
       volume settings folder, volume settings folders, PlainGlobal
     Properties of <folder> { key phrase, plural keyword, form, <result type>}:
       application of <folder>, applications, Plain, <application>
+      binary named file of <folder>, binary named files, Plain, <file>
+      binary named folder of <folder>, binary named folders, Plain, <folder>
       bundle of <folder>, bundles, Plain, <bundle>
       bundle version of <folder>, bundle versions, Plain, <version>
       descendant folder of <folder>, descendant folders, Plain, <folder>
       descendant of <folder>, descendants, Plain, <file>
       drive of <folder>, drives, Plain, <volume>
+      file <binary_string> of <folder>, files, Index<binary_string>, <file>
       file <string> of <folder>, files, Named, <file>
       file ending in <string> of <folder>, files ending in, Named, <file>
       file of <folder>, files, Plain, <file>
@@ -1755,12 +1844,15 @@ Creation techniques & properties of each type:
       item of <folder>, items, Plain, <filesystem object>
       posix relative item <string> of <folder>, posix relative items, Named, <filesystem object>
       relative file <string> of <folder>, relative files, Named, <file>
+      relative folder <binary_string> of <folder>, relative folders, Index<binary_string>, <folder>
       relative folder <string> of <folder>, relative folders, Named, <folder>
       relative hfs file <string> of <folder>, relative hfs files, Named, <file>
       relative hfs folder <string> of <folder>, relative hfs folders, Named, <folder>
       relative item <string> of <folder>, relative items, Named, <filesystem object>
       relative posix file <string> of <folder>, relative posix files, Named, <file>
       relative posix folder <string> of <folder>, relative posix folders, Named, <folder>
+      string named file of <folder>, string named files, Plain, <file>
+      string named folder of <folder>, string named folders, Plain, <folder>
       version of <folder>, versions, Plain, <version>
       volume of <folder>, volumes, Plain, <volume>
 
@@ -2255,6 +2347,7 @@ Creation techniques & properties of each type:
       build number of <operating system>, build numbers, Plain
       build revision of <version>, build revisions, Plain
       byte <integer> of <file>, bytes, Numbered
+      channel number of <wifi network>, channel numbers, Plain
       client device count of <bes product>, client device counts, Plain
       competition size of <selected server>, competition sizes, Plain
       competition weight of <selected server>, competition weights, Plain
@@ -2374,9 +2467,12 @@ Creation techniques & properties of each type:
       priority of <selected server>, priorities, Plain
       process id of <process>, process ids, Plain
       product of <integer>, products, Plain
+      random integer of <integer>, random integers, Plain
+      random integer, random integers, PlainGlobal
       reference of <route>, references, Plain
       registrar number of <license>, registrar numbers, Plain
       remote port of <socket>, remote ports, Plain
+      rssi of <wifi network>, rssis, Plain
       rvu count of <bes product>, rvu counts, Plain
       seat of <license>, seats, Plain
       second_of_minute of <time of day with time zone>, seconds_of_minute, Plain
@@ -2384,6 +2480,7 @@ Creation techniques & properties of each type:
       seconds to expiration of <route>, seconds to expirations, Plain
       sent packet count of <route>, sent packets counts, Plain
       session id of <logged on user>, session ids, Plain
+      signal strength of <wifi network>, signal strengths, Plain
       significant digits <integer> of <integer>, significant digitss, Numbered
       site number of <license>, site numbers, Plain
       size of <application usage summary instance>, sizes, Plain
@@ -2489,6 +2586,7 @@ Creation techniques & properties of each type:
       october <integer> of <integer>, octobers, Numbered, <date>
       october of <integer>, octobers, Plain, <month and year>
       product of <integer>, products, Plain, <integer>
+      random integer of <integer>, random integers, Plain, <integer>
       september <integer> of <integer>, septembers, Numbered, <date>
       september of <integer>, septembers, Plain, <month and year>
       set of <integer>, sets, Plain, <integer set>
@@ -3084,6 +3182,7 @@ Creation techniques & properties of each type:
       build number low of <operating system>, build number lows, Plain, <integer>
       build number of <operating system>, build numbers, Plain, <integer>
       build of <operating system>, builds, Plain, <string>
+      codename of <operating system>, codenames, Plain, <string>
       embedded of <operating system>, embeddeds, Plain, <boolean>
       little endian of <operating system>, little endians, Plain, <boolean>
       mac of <operating system>, macs, Plain, <boolean>
@@ -3636,6 +3735,7 @@ Creation techniques & properties of each type:
       <binary operator> as string, , Cast
       <binary_string> as hexadecimal, , Cast
       <binary_string> as string, , Cast
+      <binary_substring> as string, , Cast
       <bios> as string, , Cast
       <bit set> as string, , Cast
       <boolean> as string, , Cast
@@ -3736,8 +3836,10 @@ Creation techniques & properties of each type:
       base64 encode <string>, base64 encodes, NamedGlobal
       brand of <client>, brands, Plain
       brand string of <processor>, brand strings, Plain
+      bssid of <wifi network>, bssids, Plain
       build of <operating system>, builds, Plain
       build target of <client>, build targets, Plain
+      channel band of <wifi network>, channel bands, Plain
       character <integer>, characters, NumberedGlobal
       character set of <client>, character sets, Plain
       cidr address of <network adapter interface>, cidr addresses, Plain
@@ -3747,6 +3849,7 @@ Creation techniques & properties of each type:
       cidr string of <network adapter>, cidr strings, Plain
       cidr string of <network ip interface>, cidr strings, Plain
       classname of <registrynode>, classnames, Plain
+      codename of <operating system>, codenames, Plain
       comment of <user>, comments, Plain
       common name of <license>, common names, Plain
       component string of <security identifier>, component strings, Plain
@@ -3800,6 +3903,7 @@ Creation techniques & properties of each type:
       host name of <root server>, host names, Plain
       hostname, hostnames, PlainGlobal
       identity of <execution>, identites, Plain
+      image path of <application usage summary instance>, image paths, Plain
       index of <sqlite table>, indices, Plain
       info of <component>, infos, Plain
       interface of <route>, interfaces, Plain
@@ -3868,6 +3972,7 @@ Creation techniques & properties of each type:
       pathname of <filesystem object>, pathnames, Plain
       pending restart name, pending restart names, PlainGlobal
       percent decode <string>, percent decodes, NamedGlobal
+      percent encode <binary_string>, percent encodes, Index<binary_string>Global
       percent encode <string>, percent encodes, NamedGlobal
       plural name of <property>, plural names, Plain
       posix path of <filesystem object>, posix paths, Plain
@@ -3906,6 +4011,7 @@ Creation techniques & properties of each type:
       singular name of <property>, singular names, Plain
       site tag of <site>, site tags, Plain
       site url of <bes product>, site urls, Plain
+      ssid of <wifi network>, ssids, Plain
       ssid of <wifi>, ssids, Plain
       state of <dummy>, states, Plain
       status of <action>, statuss, Plain
@@ -3985,17 +4091,20 @@ Creation techniques & properties of each type:
       <string> = <regular expression>, , BinaryOperator, <boolean>
       <string> = <string>, , BinaryOperator, <boolean>
       <string> = <version>, , BinaryOperator, <boolean>
+      <string> as binary_string, , Cast, <binary_string>
       <string> as boolean, , Cast, <boolean>
       <string> as date, , Cast, <date>
       <string> as day_of_month, , Cast, <day of month>
       <string> as day_of_week, , Cast, <day of week>
       <string> as floating point, , Cast, <floating point>
+      <string> as fxf binary_string, , Cast, <binary_string>
       <string> as hexadecimal, , Cast, <string>
       <string> as html, , Cast, <html>
       <string> as integer, , Cast, <integer>
       <string> as ipv4or6 address, , Cast, <ipv4or6 address>
       <string> as ipv6 address, , Cast, <ipv6 address>
       <string> as left trimmed string, , Cast, <string>
+      <string> as local binary_string, , Cast, <binary_string>
       <string> as local time, , Cast, <time>
       <string> as local zoned time_of_day, , Cast, <time of day with time zone>
       <string> as lowercase, , Cast, <string>
@@ -4011,6 +4120,8 @@ Creation techniques & properties of each type:
       <string> as universal time, , Cast, <time>
       <string> as universal zoned time_of_day, , Cast, <time of day with time zone>
       <string> as uppercase, , Cast, <string>
+      <string> as utf16 binary_string, , Cast, <binary_string>
+      <string> as utf8 binary_string, , Cast, <binary_string>
       <string> as version, , Cast, <version>
       <string> as year, , Cast, <year>
       <string> as zoned time_of_day, , Cast, <time of day with time zone>
@@ -4838,10 +4949,27 @@ Creation techniques & properties of each type:
     Creation of <wifi>: { key phrase, plural keyword, form}
       wifi of <network adapter>, wifis, Plain
     Properties of <wifi> { key phrase, plural keyword, form, <result type>}:
+      current network of <wifi>, current networks, Plain, <wifi network>
+      enabled of <wifi>, enableds, Plain, <boolean>
       encryption of <wifi>, encryptions, Plain, <string>
       name of <wifi>, names, Plain, <string>
       secured of <wifi>, secureds, Plain, <boolean>
       ssid of <wifi>, ssids, Plain, <string>
+      visible network of <wifi>, visible networks, Plain, <wifi network>
+
+  Type <wifi network>
+    Creation of <wifi network>: { key phrase, plural keyword, form}
+      current network of <wifi>, current networks, Plain
+      visible network of <wifi>, visible networks, Plain
+    Properties of <wifi network> { key phrase, plural keyword, form, <result type>}:
+      bssid of <wifi network>, bssids, Plain, <string>
+      channel band of <wifi network>, channel bands, Plain, <string>
+      channel number of <wifi network>, channel numbers, Plain, <integer>
+      ibss of <wifi network>, ibsss, Plain, <boolean>
+      rssi of <wifi network>, rssis, Plain, <integer>
+      secured of <wifi network>, secureds, Plain, <boolean>
+      signal strength of <wifi network>, signal strengths, Plain, <integer>
+      ssid of <wifi network>, ssids, Plain, <string>
 
   Type <x509 certificate>
     Creation of <x509 certificate>: { key phrase, plural keyword, form}
@@ -4904,6 +5032,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   apparent registration server time, apparent registration server times, PlainGlobal, <time>
   apple extras folder, apple extras folders, PlainGlobal, <folder>
   apple menu items folder, apple menu items folders, PlainGlobal, <folder>
+  application <binary_string>, applications, Index<binary_string>Global, <application>
   application <string>, applications, NamedGlobal, <application>
   application support folder, application support folders, PlainGlobal, <folder>
   application usage <string>, application usages, NamedGlobal, <timed( time range, integer )>
@@ -5020,6 +5149,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   enabled shutdown item, enabled shutdown items, PlainGlobal, <enableable_file>
   enabled startup item <string>, enabled startup items, NamedGlobal, <enableable_file>
   enabled startup item, enabled startup items, PlainGlobal, <enableable_file>
+  encoding <string>, encodings, NamedGlobal, <encoding>
   environment, environments, PlainGlobal, <environment>
   error <string>, errors, NamedGlobal, <undefined>
   execution <string>, executions, NamedGlobal, <execution>
@@ -5038,6 +5168,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   filesystem, filesystems, PlainGlobal, <volume>
   floating point <floating point>, floating points, Index<floating point>Global, <floating point>
   floating point <string>, floating points, NamedGlobal, <floating point>
+  folder <binary_string>, folders, Index<binary_string>Global, <folder>
   folder <string>, folders, NamedGlobal, <folder>
   fonts folder, fonts folders, PlainGlobal, <folder>
   format <string>, formats, NamedGlobal, <format>
@@ -5159,6 +5290,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   pending restart name, pending restart names, PlainGlobal, <string>
   pending restart, pending restarts, PlainGlobal, <boolean>
   percent decode <string>, percent decodes, NamedGlobal, <string>
+  percent encode <binary_string>, percent encodes, Index<binary_string>Global, <string>
   percent encode <string>, percent encodes, NamedGlobal, <string>
   physical ram, physical rams, PlainGlobal, <integer>
   posix file <string>, posix files, NamedGlobal, <file>
@@ -5186,6 +5318,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   quicktime folder, quicktime folders, PlainGlobal, <folder>
   ram, rams, PlainGlobal, <ram>
   random access memory, random access memories, PlainGlobal, <ram>
+  random floating point, random floating points, PlainGlobal, <floating point>
+  random integer, random integers, PlainGlobal, <integer>
   receipts folder, receipts folders, PlainGlobal, <folder>
   recent application <string>, recent applications, NamedGlobal, <application>
   recent application, recent applications, PlainGlobal, <application>
@@ -5338,6 +5472,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       application usage summary, application usage summaries, <application usage summary>, world , PlainGlobal
       application usage, application usages, <timed( time range, integer )>, world , NamedGlobal
       application, applications, <application>, <folder>, Plain
+      application, applications, <application>, world , Index<binary_string>Global
       application, applications, <application>, world , NamedGlobal
       application, applications, <application>, world , PlainGlobal
       applications folder, applications folders, <folder>, <domain>, Plain
@@ -5354,6 +5489,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       array, arrays, <array>, <file>, Plain
       array, arrays, <array>, <osxvalue>, Plain
       array, arrays, <array>, <preference>, Named
+      as binary_string, , <binary_string>, <string>, Cast
+      as binary_substring, , <binary_substring>, <binary_substring>, Cast
       as bit set, , <bit set>, <integer>, Cast
       as bits, , <bit set>, <integer>, Cast
       as boolean, , <boolean>, <boolean>, Cast
@@ -5378,6 +5515,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as floating point, , <floating point>, <integer>, Cast
       as floating point, , <floating point>, <string>, Cast
       as folder, , <folder>, <filesystem object>, Cast
+      as fxf binary_string, , <binary_string>, <string>, Cast
       as hexadecimal, , <string>, <binary_string>, Cast
       as hexadecimal, , <string>, <integer>, Cast
       as hexadecimal, , <string>, <string>, Cast
@@ -5397,6 +5535,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as ipv6 address, , <ipv6 address>, <ipv4 address>, Cast
       as ipv6 address, , <ipv6 address>, <string>, Cast
       as left trimmed string, , <string>, <string>, Cast
+      as local binary_string, , <binary_string>, <string>, Cast
       as local date, , <date>, <time>, Cast
       as local string, , <string>, <time>, Cast
       as local time, , <time>, <string>, Cast
@@ -5424,6 +5563,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <application>, Cast
       as string, , <string>, <binary operator>, Cast
       as string, , <string>, <binary_string>, Cast
+      as string, , <string>, <binary_substring>, Cast
       as string, , <string>, <bios>, Cast
       as string, , <string>, <bit set>, Cast
       as string, , <string>, <boolean>, Cast
@@ -5499,6 +5639,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as universal zoned time_of_day, , <time of day with time zone>, <string>, Cast
       as uppercase, , <file content>, <file content>, Cast
       as uppercase, , <string>, <string>, Cast
+      as utf16 binary_string, , <binary_string>, <string>, Cast
+      as utf8 binary_string, , <binary_string>, <string>, Cast
       as version, , <version>, <string>, Cast
       as version, , <version>, <version>, Cast
       as year, , <year>, <integer>, Cast
@@ -5538,9 +5680,14 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       big, bigs, <html>, <html>, Plain
       big, bigs, <html>, <string>, Named
       big, bigs, <html>, <string>, Plain
+      binary name, binary names, <binary_string>, <filesystem object>, Plain
+      binary named file, binary named files, <file>, <folder>, Plain
+      binary named folder, binary named folders, <folder>, <folder>, Plain
       binary operator returning, binary operators returning, <binary operator>, world , Index<type>Global
       binary operator, binary operators, <binary operator>, world , NamedGlobal
       binary operator, binary operators, <binary operator>, world , PlainGlobal
+      binary_substring, binary_substrings, <binary_substring>, <binary_string>, Index<( integer, integer )>
+      binary_substring, binary_substrings, <binary_substring>, <binary_string>, Index<binary_string>
       bios, bioses, <bios>, world , PlainGlobal
       bit set, bit sets, <bit set>, world , NamedGlobal
       bit, bits, <bit set>, world , NumberedGlobal
@@ -5574,6 +5721,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       broadcast support, broadcast supports, <boolean>, <network adapter interface>, Plain
       broadcast support, broadcast supports, <boolean>, <network adapter>, Plain
       broadcast support, broadcast supports, <boolean>, <network ip interface>, Plain
+      bssid, bssids, <string>, <wifi network>, Plain
       bug revision, bug revisions, <integer>, <version>, Plain
       build number high, build number highs, <integer>, <operating system>, Plain
       build number low, build number lows, <integer>, <operating system>, Plain
@@ -5586,6 +5734,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       bundle version, bundle versions, <version>, <folder>, Plain
       bundle, bundles, <bundle>, <folder>, Plain
       bundle, bundles, <bundle>, world , NamedGlobal
+      byte, bytes, <binary_substring>, <binary_string>, Numbered
+      byte, bytes, <binary_substring>, <binary_string>, Plain
       byte, bytes, <integer>, <file>, Numbered
       cache folder, cache folders, <folder>, <domain>, Plain
       cache folder, cache folders, <folder>, world , PlainGlobal
@@ -5602,6 +5752,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       cast, casts, <cast>, world , NamedGlobal
       cast, casts, <cast>, world , PlainGlobal
       certificate, certificates, <x509 certificate>, <client>, Plain
+      channel band, channel bands, <string>, <wifi network>, Plain
+      channel number, channel numbers, <integer>, <wifi network>, Plain
       character set, character sets, <string>, <client>, Plain
       character, characters, <string>, world , NumberedGlobal
       character, characters, <substring>, <string>, Numbered
@@ -5636,6 +5788,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       code, codes, <html>, <html>, Plain
       code, codes, <html>, <string>, Named
       code, codes, <html>, <string>, Plain
+      codename, codenames, <string>, <operating system>, Plain
       col, cols, <html>, <html>, Named
       col, cols, <html>, <html>, Plain
       col, cols, <html>, <string>, Named
@@ -5711,6 +5864,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       current monitor interval, current monitor intervals, <monitor power interval>, <power history>, Plain
       current month, current months, <month>, world , PlainGlobal
       current month_and_year, current months_and_years, <month and year>, world , PlainGlobal
+      current network, current networks, <wifi network>, <wifi>, Plain
       current relay, current relays, <current relay>, world , PlainGlobal
       current site, current sites, <site>, world , PlainGlobal
       current system interval, current system intervals, <system power interval>, <power history>, Plain
@@ -5835,7 +5989,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       domain top folder, domain top folders, <folder>, world , PlainGlobal
       done flag, done flags, <boolean>, <route>, Plain
       download failure, download failures, <integer>, <action>, Plain
+      download file, download files, <file>, <encoding>, Named
       download file, download files, <file>, world , NamedGlobal
+      download folder, download folders, <folder>, <encoding>, Plain
       download folder, download folders, <folder>, world , PlainGlobal
       download hash algorithm, download hash algorithms, <string>, <license>, Plain
       download path, download paths, <string>, world , NamedGlobal
@@ -5875,11 +6031,14 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       enabled, enableds, <boolean>, <administrative rights>, Plain
       enabled, enableds, <boolean>, <enableable_file>, Plain
       enabled, enableds, <boolean>, <setting>, Plain
+      enabled, enableds, <boolean>, <wifi>, Plain
+      encoding, encodings, <encoding>, world , NamedGlobal
       encoding, encodings, <string>, <sqlite database>, Plain
       encrypt report failure message, encrypt report failure messages, <string>, <client_cryptography>, Plain
       encrypt report, encrypt reports, <boolean>, <client_cryptography>, Plain
       encryption certificate, encryption certificates, <x509 certificate>, <license>, Plain
       encryption, encryptions, <string>, <wifi>, Plain
+      end, ends, <binary position>, <binary_substring>, Plain
       end, ends, <string position>, <substring>, Plain
       end, ends, <time>, <time range>, Plain
       enhanced security, enhanced securities, <boolean>, <license>, Plain
@@ -5942,6 +6101,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       file ending in, files ending in, <file>, <folder>, Named
       file signature, file signatures, <file signature>, world , NamedGlobal
       file type, file types, <file type>, world , NamedGlobal
+      file, files, <file>, <encoding>, Named
+      file, files, <file>, <folder>, Index<binary_string>
       file, files, <file>, <folder>, Named
       file, files, <file>, <folder>, Plain
       file, files, <file>, world , NamedGlobal
@@ -5973,6 +6134,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       first thursday, first thursdays, <date>, <month and year>, Plain
       first tuesday, first tuesdays, <date>, <month and year>, Plain
       first wednesday, first wednesdays, <date>, <month and year>, Plain
+      first, firsts, <binary_substring>, <binary_string>, Numbered
       first, firsts, <date>, <month and year>, Index<day of week>
       first, firsts, <substring>, <string>, Named
       first, firsts, <substring>, <string>, Numbered
@@ -5983,10 +6145,14 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       floating point, floating points, <floating point>, world , Index<floating point>Global
       floating point, floating points, <floating point>, world , NamedGlobal
       folder ending in, folders ending in, <folder>, <folder>, Named
+      folder, folders, <folder>, <encoding>, Named
       folder, folders, <folder>, <folder>, Named
       folder, folders, <folder>, <folder>, Plain
       folder, folders, <folder>, <site>, Plain
+      folder, folders, <folder>, world , Index<binary_string>Global
       folder, folders, <folder>, world , NamedGlobal
+      following binary_string, following binary_strings, <binary_substring>, <binary position>, Plain
+      following binary_string, following binary_strings, <binary_substring>, <binary_substring>, Plain
       following text, following texts, <substring>, <string position>, Plain
       following text, following texts, <substring>, <substring>, Plain
       fonts folder, fonts folders, <folder>, <domain>, Plain
@@ -6070,7 +6236,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       hexadecet, hexadecets, <integer>, <ipv6 address>, Numbered
       hexadecimal integer, hexadecimal integers, <integer>, world , NamedGlobal
       hexadecimal string, hexadecimal strings, <string>, world , NamedGlobal
+      hfs file, hfs files, <file>, <encoding>, Named
       hfs file, hfs files, <file>, world , NamedGlobal
+      hfs folder, hfs folders, <folder>, <encoding>, Named
       hfs folder, hfs folders, <folder>, world , NamedGlobal
       hfs item, hfs items, <filesystem object>, world , NamedGlobal
       hfs path, hfs paths, <string>, <filesystem object>, Plain
@@ -6100,6 +6268,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       html, htmls, <html>, <string>, Plain
       html, htmls, <html>, world , NamedGlobal
       hz, hzs, <hertz>, world , PlainGlobal
+      ibss, ibsss, <boolean>, <wifi network>, Plain
       id, ids, <integer>, <action>, Plain
       id, ids, <integer>, <fixlet>, Plain
       id, ids, <integer>, <process>, Plain
@@ -6111,6 +6280,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       ifref flag, ifref flags, <boolean>, <route>, Plain
       ifscope flag, ifscope flags, <boolean>, <route>, Plain
       image file, image files, <file>, <process>, Plain
+      image path, image paths, <string>, <application usage summary instance>, Plain
       in agent context, in agent contexts, <boolean>, world , PlainGlobal
       in proxy agent context, in proxy agent contexts, <boolean>, world , PlainGlobal
       index type, index types, <type>, <property>, Plain
@@ -6234,6 +6404,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       last time seen, last times seen, <time>, <application usage summary instance>, Plain
       last time seen, last times seen, <time>, <application usage summary>, Plain
       last time, last times, <time>, <analysis>, Plain
+      last, lasts, <binary_substring>, <binary_string>, Numbered
       last, lasts, <substring>, <string>, Named
       last, lasts, <substring>, <string>, Numbered
       leap, leaps, <boolean>, <year>, Plain
@@ -6567,6 +6738,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       pending time, pending times, <time>, <action>, Plain
       pending, pendings, <boolean>, <action>, Plain
       percent decode, percent decodes, <string>, world , NamedGlobal
+      percent encode, percent encodes, <string>, world , Index<binary_string>Global
       percent encode, percent encodes, <string>, world , NamedGlobal
       perpetual maintenance, perpetual maintenances, <boolean>, <bes product>, Plain
       perpetual, perpetuals, <boolean>, <bes product>, Plain
@@ -6580,9 +6752,13 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       point to point, point to points, <boolean>, <network adapter>, Plain
       point to point, point to points, <boolean>, <network ip interface>, Plain
       port number, port numbers, <integer>, <selected server>, Plain
+      position, positions, <binary position>, <binary_string>, Numbered
+      position, positions, <binary position>, <binary_string>, Plain
       position, positions, <string position>, <string>, Numbered
       position, positions, <string position>, <string>, Plain
+      posix file, posix files, <file>, <encoding>, Named
       posix file, posix files, <file>, world , NamedGlobal
+      posix folder, posix folders, <folder>, <encoding>, Named
       posix folder, posix folders, <folder>, world , NamedGlobal
       posix item, posix items, <filesystem object>, world , NamedGlobal
       posix path, posix paths, <string>, <filesystem object>, Plain
@@ -6597,6 +6773,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       pre, pres, <html>, <html>, Plain
       pre, pres, <html>, <string>, Named
       pre, pres, <html>, <string>, Plain
+      preceding binary_string, preceding binary_strings, <binary_substring>, <binary position>, Plain
+      preceding binary_string, preceding binary_strings, <binary_substring>, <binary_substring>, Plain
       preceding text, preceding texts, <substring>, <string position>, Plain
       preceding text, preceding texts, <substring>, <substring>, Plain
       preference, preferences, <preference>, world , NamedGlobal
@@ -6651,6 +6829,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       quiet mode percent, quiet mode percents, <floating point>, <evaluation cycle>, Plain
       ram, rams, <ram>, world , PlainGlobal
       random access memory, random access memories, <ram>, world , PlainGlobal
+      random floating point, random floating points, <floating point>, world , PlainGlobal
+      random integer, random integers, <integer>, <integer>, Plain
+      random integer, random integers, <integer>, world , PlainGlobal
       range after, ranges after, <time range>, <time range>, Index<time>
       range before, ranges before, <time range>, <time range>, Index<time>
       range, ranges, <time range>, <monitor power interval>, Plain
@@ -6679,6 +6860,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       regular expression, regular expressions, <regular expression>, world , NamedGlobal
       reject flag, reject flags, <boolean>, <route>, Plain
       relative file, relative files, <file>, <folder>, Named
+      relative folder, relative folders, <folder>, <folder>, Index<binary_string>
       relative folder, relative folders, <folder>, <folder>, Named
       relative hfs file, relative hfs files, <file>, <folder>, Named
       relative hfs folder, relative hfs folders, <folder>, <folder>, Named
@@ -6718,6 +6900,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       router flag, router flags, <boolean>, <route>, Plain
       routing table, routing tables, <routing table>, world , PlainGlobal
       row, rows, <sqlite row>, <sqlite statement>, Plain
+      rssi, rssis, <integer>, <wifi network>, Plain
       running application, running applications, <application>, world , NamedGlobal
       running application, running applications, <application>, world , PlainGlobal
       running, runnings, <boolean>, <application usage summary>, Plain
@@ -6746,6 +6929,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       second_of_minute, seconds_of_minute, <integer>, <time of day>, Plain
       seconds to expiration, seconds to expirations, <integer>, <route>, Plain
       section, sections, <file section>, <file>, Named
+      secured, secureds, <boolean>, <wifi network>, Plain
       secured, secureds, <boolean>, <wifi>, Plain
       selected server, selected servers, <selected server>, world , PlainGlobal
       sent packet count, sent packets counts, <integer>, <route>, Plain
@@ -6793,11 +6977,13 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       shutdown item, shutdown items, <enableable_file>, world , PlainGlobal
       shutdown items folder, shutdown items folders, <folder>, <domain>, Plain
       shutdown items folder, shutdown items folders, <folder>, world , PlainGlobal
+      sibling file, sibling files, <file>, <filesystem object>, Index<binary_string>
       sibling file, sibling files, <file>, <filesystem object>, Named
       sibling folder, sibling folders, <folder>, <filesystem object>, Named
       sibling item, sibling items, <filesystem object>, <filesystem object>, Named
       sid, sids, <security identifier>, <active directory group>, Plain
       sid, sids, <security identifier>, <user>, Plain
+      signal strength, signal strengths, <integer>, <wifi network>, Plain
       signature hash algorithm, signature hash algorithms, <string>, <license>, Plain
       significance place, significance places, <floating point>, <floating point>, Numbered
       significance place, significance places, <floating point>, <floating point>, Plain
@@ -6846,6 +7032,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sqlite version, sqlite versions, <version>, world , PlainGlobal
       sqrt, sqrts, <floating point>, <floating point>, Plain
       sqrt, sqrts, <floating point>, <integer>, Plain
+      ssid, ssids, <string>, <wifi network>, Plain
       ssid, ssids, <string>, <wifi>, Plain
       stage, stages, <stage>, <version>, Plain
       stage, stages, <stage>, world , NamedGlobal
@@ -6853,6 +7040,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       standard deviation, standard deviations, <floating point>, <integer>, Plain
       standby state, standby states, <power state>, world , PlainGlobal
       start date, start dates, <time>, <license>, Plain
+      start, starts, <binary position>, <binary_substring>, Plain
       start, starts, <string position>, <substring>, Plain
       start, starts, <time>, <time range>, Plain
       startup item, startup items, <enableable_file>, world , NamedGlobal
@@ -6868,6 +7056,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       status, statuss, <string>, <action>, Plain
       stepping, steppings, <integer>, <processor>, Plain
       storage folder, storage folders, <folder>, <client>, Plain
+      string named file, string named files, <file>, <folder>, Plain
+      string named folder, string named folders, <folder>, <folder>, Plain
       string version, string versions, <string>, <application usage summary instance>, Plain
       string, strings, <string>, <array>, Numbered
       string, strings, <string>, <dictionary>, Named
@@ -7115,6 +7305,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       version, versions, <version>, <usb>, Plain
       version, versions, <version>, world , NamedGlobal
       virtual memory, virtual memories, <boolean>, world , PlainGlobal
+      visible network, visible networks, <wifi network>, <wifi>, Plain
       visible, visibles, <boolean>, <file>, Plain
       voices folder, voices folders, <folder>, <domain>, Plain
       voices folder, voices folders, <folder>, world , PlainGlobal

@@ -1,7 +1,7 @@
 Operating System:Linux Red Hat Enterprise Server 5_1 (2_6_18-53_el5)
-Client Version:9_5_4_38
+Client Version:9_5_5_193
 Build Target:
-ModuleName:HostApplication, Version:9_5_4_38, ClientCompatible:Yes
+ModuleName:HostApplication, Version:9_5_5_193, ClientCompatible:Yes
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   SELinux Boolean
@@ -15,7 +15,9 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   application usage summary instance
   bes product
   binary operator
+  binary position (derives from  integer)
   binary_string
+  binary_substring (derives from  binary_string)
   bios
   bit set
   boolean
@@ -80,6 +82,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   dmi voltage_probe
   download server
   download storage folder (derives from  folder)
+  encoding
   environment
   environment variable
   evaluation cycle
@@ -342,6 +345,7 @@ Creation techniques & properties of each type:
       instance of <application usage summary>, instances, Plain
     Properties of <application usage summary instance> { key phrase, plural keyword, form, <result type>}:
       first start time of <application usage summary instance>, first start times, Plain, <time>
+      image path of <application usage summary instance>, image paths, Plain, <string>
       last start time of <application usage summary instance>, last start times, Plain, <time>
       last time seen of <application usage summary instance>, last times seen, Plain, <time>
       name of <application usage summary instance>, names, Plain, <string>
@@ -383,14 +387,59 @@ Creation techniques & properties of each type:
       right operand type of <binary operator>, right operand types, Plain, <type>
       symbol of <binary operator>, symbols, Plain, <string>
 
+  Type <binary position> (derives from integer)
+    Creation of <binary position>: { key phrase, plural keyword, form}
+      end of <binary_substring>, ends, Plain
+      position <integer> of <binary_string>, positions, Numbered
+      position of <binary_string>, positions, Plain
+      start of <binary_substring>, starts, Plain
+    Properties of <binary position> { key phrase, plural keyword, form, <result type>}:
+      following binary_string of <binary position>, following binary_strings, Plain, <binary_substring>
+      preceding binary_string of <binary position>, preceding binary_strings, Plain, <binary_substring>
+
   Type <binary_string>
     Creation of <binary_string>: { key phrase, plural keyword, form}
+      <string> as binary_string, , Cast
+      <string> as fxf binary_string, , Cast
+      <string> as local binary_string, , Cast
+      <string> as utf16 binary_string, , Cast
+      <string> as utf8 binary_string, , Cast
+      <symlink> as binary_string, , Cast
       reserved of <dmi bios_language_information>, reserveds, Plain
       reserved of <dmi system_boot_information>, reserveds, Plain
       uuid of <dmi system_information>, uuids, Plain
     Properties of <binary_string> { key phrase, plural keyword, form, <result type>}:
       <binary_string> as hexadecimal, , Cast, <string>
       <binary_string> as string, , Cast, <string>
+      binary_substring <( integer, integer )> of <binary_string>, binary_substrings, Index<( integer, integer )>, <binary_substring>
+      binary_substring <binary_string> of <binary_string>, binary_substrings, Index<binary_string>, <binary_substring>
+      byte <integer> of <binary_string>, bytes, Numbered, <binary_substring>
+      byte of <binary_string>, bytes, Plain, <binary_substring>
+      first <integer> of <binary_string>, firsts, Numbered, <binary_substring>
+      last <integer> of <binary_string>, lasts, Numbered, <binary_substring>
+      position <integer> of <binary_string>, positions, Numbered, <binary position>
+      position of <binary_string>, positions, Plain, <binary position>
+
+  Type <binary_substring> (derives from binary_string)
+    Creation of <binary_substring>: { key phrase, plural keyword, form}
+      <binary_substring> as binary_substring, , Cast
+      binary_substring <( integer, integer )> of <binary_string>, binary_substrings, Index<( integer, integer )>
+      binary_substring <binary_string> of <binary_string>, binary_substrings, Index<binary_string>
+      byte <integer> of <binary_string>, bytes, Numbered
+      byte of <binary_string>, bytes, Plain
+      first <integer> of <binary_string>, firsts, Numbered
+      following binary_string of <binary position>, following binary_strings, Plain
+      following binary_string of <binary_substring>, following binary_strings, Plain
+      last <integer> of <binary_string>, lasts, Numbered
+      preceding binary_string of <binary position>, preceding binary_strings, Plain
+      preceding binary_string of <binary_substring>, preceding binary_strings, Plain
+    Properties of <binary_substring> { key phrase, plural keyword, form, <result type>}:
+      <binary_substring> as binary_substring, , Cast, <binary_substring>
+      <binary_substring> as string, , Cast, <string>
+      end of <binary_substring>, ends, Plain, <binary position>
+      following binary_string of <binary_substring>, following binary_strings, Plain, <binary_substring>
+      preceding binary_string of <binary_substring>, preceding binary_strings, Plain, <binary_substring>
+      start of <binary_substring>, starts, Plain, <binary position>
 
   Type <bios>
     Creation of <bios>: { key phrase, plural keyword, form}
@@ -1727,6 +1776,17 @@ Creation techniques & properties of each type:
     Properties of <download storage folder> { key phrase, plural keyword, form, <result type>}:
       total size of <download storage folder>, total sizes, Plain, <integer>
 
+  Type <encoding>
+    Creation of <encoding>: { key phrase, plural keyword, form}
+      encoding <string>, encodings, NamedGlobal
+    Properties of <encoding> { key phrase, plural keyword, form, <result type>}:
+      download file <string> of <encoding>, download files, Named, <file>
+      download folder of <encoding>, download folders, Plain, <folder>
+      file <string> of <encoding>, files, Named, <file>
+      folder <string> of <encoding>, folders, Named, <folder>
+      symlink <binary_string> of <encoding>, symlinks, Index<binary_string>, <symlink>
+      symlink <string> of <encoding>, symlinks, Named, <symlink>
+
   Type <environment>
     Creation of <environment>: { key phrase, plural keyword, form}
       environment of <process>, environments, Plain
@@ -1808,12 +1868,15 @@ Creation techniques & properties of each type:
       <symlink> as file, , Cast
       default web browser, default web browsers, PlainGlobal
       descendant of <folder>, descendants, Plain
+      download file <string> of <encoding>, download files, Named
       download file <string>, download files, NamedGlobal
+      file <string> of <encoding>, files, Named
       file <string> of <folder>, files, Named
       file <string>, files, NamedGlobal
       file <symlink>, files, Index<symlink>Global
       file of <folder>, files, Plain
       find file <string> of <folder>, find files, Named
+      image file of <process>, image files, Plain
       masthead of <site>, mastheads, Plain
     Properties of <file> { key phrase, plural keyword, form, <result type>}:
       byte <integer> of <file>, bytes, Numbered, <integer>
@@ -2090,8 +2153,10 @@ Creation techniques & properties of each type:
       client folder of <site>, client folders, Plain
       data folder of <client>, data folders, Plain
       descendant folder of <folder>, descendant folders, Plain
+      download folder of <encoding>, download folders, Plain
       download folder, download folders, PlainGlobal
       find folder <string> of <folder>, find folders, Named
+      folder <string> of <encoding>, folders, Named
       folder <string> of <folder>, folders, Named
       folder <string>, folders, NamedGlobal
       folder <symlink>, folders, Index<symlink>Global
@@ -2120,6 +2185,7 @@ Creation techniques & properties of each type:
       folder of <folder>, folders, Plain, <folder>
       socket file <string> of <folder>, socket files, Named, <socket file>
       socket file of <folder>, socket files, Plain, <socket file>
+      symlink <binary_string> of <folder>, symlinks, Index<binary_string>, <symlink>
       symlink <string> of <folder>, symlinks, Named, <symlink>
       symlink of <folder>, symlinks, Plain, <symlink>
 
@@ -3879,6 +3945,7 @@ Creation techniques & properties of each type:
       exec shield of <process>, exec shields, Plain, <boolean>
       exec time of <process>, exec times, Plain, <time interval>
       id of <process>, ids, Plain, <integer>
+      image file of <process>, image files, Plain, <file>
       loginuid of <process>, loginuids, Plain, <integer>
       name of <process>, names, Plain, <string>
       nx bit of <process>, nx bits, Plain, <boolean>
@@ -4451,6 +4518,7 @@ Creation techniques & properties of each type:
       <binary operator> as string, , Cast
       <binary_string> as hexadecimal, , Cast
       <binary_string> as string, , Cast
+      <binary_substring> as string, , Cast
       <bios> as string, , Cast
       <bit set> as string, , Cast
       <boolean> as string, , Cast
@@ -4651,6 +4719,7 @@ Creation techniques & properties of each type:
       hostname, hostnames, PlainGlobal
       id of <Xinetd Service>, ids, Plain
       identity of <execution>, identites, Plain
+      image path of <application usage summary instance>, image paths, Plain
       index of <sqlite table>, indices, Plain
       interface of <route>, interfaces, Plain
       internal_reference_designator of <dmi port_connector_information>, internal_reference_designators, Plain
@@ -4736,6 +4805,7 @@ Creation techniques & properties of each type:
       pathname of <symlink>, pathnames, Plain
       pending restart name, pending restart names, PlainGlobal
       percent decode <string>, percent decodes, NamedGlobal
+      percent encode <binary_string>, percent encodes, Index<binary_string>Global
       percent encode <string>, percent encodes, NamedGlobal
       platform id of <language>, platform ids, Plain
       plural name of <property>, plural names, Plain
@@ -4914,17 +4984,20 @@ Creation techniques & properties of each type:
       <string> = <string>, , BinaryOperator, <boolean>
       <string> = <strverscmp version>, , BinaryOperator, <boolean>
       <string> = <version>, , BinaryOperator, <boolean>
+      <string> as binary_string, , Cast, <binary_string>
       <string> as boolean, , Cast, <boolean>
       <string> as date, , Cast, <date>
       <string> as day_of_month, , Cast, <day of month>
       <string> as day_of_week, , Cast, <day of week>
       <string> as floating point, , Cast, <floating point>
+      <string> as fxf binary_string, , Cast, <binary_string>
       <string> as hexadecimal, , Cast, <string>
       <string> as html, , Cast, <html>
       <string> as integer, , Cast, <integer>
       <string> as ipv4or6 address, , Cast, <ipv4or6 address>
       <string> as ipv6 address, , Cast, <ipv6 address>
       <string> as left trimmed string, , Cast, <string>
+      <string> as local binary_string, , Cast, <binary_string>
       <string> as local time, , Cast, <time>
       <string> as local zoned time_of_day, , Cast, <time of day with time zone>
       <string> as lowercase, , Cast, <string>
@@ -4941,6 +5014,8 @@ Creation techniques & properties of each type:
       <string> as universal time, , Cast, <time>
       <string> as universal zoned time_of_day, , Cast, <time of day with time zone>
       <string> as uppercase, , Cast, <string>
+      <string> as utf16 binary_string, , Cast, <binary_string>
+      <string> as utf8 binary_string, , Cast, <binary_string>
       <string> as version, , Cast, <version>
       <string> as year, , Cast, <year>
       <string> as zoned time_of_day, , Cast, <time of day with time zone>
@@ -5211,12 +5286,17 @@ Creation techniques & properties of each type:
     Creation of <symlink>: { key phrase, plural keyword, form}
       <filesystem object> as symlink, , Cast
       <symlink> as symlink, , Cast
+      symlink <binary_string> of <encoding>, symlinks, Index<binary_string>
+      symlink <binary_string> of <folder>, symlinks, Index<binary_string>
+      symlink <binary_string>, symlinks, Index<binary_string>Global
       symlink <filesystem object>, symlinks, Index<filesystem object>Global
+      symlink <string> of <encoding>, symlinks, Named
       symlink <string> of <folder>, symlinks, Named
       symlink <string>, symlinks, NamedGlobal
       symlink <symlink>, symlinks, Index<symlink>Global
       symlink of <folder>, symlinks, Plain
     Properties of <symlink> { key phrase, plural keyword, form, <result type>}:
+      <symlink> as binary_string, , Cast, <binary_string>
       <symlink> as device file, , Cast, <device file>
       <symlink> as device file, , Cast, <device file>
       <symlink> as fifo file, , Cast, <fifo file>
@@ -5904,6 +5984,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   download storage folder, download storage folders, PlainGlobal, <download storage folder>
   drive <string>, drives, NamedGlobal, <filesystem>
   drive, drives, PlainGlobal, <filesystem>
+  encoding <string>, encodings, NamedGlobal, <encoding>
   environment, environments, PlainGlobal, <environment>
   error <string>, errors, NamedGlobal, <undefined>
   execution <string>, executions, NamedGlobal, <execution>
@@ -6007,6 +6088,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   pending restart name, pending restart names, PlainGlobal, <string>
   pending restart, pending restarts, PlainGlobal, <boolean>
   percent decode <string>, percent decodes, NamedGlobal, <string>
+  percent encode <binary_string>, percent encodes, Index<binary_string>Global, <string>
   percent encode <string>, percent encodes, NamedGlobal, <string>
   power level, power levels, PlainGlobal, <power level>
   process <integer>, processes, NumberedGlobal, <process>
@@ -6069,6 +6151,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   strverscmp version <string>, strverscmp versions, NamedGlobal, <strverscmp version>
   sunday, sundays, PlainGlobal, <day of week>
   swap, swaps, PlainGlobal, <swap>
+  symlink <binary_string>, symlinks, Index<binary_string>Global, <symlink>
   symlink <filesystem object>, symlinks, Index<filesystem object>Global, <symlink>
   symlink <string>, symlinks, NamedGlobal, <symlink>
   symlink <symlink>, symlinks, Index<symlink>Global, <symlink>
@@ -6176,6 +6259,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       architecture, architectures, <string>, <package>, Plain
       archive duration, archive durations, <time interval>, <evaluation cycle>, Plain
       archive percent, archive percents, <floating point>, <evaluation cycle>, Plain
+      as binary_string, , <binary_string>, <string>, Cast
+      as binary_string, , <binary_string>, <symlink>, Cast
+      as binary_substring, , <binary_substring>, <binary_substring>, Cast
       as bit set, , <bit set>, <integer>, Cast
       as bits, , <bit set>, <integer>, Cast
       as boolean, , <boolean>, <boolean>, Cast
@@ -6206,6 +6292,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as floating point, , <floating point>, <integer>, Cast
       as floating point, , <floating point>, <string>, Cast
       as folder, , <folder>, <symlink>, Cast
+      as fxf binary_string, , <binary_string>, <string>, Cast
       as hexadecimal, , <string>, <binary_string>, Cast
       as hexadecimal, , <string>, <integer>, Cast
       as hexadecimal, , <string>, <smbios value>, Cast
@@ -6227,6 +6314,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as ipv6 address, , <ipv6 address>, <ipv4 address>, Cast
       as ipv6 address, , <ipv6 address>, <string>, Cast
       as left trimmed string, , <string>, <string>, Cast
+      as local binary_string, , <binary_string>, <string>, Cast
       as local date, , <date>, <time>, Cast
       as local string, , <string>, <time>, Cast
       as local time, , <time>, <string>, Cast
@@ -6263,6 +6351,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <action>, Cast
       as string, , <string>, <binary operator>, Cast
       as string, , <string>, <binary_string>, Cast
+      as string, , <string>, <binary_substring>, Cast
       as string, , <string>, <bios>, Cast
       as string, , <string>, <bit set>, Cast
       as string, , <string>, <boolean>, Cast
@@ -6356,6 +6445,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as universal zoned time_of_day, , <time of day with time zone>, <string>, Cast
       as uppercase, , <file content>, <file content>, Cast
       as uppercase, , <string>, <string>, Cast
+      as utf16 binary_string, , <binary_string>, <string>, Cast
+      as utf8 binary_string, , <binary_string>, <string>, Cast
       as version, , <version>, <string>, Cast
       as version, , <version>, <version>, Cast
       as xml, , <string>, <xml dom node>, Cast
@@ -6412,6 +6503,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       binary operator returning, binary operators returning, <binary operator>, world , Index<type>Global
       binary operator, binary operators, <binary operator>, world , NamedGlobal
       binary operator, binary operators, <binary operator>, world , PlainGlobal
+      binary_substring, binary_substrings, <binary_substring>, <binary_string>, Index<( integer, integer )>
+      binary_substring, binary_substrings, <binary_substring>, <binary_string>, Index<binary_string>
       bios, bioses, <bios>, world , PlainGlobal
       bios_characteristics, bios_characteristicss, <integer>, <dmi bios_information>, Plain
       bios_information, bios_informations, <dmi bios_information>, <dmi>, Numbered
@@ -6466,6 +6559,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       built_in_pointing_device, built_in_pointing_devices, <dmi built_in_pointing_device>, <dmi>, Plain
       bus_number, bus_numbers, <integer>, <dmi onboard_devices_extended_information>, Plain
       bus_number, bus_numbers, <integer>, <dmi system_slots>, Plain
+      byte, bytes, <binary_substring>, <binary_string>, Numbered
+      byte, bytes, <binary_substring>, <binary_string>, Plain
       byte, bytes, <integer>, <file>, Numbered
       cache_configuration, cache_configurations, <integer>, <dmi cache_information>, Plain
       cache_information, cache_informations, <dmi cache_information>, <dmi>, Numbered
@@ -6684,7 +6779,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       domain name, domain names, <string>, world , PlainGlobal
       domainname, domainnames, <string>, world , PlainGlobal
       download failure, download failures, <integer>, <action>, Plain
+      download file, download files, <file>, <encoding>, Named
       download file, download files, <file>, world , NamedGlobal
+      download folder, download folders, <folder>, <encoding>, Plain
       download folder, download folders, <folder>, world , PlainGlobal
       download hash algorithm, download hash algorithms, <string>, <license>, Plain
       download path, download paths, <string>, world , NamedGlobal
@@ -6726,10 +6823,12 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       enabled, enableds, <boolean>, <administrative rights>, Plain
       enabled, enableds, <boolean>, <setting>, Plain
       enabled_size, enabled_sizes, <integer>, <dmi memory_module_information>, Plain
+      encoding, encodings, <encoding>, world , NamedGlobal
       encoding, encodings, <string>, <sqlite database>, Plain
       encrypt report failure message, encrypt report failure messages, <string>, <client_cryptography>, Plain
       encrypt report, encrypt reports, <boolean>, <client_cryptography>, Plain
       encryption certificate, encryption certificates, <x509 certificate>, <license>, Plain
+      end, ends, <binary position>, <binary_substring>, Plain
       end, ends, <string position>, <substring>, Plain
       end, ends, <time>, <time range>, Plain
       end_of_table, end_of_tables, <dmi end_of_table>, <dmi>, Numbered
@@ -6815,6 +6914,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       fifo file, fifo files, <fifo file>, world , Index<symlink>Global
       fifo file, fifo files, <fifo file>, world , NamedGlobal
       file count, file counts, <integer>, <filesystem>, Plain
+      file, files, <file>, <encoding>, Named
       file, files, <file>, <folder>, Named
       file, files, <file>, <folder>, Plain
       file, files, <file>, world , Index<symlink>Global
@@ -6850,6 +6950,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       first thursday, first thursdays, <date>, <month and year>, Plain
       first tuesday, first tuesdays, <date>, <month and year>, Plain
       first wednesday, first wednesdays, <date>, <month and year>, Plain
+      first, firsts, <binary_substring>, <binary_string>, Numbered
       first, firsts, <date>, <month and year>, Index<day of week>
       first, firsts, <substring>, <string>, Named
       first, firsts, <substring>, <string>, Numbered
@@ -6860,11 +6961,14 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       float, floats, <boolean>, <sqlite column type>, Plain
       floating point, floating points, <floating point>, world , Index<floating point>Global
       floating point, floating points, <floating point>, world , NamedGlobal
+      folder, folders, <folder>, <encoding>, Named
       folder, folders, <folder>, <folder>, Named
       folder, folders, <folder>, <folder>, Plain
       folder, folders, <folder>, <site>, Plain
       folder, folders, <folder>, world , Index<symlink>Global
       folder, folders, <folder>, world , NamedGlobal
+      following binary_string, following binary_strings, <binary_substring>, <binary position>, Plain
+      following binary_string, following binary_strings, <binary_substring>, <binary_substring>, Plain
       following text, following texts, <substring>, <string position>, Plain
       following text, following texts, <substring>, <substring>, Plain
       foreground, foregrounds, <grub color>, <grub color pair>, Plain
@@ -6994,6 +7098,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       id, ids, <integer>, <user>, Plain
       id, ids, <string>, <Xinetd Service>, Plain
       identity, identites, <string>, <execution>, Plain
+      image file, image files, <file>, <process>, Plain
+      image path, image paths, <string>, <application usage summary instance>, Plain
       in agent context, in agent contexts, <boolean>, world , PlainGlobal
       in proxy agent context, in proxy agent contexts, <boolean>, world , PlainGlobal
       inactive, inactives, <dmi inactive>, <dmi>, Numbered
@@ -7112,6 +7218,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       last time seen, last times seen, <time>, <application usage summary instance>, Plain
       last time seen, last times seen, <time>, <application usage summary>, Plain
       last time, last times, <time>, <analysis>, Plain
+      last, lasts, <binary_substring>, <binary_string>, Numbered
       last, lasts, <substring>, <string>, Named
       last, lasts, <substring>, <string>, Numbered
       leap, leaps, <boolean>, <year>, Plain
@@ -7583,6 +7690,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       pending time, pending times, <time>, <action>, Plain
       pending, pendings, <boolean>, <action>, Plain
       percent decode, percent decodes, <string>, world , NamedGlobal
+      percent encode, percent encodes, <string>, world , Index<binary_string>Global
       percent encode, percent encodes, <string>, world , NamedGlobal
       perpetual maintenance, perpetual maintenances, <boolean>, <bes product>, Plain
       perpetual, perpetuals, <boolean>, <bes product>, Plain
@@ -7603,6 +7711,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       port_type, port_types, <integer>, <dmi port_connector_information>, Plain
       portable_battery, portable_batterys, <dmi portable_battery>, <dmi>, Numbered
       portable_battery, portable_batterys, <dmi portable_battery>, <dmi>, Plain
+      position, positions, <binary position>, <binary_string>, Numbered
+      position, positions, <binary position>, <binary_string>, Plain
       position, positions, <string position>, <string>, Numbered
       position, positions, <string position>, <string>, Plain
       posix capability, posix capabilities, <integer>, <process>, Plain
@@ -7615,6 +7725,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       pre, pres, <html>, <html>, Plain
       pre, pres, <html>, <string>, Named
       pre, pres, <html>, <string>, Plain
+      preceding binary_string, preceding binary_strings, <binary_substring>, <binary position>, Plain
+      preceding binary_string, preceding binary_strings, <binary_substring>, <binary_substring>, Plain
       preceding text, preceding texts, <substring>, <string position>, Plain
       preceding text, preceding texts, <substring>, <substring>, Plain
       previous line, previous lines, <file line>, <file line>, Plain
@@ -7896,6 +8008,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       standard deviation, standard deviations, <floating point>, <integer>, Plain
       start date, start dates, <time>, <license>, Plain
       start time, start times, <time>, <process>, Plain
+      start, starts, <binary position>, <binary_substring>, Plain
       start, starts, <string position>, <substring>, Plain
       start, starts, <time>, <time range>, Plain
       starting_address, starting_addresss, <integer>, <dmi memory_array_mapped_address>, Plain
@@ -7952,8 +8065,12 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       swap, swaps, <swap>, world , PlainGlobal
       symbol, symbols, <string>, <binary operator>, Plain
       symbol, symbols, <string>, <unary operator>, Plain
+      symlink, symlinks, <symlink>, <encoding>, Index<binary_string>
+      symlink, symlinks, <symlink>, <encoding>, Named
+      symlink, symlinks, <symlink>, <folder>, Index<binary_string>
       symlink, symlinks, <symlink>, <folder>, Named
       symlink, symlinks, <symlink>, <folder>, Plain
+      symlink, symlinks, <symlink>, world , Index<binary_string>Global
       symlink, symlinks, <symlink>, world , Index<filesystem object>Global
       symlink, symlinks, <symlink>, world , Index<symlink>Global
       symlink, symlinks, <symlink>, world , NamedGlobal

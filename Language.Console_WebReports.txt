@@ -1,6 +1,6 @@
-Build Target:9_5_4_38
-ModuleName:HostApplication, Version:9_5_4_38, ClientCompatible:Yes
-ModuleName:9_5_4_38, Version:9_5_4_38, ClientCompatible:9_5_4_38
+Build Target:9_5_5_193
+ModuleName:HostApplication, Version:9_5_5_193, ClientCompatible:Yes
+ModuleName:9_5_5_193, Version:9_5_5_193, ClientCompatible:9_5_5_193
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   bes action
@@ -70,7 +70,9 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   bes wizard variable
   bes wizard with multiplicity (derives from  bes wizard)
   binary operator
+  binary position (derives from  integer)
   binary_string
+  binary_substring (derives from  binary_string)
   bit set
   boolean
   cast
@@ -1396,6 +1398,7 @@ Creation techniques & properties of each type:
       role set of <bes user>, role sets, Plain, <bes role set>
       set of <bes user>, sets, Plain, <bes user set>
       show other action flag of <bes user>, show other action flags, Plain, <boolean>
+      stop other actions flag of <bes user>, stop other actions flags, Plain, <boolean>
       unique value of <bes user>, unique values, Plain, <bes user with multiplicity>
       unmanagedasset privilege scanpoint flag of <bes user>, unmanagedasset privilege scanpoint flags, Plain, <boolean>
       unmanagedasset privilege showall flag of <bes user>, unmanagedasset privilege showall flags, Plain, <boolean>
@@ -1578,11 +1581,55 @@ Creation techniques & properties of each type:
       right operand type of <binary operator>, right operand types, Plain, <type>
       symbol of <binary operator>, symbols, Plain, <string>
 
+  Type <binary position> (derives from integer)
+    Creation of <binary position>: { key phrase, plural keyword, form}
+      end of <binary_substring>, ends, Plain
+      position <integer> of <binary_string>, positions, Numbered
+      position of <binary_string>, positions, Plain
+      start of <binary_substring>, starts, Plain
+    Properties of <binary position> { key phrase, plural keyword, form, <result type>}:
+      following binary_string of <binary position>, following binary_strings, Plain, <binary_substring>
+      preceding binary_string of <binary position>, preceding binary_strings, Plain, <binary_substring>
+
   Type <binary_string>
     Creation of <binary_string>: { key phrase, plural keyword, form}
+      <string> as binary_string, , Cast
+      <string> as fxf binary_string, , Cast
+      <string> as local binary_string, , Cast
+      <string> as utf16 binary_string, , Cast
+      <string> as utf8 binary_string, , Cast
     Properties of <binary_string> { key phrase, plural keyword, form, <result type>}:
       <binary_string> as hexadecimal, , Cast, <string>
       <binary_string> as string, , Cast, <string>
+      binary_substring <( integer, integer )> of <binary_string>, binary_substrings, Index<( integer, integer )>, <binary_substring>
+      binary_substring <binary_string> of <binary_string>, binary_substrings, Index<binary_string>, <binary_substring>
+      byte <integer> of <binary_string>, bytes, Numbered, <binary_substring>
+      byte of <binary_string>, bytes, Plain, <binary_substring>
+      first <integer> of <binary_string>, firsts, Numbered, <binary_substring>
+      last <integer> of <binary_string>, lasts, Numbered, <binary_substring>
+      position <integer> of <binary_string>, positions, Numbered, <binary position>
+      position of <binary_string>, positions, Plain, <binary position>
+
+  Type <binary_substring> (derives from binary_string)
+    Creation of <binary_substring>: { key phrase, plural keyword, form}
+      <binary_substring> as binary_substring, , Cast
+      binary_substring <( integer, integer )> of <binary_string>, binary_substrings, Index<( integer, integer )>
+      binary_substring <binary_string> of <binary_string>, binary_substrings, Index<binary_string>
+      byte <integer> of <binary_string>, bytes, Numbered
+      byte of <binary_string>, bytes, Plain
+      first <integer> of <binary_string>, firsts, Numbered
+      following binary_string of <binary position>, following binary_strings, Plain
+      following binary_string of <binary_substring>, following binary_strings, Plain
+      last <integer> of <binary_string>, lasts, Numbered
+      preceding binary_string of <binary position>, preceding binary_strings, Plain
+      preceding binary_string of <binary_substring>, preceding binary_strings, Plain
+    Properties of <binary_substring> { key phrase, plural keyword, form, <result type>}:
+      <binary_substring> as binary_substring, , Cast, <binary_substring>
+      <binary_substring> as string, , Cast, <string>
+      end of <binary_substring>, ends, Plain, <binary position>
+      following binary_string of <binary_substring>, following binary_strings, Plain, <binary_substring>
+      preceding binary_string of <binary_substring>, preceding binary_strings, Plain, <binary_substring>
+      start of <binary_substring>, starts, Plain, <binary position>
 
   Type <bit set>
     Creation of <bit set>: { key phrase, plural keyword, form}
@@ -1925,6 +1972,7 @@ Creation techniques & properties of each type:
       shutdown flag of <bes action>, shutdown flags, Plain
       single flag of <bes action>, single flags, Plain
       start flag of <bes action>, start flags, Plain
+      stop other actions flag of <bes user>, stop other actions flags, Plain
       subscribed <( bes computer, bes site )>, subscribeds, Index<( bes computer, bes site )>Global
       subscribed <( bes site, bes computer )>, subscribeds, Index<( bes site, bes computer )>Global
       subscribed <bes computer> of <bes site>, subscribeds, Index<bes computer>
@@ -3715,6 +3763,7 @@ Creation techniques & properties of each type:
       <binary operator> as string, , Cast
       <binary_string> as hexadecimal, , Cast
       <binary_string> as string, , Cast
+      <binary_substring> as string, , Cast
       <bit set> as string, , Cast
       <boolean> as string, , Cast
       <cast> as string, , Cast
@@ -3920,6 +3969,7 @@ Creation techniques & properties of each type:
       parameter <string> of <bes action>, parameters, Named
       parent relevance of <bes fixlet>, parent relevances, Plain
       percent decode <string>, percent decodes, NamedGlobal
+      percent encode <binary_string>, percent encodes, Index<binary_string>Global
       percent encode <string>, percent encodes, NamedGlobal
       plural name of <property>, plural names, Plain
       postaction message text of <bes action>, postaction message texts, Plain
@@ -4040,17 +4090,20 @@ Creation techniques & properties of each type:
       <string> = <regular expression>, , BinaryOperator, <boolean>
       <string> = <string>, , BinaryOperator, <boolean>
       <string> = <version>, , BinaryOperator, <boolean>
+      <string> as binary_string, , Cast, <binary_string>
       <string> as boolean, , Cast, <boolean>
       <string> as date, , Cast, <date>
       <string> as day_of_month, , Cast, <day of month>
       <string> as day_of_week, , Cast, <day of week>
       <string> as floating point, , Cast, <floating point>
+      <string> as fxf binary_string, , Cast, <binary_string>
       <string> as hexadecimal, , Cast, <string>
       <string> as html, , Cast, <html>
       <string> as integer, , Cast, <integer>
       <string> as ipv4or6 address, , Cast, <ipv4or6 address>
       <string> as ipv6 address, , Cast, <ipv6 address>
       <string> as left trimmed string, , Cast, <string>
+      <string> as local binary_string, , Cast, <binary_string>
       <string> as local time, , Cast, <time>
       <string> as local zoned time_of_day, , Cast, <time of day with time zone>
       <string> as lowercase, , Cast, <string>
@@ -4066,6 +4119,8 @@ Creation techniques & properties of each type:
       <string> as universal time, , Cast, <time>
       <string> as universal zoned time_of_day, , Cast, <time of day with time zone>
       <string> as uppercase, , Cast, <string>
+      <string> as utf16 binary_string, , Cast, <binary_string>
+      <string> as utf8 binary_string, , Cast, <binary_string>
       <string> as version, , Cast, <version>
       <string> as windows display time, , Cast, <time>
       <string> as year, , Cast, <year>
@@ -5048,6 +5103,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   october, octobers, PlainGlobal, <month>
   pending license update, pending license updates, PlainGlobal, <boolean>
   percent decode <string>, percent decodes, NamedGlobal, <string>
+  percent encode <binary_string>, percent encodes, Index<binary_string>Global, <string>
   percent encode <string>, percent encodes, NamedGlobal, <string>
   plain bes fixlet set, plain bes fixlet sets, PlainGlobal, <bes fixlet set>
   plain bes fixlet, plain bes fixlets, PlainGlobal, <bes fixlet>
@@ -5177,6 +5233,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       april, aprils, <day of year>, world , NumberedGlobal
       april, aprils, <month and year>, <integer>, Plain
       april, aprils, <month>, world , PlainGlobal
+      as binary_string, , <binary_string>, <string>, Cast
+      as binary_substring, , <binary_substring>, <binary_substring>, Cast
       as bit set, , <bit set>, <integer>, Cast
       as bits, , <bit set>, <integer>, Cast
       as boolean, , <boolean>, <boolean>, Cast
@@ -5200,6 +5258,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as floating point, , <floating point>, <floating point>, Cast
       as floating point, , <floating point>, <integer>, Cast
       as floating point, , <floating point>, <string>, Cast
+      as fxf binary_string, , <binary_string>, <string>, Cast
       as hexadecimal, , <string>, <binary_string>, Cast
       as hexadecimal, , <string>, <integer>, Cast
       as hexadecimal, , <string>, <string>, Cast
@@ -5220,6 +5279,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as ipv6 address, , <ipv6 address>, <ipv4 address>, Cast
       as ipv6 address, , <ipv6 address>, <string>, Cast
       as left trimmed string, , <string>, <string>, Cast
+      as local binary_string, , <binary_string>, <string>, Cast
       as local date, , <date>, <time>, Cast
       as local string, , <string>, <time>, Cast
       as local time, , <time>, <string>, Cast
@@ -5245,6 +5305,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <bes fixlet field value>, Cast
       as string, , <string>, <binary operator>, Cast
       as string, , <string>, <binary_string>, Cast
+      as string, , <string>, <binary_substring>, Cast
       as string, , <string>, <bit set>, Cast
       as string, , <string>, <boolean>, Cast
       as string, , <string>, <cast>, Cast
@@ -5301,6 +5362,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as universal time, , <time>, <string>, Cast
       as universal zoned time_of_day, , <time of day with time zone>, <string>, Cast
       as uppercase, , <string>, <string>, Cast
+      as utf16 binary_string, , <binary_string>, <string>, Cast
+      as utf8 binary_string, , <binary_string>, <string>, Cast
       as version, , <version>, <string>, Cast
       as version, , <version>, <version>, Cast
       as windows display time, , <time>, <string>, Cast
@@ -5423,6 +5486,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       binary operator returning, binary operators returning, <binary operator>, world , Index<type>Global
       binary operator, binary operators, <binary operator>, world , NamedGlobal
       binary operator, binary operators, <binary operator>, world , PlainGlobal
+      binary_substring, binary_substrings, <binary_substring>, <binary_string>, Index<( integer, integer )>
+      binary_substring, binary_substrings, <binary_substring>, <binary_string>, Index<binary_string>
       bit set, bit sets, <bit set>, world , NamedGlobal
       bit, bits, <bit set>, world , NumberedGlobal
       bit, bits, <boolean>, <bit set>, Numbered
@@ -5440,6 +5505,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       br, brs, <html>, world , NamedGlobal
       br, brs, <html>, world , PlainGlobal
       build revision, build revisions, <integer>, <version>, Plain
+      byte, bytes, <binary_substring>, <binary_string>, Numbered
+      byte, bytes, <binary_substring>, <binary_string>, Plain
       can create actions flag, can create actions flags, <boolean>, <bes user>, Plain
       can lock flag, can lock flags, <boolean>, <bes user>, Plain
       can send multiple refresh flag, can send multiple refresh flags, <boolean>, <bes user>, Plain
@@ -5696,6 +5763,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       end date, end dates, <date>, <bes action>, Plain
       end flag, end flags, <boolean>, <bes action>, Plain
       end time_of_day, end times_of_day, <time of day>, <bes action>, Plain
+      end, ends, <binary position>, <binary_substring>, Plain
       end, ends, <string position>, <substring>, Plain
       end, ends, <time>, <statistic range>, Plain
       end, ends, <time>, <statistical bin>, Plain
@@ -5767,6 +5835,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       first thursday, first thursdays, <date>, <month and year>, Plain
       first tuesday, first tuesdays, <date>, <month and year>, Plain
       first wednesday, first wednesdays, <date>, <month and year>, Plain
+      first, firsts, <binary_substring>, <binary_string>, Numbered
       first, firsts, <date>, <month and year>, Index<day of week>
       first, firsts, <substring>, <string>, Named
       first, firsts, <substring>, <string>, Numbered
@@ -5779,6 +5848,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       fixlet, fixlets, <bes fixlet>, <bes site>, Plain
       floating point, floating points, <floating point>, world , Index<floating point>Global
       floating point, floating points, <floating point>, world , NamedGlobal
+      following binary_string, following binary_strings, <binary_substring>, <binary position>, Plain
+      following binary_string, following binary_strings, <binary_substring>, <binary_substring>, Plain
       following text, following texts, <substring>, <string position>, Plain
       following text, following texts, <substring>, <substring>, Plain
       format, formats, <format>, world , NamedGlobal
@@ -5964,6 +6035,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       last child, last children, <xml dom node>, <xml dom node>, Plain
       last login time, last login times, <time>, <bes user>, Plain
       last report time, last report times, <time>, <bes computer>, Plain
+      last, lasts, <binary_substring>, <binary_string>, Numbered
       last, lasts, <substring>, <string>, Named
       last, lasts, <substring>, <string>, Numbered
       ldap directory, ldap directories, <bes ldap directory>, <bes user>, Plain
@@ -6289,6 +6361,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       path, paths, <json value>, <json value>, Named
       pending license update, pending license updates, <boolean>, world , PlainGlobal
       percent decode, percent decodes, <string>, world , NamedGlobal
+      percent encode, percent encodes, <string>, world , Index<binary_string>Global
       percent encode, percent encodes, <string>, world , NamedGlobal
       perpetual maintenance, perpetual maintenances, <boolean>, <bes product>, Plain
       perpetual, perpetuals, <boolean>, <bes product>, Plain
@@ -6297,6 +6370,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       plural flag, plural flags, <boolean>, <bes property result>, Plain
       plural name, plural names, <string>, <property>, Plain
       port, ports, <integer>, <bes ldap directory server>, Plain
+      position, positions, <binary position>, <binary_string>, Numbered
+      position, positions, <binary position>, <binary_string>, Plain
       position, positions, <string position>, <string>, Numbered
       position, positions, <string position>, <string>, Plain
       postaction allow cancel flag, postaction allow cancel flags, <boolean>, <bes action>, Plain
@@ -6310,6 +6385,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       pre, pres, <html>, <string>, Plain
       pre60 flag, pre60 flags, <boolean>, <bes wizard>, Plain
       precache flag, precache flags, <boolean>, <bes action>, Plain
+      preceding binary_string, preceding binary_strings, <binary_substring>, <binary position>, Plain
+      preceding binary_string, preceding binary_strings, <binary_substring>, <binary_substring>, Plain
       preceding text, preceding texts, <substring>, <string position>, Plain
       preceding text, preceding texts, <substring>, <substring>, Plain
       preferred bes language, preferred bes languages, <string>, world , PlainGlobal
@@ -6545,6 +6622,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       start date, start dates, <time>, <license>, Plain
       start flag, start flags, <boolean>, <bes action>, Plain
       start time_of_day, start times_of_day, <time of day>, <bes action>, Plain
+      start, starts, <binary position>, <binary_substring>, Plain
       start, starts, <string position>, <substring>, Plain
       start, starts, <time>, <statistic range>, Plain
       start, starts, <time>, <statistical bin>, Plain
@@ -6553,6 +6631,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       statistic range, statistic ranges, <statistic range>, <bes property>, Plain
       status, statuses, <bes action status>, <bes action result>, Plain
       status, statuses, <string>, <bes activation>, Plain
+      stop other actions flag, stop other actions flags, <boolean>, <bes user>, Plain
       stopper, stoppers, <bes user>, <bes action>, Plain
       string, strings, <string>, <tuple item>, Plain
       string, strings, <string>, world , NamedGlobal
