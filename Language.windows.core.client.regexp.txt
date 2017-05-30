@@ -1,5 +1,5 @@
 Operating System:Win2008R2 6_1_7601
-Client Version:9_5_5_193
+Client Version:9_5_5_199
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   access control entry
@@ -568,6 +568,7 @@ Creation techniques & properties of each type:
       capability of <agent interface>, capabilities, Plain
     Properties of <agent interface capability> { key phrase, plural keyword, form, <result type>}:
       <agent interface capability> as string, , Cast, <string>
+      error code of <agent interface capability>, error codes, Plain, <integer>
       name of <agent interface capability>, names, Plain, <string>
       state of <agent interface capability>, states, Plain, <string>
 
@@ -3685,6 +3686,7 @@ Creation techniques & properties of each type:
       ending_address of <dmi memory_array_mapped_address>, ending_addresss, Plain
       ending_address of <dmi memory_device_mapped_address>, ending_addresss, Plain
       engine pid of <running task>, engine pids, Plain
+      error code of <agent interface capability>, error codes, Plain
       error_correcting_capability of <dmi memory_controller_information>, error_correcting_capabilitys, Plain
       error_correction_type of <dmi cache_information>, error_correction_types, Plain
       error_detecting_method of <dmi memory_controller_information>, error_detecting_methods, Plain
@@ -9012,6 +9014,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       entry, entries, <access control entry>, <access control list>, Plain
       enumerate subkeys permission, enumerate subkeys permissions, <boolean>, <access control entry>, Plain
       environment, environments, <environment>, world , PlainGlobal
+      error code, error codes, <integer>, <agent interface capability>, Plain
       error event log event type, error event log event types, <event log event type>, world , PlainGlobal
       error, errors, <undefined>, world , NamedGlobal
       error_correcting_capability, error_correcting_capabilitys, <integer>, <dmi memory_controller_information>, Plain
