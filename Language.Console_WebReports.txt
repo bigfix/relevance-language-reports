@@ -1,6 +1,6 @@
-Build Target:9_5_5_199
-ModuleName:HostApplication, Version:9_5_5_199, ClientCompatible:Yes
-ModuleName:9_5_5_199, Version:9_5_5_199, ClientCompatible:9_5_5_199
+Build Target:9_5_7_90
+ModuleName:HostApplication, Version:9_5_7_90, ClientCompatible:Yes
+ModuleName:9_5_7_90, Version:9_5_7_90, ClientCompatible:9_5_7_90
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   bes action
@@ -312,8 +312,11 @@ Creation techniques & properties of each type:
       apply count of <bes action result>, apply counts, Plain, <integer>
       computer of <bes action result>, computers, Plain, <bes computer>
       detailed status of <bes action result>, detailed statuses, Plain, <string>
+      end time of <bes action result>, end times, Plain, <time>
+      exit code of <bes action result>, exit codes, Plain, <integer>
       line number of <bes action result>, line numbers, Plain, <integer>
       retry count of <bes action result>, retry counts, Plain, <integer>
+      start time of <bes action result>, start times, Plain, <time>
       status of <bes action result>, statuses, Plain, <bes action status>
 
   Type <bes action set>
@@ -370,6 +373,7 @@ Creation techniques & properties of each type:
       bes action status pending restart, bes action statuses pending restart, PlainGlobal
       bes action status postponed, bes action statuses postponed, PlainGlobal
       bes action status running, bes action statuses running, PlainGlobal
+      bes action status timeout reached, bes action statuses timeout reached, PlainGlobal
       bes action status unreported, bes action statuses unreported, PlainGlobal
       bes action status user cancelled, bes action statuses user cancelled, PlainGlobal
       bes action status waiting, bes action statuses waiting, PlainGlobal
@@ -1593,22 +1597,42 @@ Creation techniques & properties of each type:
 
   Type <binary_string>
     Creation of <binary_string>: { key phrase, plural keyword, form}
+      <binary_string> & <binary_string>, , BinaryOperator
       <string> as binary_string, , Cast
       <string> as fxf binary_string, , Cast
       <string> as local binary_string, , Cast
       <string> as utf16 binary_string, , Cast
       <string> as utf8 binary_string, , Cast
+      binary_string <string>, binary_strings, NamedGlobal
+      byte <integer>, bytes, NumberedGlobal
     Properties of <binary_string> { key phrase, plural keyword, form, <result type>}:
+      <binary_string> & <binary_string>, , BinaryOperator, <binary_string>
+      <binary_string> < <binary_string>, , BinaryOperator, <boolean>
+      <binary_string> <= <binary_string>, , BinaryOperator, <boolean>
+      <binary_string> = <binary_string>, , BinaryOperator, <boolean>
+      <binary_string> as fxf string, , Cast, <string>
       <binary_string> as hexadecimal, , Cast, <string>
+      <binary_string> as local string, , Cast, <string>
       <binary_string> as string, , Cast, <string>
+      <binary_string> as utf16 string, , Cast, <string>
+      <binary_string> as utf8 string, , Cast, <string>
+      <binary_string> contains <binary_string>, , BinaryOperator, <boolean>
+      <binary_string> ends with <binary_string>, , BinaryOperator, <boolean>
+      <binary_string> starts with <binary_string>, , BinaryOperator, <boolean>
       binary_substring <( integer, integer )> of <binary_string>, binary_substrings, Index<( integer, integer )>, <binary_substring>
       binary_substring <binary_string> of <binary_string>, binary_substrings, Index<binary_string>, <binary_substring>
       byte <integer> of <binary_string>, bytes, Numbered, <binary_substring>
       byte of <binary_string>, bytes, Plain, <binary_substring>
       first <integer> of <binary_string>, firsts, Numbered, <binary_substring>
       last <integer> of <binary_string>, lasts, Numbered, <binary_substring>
+      length of <binary_string>, lengths, Plain, <integer>
       position <integer> of <binary_string>, positions, Numbered, <binary position>
       position of <binary_string>, positions, Plain, <binary position>
+      representable in <string> of <binary_string>, representables in, Named, <boolean>
+      representable in utf16 of <binary_string>, representables in utf16, Plain, <boolean>
+      representable in utf8 of <binary_string>, representables in utf8, Plain, <boolean>
+      representable of <binary_string>, representables, Plain, <boolean>
+      representation in <string> of <binary_string>, representations in, Named, <string>
 
   Type <binary_substring> (derives from binary_string)
     Creation of <binary_substring>: { key phrase, plural keyword, form}
@@ -1721,6 +1745,12 @@ Creation techniques & properties of each type:
       <bes wizard set> contains <bes wizard set>, , BinaryOperator
       <bes wizard set> contains <bes wizard>, , BinaryOperator
       <bes wizard> = <bes wizard>, , BinaryOperator
+      <binary_string> < <binary_string>, , BinaryOperator
+      <binary_string> <= <binary_string>, , BinaryOperator
+      <binary_string> = <binary_string>, , BinaryOperator
+      <binary_string> contains <binary_string>, , BinaryOperator
+      <binary_string> ends with <binary_string>, , BinaryOperator
+      <binary_string> starts with <binary_string>, , BinaryOperator
       <bit set> = <bit set>, , BinaryOperator
       <bit set> contains <bit set>, , BinaryOperator
       <boolean> = <boolean>, , BinaryOperator
@@ -1950,6 +1980,10 @@ Creation techniques & properties of each type:
       relevant <bes fixlet> of <bes computer>, relevants, Index<bes fixlet>
       relevant flag of <bes fixlet result>, relevant flags, Plain
       remediated flag of <bes fixlet result>, remediated flags, Plain
+      representable in <string> of <binary_string>, representables in, Named
+      representable in utf16 of <binary_string>, representables in utf16, Plain
+      representable in utf8 of <binary_string>, representables in utf8, Plain
+      representable of <binary_string>, representables, Plain
       require user absence of <bes action>, require user absences, Plain
       require user presence of <bes action>, require user presences, Plain
       requires authoring flag of <bes wizard>, requires authoring flags, Plain
@@ -2966,6 +3000,7 @@ Creation techniques & properties of each type:
       disk usage of <bes property>, disk usages, Plain
       download size of <bes fixlet>, download sizes, Plain
       element of <integer set>, elements, Plain
+      exit code of <bes action result>, exit codes, Plain
       greatest integer, greatest integers, PlainGlobal
       hexadecet <integer> of <ipv4or6 address>, hexadecets, Numbered
       hexadecet <integer> of <ipv6 address>, hexadecets, Numbered
@@ -2993,6 +3028,7 @@ Creation techniques & properties of each type:
       integer to <integer>, integers to, NumberedGlobal
       least integer, least integers, PlainGlobal
       least significant one bit of <bit set>, least significant one bits, Plain
+      length of <binary_string>, lengths, Plain
       length of <rope>, lengths, Plain
       length of <string>, lengths, Plain
       line number of <bes action result>, line numbers, Plain
@@ -3093,6 +3129,7 @@ Creation techniques & properties of each type:
       upper bound of <integer range>, upper bounds, Plain
       value count of <bes property result>, value counts, Plain
       version of <bes site>, versions, Plain
+      version of <x509 certificate>, versions, Plain
       windows server count of <bes product>, windows server counts, Plain
       workstation count of <bes product>, workstation counts, Plain
     Properties of <integer> { key phrase, plural keyword, form, <result type>}:
@@ -3761,8 +3798,12 @@ Creation techniques & properties of each type:
       <bes action status> as string, , Cast
       <bes fixlet field value> as string, , Cast
       <binary operator> as string, , Cast
+      <binary_string> as fxf string, , Cast
       <binary_string> as hexadecimal, , Cast
+      <binary_string> as local string, , Cast
       <binary_string> as string, , Cast
+      <binary_string> as utf16 string, , Cast
+      <binary_string> as utf8 string, , Cast
       <binary_substring> as string, , Cast
       <bit set> as string, , Cast
       <boolean> as string, , Cast
@@ -3911,6 +3952,7 @@ Creation techniques & properties of each type:
       host of <bes ldap directory server>, hosts, Plain
       hostname of <bes computer>, hostnames, Plain
       id of <bes domain>, ids, Plain
+      issuer of <x509 certificate>, issuers, Plain
       license type of <bes computer>, license types, Plain
       link href of <bes action>, link hrefs, Plain
       link href of <bes computer>, link hrefs, Plain
@@ -3977,6 +4019,7 @@ Creation techniques & properties of each type:
       preferred bes language, preferred bes languages, PlainGlobal
       private variable <( string, string )>, private variables, Index<( string, string )>Global
       private variable <string> of <bes wizard>, private variables, Named
+      public key algorithm of <x509 certificate>, public key algorithms, Plain
       regex escape of <string>, regex escapes, Plain
       relay hostname of <bes computer>, relay hostnames, Plain
       relay selection method of <bes computer>, relay selection methods, Plain
@@ -3984,6 +4027,7 @@ Creation techniques & properties of each type:
       relevance clause of <bes fixlet>, relevance clauses, Plain
       relevance of <bes baseline component>, relevances, Plain
       relevance of <bes fixlet>, relevances, Plain
+      representation in <string> of <binary_string>, representations in, Named
       root server of <bes computer>, root servers, Plain
       running message text of <bes action>, running message texts, Plain
       running message title of <bes action>, running message titles, Plain
@@ -3993,6 +4037,7 @@ Creation techniques & properties of each type:
       script type of <bes fixlet action>, script types, Plain
       seat count state of <license>, seat count states, Plain
       selected groups string of <bes action>, selected groups strings, Plain
+      serial number of <x509 certificate>, serial numbers, Plain
       sha1 of <string>, sha1s, Plain
       sha1 of <x509 certificate>, sha1s, Plain
       sha224 of <string>, sha224s, Plain
@@ -4005,6 +4050,7 @@ Creation techniques & properties of each type:
       sha512 of <string>, sha512s, Plain
       shared variable <( string, string )>, shared variables, Index<( string, string )>Global
       shared variable <string> of <bes wizard>, shared variables, Named
+      signature algorithm of <x509 certificate>, signature algorithms, Plain
       signature hash algorithm of <license>, signature hash algorithms, Plain
       simple name of <bes property>, simple names, Plain
       singular name of <property>, singular names, Plain
@@ -4021,6 +4067,8 @@ Creation techniques & properties of each type:
       status of <bes activation>, statuses, Plain
       string <string>, strings, NamedGlobal
       string of <tuple item>, strings, Plain
+      subject common name of <x509 certificate>, subject common names, Plain
+      subject of <x509 certificate>, subjects, Plain
       subscription mode of <bes site>, subscription modes, Plain
       symbol of <binary operator>, symbols, Plain
       symbol of <unary operator>, symbols, Plain
@@ -4382,9 +4430,11 @@ Creation techniques & properties of each type:
       end of <statistic range>, ends, Plain
       end of <statistical bin>, ends, Plain
       end of <time range>, ends, Plain
+      end time of <bes action result>, end times, Plain
       expiration date of <license>, expiration dates, Plain
       expiration time of <bes action>, expiration times, Plain
       first became relevant of <bes fixlet result>, first became relevants, Plain
+      invalid after of <x509 certificate>, invalid afters, Plain
       invalid before of <x509 certificate>, invalid befores, Plain
       last became nonrelevant of <bes fixlet result>, last became nonrelevants, Plain
       last became relevant of <bes fixlet result>, last became relevants, Plain
@@ -4400,6 +4450,7 @@ Creation techniques & properties of each type:
       start of <statistic range>, starts, Plain
       start of <statistical bin>, starts, Plain
       start of <time range>, starts, Plain
+      start time of <bes action result>, start times, Plain
       time <string>, times, NamedGlobal
       time issued of <bes action>, times issued, Plain
       time of <historical computer count>, times, Plain
@@ -4812,8 +4863,16 @@ Creation techniques & properties of each type:
     Creation of <x509 certificate>: { key phrase, plural keyword, form}
       encryption certificate of <license>, encryption certificates, Plain
     Properties of <x509 certificate> { key phrase, plural keyword, form, <result type>}:
+      invalid after of <x509 certificate>, invalid afters, Plain, <time>
       invalid before of <x509 certificate>, invalid befores, Plain, <time>
+      issuer of <x509 certificate>, issuers, Plain, <string>
+      public key algorithm of <x509 certificate>, public key algorithms, Plain, <string>
+      serial number of <x509 certificate>, serial numbers, Plain, <string>
       sha1 of <x509 certificate>, sha1s, Plain, <string>
+      signature algorithm of <x509 certificate>, signature algorithms, Plain, <string>
+      subject common name of <x509 certificate>, subject common names, Plain, <string>
+      subject of <x509 certificate>, subjects, Plain, <string>
+      version of <x509 certificate>, versions, Plain, <integer>
 
   Type <xml dom document> (derives from xml dom node)
     Creation of <xml dom document>: { key phrase, plural keyword, form}
@@ -4933,6 +4992,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   bes action status pending restart, bes action statuses pending restart, PlainGlobal, <bes action status>
   bes action status postponed, bes action statuses postponed, PlainGlobal, <bes action status>
   bes action status running, bes action statuses running, PlainGlobal, <bes action status>
+  bes action status timeout reached, bes action statuses timeout reached, PlainGlobal, <bes action status>
   bes action status unreported, bes action statuses unreported, PlainGlobal, <bes action status>
   bes action status user cancelled, bes action statuses user cancelled, PlainGlobal, <bes action status>
   bes action status waiting, bes action statuses waiting, PlainGlobal, <bes action status>
@@ -4984,11 +5044,13 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   binary operator <string>, binary operators, NamedGlobal, <binary operator>
   binary operator returning <type>, binary operators returning, Index<type>Global, <binary operator>
   binary operator, binary operators, PlainGlobal, <binary operator>
+  binary_string <string>, binary_strings, NamedGlobal, <binary_string>
   bit <integer>, bits, NumberedGlobal, <bit set>
   bit set <string>, bit sets, NamedGlobal, <bit set>
   boolean <string>, booleans, NamedGlobal, <boolean>
   br <string>, brs, NamedGlobal, <html>
   br, brs, PlainGlobal, <html>
+  byte <integer>, bytes, NumberedGlobal, <binary_string>
   case insensitive regex <string>, case insensitive regexes, NamedGlobal, <regular expression>
   case insensitive regular expression <string>, case insensitive regular expressions, NamedGlobal, <regular expression>
   cast <string>, casts, NamedGlobal, <cast>
@@ -5259,6 +5321,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as floating point, , <floating point>, <integer>, Cast
       as floating point, , <floating point>, <string>, Cast
       as fxf binary_string, , <binary_string>, <string>, Cast
+      as fxf string, , <string>, <binary_string>, Cast
       as hexadecimal, , <string>, <binary_string>, Cast
       as hexadecimal, , <string>, <integer>, Cast
       as hexadecimal, , <string>, <string>, Cast
@@ -5281,6 +5344,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as left trimmed string, , <string>, <string>, Cast
       as local binary_string, , <binary_string>, <string>, Cast
       as local date, , <date>, <time>, Cast
+      as local string, , <string>, <binary_string>, Cast
       as local string, , <string>, <time>, Cast
       as local time, , <time>, <string>, Cast
       as local zoned time_of_day, , <time of day with time zone>, <string>, Cast
@@ -5363,7 +5427,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as universal zoned time_of_day, , <time of day with time zone>, <string>, Cast
       as uppercase, , <string>, <string>, Cast
       as utf16 binary_string, , <binary_string>, <string>, Cast
+      as utf16 string, , <string>, <binary_string>, Cast
       as utf8 binary_string, , <binary_string>, <string>, Cast
+      as utf8 string, , <string>, <binary_string>, Cast
       as version, , <version>, <string>, Cast
       as version, , <version>, <version>, Cast
       as windows display time, , <time>, <string>, Cast
@@ -5426,6 +5492,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       bes action status pending restart, bes action statuses pending restart, <bes action status>, world , PlainGlobal
       bes action status postponed, bes action statuses postponed, <bes action status>, world , PlainGlobal
       bes action status running, bes action statuses running, <bes action status>, world , PlainGlobal
+      bes action status timeout reached, bes action statuses timeout reached, <bes action status>, world , PlainGlobal
       bes action status unreported, bes action statuses unreported, <bes action status>, world , PlainGlobal
       bes action status user cancelled, bes action statuses user cancelled, <bes action status>, world , PlainGlobal
       bes action status waiting, bes action statuses waiting, <bes action status>, world , PlainGlobal
@@ -5486,6 +5553,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       binary operator returning, binary operators returning, <binary operator>, world , Index<type>Global
       binary operator, binary operators, <binary operator>, world , NamedGlobal
       binary operator, binary operators, <binary operator>, world , PlainGlobal
+      binary_string, binary_strings, <binary_string>, world , NamedGlobal
       binary_substring, binary_substrings, <binary_substring>, <binary_string>, Index<( integer, integer )>
       binary_substring, binary_substrings, <binary_substring>, <binary_string>, Index<binary_string>
       bit set, bit sets, <bit set>, world , NamedGlobal
@@ -5505,6 +5573,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       br, brs, <html>, world , NamedGlobal
       br, brs, <html>, world , PlainGlobal
       build revision, build revisions, <integer>, <version>, Plain
+      byte, bytes, <binary_string>, world , NumberedGlobal
       byte, bytes, <binary_substring>, <binary_string>, Numbered
       byte, bytes, <binary_substring>, <binary_string>, Plain
       can create actions flag, can create actions flags, <boolean>, <bes user>, Plain
@@ -5762,6 +5831,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       encryption certificate, encryption certificates, <x509 certificate>, <license>, Plain
       end date, end dates, <date>, <bes action>, Plain
       end flag, end flags, <boolean>, <bes action>, Plain
+      end time, end times, <time>, <bes action result>, Plain
       end time_of_day, end times_of_day, <time of day>, <bes action>, Plain
       end, ends, <binary position>, <binary_substring>, Plain
       end, ends, <string position>, <substring>, Plain
@@ -5774,6 +5844,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       error, errors, <undefined>, world , NamedGlobal
       evaluation period, evaluation periods, <time interval>, <bes property>, Plain
       evaluation, evaluations, <boolean>, <license>, Plain
+      exit code, exit codes, <integer>, <bes action result>, Plain
       expiration date, expiration dates, <date>, <bes product>, Plain
       expiration date, expiration dates, <time>, <license>, Plain
       expiration flag, expiration flags, <boolean>, <bes action>, Plain
@@ -5977,6 +6048,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       intersection, intersections, <bes wizard set>, <bes wizard set>, Plain
       intersection, intersections, <integer set>, <integer set>, Plain
       intersection, intersections, <string set>, <string set>, Plain
+      invalid after, invalid afters, <time>, <x509 certificate>, Plain
       invalid before, invalid befores, <time>, <x509 certificate>, Plain
       invalid, invalids, <boolean>, <floating point>, Plain
       ip address, ip addresses, <ipv4or6 address>, <bes computer>, Plain
@@ -5999,6 +6071,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       issuer, issuers, <bes user>, <bes activation>, Plain
       issuer, issuers, <bes user>, <bes computer group>, Plain
       issuer, issuers, <bes user>, <bes fixlet>, Plain
+      issuer, issuers, <string>, <x509 certificate>, Plain
       italic, italics, <html>, <html>, Named
       italic, italics, <html>, <html>, Plain
       italic, italics, <html>, <string>, Named
@@ -6047,6 +6120,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       left operand type, left operand types, <type>, <binary operator>, Plain
       left shift, left shifts, <bit set>, <bit set>, Numbered
       legacy, legacies, <boolean>, <bes product>, Plain
+      length, lengths, <integer>, <binary_string>, Plain
       length, lengths, <integer>, <rope>, Plain
       length, lengths, <integer>, <string>, Plain
       length, lengths, <time interval>, <month and year>, Plain
@@ -6410,6 +6484,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       property, properties, <property>, <type>, Plain
       property, properties, <property>, world , NamedGlobal
       property, properties, <property>, world , PlainGlobal
+      public key algorithm, public key algorithms, <string>, <x509 certificate>, Plain
       q, qs, <html>, <html>, Named
       q, qs, <html>, <html>, Plain
       q, qs, <html>, <string>, Named
@@ -6453,6 +6528,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       reported computer set, reported computer sets, <bes computer set>, <bes action>, Plain
       reported computer set, reported computer sets, <bes computer set>, <bes property>, Plain
       reported property set, reported property sets, <bes property set>, <bes computer>, Plain
+      representable in utf16, representables in utf16, <boolean>, <binary_string>, Plain
+      representable in utf8, representables in utf8, <boolean>, <binary_string>, Plain
+      representable in, representables in, <boolean>, <binary_string>, Named
+      representable, representables, <boolean>, <binary_string>, Plain
+      representation in, representations in, <string>, <binary_string>, Named
       require user absence, require user absences, <boolean>, <bes action>, Plain
       require user presence, require user presences, <boolean>, <bes action>, Plain
       requires authoring flag, requires authoring flags, <boolean>, <bes wizard>, Plain
@@ -6518,6 +6598,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       september, septembers, <day of year>, world , NumberedGlobal
       september, septembers, <month and year>, <integer>, Plain
       september, septembers, <month>, world , PlainGlobal
+      serial number, serial numbers, <string>, <x509 certificate>, Plain
       server, servers, <bes ldap directory server>, <bes ldap directory>, Plain
       set, sets, <bes action set>, <bes action>, Plain
       set, sets, <bes computer group set>, <bes computer group>, Plain
@@ -6555,6 +6636,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       show other action flag, show other action flags, <boolean>, <bes user>, Plain
       show running message flag, show running message flags, <boolean>, <bes action>, Plain
       shutdown flag, shutdown flags, <boolean>, <bes action>, Plain
+      signature algorithm, signature algorithms, <string>, <x509 certificate>, Plain
       signature hash algorithm, signature hash algorithms, <string>, <license>, Plain
       significance place, significance places, <floating point>, <floating point>, Numbered
       significance place, significance places, <floating point>, <floating point>, Plain
@@ -6621,6 +6703,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       start date, start dates, <date>, <bes action>, Plain
       start date, start dates, <time>, <license>, Plain
       start flag, start flags, <boolean>, <bes action>, Plain
+      start time, start times, <time>, <bes action result>, Plain
       start time_of_day, start times_of_day, <time of day>, <bes action>, Plain
       start, starts, <binary position>, <binary_substring>, Plain
       start, starts, <string position>, <substring>, Plain
@@ -6643,6 +6726,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sub, subs, <html>, <html>, Plain
       sub, subs, <html>, <string>, Named
       sub, subs, <html>, <string>, Plain
+      subject common name, subject common names, <string>, <x509 certificate>, Plain
+      subject, subjects, <string>, <x509 certificate>, Plain
       subscribed computer set, subscribed computer sets, <bes computer set>, <bes site>, Plain
       subscribed computer, subscribed computers, <bes computer>, <bes site>, Plain
       subscribed site set, subscribed site sets, <bes site set>, <bes computer>, Plain
@@ -6883,6 +6968,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       variance, variances, <floating point>, <statistical bin>, Plain
       version string, version strings, <string>, <module>, Named
       version, versions, <integer>, <bes site>, Plain
+      version, versions, <integer>, <x509 certificate>, Plain
       version, versions, <string>, <cryptography>, Plain
       version, versions, <version>, <module>, Plain
       version, versions, <version>, world , NamedGlobal

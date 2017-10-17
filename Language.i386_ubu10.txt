@@ -1,7 +1,7 @@
 Operating System:Linux Ubuntu 10_04_1 LTS (2_6_32-24-generic)
-Client Version:9_5_5_199
+Client Version:9_5_7_90
 Build Target:
-ModuleName:HostApplication, Version:9_5_5_199, ClientCompatible:Yes
+ModuleName:HostApplication, Version:9_5_7_90, ClientCompatible:Yes
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   SELinux Boolean
@@ -125,6 +125,7 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   grub image choice
   grub kernel
   grub module
+  hardware
   hertz
   hertz with multiplicity (derives from  hertz)
   html
@@ -220,6 +221,8 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   undefined
   user
   utf8 string
+  uuid
+  uuid with multiplicity (derives from  uuid)
   version
   version with multiplicity (derives from  version)
   x509 certificate
@@ -322,6 +325,8 @@ Creation techniques & properties of each type:
 
   Type <application> (derives from file)
     Creation of <application>: { key phrase, plural keyword, form}
+      application <binary_string> of <folder>, applications, Index<binary_string>
+      application <binary_string>, applications, Index<binary_string>Global
       application <string> of <folder>, applications, Named
       application <string>, applications, NamedGlobal
       recent application <string>, recent applications, NamedGlobal
@@ -403,26 +408,50 @@ Creation techniques & properties of each type:
 
   Type <binary_string>
     Creation of <binary_string>: { key phrase, plural keyword, form}
+      <binary_string> & <binary_string>, , BinaryOperator
       <string> as binary_string, , Cast
       <string> as fxf binary_string, , Cast
       <string> as local binary_string, , Cast
       <string> as utf16 binary_string, , Cast
       <string> as utf8 binary_string, , Cast
       <symlink> as binary_string, , Cast
+      <uuid> as binary_string, , Cast
+      binary location of <filesystem object>, binary locations, Plain
+      binary name of <filesystem object>, binary names, Plain
+      binary pathname of <filesystem object>, binary pathnames, Plain
+      binary_string <string>, binary_strings, NamedGlobal
+      byte <integer>, bytes, NumberedGlobal
       reserved of <dmi bios_language_information>, reserveds, Plain
       reserved of <dmi system_boot_information>, reserveds, Plain
       uuid of <dmi system_information>, uuids, Plain
     Properties of <binary_string> { key phrase, plural keyword, form, <result type>}:
+      <binary_string> & <binary_string>, , BinaryOperator, <binary_string>
+      <binary_string> < <binary_string>, , BinaryOperator, <boolean>
+      <binary_string> <= <binary_string>, , BinaryOperator, <boolean>
+      <binary_string> = <binary_string>, , BinaryOperator, <boolean>
+      <binary_string> as fxf string, , Cast, <string>
       <binary_string> as hexadecimal, , Cast, <string>
+      <binary_string> as local string, , Cast, <string>
       <binary_string> as string, , Cast, <string>
+      <binary_string> as utf16 string, , Cast, <string>
+      <binary_string> as utf8 string, , Cast, <string>
+      <binary_string> contains <binary_string>, , BinaryOperator, <boolean>
+      <binary_string> ends with <binary_string>, , BinaryOperator, <boolean>
+      <binary_string> starts with <binary_string>, , BinaryOperator, <boolean>
       binary_substring <( integer, integer )> of <binary_string>, binary_substrings, Index<( integer, integer )>, <binary_substring>
       binary_substring <binary_string> of <binary_string>, binary_substrings, Index<binary_string>, <binary_substring>
       byte <integer> of <binary_string>, bytes, Numbered, <binary_substring>
       byte of <binary_string>, bytes, Plain, <binary_substring>
       first <integer> of <binary_string>, firsts, Numbered, <binary_substring>
       last <integer> of <binary_string>, lasts, Numbered, <binary_substring>
+      length of <binary_string>, lengths, Plain, <integer>
       position <integer> of <binary_string>, positions, Numbered, <binary position>
       position of <binary_string>, positions, Plain, <binary position>
+      representable in <string> of <binary_string>, representables in, Named, <boolean>
+      representable in utf16 of <binary_string>, representables in utf16, Plain, <boolean>
+      representable in utf8 of <binary_string>, representables in utf8, Plain, <boolean>
+      representable of <binary_string>, representables, Plain, <boolean>
+      representation in <string> of <binary_string>, representations in, Named, <string>
 
   Type <binary_substring> (derives from binary_string)
     Creation of <binary_substring>: { key phrase, plural keyword, form}
@@ -482,6 +511,12 @@ Creation techniques & properties of each type:
 
   Type <boolean>
     Creation of <boolean>: { key phrase, plural keyword, form}
+      <binary_string> < <binary_string>, , BinaryOperator
+      <binary_string> <= <binary_string>, , BinaryOperator
+      <binary_string> = <binary_string>, , BinaryOperator
+      <binary_string> contains <binary_string>, , BinaryOperator
+      <binary_string> ends with <binary_string>, , BinaryOperator
+      <binary_string> starts with <binary_string>, , BinaryOperator
       <bit set> = <bit set>, , BinaryOperator
       <bit set> contains <bit set>, , BinaryOperator
       <boolean> = <boolean>, , BinaryOperator
@@ -584,6 +619,7 @@ Creation techniques & properties of each type:
       <string> < <ipv4or6 address>, , BinaryOperator
       <string> < <string>, , BinaryOperator
       <string> < <strverscmp version>, , BinaryOperator
+      <string> < <uuid>, , BinaryOperator
       <string> < <version>, , BinaryOperator
       <string> <= <debian package upstream version>, , BinaryOperator
       <string> <= <debian package version epoch>, , BinaryOperator
@@ -593,6 +629,7 @@ Creation techniques & properties of each type:
       <string> <= <ipv4or6 address>, , BinaryOperator
       <string> <= <string>, , BinaryOperator
       <string> <= <strverscmp version>, , BinaryOperator
+      <string> <= <uuid>, , BinaryOperator
       <string> <= <version>, , BinaryOperator
       <string> = <debian package upstream version>, , BinaryOperator
       <string> = <debian package version epoch>, , BinaryOperator
@@ -603,6 +640,7 @@ Creation techniques & properties of each type:
       <string> = <regular expression>, , BinaryOperator
       <string> = <string>, , BinaryOperator
       <string> = <strverscmp version>, , BinaryOperator
+      <string> = <uuid>, , BinaryOperator
       <string> = <version>, , BinaryOperator
       <string> as boolean, , Cast
       <string> contains <regular expression>, , BinaryOperator
@@ -634,6 +672,12 @@ Creation techniques & properties of each type:
       <time> <= <time>, , BinaryOperator
       <time> = <time>, , BinaryOperator
       <type> = <type>, , BinaryOperator
+      <uuid> < <string>, , BinaryOperator
+      <uuid> < <uuid>, , BinaryOperator
+      <uuid> <= <string>, , BinaryOperator
+      <uuid> <= <uuid>, , BinaryOperator
+      <uuid> = <string>, , BinaryOperator
+      <uuid> = <uuid>, , BinaryOperator
       <version> < <string>, , BinaryOperator
       <version> < <version>, , BinaryOperator
       <version> <= <string>, , BinaryOperator
@@ -752,11 +796,16 @@ Creation techniques & properties of each type:
       plugged of <power level>, pluggeds, Plain
       point to point of <network adapter interface>, point to points, Plain
       point to point of <network ip interface>, point to points, Plain
+      proxied of <hardware>, proxieds, Plain
       quiet of <grub bootable image>, quiets, Plain
       read of <mode_mask>, reads, Plain
       reject flag of <route>, reject flags, Plain
       relevance of <fixlet>, relevances, Plain
       remote of <logged on user>, remotes, Plain
+      representable in <string> of <binary_string>, representables in, Named
+      representable in utf16 of <binary_string>, representables in utf16, Plain
+      representable in utf8 of <binary_string>, representables in utf8, Plain
+      representable of <binary_string>, representables, Plain
       running of <application usage summary>, runnings, Plain
       running of <service>, runnings, Plain
       savedefault of <grub bootable image>, savedefaults, Plain
@@ -788,6 +837,8 @@ Creation techniques & properties of each type:
       user read of <filesystem object>, user reads, Plain
       user write of <filesystem object>, user writes, Plain
       value accessible of <symlink>, values accessible, Plain
+      virtual machine of <operating system>, virtual machines, Plain
+      virtual of <hardware>, virtuals, Plain
       wait of <Xinetd Service>, waits, Plain
       waiting for download of <action>, waiting for downloads, Plain
       windows of <operating system>, windowses, Plain
@@ -831,6 +882,7 @@ Creation techniques & properties of each type:
       deployment character set of <client>, deployment character sets, Plain, <string>
       evaluationcycle of <client>, evaluationcycles, Plain, <evaluation cycle>
       fxf character set of <client>, fxf character sets, Plain, <string>
+      info of <client>, infos, Plain, <string>
       last command time of <client>, last command times, Plain, <time>
       last report time of <client>, last report times, Plain, <time>
       local character set of <client>, local character sets, Plain, <string>
@@ -1972,7 +2024,9 @@ Creation techniques & properties of each type:
     Properties of <encoding> { key phrase, plural keyword, form, <result type>}:
       download file <string> of <encoding>, download files, Named, <file>
       download folder of <encoding>, download folders, Plain, <folder>
+      file <binary_string> of <encoding>, files, Index<binary_string>, <file>
       file <string> of <encoding>, files, Named, <file>
+      folder <binary_string> of <encoding>, folders, Index<binary_string>, <folder>
       folder <string> of <encoding>, folders, Named, <folder>
       symlink <binary_string> of <encoding>, symlinks, Index<binary_string>, <symlink>
       symlink <string> of <encoding>, symlinks, Named, <symlink>
@@ -2056,10 +2110,14 @@ Creation techniques & properties of each type:
   Type <file> (derives from filesystem object)
     Creation of <file>: { key phrase, plural keyword, form}
       <symlink> as file, , Cast
+      binary named file of <folder>, binary named files, Plain
       default web browser, default web browsers, PlainGlobal
       descendant of <folder>, descendants, Plain
       download file <string> of <encoding>, download files, Named
       download file <string>, download files, NamedGlobal
+      file <binary_string> of <encoding>, files, Index<binary_string>
+      file <binary_string> of <folder>, files, Index<binary_string>
+      file <binary_string>, files, Index<binary_string>Global
       file <string> of <encoding>, files, Named
       file <string> of <folder>, files, Named
       file <string>, files, NamedGlobal
@@ -2068,6 +2126,7 @@ Creation techniques & properties of each type:
       find file <string> of <folder>, find files, Named
       image file of <process>, image files, Plain
       masthead of <site>, mastheads, Plain
+      string named file of <folder>, string named files, Plain
     Properties of <file> { key phrase, plural keyword, form, <result type>}:
       byte <integer> of <file>, bytes, Numbered, <integer>
       content of <file>, contents, Plain, <file content>
@@ -2079,6 +2138,13 @@ Creation techniques & properties of each type:
       line containing <string> of <file>, lines containing, Named, <file line>
       line of <file>, lines, Plain, <file line>
       line starting with <string> of <file>, lines starting with, Named, <file line>
+      locked content of <file>, locked contents, Plain, <file content>
+      locked key <string> of <file>, locked keys, Named, <string>
+      locked line <integer> of <file>, locked lines, Numbered, <file line>
+      locked line containing <string> of <file>, locked lines containing, Named, <file line>
+      locked line of <file>, locked lines, Plain, <file line>
+      locked line starting with <string> of <file>, locked lines starting with, Named, <file line>
+      locked section <string> of <file>, locked sections, Named, <file section>
       md5 of <file>, md5s, Plain, <string>
       section <string> of <file>, sections, Named, <file section>
       sha1 of <file>, sha1s, Plain, <string>
@@ -2100,6 +2166,7 @@ Creation techniques & properties of each type:
       <file content> as lowercase, , Cast
       <file content> as uppercase, , Cast
       content of <file>, contents, Plain
+      locked content of <file>, locked contents, Plain
     Properties of <file content> { key phrase, plural keyword, form, <result type>}:
       <file content> as lowercase, , Cast, <file content>
       <file content> as uppercase, , Cast, <file content>
@@ -2111,6 +2178,10 @@ Creation techniques & properties of each type:
       line containing <string> of <file>, lines containing, Named
       line of <file>, lines, Plain
       line starting with <string> of <file>, lines starting with, Named
+      locked line <integer> of <file>, locked lines, Numbered
+      locked line containing <string> of <file>, locked lines containing, Named
+      locked line of <file>, locked lines, Plain
+      locked line starting with <string> of <file>, locked lines starting with, Named
       next line of <file line>, next lines, Plain
       previous line of <file line>, previous lines, Plain
     Properties of <file line> { key phrase, plural keyword, form, <result type>}:
@@ -2120,6 +2191,7 @@ Creation techniques & properties of each type:
 
   Type <file section>
     Creation of <file section>: { key phrase, plural keyword, form}
+      locked section <string> of <file>, locked sections, Named
       section <string> of <file>, sections, Named
     Properties of <file section> { key phrase, plural keyword, form, <result type>}:
       key <string> of <file section>, keys, Named, <string>
@@ -2173,6 +2245,9 @@ Creation techniques & properties of each type:
       <filesystem object> as symlink, , Cast, <symlink>
       accessed time of <filesystem object>, accessed times, Plain, <time>
       ancestor of <filesystem object>, ancestors, Plain, <folder>
+      binary location of <filesystem object>, binary locations, Plain, <binary_string>
+      binary name of <filesystem object>, binary names, Plain, <binary_string>
+      binary pathname of <filesystem object>, binary pathnames, Plain, <binary_string>
       change time of <filesystem object>, change times, Plain, <time>
       gid of <filesystem object>, gids, Plain, <integer>
       group execute of <filesystem object>, group executes, Plain, <boolean>
@@ -2340,12 +2415,16 @@ Creation techniques & properties of each type:
       <symlink> as folder, , Cast
       ancestor of <filesystem object>, ancestors, Plain
       ancestor of <symlink>, ancestors, Plain
+      binary named folder of <folder>, binary named folders, Plain
       client folder of <site>, client folders, Plain
       data folder of <client>, data folders, Plain
       descendant folder of <folder>, descendant folders, Plain
       download folder of <encoding>, download folders, Plain
       download folder, download folders, PlainGlobal
       find folder <string> of <folder>, find folders, Named
+      folder <binary_string> of <encoding>, folders, Index<binary_string>
+      folder <binary_string> of <folder>, folders, Index<binary_string>
+      folder <binary_string>, folders, Index<binary_string>Global
       folder <string> of <encoding>, folders, Named
       folder <string> of <folder>, folders, Named
       folder <string>, folders, NamedGlobal
@@ -2356,9 +2435,13 @@ Creation techniques & properties of each type:
       parent folder of <symlink>, parent folders, Plain
       root folder, root folders, PlainGlobal
       storage folder of <client>, storage folders, Plain
+      string named folder of <folder>, string named folders, Plain
       system folder, system folders, PlainGlobal
     Properties of <folder> { key phrase, plural keyword, form, <result type>}:
+      application <binary_string> of <folder>, applications, Index<binary_string>, <application>
       application <string> of <folder>, applications, Named, <application>
+      binary named file of <folder>, binary named files, Plain, <file>
+      binary named folder of <folder>, binary named folders, Plain, <folder>
       descendant folder of <folder>, descendant folders, Plain, <folder>
       descendant of <folder>, descendants, Plain, <file>
       device file <string> of <folder>, device files, Named, <device file>
@@ -2366,15 +2449,19 @@ Creation techniques & properties of each type:
       drive of <folder>, drives, Plain, <filesystem>
       fifo file <string> of <folder>, fifo files, Named, <fifo file>
       fifo file of <folder>, fifo files, Plain, <fifo file>
+      file <binary_string> of <folder>, files, Index<binary_string>, <file>
       file <string> of <folder>, files, Named, <file>
       file of <folder>, files, Plain, <file>
       filesystem of <folder>, filesystems, Plain, <filesystem>
       find file <string> of <folder>, find files, Named, <file>
       find folder <string> of <folder>, find folders, Named, <folder>
+      folder <binary_string> of <folder>, folders, Index<binary_string>, <folder>
       folder <string> of <folder>, folders, Named, <folder>
       folder of <folder>, folders, Plain, <folder>
       socket file <string> of <folder>, socket files, Named, <socket file>
       socket file of <folder>, socket files, Plain, <socket file>
+      string named file of <folder>, string named files, Plain, <file>
+      string named folder of <folder>, string named folders, Plain, <folder>
       symlink <binary_string> of <folder>, symlinks, Index<binary_string>, <symlink>
       symlink <string> of <folder>, symlinks, Named, <symlink>
       symlink of <folder>, symlinks, Plain, <symlink>
@@ -2511,6 +2598,15 @@ Creation techniques & properties of each type:
     Properties of <grub module> { key phrase, plural keyword, form, <result type>}:
       <grub module> as string, , Cast, <string>
       nounzip of <grub module>, nounzips, Plain, <boolean>
+
+  Type <hardware>
+    Creation of <hardware>: { key phrase, plural keyword, form}
+      hardware, hardwares, PlainGlobal
+    Properties of <hardware> { key phrase, plural keyword, form, <result type>}:
+      proxied of <hardware>, proxieds, Plain, <boolean>
+      serial of <hardware>, serials, Plain, <string>
+      uuid of <hardware>, uuids, Plain, <uuid>
+      virtual of <hardware>, virtuals, Plain, <boolean>
 
   Type <hertz>
     Creation of <hertz>: { key phrase, plural keyword, form}
@@ -3128,6 +3224,7 @@ Creation techniques & properties of each type:
       last active line number of <action>, last active line numbers, Plain
       least integer, least integers, PlainGlobal
       least significant one bit of <bit set>, least significant one bits, Plain
+      length of <binary_string>, lengths, Plain
       length of <dmi additional_information>, lengths, Plain
       length of <dmi b32_bit_memory_error_information>, lengths, Plain
       length of <dmi b64_bit_memory_error_information>, lengths, Plain
@@ -3253,6 +3350,7 @@ Creation techniques & properties of each type:
       multiplicity of <time range with multiplicity>, multiplicities, Plain
       multiplicity of <time with multiplicity>, multiplicities, Plain
       multiplicity of <time zone with multiplicity>, multiplicities, Plain
+      multiplicity of <uuid with multiplicity>, multiplicities, Plain
       multiplicity of <version with multiplicity>, multiplicities, Plain
       multiplicity of <year with multiplicity>, multiplicities, Plain
       mvs count of <bes product>, mvs counts, Plain
@@ -3403,6 +3501,7 @@ Creation techniques & properties of each type:
       vendor_syndrome of <dmi b32_bit_memory_error_information>, vendor_syndromes, Plain
       vendor_syndrome of <dmi b64_bit_memory_error_information>, vendor_syndromes, Plain
       version of <site>, versions, Plain
+      version of <x509 certificate>, versions, Plain
       voltage of <dmi processor_information>, voltages, Plain
       wake_up_type of <dmi system_information>, wake_up_types, Plain
       weight of <selected server>, weights, Plain
@@ -4065,6 +4164,7 @@ Creation techniques & properties of each type:
       build of <operating system>, builds, Plain, <string>
       codename of <operating system>, codenames, Plain, <string>
       embedded of <operating system>, embeddeds, Plain, <boolean>
+      hypervisor of <operating system>, hypervisors, Plain, <string>
       little endian of <operating system>, little endians, Plain, <boolean>
       mac of <operating system>, macs, Plain, <boolean>
       machine of <operating system>, machines, Plain, <string>
@@ -4076,7 +4176,9 @@ Creation techniques & properties of each type:
       unix of <operating system>, unixes, Plain, <boolean>
       update level of <operating system>, update levels, Plain, <integer>
       uptime of <operating system>, uptimes, Plain, <time interval>
+      uuid of <operating system>, uuids, Plain, <uuid>
       version of <operating system>, versions, Plain, <version>
+      virtual machine of <operating system>, virtual machines, Plain, <boolean>
       windows of <operating system>, windowses, Plain, <boolean>
 
   Type <power level>
@@ -4516,8 +4618,12 @@ Creation techniques & properties of each type:
       <action lock state> as string, , Cast
       <action> as string, , Cast
       <binary operator> as string, , Cast
+      <binary_string> as fxf string, , Cast
       <binary_string> as hexadecimal, , Cast
+      <binary_string> as local string, , Cast
       <binary_string> as string, , Cast
+      <binary_string> as utf16 string, , Cast
+      <binary_string> as utf8 string, , Cast
       <binary_substring> as string, , Cast
       <bios> as string, , Cast
       <bit set> as string, , Cast
@@ -4631,6 +4737,8 @@ Creation techniques & properties of each type:
       <type> as string, , Cast
       <unary operator> as string, , Cast
       <undefined> as string, , Cast
+      <uuid> as hexadecimal, , Cast
+      <uuid> as string, , Cast
       <version> as string, , Cast
       <xml dom node> as text, , Cast
       <xml dom node> as xml, , Cast
@@ -4723,12 +4831,15 @@ Creation techniques & properties of each type:
       host name of <root server>, host names, Plain
       host name, host names, PlainGlobal
       hostname, hostnames, PlainGlobal
+      hypervisor of <operating system>, hypervisors, Plain
       id of <Xinetd Service>, ids, Plain
       identity of <execution>, identites, Plain
       image path of <application usage summary instance>, image paths, Plain
       index of <sqlite table>, indices, Plain
+      info of <client>, infos, Plain
       interface of <route>, interfaces, Plain
       internal_reference_designator of <dmi port_connector_information>, internal_reference_designators, Plain
+      issuer of <x509 certificate>, issuers, Plain
       key <string> of <file section>, keys, Named
       key <string> of <file>, keys, Named
       local character set of <client>, local character sets, Plain
@@ -4740,6 +4851,7 @@ Creation techniques & properties of each type:
       location of <symlink>, locations, Plain
       location_in_chassis of <dmi base_board_information>, location_in_chassiss, Plain
       lock string of <action lock state>, lock strings, Plain
+      locked key <string> of <file>, locked keys, Named
       mac address of <network adapter interface>, mac addresses, Plain
       mac address of <network adapter>, mac addresses, Plain
       mac address of <network ip interface>, mac addresses, Plain
@@ -4826,12 +4938,14 @@ Creation techniques & properties of each type:
       product of <dmi base_board_information>, products, Plain
       product_name of <dmi system_information>, product_names, Plain
       protocol of <Xinetd Service>, protocols, Plain
+      public key algorithm of <x509 certificate>, public key algorithms, Plain
       regex escape of <string>, regex escapes, Plain
       registration cidr address of <client>, registration cidr addresses, Plain
       registration mac address of <client>, registration mac addresses, Plain
       release of <debian versioned package>, releases, Plain
       release of <operating system>, releases, Plain
       report character set of <client>, report character sets, Plain
+      representation in <string> of <binary_string>, representations in, Named
       revision_level of <dmi system_power_supply>, revision_levels, Plain
       sbds_device_chemistry of <dmi portable_battery>, sbds_device_chemistrys, Plain
       sbds_version_number of <dmi portable_battery>, sbds_version_numbers, Plain
@@ -4842,6 +4956,8 @@ Creation techniques & properties of each type:
       section of <debianpkg version>, sections, Plain
       selinux context of <process>, selinux contexts, Plain
       selinux domain of <process>, selinux domains, Plain
+      serial number of <x509 certificate>, serial numbers, Plain
+      serial of <hardware>, serials, Plain
       serial_number of <dmi base_board_information>, serial_numbers, Plain
       serial_number of <dmi memory_device>, serial_numbers, Plain
       serial_number of <dmi portable_battery>, serial_numbers, Plain
@@ -4871,6 +4987,7 @@ Creation techniques & properties of each type:
       sha384 of <string>, sha384s, Plain
       sha512 of <file>, sha512s, Plain
       sha512 of <string>, sha512s, Plain
+      signature algorithm of <x509 certificate>, signature algorithms, Plain
       signature hash algorithm of <license>, signature hash algorithms, Plain
       singular name of <property>, singular names, Plain
       site tag of <site>, site tags, Plain
@@ -4887,6 +5004,8 @@ Creation techniques & properties of each type:
       string <string>, strings, NamedGlobal
       string of <tuple item>, strings, Plain
       string version of <application usage summary instance>, string versions, Plain
+      subject common name of <x509 certificate>, subject common names, Plain
+      subject of <x509 certificate>, subjects, Plain
       symbol of <binary operator>, symbols, Plain
       symbol of <unary operator>, symbols, Plain
       system language, system languages, PlainGlobal
@@ -4977,6 +5096,7 @@ Creation techniques & properties of each type:
       <string> < <ipv4or6 address>, , BinaryOperator, <boolean>
       <string> < <string>, , BinaryOperator, <boolean>
       <string> < <strverscmp version>, , BinaryOperator, <boolean>
+      <string> < <uuid>, , BinaryOperator, <boolean>
       <string> < <version>, , BinaryOperator, <boolean>
       <string> <= <debian package upstream version>, , BinaryOperator, <boolean>
       <string> <= <debian package version epoch>, , BinaryOperator, <boolean>
@@ -4986,6 +5106,7 @@ Creation techniques & properties of each type:
       <string> <= <ipv4or6 address>, , BinaryOperator, <boolean>
       <string> <= <string>, , BinaryOperator, <boolean>
       <string> <= <strverscmp version>, , BinaryOperator, <boolean>
+      <string> <= <uuid>, , BinaryOperator, <boolean>
       <string> <= <version>, , BinaryOperator, <boolean>
       <string> = <debian package upstream version>, , BinaryOperator, <boolean>
       <string> = <debian package version epoch>, , BinaryOperator, <boolean>
@@ -4996,6 +5117,7 @@ Creation techniques & properties of each type:
       <string> = <regular expression>, , BinaryOperator, <boolean>
       <string> = <string>, , BinaryOperator, <boolean>
       <string> = <strverscmp version>, , BinaryOperator, <boolean>
+      <string> = <uuid>, , BinaryOperator, <boolean>
       <string> = <version>, , BinaryOperator, <boolean>
       <string> as binary_string, , Cast, <binary_string>
       <string> as boolean, , Cast, <boolean>
@@ -5041,6 +5163,9 @@ Creation techniques & properties of each type:
       <strverscmp version> < <string>, , BinaryOperator, <boolean>
       <strverscmp version> <= <string>, , BinaryOperator, <boolean>
       <strverscmp version> = <string>, , BinaryOperator, <boolean>
+      <uuid> < <string>, , BinaryOperator, <boolean>
+      <uuid> <= <string>, , BinaryOperator, <boolean>
+      <uuid> = <string>, , BinaryOperator, <boolean>
       <version> < <string>, , BinaryOperator, <boolean>
       <version> <= <string>, , BinaryOperator, <boolean>
       <version> = <string>, , BinaryOperator, <boolean>
@@ -5383,6 +5508,7 @@ Creation techniques & properties of each type:
       expiration date of <license>, expiration dates, Plain
       first start time of <application usage summary instance>, first start times, Plain
       first start time of <application usage summary>, first start times, Plain
+      invalid after of <x509 certificate>, invalid afters, Plain
       invalid before of <x509 certificate>, invalid befores, Plain
       last active time of <action>, last active times, Plain
       last change time of <action>, last change times, Plain
@@ -5783,6 +5909,38 @@ Creation techniques & properties of each type:
     Creation of <utf8 string>: { key phrase, plural keyword, form}
     Properties of <utf8 string> { key phrase, plural keyword, form, <result type>}:
 
+  Type <uuid>
+    Creation of <uuid>: { key phrase, plural keyword, form}
+      maximum of <uuid>, maxima, Plain
+      minimum of <uuid>, minima, Plain
+      uuid <binary_string>, uuids, Index<binary_string>Global
+      uuid <string>, uuids, NamedGlobal
+      uuid of <hardware>, uuids, Plain
+      uuid of <operating system>, uuids, Plain
+    Properties of <uuid> { key phrase, plural keyword, form, <result type>}:
+      <string> < <uuid>, , BinaryOperator, <boolean>
+      <string> <= <uuid>, , BinaryOperator, <boolean>
+      <string> = <uuid>, , BinaryOperator, <boolean>
+      <uuid> < <string>, , BinaryOperator, <boolean>
+      <uuid> < <uuid>, , BinaryOperator, <boolean>
+      <uuid> <= <string>, , BinaryOperator, <boolean>
+      <uuid> <= <uuid>, , BinaryOperator, <boolean>
+      <uuid> = <string>, , BinaryOperator, <boolean>
+      <uuid> = <uuid>, , BinaryOperator, <boolean>
+      <uuid> as binary_string, , Cast, <binary_string>
+      <uuid> as hexadecimal, , Cast, <string>
+      <uuid> as string, , Cast, <string>
+      extrema of <uuid>, extremas, Plain, <( uuid, uuid )>
+      maximum of <uuid>, maxima, Plain, <uuid>
+      minimum of <uuid>, minima, Plain, <uuid>
+      unique value of <uuid>, unique values, Plain, <uuid with multiplicity>
+
+  Type <uuid with multiplicity> (derives from uuid)
+    Creation of <uuid with multiplicity>: { key phrase, plural keyword, form}
+      unique value of <uuid>, unique values, Plain
+    Properties of <uuid with multiplicity> { key phrase, plural keyword, form, <result type>}:
+      multiplicity of <uuid with multiplicity>, multiplicities, Plain, <integer>
+
   Type <version>
     Creation of <version>: { key phrase, plural keyword, form}
       <string> as version, , Cast
@@ -5832,8 +5990,16 @@ Creation techniques & properties of each type:
       certificate of <client>, certificates, Plain
       encryption certificate of <license>, encryption certificates, Plain
     Properties of <x509 certificate> { key phrase, plural keyword, form, <result type>}:
+      invalid after of <x509 certificate>, invalid afters, Plain, <time>
       invalid before of <x509 certificate>, invalid befores, Plain, <time>
+      issuer of <x509 certificate>, issuers, Plain, <string>
+      public key algorithm of <x509 certificate>, public key algorithms, Plain, <string>
+      serial number of <x509 certificate>, serial numbers, Plain, <string>
       sha1 of <x509 certificate>, sha1s, Plain, <string>
+      signature algorithm of <x509 certificate>, signature algorithms, Plain, <string>
+      subject common name of <x509 certificate>, subject common names, Plain, <string>
+      subject of <x509 certificate>, subjects, Plain, <string>
+      version of <x509 certificate>, versions, Plain, <integer>
 
   Type <xml dom document> (derives from xml dom node)
     Creation of <xml dom document>: { key phrase, plural keyword, form}
@@ -5925,6 +6091,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   analysis, analysiss, PlainGlobal, <analysis>
   any ip version, any ip versions, PlainGlobal, <ip version>
   apparent registration server time, apparent registration server times, PlainGlobal, <time>
+  application <binary_string>, applications, Index<binary_string>Global, <application>
   application <string>, applications, NamedGlobal, <application>
   application usage <string>, application usages, NamedGlobal, <timed( time range, integer )>
   application usage summary <string>, application usage summaries, NamedGlobal, <application usage summary>
@@ -5939,12 +6106,14 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   binary operator <string>, binary operators, NamedGlobal, <binary operator>
   binary operator returning <type>, binary operators returning, Index<type>Global, <binary operator>
   binary operator, binary operators, PlainGlobal, <binary operator>
+  binary_string <string>, binary_strings, NamedGlobal, <binary_string>
   bios, bioses, PlainGlobal, <bios>
   bit <integer>, bits, NumberedGlobal, <bit set>
   bit set <string>, bit sets, NamedGlobal, <bit set>
   boolean <string>, booleans, NamedGlobal, <boolean>
   br <string>, brs, NamedGlobal, <html>
   br, brs, PlainGlobal, <html>
+  byte <integer>, bytes, NumberedGlobal, <binary_string>
   case insensitive regex <string>, case insensitive regexes, NamedGlobal, <regular expression>
   case insensitive regular expression <string>, case insensitive regular expressions, NamedGlobal, <regular expression>
   cast <string>, casts, NamedGlobal, <cast>
@@ -6015,12 +6184,14 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   fifo file <string>, fifo files, NamedGlobal, <fifo file>
   fifo file <symlink>, fifo files, Index<symlink>Global, <fifo file>
   fifo file <symlink>, fifo files, Index<symlink>Global, <fifo file>
+  file <binary_string>, files, Index<binary_string>Global, <file>
   file <string>, files, NamedGlobal, <file>
   file <symlink>, files, Index<symlink>Global, <file>
   filesystem <string>, filesystems, NamedGlobal, <filesystem>
   filesystem, filesystems, PlainGlobal, <filesystem>
   floating point <floating point>, floating points, Index<floating point>Global, <floating point>
   floating point <string>, floating points, NamedGlobal, <floating point>
+  folder <binary_string>, folders, Index<binary_string>Global, <folder>
   folder <string>, folders, NamedGlobal, <folder>
   folder <symlink>, folders, Index<symlink>Global, <folder>
   format <string>, formats, NamedGlobal, <format>
@@ -6031,6 +6202,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   greatest time interval, greatest time intervals, PlainGlobal, <time interval>
   grub config file <string>, grub config files, NamedGlobal, <grub config file>
   grub config file, grub config files, PlainGlobal, <grub config file>
+  hardware, hardwares, PlainGlobal, <hardware>
   hexadecimal integer <string>, hexadecimal integers, NamedGlobal, <integer>
   hexadecimal string <string>, hexadecimal strings, NamedGlobal, <string>
   host name, host names, PlainGlobal, <string>
@@ -6183,6 +6355,8 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   universal time zone, universal time zones, PlainGlobal, <time zone>
   user <string>, users, NamedGlobal, <user>
   user, users, PlainGlobal, <user>
+  uuid <binary_string>, uuids, Index<binary_string>Global, <uuid>
+  uuid <string>, uuids, NamedGlobal, <uuid>
   version <string>, versions, NamedGlobal, <version>
   wake on lan subnet cidr string, wake on lan subnet cidr strings, PlainGlobal, <string>
   webui service, webui services, PlainGlobal, <service>
@@ -6257,7 +6431,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       application usage summary, application usage summaries, <application usage summary>, world , NamedGlobal
       application usage summary, application usage summaries, <application usage summary>, world , PlainGlobal
       application usage, application usages, <timed( time range, integer )>, world , NamedGlobal
+      application, applications, <application>, <folder>, Index<binary_string>
       application, applications, <application>, <folder>, Named
+      application, applications, <application>, world , Index<binary_string>Global
       application, applications, <application>, world , NamedGlobal
       april, aprils, <date>, <integer>, Numbered
       april, aprils, <day of year>, world , NumberedGlobal
@@ -6270,6 +6446,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       archive percent, archive percents, <floating point>, <evaluation cycle>, Plain
       as binary_string, , <binary_string>, <string>, Cast
       as binary_string, , <binary_string>, <symlink>, Cast
+      as binary_string, , <binary_string>, <uuid>, Cast
       as binary_substring, , <binary_substring>, <binary_substring>, Cast
       as bit set, , <bit set>, <integer>, Cast
       as bits, , <bit set>, <integer>, Cast
@@ -6307,10 +6484,12 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as floating point, , <floating point>, <string>, Cast
       as folder, , <folder>, <symlink>, Cast
       as fxf binary_string, , <binary_string>, <string>, Cast
+      as fxf string, , <string>, <binary_string>, Cast
       as hexadecimal, , <string>, <binary_string>, Cast
       as hexadecimal, , <string>, <integer>, Cast
       as hexadecimal, , <string>, <smbios value>, Cast
       as hexadecimal, , <string>, <string>, Cast
+      as hexadecimal, , <string>, <uuid>, Cast
       as html, , <html>, <html>, Cast
       as html, , <html>, <string>, Cast
       as integer, , <integer>, <bit set>, Cast
@@ -6330,6 +6509,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as left trimmed string, , <string>, <string>, Cast
       as local binary_string, , <binary_string>, <string>, Cast
       as local date, , <date>, <time>, Cast
+      as local string, , <string>, <binary_string>, Cast
       as local string, , <string>, <time>, Cast
       as local time, , <time>, <string>, Cast
       as local zoned time_of_day, , <time of day with time zone>, <string>, Cast
@@ -6435,6 +6615,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string, , <string>, <type>, Cast
       as string, , <string>, <unary operator>, Cast
       as string, , <string>, <undefined>, Cast
+      as string, , <string>, <uuid>, Cast
       as string, , <string>, <version>, Cast
       as string, , <string>, <year>, Cast
       as strverscmp version, , <strverscmp version>, <string>, Cast
@@ -6458,7 +6639,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as uppercase, , <file content>, <file content>, Cast
       as uppercase, , <string>, <string>, Cast
       as utf16 binary_string, , <binary_string>, <string>, Cast
+      as utf16 string, , <string>, <binary_string>, Cast
       as utf8 binary_string, , <binary_string>, <string>, Cast
+      as utf8 string, , <string>, <binary_string>, Cast
       as version, , <version>, <string>, Cast
       as version, , <version>, <version>, Cast
       as xml, , <string>, <xml dom node>, Cast
@@ -6515,9 +6698,15 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       big, bigs, <html>, <html>, Plain
       big, bigs, <html>, <string>, Named
       big, bigs, <html>, <string>, Plain
+      binary location, binary locations, <binary_string>, <filesystem object>, Plain
+      binary name, binary names, <binary_string>, <filesystem object>, Plain
+      binary named file, binary named files, <file>, <folder>, Plain
+      binary named folder, binary named folders, <folder>, <folder>, Plain
       binary operator returning, binary operators returning, <binary operator>, world , Index<type>Global
       binary operator, binary operators, <binary operator>, world , NamedGlobal
       binary operator, binary operators, <binary operator>, world , PlainGlobal
+      binary pathname, binary pathnames, <binary_string>, <filesystem object>, Plain
+      binary_string, binary_strings, <binary_string>, world , NamedGlobal
       binary_substring, binary_substrings, <binary_substring>, <binary_string>, Index<( integer, integer )>
       binary_substring, binary_substrings, <binary_substring>, <binary_string>, Index<binary_string>
       bios, bioses, <bios>, world , PlainGlobal
@@ -6574,6 +6763,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       built_in_pointing_device, built_in_pointing_devices, <dmi built_in_pointing_device>, <dmi>, Plain
       bus_number, bus_numbers, <integer>, <dmi onboard_devices_extended_information>, Plain
       bus_number, bus_numbers, <integer>, <dmi system_slots>, Plain
+      byte, bytes, <binary_string>, world , NumberedGlobal
       byte, bytes, <binary_substring>, <binary_string>, Numbered
       byte, bytes, <binary_substring>, <binary_string>, Plain
       byte, bytes, <integer>, <file>, Numbered
@@ -6915,6 +7105,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       extrema, extremas, <( time interval, time interval )>, <time interval>, Plain
       extrema, extremas, <( time of day, time of day )>, <time of day>, Plain
       extrema, extremas, <( time, time )>, <time>, Plain
+      extrema, extremas, <( uuid, uuid )>, <uuid>, Plain
       extrema, extremas, <( version, version )>, <version>, Plain
       extrema, extremas, <( year, year )>, <year>, Plain
       f00f bug, f00f bugs, <boolean>, <processor>, Plain
@@ -6939,9 +7130,12 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       fifo file, fifo files, <fifo file>, world , Index<symlink>Global
       fifo file, fifo files, <fifo file>, world , NamedGlobal
       file count, file counts, <integer>, <filesystem>, Plain
+      file, files, <file>, <encoding>, Index<binary_string>
       file, files, <file>, <encoding>, Named
+      file, files, <file>, <folder>, Index<binary_string>
       file, files, <file>, <folder>, Named
       file, files, <file>, <folder>, Plain
+      file, files, <file>, world , Index<binary_string>Global
       file, files, <file>, world , Index<symlink>Global
       file, files, <file>, world , NamedGlobal
       filesystem type, filesystem types, <string>, <filesystem>, Plain
@@ -6986,10 +7180,13 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       float, floats, <boolean>, <sqlite column type>, Plain
       floating point, floating points, <floating point>, world , Index<floating point>Global
       floating point, floating points, <floating point>, world , NamedGlobal
+      folder, folders, <folder>, <encoding>, Index<binary_string>
       folder, folders, <folder>, <encoding>, Named
+      folder, folders, <folder>, <folder>, Index<binary_string>
       folder, folders, <folder>, <folder>, Named
       folder, folders, <folder>, <folder>, Plain
       folder, folders, <folder>, <site>, Plain
+      folder, folders, <folder>, world , Index<binary_string>Global
       folder, folders, <folder>, world , Index<symlink>Global
       folder, folders, <folder>, world , NamedGlobal
       following binary_string, following binary_strings, <binary_substring>, <binary position>, Plain
@@ -7068,6 +7265,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       h6, h6s, <html>, <html>, Plain
       h6, h6s, <html>, <string>, Named
       h6, h6s, <html>, <string>, Plain
+      hardware, hardwares, <hardware>, world , PlainGlobal
       hardware_security, hardware_securitys, <dmi hardware_security>, <dmi>, Numbered
       hardware_security, hardware_securitys, <dmi hardware_security>, <dmi>, Plain
       hardware_security_settings, hardware_security_settingss, <integer>, <dmi hardware_security>, Plain
@@ -7113,6 +7311,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       html, htmls, <html>, <string>, Named
       html, htmls, <html>, <string>, Plain
       html, htmls, <html>, world , NamedGlobal
+      hypervisor, hypervisors, <string>, <operating system>, Plain
       hz, hzs, <hertz>, world , PlainGlobal
       i2c_slave_address, i2c_slave_addresss, <integer>, <dmi ipmi_device_information>, Plain
       id, ids, <integer>, <action>, Plain
@@ -7136,6 +7335,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       index, indices, <string>, <sqlite table>, Plain
       inexact, inexacts, <boolean>, <floating point>, Plain
       infinite, infinites, <boolean>, <floating point>, Plain
+      info, infos, <string>, <client>, Plain
       initial part, initial parts, <time range>, <time range>, Index<time interval>
       initrd, initrds, <grub file location>, <grub bootable image>, Plain
       input_current_probe_handle, input_current_probe_handles, <integer>, <dmi system_power_supply>, Plain
@@ -7170,6 +7370,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       internal_reference_designator, internal_reference_designators, <string>, <dmi port_connector_information>, Plain
       intersection, intersections, <integer set>, <integer set>, Plain
       intersection, intersections, <string set>, <string set>, Plain
+      invalid after, invalid afters, <time>, <x509 certificate>, Plain
       invalid before, invalid befores, <time>, <x509 certificate>, Plain
       invalid, invalids, <boolean>, <floating point>, Plain
       ip address, ip addresses, <ipv4or6 address>, <selected server>, Plain
@@ -7195,6 +7396,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       ipv6 interface, ipv6 interfaces, <network adapter interface>, <network>, Plain
       ipv6, ipv6s, <ip version>, world , PlainGlobal
       irtt, irtts, <integer>, <route>, Plain
+      issuer, issuers, <string>, <x509 certificate>, Plain
       italic, italics, <html>, <html>, Named
       italic, italics, <html>, <html>, Plain
       italic, italics, <html>, <string>, Named
@@ -7253,6 +7455,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       left operand type, left operand types, <type>, <binary operator>, Plain
       left shift, left shifts, <bit set>, <bit set>, Numbered
       legacy, legacies, <boolean>, <bes product>, Plain
+      length, lengths, <integer>, <binary_string>, Plain
       length, lengths, <integer>, <dmi additional_information>, Plain
       length, lengths, <integer>, <dmi b32_bit_memory_error_information>, Plain
       length, lengths, <integer>, <dmi b64_bit_memory_error_information>, Plain
@@ -7337,6 +7540,13 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       location_and_status, location_and_statuss, <integer>, <dmi voltage_probe>, Plain
       location_in_chassis, location_in_chassiss, <string>, <dmi base_board_information>, Plain
       lock string, lock strings, <string>, <action lock state>, Plain
+      locked content, locked contents, <file content>, <file>, Plain
+      locked key, locked keys, <string>, <file>, Named
+      locked line containing, locked lines containing, <file line>, <file>, Named
+      locked line starting with, locked lines starting with, <file line>, <file>, Named
+      locked line, locked lines, <file line>, <file>, Numbered
+      locked line, locked lines, <file line>, <file>, Plain
+      locked section, locked sections, <file section>, <file>, Named
       locked, lockeds, <boolean>, <action lock state>, Plain
       logged on user, logged on users, <logged on user>, world , PlainGlobal
       loginuid, loginuids, <integer>, <process>, Plain
@@ -7406,6 +7616,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       maximum, maxima, <time interval>, <time interval>, Plain
       maximum, maxima, <time of day>, <time of day>, Plain
       maximum, maxima, <time>, <time>, Plain
+      maximum, maxima, <uuid>, <uuid>, Plain
       maximum, maxima, <version>, <version>, Plain
       maximum, maxima, <year>, <year>, Plain
       maximum, maximums, <integer>, <evaluation cycle>, Plain
@@ -7482,6 +7693,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       minimum, minima, <time interval>, <time interval>, Plain
       minimum, minima, <time of day>, <time of day>, Plain
       minimum, minima, <time>, <time>, Plain
+      minimum, minima, <uuid>, <uuid>, Plain
       minimum, minima, <version>, <version>, Plain
       minimum, minima, <year>, <year>, Plain
       minimum_value, minimum_values, <integer>, <dmi electrical_current_probe>, Plain
@@ -7545,6 +7757,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       multiplicity, multiplicities, <integer>, <time range with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <time with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <time zone with multiplicity>, Plain
+      multiplicity, multiplicities, <integer>, <uuid with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <version with multiplicity>, Plain
       multiplicity, multiplicities, <integer>, <year with multiplicity>, Plain
       multivalued, multivalueds, <boolean>, <property>, Plain
@@ -7788,7 +8001,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       property, properties, <property>, world , NamedGlobal
       property, properties, <property>, world , PlainGlobal
       protocol, protocols, <string>, <Xinetd Service>, Plain
+      proxied, proxieds, <boolean>, <hardware>, Plain
       proxy agent service, proxy agent services, <service>, world , PlainGlobal
+      public key algorithm, public key algorithms, <string>, <x509 certificate>, Plain
       q, qs, <html>, <html>, Named
       q, qs, <html>, <html>, Plain
       q, qs, <html>, <string>, Named
@@ -7835,6 +8050,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       report character set, report character sets, <string>, <client>, Plain
       report duration, report durations, <time interval>, <evaluation cycle>, Plain
       report percent, report percents, <floating point>, <evaluation cycle>, Plain
+      representable in utf16, representables in utf16, <boolean>, <binary_string>, Plain
+      representable in utf8, representables in utf8, <boolean>, <binary_string>, Plain
+      representable in, representables in, <boolean>, <binary_string>, Named
+      representable, representables, <boolean>, <binary_string>, Plain
+      representation in, representations in, <string>, <binary_string>, Named
       reserved, reserveds, <binary_string>, <dmi bios_language_information>, Plain
       reserved, reserveds, <binary_string>, <dmi system_boot_information>, Plain
       reset_count, reset_counts, <integer>, <dmi system_reset>, Plain
@@ -7899,6 +8119,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       september, septembers, <day of year>, world , NumberedGlobal
       september, septembers, <month and year>, <integer>, Plain
       september, septembers, <month>, world , PlainGlobal
+      serial number, serial numbers, <string>, <x509 certificate>, Plain
+      serial, serials, <string>, <hardware>, Plain
       serial_number, serial_numbers, <string>, <dmi base_board_information>, Plain
       serial_number, serial_numbers, <string>, <dmi memory_device>, Plain
       serial_number, serial_numbers, <string>, <dmi portable_battery>, Plain
@@ -7943,6 +8165,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sha512, sha512s, <string>, <file>, Plain
       sha512, sha512s, <string>, <string>, Plain
       shared amount, shared amounts, <integer>, <ram>, Plain
+      signature algorithm, signature algorithms, <string>, <x509 certificate>, Plain
       signature hash algorithm, signature hash algorithms, <string>, <license>, Plain
       significance place, significance places, <floating point>, <floating point>, Numbered
       significance place, significance places, <floating point>, <floating point>, Plain
@@ -8022,6 +8245,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       stepping, steppings, <integer>, <processor>, Plain
       sticky, stickies, <boolean>, <mode>, Plain
       storage folder, storage folders, <folder>, <client>, Plain
+      string named file, string named files, <file>, <folder>, Plain
+      string named folder, string named folders, <folder>, <folder>, Plain
       string value, string values, <smbios value>, <smbios structure>, Named
       string version, string versions, <string>, <application usage summary instance>, Plain
       string, strings, <string>, <smbios structure>, Named
@@ -8039,6 +8264,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sub, subs, <html>, <html>, Plain
       sub, subs, <html>, <string>, Named
       sub, subs, <html>, <string>, Plain
+      subject common name, subject common names, <string>, <x509 certificate>, Plain
+      subject, subjects, <string>, <x509 certificate>, Plain
       subnet address, subnet addresses, <ipv4 address>, <network adapter>, Plain
       subnet address, subnet addresses, <ipv4 address>, <network ip interface>, Plain
       subnet address, subnet addresses, <ipv4or6 address>, <network adapter interface>, Plain
@@ -8249,6 +8476,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       unique value, unique values, <time range with multiplicity>, <time range>, Plain
       unique value, unique values, <time with multiplicity>, <time>, Plain
       unique value, unique values, <time zone with multiplicity>, <time zone>, Plain
+      unique value, unique values, <uuid with multiplicity>, <uuid>, Plain
       unique value, unique values, <version with multiplicity>, <version>, Plain
       unique value, unique values, <year with multiplicity>, <year>, Plain
       universal time zone, universal time zones, <time zone>, world , PlainGlobal
@@ -8294,6 +8522,10 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       usual name, usual names, <string>, <property>, Plain
       uuid, uuids, <binary_string>, <dmi system_information>, Plain
       uuid, uuids, <string>, <filesystem>, Plain
+      uuid, uuids, <uuid>, <hardware>, Plain
+      uuid, uuids, <uuid>, <operating system>, Plain
+      uuid, uuids, <uuid>, world , Index<binary_string>Global
+      uuid, uuids, <uuid>, world , NamedGlobal
       value accessible, values accessible, <boolean>, <symlink>, Plain
       value, values, <json value>, <json key>, Plain
       value, values, <smbios value>, <smbios structure>, Named
@@ -8320,6 +8552,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       version, versions, <debian package version>, <debian versioned package>, Plain
       version, versions, <debian package version>, <debianpkg dependency>, Plain
       version, versions, <integer>, <site>, Plain
+      version, versions, <integer>, <x509 certificate>, Plain
       version, versions, <string>, <bios>, Plain
       version, versions, <string>, <cryptography>, Plain
       version, versions, <string>, <debianpkg reverse dependencies>, Plain
@@ -8334,6 +8567,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       version, versions, <version>, <registration server>, Plain
       version, versions, <version>, <service>, Plain
       version, versions, <version>, world , NamedGlobal
+      virtual machine, virtual machines, <boolean>, <operating system>, Plain
+      virtual, virtuals, <boolean>, <hardware>, Plain
       voltage, voltages, <integer>, <dmi processor_information>, Plain
       voltage_probe, voltage_probes, <dmi voltage_probe>, <dmi>, Numbered
       voltage_probe, voltage_probes, <dmi voltage_probe>, <dmi>, Plain

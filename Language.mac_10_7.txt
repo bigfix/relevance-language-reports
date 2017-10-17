@@ -1,7 +1,7 @@
 Operating System:Mac OS X Server 10_7_3 (11D50d)
-Client Version:9_5_5_199
+Client Version:9_5_7_90
 Build Target:
-ModuleName:HostApplication, Version:9_5_5_199, ClientCompatible:Yes
+ModuleName:HostApplication, Version:9_5_7_90, ClientCompatible:Yes
 
 Types & Derived Types {<typename> [(derives from <basetypename>]}
   action
@@ -11,6 +11,8 @@ Types & Derived Types {<typename> [(derives from <basetypename>]}
   active directory local user
   active directory server
   administrative rights
+  agent interface
+  agent interface capability
   analysis
   application (derives from  filesystem object)
   application usage summary
@@ -294,6 +296,25 @@ Creation techniques & properties of each type:
     Properties of <administrative rights> { key phrase, plural keyword, form, <result type>}:
       enabled of <administrative rights>, enableds, Plain, <boolean>
 
+  Type <agent interface>
+    Creation of <agent interface>: { key phrase, plural keyword, form}
+      agent interface <string> of <client>, agent interfaces, Named
+      agent interface of <client>, agent interfaces, Plain
+    Properties of <agent interface> { key phrase, plural keyword, form, <result type>}:
+      capability <string> of <agent interface>, capabilities, Named, <agent interface capability>
+      capability of <agent interface>, capabilities, Plain, <agent interface capability>
+      client product of <agent interface>, client products, Plain, <string>
+
+  Type <agent interface capability>
+    Creation of <agent interface capability>: { key phrase, plural keyword, form}
+      capability <string> of <agent interface>, capabilities, Named
+      capability of <agent interface>, capabilities, Plain
+    Properties of <agent interface capability> { key phrase, plural keyword, form, <result type>}:
+      <agent interface capability> as string, , Cast, <string>
+      error code of <agent interface capability>, error codes, Plain, <integer>
+      name of <agent interface capability>, names, Plain, <string>
+      state of <agent interface capability>, states, Plain, <string>
+
   Type <analysis>
     Creation of <analysis>: { key phrase, plural keyword, form}
       analysis, analysiss, PlainGlobal
@@ -406,25 +427,45 @@ Creation techniques & properties of each type:
 
   Type <binary_string>
     Creation of <binary_string>: { key phrase, plural keyword, form}
+      <binary_string> & <binary_string>, , BinaryOperator
       <string> as binary_string, , Cast
       <string> as fxf binary_string, , Cast
       <string> as local binary_string, , Cast
       <string> as utf16 binary_string, , Cast
       <string> as utf8 binary_string, , Cast
       binary name of <filesystem object>, binary names, Plain
+      binary_string <string>, binary_strings, NamedGlobal
+      byte <integer>, bytes, NumberedGlobal
       data <string> of <dictionary>, datas, Named
       data of <osxvalue>, datas, Plain
     Properties of <binary_string> { key phrase, plural keyword, form, <result type>}:
+      <binary_string> & <binary_string>, , BinaryOperator, <binary_string>
+      <binary_string> < <binary_string>, , BinaryOperator, <boolean>
+      <binary_string> <= <binary_string>, , BinaryOperator, <boolean>
+      <binary_string> = <binary_string>, , BinaryOperator, <boolean>
+      <binary_string> as fxf string, , Cast, <string>
       <binary_string> as hexadecimal, , Cast, <string>
+      <binary_string> as local string, , Cast, <string>
       <binary_string> as string, , Cast, <string>
+      <binary_string> as utf16 string, , Cast, <string>
+      <binary_string> as utf8 string, , Cast, <string>
+      <binary_string> contains <binary_string>, , BinaryOperator, <boolean>
+      <binary_string> ends with <binary_string>, , BinaryOperator, <boolean>
+      <binary_string> starts with <binary_string>, , BinaryOperator, <boolean>
       binary_substring <( integer, integer )> of <binary_string>, binary_substrings, Index<( integer, integer )>, <binary_substring>
       binary_substring <binary_string> of <binary_string>, binary_substrings, Index<binary_string>, <binary_substring>
       byte <integer> of <binary_string>, bytes, Numbered, <binary_substring>
       byte of <binary_string>, bytes, Plain, <binary_substring>
       first <integer> of <binary_string>, firsts, Numbered, <binary_substring>
       last <integer> of <binary_string>, lasts, Numbered, <binary_substring>
+      length of <binary_string>, lengths, Plain, <integer>
       position <integer> of <binary_string>, positions, Numbered, <binary position>
       position of <binary_string>, positions, Plain, <binary position>
+      representable in <string> of <binary_string>, representables in, Named, <boolean>
+      representable in utf16 of <binary_string>, representables in utf16, Plain, <boolean>
+      representable in utf8 of <binary_string>, representables in utf8, Plain, <boolean>
+      representable of <binary_string>, representables, Plain, <boolean>
+      representation in <string> of <binary_string>, representations in, Named, <string>
 
   Type <binary_substring> (derives from binary_string)
     Creation of <binary_substring>: { key phrase, plural keyword, form}
@@ -484,6 +525,12 @@ Creation techniques & properties of each type:
 
   Type <boolean>
     Creation of <boolean>: { key phrase, plural keyword, form}
+      <binary_string> < <binary_string>, , BinaryOperator
+      <binary_string> <= <binary_string>, , BinaryOperator
+      <binary_string> = <binary_string>, , BinaryOperator
+      <binary_string> contains <binary_string>, , BinaryOperator
+      <binary_string> ends with <binary_string>, , BinaryOperator
+      <binary_string> starts with <binary_string>, , BinaryOperator
       <bit set> = <bit set>, , BinaryOperator
       <bit set> contains <bit set>, , BinaryOperator
       <boolean> = <boolean>, , BinaryOperator
@@ -734,6 +781,10 @@ Creation techniques & properties of each type:
       reject flag of <route>, reject flags, Plain
       relevance of <fixlet>, relevances, Plain
       remote of <logged on user>, remotes, Plain
+      representable in <string> of <binary_string>, representables in, Named
+      representable in utf16 of <binary_string>, representables in utf16, Plain
+      representable in utf8 of <binary_string>, representables in utf8, Plain
+      representable of <binary_string>, representables, Plain
       router flag of <route>, router flags, Plain
       running of <application usage summary>, runnings, Plain
       secured of <wifi network>, secureds, Plain
@@ -807,6 +858,8 @@ Creation techniques & properties of each type:
       administrative rights of <client>, administrative rightss, Plain, <administrative rights>
       administrator <string> of <client>, administrators, Named, <setting>
       administrator of <client>, administrators, Plain, <setting>
+      agent interface <string> of <client>, agent interfaces, Named, <agent interface>
+      agent interface of <client>, agent interfaces, Plain, <agent interface>
       authenticating of <client>, authenticatings, Plain, <boolean>
       banned prefetch plugin of <client>, banned prefetch plugins, Plain, <string>
       brand of <client>, brands, Plain, <string>
@@ -1359,6 +1412,7 @@ Creation techniques & properties of each type:
       download file <string> of <encoding>, download files, Named
       download file <string>, download files, NamedGlobal
       file <binary_string> of <folder>, files, Index<binary_string>
+      file <binary_string>, files, Index<binary_string>Global
       file <string> of <encoding>, files, Named
       file <string> of <folder>, files, Named
       file <string>, files, NamedGlobal
@@ -1395,7 +1449,14 @@ Creation techniques & properties of each type:
       line containing <string> of <file>, lines containing, Named, <file line>
       line of <file>, lines, Plain, <file line>
       line starting with <string> of <file>, lines starting with, Named, <file line>
+      locked content of <file>, locked contents, Plain, <file content>
+      locked key <string> of <file>, locked keys, Named, <string>
+      locked line <integer> of <file>, locked lines, Numbered, <file line>
+      locked line containing <string> of <file>, locked lines containing, Named, <file line>
+      locked line of <file>, locked lines, Plain, <file line>
+      locked line starting with <string> of <file>, locked lines starting with, Named, <file line>
       locked of <file>, lockeds, Plain, <boolean>
+      locked section <string> of <file>, locked sections, Named, <file section>
       md5 of <file>, md5s, Plain, <string>
       resource fork of <file>, resource forks, Plain, <resfork>
       section <string> of <file>, sections, Named, <file section>
@@ -1422,6 +1483,7 @@ Creation techniques & properties of each type:
       <file content> as lowercase, , Cast
       <file content> as uppercase, , Cast
       content of <file>, contents, Plain
+      locked content of <file>, locked contents, Plain
     Properties of <file content> { key phrase, plural keyword, form, <result type>}:
       <file content> as lowercase, , Cast, <file content>
       <file content> as uppercase, , Cast, <file content>
@@ -1433,6 +1495,10 @@ Creation techniques & properties of each type:
       line containing <string> of <file>, lines containing, Named
       line of <file>, lines, Plain
       line starting with <string> of <file>, lines starting with, Named
+      locked line <integer> of <file>, locked lines, Numbered
+      locked line containing <string> of <file>, locked lines containing, Named
+      locked line of <file>, locked lines, Plain
+      locked line starting with <string> of <file>, locked lines starting with, Named
       next line of <file line>, next lines, Plain
       previous line of <file line>, previous lines, Plain
     Properties of <file line> { key phrase, plural keyword, form, <result type>}:
@@ -1442,6 +1508,7 @@ Creation techniques & properties of each type:
 
   Type <file section>
     Creation of <file section>: { key phrase, plural keyword, form}
+      locked section <string> of <file>, locked sections, Named
       section <string> of <file>, sections, Named
     Properties of <file section> { key phrase, plural keyword, form, <result type>}:
       key <string> of <file section>, keys, Named, <string>
@@ -2362,6 +2429,7 @@ Creation techniques & properties of each type:
       directory count of <volume>, directory counts, Plain
       download failure of <action>, download failures, Plain
       element of <integer set>, elements, Plain
+      error code of <agent interface capability>, error codes, Plain
       exit code of <action>, exit codes, Plain
       extended family of <processor>, extended families, Plain
       extended feature mask of <processor>, extended feature masks, Plain
@@ -2404,6 +2472,7 @@ Creation techniques & properties of each type:
       last active line number of <action>, last active line numbers, Plain
       least integer, least integers, PlainGlobal
       least significant one bit of <bit set>, least significant one bits, Plain
+      length of <binary_string>, lengths, Plain
       length of <datafork>, lengths, Plain
       length of <file>, lengths, Plain
       length of <resfork>, lengths, Plain
@@ -2508,6 +2577,7 @@ Creation techniques & properties of each type:
       used space of <volume>, used spaces, Plain
       user id of <user>, user ids, Plain
       version of <site>, versions, Plain
+      version of <x509 certificate>, versions, Plain
       weight of <selected server>, weights, Plain
       windows server count of <bes product>, windows server counts, Plain
       workstation count of <bes product>, workstation counts, Plain
@@ -3731,10 +3801,15 @@ Creation techniques & properties of each type:
     Creation of <string>: { key phrase, plural keyword, form}
       <action lock state> as string, , Cast
       <action> as string, , Cast
+      <agent interface capability> as string, , Cast
       <application> as string, , Cast
       <binary operator> as string, , Cast
+      <binary_string> as fxf string, , Cast
       <binary_string> as hexadecimal, , Cast
+      <binary_string> as local string, , Cast
       <binary_string> as string, , Cast
+      <binary_string> as utf16 string, , Cast
+      <binary_string> as utf8 string, , Cast
       <binary_substring> as string, , Cast
       <bios> as string, , Cast
       <bit set> as string, , Cast
@@ -3849,6 +3924,7 @@ Creation techniques & properties of each type:
       cidr string of <network adapter>, cidr strings, Plain
       cidr string of <network ip interface>, cidr strings, Plain
       classname of <registrynode>, classnames, Plain
+      client product of <agent interface>, client products, Plain
       codename of <operating system>, codenames, Plain
       comment of <user>, comments, Plain
       common name of <license>, common names, Plain
@@ -3908,6 +3984,7 @@ Creation techniques & properties of each type:
       info of <component>, infos, Plain
       interface of <route>, interfaces, Plain
       ip family of <route>, ip families, Plain
+      issuer of <x509 certificate>, issuers, Plain
       key <string> of <file section>, keys, Named
       key <string> of <file>, keys, Named
       key of <dictionary>, keys, Plain
@@ -3917,6 +3994,7 @@ Creation techniques & properties of each type:
       local encoding concatenation <string> of <string>, local encoding concatenations, Named
       local encoding concatenation of <string>, local encoding concatenations, Plain
       lock string of <action lock state>, lock strings, Plain
+      locked key <string> of <file>, locked keys, Named
       long name of <client process owner>, long names, Plain
       mac address of <network adapter interface>, mac addresses, Plain
       mac address of <network adapter>, mac addresses, Plain
@@ -3929,6 +4007,7 @@ Creation techniques & properties of each type:
       md5 of <string>, md5s, Plain
       name of <active directory group>, names, Plain
       name of <active directory local user>, names, Plain
+      name of <agent interface capability>, names, Plain
       name of <application usage summary instance>, names, Plain
       name of <application usage summary>, names, Plain
       name of <bes product>, names, Plain
@@ -3978,14 +4057,17 @@ Creation techniques & properties of each type:
       posix path of <filesystem object>, posix paths, Plain
       product info string of <operating system>, product info strings, Plain
       product of <scsidevice>, products, Plain
+      public key algorithm of <x509 certificate>, public key algorithms, Plain
       regex escape of <string>, regex escapes, Plain
       registration cidr address of <client>, registration cidr addresses, Plain
       registration mac address of <client>, registration mac addresses, Plain
       releaseid of <operating system>, releaseids, Plain
       report character set of <client>, report character sets, Plain
+      representation in <string> of <binary_string>, representations in, Named
       revision of <scsidevice>, revisions, Plain
       schema of <sqlite table>, schemas, Plain
       seat count state of <license>, seat count states, Plain
+      serial number of <x509 certificate>, serial numbers, Plain
       sha1 of <file>, sha1s, Plain
       sha1 of <string>, sha1s, Plain
       sha1 of <x509 certificate>, sha1s, Plain
@@ -4007,12 +4089,14 @@ Creation techniques & properties of each type:
       sha512 of <file>, sha512s, Plain
       sha512 of <string>, sha512s, Plain
       short name of <client process owner>, short names, Plain
+      signature algorithm of <x509 certificate>, signature algorithms, Plain
       signature hash algorithm of <license>, signature hash algorithms, Plain
       singular name of <property>, singular names, Plain
       site tag of <site>, site tags, Plain
       site url of <bes product>, site urls, Plain
       ssid of <wifi network>, ssids, Plain
       ssid of <wifi>, ssids, Plain
+      state of <agent interface capability>, states, Plain
       state of <dummy>, states, Plain
       status of <action>, statuss, Plain
       string <integer> of <array>, strings, Numbered
@@ -4022,6 +4106,8 @@ Creation techniques & properties of each type:
       string of <osxvalue>, strings, Plain
       string of <tuple item>, strings, Plain
       string version of <application usage summary instance>, string versions, Plain
+      subject common name of <x509 certificate>, subject common names, Plain
+      subject of <x509 certificate>, subjects, Plain
       subtype of <component>, subtypes, Plain
       symbol of <binary operator>, symbols, Plain
       symbol of <unary operator>, symbols, Plain
@@ -4422,6 +4508,7 @@ Creation techniques & properties of each type:
       first start time of <application usage summary instance>, first start times, Plain
       first start time of <application usage summary>, first start times, Plain
       init date of <volume>, init dates, Plain
+      invalid after of <x509 certificate>, invalid afters, Plain
       invalid before of <x509 certificate>, invalid befores, Plain
       last active time of <action>, last active times, Plain
       last change time of <action>, last change times, Plain
@@ -4976,8 +5063,16 @@ Creation techniques & properties of each type:
       certificate of <client>, certificates, Plain
       encryption certificate of <license>, encryption certificates, Plain
     Properties of <x509 certificate> { key phrase, plural keyword, form, <result type>}:
+      invalid after of <x509 certificate>, invalid afters, Plain, <time>
       invalid before of <x509 certificate>, invalid befores, Plain, <time>
+      issuer of <x509 certificate>, issuers, Plain, <string>
+      public key algorithm of <x509 certificate>, public key algorithms, Plain, <string>
+      serial number of <x509 certificate>, serial numbers, Plain, <string>
       sha1 of <x509 certificate>, sha1s, Plain, <string>
+      signature algorithm of <x509 certificate>, signature algorithms, Plain, <string>
+      subject common name of <x509 certificate>, subject common names, Plain, <string>
+      subject of <x509 certificate>, subjects, Plain, <string>
+      version of <x509 certificate>, versions, Plain, <integer>
 
   Type <year>
     Creation of <year>: { key phrase, plural keyword, form}
@@ -5052,6 +5147,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   binary operator <string>, binary operators, NamedGlobal, <binary operator>
   binary operator returning <type>, binary operators returning, Index<type>Global, <binary operator>
   binary operator, binary operators, PlainGlobal, <binary operator>
+  binary_string <string>, binary_strings, NamedGlobal, <binary_string>
   bios, bioses, PlainGlobal, <bios>
   bit <integer>, bits, NumberedGlobal, <bit set>
   bit set <string>, bit sets, NamedGlobal, <bit set>
@@ -5059,6 +5155,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   br <string>, brs, NamedGlobal, <html>
   br, brs, PlainGlobal, <html>
   bundle <string>, bundles, NamedGlobal, <bundle>
+  byte <integer>, bytes, NumberedGlobal, <binary_string>
   cache folder, cache folders, PlainGlobal, <folder>
   carbon folder, carbon folders, PlainGlobal, <folder>
   case insensitive regex <string>, case insensitive regexes, NamedGlobal, <regular expression>
@@ -5160,6 +5257,7 @@ Properties of World { key phrase, plural keyword, form, <result type>}:
   favorites folder, favorites folders, PlainGlobal, <folder>
   february <integer>, februarys, NumberedGlobal, <day of year>
   february, februarys, PlainGlobal, <month>
+  file <binary_string>, files, Index<binary_string>Global, <file>
   file <string>, files, NamedGlobal, <file>
   file signature <string>, file signatures, NamedGlobal, <file signature>
   file type <string>, file types, NamedGlobal, <file type>
@@ -5447,6 +5545,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       administrative rights, administrative rightss, <administrative rights>, <client>, Plain
       administrator, administrators, <setting>, <client>, Named
       administrator, administrators, <setting>, <client>, Plain
+      agent interface, agent interfaces, <agent interface>, <client>, Named
+      agent interface, agent interfaces, <agent interface>, <client>, Plain
       alias, aliases, <boolean>, <file>, Plain
       alias, aliases, <boolean>, <network ip interface>, Plain
       allocation block count, allocation block counts, <integer>, <volume>, Plain
@@ -5516,6 +5616,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as floating point, , <floating point>, <string>, Cast
       as folder, , <folder>, <filesystem object>, Cast
       as fxf binary_string, , <binary_string>, <string>, Cast
+      as fxf string, , <string>, <binary_string>, Cast
       as hexadecimal, , <string>, <binary_string>, Cast
       as hexadecimal, , <string>, <integer>, Cast
       as hexadecimal, , <string>, <string>, Cast
@@ -5537,6 +5638,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as left trimmed string, , <string>, <string>, Cast
       as local binary_string, , <binary_string>, <string>, Cast
       as local date, , <date>, <time>, Cast
+      as local string, , <string>, <binary_string>, Cast
       as local string, , <string>, <time>, Cast
       as local time, , <time>, <string>, Cast
       as local zoned time_of_day, , <time of day with time zone>, <string>, Cast
@@ -5560,6 +5662,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as string with zone index, , <string>, <ipv6 address>, Cast
       as string, , <string>, <action lock state>, Cast
       as string, , <string>, <action>, Cast
+      as string, , <string>, <agent interface capability>, Cast
       as string, , <string>, <application>, Cast
       as string, , <string>, <binary operator>, Cast
       as string, , <string>, <binary_string>, Cast
@@ -5640,7 +5743,9 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       as uppercase, , <file content>, <file content>, Cast
       as uppercase, , <string>, <string>, Cast
       as utf16 binary_string, , <binary_string>, <string>, Cast
+      as utf16 string, , <string>, <binary_string>, Cast
       as utf8 binary_string, , <binary_string>, <string>, Cast
+      as utf8 string, , <string>, <binary_string>, Cast
       as version, , <version>, <string>, Cast
       as version, , <version>, <version>, Cast
       as year, , <year>, <integer>, Cast
@@ -5686,6 +5791,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       binary operator returning, binary operators returning, <binary operator>, world , Index<type>Global
       binary operator, binary operators, <binary operator>, world , NamedGlobal
       binary operator, binary operators, <binary operator>, world , PlainGlobal
+      binary_string, binary_strings, <binary_string>, world , NamedGlobal
       binary_substring, binary_substrings, <binary_substring>, <binary_string>, Index<( integer, integer )>
       binary_substring, binary_substrings, <binary_substring>, <binary_string>, Index<binary_string>
       bios, bioses, <bios>, world , PlainGlobal
@@ -5734,11 +5840,14 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       bundle version, bundle versions, <version>, <folder>, Plain
       bundle, bundles, <bundle>, <folder>, Plain
       bundle, bundles, <bundle>, world , NamedGlobal
+      byte, bytes, <binary_string>, world , NumberedGlobal
       byte, bytes, <binary_substring>, <binary_string>, Numbered
       byte, bytes, <binary_substring>, <binary_string>, Plain
       byte, bytes, <integer>, <file>, Numbered
       cache folder, cache folders, <folder>, <domain>, Plain
       cache folder, cache folders, <folder>, world , PlainGlobal
+      capability, capabilities, <agent interface capability>, <agent interface>, Named
+      capability, capabilities, <agent interface capability>, <agent interface>, Plain
       caption, captions, <html>, <html>, Named
       caption, captions, <html>, <html>, Plain
       caption, captions, <html>, <string>, Named
@@ -5778,6 +5887,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       client device count, client device counts, <integer>, <bes product>, Plain
       client folder, client folders, <folder>, <site>, Plain
       client license, client licenses, <license>, world , PlainGlobal
+      client product, client products, <string>, <agent interface>, Plain
       client, clients, <client>, world , PlainGlobal
       cloned, cloneds, <boolean>, <route>, Plain
       cloning flag, cloning flags, <boolean>, <route>, Plain
@@ -6044,6 +6154,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       enhanced security, enhanced securities, <boolean>, <license>, Plain
       entry, entries, <dictionaryentry>, <dictionary>, Plain
       environment, environments, <environment>, world , PlainGlobal
+      error code, error codes, <integer>, <agent interface capability>, Plain
       error, errors, <undefined>, world , NamedGlobal
       established, establisheds, <boolean>, <tcp state>, Plain
       evaluated, evaluateds, <boolean>, <site>, Plain
@@ -6105,6 +6216,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       file, files, <file>, <folder>, Index<binary_string>
       file, files, <file>, <folder>, Named
       file, files, <file>, <folder>, Plain
+      file, files, <file>, world , Index<binary_string>Global
       file, files, <file>, world , NamedGlobal
       filesystem, filesystems, <volume>, <file>, Plain
       filesystem, filesystems, <volume>, <folder>, Plain
@@ -6316,6 +6428,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       internet plugins folder, internet plugins folders, <folder>, world , PlainGlobal
       intersection, intersections, <integer set>, <integer set>, Plain
       intersection, intersections, <string set>, <string set>, Plain
+      invalid after, invalid afters, <time>, <x509 certificate>, Plain
       invalid before, invalid befores, <time>, <x509 certificate>, Plain
       invalid state, invalid states, <power state>, world , PlainGlobal
       invalid, invalids, <boolean>, <floating point>, Plain
@@ -6345,6 +6458,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       isochronous, isochronouses, <boolean>, <usb>, Plain
       iss download folder, iss download folders, <folder>, <domain>, Plain
       iss download folder, iss download folders, <folder>, world , PlainGlobal
+      issuer, issuers, <string>, <x509 certificate>, Plain
       italic, italics, <html>, <html>, Named
       italic, italics, <html>, <html>, Plain
       italic, italics, <html>, <string>, Named
@@ -6415,6 +6529,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       left operand type, left operand types, <type>, <binary operator>, Plain
       left shift, left shifts, <bit set>, <bit set>, Numbered
       legacy, legacies, <boolean>, <bes product>, Plain
+      length, lengths, <integer>, <binary_string>, Plain
       length, lengths, <integer>, <datafork>, Plain
       length, lengths, <integer>, <file>, Plain
       length, lengths, <integer>, <resfork>, Plain
@@ -6469,6 +6584,13 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       locations folder, locations folders, <folder>, <domain>, Plain
       locations folder, locations folders, <folder>, world , PlainGlobal
       lock string, lock strings, <string>, <action lock state>, Plain
+      locked content, locked contents, <file content>, <file>, Plain
+      locked key, locked keys, <string>, <file>, Named
+      locked line containing, locked lines containing, <file line>, <file>, Named
+      locked line starting with, locked lines starting with, <file line>, <file>, Named
+      locked line, locked lines, <file line>, <file>, Numbered
+      locked line, locked lines, <file line>, <file>, Plain
+      locked section, locked sections, <file section>, <file>, Named
       locked, lockeds, <boolean>, <action lock state>, Plain
       locked, lockeds, <boolean>, <file>, Plain
       logged off state, logged off states, <power state>, world , PlainGlobal
@@ -6630,6 +6752,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       name registry version, name registry versions, <version>, world , PlainGlobal
       name, names, <string>, <active directory group>, Plain
       name, names, <string>, <active directory local user>, Plain
+      name, names, <string>, <agent interface capability>, Plain
       name, names, <string>, <application usage summary instance>, Plain
       name, names, <string>, <application usage summary>, Plain
       name, names, <string>, <bes product>, Plain
@@ -6818,6 +6941,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       proto2 flag, proto2 flags, <boolean>, <route>, Plain
       proto3 flag, proto3 flags, <boolean>, <route>, Plain
       proxy flag, proxy flags, <boolean>, <route>, Plain
+      public key algorithm, public key algorithms, <string>, <x509 certificate>, Plain
       q, qs, <html>, <html>, Named
       q, qs, <html>, <html>, Plain
       q, qs, <html>, <string>, Named
@@ -6885,6 +7009,11 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       report character set, report character sets, <string>, <client>, Plain
       report duration, report durations, <time interval>, <evaluation cycle>, Plain
       report percent, report percents, <floating point>, <evaluation cycle>, Plain
+      representable in utf16, representables in utf16, <boolean>, <binary_string>, Plain
+      representable in utf8, representables in utf8, <boolean>, <binary_string>, Plain
+      representable in, representables in, <boolean>, <binary_string>, Named
+      representable, representables, <boolean>, <binary_string>, Plain
+      representation in, representations in, <string>, <binary_string>, Named
       resource fork, resource forks, <resfork>, <file>, Plain
       result type, result types, <type>, <binary operator>, Plain
       result type, result types, <type>, <cast>, Plain
@@ -6937,6 +7066,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       september, septembers, <day of year>, world , NumberedGlobal
       september, septembers, <month and year>, <integer>, Plain
       september, septembers, <month>, world , PlainGlobal
+      serial number, serial numbers, <string>, <x509 certificate>, Plain
       service plane, service planes, <registrynode>, <registryroot>, Plain
       service, services, <dummy>, world , NamedGlobal
       session id, session ids, <integer>, <logged on user>, Plain
@@ -6984,6 +7114,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sid, sids, <security identifier>, <active directory group>, Plain
       sid, sids, <security identifier>, <user>, Plain
       signal strength, signal strengths, <integer>, <wifi network>, Plain
+      signature algorithm, signature algorithms, <string>, <x509 certificate>, Plain
       signature hash algorithm, signature hash algorithms, <string>, <license>, Plain
       significance place, significance places, <floating point>, <floating point>, Numbered
       significance place, significance places, <floating point>, <floating point>, Plain
@@ -7049,6 +7180,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       startup items folder, startup items folders, <folder>, world , PlainGlobal
       state, states, <power state>, <monitor power interval>, Plain
       state, states, <power state>, <system power interval>, Plain
+      state, states, <string>, <agent interface capability>, Plain
       state, states, <string>, <dummy>, Plain
       statement, statements, <sqlite statement>, <sqlite database>, Named
       static flag, static flags, <boolean>, <route>, Plain
@@ -7073,6 +7205,8 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       sub, subs, <html>, <html>, Plain
       sub, subs, <html>, <string>, Named
       sub, subs, <html>, <string>, Plain
+      subject common name, subject common names, <string>, <x509 certificate>, Plain
+      subject, subjects, <string>, <x509 certificate>, Plain
       subnet address, subnet addresses, <ipv4 address>, <network adapter>, Plain
       subnet address, subnet addresses, <ipv4 address>, <network ip interface>, Plain
       subnet address, subnet addresses, <ipv4or6 address>, <network adapter interface>, Plain
@@ -7288,6 +7422,7 @@ Keywords { singular, plural, <creates a>, <from a>, form}:
       version info, version infos, <string>, <execution>, Plain
       version string, version strings, <string>, <module>, Named
       version, versions, <integer>, <site>, Plain
+      version, versions, <integer>, <x509 certificate>, Plain
       version, versions, <string>, <bios>, Plain
       version, versions, <string>, <cryptography>, Plain
       version, versions, <version>, <application usage summary instance>, Plain
